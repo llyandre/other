@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MBTI Personality Quiz</title>
+
+  <style>
+    :root {
+      --bg: #fffaf3;
+      --card: #ffffff;
+      --text: #2d2d2d;
+      --muted: #777;
+      --pink: #ff8fab;
+      --blue: #8ecae6;
+      --yellow: #ffd166;
+      --green: #95d5b2;
+      --soft-pink: #fff0f5;
+      --border: #f2e7d8;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(255, 209, 102, 0.35), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(142, 202, 230, 0.35), transparent 32%),
+        var(--bg);
+      background-size: 120% 120%;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      animation: softBgMove 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes softBgMove {
+      0% {
+        background-position: 0% 0%, 100% 100%;
+      }
+      100% {
+        background-position: 18% 12%, 82% 88%;
+      }
+    }
+
+    .app {
+      width: 100%;
+      max-width: 820px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+      animation: appEntrance 0.8s ease both;
+    }
+
+    @keyframes appEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 999px;
+      opacity: 0.35;
+      z-index: 0;
+    }
+
+    .blob.one {
+      width: 130px;
+      height: 130px;
+      background: var(--pink);
+      right: -40px;
+      top: -45px;
+      animation: floatBlobOne 7s ease-in-out infinite;
+    }
+
+    .blob.two {
+      width: 100px;
+      height: 100px;
+      background: var(--blue);
+      left: -35px;
+      bottom: -35px;
+      animation: floatBlobTwo 8s ease-in-out infinite;
+    }
+
+    @keyframes floatBlobOne {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(-18px, 22px) scale(1.08);
+      }
+    }
+
+    @keyframes floatBlobTwo {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(20px, -18px) scale(1.12);
+      }
+    }
+
+    .floating-shape {
+      position: absolute;
+      z-index: 0;
+      font-weight: 900;
+      opacity: 0.32;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .shape-one {
+      top: 72px;
+      left: 42px;
+      color: var(--pink);
+      font-size: 26px;
+      animation: floatShape 6s ease-in-out infinite;
+    }
+
+    .shape-two {
+      top: 110px;
+      right: 86px;
+      color: var(--blue);
+      font-size: 30px;
+      animation: floatShape 7s ease-in-out infinite reverse;
+    }
+
+    .shape-three {
+      bottom: 92px;
+      right: 54px;
+      color: var(--yellow);
+      font-size: 18px;
+      animation: pulseShape 4.5s ease-in-out infinite;
+    }
+
+    .shape-four {
+      bottom: 74px;
+      left: 88px;
+      color: var(--green);
+      font-size: 28px;
+      animation: floatRotate 8s ease-in-out infinite;
+    }
+
+    @keyframes floatShape {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-18px) rotate(8deg);
+      }
+    }
+
+    @keyframes pulseShape {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.25;
+      }
+      50% {
+        transform: scale(1.35);
+        opacity: 0.45;
+      }
+    }
+
+    @keyframes floatRotate {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-16px) rotate(18deg);
+      }
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--soft-pink);
+      color: #d6336c;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      animation: softPop 0.7s ease both;
+    }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    h2 {
+      font-size: clamp(26px, 4vw, 38px);
+      margin-bottom: 12px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 680px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes softPop {
+      from {
+        opacity: 0;
+        transform: scale(0.86);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+
+    .info-card {
+      background: #fffdf8;
+      border: 1.5px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      transition: 0.3s ease;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .info-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .info-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .info-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-6px) rotate(-1deg);
+      box-shadow: 0 12px 25px rgba(255, 143, 171, 0.16);
+    }
+
+    .info-card .icon {
+      font-size: 26px;
+      margin-bottom: 10px;
+      display: inline-block;
+      animation: tinyBounce 2.6s ease-in-out infinite;
+    }
+
+    @keyframes tinyBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    .info-card strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .info-card p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .start-note {
+      background: #f8fbff;
+      border: 1.5px dashed #cbe7f6;
+      border-radius: 20px;
+      padding: 16px;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .progress-area {
+      margin-bottom: 24px;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: #f0f0f0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--pink), var(--yellow), var(--blue));
+      background-size: 200% 100%;
+      transition: 0.3s ease;
+      animation: progressGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes progressGlow {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .question-card {
+      background: #fffdf8;
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 26px;
+      margin-bottom: 22px;
+      animation: questionSlide 0.45s ease both;
+    }
+
+    @keyframes questionSlide {
+      from {
+        opacity: 0;
+        transform: translateX(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .question-number {
+      color: var(--pink);
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 10px;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    .question {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.45;
+      margin-bottom: 20px;
+      animation: fadeUp 0.55s ease both;
+    }
+
+    .options {
+      display: grid;
+      gap: 14px;
+    }
+
+    .option {
+      background: #fff;
+      border: 2px solid #f1e8dc;
+      border-radius: 18px;
+      padding: 16px 18px;
+      cursor: pointer;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: 0.25s ease;
+      animation: optionEntrance 0.5s ease both;
+    }
+
+    .option:nth-child(1) {
+      animation-delay: 0.08s;
+    }
+
+    .option:nth-child(2) {
+      animation-delay: 0.16s;
+    }
+
+    @keyframes optionEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .option:hover {
+      transform: translateY(-2px);
+      border-color: var(--pink);
+      box-shadow: 0 8px 18px rgba(255, 143, 171, 0.15);
+    }
+
+    .option.selected {
+      background: var(--soft-pink);
+      border-color: var(--pink);
+      animation: selectedPop 0.28s ease both;
+    }
+
+    @keyframes selectedPop {
+      0% {
+        transform: scale(0.98);
+      }
+      60% {
+        transform: scale(1.025);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .option span {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .option p {
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #f1f1f1;
+      color: #555;
+    }
+
+    .btn-pink {
+      background: var(--pink);
+      color: #fff;
+    }
+
+    .btn-pink,
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-pink::after,
+    .btn-primary::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -80%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.45),
+        transparent
+      );
+      transform: skewX(-18deg);
+      transition: 0.5s;
+    }
+
+    .btn-pink:hover::after,
+    .btn-primary:hover::after {
+      left: 120%;
+    }
+
+    .result {
+      text-align: center;
+      display: none;
+    }
+
+    .result-type {
+      font-size: clamp(54px, 12vw, 92px);
+      font-weight: 950;
+      letter-spacing: 4px;
+      margin: 12px 0;
+      background: linear-gradient(90deg, var(--pink), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: resultPop 0.85s ease both;
+    }
+
+    @keyframes resultPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.72) rotate(-3deg);
+      }
+      70% {
+        transform: scale(1.08) rotate(1deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    .result-desc {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 640px;
+      margin: 0 auto 24px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+      text-align: left;
+    }
+
+    .score-box {
+      background: #fffaf3;
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      font-size: 13px;
+      animation: fadeUp 0.7s ease both;
+      transition: 0.3s ease;
+    }
+
+    .score-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 22px rgba(142, 202, 230, 0.18);
+    }
+
+    .score-box:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .score-box:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .score-box:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .score-box:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .score-box small {
+      display: block;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 650px) {
+      .app {
+        padding: 24px;
+      }
+
+      .home-grid,
+      .score-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .question {
+        font-size: 19px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .floating-shape {
+        opacity: 0.18;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+
+    <div class="floating-shape shape-one">✦</div>
+    <div class="floating-shape shape-two">♡</div>
+    <div class="floating-shape shape-three">●</div>
+    <div class="floating-shape shape-four">✿</div>
+
+    <section class="content" id="homePage">
+      <span class="badge">✨ Personality Check</span>
+      <h1>Temukan Tipe MBTI Kamu</h1>
+      <p class="subtitle">
+        Jawab pertanyaan dengan jujur sesuai kebiasaanmu sehari-hari. Quiz ini dibuat dengan desain minimalis, playful,
+        dan pertanyaan yang lebih seimbang agar hasilnya lebih mendekati kecenderungan kepribadianmu.
+      </p>
+
+      <div class="home-grid">
+        <div class="info-card">
+          <div class="icon">🧠</div>
+          <strong>40 Pertanyaan</strong>
+          <p>Setiap dimensi MBTI diuji beberapa kali agar hasil tidak terlalu cepat menyimpulkan.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="icon">🌈</div>
+          <strong>4 Dimensi</strong>
+          <p>Mengukur E/I, S/N, T/F, dan J/P melalui pilihan situasional.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="icon">📊</div>
+          <strong>Skor Detail</strong>
+          <p>Hasil menampilkan tipe MBTI dan kekuatan kecenderungan tiap dimensi.</p>
+        </div>
+      </div>
+
+      <div class="start-note">
+        Jangan pilih jawaban yang terdengar paling “baik”. Pilih yang paling menggambarkan dirimu saat lelah, sibuk,
+        mengambil keputusan, bekerja dalam tim, dan menghadapi situasi sehari-hari.
+      </div>
+
+      <button class="btn-pink" onclick="startQuiz()">Mulai Quiz Sekarang →</button>
+    </section>
+
+    <section class="content hidden" id="quizPage">
+      <span class="badge">🌷 MBTI Quiz</span>
+
+      <div class="progress-area">
+        <div class="progress-text">
+          <span id="progressLabel">Pertanyaan 1 dari 40</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-number" id="questionNumber"></div>
+        <div class="question" id="questionText"></div>
+        <div class="options" id="options"></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-secondary" id="prevBtn">← Sebelumnya</button>
+        <button class="btn-primary" id="nextBtn" disabled>Selanjutnya →</button>
+      </div>
+    </section>
+
+    <section class="content result" id="resultPage">
+      <span class="badge">🌟 Hasil Quiz Kamu</span>
+      <div class="result-type" id="resultType"></div>
+      <h2 id="resultTitle"></h2>
+      <p class="result-desc" id="resultDesc"></p>
+
+      <div class="score-grid" id="scoreGrid"></div>
+
+      <button class="btn-secondary" onclick="backHome()">Kembali ke Home</button>
+      <button class="btn-primary" onclick="restartQuiz()">Ulangi Quiz</button>
+    </section>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: "Setelah hari yang melelahkan, kamu biasanya merasa lebih pulih ketika...",
+        a: [
+          { text: "Bertemu atau ngobrol dengan orang yang membuatmu nyaman.", type: "E" },
+          { text: "Menghabiskan waktu sendiri tanpa banyak gangguan.", type: "I" }
+        ]
+      },
+      {
+        q: "Saat mempelajari hal baru, kamu lebih mudah paham jika...",
+        a: [
+          { text: "Ada contoh nyata, langkah jelas, dan praktik langsung.", type: "S" },
+          { text: "Dijelaskan konsep besarnya, pola, dan kemungkinan penerapannya.", type: "N" }
+        ]
+      },
+      {
+        q: "Ketika mengambil keputusan penting, kamu cenderung mempertimbangkan...",
+        a: [
+          { text: "Alasan logis, data, dan konsekuensi yang paling objektif.", type: "T" },
+          { text: "Nilai pribadi, perasaan orang lain, dan dampak emosionalnya.", type: "F" }
+        ]
+      },
+      {
+        q: "Kamu merasa lebih nyaman ketika kegiatanmu...",
+        a: [
+          { text: "Sudah terencana dan punya jadwal yang jelas.", type: "J" },
+          { text: "Fleksibel dan bisa berubah sesuai keadaan.", type: "P" }
+        ]
+      },
+      {
+        q: "Di lingkungan baru, kamu biasanya...",
+        a: [
+          { text: "Lebih dulu mencoba membuka percakapan.", type: "E" },
+          { text: "Mengamati suasana dulu sebelum terlibat.", type: "I" }
+        ]
+      },
+      {
+        q: "Saat membaca informasi, kamu lebih tertarik pada...",
+        a: [
+          { text: "Fakta, detail, angka, dan bukti konkret.", type: "S" },
+          { text: "Makna, hubungan antaride, dan kemungkinan besar.", type: "N" }
+        ]
+      },
+      {
+        q: "Saat memberi kritik, kamu lebih sering...",
+        a: [
+          { text: "Langsung menunjukkan inti masalah agar cepat diperbaiki.", type: "T" },
+          { text: "Memilih kata yang halus agar orang lain tidak terlalu tersinggung.", type: "F" }
+        ]
+      },
+      {
+        q: "Saat mendapat tugas besar, kamu biasanya...",
+        a: [
+          { text: "Membuat daftar kerja dan menyelesaikannya bertahap.", type: "J" },
+          { text: "Mulai dari bagian yang menarik dulu dan mengikuti alur.", type: "P" }
+        ]
+      },
+      {
+        q: "Dalam diskusi kelompok, kamu cenderung...",
+        a: [
+          { text: "Berpikir sambil berbicara dan aktif mengeluarkan ide.", type: "E" },
+          { text: "Memikirkan dulu sebelum menyampaikan pendapat.", type: "I" }
+        ]
+      },
+      {
+        q: "Kamu lebih percaya pada informasi yang...",
+        a: [
+          { text: "Terlihat nyata, sudah terbukti, dan bisa diamati.", type: "S" },
+          { text: "Masuk akal sebagai pola atau kemungkinan walau belum terlihat jelas.", type: "N" }
+        ]
+      },
+      {
+        q: "Saat ada konflik, fokus pertamamu biasanya...",
+        a: [
+          { text: "Mencari penyebab utama dan solusi paling efektif.", type: "T" },
+          { text: "Menjaga suasana agar tidak semakin menyakiti pihak lain.", type: "F" }
+        ]
+      },
+      {
+        q: "Menjelang deadline, kamu lebih sering...",
+        a: [
+          { text: "Sudah mencicil pekerjaan dari awal.", type: "J" },
+          { text: "Bekerja lebih cepat saat tekanan mulai terasa.", type: "P" }
+        ]
+      },
+      {
+        q: "Saat liburan, kamu lebih menikmati...",
+        a: [
+          { text: "Aktivitas luar, bertemu orang, dan mencoba tempat ramai.", type: "E" },
+          { text: "Waktu tenang, hobi pribadi, atau perjalanan yang tidak terlalu ramai.", type: "I" }
+        ]
+      },
+      {
+        q: "Saat menyelesaikan masalah, kamu biasanya mulai dari...",
+        a: [
+          { text: "Apa yang terjadi sekarang dan data yang tersedia.", type: "S" },
+          { text: "Kemungkinan penyebab tersembunyi dan gambaran besarnya.", type: "N" }
+        ]
+      },
+      {
+        q: "Menurutmu keputusan yang baik adalah keputusan yang...",
+        a: [
+          { text: "Adil, rasional, dan konsisten untuk semua orang.", type: "T" },
+          { text: "Manusiawi dan mempertimbangkan kondisi personal.", type: "F" }
+        ]
+      },
+      {
+        q: "Dalam kehidupan sehari-hari, kamu lebih suka...",
+        a: [
+          { text: "Ada kepastian, aturan, dan urutan yang jelas.", type: "J" },
+          { text: "Ada ruang untuk spontanitas dan perubahan mendadak.", type: "P" }
+        ]
+      },
+      {
+        q: "Saat punya kabar menarik, kamu biasanya...",
+        a: [
+          { text: "Ingin segera menceritakannya kepada orang lain.", type: "E" },
+          { text: "Menyimpannya dulu atau hanya cerita ke orang tertentu.", type: "I" }
+        ]
+      },
+      {
+        q: "Saat bekerja, kamu lebih suka instruksi yang...",
+        a: [
+          { text: "Spesifik, jelas, dan langsung bisa dijalankan.", type: "S" },
+          { text: "Memberi ruang untuk interpretasi dan ide baru.", type: "N" }
+        ]
+      },
+      {
+        q: "Saat seseorang meminta saran, kamu cenderung...",
+        a: [
+          { text: "Memberi solusi yang paling masuk akal walau terdengar tegas.", type: "T" },
+          { text: "Mendengarkan emosinya dulu sebelum memberi solusi.", type: "F" }
+        ]
+      },
+      {
+        q: "Jika rencana tiba-tiba berubah, kamu biasanya...",
+        a: [
+          { text: "Agak terganggu karena sudah menyiapkan alur sebelumnya.", type: "J" },
+          { text: "Bisa menyesuaikan diri dan mencari opsi baru.", type: "P" }
+        ]
+      },
+      {
+        q: "Dalam acara sosial, kamu biasanya merasa...",
+        a: [
+          { text: "Semakin bersemangat saat banyak interaksi.", type: "E" },
+          { text: "Senang, tetapi cepat lelah jika terlalu lama berinteraksi.", type: "I" }
+        ]
+      },
+      {
+        q: "Kamu lebih menyukai pembicaraan tentang...",
+        a: [
+          { text: "Pengalaman nyata, aktivitas harian, dan hal praktis.", type: "S" },
+          { text: "Ide, masa depan, makna hidup, atau kemungkinan baru.", type: "N" }
+        ]
+      },
+      {
+        q: "Saat menilai sebuah pilihan, kamu lebih sering bertanya...",
+        a: [
+          { text: "Apakah ini efektif dan masuk akal?", type: "T" },
+          { text: "Apakah ini sesuai nilai dan tidak melukai orang lain?", type: "F" }
+        ]
+      },
+      {
+        q: "Kamu merasa puas ketika...",
+        a: [
+          { text: "Tugas selesai, rapi, dan tidak menggantung.", type: "J" },
+          { text: "Masih ada banyak opsi yang bisa dieksplorasi.", type: "P" }
+        ]
+      },
+      {
+        q: "Saat menghadapi masalah pribadi, kamu biasanya...",
+        a: [
+          { text: "Mencari orang untuk diajak bicara agar pikiran lebih jelas.", type: "E" },
+          { text: "Memproses sendiri dulu sebelum menceritakannya.", type: "I" }
+        ]
+      },
+      {
+        q: "Saat melihat sebuah karya atau ide, kamu lebih cepat menangkap...",
+        a: [
+          { text: "Detail bentuk, warna, teknis, dan hal yang terlihat.", type: "S" },
+          { text: "Simbol, pesan, konsep, dan makna tersembunyi.", type: "N" }
+        ]
+      },
+      {
+        q: "Dalam kerja tim, kamu lebih menghargai orang yang...",
+        a: [
+          { text: "Objektif, kritis, dan fokus pada hasil.", type: "T" },
+          { text: "Peduli, suportif, dan menjaga hubungan tim.", type: "F" }
+        ]
+      },
+      {
+        q: "Saat memulai proyek, kamu biasanya...",
+        a: [
+          { text: "Menentukan target, langkah, dan waktu pengerjaan.", type: "J" },
+          { text: "Mencoba dulu, lalu mengembangkan arah sambil berjalan.", type: "P" }
+        ]
+      },
+      {
+        q: "Orang lain mungkin melihatmu sebagai pribadi yang...",
+        a: [
+          { text: "Terbuka, ekspresif, dan mudah diajak bicara.", type: "E" },
+          { text: "Tenang, selektif, dan tidak langsung terbuka.", type: "I" }
+        ]
+      },
+      {
+        q: "Kamu lebih nyaman dengan pekerjaan yang...",
+        a: [
+          { text: "Memiliki prosedur jelas dan hasil yang terukur.", type: "S" },
+          { text: "Memberi ruang untuk inovasi dan cara berpikir baru.", type: "N" }
+        ]
+      },
+      {
+        q: "Saat membuat keputusan untuk kelompok, kamu lebih menekankan...",
+        a: [
+          { text: "Standar yang adil dan alasan yang kuat.", type: "T" },
+          { text: "Kesepakatan bersama dan kenyamanan anggota.", type: "F" }
+        ]
+      },
+      {
+        q: "Jika ada waktu kosong, kamu cenderung...",
+        a: [
+          { text: "Mengisinya dengan kegiatan yang sudah kamu rencanakan.", type: "J" },
+          { text: "Menentukan kegiatan sesuai mood saat itu.", type: "P" }
+        ]
+      },
+      {
+        q: "Saat berada di kelas atau rapat, kamu biasanya...",
+        a: [
+          { text: "Lebih mudah aktif bertanya atau menanggapi.", type: "E" },
+          { text: "Lebih banyak mencatat dan menganalisis dalam hati.", type: "I" }
+        ]
+      },
+      {
+        q: "Kamu lebih tertarik pada orang yang menjelaskan sesuatu dengan...",
+        a: [
+          { text: "Contoh nyata dan langkah yang mudah diikuti.", type: "S" },
+          { text: "Analogi, gambaran besar, dan ide yang membuat berpikir.", type: "N" }
+        ]
+      },
+      {
+        q: "Saat menghadapi orang yang emosional, kamu biasanya...",
+        a: [
+          { text: "Mencoba mengarahkan pembicaraan ke solusi konkret.", type: "T" },
+          { text: "Memberi ruang untuk mereka merasa didengarkan.", type: "F" }
+        ]
+      },
+      {
+        q: "Kamu lebih suka hasil kerja yang...",
+        a: [
+          { text: "Selesai sesuai rencana dan standar sejak awal.", type: "J" },
+          { text: "Berkembang melalui eksperimen dan penyesuaian.", type: "P" }
+        ]
+      },
+      {
+        q: "Ketika punya ide, kamu lebih sering...",
+        a: [
+          { text: "Membicarakannya dengan orang lain untuk mengembangkan ide.", type: "E" },
+          { text: "Merenungkannya sendiri sampai cukup matang.", type: "I" }
+        ]
+      },
+      {
+        q: "Kamu lebih suka cerita yang...",
+        a: [
+          { text: "Realistis, detail, dan dekat dengan kehidupan sehari-hari.", type: "S" },
+          { text: "Imajinatif, simbolis, dan membuka banyak interpretasi.", type: "N" }
+        ]
+      },
+      {
+        q: "Saat memilih antara benar secara logis atau menjaga perasaan, kamu lebih sering...",
+        a: [
+          { text: "Memilih yang paling logis meskipun perlu disampaikan tegas.", type: "T" },
+          { text: "Menyesuaikan cara agar perasaan tetap terjaga.", type: "F" }
+        ]
+      },
+      {
+        q: "Dalam menjalani hari, kamu lebih nyaman jika...",
+        a: [
+          { text: "Ada daftar prioritas yang jelas.", type: "J" },
+          { text: "Bisa mengikuti alur dan peluang yang muncul.", type: "P" }
+        ]
+      }
+    ];
+
+    const descriptions = {
+      ISTJ: ["The Careful Organizer", "Kamu cenderung teliti, bertanggung jawab, realistis, dan nyaman dengan struktur. Kamu suka bekerja dengan cara yang jelas dan hasil yang dapat dipercaya."],
+      ISFJ: ["The Gentle Protector", "Kamu hangat, perhatian, bertanggung jawab, dan peka terhadap kebutuhan orang lain. Kamu biasanya menjaga stabilitas dan hubungan dengan baik."],
+      INFJ: ["The Quiet Visionary", "Kamu reflektif, intuitif, idealis, dan sering melihat makna lebih dalam dari sebuah situasi. Kamu cenderung punya visi personal yang kuat."],
+      INTJ: ["The Strategic Thinker", "Kamu mandiri, analitis, visioner, dan suka menyusun strategi. Kamu nyaman berpikir jangka panjang dan mencari cara yang paling efektif."],
+      ISTP: ["The Calm Problem Solver", "Kamu praktis, tenang, fleksibel, dan cepat memahami cara kerja sesuatu. Kamu biasanya menyukai solusi langsung dan efisien."],
+      ISFP: ["The Soft Adventurer", "Kamu sensitif, artistik, tenang, dan menghargai kebebasan pribadi. Kamu sering mengekspresikan diri melalui tindakan dan pilihan personal."],
+      INFP: ["The Dreamy Idealist", "Kamu imajinatif, empatik, dan kuat dalam nilai pribadi. Kamu suka mencari makna, keaslian, dan hubungan yang terasa tulus."],
+      INTP: ["The Curious Analyst", "Kamu logis, penasaran, mandiri, dan suka mengeksplorasi ide. Kamu menikmati pertanyaan yang menantang cara berpikir umum."],
+      ESTP: ["The Energetic Explorer", "Kamu spontan, berani mencoba, praktis, dan cepat membaca situasi. Kamu biasanya nyaman belajar dari pengalaman langsung."],
+      ESFP: ["The Cheerful Performer", "Kamu ekspresif, ramah, spontan, dan membawa energi menyenangkan. Kamu menikmati momen, interaksi, dan pengalaman nyata."],
+      ENFP: ["The Sparkly Inspirer", "Kamu kreatif, antusias, hangat, dan penuh kemungkinan. Kamu suka ide baru dan hubungan yang bermakna."],
+      ENTP: ["The Playful Debater", "Kamu cepat berpikir, suka tantangan, fleksibel, dan senang mengeksplorasi banyak sudut pandang. Ide adalah ruang bermainmu."],
+      ESTJ: ["The Practical Leader", "Kamu tegas, terstruktur, realistis, dan fokus pada hasil. Kamu suka mengatur sesuatu agar berjalan efisien."],
+      ESFJ: ["The Friendly Supporter", "Kamu ramah, peduli, terorganisir, dan suka menciptakan suasana harmonis. Kamu memperhatikan kebutuhan sosial di sekitarmu."],
+      ENFJ: ["The Warm Guide", "Kamu komunikatif, suportif, visioner, dan senang membantu orang berkembang. Kamu kuat dalam membaca dinamika emosi."],
+      ENTJ: ["The Bold Commander", "Kamu percaya diri, strategis, tegas, dan berorientasi tujuan. Kamu suka memimpin, merancang sistem, dan mengejar hasil besar."]
+    };
+
+    let current = 0;
+    let answers = [];
+
+    const homePage = document.getElementById("homePage");
+    const quizPage = document.getElementById("quizPage");
+    const resultPage = document.getElementById("resultPage");
+
+    const questionNumber = document.getElementById("questionNumber");
+    const questionText = document.getElementById("questionText");
+    const optionsBox = document.getElementById("options");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const progressFill = document.getElementById("progressFill");
+    const progressLabel = document.getElementById("progressLabel");
+    const progressPercent = document.getElementById("progressPercent");
+
+    function startQuiz() {
+      homePage.classList.add("hidden");
+      quizPage.classList.remove("hidden");
+      resultPage.style.display = "none";
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      const item = questions[current];
+
+      const card = document.querySelector(".question-card");
+      card.style.animation = "none";
+      void card.offsetWidth;
+      card.style.animation = "questionSlide 0.45s ease both";
+
+      questionNumber.textContent = `Pertanyaan ${current + 1}`;
+      questionText.textContent = item.q;
+      optionsBox.innerHTML = "";
+
+      item.a.forEach((option, index) => {
+        const div = document.createElement("div");
+        div.className = "option";
+
+        if (answers[current] === option.type) {
+          div.classList.add("selected");
+        }
+
+        div.innerHTML = `
+          <span>${index === 0 ? "A" : "B"}</span>
+          <p>${option.text}</p>
+        `;
+
+        div.onclick = () => {
+          answers[current] = option.type;
+          document.querySelectorAll(".option").forEach(el => el.classList.remove("selected"));
+          div.classList.add("selected");
+          nextBtn.disabled = false;
+        };
+
+        optionsBox.appendChild(div);
+      });
+
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = !answers[current];
+      nextBtn.textContent = current === questions.length - 1 ? "Lihat Hasil ✨" : "Selanjutnya →";
+
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const percent = Math.round(((current + 1) / questions.length) * 100);
+      progressFill.style.width = `${percent}%`;
+      progressLabel.textContent = `Pertanyaan ${current + 1} dari ${questions.length}`;
+      progressPercent.textContent = `${percent}%`;
+    }
+
+    nextBtn.onclick = () => {
+      if (current < questions.length - 1) {
+        current++;
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    };
+
+    prevBtn.onclick = () => {
+      if (current > 0) {
+        current--;
+        loadQuestion();
+      }
+    };
+
+    function getStrength(a, b) {
+      const total = a + b;
+      const gap = Math.abs(a - b);
+      const percent = Math.round((Math.max(a, b) / total) * 100);
+
+      let label = "Tipis";
+      if (gap >= 5) label = "Kuat";
+      else if (gap >= 3) label = "Sedang";
+
+      return `${percent}% · ${label}`;
+    }
+
+    function showResult() {
+      const score = {
+        E: 0, I: 0,
+        S: 0, N: 0,
+        T: 0, F: 0,
+        J: 0, P: 0
+      };
+
+      answers.forEach(type => {
+        score[type]++;
+      });
+
+      const result =
+        (score.E >= score.I ? "E" : "I") +
+        (score.S >= score.N ? "S" : "N") +
+        (score.T >= score.F ? "T" : "F") +
+        (score.J >= score.P ? "J" : "P");
+
+      const info = descriptions[result];
+
+      document.getElementById("resultType").textContent = result;
+      document.getElementById("resultTitle").textContent = info[0];
+      document.getElementById("resultDesc").textContent = info[1];
+
+      document.getElementById("scoreGrid").innerHTML = `
+        <div class="score-box">
+          <strong>${score.E} / ${score.I}</strong>
+          E / I
+          <small>${score.E >= score.I ? "Lebih Extraverted" : "Lebih Introverted"} · ${getStrength(score.E, score.I)}</small>
+        </div>
+
+        <div class="score-box">
+          <strong>${score.S} / ${score.N}</strong>
+          S / N
+          <small>${score.S >= score.N ? "Lebih Sensing" : "Lebih Intuitive"} · ${getStrength(score.S, score.N)}</small>
+        </div>
+
+        <div class="score-box">
+          <strong>${score.T} / ${score.F}</strong>
+          T / F
+          <small>${score.T >= score.F ? "Lebih Thinking" : "Lebih Feeling"} · ${getStrength(score.T, score.F)}</small>
+        </div>
+
+        <div class="score-box">
+          <strong>${score.J} / ${score.P}</strong>
+          J / P
+          <small>${score.J >= score.P ? "Lebih Judging" : "Lebih Perceiving"} · ${getStrength(score.J, score.P)}</small>
+        </div>
+      `;
+
+      quizPage.classList.add("hidden");
+      resultPage.style.display = "block";
+    }
+
+    function restartQuiz() {
+      current = 0;
+      answers = [];
+      resultPage.style.display = "none";
+      quizPage.classList.remove("hidden");
+      homePage.classList.add("hidden");
+      loadQuestion();
+    }
+
+    function backHome() {
+      current = 0;
+      answers = [];
+      resultPage.style.display = "none";
+      quizPage.classList.add("hidden");
+      homePage.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
