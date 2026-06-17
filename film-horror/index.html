@@ -487,14 +487,14 @@
       <h1>Kamu Jadi Siapa di Film Horor?</h1>
       <p class="subtitle">
         Kuis ini cuma buat seru-seruan. Jawab sejujur mungkin, lalu lihat kamu akan jadi karakter apa kalau tiba-tiba
-        masuk ke film horor tengah malam.
+        masuk ke rumah tua saat hujan deras.
       </p>
 
       <div class="home-cards">
         <div class="mini-card">
           <div class="icon">🌕</div>
-          <strong>12 Pertanyaan</strong>
-          <p>Pilih reaksi yang paling menggambarkan dirimu di situasi absurd dan menyeramkan.</p>
+          <strong>20 Pertanyaan</strong>
+          <p>Soalnya dibuat seperti cerita, jadi kamu terasa ikut masuk ke rumah angker.</p>
         </div>
 
         <div class="mini-card">
@@ -523,7 +523,7 @@
 
       <div class="progress-area">
         <div class="progress-text">
-          <span id="progressLabel">Pertanyaan 1 dari 12</span>
+          <span id="progressLabel">Pertanyaan 1 dari 20</span>
           <span id="progressPercent">0%</span>
         </div>
         <div class="progress-bar">
@@ -571,111 +571,183 @@
   <script>
     const questions = [
       {
-        q: "Kamu dan teman-teman masuk rumah kosong. Hal pertama yang kamu lakukan adalah...",
+        q: "Malam itu hujan deras. Kamu dan teman-teman berteduh di depan rumah tua yang pintunya terbuka sendiri. Kamu...",
         a: [
-          { text: "Cek pintu keluar dulu. Pokoknya harus tahu jalur kabur.", type: "survivor" },
-          { text: "Nyalain kamera, siapa tahu viral.", type: "chaos" },
-          { text: "Bilang, 'Ini pasti cuma sugesti.'", type: "skeptic" },
-          { text: "Manggil, 'Permisi... ada orang?'", type: "ghost" }
+          { text: "Langsung bilang, 'Jangan masuk. Ini terlalu mencurigakan.'", type: "survivor" },
+          { text: "Masuk pelan-pelan sambil merekam suasana.", type: "detective" },
+          { text: "Bilang, 'Rumahnya estetik juga kalau direnovasi.'", type: "chaos" },
+          { text: "Ngetuk pintu dulu, siapa tahu penghuninya sopan.", type: "ghost" }
         ]
       },
       {
-        q: "Tiba-tiba terdengar suara langkah dari lantai atas. Kamu...",
+        q: "Begitu masuk, pintu langsung tertutup keras di belakangmu. Reaksi pertamamu...",
         a: [
-          { text: "Langsung ajak semua orang pergi.", type: "survivor" },
-          { text: "Naik pelan-pelan sambil sok berani.", type: "detective" },
-          { text: "Teriak dulu baru mikir.", type: "panic" },
-          { text: "Bercanda, 'Wah penghuni rumahnya aktif juga.'", type: "chaos" }
+          { text: "Cek gagang pintu, jendela, dan jalur keluar lain.", type: "survivor" },
+          { text: "Teriak spontan walau belum lihat apa-apa.", type: "panic" },
+          { text: "Meyakinkan diri, 'Mungkin cuma angin.'", type: "skeptic" },
+          { text: "Senyum tipis, karena vibes-nya mulai menarik.", type: "villain" }
         ]
       },
       {
-        q: "Lampu mati total. Reaksi pertamamu...",
+        q: "Di ruang tamu ada foto keluarga lama. Anehnya, wajah salah satu orang di foto mirip kamu. Kamu...",
         a: [
-          { text: "Cari senter atau cahaya dari HP.", type: "survivor" },
-          { text: "Pegang tangan orang terdekat.", type: "panic" },
-          { text: "Analisis, mungkin sekring turun.", type: "skeptic" },
-          { text: "Bisik, 'Akhirnya suasananya dapet.'", type: "villain" }
+          { text: "Langsung merasa ini bukan kebetulan dan mulai waspada.", type: "survivor" },
+          { text: "Mendekat dan memperhatikan detail fotonya.", type: "detective" },
+          { text: "Bilang, 'Wah, aku punya versi vintage.'", type: "chaos" },
+          { text: "Panik karena merasa sudah pernah melihat foto itu dalam mimpi.", type: "panic" }
         ]
       },
       {
-        q: "Ada boneka tua yang kepalanya bergerak sendiri. Kamu...",
+        q: "Jam dinding berhenti di pukul 03.03. Lalu jarumnya bergerak mundur. Kamu...",
         a: [
-          { text: "Jauh-jauh. Aku tidak mau ambil risiko.", type: "survivor" },
-          { text: "Tanya, 'Kamu kenapa, dek?'", type: "ghost" },
-          { text: "Merekam dari dekat karena penasaran.", type: "detective" },
-          { text: "Langsung lari sambil nangis kecil.", type: "panic" }
+          { text: "Mengajak semua orang tetap bersama dan tidak menyentuh apa pun.", type: "survivor" },
+          { text: "Mencatat jamnya karena mungkin petunjuk penting.", type: "detective" },
+          { text: "Bilang, 'Baterainya error kali.'", type: "skeptic" },
+          { text: "Berbisik, 'Akhirnya acaranya dimulai.'", type: "villain" }
         ]
       },
       {
-        q: "Temanmu tiba-tiba hilang dari grup. Kamu...",
+        q: "Dari dapur terdengar suara sendok jatuh, padahal semua orang ada di ruang tamu. Kamu...",
         a: [
-          { text: "Cari bareng-bareng, jangan pisah.", type: "survivor" },
-          { text: "Menyusun teori hilangnya dia.", type: "detective" },
-          { text: "Bilang, 'Dia pasti prank.'", type: "skeptic" },
-          { text: "Ikut hilang karena salah belok.", type: "panic" }
+          { text: "Tidak mau pisah. Kalau cek, harus bareng-bareng.", type: "survivor" },
+          { text: "Cek dapur sambil menyalakan flashlight HP.", type: "detective" },
+          { text: "Langsung pegangan ke teman terdekat.", type: "panic" },
+          { text: "Teriak, 'Kalau bikin teh, aku juga mau!'", type: "chaos" }
         ]
       },
       {
-        q: "Kamu menemukan buku tua berisi mantra. Kamu...",
+        q: "Di dapur, ada piring tersusun membentuk tulisan 'KELUAR'. Kamu...",
         a: [
-          { text: "Tidak menyentuhnya. Tutup dan tinggalkan.", type: "survivor" },
-          { text: "Baca keras-keras karena penasaran.", type: "chaos" },
-          { text: "Foto halaman demi halaman untuk dianalisis.", type: "detective" },
-          { text: "Senyum misterius seperti sudah tahu isinya.", type: "villain" }
+          { text: "Menganggap itu peringatan serius dan segera mencari jalan keluar.", type: "survivor" },
+          { text: "Memotret susunan piring dan mencari makna tersembunyi.", type: "detective" },
+          { text: "Bilang, 'Setidaknya hantunya komunikatif.'", type: "ghost" },
+          { text: "Mencoba menata ulang piringnya jadi tulisan 'MAKASIH'.", type: "chaos" }
         ]
       },
       {
-        q: "Ada suara memanggil namamu dari ruangan kosong. Kamu...",
+        q: "Tiba-tiba radio tua menyala sendiri dan memutar suara anak kecil tertawa. Kamu...",
         a: [
-          { text: "Tidak menjawab. Langsung mundur.", type: "survivor" },
-          { text: "Jawab, 'Iya, siapa ya?'", type: "ghost" },
-          { text: "Teriak, 'JANGAN GANGGU AKU!'", type: "panic" },
-          { text: "Cek sumber suara dengan logika.", type: "skeptic" }
+          { text: "Menjauh dan tidak menyentuh radio itu.", type: "survivor" },
+          { text: "Mendekat untuk mencari frekuensinya.", type: "detective" },
+          { text: "Bilang, 'Radio tua memang suka korslet.'", type: "skeptic" },
+          { text: "Ikut tertawa pelan biar tidak canggung.", type: "ghost" }
         ]
       },
       {
-        q: "Kalau film horor ini punya grup chat, kamu adalah...",
+        q: "Kamu menemukan tangga menuju lantai dua. Di atas, ada cahaya lilin yang bergerak sendiri. Kamu...",
         a: [
-          { text: "Yang bikin plan evakuasi.", type: "survivor" },
-          { text: "Yang kirim voice note panik.", type: "panic" },
-          { text: "Yang spam teori panjang.", type: "detective" },
-          { text: "Yang cuma kirim stiker tengkorak.", type: "chaos" }
+          { text: "Menolak naik sendirian. Itu jelas jebakan.", type: "survivor" },
+          { text: "Naik perlahan karena penasaran dengan sumber cahaya.", type: "detective" },
+          { text: "Sudah mau naik, tapi kaki gemetar duluan.", type: "panic" },
+          { text: "Naik sambil berkata, 'Aku datang, bestie gaib.'", type: "chaos" }
         ]
       },
       {
-        q: "Kamu melihat bayangan lewat di cermin. Kamu...",
+        q: "Di lorong lantai dua, ada banyak pintu. Salah satunya terbuka sedikit dan mengeluarkan suara napas. Kamu...",
         a: [
-          { text: "Tidak lihat dua kali. Aku tahu aturan film horor.", type: "survivor" },
-          { text: "Melihat lagi untuk memastikan.", type: "detective" },
-          { text: "Meyakinkan diri itu cuma pantulan.", type: "skeptic" },
-          { text: "Melambai balik.", type: "ghost" }
+          { text: "Tidak mendekat. Pintu bernapas itu red flag besar.", type: "survivor" },
+          { text: "Mendengar dari dekat untuk memastikan suara apa itu.", type: "detective" },
+          { text: "Bilang, 'Mungkin ada orang tidur.'", type: "skeptic" },
+          { text: "Menyapa pelan, 'Permisi, napasnya kedengeran.'", type: "ghost" }
         ]
       },
       {
-        q: "Kalau harus membawa satu benda, kamu pilih...",
+        q: "Di balik pintu, ada kamar anak kecil penuh boneka. Semua boneka menoleh ke arahmu bersamaan. Kamu...",
         a: [
-          { text: "Senter terang dan baterai cadangan.", type: "survivor" },
-          { text: "Kamera untuk bukti.", type: "detective" },
-          { text: "Cemilan, karena takut lapar.", type: "chaos" },
-          { text: "Lilin merah biar dramatis.", type: "villain" }
+          { text: "Menutup pintu pelan-pelan dan mundur tanpa suara.", type: "survivor" },
+          { text: "Mengamati boneka mana yang bergerak duluan.", type: "detective" },
+          { text: "Teriak, lalu minta maaf ke bonekanya.", type: "panic" },
+          { text: "Bilang, 'Lucu sih, tapi jangan rame-rame dong.'", type: "chaos" }
         ]
       },
       {
-        q: "Temanmu bilang, 'Kita pisah aja biar cepat.' Kamu...",
+        q: "Salah satu boneka jatuh dan di baliknya ada kunci kecil. Kamu...",
         a: [
-          { text: "Menolak keras. Itu ide paling buruk.", type: "survivor" },
-          { text: "Setuju tapi langsung menyesal.", type: "panic" },
-          { text: "Membagi area pencarian secara strategis.", type: "detective" },
-          { text: "Bilang, 'Oke, nanti ketemu kalau masih hidup.'", type: "chaos" }
+          { text: "Ambil kuncinya pakai kain, takut ada jebakan.", type: "survivor" },
+          { text: "Mengambil kunci dan mencari pintu yang cocok.", type: "detective" },
+          { text: "Ragu-ragu karena takut bonekanya marah.", type: "panic" },
+          { text: "Berterima kasih ke boneka seperti habis diberi hadiah.", type: "ghost" }
         ]
       },
       {
-        q: "Di akhir cerita, kamu paling mungkin...",
+        q: "Kunci itu membuka ruang kerja tua. Di meja ada buku harian yang halaman terakhirnya masih basah. Kamu...",
         a: [
-          { text: "Selamat karena dari awal sudah curiga.", type: "survivor" },
-          { text: "Selamat tapi trauma dan suara habis karena teriak.", type: "panic" },
-          { text: "Membongkar misteri rumah itu.", type: "detective" },
-          { text: "Ternyata kamu bagian dari kutukan rumah itu.", type: "villain" }
+          { text: "Tidak langsung membaca. Cek sekitar dulu.", type: "survivor" },
+          { text: "Membaca pelan-pelan untuk mencari asal kutukan.", type: "detective" },
+          { text: "Bilang, 'Kertas bisa lembap kalau rumahnya bocor.'", type: "skeptic" },
+          { text: "Menyentuh tulisan basah itu sambil tersenyum misterius.", type: "villain" }
+        ]
+      },
+      {
+        q: "Dalam buku harian tertulis: 'Jangan percaya orang yang paling tenang.' Semua orang langsung melihatmu. Kamu...",
+        a: [
+          { text: "Membela diri sambil tetap menyusun rencana kabur.", type: "survivor" },
+          { text: "Menganalisis siapa yang sebenarnya paling mencurigakan.", type: "detective" },
+          { text: "Panik karena tiba-tiba jadi tersangka.", type: "panic" },
+          { text: "Diam sebentar lalu bilang, 'Menarik.'", type: "villain" }
+        ]
+      },
+      {
+        q: "Cermin di ruangan itu tiba-tiba menunjukkan bayanganmu tersenyum, padahal kamu tidak tersenyum. Kamu...",
+        a: [
+          { text: "Menutup cermin dan tidak mau melihat lagi.", type: "survivor" },
+          { text: "Menguji gerakan bayanganmu untuk mencari pola.", type: "detective" },
+          { text: "Bilang, 'Aku kurang tidur, mungkin halusinasi.'", type: "skeptic" },
+          { text: "Tersenyum balik karena tidak mau kalah sopan.", type: "ghost" }
+        ]
+      },
+      {
+        q: "Dari bawah terdengar temanmu memanggil. Tapi temanmu yang asli berdiri tepat di sebelahmu. Kamu...",
+        a: [
+          { text: "Langsung sadar itu jebakan suara dan melarang siapa pun turun.", type: "survivor" },
+          { text: "Mencoba membedakan suara asli dan suara tiruan.", type: "detective" },
+          { text: "Nyaris menjawab, tapi langsung tutup mulut.", type: "panic" },
+          { text: "Balas, 'Maaf, orangnya sedang sibuk.'", type: "chaos" }
+        ]
+      },
+      {
+        q: "Rumah mulai bergetar. Dindingnya seperti berbisik, 'Tinggalah di sini.' Kamu...",
+        a: [
+          { text: "Memimpin teman-teman mencari jalan keluar sekarang juga.", type: "survivor" },
+          { text: "Mencari sumber suara di balik dinding.", type: "detective" },
+          { text: "Menangis sedikit tapi tetap jalan.", type: "panic" },
+          { text: "Bilang, 'Maaf, aku belum siap ngontrak di sini.'", type: "chaos" }
+        ]
+      },
+      {
+        q: "Kamu menemukan pintu keluar, tapi ada satu syarat: seseorang harus membaca mantra dari buku tua. Kamu...",
+        a: [
+          { text: "Mencari cara lain karena mantra biasanya masalah baru.", type: "survivor" },
+          { text: "Membaca dulu arti simbolnya sebelum memutuskan.", type: "detective" },
+          { text: "Menolak karena takut salah baca malah manggil yang lain.", type: "panic" },
+          { text: "Maju membaca dengan intonasi teaterikal.", type: "villain" }
+        ]
+      },
+      {
+        q: "Saat pintu keluar terbuka, sosok putih muncul dan menunjuk ke arahmu. Kamu...",
+        a: [
+          { text: "Tetap mundur perlahan tanpa menantang sosok itu.", type: "survivor" },
+          { text: "Bertanya apa yang sebenarnya ia inginkan.", type: "ghost" },
+          { text: "Membeku di tempat sambil memegang tas erat-erat.", type: "panic" },
+          { text: "Bilang, 'Aku tahu kamu muncul dari tadi.'", type: "detective" }
+        ]
+      },
+      {
+        q: "Sosok itu berkata, 'Satu dari kalian sudah dipilih.' Semua lampu padam lagi. Kamu...",
+        a: [
+          { text: "Mengumpulkan semua orang dan menghitung jumlah teman.", type: "survivor" },
+          { text: "Mencari petunjuk siapa yang dipilih.", type: "detective" },
+          { text: "Berdoa dalam hati sambil berharap bukan kamu.", type: "panic" },
+          { text: "Berbisik, 'Akhirnya mereka sadar.'", type: "villain" }
+        ]
+      },
+      {
+        q: "Akhirnya kamu berhasil keluar. Tapi saat menoleh, rumah itu hilang. Reaksi terakhirmu...",
+        a: [
+          { text: "Tidak menoleh lagi. Pulang, mandi, tidur, selesai.", type: "survivor" },
+          { text: "Menulis semua kejadian agar misterinya tidak hilang.", type: "detective" },
+          { text: "Langsung trauma setiap lihat rumah tua.", type: "panic" },
+          { text: "Melambai ke tanah kosong sambil bilang, 'Makasih ya.'", type: "ghost" }
         ]
       }
     ];
