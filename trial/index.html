@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kosakata Jepang - Kartu. Dengar. Ingat.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{
+      --primary:#7c4dff;
+      --primary-2:#6336e8;
+      --primary-soft:#f1eaff;
+      --navy:#10213f;
+      --text:#22314f;
+      --muted:#64748b;
+      --line:#e8e4ff;
+      --white:rgba(255,255,255,.92);
+      --green:#10b981;
+      --green-soft:#dcfce7;
+      --red:#ff3b6b;
+      --red-soft:#ffe4ec;
+      --blue:#3478f6;
+      --blue-soft:#e7f0ff;
+      --pink:#ec4899;
+      --pink-soft:#ffeaf5;
+      --yellow:#f59e0b;
+      --yellow-soft:#fff4d6;
+      --shadow:0 20px 60px rgba(80,70,140,.12);
+      --shadow-sm:0 12px 32px rgba(80,70,140,.10);
+      --radius:24px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--navy);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(124,77,255,.12), transparent 35%),
+        radial-gradient(circle at 90% 20%, rgba(52,120,246,.13), transparent 34%),
+        radial-gradient(circle at 76% 88%, rgba(236,72,153,.10), transparent 32%),
+        linear-gradient(135deg,#ffffff 0%,#fbfaff 42%,#f3f8ff 100%);
+      overflow-x:hidden;
+    }
+    body.modal-open{overflow:hidden}
+    button,input,select{font:inherit}
+    button{border:0;cursor:pointer}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1380px,calc(100% - 56px));margin:auto}
+    .app-header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.78);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(124,77,255,.10);
+      border-radius:0 0 26px 26px;
+      box-shadow:0 10px 30px rgba(80,70,140,.06);
+    }
+    .nav-shell{height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:14px;min-width:250px}
+    .brand-icon,.modal-logo{
+      width:54px;height:54px;border-radius:14px;
+      display:grid;place-items:center;color:white;font-size:27px;font-weight:800;
+      background:linear-gradient(135deg,#a98cff,#6f43ee);
+      box-shadow:0 14px 28px rgba(124,77,255,.28);
+      position:relative;
+    }
+    .brand-icon:before,.brand-icon:after,.modal-logo:before,.modal-logo:after{
+      content:"";position:absolute;border:2px solid rgba(124,77,255,.35);border-radius:12px;inset:4px;transform:translate(8px,-6px);z-index:-1;background:rgba(255,255,255,.2)
+    }
+    .brand-icon:after,.modal-logo:after{transform:translate(14px,-10px);opacity:.45}
+    .brand h1{font-size:18px;line-height:1.1;color:#4f2fd6;font-weight:850}
+    .brand p{font-size:13px;color:#52617c;margin-top:4px}
+    .nav-menu{display:flex;align-items:center;gap:10px}
+    .nav-link{padding:14px 18px;border-radius:16px;color:#45536f;font-weight:600;font-size:14px;position:relative;transition:.2s}
+    .nav-link:hover,.nav-link.active{color:var(--primary)}
+    .nav-link.active:after{content:"";position:absolute;left:18px;right:18px;bottom:4px;height:3px;border-radius:5px;background:var(--primary)}
+    .nav-actions{display:flex;align-items:center;gap:12px;min-width:190px;justify-content:flex-end}
+    .hamburger{display:none;width:46px;height:46px;border-radius:14px;background:#fff;border:1px solid var(--line);color:var(--primary)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:15px;font-weight:800;transition:.2s;border:1px solid transparent;white-space:nowrap}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:white;box-shadow:0 15px 34px rgba(124,77,255,.28)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(124,77,255,.34)}
+    .btn-secondary{background:rgba(255,255,255,.78);border-color:#d9d0ff;color:#6841ee}
+    .btn-secondary:hover{background:#f7f3ff;transform:translateY(-2px)}
+    .btn-ghost{background:white;border:1px solid var(--line);color:#5134b4;box-shadow:0 8px 20px rgba(80,70,140,.06)}
+    .btn-green{background:#f1fff9;border:1px solid rgba(16,185,129,.42);color:var(--green)}
+    .btn-red{background:linear-gradient(135deg,#ff5577,#ef334f);color:white;box-shadow:0 14px 30px rgba(255,59,107,.18)}
+    .page{display:none;padding:48px 0 72px;animation:fadeUp .35s ease both}
+    .page.active{display:block}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    .badge{display:inline-flex;align-items:center;gap:9px;background:var(--primary-soft);color:#6b3df4;border-radius:999px;padding:12px 18px;font-weight:750;font-size:14px;border:1px solid rgba(124,77,255,.10)}
+    .language-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.8);border:1px solid #dfe3ef;border-radius:999px;padding:11px 17px;color:#263454;font-weight:700}
+    .flag-jp{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle,#e6002d 0 38%,#fff 40% 100%);box-shadow:0 0 0 1px #e2e8f0}
+
+    /* Homepage */
+    .hero-grid{display:grid;grid-template-columns:.9fr 1fr;gap:38px;align-items:center}
+    .hero-eyebrow{display:flex;gap:28px;align-items:center;flex-wrap:wrap;margin:18px 0 30px}
+    .hero-title{font-size:clamp(48px,5vw,76px);line-height:1.12;letter-spacing:-.055em;font-weight:900;color:var(--navy);margin-bottom:24px}
+    .hero-desc{max-width:520px;color:#53627d;font-size:18px;line-height:1.75;margin-bottom:34px}
+    .hero-actions{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:30px}
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 18px;max-width:610px}
+    .mini-stat,.feature-card,.panel-card,.side-card,.table-wrap,.result-card,.admin-stat,.vocab-card{
+      background:var(--white);border:1px solid rgba(124,77,255,.14);box-shadow:var(--shadow-sm);border-radius:22px;
+    }
+    .mini-stat{padding:20px 18px;display:flex;align-items:center;gap:16px}
+    .icon-bubble{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:24px;flex:0 0 auto}
+    .purple{background:var(--primary-soft);color:var(--primary)}.green{background:var(--green-soft);color:var(--green)}.pink{background:var(--pink-soft);color:var(--pink)}.blue{background:var(--blue-soft);color:var(--blue)}.red-soft{background:var(--red-soft);color:var(--red)}.yellow{background:var(--yellow-soft);color:var(--yellow)}
+    .mini-stat strong{font-size:25px}.mini-stat span{display:block;font-size:12px;color:var(--muted);line-height:1.4;margin-top:4px}
+    .fiction-toggle{max-width:610px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+    .fiction-toggle h3{font-size:16px;margin-bottom:6px}.fiction-toggle p{font-size:14px;color:var(--muted);line-height:1.5}
+    .switch{width:66px;height:36px;border-radius:999px;background:#dbe1ee;padding:4px;transition:.25s;flex:0 0 auto}.switch i{display:block;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.25s}.switch.active{background:linear-gradient(135deg,#28d39c,#10b981)}.switch.active i{transform:translateX(30px)}
+    .hero-art{min-height:665px;border-radius:32px;padding:60px 58px;position:relative;overflow:hidden;border:1px solid rgba(124,77,255,.18);box-shadow:var(--shadow);background:linear-gradient(180deg,#eaf6ff 0%,#fff0f7 68%,#f9f1ff 100%)}
+    .hero-art:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 20%,rgba(255,255,255,.8),transparent 22%),radial-gradient(circle at 35% 88%,rgba(255,154,197,.45),transparent 28%)}
+    .fuji{position:absolute;right:-20px;top:48px;width:280px;height:210px;background:linear-gradient(135deg,#dfe9ff,#97b9ff);clip-path:polygon(50% 0,100% 100%,0 100%);opacity:.9}.fuji:after{content:"";position:absolute;left:95px;top:0;border-left:45px solid transparent;border-right:45px solid transparent;border-bottom:54px solid rgba(255,255,255,.95)}
+    .pagoda{position:absolute;right:38px;bottom:90px;width:150px;height:270px;opacity:.75}.pagoda div{height:28px;background:#db6f8c;margin:28px auto 0;border-radius:4px;position:relative;box-shadow:0 6px 0 rgba(108,66,160,.28)}.pagoda div:before{content:"";position:absolute;left:-22px;right:-22px;top:-12px;height:16px;background:#9d5ccc;border-radius:50% 50% 8px 8px}.pagoda div:nth-child(1){width:70px}.pagoda div:nth-child(2){width:92px}.pagoda div:nth-child(3){width:112px}.pagoda div:nth-child(4){width:130px}.sakura{position:absolute;left:-10%;right:-10%;bottom:-58px;height:150px;background:radial-gradient(circle at 10% 70%,#ffbad4 0 18%,transparent 20%),radial-gradient(circle at 30% 50%,#ffc8dd 0 22%,transparent 24%),radial-gradient(circle at 55% 80%,#ffb3d0 0 18%,transparent 20%),radial-gradient(circle at 78% 55%,#ffc7df 0 22%,transparent 24%),radial-gradient(circle at 95% 80%,#ffb0cf 0 18%,transparent 20%);opacity:.85}.petal{position:absolute;width:16px;height:9px;background:#ff9bbf;border-radius:80% 20%;opacity:.7;animation:float 6s ease-in-out infinite}.p1{left:18%;top:45%;transform:rotate(35deg)}.p2{right:8%;top:32%;animation-delay:1s}.p3{right:28%;top:6%;animation-delay:2s}.p4{left:48%;bottom:24%;animation-delay:1.8s}@keyframes float{50%{transform:translateY(-18px) rotate(55deg)}}
+    .flashcard-showcase{position:relative;z-index:2;background:rgba(255,255,255,.88);border:1px solid rgba(124,77,255,.12);border-radius:30px;padding:34px 38px 30px;max-width:520px;margin:auto;margin-top:10px;box-shadow:0 24px 70px rgba(80,70,140,.16);text-align:center}.flashcard-showcase .tag{margin-right:auto}.star-btn{width:54px;height:54px;border-radius:50%;background:#fff;border:1px solid #dde3f1;display:grid;place-items:center;color:#64748b;font-size:22px;box-shadow:0 8px 18px rgba(80,70,140,.08)}.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.jp-large{font-size:82px;font-weight:900;letter-spacing:.02em}.romaji{color:var(--primary);font-weight:800;font-size:20px}.meaning{border-top:1px solid #e5e7eb;margin-top:18px;padding-top:24px;font-size:28px;font-weight:850}.dots{display:flex;justify-content:center;gap:10px;margin-top:28px;position:relative;z-index:3}.dot{width:14px;height:14px;border-radius:50%;border:1px solid #cdd5e3;background:#fff}.dot.active{background:var(--primary);border-color:var(--primary)}
+    .feature-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:34px}.feature-card{padding:22px 24px;display:flex;gap:16px;align-items:center}.feature-card h3{font-size:17px}.feature-card p{font-size:14px;color:var(--muted);line-height:1.45;margin-top:6px}
+
+    /* Shared content */
+    .layout-with-sidebar{display:grid;grid-template-columns:275px 1fr;gap:28px;align-items:start}.sidebar{display:grid;gap:20px}.side-card{padding:22px}.side-menu{display:grid;gap:10px}.side-link{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:14px;color:#54627c;font-weight:750;transition:.2s}.side-link.active,.side-link:hover{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:white}.stat-list{display:grid;gap:16px;margin-top:18px}.stat-item{display:flex;align-items:center;gap:14px}.stat-item strong{font-size:20px}.stat-item span{font-size:12px;color:var(--muted);display:block;line-height:1.35}.motivation{min-height:190px;background:linear-gradient(135deg,#f3ecff,#e8f4ff 52%,#ffeaf4);position:relative;overflow:hidden}.motivation:after{content:"";position:absolute;right:-40px;bottom:-30px;width:160px;height:120px;background:radial-gradient(circle,#ffc0da 0 18%,transparent 19%);opacity:.9}.page-title{font-size:34px;letter-spacing:-.035em;margin-bottom:8px}.page-desc{color:var(--muted);line-height:1.6}.content-card{background:rgba(255,255,255,.72);border:1px solid rgba(124,77,255,.14);border-radius:28px;box-shadow:var(--shadow);padding:32px}.search-bar{position:relative;margin:24px 0 22px;max-width:620px}.search-bar i{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:#718096}.search-bar input,.field input,.filter-row input,.filter-row select,.select-like{width:100%;height:50px;border:1px solid #dfe4ee;border-radius:15px;background:rgba(255,255,255,.8);padding:0 18px;color:#24324d;outline:none}.search-bar input{padding-left:48px}.search-bar input:focus,.field input:focus,.filter-row input:focus,.filter-row select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(124,77,255,.10)}.pill-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}.pill{padding:13px 20px;border-radius:999px;background:#fff;border:1px solid #e3e7f0;color:#53627d;font-weight:800}.pill.active{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border-color:transparent}.vocab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.vocab-card{overflow:hidden;transition:.22s}.vocab-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.thumb{height:128px;border-radius:18px 18px 0 0;position:relative;overflow:hidden;background:linear-gradient(135deg,#f5dcc7,#a9c5e8)}.thumb.library{background:linear-gradient(135deg,#e8c8a4,#ab7a45)}.thumb.school{background:linear-gradient(135deg,#cce6ff,#ffd2e0)}.thumb.book{background:linear-gradient(135deg,#b9804a,#ffdab2)}.thumb.pen{background:linear-gradient(135deg,#fff1d6,#d0b09a)}.thumb.person{background:linear-gradient(135deg,#fff4eb,#ffd2df)}.thumb.family{background:linear-gradient(135deg,#d9edff,#ffd7bd)}.thumb.number{background:linear-gradient(135deg,#e8f6ff,#e9d7ff)}.thumb:before{content:"";position:absolute;inset:18px;border-radius:18px;border:1px solid rgba(255,255,255,.45);background:linear-gradient(135deg,rgba(255,255,255,.25),transparent)}.thumb .emoji{position:absolute;inset:0;display:grid;place-items:center;font-size:54px}.vocab-body{padding:18px 20px}.vocab-body h3{font-size:30px;margin-bottom:3px}.vocab-body .romaji{font-size:15px}.vocab-body .meaning-sm{border-top:1px solid #edf0f6;margin-top:10px;padding-top:10px;color:#475569;font-weight:650}.cat-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:800;margin:12px 0;color:#6b3df4;background:var(--primary-soft)}.cat-Salam{background:var(--pink-soft);color:var(--pink)}.cat-Keluarga{background:#fff1df;color:#f97316}.cat-Angka{background:var(--blue-soft);color:var(--blue)}.listen-btn{width:100%;height:40px;border-radius:11px;background:#f0fff9;border:1px solid rgba(16,185,129,.42);color:#10b981;font-weight:850}.card-star{position:absolute;right:12px;top:12px;width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;border:1px solid #dfe3ee;color:#64748b;z-index:2}
+
+    /* Practice */
+    .practice-top{display:flex;justify-content:space-between;align-items:center;margin:8px 0 24px;gap:18px;flex-wrap:wrap}.practice-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px}.practice-card{padding:22px;border-radius:30px}.practice-image{height:235px;border-radius:22px;background:linear-gradient(135deg,#d9eafe,#fce3ef);position:relative;overflow:hidden}.practice-image:before{content:"LIBRARY";position:absolute;top:72px;left:50%;transform:translateX(-50%);font-size:20px;font-weight:900;color:#fff;letter-spacing:.08em;background:#a87951;padding:10px 45px;border-radius:7px}.practice-image:after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:repeating-linear-gradient(90deg,#a87951 0 22px,#d9b38f 23px 31px);opacity:.65}.practice-word{text-align:center;padding:26px 20px 10px}.practice-word h2{font-size:86px;line-height:1}.practice-word .kana{font-size:30px;color:var(--primary);font-weight:800;margin-top:8px}.practice-word .romaji{font-size:32px;color:#718096;margin-top:7px}.remember{border-top:1px solid #e6e9f1;margin-top:28px;padding-top:26px;text-align:center;color:#64748b}.remember strong{display:block;color:#334155;margin-bottom:8px}.control-panel{display:grid;gap:16px}.control-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.timer-card{padding:22px;display:flex;gap:16px;align-items:center}.timer-card strong{font-size:28px}.progress-card{padding:22px}.bar{height:9px;border-radius:999px;background:#eee9ff;overflow:hidden;margin:14px 0 8px}.bar span{display:block;height:100%;width:4%;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary-2));transition:.25s}.mode-row{padding:16px 18px;display:flex;justify-content:space-between;gap:12px;align-items:center}.action-stack{display:grid;gap:12px}.practice-action{height:58px;border-radius:15px;background:#faf7ff;border:1px solid #d9cfff;color:#6b3df4;font-weight:850}.practice-action.primary{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff}.listening{height:58px;border-radius:15px;background:#f7efff;border:1px solid #eadcff;color:#7c4dff;display:flex;align-items:center;justify-content:center;gap:22px;font-weight:800}.audio-bars{display:flex;gap:4px;align-items:center}.audio-bars i{display:block;width:4px;background:#10b981;border-radius:5px;animation:bounce .8s infinite alternate}.audio-bars i:nth-child(1){height:9px}.audio-bars i:nth-child(2){height:18px;animation-delay:.1s}.audio-bars i:nth-child(3){height:27px;animation-delay:.2s}.audio-bars i:nth-child(4){height:14px;animation-delay:.3s}@keyframes bounce{to{transform:scaleY(.45);opacity:.55}}.answer-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.answer-row .btn{height:62px}.auto-row,.info-box{padding:18px;display:flex;align-items:center;gap:15px}.auto-row{justify-content:space-between}.info-box{color:#64748b;line-height:1.5}.info-box i{color:var(--primary);font-size:24px}
+
+    /* Results & admin */
+    .breadcrumb{display:inline-flex;gap:10px;align-items:center;background:var(--primary-soft);color:#8b64ff;border-radius:999px;padding:10px 16px;font-weight:750;font-size:14px;margin-bottom:18px}.date-line{color:#8290a8;margin:14px 0 22px;display:flex;gap:10px;align-items:center}.result-grid{display:grid;grid-template-columns:1.45fr .8fr;gap:28px}.score-hero{padding:28px;border-radius:24px;background:linear-gradient(135deg,#f7fbff,#eff5ff 50%,#fff1f7);position:relative;overflow:hidden}.score-hero:after{content:"";position:absolute;right:-20px;bottom:-45px;width:360px;height:190px;background:radial-gradient(circle at 20% 80%,#ffc4dc 0 16%,transparent 18%),radial-gradient(circle at 45% 65%,#ffc4dc 0 18%,transparent 20%),radial-gradient(circle at 80% 72%,#ffc4dc 0 16%,transparent 18%);opacity:.8}.score-inner{position:relative;z-index:2;display:flex;align-items:center;gap:42px}.circle-score{width:190px;height:190px;border-radius:50%;background:conic-gradient(var(--primary) 0 86%,#efeaff 86% 100%);display:grid;place-items:center;flex:0 0 auto}.circle-score div{width:152px;height:152px;border-radius:50%;background:#fff;display:grid;place-items:center;text-align:center;box-shadow:inset 0 0 0 1px #edf0f6}.circle-score strong{font-size:56px}.circle-score span{display:block;color:var(--primary);font-weight:850}.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.summary-tile{padding:20px;border-radius:15px;border:1px solid #e5e9f2;background:#fff;display:flex;align-items:center;gap:16px}.summary-tile strong{font-size:27px}.summary-tile span{font-size:13px;color:#64748b}.result-actions{display:flex;gap:14px;margin:16px 0 24px;flex-wrap:wrap}.table-wrap{padding:24px;overflow:hidden}.table-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}.table-filters{display:flex;gap:12px;align-items:center}.select-mini{height:38px;border:1px solid #dfe4ee;border-radius:12px;background:#fff;color:#64748b;padding:0 13px;font-weight:650}.table-scroll{overflow-x:auto}.data-table{width:100%;border-collapse:separate;border-spacing:0;min-width:820px;border:1px solid #e6e9f2;border-radius:14px;overflow:hidden}.data-table th,.data-table td{padding:16px;text-align:left;border-bottom:1px solid #edf0f6;color:#31405e;vertical-align:middle}.data-table th{font-size:13px;color:#64748b;background:rgba(246,242,255,.75);font-weight:850}.data-table tr:last-child td{border-bottom:0}.status{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:10px;font-weight:850;font-size:12px}.status.good{background:var(--green-soft);color:var(--green)}.status.bad{background:var(--red-soft);color:var(--red)}
+    .admin-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:28px}.title-line{display:flex;align-items:center;gap:14px}.admin-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:24px}.admin-stat{padding:24px;display:flex;align-items:center;gap:18px}.admin-stat strong{font-size:28px}.admin-stat span{display:block;color:#75839b;font-size:13px;margin-top:6px}.admin-table-card{padding:22px}.filter-row{display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr auto;gap:14px;margin-bottom:22px}.participant{display:flex;align-items:center;gap:10px;font-weight:800}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:white;font-weight:900;background:linear-gradient(135deg,#9b7cff,#6336e8)}.avatar.m{background:linear-gradient(135deg,#5eead4,#10b981)}.avatar.k{background:linear-gradient(135deg,#facc15,#f59e0b)}.avatar.s{background:linear-gradient(135deg,#fb7185,#ec4899)}.avatar.w{background:linear-gradient(135deg,#60a5fa,#2563eb)}.group-badge{padding:8px 12px;border-radius:999px;background:var(--primary-soft);color:var(--primary);font-weight:850;font-size:12px}.group-green{background:var(--green-soft);color:var(--green)}.group-blue{background:var(--blue-soft);color:var(--blue)}.group-pink{background:var(--pink-soft);color:var(--pink)}.score-badge{padding:8px 13px;border-radius:999px;font-weight:900;background:var(--green-soft);color:var(--green)}.score-badge.low{background:var(--red-soft);color:var(--red)}.actions-cell{display:flex;gap:8px}.small-btn{height:38px;padding:0 13px;border-radius:10px;font-weight:850;border:1px solid #d9d0ff;background:#fbfaff;color:var(--primary)}.small-btn.pdf{border-color:#ffc7d8;background:#fff5f8;color:var(--red)}.table-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:16px;color:#64748b}.pagination{display:flex;gap:8px;align-items:center}.page-btn{width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid #e1e5ef;color:#34405c;font-weight:800}.page-btn.active{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border:0}
+
+    /* Modals */
+    .modal-overlay{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(21,27,48,.35);backdrop-filter:blur(9px);padding:24px}.modal-overlay.active{display:flex}.modal{width:min(760px,100%);max-height:92vh;overflow:auto;background:rgba(255,255,255,.96);border:1px solid rgba(124,77,255,.18);box-shadow:0 35px 90px rgba(37,31,71,.25);border-radius:34px;padding:34px 48px 24px;position:relative;animation:pop .22s ease both}.small-modal{width:min(560px,100%)}@keyframes pop{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}.close-modal{position:absolute;right:30px;top:25px;width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid #dce1eb;color:#25304a;font-size:22px}.modal-logo{margin:0 auto 22px;width:58px;height:58px}.modal-title{text-align:center;font-size:34px;letter-spacing:-.04em;margin-bottom:10px}.modal-desc{text-align:center;color:#64748b;line-height:1.65;max-width:520px;margin:0 auto 26px}.field{margin-bottom:20px}.field label,.group-label{font-weight:850;font-size:14px;display:block;margin-bottom:10px}.field-wrap{position:relative}.field-wrap i:first-child{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--primary)}.field-wrap input{padding-left:48px}.eye-btn{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:transparent;color:#94a3b8}.group-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}.group-card{height:74px;border-radius:15px;border:1px solid #e0e5f0;background:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:850;color:#475569;position:relative;transition:.2s}.group-card.active{border-color:var(--primary);box-shadow:0 0 0 4px rgba(124,77,255,.09);color:var(--primary)}.group-card:after{content:"";position:absolute;right:10px;top:10px;width:18px;height:18px;border-radius:50%;border:2px solid #cbd5e1}.group-card.active:after{background:var(--primary);border-color:var(--primary);box-shadow:inset 0 0 0 5px #fff}.admin-box{background:#f7f2ff;border:1px solid rgba(124,77,255,.10);border-radius:20px;padding:18px;margin-bottom:24px}.admin-note{display:flex;gap:13px;margin-bottom:14px}.admin-note p{color:#64748b;font-size:13px;margin-top:4px}.modal-actions{display:grid;grid-template-columns:1fr 1.3fr;gap:18px}.private-note{text-align:center;margin-top:18px;color:#8290a8;font-weight:700;font-size:13px}.detail-list{display:grid;gap:13px;margin-top:16px}.detail-list div{display:flex;justify-content:space-between;border-bottom:1px solid #eef1f7;padding-bottom:12px;color:#64748b}.detail-list strong{color:#10213f}
+
+    @media(max-width:1100px){
+      .container{width:min(100% - 32px,1380px)}.nav-shell{height:auto;min-height:84px}.nav-menu{position:absolute;left:16px;right:16px;top:88px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:12px;display:none;flex-direction:column;align-items:stretch}.nav-menu.show{display:flex}.nav-link.active:after{display:none}.hamburger{display:grid;place-items:center}.brand{min-width:0}.nav-actions{min-width:0}.hero-grid,.practice-grid,.result-grid,.layout-with-sidebar{grid-template-columns:1fr}.hero-art{min-height:560px}.feature-row{grid-template-columns:repeat(2,1fr)}.vocab-grid{grid-template-columns:repeat(2,1fr)}.admin-stats{grid-template-columns:repeat(2,1fr)}.filter-row{grid-template-columns:1fr 1fr}.sidebar{grid-template-columns:1fr 1fr}.side-menu{grid-template-columns:repeat(4,1fr)}
+    }
+    @media(max-width:760px){
+      .page{padding:30px 0 54px}.brand h1{font-size:16px}.brand p{font-size:11px}.brand-icon{width:46px;height:46px}.btn{padding:13px 16px}.nav-actions .btn span{display:none}.hero-eyebrow{gap:12px}.hero-title{font-size:46px}.stats-row,.control-row,.answer-row,.summary-grid,.group-grid,.modal-actions,.feature-row,.vocab-grid,.admin-stats,.filter-row,.sidebar{grid-template-columns:1fr}.side-menu{grid-template-columns:1fr 1fr}.content-card{padding:20px}.hero-art{padding:30px 18px;min-height:520px}.flashcard-showcase{padding:24px 20px}.jp-large{font-size:62px}.meaning{font-size:23px}.practice-word h2{font-size:60px}.score-inner{flex-direction:column;text-align:center;gap:22px}.admin-head,.table-footer{align-items:flex-start;flex-direction:column}.table-head{align-items:flex-start;flex-direction:column}.modal{padding:30px 20px 22px;border-radius:26px}.modal-title{font-size:29px}.group-card{justify-content:flex-start;padding-left:18px}.page-title{font-size:29px}.admin-stat{padding:18px}.hero-actions{display:grid;grid-template-columns:1fr}.fiction-toggle{align-items:flex-start}.feature-card{align-items:flex-start}.mini-stat strong{font-size:22px}
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="container nav-shell">
+      <a href="#" class="brand" onclick="showPage('home')">
+        <div class="brand-icon">あ</div>
+        <div><h1>Kosakata Jepang</h1><p>Kartu. Dengar. Ingat.</p></div>
+      </a>
+      <nav class="nav-menu" id="navMenu">
+        <a class="nav-link active" data-page="home" href="#" onclick="showPage('home')">Beranda</a>
+        <a class="nav-link" data-page="materi" href="#" onclick="showPage('materi')">Materi</a>
+        <a class="nav-link" href="#" onclick="showPage('materi'); setCategory('Semua')">Kategori</a>
+        <a class="nav-link" href="#" onclick="showPage('practice')">Cara Belajar</a>
+        <a class="nav-link" href="#" onclick="alert('Kosakata Jepang membantu belajar dengan kartu visual, audio, dan latihan suara.')">Tentang</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="hamburger" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+        <button class="btn btn-ghost" id="loginBtn" onclick="openStartModal()"><i class="fa-solid fa-user"></i> <span>Masuk</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Homepage -->
+    <section class="page active" id="page-home">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-eyebrow">
+              <span class="badge"><i class="fa-regular fa-book-open"></i> Bab 1–5 • 264 kosakata</span>
+              <span class="language-pill"><span class="flag-jp"></span> Jepang <i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+            <h2 class="hero-title">Belajar kosakata<br>Jepang</h2>
+            <p class="hero-desc">Belajar lebih efektif dengan kartu visual, audio, jawaban suara, dan progress yang membantu kamu menguasai kosakata sehari-hari.</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="openStartModal()"><i class="fa-solid fa-user"></i> Isi Username</button>
+              <button class="btn btn-secondary" onclick="showPage('materi')"><i class="fa-regular fa-book-open"></i> Lihat Materi</button>
+            </div>
+            <div class="stats-row">
+              <div class="mini-stat"><span class="icon-bubble purple"><i class="fa-solid fa-book-open-reader"></i></span><div><strong>264</strong><span>Total Kosakata<br>Bab 1–5</span></div></div>
+              <div class="mini-stat"><span class="icon-bubble green"><i class="fa-regular fa-clock"></i></span><div><strong>18 dtk</strong><span>Rata-rata Waktu<br>per Kartu</span></div></div>
+              <div class="mini-stat"><span class="icon-bubble pink"><i class="fa-solid fa-table-cells-large"></i></span><div><strong>12</strong><span>Jumlah Kategori<br>Topik</span></div></div>
+            </div>
+            <div class="mini-stat fiction-toggle">
+              <div style="display:flex;gap:16px;align-items:center"><span class="icon-bubble green"><i class="fa-solid fa-wand-magic-sparkles"></i></span><div><h3>Gunakan kosakata fiksi</h3><p>Sertakan kosakata dari anime, game, dan karya fiksi populer.</p></div></div>
+              <button class="switch active" id="fictionSwitch" onclick="toggleSwitch(this)"><i></i></button>
+            </div>
+          </div>
+          <div class="hero-art">
+            <span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span><span class="petal p4"></span>
+            <div class="fuji"></div><div class="pagoda"><div></div><div></div><div></div><div></div></div><div class="sakura"></div>
+            <div class="flashcard-showcase">
+              <div class="card-top"><span class="badge tag"><i class="fa-solid fa-user-group"></i> Kata Ganti Orang</span><button class="star-btn"><i class="fa-regular fa-star"></i></button></div>
+              <div class="jp-large">わたし</div>
+              <div class="romaji">watashi</div>
+              <div class="meaning">saya, aku</div>
+              <button class="btn btn-secondary" style="margin-top:28px" onclick="speakText('わたし')"><i class="fa-solid fa-volume-high"></i> Dengar</button>
+              <p style="margin-top:24px;color:#7c4dff;font-weight:800"><i class="fa-solid fa-microphone"></i> &nbsp; Coba jawab dengan suara kamu!</p>
+            </div>
+            <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="feature-card"><span class="icon-bubble blue"><i class="fa-solid fa-eye"></i></span><div><h3>Kartu Visual</h3><p>Gambar membantu mengingat lebih kuat.</p></div></div>
+          <div class="feature-card"><span class="icon-bubble green"><i class="fa-solid fa-headphones"></i></span><div><h3>Audio Jernih</h3><p>Dengar pelafalan asli penutur Jepang.</p></div></div>
+          <div class="feature-card"><span class="icon-bubble pink"><i class="fa-solid fa-microphone"></i></span><div><h3>Jawab dengan Suara</h3><p>Latih pengucapan dan dapatkan umpan balik instan.</p></div></div>
+          <div class="feature-card"><span class="icon-bubble blue"><i class="fa-solid fa-chart-line"></i></span><div><h3>Progress Belajar</h3><p>Lacak perkembangan dan tingkatkan setiap hari.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Materi -->
+    <section class="page" id="page-materi">
+      <div class="container layout-with-sidebar">
+        <aside class="sidebar">
+          <div class="side-card side-menu">
+            <a class="side-link" onclick="showPage('home')"><i class="fa-solid fa-house"></i> Beranda</a>
+            <a class="side-link active" onclick="showPage('materi')"><i class="fa-regular fa-book-open"></i> Materi</a>
+            <a class="side-link" onclick="showPage('practice')"><i class="fa-regular fa-clipboard"></i> Kuis</a>
+            <a class="side-link" onclick="showPage('hasil')"><i class="fa-solid fa-chart-column"></i> Hasil</a>
+          </div>
+          <div class="side-card"><h3>Statistik Belajar</h3><div class="stat-list"><div class="stat-item"><span class="icon-bubble purple"><i class="fa-solid fa-book-open-reader"></i></span><div><strong>264</strong><span>Total Kosakata<br>Dipelajari</span></div></div><div class="stat-item"><span class="icon-bubble green"><i class="fa-regular fa-clock"></i></span><div><strong>18 dtk</strong><span>Rata-rata Waktu<br>per Kartu</span></div></div><div class="stat-item"><span class="icon-bubble pink"><i class="fa-solid fa-table-cells-large"></i></span><div><strong>12</strong><span>Jumlah Kategori<br>Topik</span></div></div></div></div>
+          <div class="side-card motivation"><h3 style="color:#6b3df4;margin-bottom:18px">Terus belajar setiap hari!</h3><p style="color:#53627d;line-height:1.6;margin-bottom:26px">Konsistensi adalah kunci menguasai kosakata.</p><button class="btn btn-secondary" onclick="showPage('practice')">Mulai Belajar <i class="fa-solid fa-chevron-right"></i></button></div>
+        </aside>
+        <div class="content-card">
+          <h2 class="page-title">Rangkuman Materi Belajar</h2>
+          <p class="page-desc">Pilih kosakata untuk melihat detail dan mendengarkan pengucapannya.</p>
+          <div class="search-bar"><i class="fa-solid fa-magnifying-glass"></i><input id="vocabSearch" type="search" placeholder="Cari kosakata, romaji, atau arti..." oninput="renderVocab()"></div>
+          <div class="pill-row" id="categoryPills"></div>
+          <div class="vocab-grid" id="vocabGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Practice -->
+    <section class="page" id="page-practice">
+      <div class="container">
+        <div class="practice-top"><div class="hero-eyebrow" style="margin:0"><span class="badge"><i class="fa-regular fa-book-open"></i> Bab 1–5 • 264 kosakata</span><span class="language-pill"><span class="flag-jp"></span> Jepang <i class="fa-solid fa-chevron-down"></i></span></div><button class="btn btn-ghost" onclick="showPage('home')"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar Latihan</button></div>
+        <div class="practice-grid">
+          <div class="panel-card practice-card">
+            <div class="practice-image"></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin:22px 10px 0"><span class="badge" id="practiceCategory"><i class="fa-solid fa-user-group"></i> Sekolah</span><button class="star-btn" style="width:45px;height:45px"><i class="fa-regular fa-star"></i></button></div>
+            <div class="practice-word"><h2 id="practiceJapanese">図書館</h2><div class="kana" id="practiceKana">としょかん</div><div class="romaji" id="practiceRomaji">toshokan</div><div class="remember"><strong><i class="fa-regular fa-lightbulb"></i> Ingat artinya?</strong><span>Coba jawab dari ingatanmu terlebih dahulu.</span></div></div>
+            <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </div>
+          <div class="control-panel">
+            <div class="control-row"><div class="panel-card timer-card"><span class="icon-bubble purple"><i class="fa-regular fa-clock"></i></span><div><span style="color:#7c4dff;font-weight:800">Waktu</span><strong id="timeText">01:32</strong></div><button class="pill" onclick="togglePause(this)">Jeda</button></div><div class="panel-card progress-card"><h3>Kartu <span id="cardNum">1</span> / 264</h3><div class="bar"><span id="practiceProgress"></span></div><small id="practicePercent">0% Selesai</small></div></div>
+            <div class="panel-card mode-row"><span class="badge" style="background:#dcfce7;color:#10b981"><i class="fa-regular fa-book-open"></i> Sedang Belajar</span><span>Mode: <b style="color:#7c4dff">Belajar</b> <i class="fa-solid fa-chevron-down"></i></span></div>
+            <div class="action-stack"><button class="practice-action" onclick="speakCurrent()"><i class="fa-solid fa-volume-high"></i> &nbsp; Dengar</button><button class="practice-action" onclick="openExampleModal()"><i class="fa-regular fa-comments"></i> &nbsp; Contoh Kalimat</button><button class="practice-action primary" onclick="alert('Mode suara aktif. Silakan ucapkan arti kosakata.')"><i class="fa-solid fa-microphone"></i> &nbsp; Jawab dengan Suara</button><div class="listening"><i class="fa-solid fa-wave-square"></i> Mendegarkan... <span class="audio-bars"><i></i><i></i><i></i><i></i></span></div></div>
+            <div class="answer-row"><button class="btn btn-primary" style="background:linear-gradient(135deg,#23c89d,#0fa978)" onclick="answerCard(true)"><i class="fa-solid fa-circle-check"></i> Benar</button><button class="btn btn-red" onclick="answerCard(false)"><i class="fa-solid fa-circle-xmark"></i> Salah</button></div>
+            <div class="panel-card auto-row"><div style="display:flex;gap:14px;align-items:center"><span class="icon-bubble purple" style="width:45px;height:45px"><i class="fa-solid fa-volume-high"></i></span><div><h3>Suara Otomatis</h3><p style="font-size:13px;color:#64748b;margin-top:4px">Putar audio otomatis saat kartu berubah</p></div></div><button class="switch active" id="autoSwitch" onclick="toggleSwitch(this)"><i></i></button></div>
+            <div class="panel-card info-box"><i class="fa-solid fa-microphone"></i><p>Jawab dengan suara untuk pengalaman belajar yang lebih alami. Pastikan mikrofon perangkat Anda aktif dan tidak dibisukan.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hasil -->
+    <section class="page" id="page-hasil">
+      <div class="container">
+        <span class="breadcrumb"><i class="fa-regular fa-book-open"></i> Beranda <i class="fa-solid fa-chevron-right"></i> Hasil Latihan</span>
+        <h2 class="page-title">Ringkasan Belajar</h2><p class="page-desc">Hebat! Kamu telah menyelesaikan latihan kosakata.</p><div class="date-line"><i class="fa-regular fa-calendar"></i> 20 Mei 2025, 14:32</div>
+        <div class="result-grid"><div class="result-card score-hero"><div class="score-inner"><div class="circle-score"><div><strong id="scorePercent">86%</strong><span>Skor Akhir</span></div></div><div><span class="badge"><i class="fa-solid fa-star"></i> Sangat Baik!</span><h2 style="font-size:34px;margin:24px 0 12px">Kerja bagus! 🎉</h2><p class="page-desc">Kamu menguasai sebagian besar kosakata hari ini. Terus tingkatkan konsistensi belajarmu!</p></div></div></div><div class="result-card" style="padding:28px"><h3>Ringkasan Hasil</h3><div class="summary-grid"><div class="summary-tile"><span class="icon-bubble purple"><i class="fa-solid fa-book-open-reader"></i></span><div><strong id="totalSoal">20</strong><span>Total Soal</span></div></div><div class="summary-tile"><span class="icon-bubble green"><i class="fa-solid fa-circle-check"></i></span><div><strong id="totalBenar">17</strong><span>Benar</span></div></div><div class="summary-tile"><span class="icon-bubble red-soft"><i class="fa-solid fa-circle-xmark"></i></span><div><strong id="totalSalah">3</strong><span>Salah</span></div></div><div class="summary-tile"><span class="icon-bubble blue"><i class="fa-regular fa-clock"></i></span><div><strong>12:34</strong><span>Waktu (mnt)</span></div></div></div></div></div>
+        <div class="result-actions"><button class="btn btn-primary" onclick="showPage('materi')"><i class="fa-regular fa-book-open"></i> Review Kosakata</button><button class="btn btn-secondary" onclick="alert('PDF berhasil disiapkan')"><i class="fa-solid fa-download"></i> Simpan PDF</button><button class="btn btn-secondary" onclick="resetPractice(); showPage('practice')"><i class="fa-solid fa-rotate-right"></i> Ulangi Latihan</button></div>
+        <div class="table-wrap"><div class="table-head"><h3>Review Hasil Latihan</h3><div class="table-filters"><select class="select-mini"><option>Semua Status</option><option>Benar</option><option>Salah</option></select><select class="select-mini"><option>Urutkan</option><option>Tercepat</option><option>Terlama</option></select></div></div><div class="table-scroll"><table class="data-table"><thead><tr><th>#</th><th>Kosakata</th><th>Arti</th><th>Status</th><th>Waktu</th></tr></thead><tbody id="reviewRows"></tbody></table></div></div>
+      </div>
+    </section>
+
+    <!-- Admin -->
+    <section class="page" id="page-admin">
+      <div class="container">
+        <div class="admin-head"><div><span class="breadcrumb"><i class="fa-solid fa-chart-column"></i> Admin <i class="fa-solid fa-chevron-right"></i> Laporan Peserta</span><div class="title-line"><h2 class="page-title">Laporan Peserta</h2><span class="badge">Admin</span></div><p class="page-desc">Ringkasan hasil belajar seluruh peserta.</p></div><button class="btn btn-primary" onclick="alert('PDF semua peserta berhasil disiapkan')"><i class="fa-solid fa-download"></i> Download PDF Semua Peserta</button></div>
+        <div class="admin-stats"><div class="admin-stat"><span class="icon-bubble purple"><i class="fa-solid fa-user-group"></i></span><div><span>Total Peserta</span><strong>128</strong><span>Peserta terdaftar</span></div></div><div class="admin-stat"><span class="icon-bubble green"><i class="fa-solid fa-arrow-trend-up"></i></span><div><span>Rata-rata Skor</span><strong>78.4%</strong><span>Rata-rata keseluruhan</span></div></div><div class="admin-stat"><span class="icon-bubble yellow"><i class="fa-solid fa-star"></i></span><div><span>Skor Tertinggi</span><strong>98%</strong><span>Oleh Komang</span></div></div><div class="admin-stat"><span class="icon-bubble red-soft"><i class="fa-solid fa-arrow-trend-down"></i></span><div><span>Skor Terendah</span><strong>42%</strong><span>Oleh Singaraja</span></div></div><div class="admin-stat"><span class="icon-bubble blue"><i class="fa-regular fa-file-lines"></i></span><div><span>Total Pengerjaan</span><strong>1.248</strong><span>Total kuis dikerjakan</span></div></div></div>
+        <div class="table-wrap admin-table-card"><div class="filter-row"><div class="search-bar" style="margin:0;max-width:none"><i class="fa-solid fa-magnifying-glass"></i><input id="participantSearch" type="search" placeholder="Cari nama peserta..." oninput="renderParticipants()"></div><select id="groupFilter" onchange="renderParticipants()"><option>Semua Grup</option><option>Pemula A</option><option>Menengah B</option><option>Pemula B</option><option>Menengah A</option></select><select><option>Semua Periode</option><option>Hari ini</option><option>Minggu ini</option></select><select><option>Semua Status</option><option>Tinggi</option><option>Rendah</option></select><button class="btn btn-secondary" onclick="resetAdminFilter()"><i class="fa-solid fa-rotate-right"></i> Reset Filter</button></div><div class="table-scroll"><table class="data-table"><thead><tr><th>No.</th><th>Nama</th><th>Grup</th><th>Tanggal Terakhir</th><th>Total</th><th>Benar</th><th>Salah</th><th>Skor</th><th>Aksi</th></tr></thead><tbody id="participantRows"></tbody></table></div><div class="table-footer"><span>Menampilkan 1–5 dari 128 peserta</span><div class="pagination"><select class="select-mini"><option>10 / halaman</option></select><button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><span>...</span><button class="page-btn">13</button><button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button></div></div></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Start Modal -->
+  <div class="modal-overlay" id="startModal" onclick="overlayClose(event,'startModal')">
+    <div class="modal">
+      <button class="close-modal" onclick="closeModal('startModal')"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-logo">あ</div><h2 class="modal-title">Siap mulai belajar?</h2><p class="modal-desc">Masukkan nama Anda dan pilih grup untuk memulai petualangan belajar kosakata Jepang.</p>
+      <div class="field"><label>Nama peserta</label><div class="field-wrap"><i class="fa-solid fa-user"></i><input id="usernameInput" placeholder="Contoh: Sakura Tanaka"></div></div>
+      <label class="group-label">Pilih grup / wilayah</label><div class="group-grid" id="groupChoices"><button class="group-card active" data-group="Badung"><span class="icon-bubble pink" style="width:36px;height:36px;font-size:16px"><i class="fa-solid fa-torii-gate"></i></span>Badung</button><button class="group-card" data-group="Jembrana"><span class="icon-bubble yellow" style="width:36px;height:36px;font-size:16px"><i class="fa-solid fa-landmark"></i></span>Jembrana</button><button class="group-card" data-group="Singaraja"><span class="icon-bubble blue" style="width:36px;height:36px;font-size:16px"><i class="fa-solid fa-building-columns"></i></span>Singaraja</button><button class="group-card" data-group="Umum"><span class="icon-bubble green" style="width:36px;height:36px;font-size:16px"><i class="fa-solid fa-user-group"></i></span>Umum</button></div>
+      <div class="admin-box"><div class="admin-note"><span class="icon-bubble purple" style="width:44px;height:44px;font-size:18px"><i class="fa-solid fa-shield-halved"></i></span><div><strong>Mode admin <span style="font-weight:600;color:#64748b">(opsional)</span></strong><p>Masukkan kata sandi admin untuk mengakses fitur pengelolaan.</p></div></div><div class="field-wrap"><i class="fa-solid fa-lock"></i><input id="adminPassword" type="password" placeholder="Kata sandi admin"><button class="eye-btn" onclick="togglePassword()"><i class="fa-regular fa-eye-slash"></i></button></div></div>
+      <div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal('startModal')">Batal</button><button class="btn btn-primary" onclick="startLearning()"><i class="fa-regular fa-book-open"></i> Mulai Belajar</button></div><div class="private-note"><i class="fa-solid fa-lock"></i> Aman dan privat • Nama Anda tidak akan dibagikan</div>
+    </div>
+  </div>
+
+  <!-- Example Modal -->
+  <div class="modal-overlay" id="exampleModal" onclick="overlayClose(event,'exampleModal')"><div class="modal small-modal"><button class="close-modal" onclick="closeModal('exampleModal')"><i class="fa-solid fa-xmark"></i></button><h2 class="modal-title" style="text-align:left;font-size:28px">Contoh Kalimat</h2><p class="page-desc" id="exampleText" style="font-size:18px;margin-top:18px"></p><button class="btn btn-primary" style="margin-top:24px" onclick="closeModal('exampleModal')">Mengerti</button></div></div>
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detailModal" onclick="overlayClose(event,'detailModal')"><div class="modal small-modal"><button class="close-modal" onclick="closeModal('detailModal')"><i class="fa-solid fa-xmark"></i></button><h2 class="modal-title" style="text-align:left;font-size:28px">Detail Peserta</h2><div class="detail-list" id="detailContent"></div><button class="btn btn-primary" style="margin-top:24px" onclick="closeModal('detailModal')">Tutup</button></div></div>
+
+  <script>
+    const vocabData = [
+      {jp:'わたし', kana:'わたし', romaji:'watashi', arti:'saya, aku', cat:'Salam', img:'person', emoji:'🙋‍♀️', example:'わたしは学生です。 — Saya adalah seorang pelajar.'},
+      {jp:'ともだち', kana:'ともだち', romaji:'tomodachi', arti:'teman', cat:'Salam', img:'person', emoji:'🤝', example:'ともだちと話します。 — Saya berbicara dengan teman.'},
+      {jp:'がくせい', kana:'がくせい', romaji:'gakusei', arti:'siswa, pelajar', cat:'Sekolah', img:'school', emoji:'🎓', example:'彼はがくせいです。 — Dia adalah pelajar.'},
+      {jp:'せんせい', kana:'せんせい', romaji:'sensei', arti:'guru, dosen', cat:'Sekolah', img:'school', emoji:'👩‍🏫', example:'せんせいは親切です。 — Guru itu baik hati.'},
+      {jp:'がっこう', kana:'がっこう', romaji:'gakkou', arti:'sekolah', cat:'Sekolah', img:'school', emoji:'🏫', example:'がっこうへ行きます。 — Saya pergi ke sekolah.'},
+      {jp:'図書館', kana:'としょかん', romaji:'toshokan', arti:'perpustakaan', cat:'Sekolah', img:'library', emoji:'📚', example:'図書館で本を読みます。 — Saya membaca buku di perpustakaan.'},
+      {jp:'本', kana:'ほん', romaji:'hon', arti:'buku', cat:'Sekolah', img:'book', emoji:'📖', example:'これは本です。 — Ini adalah buku.'},
+      {jp:'ペン', kana:'ペン', romaji:'pen', arti:'pulpen', cat:'Sekolah', img:'pen', emoji:'🖊️', example:'ペンで書きます。 — Saya menulis dengan pulpen.'},
+      {jp:'家族', kana:'かぞく', romaji:'kazoku', arti:'keluarga', cat:'Keluarga', img:'family', emoji:'👨‍👩‍👦', example:'家族が大好きです。 — Saya sangat menyukai keluarga saya.'},
+      {jp:'母', kana:'はは', romaji:'haha', arti:'ibu', cat:'Keluarga', img:'family', emoji:'👩', example:'母は料理が上手です。 — Ibu pandai memasak.'},
+      {jp:'父', kana:'ちち', romaji:'chichi', arti:'ayah', cat:'Keluarga', img:'family', emoji:'👨', example:'父は会社員です。 — Ayah adalah pegawai kantor.'},
+      {jp:'一', kana:'いち', romaji:'ichi', arti:'satu', cat:'Angka', img:'number', emoji:'1️⃣', example:'一つください。 — Tolong beri saya satu.'}
+    ];
+    const participants = [
+      {nama:'Ayu', avatar:'A', cls:'', grup:'Pemula A', tanggal:'21 Mei 2025, 10:24', total:48, benar:38, salah:10, skor:79.2},
+      {nama:'Made', avatar:'M', cls:'m', grup:'Pemula A', tanggal:'21 Mei 2025, 09:12', total:46, benar:35, salah:11, skor:76.1},
+      {nama:'Komang', avatar:'K', cls:'k', grup:'Menengah B', tanggal:'21 Mei 2025, 08:45', total:50, benar:49, salah:1, skor:98.0},
+      {nama:'Singaraja', avatar:'S', cls:'s', grup:'Pemula B', tanggal:'20 Mei 2025, 16:33', total:45, benar:19, salah:26, skor:42.2},
+      {nama:'Wayan', avatar:'W', cls:'w', grup:'Menengah A', tanggal:'20 Mei 2025, 14:50', total:47, benar:34, salah:13, skor:72.3}
+    ];
+    let activeCategory = 'Semua';
+    let selectedGroup = 'Badung';
+    let currentIndex = 5;
+    let answered = 0, correct = 0, wrong = 0;
+
+    function toggleMenu(){ document.getElementById('navMenu').classList.toggle('show'); }
+    function showPage(page){
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+      document.getElementById('page-'+page).classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active', a.dataset.page===page));
+      document.getElementById('navMenu').classList.remove('show');
+      if(page==='hasil') updateResult();
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    function openStartModal(){ openModal('startModal'); }
+    function openModal(id){ document.getElementById(id).classList.add('active'); document.body.classList.add('modal-open'); }
+    function closeModal(id){ document.getElementById(id).classList.remove('active'); if(!document.querySelector('.modal-overlay.active')) document.body.classList.remove('modal-open'); }
+    function overlayClose(e,id){ if(e.target.id===id) closeModal(id); }
+    function toggleSwitch(el){ el.classList.toggle('active'); }
+    function togglePassword(){ const inp=document.getElementById('adminPassword'); inp.type = inp.type==='password' ? 'text':'password'; }
+    document.querySelectorAll('.group-card').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.group-card').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selectedGroup=btn.dataset.group;}));
+    function startLearning(){
+      const pass=document.getElementById('adminPassword').value.trim();
+      closeModal('startModal');
+      if(pass==='admin123'){
+        document.getElementById('loginBtn').innerHTML='<i class="fa-solid fa-shield-halved"></i> <span>Admin</span> <i class="fa-solid fa-chevron-down"></i>';
+        showPage('admin');
+      }else{ showPage('practice'); }
+    }
+    function renderCategoryPills(){
+      const cats=['Semua','Salam','Sekolah','Angka','Keluarga'];
+      document.getElementById('categoryPills').innerHTML=cats.map(c=>`<button class="pill ${c===activeCategory?'active':''}" onclick="setCategory('${c}')">${iconForCat(c)} ${c}</button>`).join('');
+    }
+    function iconForCat(c){return c==='Salam'?'<i class="fa-solid fa-user"></i>':c==='Sekolah'?'<i class="fa-solid fa-graduation-cap"></i>':c==='Angka'?'<i class="fa-solid fa-123"></i>':c==='Keluarga'?'<i class="fa-solid fa-user-group"></i>':'';}
+    function setCategory(cat){activeCategory=cat;renderCategoryPills();renderVocab();}
+    function renderVocab(){
+      const q=(document.getElementById('vocabSearch')?.value||'').toLowerCase();
+      const rows=vocabData.filter(v=>(activeCategory==='Semua'||v.cat===activeCategory) && [v.jp,v.kana,v.romaji,v.arti,v.cat].join(' ').toLowerCase().includes(q));
+      document.getElementById('vocabGrid').innerHTML=rows.map(v=>`<article class="vocab-card"><div class="thumb ${v.img}"><button class="card-star"><i class="fa-regular fa-star"></i></button><span class="emoji">${v.emoji}</span></div><div class="vocab-body"><h3>${v.jp}</h3><div class="romaji">${v.romaji}</div><div class="meaning-sm">${cap(v.arti)}</div><span class="cat-badge cat-${v.cat}">${iconForCat(v.cat)} ${v.cat}</span><button class="listen-btn" onclick="speakText('${v.jp}')"><i class="fa-solid fa-volume-high"></i> &nbsp; Dengar</button></div></article>`).join('');
+    }
+    function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+    function speakText(text){
+      try{ if('speechSynthesis' in window){ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang='ja-JP'; u.rate=.9; speechSynthesis.speak(u);} else alert('Audio tidak didukung browser ini.'); }catch(e){console.log(e)}
+    }
+    function currentVocab(){return vocabData[currentIndex % vocabData.length];}
+    function loadPractice(){
+      const v=currentVocab();
+      document.getElementById('practiceCategory').innerHTML=`${iconForCat(v.cat)} ${v.cat}`;
+      document.getElementById('practiceJapanese').textContent=v.jp; document.getElementById('practiceKana').textContent=v.kana; document.getElementById('practiceRomaji').textContent=v.romaji;
+      const num=answered+1; document.getElementById('cardNum').textContent=num;
+      const pct=Math.min(100,Math.round((answered/20)*100)); document.getElementById('practiceProgress').style.width=pct+'%'; document.getElementById('practicePercent').textContent=pct+'% Selesai';
+      if(document.getElementById('autoSwitch').classList.contains('active')) speakText(v.jp);
+    }
+    function speakCurrent(){ speakText(currentVocab().jp); }
+    function answerCard(isCorrect){
+      answered++; if(isCorrect) correct++; else wrong++;
+      currentIndex=(currentIndex+1)%vocabData.length;
+      if(answered>=20){ showPage('hasil'); return; }
+      loadPractice();
+    }
+    function resetPractice(){answered=0;correct=0;wrong=0;currentIndex=5;loadPractice();}
+    function togglePause(btn){btn.textContent = btn.textContent.trim()==='Jeda' ? 'Lanjut':'Jeda';}
+    function openExampleModal(){ document.getElementById('exampleText').innerHTML=currentVocab().example; openModal('exampleModal'); }
+    function updateResult(){
+      const total = answered || 20; const b = answered ? correct : 17; const s = answered ? wrong : 3; const pct=Math.round((b/total)*100);
+      document.getElementById('scorePercent').textContent=pct+'%'; document.getElementById('totalSoal').textContent=total; document.getElementById('totalBenar').textContent=b; document.getElementById('totalSalah').textContent=s;
+      const review=[vocabData[0],vocabData[1],vocabData[2],vocabData[3],vocabData[4]];
+      document.getElementById('reviewRows').innerHTML=review.map((v,i)=>`<tr><td>${i+1}</td><td><strong style="font-size:20px">${v.jp}</strong> <span style="color:#64748b;margin-left:24px;font-size:13px">${v.romaji}</span> <button style="background:transparent;color:#6b3df4;margin-left:10px" onclick="speakText('${v.jp}')"><i class="fa-solid fa-volume-high"></i></button></td><td>${v.arti}</td><td><span class="status ${i===3?'bad':'good'}"><i class="fa-solid ${i===3?'fa-circle-xmark':'fa-circle-check'}"></i> ${i===3?'Salah':'Benar'}</span></td><td>00:${['08','07','09','12','06'][i]}</td></tr>`).join('');
+    }
+    function renderParticipants(){
+      const q=(document.getElementById('participantSearch').value||'').toLowerCase(); const gf=document.getElementById('groupFilter').value;
+      const data=participants.filter(p=>p.nama.toLowerCase().includes(q)&&(gf==='Semua Grup'||p.grup===gf));
+      document.getElementById('participantRows').innerHTML=data.map((p,i)=>`<tr><td>${i+1}</td><td><span class="participant"><span class="avatar ${p.cls}">${p.avatar}</span>${p.nama}</span></td><td><span class="group-badge ${p.grup.includes('Menengah')?'group-green':p.grup.includes('B')?'group-pink':''}">${p.grup}</span></td><td>${p.tanggal}</td><td>${p.total}</td><td style="color:#10b981;font-weight:850">${p.benar}</td><td style="color:#ff3b6b;font-weight:850">${p.salah}</td><td><span class="score-badge ${p.skor<60?'low':''}">${p.skor.toFixed(1)}%</span></td><td><span class="actions-cell"><button class="small-btn" onclick="openDetail('${p.nama}')"><i class="fa-regular fa-eye"></i> Detail</button><button class="small-btn pdf" onclick="alert('PDF peserta berhasil disiapkan')"><i class="fa-regular fa-file-pdf"></i> PDF</button></span></td></tr>`).join('');
+    }
+    function resetAdminFilter(){document.getElementById('participantSearch').value='';document.getElementById('groupFilter').value='Semua Grup';renderParticipants();}
+    function openDetail(nama){const p=participants.find(x=>x.nama===nama);document.getElementById('detailContent').innerHTML=`<div><span>Nama</span><strong>${p.nama}</strong></div><div><span>Grup</span><strong>${p.grup}</strong></div><div><span>Tanggal Terakhir</span><strong>${p.tanggal}</strong></div><div><span>Total Soal</span><strong>${p.total}</strong></div><div><span>Benar</span><strong>${p.benar}</strong></div><div><span>Salah</span><strong>${p.salah}</strong></div><div><span>Skor</span><strong>${p.skor.toFixed(1)}%</strong></div>`;openModal('detailModal');}
+    document.addEventListener('keydown',e=>{if(e.key==='Escape') document.querySelectorAll('.modal-overlay.active').forEach(m=>closeModal(m.id));});
+    renderCategoryPills(); renderVocab(); loadPractice(); updateResult(); renderParticipants();
+  </script>
+</body>
+</html>
