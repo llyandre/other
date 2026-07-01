@@ -6933,9 +6933,292 @@
       }
     }
 
+
+/* =========================================================
+   DESKTOP PREMIUM REDESIGN - Kosakata Jepang
+   Tambahan CSS aman: hanya override visual, tidak menghapus ID/class JS.
+   ========================================================= */
+:root{
+  --primary:#6D4AFF;
+  --primary-dark:#5837E8;
+  --primary-soft:#F1EBFF;
+  --primary-2:#8B6BFF;
+  --lavender:#F6F2FF;
+  --text-main:#0F1B33;
+  --text-muted:#64748B;
+  --border:#E7E2F5;
+  --card:#FFFFFF;
+  --success:#20C997;
+  --success-2:#22C55E;
+  --danger:#F43F5E;
+  --warning:#FBBF24;
+  --blue-soft:#EEF7FF;
+  --pink-soft:#FFF1F6;
+  --radius-xl:28px;
+  --radius-lg:22px;
+  --radius-md:16px;
+  --shadow-card:0 22px 55px rgba(64,53,118,.10);
+  --shadow-soft:0 12px 30px rgba(64,53,118,.08);
+  --gradient-primary:linear-gradient(135deg,#6D4AFF 0%,#7C5CFF 48%,#8B6BFF 100%);
+}
+html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important;}
+body{
+  color:var(--text-main)!important;
+  background:
+    radial-gradient(circle at 8% 12%,rgba(141,107,255,.13),transparent 28%),
+    radial-gradient(circle at 88% 18%,rgba(147,197,253,.18),transparent 30%),
+    radial-gradient(circle at 80% 88%,rgba(255,182,213,.18),transparent 32%),
+    linear-gradient(135deg,#FAFCFF 0%,#FBF8FF 48%,#FFF7FA 100%)!important;
+  user-select:auto!important;
+}
+body.modal-open{overflow:hidden!important;}
+button,input,select{font-family:var(--font-main)!important;}
+button{position:relative;z-index:1;}
+button:focus-visible,input:focus-visible{outline:3px solid rgba(109,74,255,.22)!important;outline-offset:2px!important;}
+.app-shell{width:min(1480px,calc(100% - 72px))!important;display:block!important;min-height:calc(100vh - 110px)!important;padding:118px 0 42px!important;align-items:initial!important;justify-content:initial!important;}
+.screen{min-height:auto!important;overflow:visible!important;}
+.screen.active{display:block!important;}
+.kj-topbar{
+  position:fixed;top:0;left:0;right:0;z-index:45;
+  padding:18px 54px;background:rgba(255,255,255,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(231,226,245,.75);box-shadow:0 8px 28px rgba(31,41,55,.045);
+}
+.kj-nav-inner{max-width:1480px;margin:0 auto;display:flex;align-items:center;gap:34px;min-height:56px;}
+.kj-brand{display:flex;align-items:center;gap:14px;min-width:270px;color:var(--text-main);text-decoration:none;}
+.kj-logo{width:56px;height:56px;border-radius:17px;background:var(--gradient-primary);box-shadow:0 14px 25px rgba(109,74,255,.24);display:grid;place-items:center;color:#fff;font-family:var(--font-jp);font-size:26px;font-weight:800;transform:rotate(-4deg);}
+.kj-logo::after{content:"";position:absolute;inset:5px -7px -5px 7px;border:2px solid rgba(139,107,255,.45);border-radius:15px;z-index:-1;}
+.kj-brand-title{display:block;color:#4E36D8;font-size:18px;font-weight:850;line-height:1.15;}
+.kj-brand-sub{display:block;margin-top:3px;color:#53627A;font-size:14px;font-weight:600;}
+.kj-nav{margin-left:auto;display:flex;align-items:center;gap:34px;}
+.kj-nav button{border:0;background:transparent;color:#334568;font-weight:700;font-size:14px;padding:14px 0;cursor:pointer;}
+.kj-nav button.active{color:var(--primary);}
+.kj-nav button.active::after{content:"";position:absolute;left:0;right:0;bottom:5px;height:3px;border-radius:99px;background:var(--primary);}
+.kj-login-btn{min-height:44px;padding:0 22px!important;border:1px solid var(--border)!important;border-radius:14px!important;background:#fff!important;color:#4A37BC!important;box-shadow:0 7px 18px rgba(64,53,118,.06)!important;font-weight:800!important;}
+.panel,#startScreen .panel.hero,.practice-wrap{width:100%!important;max-width:none!important;border-radius:30px!important;background:rgba(255,255,255,.82)!important;border:1px solid var(--border)!important;box-shadow:var(--shadow-card)!important;backdrop-filter:blur(16px)!important;-webkit-backdrop-filter:blur(16px)!important;}
+.badge{background:linear-gradient(135deg,#EFE7FF,#F7F2FF)!important;color:var(--primary)!important;border:1px solid rgba(109,74,255,.10)!important;border-radius:999px!important;padding:10px 16px!important;font-weight:800!important;}
+.btn,.answer-btn{min-height:56px!important;border-radius:16px!important;font-weight:850!important;letter-spacing:0!important;box-shadow:0 15px 28px rgba(109,74,255,.20)!important;}
+.btn:not(.secondary):not(.danger-outline){background:var(--gradient-primary)!important;color:#fff!important;border:0!important;}
+.btn.secondary{background:#fff!important;color:var(--primary)!important;border:1px solid rgba(109,74,255,.22)!important;box-shadow:var(--shadow-soft)!important;}
+.btn.danger-outline{background:#fff!important;color:var(--danger)!important;border:1px solid rgba(244,63,94,.26)!important;}
+/* Homepage */
+#startScreen .panel.hero{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;}
+#startScreen .panel.hero{display:grid!important;grid-template-columns:minmax(460px,.88fr) minmax(540px,1.12fr)!important;gap:36px!important;align-items:center!important;}
+#startScreen .hero-top-controls{grid-column:1;display:flex!important;align-items:center;gap:22px;position:relative!important;inset:auto!important;margin-bottom:26px;}
+#startScreen .hero-copy{grid-column:1;grid-row:1;display:block!important;padding:0!important;max-width:590px!important;text-align:left!important;}
+#startScreen .hero-badge{margin-top:4px!important;margin-bottom:22px!important;}
+#startScreen .hero h1{font-size:clamp(52px,5.4vw,78px)!important;line-height:1.08!important;letter-spacing:-.045em!important;margin:20px 0 24px!important;color:var(--text-main)!important;text-align:left!important;max-width:620px!important;font-weight:900!important;}
+#startScreen .hero p{max-width:570px!important;text-align:left!important;color:#53627A!important;font-size:20px!important;line-height:1.7!important;margin:0 0 28px!important;font-weight:500!important;}
+#startScreen .hero h1::after{content:"";display:block;width:74px;height:6px;border-radius:99px;margin-top:22px;background:linear-gradient(90deg,var(--primary),#FF9EC2);opacity:.86;}
+.language-switch,#startScreen .language-switch{position:static!important;margin:0!important;background:#fff!important;border:1px solid var(--border)!important;border-radius:18px!important;box-shadow:var(--shadow-soft)!important;padding:7px!important;}
+.language-btn{min-height:36px!important;padding:8px 14px!important;border-radius:13px!important;color:#42526D!important;font-weight:800!important;}
+.language-btn.active{background:var(--gradient-primary)!important;color:#fff!important;box-shadow:0 8px 18px rgba(109,74,255,.22)!important;}
+.fiction-toggle,#fictionToggle{position:static!important;margin:0!important;display:flex!important;min-height:54px!important;border-radius:18px!important;background:#fff!important;border:1px solid var(--border)!important;box-shadow:var(--shadow-soft)!important;color:#23314D!important;padding:8px 10px 8px 18px!important;font-weight:800!important;}
+.fiction-switch{background:linear-gradient(135deg,#20C997,#22C55E)!important;}
+.username-box{max-width:530px!important;margin:0 0 0!important;}
+.login-trigger{width:100%!important;min-height:60px!important;border-radius:18px!important;background:var(--gradient-primary)!important;color:#fff!important;border:0!important;box-shadow:0 16px 30px rgba(109,74,255,.28)!important;font-size:17px!important;font-weight:850!important;}
+.login-trigger::before{content:"👤";font-size:19px;}
+.username-note{display:none!important;}
+#startScreen .hero-actions{display:flex!important;justify-content:flex-start!important;gap:16px!important;margin:18px 0 28px!important;}
+#startScreen .hero-actions .btn{min-width:210px!important;}
+#materialBtn::before{content:"📖";}
+#startScreen .hero-info-row{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important;margin:0 0 20px!important;justify-content:stretch!important;}
+#startScreen .hero-info-card{width:100%!important;min-height:124px!important;padding:22px!important;border-radius:22px!important;background:#fff!important;border:1px solid var(--border)!important;box-shadow:var(--shadow-soft)!important;}
+#startScreen .hero-info-icon{width:56px!important;height:56px!important;border-radius:50%!important;background:var(--primary-soft)!important;color:var(--primary)!important;}
+#startScreen .hero-info-card:nth-child(2) .hero-info-icon{background:#E6FAF3!important;color:var(--success)!important;}
+#startScreen .hero-info-card:nth-child(3) .hero-info-icon{background:#FFF0F6!important;color:#EC4899!important;}
+#startScreen .hero-info-card span{color:#64748B!important;font-size:14px!important;font-weight:650!important;}
+#startScreen .hero-info-card strong{font-size:26px!important;color:var(--text-main)!important;font-weight:900!important;}
+.hero-preview-card{grid-column:2;grid-row:1 / span 2;align-self:stretch;min-height:660px;border-radius:32px!important;padding:64px!important;background:linear-gradient(180deg,rgba(220,238,255,.82),rgba(255,231,243,.84)), url('')!important;border:1px solid #DFE7F6!important;box-shadow:var(--shadow-card)!important;position:relative;overflow:hidden;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;}
+.hero-preview-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 20%,rgba(255,255,255,.75),transparent 20%),radial-gradient(circle at 12% 92%,rgba(255,156,196,.20),transparent 28%),linear-gradient(145deg,rgba(255,255,255,.35),rgba(255,255,255,0));}
+.hero-preview-card::after{content:"🗻";position:absolute;right:40px;top:70px;font-size:138px;opacity:.32;filter:saturate(.9);}
+.preview-topline{display:none!important;}
+.preview-illustration{position:absolute!important;inset:0!important;border:0!important;background:transparent!important;box-shadow:none!important;opacity:1!important;}
+.preview-illustration::before{content:"🌸";position:absolute;left:34px;bottom:120px;font-size:88px;opacity:.42;}
+.preview-illustration::after{content:"🏯";position:absolute;right:38px;bottom:115px;font-size:116px;opacity:.40;}
+.preview-jp{width:min(560px,92%)!important;min-height:390px!important;z-index:2;border-radius:32px!important;background:rgba(255,255,255,.93)!important;border:1px solid rgba(255,255,255,.8)!important;box-shadow:0 22px 60px rgba(64,53,118,.13)!important;display:grid!important;place-items:center!important;padding:42px!important;text-align:center!important;}
+.preview-jp::before{content:"Kata Ganti Orang";justify-self:start;align-self:start;background:var(--primary-soft);color:var(--primary);border-radius:999px;padding:10px 16px;font-size:14px;font-weight:850;}
+.preview-jp span{display:none!important;}
+.preview-jp strong{font-family:var(--font-jp)!important;font-size:92px!important;line-height:1!important;color:#07142E!important;font-weight:900!important;}
+.preview-jp strong::before{content:"わたし";}
+.preview-jp strong{font-size:0!important;}
+.preview-jp small{display:block!important;color:var(--primary)!important;font-size:24px!important;font-weight:800!important;}
+.preview-jp small::before{content:"watashi";}
+.preview-jp small{font-size:0!important;}
+.preview-jp small::after{content:"saya, aku";display:block;margin-top:28px;padding-top:24px;border-top:1px solid var(--border);font-size:30px;color:var(--text-main);font-weight:900;}
+.preview-actions{z-index:3;margin-top:-108px!important;display:flex!important;justify-content:center!important;gap:16px!important;}
+.preview-actions .preview-audio{min-width:150px;min-height:60px;border-radius:18px!important;background:#fff!important;border:1px solid rgba(109,74,255,.22)!important;color:var(--primary)!important;font-size:17px!important;}
+.preview-actions .preview-start{display:none!important;}
+.hero-preview-card .shape{display:none!important;}
+#startScreen .panel.hero::after{content:"";grid-column:1 / -1;height:118px;border-radius:24px;background:rgba(255,255,255,.88);border:1px solid var(--border);box-shadow:var(--shadow-soft);}
+#startScreen .panel.hero::before{content:"Kartu Visual\A Gambar membantu mengingat lebih kuat.     Audio Jernih\A Dengar pelafalan asli penutur Jepang.     Jawab dengan Suara\A Latih pengucapan dan dapatkan umpan balik instan.     Progress Belajar\A Lacak perkembangan dan tingkatkan setiap hari.";white-space:pre-wrap;grid-column:1 / -1;grid-row:3;z-index:1;padding:28px 32px;color:#50607A;font-weight:650;line-height:1.5;display:block;columns:4;column-gap:42px;}
+/* Practice */
+.practice-wrap{padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;}
+.practice-dashboard{width:100%!important;}
+.practice-header{display:grid!important;grid-template-columns:minmax(0,1fr) 210px!important;gap:28px!important;margin-bottom:24px!important;align-items:stretch!important;}
+.counter-card,.timer-card{background:#fff!important;border:1px solid var(--border)!important;border-radius:22px!important;box-shadow:var(--shadow-soft)!important;}
+.counter-card{padding:24px 28px!important;font-size:18px!important;}
+.counter-card span{font-size:20px!important;color:var(--text-main)!important;font-weight:900!important;}
+.timer-card{padding:24px!important;display:grid!important;align-content:center!important;}
+.time-number{color:var(--text-main)!important;font-size:34px!important;font-weight:900!important;}
+.timer-label{color:var(--primary)!important;font-weight:800!important;}
+.timer-track{background:#EFE9FF!important;height:10px!important;border-radius:999px!important;}
+.timer-fill{background:var(--gradient-primary)!important;}
+.practice-grid{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(390px,.75fr)!important;gap:30px!important;align-items:start!important;}
+.practice-card-area{background:rgba(255,255,255,.72)!important;border:1px solid var(--border)!important;border-radius:32px!important;box-shadow:var(--shadow-card)!important;padding:28px!important;}
+.flip-hint{font-size:15px!important;color:var(--text-muted)!important;margin:0 0 16px!important;}
+.flashcard{width:100%!important;height:660px!important;min-height:660px!important;}
+.card-face{border-radius:28px!important;background:#fff!important;border:1px solid var(--border)!important;box-shadow:0 18px 50px rgba(64,53,118,.09)!important;}
+.card-front{padding:44px!important;}
+.card-front::after{content:"Ingat artinya?\A Coba jawab dari ingatanmu terlebih dahulu.";white-space:pre-wrap;position:absolute;left:44px;right:44px;bottom:44px;padding-top:28px;border-top:1px solid var(--border);text-align:center;color:#53627A;font-weight:700;line-height:1.7;}
+.card-text{font-size:48px!important;color:var(--text-main)!important;font-weight:900!important;line-height:1.18!important;}
+.back-content{grid-template-rows:48% 52%!important;}
+.illustration-wrap{width:100%!important;border-radius:24px!important;background:linear-gradient(135deg,#EAF5FF,#FFF1F6)!important;border:1px solid #E6EAF7!important;overflow:hidden!important;}
+.illustration img{object-fit:cover!important;border-radius:22px!important;}
+.jp-box{padding:24px!important;}
+.jp-main-display{font-size:72px!important;color:#07142E!important;font-weight:900!important;}
+.jp-reading{font-size:28px!important;color:var(--primary)!important;font-weight:850!important;}
+.jp-divider{background:var(--border)!important;height:1px!important;width:80%!important;}
+.jp-actions .audio-btn,.jp-actions .example-btn{min-height:46px;border-radius:14px!important;padding:0 18px!important;}
+.quiz-action-panel{background:#fff!important;border:1px solid var(--border)!important;border-radius:28px!important;box-shadow:var(--shadow-card)!important;padding:26px!important;position:sticky;top:116px;z-index:2;}
+.quiz-action-panel h3{font-size:26px!important;color:var(--text-main)!important;margin:14px 0 8px!important;font-weight:900!important;}
+.quiz-action-panel p{font-size:15px!important;color:var(--text-muted)!important;line-height:1.6!important;}
+.action-tool-grid{display:grid!important;grid-template-columns:1fr!important;gap:12px!important;margin:20px 0!important;}
+.action-tool,.audio-btn.action-tool,.example-btn.action-tool,.voice-btn.action-tool,.sound-toggle.action-tool{width:100%!important;min-height:58px!important;border-radius:16px!important;border:1px solid rgba(109,74,255,.20)!important;background:#F8F5FF!important;color:var(--primary)!important;font-size:16px!important;font-weight:850!important;box-shadow:none!important;}
+#voiceAnswerBtn{background:var(--gradient-primary)!important;color:#fff!important;box-shadow:0 14px 28px rgba(109,74,255,.22)!important;}
+.voice-status{min-height:62px!important;border-radius:16px!important;background:linear-gradient(135deg,#F6F2FF,#FFF8FB)!important;border:1px solid var(--border)!important;color:var(--primary)!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:800!important;margin:0 0 18px!important;}
+.quiz-action-panel .answer-row{display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important;width:100%!important;margin:0!important;}
+.answer-btn.correct{background:linear-gradient(135deg,#20C997,#16B985)!important;}
+.answer-btn.wrong{background:linear-gradient(135deg,#F43F5E,#EF334D)!important;}
+/* Results / Admin */
+#resultScreen .panel{padding:42px!important;}
+.results-head{text-align:left!important;margin-bottom:24px!important;}
+.results-head h2{font-size:44px!important;color:var(--text-main)!important;font-weight:900!important;letter-spacing:-.035em!important;margin:14px 0 8px!important;}
+.results-head p{color:var(--text-muted)!important;font-size:17px!important;}
+.participant-name{margin:12px 0 0!important;background:var(--primary-soft)!important;color:var(--primary)!important;}
+.tabs{margin:24px 0!important;background:transparent!important;gap:12px!important;}
+.tab-btn{background:#fff!important;border:1px solid var(--border)!important;border-radius:15px!important;padding:12px 18px!important;color:#41516C!important;box-shadow:var(--shadow-soft)!important;}
+.tab-btn.active{background:var(--gradient-primary)!important;color:#fff!important;}
+.summary-box{grid-template-columns:260px 1fr!important;min-height:270px!important;border-radius:28px!important;background:linear-gradient(100deg,rgba(255,255,255,.96) 0%,rgba(239,247,255,.92) 48%,rgba(255,233,244,.92) 100%)!important;border:1px solid var(--border)!important;box-shadow:var(--shadow-soft)!important;position:relative;overflow:hidden!important;}
+.summary-box::after{content:"🗻 🌸";position:absolute;right:34px;bottom:20px;font-size:92px;opacity:.18;}
+.score-circle{width:190px!important;height:190px!important;}
+.score-circle strong{font-size:54px!important;color:var(--text-main)!important;font-weight:950!important;}
+.summary-text h3{font-size:34px!important;color:var(--text-main)!important;font-weight:900!important;}
+.summary-text p{max-width:620px;color:#53627A!important;}
+.stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:16px!important;}
+.stat-card{background:#fff!important;border:1px solid var(--border)!important;border-radius:22px!important;box-shadow:var(--shadow-soft)!important;text-align:left!important;padding:24px!important;}
+.stat-card span{font-size:14px!important;color:var(--text-muted)!important;}
+.stat-card strong{font-size:30px!important;color:var(--text-main)!important;font-weight:900!important;}
+.table-wrap{border-radius:22px!important;background:#fff!important;border:1px solid var(--border)!important;box-shadow:var(--shadow-soft)!important;overflow:auto!important;}
+table{min-width:820px!important;border-collapse:separate!important;border-spacing:0!important;}
+th{background:#F7F2FF!important;color:#4325C5!important;text-transform:none!important;font-size:14px!important;padding:18px!important;}
+td{padding:18px!important;color:#263653!important;border-bottom:1px solid #EEF0F7!important;}
+.status-pill{border-radius:999px!important;padding:8px 14px!important;font-weight:850!important;}
+.status-pill.correct{background:#E4F8EF!important;color:#0FA86B!important;}
+.status-pill.wrong{background:#FFE6EE!important;color:#E11D48!important;}
+.result-actions{justify-content:flex-start!important;gap:16px!important;}
+#savePdfBtn::before{content:"⬇";}
+#restartBtn::before{content:"↻";}
+/* Material page/modal */
+.material-modal{z-index:50!important;background:transparent!important;backdrop-filter:none!important;align-items:start!important;place-items:start center!important;padding:118px 36px 42px!important;overflow-y:auto!important;}
+.material-modal.show{display:grid!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;}
+.material-modal-card{width:min(1420px,100%)!important;max-height:none!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important;}
+.material-library-layout{display:grid!important;grid-template-columns:300px minmax(0,1fr)!important;gap:30px!important;align-items:start!important;}
+.material-sidebar{position:sticky!important;top:118px!important;background:#fff!important;border:1px solid var(--border)!important;border-radius:24px!important;padding:16px!important;box-shadow:var(--shadow-soft)!important;display:grid!important;gap:10px!important;}
+.material-nav-btn{min-height:56px!important;border-radius:16px!important;border:0!important;background:transparent!important;color:#42526D!important;text-align:left!important;padding:0 20px!important;font-weight:800!important;}
+.material-nav-btn.active{background:var(--gradient-primary)!important;color:#fff!important;box-shadow:0 12px 24px rgba(109,74,255,.22)!important;}
+.material-nav-btn::before{display:inline-block;width:26px;margin-right:10px;}
+.material-nav-btn[data-app-nav="home"]::before{content:"⌂";}.material-nav-btn[data-app-nav="material"]::before{content:"📖";}.material-nav-btn[data-app-nav="quiz"]::before{content:"☑";}.material-nav-btn[data-app-nav="result"]::before{content:"▥";}
+.material-main-panel{background:#fff!important;border:1px solid var(--border)!important;border-radius:28px!important;box-shadow:var(--shadow-card)!important;padding:34px!important;min-width:0!important;}
+.material-modal-head{padding:0!important;margin:0 0 22px!important;display:block!important;}
+.material-modal-head h3{font-size:34px!important;color:var(--text-main)!important;font-weight:900!important;letter-spacing:-.02em!important;margin:14px 0 6px!important;}
+.material-modal-head p{font-size:16px!important;color:var(--text-muted)!important;max-width:760px!important;}
+#closeMaterialModal{position:fixed!important;top:118px!important;right:42px!important;z-index:60!important;width:46px!important;height:46px!important;background:#fff!important;color:#263653!important;border:1px solid var(--border)!important;border-radius:50%!important;box-shadow:var(--shadow-soft)!important;}
+.material-toolbar{display:grid!important;grid-template-columns:minmax(280px,560px) 1fr!important;gap:18px!important;align-items:center!important;margin-bottom:24px!important;}
+.material-search-wrap{min-height:56px!important;background:#fff!important;border:1px solid var(--border)!important;border-radius:16px!important;box-shadow:none!important;padding:0 18px!important;display:flex!important;align-items:center!important;gap:12px!important;}
+.material-search-wrap input{border:0!important;outline:0!important;width:100%!important;color:var(--text-main)!important;font-weight:650!important;}
+.material-filter-row{display:flex!important;flex-wrap:wrap!important;gap:12px!important;}
+.material-filter-btn{min-height:48px!important;border-radius:999px!important;border:1px solid var(--border)!important;background:#fff!important;color:#41516C!important;padding:0 22px!important;font-weight:800!important;}
+.material-filter-btn.active{background:var(--gradient-primary)!important;color:#fff!important;border-color:transparent!important;box-shadow:0 12px 24px rgba(109,74,255,.20)!important;}
+.material-summary-grid{display:none!important;}
+.material-category{margin-bottom:28px!important;}
+.material-category-head{margin:0 0 16px!important;}
+.material-category-head h5{font-size:18px!important;color:var(--text-main)!important;font-weight:900!important;}
+.material-list{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important;overflow:visible!important;max-height:none!important;}
+.material-item{display:block!important;min-width:0!important;background:#fff!important;border:1px solid var(--border)!important;border-radius:22px!important;box-shadow:0 10px 26px rgba(64,53,118,.08)!important;overflow:hidden!important;padding:0!important;}
+.material-thumb{width:100%!important;height:150px!important;border:0!important;border-radius:0!important;background:linear-gradient(135deg,#F0F7FF,#FFF0F6)!important;overflow:hidden!important;display:grid!important;place-items:center!important;}
+.material-thumb img{width:100%!important;height:100%!important;object-fit:cover!important;}
+.material-thumb span{font-size:58px!important;}
+.material-info{padding:20px!important;display:grid!important;gap:9px!important;}
+.material-number{display:none!important;}
+.material-jp{font-family:var(--font-jp)!important;font-size:28px!important;color:#07142E!important;font-weight:900!important;}
+.material-reading{display:block!important;color:var(--primary)!important;font-weight:800!important;margin-top:2px!important;}
+.material-info p{color:#42526D!important;font-size:16px!important;margin:0!important;}
+.material-card-actions{display:grid!important;grid-template-columns:1fr!important;gap:10px!important;margin-top:6px!important;}
+.material-audio-btn{min-height:44px!important;border-radius:13px!important;border:1px solid rgba(32,201,151,.42)!important;background:#ECFFF8!important;color:#0BA875!important;font-weight:850!important;}
+.material-image-btn{display:none!important;}
+/* Modal login */
+.login-modal{background:rgba(28,32,48,.42)!important;backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important;z-index:80!important;padding:24px!important;overflow-y:auto!important;}
+.login-modal-card{width:min(780px,94vw)!important;border-radius:32px!important;padding:42px 52px 34px!important;background:rgba(255,255,255,.96)!important;border:1px solid rgba(255,255,255,.92)!important;box-shadow:0 34px 85px rgba(15,23,42,.25)!important;text-align:center!important;}
+.login-modal-card::before{content:"あ";width:62px;height:62px;margin:0 auto 18px;border-radius:18px;background:var(--gradient-primary);color:#fff;display:grid;place-items:center;font-family:var(--font-jp);font-size:30px;font-weight:900;box-shadow:0 14px 28px rgba(109,74,255,.25);transform:rotate(-4deg);}
+.login-modal-card h3{font-size:34px!important;color:var(--text-main)!important;font-weight:900!important;margin:0 44px 8px!important;}
+.login-modal-card p{color:var(--text-muted)!important;font-size:16px!important;line-height:1.65!important;max-width:520px;margin:0 auto 24px!important;}
+.login-field{text-align:left!important;margin-bottom:18px!important;}
+.login-field label,.group-box p{color:var(--text-main)!important;font-weight:850!important;font-size:15px!important;margin-bottom:8px!important;}
+.login-field input{min-height:62px!important;border-radius:16px!important;border:1px solid #DCD6EF!important;background:#fff!important;box-shadow:none!important;padding:0 20px!important;font-size:16px!important;font-weight:700!important;}
+.group-box{display:block!important;text-align:left!important;margin:12px 0 18px!important;}
+.group-box[hidden]{display:none!important;}
+.group-options{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important;}
+.group-btn{min-height:74px!important;border-radius:16px!important;background:#fff!important;border:1px solid var(--border)!important;color:#334568!important;box-shadow:var(--shadow-soft)!important;font-size:15px!important;font-weight:850!important;}
+.group-btn::before{display:block;font-size:22px;margin-bottom:5px;}.group-btn[data-group="Badung"]::before{content:"🏯"}.group-btn[data-group="Jembrana"]::before{content:"⛩️"}.group-btn[data-group="Singaraja"]::before{content:"🏫"}.group-btn[data-group="Umum"]::before{content:"👥"}
+.group-btn.active{background:var(--primary-soft)!important;color:var(--primary)!important;border-color:var(--primary)!important;box-shadow:0 12px 24px rgba(109,74,255,.16)!important;}
+.password-box{background:#F8F5FF!important;border:1px solid var(--border)!important;border-radius:22px!important;padding:18px!important;}
+.password-box label::after{content:" (opsional)";font-weight:650;color:var(--text-muted);}
+.login-modal-actions{display:grid!important;grid-template-columns:1fr 1.25fr!important;gap:16px!important;margin-top:12px!important;}
+#loginSubmitBtn::before{content:"📖";}
+#loginSubmitBtn{font-size:0!important;}#loginSubmitBtn::after{content:"Mulai Belajar";font-size:16px;}
+#cancelLoginBtn{background:#fff!important;color:var(--primary)!important;border:1px solid rgba(109,74,255,.22)!important;box-shadow:none!important;}
+#closeLoginModal{background:#fff!important;color:#263653!important;border:1px solid var(--border)!important;box-shadow:var(--shadow-soft)!important;}
+.login-error{font-weight:800!important;color:var(--danger)!important;text-align:left!important;}
+.login-modal-card::after{content:"🔒  Aman dan privat • Nama Anda tidak akan dibagikan";display:block;margin-top:20px;color:#77849A;font-weight:750;font-size:14px;}
+/* responsive */
+@media (max-width:1180px){
+  .app-shell{width:min(100% - 36px,980px)!important;padding-top:104px!important;}
+  .kj-topbar{padding:14px 20px!important}.kj-nav{gap:18px}.kj-brand{min-width:230px}.kj-nav button:not(.kj-login-btn){display:none!important;}
+  #startScreen .panel.hero{grid-template-columns:1fr!important;gap:26px!important;}
+  #startScreen .hero-copy,.hero-preview-card{grid-column:1!important;grid-row:auto!important;max-width:none!important;}
+  .hero-preview-card{min-height:560px!important;padding:34px!important;}
+  .practice-grid{grid-template-columns:1fr!important}.quiz-action-panel{position:relative!important;top:auto!important;}.material-library-layout{grid-template-columns:1fr!important}.material-sidebar{position:relative!important;top:auto!important;grid-template-columns:repeat(4,1fr)!important}.material-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}.material-toolbar{grid-template-columns:1fr!important;}.stats-grid{grid-template-columns:repeat(2,1fr)!important;}
+}
+@media (max-width:768px){
+ .app-shell{width:100%!important;padding:92px 12px 22px!important;}
+ .kj-topbar{padding:10px 12px!important}.kj-nav-inner{gap:10px;min-height:50px}.kj-logo{width:44px;height:44px;font-size:22px}.kj-brand{min-width:0;flex:1}.kj-brand-title{font-size:15px}.kj-brand-sub{font-size:12px}.kj-login-btn{min-height:40px!important;padding:0 13px!important;font-size:13px!important;}
+ #startScreen .panel.hero{display:block!important;padding:0 2px!important}.hero-copy{text-align:left!important}.hero-top-controls{flex-wrap:wrap!important;margin-bottom:18px!important}#startScreen .hero h1{font-size:40px!important}#startScreen .hero p{font-size:16px!important}.hero-actions{display:grid!important;grid-template-columns:1fr!important}.hero-actions .btn{width:100%!important;min-width:0!important}.hero-info-row{grid-template-columns:1fr!important}.hero-preview-card{min-height:470px!important;padding:18px!important}.preview-jp{min-height:330px!important;padding:24px!important}.preview-jp strong::before{font-size:62px!important}.preview-jp small::after{font-size:23px!important}.preview-actions{margin-top:-92px!important}
+ #startScreen .panel.hero::before,#startScreen .panel.hero::after{display:none!important}.practice-header{grid-template-columns:1fr!important}.practice-card-area{padding:14px!important}.flashcard{height:560px!important;min-height:560px!important}.card-front{padding:24px!important}.card-front::after{left:24px;right:24px;bottom:24px}.card-text{font-size:36px!important}.jp-main-display{font-size:48px!important}.jp-reading{font-size:21px!important}.quiz-action-panel{padding:18px!important}.quiz-action-panel .answer-row{grid-template-columns:1fr!important}.material-modal{padding:92px 12px 24px!important}.material-main-panel{padding:18px!important;border-radius:22px!important}.material-sidebar{display:flex!important;overflow:auto!important;padding:10px!important}.material-nav-btn{min-width:120px!important;text-align:center!important;padding:0 12px!important}.material-list{grid-template-columns:1fr!important}.material-modal-head h3,.results-head h2{font-size:30px!important}.summary-box{grid-template-columns:1fr!important;text-align:center!important}.stats-grid{grid-template-columns:1fr!important}#resultScreen .panel{padding:18px!important;border-radius:22px!important}.login-modal-card{padding:30px 20px!important}.group-options{grid-template-columns:repeat(2,1fr)!important}.login-modal-actions{grid-template-columns:1fr!important}#closeMaterialModal{top:92px!important;right:16px!important;}
+}
+
 </style>
 </head>
 <body>
+<header class="kj-topbar" aria-label="Navigasi utama">
+  <div class="kj-nav-inner">
+    <a class="kj-brand" href="#" data-nav-target="home" aria-label="Kosakata Jepang Beranda">
+      <span class="kj-logo" aria-hidden="true">あ</span>
+      <span>
+        <span class="kj-brand-title">Kosakata Jepang</span>
+        <span class="kj-brand-sub">Kartu. Dengar. Ingat.</span>
+      </span>
+    </a>
+    <nav class="kj-nav" aria-label="Menu utama">
+      <button type="button" class="active" data-nav-target="home">Beranda</button>
+      <button type="button" data-nav-target="material">Materi</button>
+      <button type="button" data-nav-target="material">Kategori</button>
+      <button type="button" data-nav-target="practice">Cara Belajar</button>
+      <button type="button" data-nav-target="home">Tentang</button>
+      <button type="button" class="kj-login-btn" id="topLoginBtn">👤 Masuk</button>
+    </nav>
+  </div>
+</header>
+
   <main class="app-shell">
 <section id="startScreen" class="screen active">
       <div class="panel hero hero-dashboard">
@@ -13663,5 +13946,294 @@ const CHAPTER_ORDER = ["Bab 1", "Bab 2", "Bab 3", "Bab 4", "Bab 5"];
     resetVoiceStatus();
     updateStartState();
   </script>
+
+<script>
+(function(){
+  function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    const qs = s => document.querySelector(s);
+    const qsa = s => Array.from(document.querySelectorAll(s));
+    try {
+      if (typeof translations !== 'undefined' && translations.id) {
+        Object.assign(translations.id, {
+          homeBadge: '📖 Bab 1–5 • 264 kosakata',
+          homeTitle: 'Belajar kosakata\nJepang',
+          homeDescription: 'Belajar lebih efektif dengan kartu visual, audio, jawaban suara, dan progress yang membantu kamu menguasai kosakata sehari-hari.',
+          cardCountLabel: 'Total Kosakata',
+          cardCountValue: '264\nBab 1–5',
+          durationLabel: 'Rata-rata Waktu',
+          durationValue: '18 dtk\nper Kartu',
+          categoryInfoLabel: 'Jumlah Kategori',
+          categoryInfoValue: '12\nTopik',
+          usernameButton: 'Isi Username',
+          materialButton: 'Lihat Materi',
+          startButton: 'Mulai Belajar',
+          materialTitle: 'Rangkuman Materi Belajar',
+          materialDescription: 'Pilih kosakata untuk melihat detail dan mendengarkan pengucapannya.',
+          materialSearchPlaceholder: 'Cari kosakata, romaji, atau arti...',
+          quizBadge: 'Sedang Belajar',
+          actionPanelTitle: 'Mode: Belajar',
+          actionPanelDescription: 'Jawab dengan suara untuk pengalaman belajar yang lebih alami. Pastikan mikrofon perangkat Anda aktif dan tidak dibisukan.',
+          audioButton: '🔊 Dengar',
+          exampleButton: '💬 Contoh Kalimat',
+          voiceButton: '🎙 Jawab dengan Suara',
+          resultTitle: 'Ringkasan Belajar',
+          resultDescription: 'Hebat! Kamu telah menyelesaikan latihan kosakata.',
+          summaryExcellentTitle: 'Kerja bagus! 🎉',
+          summaryExcellentDescription: 'Kamu menguasai sebagian besar kosakata hari ini. Terus tingkatkan konsistensi belajarmu!',
+          summaryGoodTitle: 'Kerja bagus! 🎉',
+          summaryGoodDescription: 'Kamu menguasai sebagian besar kosakata hari ini. Terus tingkatkan konsistensi belajarmu!',
+          savePdfButton: 'Simpan PDF',
+          restartButton: 'Ulangi Latihan',
+          tabReview: 'Review Kosakata',
+          loginTitle: 'Siap mulai belajar?',
+          loginDescription: 'Masukkan nama Anda dan pilih grup untuk memulai petualangan belajar kosakata Jepang.',
+          usernameLabel: 'Nama peserta',
+          usernamePlaceholder: 'Contoh: Sakura Tanaka',
+          groupPrompt: 'Pilih grup / wilayah',
+          saveButton: 'Mulai Belajar'
+        });
+        if (typeof updateLanguage === 'function') updateLanguage();
+      }
+    } catch(e) {}
+
+    function openMaterial(){ try { if (typeof openMaterialModalBox === 'function') openMaterialModalBox(); else qs('#materialBtn')?.click(); } catch(e){ qs('#materialBtn')?.click(); } }
+    function showHome(){ try { if (typeof showScreen === 'function' && typeof startScreen !== 'undefined') showScreen(startScreen); } catch(e){} window.scrollTo({top:0, behavior:'smooth'}); }
+    function showResult(){ try { if (typeof showAdminResultPage === 'function') showAdminResultPage(); else if (typeof showScreen === 'function' && typeof resultScreen !== 'undefined') showScreen(resultScreen); } catch(e){ qs('#resultPageBtn')?.click(); } }
+    qsa('[data-nav-target]').forEach(btn => {
+      btn.addEventListener('click', function(ev){
+        ev.preventDefault();
+        const target=this.getAttribute('data-nav-target');
+        if(target==='material') openMaterial();
+        else if(target==='practice') { qs('#startBtn')?.click(); }
+        else if(target==='result') showResult();
+        else showHome();
+      });
+    });
+    qs('#topLoginBtn')?.addEventListener('click', () => qs('#openLoginBtn')?.click());
+
+    const observer = new MutationObserver(() => {
+      const materialOpen = qs('#materialModal')?.classList.contains('show');
+      const active = materialOpen ? 'material' : qs('#practiceScreen.active') ? 'practice' : qs('#resultScreen.active') ? 'result' : 'home';
+      qsa('.kj-nav button[data-nav-target]').forEach(b => b.classList.toggle('active', b.dataset.navTarget === active));
+      try { if (typeof isAdmin !== 'undefined' && qs('#topLoginBtn')) qs('#topLoginBtn').innerHTML = isAdmin ? '🛡️ Admin' : '👤 Masuk'; } catch(e){}
+      document.body.classList.toggle('modal-open', qs('#loginModal')?.classList.contains('show') || qs('#exampleModal')?.classList.contains('show') || qs('#imageModal')?.classList.contains('show'));
+    });
+    observer.observe(document.body,{attributes:true,childList:true,subtree:true,attributeFilter:['class','hidden']});
+
+    const loginCard = qs('.login-modal-card');
+    if (loginCard && !qs('.admin-soft-note')) {
+      const note = document.createElement('div'); note.className='admin-soft-note';
+      note.innerHTML='<strong>Mode admin (opsional)</strong><br><span>Masukkan kata sandi admin untuk mengakses fitur pengelolaan.</span>';
+      const pass = qs('#passwordBox'); if(pass) pass.insertAdjacentElement('beforebegin', note);
+    }
+    const css=document.createElement('style');
+    css.textContent='.admin-soft-note{margin:12px 0 8px;padding:16px 18px;border-radius:18px;background:#F8F5FF;border:1px solid #E7E2F5;text-align:left;color:#0F1B33;font-weight:850}.admin-soft-note span{color:#64748B;font-weight:650;font-size:14px}.login-field:first-of-type input{padding-left:48px!important}.login-field:first-of-type{position:relative}.login-field:first-of-type:after{content:"👤";position:absolute;left:18px;bottom:18px;font-size:19px}.password-box{position:relative}.password-box:after{content:"◡";position:absolute;right:22px;bottom:34px;color:#94A3B8;font-weight:900}.material-item:after{content:"Sekolah";display:inline-flex;margin:0 20px 18px;padding:6px 12px;border-radius:999px;background:#F1EBFF;color:#6D4AFF;font-size:12px;font-weight:850}.material-category:nth-of-type(3n) .material-item:after{content:"Salam";background:#FFEAF3;color:#EC4899}.material-category:nth-of-type(3n+1) .material-item:after{content:"Keluarga";background:#FFF3E8;color:#F97316}';
+    document.head.appendChild(css);
+  });
+})();
+</script>
+
+
+<!-- HOME PAGE DESKTOP REFINEMENT: reference-aligned layout -->
+<style id="home-reference-polish">
+  :root{
+    --primary:#6D4AFF;--primary-dark:#5B35E8;--primary-2:#8B6BFF;--primary-soft:#F1EBFF;
+    --lavender:#F6F2FF;--pink:#FFEAF4;--blue:#EAF4FF;--mint:#E9FBF4;
+    --text-main:#0F1B33;--text-muted:#64748B;--border:#E7E2F5;--card:#FFFFFF;
+    --success:#20C997;--danger:#F43F5E;--warning:#F59E0B;
+  }
+  html,body{overflow-x:hidden!important;}
+  body{
+    color:var(--text-main)!important;
+    background:
+      radial-gradient(circle at 8% 18%, rgba(139,107,255,.13), transparent 28%),
+      radial-gradient(circle at 88% 20%, rgba(125,211,252,.18), transparent 30%),
+      radial-gradient(circle at 82% 88%, rgba(255,178,206,.20), transparent 33%),
+      linear-gradient(135deg,#FBFCFF 0%,#FFF8FC 48%,#F7FBFF 100%)!important;
+  }
+  .kj-topbar{
+    position:sticky!important;top:0!important;z-index:40!important;
+    width:min(100%,100%)!important;margin:0!important;
+    background:rgba(255,255,255,.82)!important;
+    border-bottom:1px solid rgba(231,226,245,.72)!important;
+    backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;
+    box-shadow:0 12px 34px rgba(15,27,51,.045)!important;
+  }
+  .kj-nav-inner{width:min(1440px,calc(100% - 96px))!important;margin:0 auto!important;min-height:104px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:32px!important;}
+  .kj-brand{display:flex!important;align-items:center!important;gap:14px!important;text-decoration:none!important;color:var(--text-main)!important;}
+  .kj-logo{width:56px!important;height:56px!important;display:grid!important;place-items:center!important;border-radius:16px!important;background:linear-gradient(145deg,#A98DFF,#6D4AFF)!important;color:white!important;font-family:var(--font-jp)!important;font-size:26px!important;font-weight:800!important;box-shadow:0 13px 24px rgba(109,74,255,.24), inset 0 2px 0 rgba(255,255,255,.34)!important;position:relative!important;}
+  .kj-logo:after{content:"";position:absolute;inset:6px -8px -6px 8px;border:2px solid rgba(109,74,255,.26);border-radius:16px;z-index:-1;background:rgba(241,235,255,.5)}
+  .kj-brand-title{display:block!important;color:#5B35E8!important;font-size:18px!important;font-weight:900!important;line-height:1.15!important;letter-spacing:-.02em!important;}
+  .kj-brand-sub{display:block!important;color:#475569!important;font-size:14px!important;font-weight:600!important;line-height:1.25!important;margin-top:3px!important;}
+  .kj-nav{display:flex!important;align-items:center!important;gap:34px!important;}
+  .kj-nav button:not(.kj-login-btn){border:0!important;background:transparent!important;color:#34425E!important;font-size:14px!important;font-weight:650!important;padding:16px 0!important;border-radius:0!important;box-shadow:none!important;position:relative!important;}
+  .kj-nav button:not(.kj-login-btn)::after{content:"";position:absolute;left:50%;bottom:4px;width:0;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--primary-2));transform:translateX(-50%);transition:.2s ease;}
+  .kj-nav button.active:not(.kj-login-btn),.kj-nav button:not(.kj-login-btn):hover{color:var(--primary)!important;}
+  .kj-nav button.active:not(.kj-login-btn)::after,.kj-nav button:not(.kj-login-btn):hover::after{width:74px;}
+  .kj-login-btn{min-height:46px!important;padding:0 20px!important;border-radius:14px!important;border:1px solid #DDE3EF!important;background:#fff!important;color:#4F3AA5!important;font-weight:800!important;box-shadow:0 8px 20px rgba(15,27,51,.04)!important;}
+  .app-shell{width:min(1440px,calc(100% - 96px))!important;max-width:1440px!important;display:block!important;min-height:auto!important;padding:50px 0 42px!important;}
+  #startScreen.screen.active{display:block!important;}
+  #startScreen .panel.hero.hero-dashboard{
+    width:100%!important;max-width:none!important;margin:0!important;padding:0!important;box-shadow:none!important;border:0!important;background:transparent!important;backdrop-filter:none!important;
+    display:grid!important;grid-template-columns:minmax(450px, .92fr) minmax(540px,1.08fr)!important;grid-template-areas:"copy preview" "features features"!important;gap:34px 36px!important;align-items:center!important;position:relative!important;overflow:visible!important;border-radius:0!important;
+  }
+  #startScreen .hero-top-controls{display:contents!important;}
+  #startScreen .hero-copy{grid-area:copy!important;width:100%!important;max-width:650px!important;margin:0!important;text-align:left!important;display:grid!important;grid-template-columns:1fr auto!important;gap:0 22px!important;align-items:start!important;}
+  #startScreen .hero-copy .hero-badge{grid-column:1/2!important;justify-self:start!important;margin:0 0 34px!important;height:46px!important;padding:0 22px!important;border-radius:999px!important;background:#F1EBFF!important;border:1px solid #E7E2F5!important;color:#6D4AFF!important;font-size:16px!important;font-weight:850!important;box-shadow:0 10px 22px rgba(109,74,255,.07)!important;}
+  #startScreen .hero-copy .hero-badge::before{content:"📖";margin-right:2px;}
+  #startScreen .language-switch{grid-column:2/3!important;position:static!important;justify-self:end!important;margin:0!important;height:46px!important;display:flex!important;align-items:center!important;gap:0!important;padding:0 16px!important;border-radius:999px!important;background:#fff!important;border:1px solid #DDE3EF!important;box-shadow:0 10px 22px rgba(15,27,51,.045)!important;}
+  #startScreen .language-switch::before{content:"🇯🇵";display:inline-grid;place-items:center;margin-right:10px;width:26px;height:26px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px #EEF2F7 inset;font-size:15px;}
+  #startScreen .language-switch::after{content:"⌄";margin-left:10px;color:#0F1B33;font-weight:900;font-size:14px;}
+  #startScreen .language-btn{display:none!important;background:transparent!important;color:#0F1B33!important;padding:0!important;min-height:0!important;border:0!important;box-shadow:none!important;font-size:15px!important;font-weight:800!important;}
+  #startScreen .language-btn.active{display:inline!important;color:#0F1B33!important;background:transparent!important;box-shadow:none!important;}
+  #startScreen .hero h1{grid-column:1/-1!important;margin:0 0 22px!important;max-width:620px!important;color:#0F1B33!important;font-size:clamp(54px,5vw,72px)!important;font-weight:950!important;line-height:1.08!important;letter-spacing:-.045em!important;text-align:left!important;white-space:pre-line!important;}
+  #startScreen .hero p{grid-column:1/-1!important;max-width:540px!important;margin:0 0 34px!important;color:#526179!important;font-size:19px!important;font-weight:500!important;line-height:1.68!important;text-align:left!important;}
+  #startScreen .username-box{display:contents!important;}
+  #usernameNote,#loginSummary{display:none!important;}
+  #startScreen .hero-actions{grid-column:1/-1!important;margin:0 0 30px!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:18px!important;}
+  #startScreen #openLoginBtn.login-trigger{width:250px!important;min-height:58px!important;padding:0 26px!important;border:0!important;border-radius:15px!important;background:linear-gradient(135deg,#7C5CFF 0%,#6D4AFF 100%)!important;color:#fff!important;box-shadow:0 16px 30px rgba(109,74,255,.25)!important;font-size:17px!important;font-weight:850!important;}
+  #startScreen #openLoginBtn.login-trigger::before{content:"👤";font-size:20px;filter:brightness(4);}
+  #startScreen #materialBtn.btn.secondary{width:220px!important;min-height:58px!important;border-radius:15px!important;color:#6D4AFF!important;background:#fff!important;border:2px solid #D9D0FF!important;box-shadow:0 10px 24px rgba(109,74,255,.06)!important;font-size:17px!important;font-weight:850!important;}
+  #startScreen #materialBtn.btn.secondary::before{content:"📖";font-size:20px;}
+  #startScreen #startBtn{min-height:58px!important;border-radius:15px!important;padding:0 24px!important;}
+  #startScreen #startBtn:not(.show){display:none!important;}
+  #startScreen .hero-info-row{grid-column:1/-1!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important;margin:0 0 18px!important;width:100%!important;}
+  #startScreen .hero-info-card{width:100%!important;min-width:0!important;min-height:118px!important;padding:20px 18px!important;border-radius:20px!important;background:#fff!important;border:1px solid #E7E2F5!important;box-shadow:0 14px 34px rgba(15,27,51,.06)!important;display:flex!important;align-items:center!important;gap:15px!important;}
+  #startScreen .hero-info-icon{width:54px!important;height:54px!important;flex:0 0 54px!important;border-radius:999px!important;background:#F1EBFF!important;color:#6D4AFF!important;box-shadow:none!important;border:0!important;}
+  #startScreen .hero-info-card:nth-child(2) .hero-info-icon{background:#E9FBF4!important;color:#20C997!important;}
+  #startScreen .hero-info-card:nth-child(3) .hero-info-icon{background:#FFEAF4!important;color:#EC4899!important;}
+  #startScreen .hero-info-card span{font-size:13px!important;color:#64748B!important;font-weight:700!important;line-height:1.35!important;white-space:pre-line!important;}
+  #startScreen .hero-info-card strong{font-size:31px!important;color:#0F1B33!important;font-weight:950!important;line-height:1.02!important;white-space:pre-line!important;letter-spacing:-.035em!important;}
+  #startScreen .hero-info-card:nth-child(1) span::after{content:"\A Bab 1–5";white-space:pre;color:#64748B;font-weight:650;}
+  #startScreen .hero-info-card:nth-child(2) span::after{content:"\A per Kartu";white-space:pre;color:#64748B;font-weight:650;}
+  #startScreen .hero-info-card:nth-child(3) span::after{content:"\A Topik";white-space:pre;color:#64748B;font-weight:650;}
+  #startScreen .fiction-toggle{grid-column:1/-1!important;position:static!important;width:100%!important;max-width:none!important;min-height:108px!important;margin:0!important;padding:20px 28px 20px 102px!important;border-radius:20px!important;background:#fff!important;border:1px solid #E7E2F5!important;box-shadow:0 14px 34px rgba(15,27,51,.06)!important;color:#0F1B33!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:12px!important;text-align:left!important;}
+  #startScreen .fiction-toggle::before{content:"✦";position:absolute;left:28px;top:50%;transform:translateY(-50%);width:58px;height:58px;display:grid;place-items:center;border-radius:999px;background:#E9FBF4;color:#20C997;font-size:30px;font-weight:900;}
+  #startScreen .fiction-label{display:block!important;font-size:18px!important;font-weight:900!important;color:#0F1B33!important;line-height:1.2!important;}
+  #startScreen .fiction-label::after{content:"\ASertakan kosakata dari anime, game,\A dan karya fiksi populer.";white-space:pre;display:block;margin-top:7px;color:#64748B;font-size:15px;font-weight:600;line-height:1.45;}
+  #startScreen .fiction-state{display:none!important;}
+  #startScreen .fiction-switch{width:72px!important;height:38px!important;background:linear-gradient(135deg,#20C997,#22C55E)!important;border-radius:999px!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)!important;}
+  #startScreen .fiction-switch::after{width:30px!important;height:30px!important;top:4px!important;right:4px!important;background:#fff!important;box-shadow:0 5px 13px rgba(15,27,51,.20)!important;}
+  #startScreen .fiction-toggle[aria-pressed="false"] .fiction-switch{background:#CBD5E1!important;}
+  #startScreen .fiction-toggle[aria-pressed="false"] .fiction-switch::after{transform:translateX(-34px)!important;}
+
+  #startScreen .hero-preview-card{grid-area:preview!important;width:100%!important;min-height:700px!important;border-radius:34px!important;border:4px solid rgba(255,255,255,.86)!important;background:
+      radial-gradient(circle at 78% 12%, rgba(255,255,255,.65), transparent 26%),
+      linear-gradient(180deg,rgba(219,238,255,.92),rgba(255,235,246,.86) 68%,rgba(255,255,255,.92) 68%),
+      linear-gradient(135deg,#DDF0FF,#FFEAF4)!important;box-shadow:0 18px 42px rgba(92,76,139,.13)!important;position:relative!important;overflow:hidden!important;padding:70px 72px 76px!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+  #startScreen .hero-preview-card::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(120px 160px at 88% 18%, rgba(255,255,255,.85) 0 18%, transparent 19%),
+      linear-gradient(145deg, transparent 0 54%, rgba(245,125,172,.55) 54% 57%, transparent 57%),
+      linear-gradient(110deg, transparent 0 63%, rgba(155,100,130,.42) 63% 65%, transparent 65%);
+    opacity:.8;pointer-events:none;}
+  #startScreen .hero-preview-card::after{content:"";position:absolute;right:-18px;top:100px;width:250px;height:430px;background:
+      linear-gradient(to top, rgba(167,83,112,.15), transparent 84%),
+      repeating-linear-gradient(to bottom, transparent 0 54px, rgba(109,74,255,.16) 55px 61px, transparent 62px 96px),
+      linear-gradient(135deg,rgba(198,86,131,.50),rgba(255,230,241,.78));
+    clip-path:polygon(47% 0,65% 12%,65% 100%,23% 100%,23% 12%);border-radius:12px;filter:blur(.1px);opacity:.58;}
+  .preview-topline,.preview-illustration,.preview-actions{display:none!important;}
+  #startScreen .preview-jp{width:min(100%,520px)!important;min-height:440px!important;padding:42px 48px 38px!important;display:grid!important;align-content:center!important;justify-items:center!important;border-radius:30px!important;background:rgba(255,255,255,.92)!important;border:1px solid rgba(231,226,245,.92)!important;box-shadow:0 18px 42px rgba(15,27,51,.10)!important;position:relative!important;z-index:2!important;text-align:center!important;}
+  #startScreen .preview-jp::before{content:"👥  Kata Ganti Orang";position:absolute;left:36px;top:36px;padding:8px 16px;border-radius:12px;background:#F1EBFF;color:#7C5CFF;font-size:14px;font-weight:850;}
+  #startScreen .preview-jp::after{content:"☆";position:absolute;right:34px;top:30px;width:56px;height:56px;display:grid;place-items:center;border-radius:999px;background:#fff;border:1px solid #DDE3EF;color:#34425E;font-size:32px;font-weight:400;box-shadow:0 9px 18px rgba(15,27,51,.06);}
+  #startScreen .preview-jp span{font-family:var(--font-jp)!important;font-size:84px!important;color:#0F1B33!important;font-weight:900!important;line-height:1!important;margin:42px 0 20px!important;letter-spacing:-.04em!important;}
+  #startScreen .preview-jp span{font-size:0!important;}
+  #startScreen .preview-jp span::before{content:"わたし";font-family:var(--font-jp);font-size:88px;color:#0F1B33;font-weight:900;line-height:1;}
+  #startScreen .preview-jp strong{font-size:25px!important;color:#8B6BFF!important;font-weight:900!important;line-height:1.2!important;margin:0 0 24px!important;}
+  #startScreen .preview-jp strong{font-size:0!important;}
+  #startScreen .preview-jp strong::before{content:"watashi";font-size:25px;color:#8B6BFF;font-weight:900;}
+  #startScreen .preview-jp small{width:100%!important;padding-top:28px!important;border-top:1px solid #E7E2F5!important;color:#0F1B33!important;font-size:29px!important;font-weight:900!important;line-height:1.2!important;}
+  #startScreen .preview-jp small{font-size:0!important;}
+  #startScreen .preview-jp small::before{content:"saya, aku";font-size:29px;color:#0F1B33;font-weight:900;}
+  #startScreen .preview-jp small::after{content:"\A\A🔊  Dengar";white-space:pre;display:inline-flex;margin-top:26px;padding:17px 32px;border-radius:18px;border:2px solid #D9D0FF;color:#6D4AFF;background:#fff;font-size:20px;font-weight:850;box-shadow:0 8px 18px rgba(109,74,255,.06);}
+  #startScreen .hero-preview-card .carousel-dots{position:absolute;z-index:4;left:50%;bottom:34px;transform:translateX(-50%);display:flex;gap:12px;}
+  #startScreen .hero-preview-card .carousel-dots span{width:15px;height:15px;border-radius:999px;border:1px solid #D5DDEA;background:#fff;display:block;}
+  #startScreen .hero-preview-card .carousel-dots span:first-child{background:#7C5CFF;border-color:#7C5CFF;box-shadow:0 4px 10px rgba(109,74,255,.24);}
+  #startScreen .hero-preview-card .voice-caption{position:absolute;left:50%;bottom:102px;transform:translateX(-50%);z-index:4;color:#7C5CFF;font-size:17px;font-weight:800;white-space:nowrap;}
+  #startScreen .hero-preview-card .sakura-petal{position:absolute;width:18px;height:10px;border-radius:90% 10% 90% 10%;background:#FF9FBE;opacity:.7;transform:rotate(-32deg);z-index:1;}
+  #startScreen .hero-preview-card .p1{left:28px;top:280px}.p2{left:45px;bottom:180px}.p3{right:280px;top:36px}.p4{right:90px;top:138px}
+
+  .home-feature-strip{grid-area:features!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important;margin-top:0!important;padding:24px 34px!important;border-radius:18px!important;background:#fff!important;border:1px solid #E7E2F5!important;box-shadow:0 14px 34px rgba(15,27,51,.055)!important;}
+  .home-feature{display:grid!important;grid-template-columns:64px minmax(0,1fr)!important;gap:16px!important;align-items:center!important;padding:0 20px!important;min-height:78px!important;}
+  .home-feature+.home-feature{border-left:1px solid #EEF2F7!important;}
+  .home-feature-icon{width:54px;height:54px;border-radius:999px;display:grid;place-items:center;font-size:27px;font-weight:900;background:#EAF4FF;color:#2884FF;}
+  .home-feature:nth-child(2) .home-feature-icon{background:#E9FBF4;color:#20C997}.home-feature:nth-child(3) .home-feature-icon{background:#FFEAF4;color:#F43F8A}.home-feature:nth-child(4) .home-feature-icon{background:#EAF4FF;color:#2F80ED}
+  .home-feature strong{display:block;color:#0F1B33;font-size:17px;font-weight:900;line-height:1.2;margin-bottom:6px;}
+  .home-feature span{display:block;color:#64748B;font-size:14px;font-weight:600;line-height:1.45;}
+
+  @media (max-width:1180px){
+    .kj-nav-inner,.app-shell{width:min(100%,calc(100% - 48px))!important;}
+    #startScreen .panel.hero.hero-dashboard{grid-template-columns:1fr!important;grid-template-areas:"copy" "preview" "features"!important;}
+    #startScreen .hero-copy{max-width:none!important;}
+    #startScreen .hero-preview-card{min-height:620px!important;padding:56px!important;}
+  }
+  @media (max-width:900px){
+    .kj-nav-inner{min-height:82px!important;width:min(100%,calc(100% - 28px))!important;}.kj-nav button:not(.kj-login-btn){display:none!important}.kj-login-btn{display:inline-flex!important}.kj-logo{width:48px!important;height:48px!important}.kj-brand-title{font-size:16px!important}.kj-brand-sub{font-size:12px!important}
+    .app-shell{width:min(100%,calc(100% - 28px))!important;padding:26px 0!important;}
+    #startScreen .hero-copy{grid-template-columns:1fr!important;}
+    #startScreen .language-switch{grid-column:1/-1!important;justify-self:start!important;margin:-18px 0 16px!important;}
+    #startScreen .hero-copy .hero-badge{margin-bottom:14px!important;}
+    #startScreen .hero h1{font-size:clamp(42px,10vw,58px)!important;}
+    #startScreen .hero-info-row{grid-template-columns:repeat(3,1fr)!important;}
+    #startScreen .hero-preview-card{min-height:560px!important;padding:36px 24px 78px!important;border-radius:28px!important;}
+    #startScreen .preview-jp{min-height:390px!important;padding:36px 24px!important;}
+    .home-feature-strip{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:18px!important;gap:12px!important;}
+    .home-feature{border-left:0!important;background:#fff!important;border-radius:16px!important;padding:12px!important;}
+  }
+  @media (max-width:640px){
+    #startScreen .hero h1{font-size:42px!important;}
+    #startScreen .hero p{font-size:16px!important;line-height:1.55!important;}
+    #startScreen .hero-actions{display:grid!important;grid-template-columns:1fr!important;gap:12px!important;}
+    #startScreen #openLoginBtn.login-trigger,#startScreen #materialBtn.btn.secondary,#startScreen #startBtn{width:100%!important;}
+    #startScreen .hero-info-row{grid-template-columns:1fr!important;}
+    #startScreen .fiction-toggle{padding-left:86px!important;}
+    #startScreen .hero-preview-card{min-height:500px!important;padding:24px 16px 76px!important;}
+    #startScreen .preview-jp{min-height:340px!important;border-radius:24px!important;}
+    #startScreen .preview-jp span::before{font-size:64px!important;}
+    #startScreen .preview-jp small::after{font-size:16px!important;padding:14px 24px!important;}
+    .home-feature-strip{grid-template-columns:1fr!important;}
+  }
+</style>
+<script id="home-reference-polish-js">
+(function(){
+  function ready(fn){ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',fn); else fn(); }
+  ready(function(){
+    const hero = document.querySelector('#startScreen .hero-dashboard');
+    const copy = document.querySelector('#startScreen .hero-copy');
+    const actions = document.querySelector('#startScreen .hero-actions');
+    const openLogin = document.getElementById('openLoginBtn');
+    const materialBtn = document.getElementById('materialBtn');
+    const lang = document.querySelector('#startScreen .language-switch');
+    const fiction = document.getElementById('fictionToggle');
+    const info = document.querySelector('#startScreen .hero-info-row');
+    const preview = document.querySelector('#startScreen .hero-preview-card');
+    if(copy && lang && !copy.contains(lang)) copy.insertBefore(lang, copy.firstElementChild);
+    if(actions && openLogin && !actions.contains(openLogin)) actions.insertBefore(openLogin, materialBtn || actions.firstChild);
+    if(copy && fiction && info && fiction.parentElement !== copy) info.insertAdjacentElement('afterend', fiction);
+    if(preview && !preview.querySelector('.carousel-dots')){
+      preview.insertAdjacentHTML('beforeend','<div class="voice-caption">🎙️ Coba jawab dengan suara kamu!</div><div class="carousel-dots" aria-hidden="true"><span></span><span></span><span></span></div><span class="sakura-petal p1"></span><span class="sakura-petal p2"></span><span class="sakura-petal p3"></span><span class="sakura-petal p4"></span>');
+    }
+    if(hero && !hero.querySelector('.home-feature-strip')){
+      hero.insertAdjacentHTML('beforeend', `
+        <section class="home-feature-strip" aria-label="Fitur utama">
+          <article class="home-feature"><div class="home-feature-icon">◉</div><div><strong>Kartu Visual</strong><span>Gambar membantu mengingat lebih kuat.</span></div></article>
+          <article class="home-feature"><div class="home-feature-icon">🎧</div><div><strong>Audio Jernih</strong><span>Dengar pelafalan asli penutur Jepang.</span></div></article>
+          <article class="home-feature"><div class="home-feature-icon">🎙</div><div><strong>Jawab dengan Suara</strong><span>Latih pengucapan dan dapatkan umpan balik instan.</span></div></article>
+          <article class="home-feature"><div class="home-feature-icon">▰</div><div><strong>Progress Belajar</strong><span>Lacak perkembangan dan tingkatkan setiap hari.</span></div></article>
+        </section>`);
+    }
+    const b=document.querySelector('#startScreen .hero-badge'); if(b) b.textContent='Bab 1–5 • 264 kosakata';
+    const h=document.querySelector('#startScreen .hero h1'); if(h) h.textContent='Belajar kosakata\nJepang';
+    const p=document.querySelector('#startScreen .hero p'); if(p) p.textContent='Belajar lebih efektif dengan kartu visual, audio, jawaban suara, dan progress yang membantu kamu menguasai kosakata sehari-hari.';
+    if(openLogin) openLogin.textContent='Isi Username';
+    if(materialBtn) materialBtn.textContent='Lihat Materi';
+    const cards=[...document.querySelectorAll('#startScreen .hero-info-card')];
+    if(cards[0]){cards[0].querySelector('strong').textContent='264'; cards[0].querySelector('span').textContent='Total Kosakata';}
+    if(cards[1]){cards[1].querySelector('strong').textContent='18 dtk'; cards[1].querySelector('span').textContent='Rata-rata Waktu';}
+    if(cards[2]){cards[2].querySelector('strong').textContent='12'; cards[2].querySelector('span').textContent='Jumlah Kategori';}
+    const fl=document.querySelector('#startScreen .fiction-label'); if(fl) fl.textContent='Gunakan kosakata fiksi';
+  });
+})();
+</script>
 </body>
 </html>
