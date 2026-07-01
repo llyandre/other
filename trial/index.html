@@ -2514,6 +2514,76 @@
     #quizSetupModal .select-like{height:48px;border-radius:14px;font-weight:650;}
     @media(max-width:640px){.quiz-option-grid{grid-template-columns:1fr}.quiz-setup-modal{padding:30px 20px 22px!important}}
 
+
+
+    /* === FIX FINAL: tombol audio tidak melewati batas + aturan flip/mic flashcard === */
+    #page-practice .control-panel,
+    #page-practice .action-stack,
+    #page-practice .answer-row{
+      min-width:0!important;
+      overflow:hidden!important;
+    }
+    #page-practice .action-stack{
+      width:100%!important;
+      display:grid!important;
+      grid-template-columns:minmax(0,1fr)!important;
+      gap:12px!important;
+    }
+    #page-practice .practice-action,
+    #page-practice #voiceAnswerBtn,
+    #page-practice .listening{
+      width:100%!important;
+      max-width:100%!important;
+      min-width:0!important;
+      box-sizing:border-box!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      gap:10px!important;
+      padding:0 16px!important;
+      overflow:hidden!important;
+      white-space:nowrap!important;
+      text-overflow:ellipsis!important;
+    }
+    #page-practice .practice-action i,
+    #page-practice .practice-action svg,
+    #page-practice .listening i,
+    #page-practice .listening svg{
+      width:20px!important;
+      height:20px!important;
+      min-width:20px!important;
+      flex:0 0 20px!important;
+    }
+    #page-practice .audio-bars{
+      flex:0 0 auto!important;
+      max-width:60px!important;
+    }
+    #page-practice #voiceAnswerBtn.voice-disabled,
+    #page-practice #voiceAnswerBtn:disabled{
+      background:#f8fafc!important;
+      color:#94a3b8!important;
+      border:1px solid #e2e8f0!important;
+      box-shadow:none!important;
+      cursor:not-allowed!important;
+      opacity:1!important;
+    }
+    #page-practice .flashcard-clickable.is-flipped{
+      cursor:default!important;
+    }
+    #page-practice .flashcard-clickable.is-locked{
+      pointer-events:none!important;
+      opacity:.98!important;
+    }
+    @media(max-width:760px){
+      #page-practice .practice-action,
+      #page-practice #voiceAnswerBtn,
+      #page-practice .listening{
+        height:54px!important;
+        font-size:14px!important;
+        padding:0 12px!important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -3541,6 +3611,187 @@
       }
       updateMicUI(); syncQuizOptionUI(); renderPracticeCardFace();
       if(typeof applyLocalIcons==='function') applyLocalIcons(document);
+    },0);
+
+
+    /* === FINAL RULES: flip sekali, timeout salah, voice hanya sebelum kartu dibalik === */
+    let cardAnswerLockedFinal = false;
+
+    function safelyStopVoiceFinal(){
+      try{ if(recognition) recognition.stop(); }catch(e){}
+      voiceBusy = false;
+      if(typeof setVoiceListening === 'function') setVoiceListening(false);
+    }
+
+    function setVoiceButtonStateFinal(){
+      const btn=document.getElementById('voiceAnswerBtn');
+      const sw=document.getElementById('micSwitch');
+      if(sw){
+        sw.classList.toggle('active', !!micAutoEnabled && !practiceFlipped);
+        sw.disabled = !!practiceFlipped || !!cardAnswerLockedFinal;
+        sw.style.cursor = (practiceFlipped || cardAnswerLockedFinal) ? 'not-allowed' : 'pointer';
+      }
+      if(!btn) return;
+      const disabled = !!practiceFlipped || !!cardAnswerLockedFinal;
+      btn.disabled = disabled;
+      btn.classList.toggle('voice-disabled', disabled);
+      btn.classList.toggle('mic-off', !micAutoEnabled && !disabled);
+      if(disabled){
+        btn.innerHTML = '<i class="fa-solid fa-microphone-slash"></i> &nbsp; Mic terkunci';
+      }else{
+        btn.innerHTML = micAutoEnabled
+          ? '<i class="fa-solid fa-microphone"></i> &nbsp; Mic ON'
+          : '<i class="fa-solid fa-microphone-slash"></i> &nbsp; Mic OFF';
+      }
+      if(typeof applyLocalIcons==='function') applyLocalIcons(btn);
+    }
+
+    renderPracticeCardFace = function(){
+      const v=currentVocab();
+      const showJapanese = quizDirection === 'jp-id' ? !practiceFlipped : practiceFlipped;
+      const card=document.getElementById('practiceFlashcard');
+      if(card){
+        card.classList.toggle('is-flipped', practiceFlipped);
+        card.classList.toggle('is-locked', cardAnswerLockedFinal);
+      }
+      if(showJapanese){
+        document.getElementById('practiceJapanese').textContent=v.jp;
+        document.getElementById('practiceKana').textContent=v.kana || '';
+        document.getElementById('practiceRomaji').textContent=v.romaji || '';
+        document.getElementById('rememberTitle').innerHTML = practiceFlipped
+          ? '<i class="fa-regular fa-lightbulb"></i> Jawaban bahasa Jepang'
+          : '<i class="fa-regular fa-lightbulb"></i> Klik kartu untuk melihat arti';
+        document.getElementById('rememberDesc').textContent = practiceFlipped
+          ? 'Kartu sudah dibalik. Pilih Benar atau Salah untuk lanjut.'
+          : 'Jawab dengan suara atau klik kartu satu kali untuk melihat jawaban.';
+      }else{
+        document.getElementById('practiceJapanese').textContent=cap(v.arti);
+        document.getElementById('practiceKana').textContent='Bahasa Indonesia';
+        document.getElementById('practiceRomaji').textContent='';
+        document.getElementById('rememberTitle').innerHTML = practiceFlipped
+          ? '<i class="fa-regular fa-lightbulb"></i> Jawaban bahasa Indonesia'
+          : '<i class="fa-regular fa-lightbulb"></i> Klik kartu untuk melihat bahasa Jepang';
+        document.getElementById('rememberDesc').textContent = practiceFlipped
+          ? 'Kartu sudah dibalik. Pilih Benar atau Salah untuk lanjut.'
+          : 'Jawab dengan suara atau klik kartu satu kali untuk melihat jawaban.';
+      }
+      if(typeof applyLocalIcons==='function') applyLocalIcons(document.getElementById('practiceFlashcard') || document);
+      setVoiceButtonStateFinal();
+    };
+
+    flipPracticeCard = function(){
+      if(cardAnswerLockedFinal || practiceFlipped) return;
+      practiceFlipped = true;
+      safelyStopVoiceFinal();
+      const fb=document.getElementById('voiceFeedback');
+      if(fb){
+        fb.className='voice-feedback show bad';
+        fb.innerHTML='<i class="fa-solid fa-circle-info"></i> Kartu sudah dibalik. Jawaban suara dimatikan, silakan pilih <strong>Benar</strong> atau <strong>Salah</strong>.';
+        if(typeof applyLocalIcons==='function') applyLocalIcons(fb);
+      }
+      renderPracticeCardFace();
+    };
+
+    const loadPracticeBeforeFinalRules = loadPractice;
+    loadPractice = function(playAudio=false){
+      cardAnswerLockedFinal = false;
+      practiceFlipped = false;
+      loadPracticeBeforeFinalRules(playAudio);
+      cardAnswerLockedFinal = false;
+      renderPracticeCardFace();
+      setVoiceButtonStateFinal();
+    };
+
+    const answerCardBeforeFinalRules = answerCard;
+    answerCard = function(isCorrect){
+      if(cardAnswerLockedFinal) return;
+      cardAnswerLockedFinal = true;
+      clearInterval(quizTimerInterval);
+      safelyStopVoiceFinal();
+      setVoiceButtonStateFinal();
+      answerCardBeforeFinalRules(!!isCorrect);
+    };
+
+    toggleMicMode = function(){
+      if(practiceFlipped || cardAnswerLockedFinal){
+        const fb=document.getElementById('voiceFeedback');
+        if(fb){
+          fb.className='voice-feedback show bad';
+          fb.innerHTML='<i class="fa-solid fa-circle-info"></i> Mic tidak bisa digunakan setelah kartu dibalik. Pilih Benar atau Salah untuk lanjut.';
+          if(typeof applyLocalIcons==='function') applyLocalIcons(fb);
+        }
+        setVoiceButtonStateFinal();
+        return;
+      }
+      micAutoEnabled = !micAutoEnabled;
+      if(!micAutoEnabled){
+        safelyStopVoiceFinal();
+        const fb=document.getElementById('voiceFeedback'); if(fb) fb.className='voice-feedback';
+      }else{
+        startVoiceAnswer();
+      }
+      setVoiceButtonStateFinal();
+    };
+
+    const setVoiceListeningBeforeFinalRules = setVoiceListening;
+    setVoiceListening = function(active){
+      if(practiceFlipped || cardAnswerLockedFinal) active=false;
+      const box=document.getElementById('voiceListening');
+      const btn=document.getElementById('voiceAnswerBtn');
+      if(box) box.classList.toggle('active', active);
+      if(btn){
+        btn.classList.toggle('listening-now', active);
+        if(active){
+          btn.disabled=false;
+          btn.classList.remove('voice-disabled');
+          btn.innerHTML='<i class="fa-solid fa-microphone-lines"></i> &nbsp; Mendengarkan...';
+        }else{
+          setVoiceButtonStateFinal();
+          return;
+        }
+        if(typeof applyLocalIcons==='function') applyLocalIcons(btn);
+      }
+    };
+
+    const startVoiceAnswerBeforeFinalRules = startVoiceAnswer;
+    startVoiceAnswer = function(){
+      if(practiceFlipped || cardAnswerLockedFinal || !micAutoEnabled) return;
+      startVoiceAnswerBeforeFinalRules();
+    };
+
+    const evaluateVoiceAnswerBeforeFinalRules = evaluateVoiceAnswer;
+    evaluateVoiceAnswer = function(transcript){
+      if(practiceFlipped || cardAnswerLockedFinal) return;
+      evaluateVoiceAnswerBeforeFinalRules(transcript);
+    };
+
+    const startQuizTimerBeforeFinalRules = startQuizTimer;
+    startQuizTimer = function(){
+      startQuizTimerBeforeFinalRules();
+    };
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      const card=document.getElementById('practiceFlashcard');
+      if(card){
+        card.classList.add('flashcard-clickable');
+        card.onclick = function(e){
+          if(e.target.closest('button,a,input,select,.card-star,.badge')) return;
+          flipPracticeCard();
+        };
+      }
+      setVoiceButtonStateFinal();
+      renderPracticeCardFace();
+    });
+    setTimeout(()=>{
+      const card=document.getElementById('practiceFlashcard');
+      if(card){
+        card.classList.add('flashcard-clickable');
+        card.onclick = function(e){
+          if(e.target.closest('button,a,input,select,.card-star,.badge')) return;
+          flipPracticeCard();
+        };
+      }
+      setVoiceButtonStateFinal();
     },0);
 
   </script>
