@@ -6770,5 +6770,275 @@
   setTimeout(init,80);setTimeout(init,800);setTimeout(init,1500);
 })();
 </script>
+
+
+<!-- === PATCH FINAL ADMIN v12: no horizontal scroll, detail button, search alignment, statistic icons === -->
+<style id="patch-admin-final-v12">
+  /* Desktop admin table: dibuat fit 100% agar tidak muncul horizontal scroll seperti gambar 1 */
+  #page-admin,
+  #page-admin button,
+  #page-admin input,
+  #page-admin select,
+  #detailModal{
+    font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,"Segoe UI",sans-serif!important;
+  }
+  #page-admin .admin-table-card{
+    overflow:hidden!important;
+  }
+  #page-admin .table-scroll{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+    overflow-y:visible!important;
+    border-radius:12px!important;
+  }
+  #page-admin .data-table{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    table-layout:fixed!important;
+    border-collapse:separate!important;
+    border-spacing:0!important;
+  }
+  #page-admin .data-table th,
+  #page-admin .data-table td{
+    padding:12px 9px!important;
+    font-size:12.4px!important;
+    line-height:1.32!important;
+    vertical-align:middle!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    word-break:normal!important;
+  }
+  #page-admin .data-table th:nth-child(1),#page-admin .data-table td:nth-child(1){width:46px!important;text-align:center!important;}
+  #page-admin .data-table th:nth-child(2),#page-admin .data-table td:nth-child(2){width:17.5%!important;}
+  #page-admin .data-table th:nth-child(3),#page-admin .data-table td:nth-child(3){width:13%!important;}
+  #page-admin .data-table th:nth-child(4),#page-admin .data-table td:nth-child(4){width:16%!important;}
+  #page-admin .data-table th:nth-child(5),#page-admin .data-table td:nth-child(5){width:7%!important;text-align:center!important;}
+  #page-admin .data-table th:nth-child(6),#page-admin .data-table td:nth-child(6){width:7%!important;text-align:center!important;}
+  #page-admin .data-table th:nth-child(7),#page-admin .data-table td:nth-child(7){width:7%!important;text-align:center!important;}
+  #page-admin .data-table th:nth-child(8),#page-admin .data-table td:nth-child(8){width:9.5%!important;text-align:center!important;}
+  #page-admin .data-table th:nth-child(9),#page-admin .data-table td:nth-child(9){width:16%!important;text-align:center!important;}
+  #page-admin .participant{
+    gap:10px!important;
+    min-width:0!important;
+  }
+  #page-admin .participant > span:last-child{
+    display:block!important;
+    min-width:0!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+  }
+  #page-admin .avatar{
+    width:38px!important;
+    height:38px!important;
+    min-width:38px!important;
+    font-size:14px!important;
+  }
+  #page-admin .group-badge,
+  #page-admin .score-badge{
+    max-width:100%!important;
+    min-height:28px!important;
+    padding:6px 11px!important;
+    font-size:11.6px!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+  #page-admin .actions-cell{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex-wrap:nowrap!important;
+    gap:7px!important;
+    min-width:0!important;
+  }
+  #page-admin .small-btn{
+    height:34px!important;
+    min-width:72px!important;
+    padding:0 9px!important;
+    border-radius:9px!important;
+    font-size:12.2px!important;
+    font-weight:750!important;
+    letter-spacing:0!important;
+  }
+  #page-admin .small-btn i{
+    font-size:13px!important;
+    margin-right:2px!important;
+  }
+
+  /* Search bar: icon dibuat benar-benar di tengah input seperti gambar 3 */
+  #page-admin .filter-row .search-bar{
+    position:relative!important;
+    width:100%!important;
+    max-width:none!important;
+    height:46px!important;
+    margin:0!important;
+    display:block!important;
+  }
+  #page-admin .filter-row .search-bar i{
+    position:absolute!important;
+    left:18px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    width:18px!important;
+    height:18px!important;
+    min-width:18px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    color:#10213f!important;
+    font-size:15px!important;
+    z-index:2!important;
+    pointer-events:none!important;
+    margin:0!important;
+  }
+  #page-admin .filter-row .search-bar input,
+  #page-admin .filter-row input#participantSearch{
+    width:100%!important;
+    height:46px!important;
+    padding-left:50px!important;
+    padding-right:16px!important;
+    margin:0!important;
+  }
+
+  /* Statistik admin: warna ikon disamakan dengan referensi gambar 5 */
+  #page-admin .admin-stats{
+    gap:20px!important;
+  }
+  #page-admin .admin-stat{
+    min-height:126px!important;
+    padding:24px 24px!important;
+    border-radius:17px!important;
+    gap:22px!important;
+  }
+  #page-admin .admin-stat .icon-bubble{
+    width:68px!important;
+    height:68px!important;
+    min-width:68px!important;
+    flex:0 0 68px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    border-radius:50%!important;
+    box-shadow:none!important;
+  }
+  #page-admin .admin-stat .icon-bubble i,
+  #page-admin .admin-stat .icon-bubble svg{
+    width:29px!important;
+    height:29px!important;
+    font-size:29px!important;
+    line-height:1!important;
+    display:block!important;
+  }
+  #page-admin .admin-stat:nth-child(1) .icon-bubble{background:#f1eaff!important;color:#7c4dff!important;}
+  #page-admin .admin-stat:nth-child(2) .icon-bubble{background:#ddf8e9!important;color:#10b981!important;}
+  #page-admin .admin-stat:nth-child(3) .icon-bubble{background:#fff3d6!important;color:#f7b500!important;}
+  #page-admin .admin-stat:nth-child(4) .icon-bubble{background:#ffe4ec!important;color:#ff3b6b!important;}
+  #page-admin .admin-stat:nth-child(5) .icon-bubble{background:#eaf2ff!important;color:#3478f6!important;}
+  #page-admin .admin-stat:nth-child(3) .icon-bubble i.svg-fa-fallback svg{
+    fill:currentColor!important;
+    stroke:currentColor!important;
+  }
+
+  /* Popup detail: tombol tutup dibuat lebih ringan dan estetik */
+  #detailModal .modal{
+    border-radius:28px!important;
+    padding:30px 36px 32px!important;
+    overflow:auto!important;
+  }
+  #detailModal .modal-title{
+    font-size:26px!important;
+    font-weight:750!important;
+    letter-spacing:-.035em!important;
+    color:#10213f!important;
+    margin-bottom:16px!important;
+  }
+  #detailModal .btn-primary{
+    height:52px!important;
+    min-width:124px!important;
+    width:auto!important;
+    padding:0 28px!important;
+    border-radius:16px!important;
+    font-size:15px!important;
+    font-weight:700!important;
+    letter-spacing:0!important;
+    text-transform:none!important;
+    background:linear-gradient(135deg,#8b5cf6,#6d3df2)!important;
+    box-shadow:0 14px 28px rgba(124,77,255,.22)!important;
+  }
+  #detailModal .btn-primary:hover{
+    transform:translateY(-1px)!important;
+    box-shadow:0 18px 34px rgba(124,77,255,.27)!important;
+  }
+
+  @media(max-width:980px){
+    #page-admin .table-scroll{overflow-x:auto!important;}
+    #page-admin .data-table{min-width:920px!important;}
+  }
+  @media(max-width:760px){
+    #detailModal .modal{padding:26px 20px 26px!important;}
+    #detailModal .btn-primary{width:100%!important;}
+  }
+</style>
+<script id="patch-admin-final-v12-script">
+(function(){
+  const ICONS={
+    'fa-user-group':'<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3.5 20a6 6 0 0 1 11 0"/><path d="M14.5 19a5 5 0 0 1 6-2.8"/></svg>',
+    'fa-star':'<svg viewBox="0 0 24 24"><path d="m12 3 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 21l1.1-6.5-4.7-4.6 6.5-.9L12 3Z"/></svg>',
+    'fa-arrow-trend-up':'<svg viewBox="0 0 24 24"><path d="M4 17l6-6 4 4 6-8"/><path d="M15 7h5v5"/></svg>',
+    'fa-arrow-trend-down':'<svg viewBox="0 0 24 24"><path d="M4 7l6 6 4-4 6 8"/><path d="M15 17h5v-5"/></svg>',
+    'fa-file-lines':'<svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6V3Z"/><path d="M15 3v4h4"/><path d="M9 12h6"/><path d="M9 16h6"/><path d="M9 8h2"/></svg>',
+    'fa-download':'<svg viewBox="0 0 24 24"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>',
+    'fa-rotate-right':'<svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.35-5.65"/><path d="M20 4v6h-6"/></svg>'
+  };
+  function setIcon(i,name,regular){
+    if(!i || !ICONS[name]) return;
+    const cls=(regular?'fa-regular ':'fa-solid ')+name+' svg-fa-fallback';
+    if(i.dataset.faName===name && i.className===cls && i.innerHTML===ICONS[name]) return;
+    i.className=cls;
+    i.dataset.faName=name;
+    i.innerHTML=ICONS[name];
+    i.setAttribute('aria-hidden','true');
+  }
+  function fixAdminIcons(){
+    const cards=document.querySelectorAll('#page-admin .admin-stat');
+    if(cards[0]) setIcon(cards[0].querySelector('.icon-bubble i'),'fa-user-group');
+    if(cards[1]) setIcon(cards[1].querySelector('.icon-bubble i'),'fa-arrow-trend-up');
+    if(cards[2]) setIcon(cards[2].querySelector('.icon-bubble i'),'fa-star');
+    if(cards[3]) setIcon(cards[3].querySelector('.icon-bubble i'),'fa-arrow-trend-down');
+    if(cards[4]) setIcon(cards[4].querySelector('.icon-bubble i'),'fa-file-lines',true);
+    const download=document.querySelector('#page-admin .admin-head .btn-primary i');
+    if(download) setIcon(download,'fa-download');
+    const reset=document.querySelector('#page-admin .filter-row .btn-secondary i');
+    if(reset) setIcon(reset,'fa-rotate-right');
+    const search=document.querySelector('#page-admin .filter-row .search-bar i');
+    if(search){
+      search.style.top='50%';
+      search.style.left='18px';
+      search.style.transform='translateY(-50%)';
+    }
+  }
+  function init(){
+    fixAdminIcons();
+    const close=document.querySelector('#detailModal .btn-primary');
+    if(close){
+      close.textContent=(document.documentElement.lang==='ja' || (typeof siteLang!=='undefined' && siteLang==='ja'))?'閉じる':'Tutup';
+      close.style.textTransform='none';
+    }
+  }
+  document.addEventListener('DOMContentLoaded',init);
+  window.addEventListener('load',init);
+  setTimeout(init,80);
+  setTimeout(init,500);
+  setTimeout(init,1500);
+  try{
+    const target=document.getElementById('page-admin') || document.body;
+    new MutationObserver(function(){requestAnimationFrame(init);}).observe(target,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
+  }catch(e){}
+})();
+</script>
+
 </body>
 </html>
