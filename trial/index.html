@@ -5266,7 +5266,51 @@
       +'<h2 style="font-size:15px;margin:18px 0 8px">'+(isJP?'解答レビュー':'Review Hasil Latihan')+'</h2><table class="detail" id="detailTable"><thead><tr><th style="width:42px">#</th><th>'+(isJP?'語彙':'Kosakata')+'</th><th>'+(isJP?'意味':'Arti')+'</th><th>'+(isJP?'カテゴリー':'Kategori')+'</th><th>'+(isJP?'状態':'Status')+'</th><th>'+(isJP?'時間':'Waktu')+'</th></tr></thead><tbody>'+rows+'</tbody></table>'
       +'<div class="note"><strong>'+(isJP?'備考':'Catatan')+':</strong> '+(isJP?'本報告書は日本語語彙学習システムの練習結果に基づいて自動作成されました。':'Laporan ini dibuat otomatis berdasarkan hasil kuis/flashcard pada aplikasi Kosakata Jepang.')+'</div><section class="sign"><div>'+(isJP?'確認者':'Diperiksa oleh')+'<div class="line"></div></div><div>'+(isJP?'学習者':'Peserta')+'<div class="line"></div></div></section><div class="brand">Kosakata Jepang • Kartu. Dengar. Ingat.</div></main>'
       +'<scr'+'ipt>function applyFilter(){var q=(document.getElementById("q").value||"").toLowerCase();var s=document.getElementById("statusFilter").value;document.querySelectorAll("#detailTable tbody tr[data-status]").forEach(function(r){var okS=s==="all"||r.dataset.status===s;var okQ=!q||(r.dataset.search||"").indexOf(q)>-1;r.classList.toggle("hidden-row",!(okS&&okQ));});}function resetFilter(){document.getElementById("q").value="";document.getElementById("statusFilter").value="all";applyFilter();}document.getElementById("q").addEventListener("input",applyFilter);document.getElementById("statusFilter").addEventListener("change",applyFilter);setTimeout(function(){window.focus();window.print();},700);<\/scr'+'ipt>'
-      +'</body></html>';
+      +'
+
+<style id="patch-background-hero-v9">
+  /* Revisi gambar belakang homepage:
+     - gambar digeser sedikit ke kanan agar bagian bangunan/pagoda lebih terlihat
+     - diberi layer putih lembut agar tidak mengganggu tulisan pada kartu */
+  #page-home .hero-art.image-watashi{
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.32) 50%, rgba(255,255,255,.18) 100%),
+      linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.20) 100%),
+      url('https://iili.io/C7G0YrB.png')!important;
+    background-size:cover!important;
+    background-position:64% center!important;
+    background-repeat:no-repeat!important;
+  }
+  #page-home .hero-art.image-watashi:before{
+    background:
+      radial-gradient(circle at 76% 20%, rgba(255,255,255,.56), transparent 25%),
+      radial-gradient(circle at 34% 86%, rgba(255,154,197,.22), transparent 28%),
+      linear-gradient(90deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.30) 52%, rgba(255,255,255,.10) 100%)!important;
+    opacity:.88!important;
+  }
+  #page-home .hero-art.image-watashi .flashcard-showcase{
+    background:rgba(255,255,255,.88)!important;
+    backdrop-filter:blur(4px) saturate(1.06)!important;
+    -webkit-backdrop-filter:blur(4px) saturate(1.06)!important;
+  }
+  @media(max-width:760px){
+    #page-home .hero-art.image-watashi{
+      background-image:
+        linear-gradient(90deg, rgba(255,255,255,.25) 0%, rgba(255,255,255,.36) 52%, rgba(255,255,255,.18) 100%),
+        linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.22) 100%),
+        url('https://iili.io/C7G0YrB.png')!important;
+      background-position:69% center!important;
+    }
+    #page-home .hero-art.image-watashi:before{
+      opacity:.9!important;
+    }
+    #page-home .hero-art.image-watashi .flashcard-showcase{
+      background:rgba(255,255,255,.90)!important;
+    }
+  }
+</style>
+
+</body></html>';
     const w=window.open('', '_blank');
     if(!w){alert(isJP?'ポップアップを許可してください。':'Izinkan pop-up browser agar laporan dapat dibuka di tab baru.');return;}
     w.document.open(); w.document.write(report); w.document.close();
