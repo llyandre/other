@@ -2584,6 +2584,173 @@
       }
     }
 
+
+
+    /* === FINAL PATCH: ringkasan materi lebih ringan + background motivasi + voice matching lebih toleran === */
+    #page-materi, #page-materi button, #page-materi input{
+      font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+      letter-spacing:-.01em!important;
+    }
+    #page-materi .layout-with-sidebar{grid-template-columns:275px minmax(0,1fr)!important;gap:28px!important;align-items:start!important;}
+    #page-materi .content-card{
+      padding:32px!important;border-radius:28px!important;background:rgba(255,255,255,.76)!important;
+      border:1px solid rgba(124,77,255,.14)!important;box-shadow:0 20px 58px rgba(80,70,140,.10)!important;
+    }
+    #page-materi .page-title{font-size:34px!important;line-height:1.16!important;font-weight:700!important;color:#10213f!important;letter-spacing:-.035em!important;margin:0 0 8px!important;}
+    #page-materi .page-desc{font-size:14px!important;line-height:1.6!important;font-weight:500!important;color:#667085!important;margin:0!important;}
+    #page-materi .search-bar{max-width:620px!important;margin:24px 0 22px!important;}
+    #page-materi .search-bar input{height:50px!important;border-radius:15px!important;font-size:14px!important;font-weight:500!important;color:#475569!important;background:rgba(255,255,255,.86)!important;}
+    #page-materi .pill-row{gap:14px!important;margin-bottom:26px!important;align-items:center!important;}
+    #page-materi .pill{height:46px!important;min-width:88px!important;padding:0 20px!important;border-radius:999px!important;font-size:14px!important;font-weight:650!important;color:#53627d!important;background:rgba(255,255,255,.84)!important;border:1px solid #e3e7f0!important;box-shadow:0 8px 22px rgba(80,70,140,.035)!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;}
+    #page-materi .pill.active{background:linear-gradient(135deg,#7c4dff,#6336e8)!important;color:#fff!important;border-color:transparent!important;box-shadow:0 12px 26px rgba(124,77,255,.18)!important;}
+    #page-materi .pill i{font-size:16px!important;}
+    #page-materi .vocab-grid{gap:22px!important;}
+    #page-materi .vocab-card{border-radius:20px!important;background:rgba(255,255,255,.92)!important;border:1px solid rgba(124,77,255,.12)!important;box-shadow:0 12px 32px rgba(80,70,140,.08)!important;}
+    #page-materi .vocab-body h3{font-size:30px!important;font-weight:700!important;color:#0f172a!important;line-height:1.12!important;margin-bottom:3px!important;}
+    #page-materi .vocab-body .romaji{font-size:15px!important;font-weight:600!important;color:#6b3df4!important;}
+    #page-materi .vocab-body .meaning-sm{font-size:15px!important;font-weight:500!important;color:#475569!important;line-height:1.45!important;}
+    #page-materi .cat-badge{font-weight:650!important;font-size:12px!important;}
+    #page-materi .listen-btn{font-size:14px!important;font-weight:650!important;}
+    #page-materi .side-card{border-radius:22px!important;background:rgba(255,255,255,.86)!important;border:1px solid rgba(124,77,255,.12)!important;box-shadow:0 16px 42px rgba(80,70,140,.08)!important;}
+    #page-materi .side-card h3{font-size:18px!important;font-weight:700!important;color:#10213f!important;letter-spacing:-.02em!important;}
+    #page-materi .side-link{font-size:15px!important;font-weight:600!important;}
+    #page-materi .stat-item strong{font-size:20px!important;font-weight:700!important;color:#111827!important;line-height:1.08!important;}
+    #page-materi .stat-item span{font-size:12px!important;font-weight:500!important;color:#667085!important;line-height:1.35!important;}
+    #page-materi .stat-item .icon-bubble{box-shadow:none!important;}
+    #page-materi .motivation{
+      min-height:210px!important;border-radius:22px!important;overflow:hidden!important;position:relative!important;
+      background:linear-gradient(135deg,rgba(242,235,255,.84),rgba(232,244,255,.82) 52%,rgba(255,234,244,.78))!important;
+      padding:28px 24px!important;border:1px solid rgba(124,77,255,.12)!important;
+    }
+    #page-materi .motivation:before{
+      content:""!important;position:absolute!important;inset:0!important;
+      background:url('https://iili.io/C7G05qQ.png') center/cover no-repeat!important;
+      opacity:.22!important;z-index:0!important;pointer-events:none!important;
+    }
+    #page-materi .motivation:after{display:none!important;}
+    #page-materi .motivation h3,#page-materi .motivation p,#page-materi .motivation .btn{position:relative!important;z-index:1!important;}
+    #page-materi .motivation h3{font-size:16px!important;line-height:1.35!important;font-weight:700!important;color:#6b3df4!important;margin:0 0 24px!important;}
+    #page-materi .motivation p{font-size:14px!important;line-height:1.7!important;font-weight:500!important;color:#475569!important;margin:0 0 26px!important;max-width:210px!important;}
+    #page-materi .motivation .btn{height:48px!important;border-radius:14px!important;padding:0 20px!important;font-size:14px!important;font-weight:650!important;background:rgba(255,255,255,.86)!important;color:#6b3df4!important;border:1px solid rgba(124,77,255,.16)!important;}
+    @media(max-width:1100px){#page-materi .layout-with-sidebar{grid-template-columns:1fr!important;}#page-materi .vocab-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
+    @media(max-width:760px){#page-materi .content-card{padding:22px!important;}#page-materi .page-title{font-size:28px!important;}#page-materi .vocab-grid{grid-template-columns:1fr!important;}#page-materi .pill{min-width:auto!important;padding:0 16px!important;}}
+
+  
+
+    /* === HASIL LATIHAN FINAL: layout sesuai referensi + font lebih ringan === */
+    #page-hasil{
+      font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+      padding-top:44px!important;
+    }
+    #page-hasil .result-page-container{max-width:1320px!important;}
+    #page-hasil .result-breadcrumb{
+      height:34px!important;padding:0 16px!important;margin:0 0 18px!important;border-radius:999px!important;
+      background:#f1eaff!important;color:#8b64ff!important;font-size:13px!important;font-weight:500!important;
+      border:0!important;box-shadow:none!important;gap:9px!important;
+    }
+    #page-hasil .result-main-title{
+      font-size:34px!important;line-height:1.16!important;font-weight:700!important;letter-spacing:-.035em!important;
+      color:#10213f!important;margin:0 0 8px!important;
+    }
+    #page-hasil .result-main-desc{
+      font-size:14px!important;font-weight:500!important;line-height:1.5!important;color:#52617c!important;margin:0!important;
+    }
+    #page-hasil .date-line{
+      margin:12px 0 18px!important;gap:9px!important;font-size:14px!important;font-weight:500!important;color:#7b8aa5!important;
+    }
+    #page-hasil .result-top-grid{
+      display:grid!important;grid-template-columns:minmax(0,1.78fr) minmax(360px,.98fr)!important;gap:26px!important;align-items:stretch!important;margin-bottom:20px!important;
+    }
+    #page-hasil .result-left-stack{display:flex!important;flex-direction:column!important;gap:14px!important;min-width:0!important;}
+    #page-hasil .result-card{
+      border-radius:18px!important;border:1px solid rgba(124,77,255,.14)!important;background:rgba(255,255,255,.94)!important;
+      box-shadow:0 14px 38px rgba(80,70,140,.08)!important;
+    }
+    #page-hasil .result-score-hero{
+      min-height:265px!important;padding:24px 28px!important;overflow:hidden!important;position:relative!important;
+      background:linear-gradient(135deg,rgba(247,251,255,.92),rgba(239,245,255,.88) 48%,rgba(255,241,247,.82))!important;
+    }
+    #page-hasil .result-score-hero:before{
+      content:""!important;position:absolute!important;inset:0!important;z-index:0!important;
+      background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.72) 42%,rgba(255,255,255,.22) 100%)!important;
+      pointer-events:none!important;
+    }
+    #page-hasil .result-score-hero:after{
+      content:""!important;position:absolute!important;inset:0!important;z-index:0!important;
+      background-image:url('https://iili.io/C7G05qQ.png')!important;background-size:cover!important;background-position:center right!important;
+      opacity:.48!important;pointer-events:none!important;
+    }
+    #page-hasil .result-score-inner{
+      min-height:217px!important;position:relative!important;z-index:1!important;display:flex!important;align-items:center!important;gap:54px!important;
+    }
+    #page-hasil .circle-score{
+      width:184px!important;height:184px!important;flex:0 0 184px!important;border-radius:50%!important;
+      background:conic-gradient(#7c4dff var(--scoreDeg,0deg),#efeaff var(--scoreDeg,0deg) 360deg)!important;
+      display:grid!important;place-items:center!important;box-shadow:0 16px 32px rgba(124,77,255,.12)!important;
+    }
+    #page-hasil .circle-score div{
+      width:150px!important;height:150px!important;border-radius:50%!important;background:#fff!important;display:grid!important;place-items:center!important;text-align:center!important;
+      box-shadow:inset 0 0 0 1px #edf0f6,0 8px 22px rgba(80,70,140,.08)!important;
+    }
+    #page-hasil .circle-score strong{font-size:56px!important;line-height:1!important;font-weight:700!important;letter-spacing:-.04em!important;color:#10213f!important;}
+    #page-hasil .circle-score span{display:block!important;color:#7c4dff!important;font-size:14px!important;font-weight:600!important;margin-top:4px!important;}
+    #page-hasil .result-score-copy{max-width:430px!important;}
+    #page-hasil .result-score-badge{
+      height:34px!important;padding:0 14px!important;border-radius:10px!important;background:#f1eaff!important;border:0!important;
+      color:#6b3df4!important;font-size:13px!important;font-weight:600!important;box-shadow:none!important;
+    }
+    #page-hasil .result-score-copy h2{
+      font-size:31px!important;line-height:1.18!important;font-weight:700!important;letter-spacing:-.035em!important;color:#10213f!important;margin:22px 0 12px!important;
+    }
+    #page-hasil .result-score-copy p{font-size:15px!important;line-height:1.7!important;font-weight:500!important;color:#52617c!important;max-width:420px!important;}
+    #page-hasil .result-summary-card{padding:28px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;min-height:265px!important;}
+    #page-hasil .result-summary-card h3,
+    #page-hasil .result-review-card h3{
+      font-size:17px!important;line-height:1.25!important;font-weight:700!important;letter-spacing:-.02em!important;color:#10213f!important;margin:0!important;
+    }
+    #page-hasil .result-summary-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin-top:18px!important;}
+    #page-hasil .summary-tile{
+      min-height:88px!important;padding:18px!important;border-radius:12px!important;background:rgba(255,255,255,.96)!important;border:1px solid #e5e9f2!important;
+      display:flex!important;align-items:center!important;gap:16px!important;box-shadow:none!important;
+    }
+    #page-hasil .summary-tile .icon-bubble{width:54px!important;height:54px!important;min-width:54px!important;flex:0 0 54px!important;font-size:21px!important;}
+    #page-hasil .summary-tile .icon-bubble i{font-size:21px!important;}
+    #page-hasil .summary-tile strong{font-size:27px!important;line-height:1!important;font-weight:700!important;letter-spacing:-.035em!important;color:#111827!important;display:block!important;margin-bottom:7px!important;}
+    #page-hasil .summary-tile span:not(.icon-bubble){font-size:12px!important;line-height:1.35!important;font-weight:500!important;color:#52617c!important;}
+    #page-hasil .result-action-row{display:grid!important;grid-template-columns:1.05fr 1fr 1fr!important;gap:12px!important;margin:0!important;}
+    #page-hasil .result-action-row .btn{height:44px!important;border-radius:9px!important;font-size:14px!important;font-weight:600!important;padding:0 18px!important;box-shadow:none!important;}
+    #page-hasil .result-action-row .btn-primary{background:linear-gradient(135deg,#7c4dff,#6336e8)!important;color:#fff!important;}
+    #page-hasil .result-action-row .btn-secondary{background:rgba(255,255,255,.94)!important;border:1px solid #d9d0ff!important;color:#6b3df4!important;}
+    #page-hasil .result-review-card{padding:28px!important;border-radius:18px!important;background:rgba(255,255,255,.94)!important;margin-top:4px!important;}
+    #page-hasil .result-table-head{margin-bottom:16px!important;align-items:center!important;}
+    #page-hasil .select-mini{height:34px!important;border-radius:10px!important;font-size:12px!important;font-weight:500!important;color:#52617c!important;background:#fff!important;padding:0 12px!important;}
+    #page-hasil .result-data-table{min-width:820px!important;border-radius:12px!important;border:1px solid #e6e9f2!important;}
+    #page-hasil .result-data-table th{height:38px!important;padding:10px 16px!important;background:rgba(255,255,255,.9)!important;color:#64748b!important;font-size:12px!important;font-weight:500!important;}
+    #page-hasil .result-data-table td{padding:12px 16px!important;color:#31405e!important;font-size:13px!important;font-weight:500!important;border-bottom:1px solid #edf0f6!important;}
+    #page-hasil .result-word-cell{display:flex!important;align-items:center!important;gap:22px!important;}
+    #page-hasil .result-word-cell strong{font-size:20px!important;line-height:1!important;font-weight:700!important;color:#10213f!important;min-width:82px!important;}
+    #page-hasil .result-word-cell .romaji-inline{font-size:12px!important;font-weight:500!important;color:#64748b!important;min-width:72px!important;}
+    #page-hasil .result-word-cell button{width:28px!important;height:28px!important;border-radius:8px!important;background:transparent!important;color:#6b3df4!important;display:inline-grid!important;place-items:center!important;}
+    #page-hasil .status{height:28px!important;min-width:86px!important;justify-content:center!important;border-radius:9px!important;font-size:12px!important;font-weight:600!important;padding:0 12px!important;}
+    #page-hasil .status.good{background:#dcfce7!important;color:#10b981!important;}
+    #page-hasil .status.bad{background:#ffe4ec!important;color:#ff3b6b!important;}
+    #page-hasil .result-empty-row td{text-align:center!important;color:#8290a8!important;padding:32px 16px!important;}
+    @media(max-width:1100px){
+      #page-hasil .result-top-grid{grid-template-columns:1fr!important;}
+      #page-hasil .result-summary-card{min-height:auto!important;}
+    }
+    @media(max-width:760px){
+      #page-hasil .result-page-container{width:min(100% - 28px,1320px)!important;}
+      #page-hasil .result-score-inner{flex-direction:column!important;gap:22px!important;text-align:center!important;}
+      #page-hasil .result-score-hero{padding:24px 18px!important;}
+      #page-hasil .result-score-copy{max-width:100%!important;}
+      #page-hasil .result-summary-grid{grid-template-columns:1fr!important;}
+      #page-hasil .result-action-row{grid-template-columns:1fr!important;}
+      #page-hasil .circle-score{width:168px!important;height:168px!important;flex-basis:168px!important;}
+      #page-hasil .circle-score div{width:136px!important;height:136px!important;}
+      #page-hasil .circle-score strong{font-size:48px!important;}
+    }
+
   </style>
 </head>
 <body>
@@ -2707,12 +2874,55 @@
 
     <!-- Hasil -->
     <section class="page" id="page-hasil">
-      <div class="container">
-        <span class="breadcrumb"><i class="fa-solid fa-book-open"></i> Beranda <i class="fa-solid fa-chevron-right"></i> Hasil Latihan</span>
-        <h2 class="page-title">Ringkasan Belajar</h2><p class="page-desc">Hebat! Kamu telah menyelesaikan latihan kosakata.</p><div class="date-line"><i class="fa-regular fa-calendar"></i> 20 Mei 2025, 14:32</div>
-        <div class="result-grid"><div class="result-card score-hero"><div class="score-inner"><div class="circle-score"><div><strong id="scorePercent">86%</strong><span>Skor Akhir</span></div></div><div><span class="badge"><i class="fa-solid fa-star"></i> Sangat Baik!</span><h2 style="font-size:34px;margin:24px 0 12px">Kerja bagus! <i class="fa-solid fa-wand-magic-sparkles result-title-icon"></i></h2><p class="page-desc">Kamu menguasai sebagian besar kosakata hari ini. Terus tingkatkan konsistensi belajarmu!</p></div></div></div><div class="result-card" style="padding:28px"><h3>Ringkasan Hasil</h3><div class="summary-grid"><div class="summary-tile"><span class="icon-bubble purple"><i class="fa-solid fa-book-open"></i></span><div><strong id="totalSoal">20</strong><span>Total Soal</span></div></div><div class="summary-tile"><span class="icon-bubble green"><i class="fa-solid fa-circle-check"></i></span><div><strong id="totalBenar">17</strong><span>Benar</span></div></div><div class="summary-tile"><span class="icon-bubble red-soft"><i class="fa-solid fa-circle-xmark"></i></span><div><strong id="totalSalah">3</strong><span>Salah</span></div></div><div class="summary-tile"><span class="icon-bubble blue"><i class="fa-regular fa-clock"></i></span><div><strong>12:34</strong><span>Waktu (mnt)</span></div></div></div></div></div>
-        <div class="result-actions"><button class="btn btn-primary" onclick="showPage('materi')"><i class="fa-solid fa-book-open"></i> Review Kosakata</button><button class="btn btn-secondary" onclick="alert('PDF berhasil disiapkan')"><i class="fa-solid fa-download"></i> Simpan PDF</button><button class="btn btn-secondary" onclick="resetPractice(); showPage('practice')"><i class="fa-solid fa-rotate-right"></i> Ulangi Latihan</button></div>
-        <div class="table-wrap"><div class="table-head"><h3>Review Hasil Latihan</h3><div class="table-filters"><select class="select-mini"><option>Semua Status</option><option>Benar</option><option>Salah</option></select><select class="select-mini"><option>Urutkan</option><option>Tercepat</option><option>Terlama</option></select></div></div><div class="table-scroll"><table class="data-table"><thead><tr><th>#</th><th>Kosakata</th><th>Arti</th><th>Status</th><th>Waktu</th></tr></thead><tbody id="reviewRows"></tbody></table></div></div>
+      <div class="container result-page-container">
+        <span class="breadcrumb result-breadcrumb"><i class="fa-solid fa-book-open"></i> Beranda <i class="fa-solid fa-chevron-right"></i> Hasil Latihan</span>
+        <h2 class="page-title result-main-title">Ringkasan Belajar</h2>
+        <p class="page-desc result-main-desc">Hebat! Kamu telah menyelesaikan latihan kosakata.</p>
+        <div class="date-line" id="resultDateLine"><i class="fa-regular fa-calendar"></i> -</div>
+
+        <div class="result-top-grid">
+          <div class="result-left-stack">
+            <div class="result-card score-hero result-score-hero">
+              <div class="score-inner result-score-inner">
+                <div class="circle-score" id="resultScoreCircle">
+                  <div><strong id="scorePercent">0%</strong><span>Skor Akhir</span></div>
+                </div>
+                <div class="result-score-copy">
+                  <span class="badge result-score-badge" id="scoreBadge"><i class="fa-solid fa-star"></i> Mulai Latihan</span>
+                  <h2 id="scoreTitle">Belum ada hasil</h2>
+                  <p class="page-desc" id="scoreMessage">Mulai kuis terlebih dahulu agar ringkasan belajar terisi otomatis dari hasil latihanmu.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-actions result-action-row">
+              <button class="btn btn-primary" onclick="showPage('materi')"><i class="fa-solid fa-book-open"></i> Review Kosakata</button>
+              <button class="btn btn-secondary" onclick="alert('PDF berhasil disiapkan')"><i class="fa-solid fa-download"></i> Simpan PDF</button>
+              <button class="btn btn-secondary" onclick="resetPractice(); showPage('practice')"><i class="fa-solid fa-rotate-right"></i> Ulangi Latihan</button>
+            </div>
+          </div>
+
+          <div class="result-card result-summary-card">
+            <h3>Ringkasan Hasil</h3>
+            <div class="summary-grid result-summary-grid">
+              <div class="summary-tile"><span class="icon-bubble purple"><i class="fa-solid fa-book-open"></i></span><div><strong id="totalSoal">0</strong><span>Total Soal</span></div></div>
+              <div class="summary-tile"><span class="icon-bubble green"><i class="fa-solid fa-circle-check"></i></span><div><strong id="totalBenar">0</strong><span>Benar</span></div></div>
+              <div class="summary-tile"><span class="icon-bubble red-soft"><i class="fa-solid fa-circle-xmark"></i></span><div><strong id="totalSalah">0</strong><span>Salah</span></div></div>
+              <div class="summary-tile"><span class="icon-bubble blue"><i class="fa-regular fa-clock"></i></span><div><strong id="totalWaktu">00:00</strong><span>Waktu (mnt)</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap result-review-card">
+          <div class="table-head result-table-head">
+            <h3>Review Hasil Latihan</h3>
+            <div class="table-filters">
+              <select class="select-mini" id="resultStatusFilter" onchange="updateResult()"><option>Semua Status</option><option>Benar</option><option>Salah</option></select>
+              <select class="select-mini" id="resultSortFilter" onchange="updateResult()"><option>Urutkan</option><option>Tercepat</option><option>Terlama</option></select>
+            </div>
+          </div>
+          <div class="table-scroll"><table class="data-table result-data-table"><thead><tr><th>#</th><th>Kosakata</th><th>Arti</th><th>Status</th><th>Waktu</th></tr></thead><tbody id="reviewRows"></tbody></table></div>
+        </div>
       </div>
     </section>
 
@@ -3794,6 +4004,271 @@
       setVoiceButtonStateFinal();
     },0);
 
-  </script>
+  
+
+    /* === FINAL PATCH: voice recognition tolerance untuk jawaban mic === */
+    (function(){
+      const aliasMap = {
+        'わたし':['わたし','私','watashi','watasi','watashi desu','watasi desu'],
+        'ともだち':['ともだち','友達','tomodachi','tomodati','tomodachi desu'],
+        'がくせい':['がくせい','学生','gakusei','gaksei','gakuse','gakusei desu'],
+        'せんせい':['せんせい','先生','sensei','sense','sensei desu'],
+        'がっこう':['がっこう','学校','gakkou','gakko','gakkō','gakkoo','gako','gakou'],
+        '図書館':['図書館','としょかん','toshokan','tosyokan','toshokang','toshokan desu','toshokhan'],
+        '本':['本','ほん','hon','hong','hon desu'],
+        'ペン':['ペン','pen','pen desu'],
+        '家族':['家族','かぞく','kazoku','kazok','kazoku desu'],
+        '母':['母','はは','haha','ha ha','haha desu'],
+        '父':['父','ちち','chichi','titi','chichi desu'],
+        '一':['一','いち','ichi','ici','ichi desu']
+      };
+      const idAliasMap = {
+        'saya, aku':['saya','aku','saya aku','aku saya'],
+        'teman':['teman','kawan','sahabat'],
+        'siswa, pelajar':['siswa','pelajar','murid'],
+        'guru, dosen':['guru','dosen','pengajar'],
+        'sekolah':['sekolah'],
+        'perpustakaan':['perpustakaan','pustaka','library'],
+        'buku':['buku'],
+        'pulpen':['pulpen','pen','pena'],
+        'keluarga':['keluarga'],
+        'ibu':['ibu','mama','bunda'],
+        'ayah':['ayah','bapak','papa'],
+        'satu':['satu','1']
+      };
+      window.normalizeVoiceText = function(text){
+        return String(text||'')
+          .normalize('NFKC')
+          .toLowerCase()
+          .replace(/[ー−‐‑‒–—]/g,'')
+          .replace(/[.,!?。、「」『』()（）\[\]{}:;"'`]/g,' ')
+          .replace(/\b(desu|です|itu|adalah|jawabannya|jawaban)\b/g,' ')
+          .replace(/\s+/g,'')
+          .replace(/ou/g,'o')
+          .replace(/oo/g,'o')
+          .replace(/aa/g,'a')
+          .replace(/ii/g,'i')
+          .replace(/uu/g,'u')
+          .trim();
+      };
+      function editDistance(a,b){
+        a=normalizeVoiceText(a); b=normalizeVoiceText(b);
+        const m=a.length,n=b.length; if(!m||!n) return Math.max(m,n);
+        const dp=Array.from({length:m+1},(_,i)=>[i]);
+        for(let j=1;j<=n;j++) dp[0][j]=j;
+        for(let i=1;i<=m;i++) for(let j=1;j<=n;j++) dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+        return dp[m][n];
+      }
+      function similarEnough(spoken,target){
+        spoken=normalizeVoiceText(spoken); target=normalizeVoiceText(target);
+        if(!spoken||!target) return false;
+        if(spoken===target || spoken.includes(target) || target.includes(spoken)) return true;
+        const maxLen=Math.max(spoken.length,target.length);
+        const d=editDistance(spoken,target);
+        if(maxLen<=3) return d===0;
+        if(maxLen<=5) return d<=1;
+        return d/maxLen <= .28;
+      }
+      window.voiceTargets = function(v){
+        const base = quizDirection === 'jp-id'
+          ? [v.arti, ...(idAliasMap[v.arti]||[]), ...String(v.arti||'').split(',').map(s=>s.trim())]
+          : [v.jp, v.kana, v.romaji, ...(aliasMap[v.jp]||[])];
+        return [...new Set(base.filter(Boolean).map(normalizeVoiceText))];
+      };
+      window.evaluateVoiceAnswer = function(transcripts){
+        if(practiceFlipped || cardAnswerLockedFinal) return;
+        const v=currentVocab();
+        const heard = Array.isArray(transcripts) ? transcripts.filter(Boolean) : [transcripts];
+        const targets=voiceTargets(v);
+        let matched = false;
+        for(const one of heard){
+          if(targets.some(t=>similarEnough(one,t))){ matched=true; break; }
+        }
+        if(matched){
+          const label = quizDirection === 'jp-id' ? cap(v.arti) : `${v.jp} (${v.romaji})`;
+          showVoiceFeedback('good',`<i class="fa-solid fa-circle-check"></i> Benar! Jawaban: <strong>${label}</strong>.`);
+        }else{
+          const label = quizDirection === 'jp-id' ? cap(v.arti) : `<strong>${v.jp}</strong> / ${v.kana} (${v.romaji})`;
+          const heardText = heard.join(' / ') || '-';
+          showVoiceFeedback('bad',`<i class="fa-solid fa-circle-xmark"></i> Belum tepat. Terdengar: <strong>${heardText}</strong><br>Jawaban benar: ${label}.`);
+        }
+        setTimeout(()=>answerCard(!!matched),900);
+      };
+      window.startVoiceAnswer = function(){
+        if(practiceFlipped || cardAnswerLockedFinal || !micAutoEnabled) return;
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const fb=document.getElementById('voiceFeedback'); if(fb) fb.className='voice-feedback';
+        if(!SpeechRecognition){
+          showVoiceFeedback('bad','<i class="fa-solid fa-triangle-exclamation"></i> Browser ini belum mendukung mikrofon. Gunakan Chrome/Edge dan izinkan akses mikrofon.');
+          return;
+        }
+        if(voiceBusy) return;
+        voiceBusy=true;
+        try{
+          if(recognition) recognition.stop();
+          recognition = new SpeechRecognition();
+          recognition.lang = quizDirection === 'jp-id' ? 'id-ID' : 'ja-JP';
+          recognition.interimResults=false;
+          recognition.continuous=false;
+          recognition.maxAlternatives=5;
+          setVoiceListening(true);
+          recognition.onresult=(event)=>{
+            const results=Array.from(event.results?.[0]||[]);
+            const transcripts=results.map(r=>(r.transcript||'').trim()).filter(Boolean);
+            voiceBusy=false; setVoiceListening(false); evaluateVoiceAnswer(transcripts);
+          };
+          recognition.onerror=(event)=>{
+            voiceBusy=false; setVoiceListening(false);
+            const msg=event.error==='not-allowed'
+              ? 'Akses mikrofon ditolak. Izinkan mikrofon di browser, lalu coba lagi.'
+              : 'Suara belum terbaca. Coba ucapkan jawaban sedikit lebih pelan dan jelas.';
+            showVoiceFeedback('bad',`<i class="fa-solid fa-triangle-exclamation"></i> ${msg}`);
+          };
+          recognition.onend=()=>{ if(voiceBusy){ voiceBusy=false; setVoiceListening(false); } };
+          recognition.start();
+        }catch(e){
+          voiceBusy=false; setVoiceListening(false);
+          showVoiceFeedback('bad','<i class="fa-solid fa-triangle-exclamation"></i> Mikrofon belum bisa dimulai. Coba ulangi sekali lagi.');
+        }
+      };
+    })();
+
+
+    /* === HASIL LATIHAN DINAMIS: data diambil dari kuis/flashcard === */
+    (function(){
+      window.quizSessionRecords = window.quizSessionRecords || [];
+      window.quizSessionStartedAt = window.quizSessionStartedAt || null;
+      window.quizSessionEndedAt = window.quizSessionEndedAt || null;
+
+      function pad2(n){return String(Math.max(0,Math.floor(n))).padStart(2,'0');}
+      function formatDuration(sec){
+        sec=Math.max(0,Math.round(Number(sec)||0));
+        return `${pad2(sec/60)}:${pad2(sec%60)}`;
+      }
+      function formatResultDate(date){
+        const d = date ? new Date(date) : new Date();
+        const months=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+        return `${pad2(d.getDate())} ${months[d.getMonth()]} ${d.getFullYear()}, ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+      }
+      function escapeHtml(value){
+        return String(value ?? '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+      }
+      function escapeJsString(value){
+        return String(value ?? '').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,' ');
+      }
+      function currentCardSecondsUsed(){
+        if(typeof quizSecondsLeft === 'number') return Math.max(0,30-quizSecondsLeft);
+        return 0;
+      }
+      function resetResultSession(){
+        window.quizSessionRecords=[];
+        window.quizSessionStartedAt=new Date();
+        window.quizSessionEndedAt=null;
+      }
+
+      if(typeof beginConfiguredQuiz === 'function' && !beginConfiguredQuiz.__dynamicResultPatched){
+        const prevBeginConfiguredQuiz = beginConfiguredQuiz;
+        beginConfiguredQuiz = function(){
+          resetResultSession();
+          return prevBeginConfiguredQuiz.apply(this, arguments);
+        };
+        beginConfiguredQuiz.__dynamicResultPatched=true;
+      }
+      if(typeof resetPractice === 'function' && !resetPractice.__dynamicResultPatched){
+        const prevResetPractice = resetPractice;
+        resetPractice = function(){
+          resetResultSession();
+          return prevResetPractice.apply(this, arguments);
+        };
+        resetPractice.__dynamicResultPatched=true;
+      }
+      if(typeof answerCard === 'function' && !answerCard.__dynamicResultPatched){
+        const prevAnswerCard = answerCard;
+        answerCard = function(isCorrect){
+          try{
+            if(typeof cardAnswerLockedFinal !== 'undefined' && cardAnswerLockedFinal){
+              return prevAnswerCard.apply(this, arguments);
+            }
+            const v = typeof currentVocab === 'function' ? currentVocab() : null;
+            if(v){
+              if(!window.quizSessionStartedAt) window.quizSessionStartedAt = new Date();
+              window.quizSessionRecords.push({
+                jp:v.jp || '', kana:v.kana || '', romaji:v.romaji || '', arti:v.arti || '', cat:v.cat || '',
+                status: !!isCorrect,
+                waktu: currentCardSecondsUsed(),
+                arah: typeof quizDirection !== 'undefined' ? quizDirection : 'id-jp',
+                metode: (typeof practiceFlipped !== 'undefined' && practiceFlipped) ? 'manual' : 'suara'
+              });
+              window.quizSessionEndedAt = new Date();
+            }
+          }catch(e){console.warn('Gagal mencatat hasil kuis:',e);}
+          return prevAnswerCard.apply(this, arguments);
+        };
+        answerCard.__dynamicResultPatched=true;
+      }
+
+      window.updateResult = function(){
+        const records = Array.isArray(window.quizSessionRecords) ? [...window.quizSessionRecords] : [];
+        const total = records.length;
+        const benar = records.filter(r=>r.status).length;
+        const salah = Math.max(0,total-benar);
+        const score = total ? Math.round((benar/total)*100) : 0;
+        const totalSeconds = records.reduce((sum,r)=>sum+(Number(r.waktu)||0),0);
+        const scoreDeg = Math.round(score*3.6);
+
+        const scorePercent=document.getElementById('scorePercent'); if(scorePercent) scorePercent.textContent=`${score}%`;
+        const scoreCircle=document.getElementById('resultScoreCircle'); if(scoreCircle) scoreCircle.style.setProperty('--scoreDeg',`${scoreDeg}deg`);
+        const totalSoal=document.getElementById('totalSoal'); if(totalSoal) totalSoal.textContent=total;
+        const totalBenar=document.getElementById('totalBenar'); if(totalBenar) totalBenar.textContent=benar;
+        const totalSalah=document.getElementById('totalSalah'); if(totalSalah) totalSalah.textContent=salah;
+        const totalWaktu=document.getElementById('totalWaktu'); if(totalWaktu) totalWaktu.textContent=formatDuration(totalSeconds);
+        const dateLine=document.getElementById('resultDateLine');
+        if(dateLine) dateLine.innerHTML=`<i class="fa-regular fa-calendar"></i> ${formatResultDate(window.quizSessionEndedAt || window.quizSessionStartedAt || new Date())}`;
+
+        const badge=document.getElementById('scoreBadge');
+        const title=document.getElementById('scoreTitle');
+        const msg=document.getElementById('scoreMessage');
+        let badgeText='Mulai Latihan', titleText='Belum ada hasil', msgText='Mulai kuis terlebih dahulu agar ringkasan belajar terisi otomatis dari hasil latihanmu.';
+        if(total){
+          if(score>=85){badgeText='Sangat Baik!'; titleText='Kerja bagus! 🎉'; msgText='Kamu menguasai sebagian besar kosakata hari ini. Terus tingkatkan konsistensi belajarmu!';}
+          else if(score>=70){badgeText='Bagus!'; titleText='Terus pertahankan!'; msgText='Hasil latihanmu sudah baik. Review beberapa kosakata yang masih salah agar makin lancar.';}
+          else if(score>=50){badgeText='Cukup Baik'; titleText='Ayo latihan lagi!'; msgText='Kamu sudah mulai memahami kosakata. Ulangi kartu yang salah dan coba latihan sekali lagi.';}
+          else {badgeText='Perlu Latihan'; titleText='Jangan menyerah!'; msgText='Gunakan menu Review Kosakata untuk mengulang materi sebelum mencoba kuis lagi.';}
+        }
+        if(badge) badge.innerHTML=`<i class="fa-solid fa-star"></i> ${badgeText}`;
+        if(title) title.textContent=titleText;
+        if(msg) msg.textContent=msgText;
+
+        const statusFilter=document.getElementById('resultStatusFilter')?.value || 'Semua Status';
+        const sortFilter=document.getElementById('resultSortFilter')?.value || 'Urutkan';
+        let rows=records.filter(r=> statusFilter==='Semua Status' || (statusFilter==='Benar' ? r.status : !r.status));
+        if(sortFilter==='Tercepat') rows.sort((a,b)=>(a.waktu||0)-(b.waktu||0));
+        if(sortFilter==='Terlama') rows.sort((a,b)=>(b.waktu||0)-(a.waktu||0));
+        const reviewRows=document.getElementById('reviewRows');
+        if(reviewRows){
+          if(!rows.length){
+            reviewRows.innerHTML=`<tr class="result-empty-row"><td colspan="5">Belum ada hasil latihan. Mulai kuis terlebih dahulu untuk menampilkan ringkasan belajar.</td></tr>`;
+          }else{
+            reviewRows.innerHTML=rows.map((r,i)=>{
+              const statusClass=r.status?'good':'bad';
+              const statusIcon=r.status?'fa-circle-check':'fa-circle-xmark';
+              const statusLabel=r.status?'Benar':'Salah';
+              return `<tr>
+                <td>${i+1}</td>
+                <td><span class="result-word-cell"><strong>${escapeHtml(r.jp)}</strong><span class="romaji-inline">${escapeHtml(r.romaji)}</span><button onclick="speakText('${escapeJsString(r.jp)}')"><i class="fa-solid fa-volume-high"></i></button></span></td>
+                <td>${escapeHtml(r.arti)}</td>
+                <td><span class="status ${statusClass}"><i class="fa-solid ${statusIcon}"></i> ${statusLabel}</span></td>
+                <td>${formatDuration(r.waktu)}</td>
+              </tr>`;
+            }).join('');
+          }
+        }
+        if(typeof applyLocalIcons==='function') applyLocalIcons(document.getElementById('page-hasil') || document);
+      };
+
+      document.addEventListener('DOMContentLoaded',()=>{ if(typeof updateResult==='function') updateResult(); });
+      setTimeout(()=>{ if(typeof updateResult==='function') updateResult(); },0);
+    })();
+</script>
 </body>
 </html>
