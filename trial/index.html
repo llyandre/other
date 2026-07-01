@@ -2159,6 +2159,361 @@
     #page-materi .cat-badge.cat-Keluarga,
     #page-materi .cat-badge.cat-Keluarga i{color:#f97316!important;background:#fff1df!important;}
 
+  
+
+    /* === FIX HALAMAN KUIS: layout, font, warna, dan timer 30 detik sesuai referensi === */
+    #page-practice, #page-practice button{
+      font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+    }
+    #page-practice .container{max-width:1380px!important;}
+    #page-practice .practice-top{
+      margin:0 0 20px!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:space-between!important;
+      gap:20px!important;
+    }
+    #page-practice .practice-top .hero-eyebrow{gap:36px!important;align-items:center!important;}
+    #page-practice .practice-top .badge{
+      height:42px!important;
+      padding:0 18px!important;
+      border-radius:999px!important;
+      font-size:14px!important;
+      font-weight:600!important;
+      color:#7c4dff!important;
+      background:#f1eaff!important;
+      border:1px solid rgba(124,77,255,.08)!important;
+    }
+    #page-practice .practice-top .language-pill{
+      min-width:150px!important;
+      height:42px!important;
+      border-radius:16px!important;
+      font-weight:600!important;
+      color:#24324d!important;
+      background:rgba(255,255,255,.92)!important;
+      border:1px solid #dde4f0!important;
+      box-shadow:0 10px 24px rgba(80,70,140,.055)!important;
+    }
+    #page-practice .practice-top .btn-ghost{
+      height:44px!important;
+      padding:0 20px!important;
+      border-radius:14px!important;
+      font-size:14px!important;
+      font-weight:650!important;
+      color:#5b3fd2!important;
+      box-shadow:0 8px 20px rgba(80,70,140,.045)!important;
+    }
+    #page-practice .practice-grid{
+      display:grid!important;
+      grid-template-columns:minmax(580px,1.08fr) minmax(440px,.82fr)!important;
+      gap:28px!important;
+      align-items:stretch!important;
+    }
+    #page-practice .panel-card.practice-card,
+    #page-practice .control-panel{
+      background:rgba(255,255,255,.72)!important;
+      border:1px solid rgba(124,77,255,.15)!important;
+      box-shadow:0 18px 54px rgba(80,70,140,.08)!important;
+      border-radius:28px!important;
+    }
+    #page-practice .panel-card.practice-card{
+      padding:26px 22px 30px!important;
+      min-height:710px!important;
+      display:flex!important;
+      flex-direction:column!important;
+    }
+    #page-practice .practice-image{
+      height:232px!important;
+      border-radius:20px!important;
+      background:linear-gradient(135deg,#eef5ff,#fff3f8)!important;
+      border:1px solid #edf0f7!important;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.75)!important;
+    }
+    #page-practice .practice-image:before,
+    #page-practice .practice-image:after{display:none!important;}
+    #page-practice .practice-card > div:nth-of-type(2){
+      margin:20px 10px 0!important;
+    }
+    #page-practice #practiceCategory{
+      height:34px!important;
+      padding:0 13px!important;
+      border-radius:999px!important;
+      font-size:13px!important;
+      font-weight:600!important;
+      color:#7c4dff!important;
+      background:#f1eaff!important;
+      border:0!important;
+    }
+    #page-practice .star-btn{
+      width:45px!important;
+      height:45px!important;
+      font-size:18px!important;
+      color:#667085!important;
+      background:#fff!important;
+      border:1px solid #e3e8f2!important;
+      box-shadow:0 8px 20px rgba(80,70,140,.06)!important;
+    }
+    #page-practice .practice-word{
+      padding:28px 20px 0!important;
+      text-align:center!important;
+      flex:1 1 auto!important;
+      display:flex!important;
+      flex-direction:column!important;
+      justify-content:center!important;
+    }
+    #page-practice .practice-word h2{
+      font-size:78px!important;
+      line-height:1.05!important;
+      font-weight:650!important;
+      letter-spacing:-.045em!important;
+      color:#10213f!important;
+      margin:0 0 8px!important;
+    }
+    #page-practice .practice-word .kana{
+      font-size:31px!important;
+      line-height:1.15!important;
+      color:#7c4dff!important;
+      font-weight:500!important;
+      margin-top:0!important;
+    }
+    #page-practice .practice-word .romaji{
+      font-size:32px!important;
+      line-height:1.18!important;
+      color:#64748b!important;
+      font-weight:650!important;
+      margin-top:14px!important;
+      letter-spacing:-.02em!important;
+    }
+    #page-practice .remember{
+      margin-top:30px!important;
+      padding-top:25px!important;
+      border-top:1px solid #edf0f6!important;
+      color:#53627d!important;
+      font-size:15px!important;
+      line-height:1.6!important;
+    }
+    #page-practice .remember strong{
+      margin-bottom:8px!important;
+      color:#3c4a66!important;
+      font-weight:650!important;
+      font-size:15px!important;
+    }
+    #page-practice .remember i{color:#64748b!important;margin-right:6px!important;}
+    #page-practice .dots{margin-top:26px!important;}
+    #page-practice .dot{width:15px!important;height:15px!important;border-color:#d7deeb!important;background:#fff!important;}
+    #page-practice .dot.active{background:#7c4dff!important;border-color:#7c4dff!important;}
+    #page-practice .control-panel{
+      padding:20px!important;
+      display:grid!important;
+      gap:18px!important;
+      align-self:stretch!important;
+    }
+    #page-practice .control-row{
+      grid-template-columns:1fr 1fr!important;
+      gap:16px!important;
+    }
+    #page-practice .timer-card,
+    #page-practice .progress-card,
+    #page-practice .mode-row,
+    #page-practice .auto-row,
+    #page-practice .info-box{
+      background:rgba(255,255,255,.88)!important;
+      border:1px solid #edf0f7!important;
+      box-shadow:0 10px 28px rgba(80,70,140,.045)!important;
+      border-radius:14px!important;
+    }
+    #page-practice .timer-card{
+      min-height:96px!important;
+      padding:18px!important;
+      gap:15px!important;
+      align-items:center!important;
+    }
+    #page-practice .timer-card .icon-bubble{
+      width:54px!important;height:54px!important;min-width:54px!important;
+      color:#7c4dff!important;background:#f1eaff!important;font-size:24px!important;
+    }
+    #page-practice .timer-card span[style]{
+      display:block!important;
+      font-size:13px!important;
+      line-height:1.2!important;
+      font-weight:600!important;
+      color:#7c4dff!important;
+      margin-bottom:4px!important;
+    }
+    #page-practice .timer-card strong{
+      display:block!important;
+      font-size:28px!important;
+      line-height:1!important;
+      font-weight:650!important;
+      letter-spacing:-.03em!important;
+      color:#10213f!important;
+    }
+    #page-practice .timer-card .pill{
+      height:34px!important;
+      padding:0 13px!important;
+      border-radius:13px!important;
+      font-size:13px!important;
+      font-weight:600!important;
+      background:#f1eaff!important;
+      color:#7c4dff!important;
+      border:1px solid rgba(124,77,255,.10)!important;
+      margin-left:auto!important;
+    }
+    #page-practice .progress-card{
+      min-height:96px!important;
+      padding:20px 22px!important;
+      display:flex!important;
+      flex-direction:column!important;
+      justify-content:center!important;
+    }
+    #page-practice .progress-card h3{
+      font-size:18px!important;
+      line-height:1.2!important;
+      font-weight:650!important;
+      color:#10213f!important;
+      margin:0 0 10px!important;
+    }
+    #page-practice .bar{height:9px!important;background:#eee9ff!important;margin:0 0 9px!important;}
+    #page-practice .bar span{background:#7c4dff!important;}
+    #page-practice .progress-card small{
+      color:#64748b!important;
+      font-weight:500!important;
+      font-size:13px!important;
+    }
+    #page-practice .mode-row{
+      height:54px!important;
+      padding:0 18px!important;
+      font-size:14px!important;
+      font-weight:600!important;
+      color:#53627d!important;
+    }
+    #page-practice .mode-row .badge{
+      height:32px!important;
+      padding:0 13px!important;
+      font-size:13px!important;
+      font-weight:600!important;
+      color:#10b981!important;
+      background:#dcfce7!important;
+      border:0!important;
+    }
+    #page-practice .mode-row strong{font-weight:650!important;color:#7c4dff!important;}
+    #page-practice .practice-action,
+    #page-practice .listening{
+      height:58px!important;
+      border-radius:12px!important;
+      font-size:15px!important;
+      font-weight:650!important;
+      letter-spacing:0!important;
+    }
+    #page-practice .practice-action{
+      background:#faf7ff!important;
+      border:1px solid #d8caff!important;
+      color:#7c4dff!important;
+      box-shadow:0 8px 20px rgba(80,70,140,.035)!important;
+    }
+    #page-practice .practice-action.primary{
+      background:linear-gradient(135deg,#7c4dff,#6336e8)!important;
+      color:#fff!important;
+      border:0!important;
+      box-shadow:0 16px 34px rgba(124,77,255,.22)!important;
+    }
+    #page-practice .listening{
+      background:#f7efff!important;
+      border:1px solid #eadcff!important;
+      color:#7c4dff!important;
+      gap:22px!important;
+    }
+    #page-practice .answer-row{gap:16px!important;}
+    #page-practice .answer-row .btn{
+      height:62px!important;
+      border-radius:12px!important;
+      font-size:15px!important;
+      font-weight:650!important;
+      box-shadow:0 14px 28px rgba(80,70,140,.08)!important;
+    }
+    #page-practice .btn-green{background:linear-gradient(135deg,#20c997,#10b981)!important;color:#fff!important;border:0!important;}
+    #page-practice .btn-red{background:linear-gradient(135deg,#ff4d6d,#ef334f)!important;color:#fff!important;border:0!important;}
+    #page-practice .auto-row{
+      min-height:62px!important;
+      padding:14px 18px!important;
+    }
+    #page-practice .auto-row strong{font-size:15px!important;font-weight:650!important;color:#25304a!important;}
+    #page-practice .auto-row span{font-size:12.5px!important;font-weight:500!important;color:#64748b!important;}
+    #page-practice .auto-row .icon-bubble{width:42px!important;height:42px!important;min-width:42px!important;font-size:18px!important;}
+    #page-practice .info-box{
+      min-height:72px!important;
+      padding:16px 18px!important;
+      font-size:13px!important;
+      font-weight:500!important;
+      color:#53627d!important;
+      line-height:1.5!important;
+    }
+    #page-practice .info-box i{font-size:22px!important;color:#7c4dff!important;}
+    @media(max-width:1100px){
+      #page-practice .practice-grid{grid-template-columns:1fr!important;}
+      #page-practice .panel-card.practice-card{min-height:auto!important;}
+      #page-practice .control-panel{padding:18px!important;}
+    }
+    @media(max-width:760px){
+      #page-practice .practice-top{align-items:flex-start!important;flex-direction:column!important;}
+      #page-practice .practice-top .hero-eyebrow{gap:12px!important;}
+      #page-practice .control-row{grid-template-columns:1fr!important;}
+      #page-practice .practice-word h2{font-size:58px!important;}
+      #page-practice .practice-word .kana{font-size:24px!important;}
+      #page-practice .practice-word .romaji{font-size:25px!important;}
+      #page-practice .practice-image{height:180px!important;}
+    }
+
+    /* === FIX MODE FIKSI HOMEPAGE: switch hijau aktif dan knob bergerak rapi ke kanan === */
+    #page-home .switch{
+      width:66px!important;
+      height:36px!important;
+      padding:4px!important;
+      border-radius:999px!important;
+      background:#dbe1ee!important;
+      overflow:hidden!important;
+      flex:0 0 66px!important;
+      transition:.25s!important;
+    }
+    #page-home .switch i{
+      display:block!important;
+      width:28px!important;
+      height:28px!important;
+      border-radius:50%!important;
+      background:#fff!important;
+      transform:translateX(0)!important;
+      transition:.25s!important;
+      box-shadow:0 4px 12px rgba(0,0,0,.14)!important;
+    }
+    #page-home .switch.active{
+      background:linear-gradient(135deg,#34d399,#10b981)!important;
+    }
+    #page-home .switch.active i{
+      transform:translateX(30px)!important;
+    }
+
+
+    /* Revisi kuis flashcard: hilangkan suara otomatis, tambah setup, mic switch, kartu klik-balik */
+    #page-practice .suara-otomatis-hidden{display:none!important;}
+    #page-practice .mic-row{padding:18px;display:flex;align-items:center;justify-content:space-between;gap:15px;}
+    #page-practice .mic-row h3{font-size:15px!important;font-weight:650!important;color:#25304a!important;margin:0;}
+    #page-practice .mic-row p{font-size:12.5px!important;font-weight:500!important;color:#64748b!important;margin-top:4px!important;}
+    #page-practice .flashcard-clickable{cursor:pointer;transition:transform .22s ease, box-shadow .22s ease;}
+    #page-practice .flashcard-clickable:hover{transform:translateY(-2px);box-shadow:0 24px 60px rgba(80,70,140,.12)!important;}
+    #page-practice .flashcard-clickable.is-flipped{box-shadow:0 24px 70px rgba(124,77,255,.16)!important;}
+    #page-practice .practice-word .romaji:empty{display:none;}
+    #page-practice #voiceAnswerBtn.mic-off{background:#fff!important;color:#64748b!important;border-color:#dfe4ee!important;box-shadow:none!important;}
+    .quiz-setup-modal{width:min(680px,calc(100vw - 32px))!important;max-width:680px!important;}
+    .quiz-setup-section{margin-bottom:18px;}
+    .quiz-option-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .quiz-option{min-height:86px;border-radius:16px;border:1px solid #e0e5f0;background:#fff;color:#475569;text-align:left;padding:16px 18px;display:flex;flex-direction:column;gap:7px;transition:.2s;box-shadow:0 10px 24px rgba(80,70,140,.045);}
+    .quiz-option strong{font-size:15px;font-weight:750;color:#10213f;}
+    .quiz-option span{font-size:12.5px;line-height:1.45;color:#64748b;font-weight:500;}
+    .quiz-option.active{border-color:#7c4dff;background:#f6f1ff;box-shadow:0 0 0 4px rgba(124,77,255,.09);}
+    .quiz-option.active strong{color:#6b3df4;}
+    #quizSetupModal .select-like{height:48px;border-radius:14px;font-weight:650;}
+    @media(max-width:640px){.quiz-option-grid{grid-template-columns:1fr}.quiz-setup-modal{padding:30px 20px 22px!important}}
+
   </style>
 </head>
 <body>
@@ -2261,18 +2616,19 @@
       <div class="container">
         <div class="practice-top"><div class="hero-eyebrow" style="margin:0"><span class="badge"><i class="fa-solid fa-book-open"></i> Bab 1–5 • 264 kosakata</span><button class="language-pill" onclick="toggleLangMode()" title="Klik untuk mengganti bahasa website"><span class="flag-jp langFlag"></span> <span class="langModeLabel">日本語</span> <i class="fa-solid fa-chevron-down"></i></button></div><button class="btn btn-ghost" onclick="showPage('home')"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar Latihan</button></div>
         <div class="practice-grid">
-          <div class="panel-card practice-card">
+          <div class="panel-card practice-card flashcard-clickable" id="practiceFlashcard" title="Klik kartu untuk membalik">
             <div class="practice-image"></div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin:22px 10px 0"><span class="badge" id="practiceCategory"><i class="fa-solid fa-user-group"></i> Sekolah</span><button class="star-btn" style="width:45px;height:45px"><i class="fa-regular fa-star"></i></button></div>
             <div class="practice-word"><h2 id="practiceJapanese">図書館</h2><div class="kana" id="practiceKana">としょかん</div><div class="romaji" id="practiceRomaji">toshokan</div><div class="remember"><strong id="rememberTitle"><i class="fa-regular fa-lightbulb"></i> Ingat artinya?</strong><span id="rememberDesc">Coba jawab dari ingatanmu terlebih dahulu.</span></div></div>
             <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
           </div>
           <div class="control-panel">
-            <div class="control-row"><div class="panel-card timer-card"><span class="icon-bubble purple"><i class="fa-regular fa-clock"></i></span><div><span style="color:#7c4dff;font-weight:800">Waktu</span><strong id="timeText">01:32</strong></div><button class="pill" onclick="togglePause(this)">Jeda</button></div><div class="panel-card progress-card"><h3>Kartu <span id="cardNum">1</span> / 264</h3><div class="bar"><span id="practiceProgress"></span></div><small id="practicePercent">0% Selesai</small></div></div>
+            <div class="control-row"><div class="panel-card timer-card"><span class="icon-bubble purple"><i class="fa-regular fa-clock"></i></span><div><span style="color:#7c4dff;font-weight:800">Waktu</span><strong id="timeText">00:30</strong></div><button class="pill" onclick="togglePause(this)">Jeda</button></div><div class="panel-card progress-card"><h3>Kartu <span id="cardNum">1</span> / 264</h3><div class="bar"><span id="practiceProgress"></span></div><small id="practicePercent">0% Selesai</small></div></div>
             <div class="panel-card mode-row"><span class="badge" style="background:#dcfce7;color:#10b981"><i class="fa-solid fa-book-open"></i> Sedang Belajar</span><span>Mode: <b style="color:#7c4dff">Belajar</b> <i class="fa-solid fa-chevron-down"></i></span></div>
-            <div class="action-stack"><button class="practice-action" onclick="speakCurrent()"><i class="fa-solid fa-volume-high"></i> &nbsp; Dengar</button><button class="practice-action" onclick="openExampleModal()"><i class="fa-regular fa-comments"></i> &nbsp; Contoh Kalimat</button><button class="practice-action primary" id="voiceAnswerBtn" onclick="startVoiceAnswer()"><i class="fa-solid fa-microphone"></i> &nbsp; Jawab dengan Suara</button><div class="listening" id="voiceListening"><i class="fa-solid fa-wave-square"></i> Mendengarkan... <span class="audio-bars"><i></i><i></i><i></i><i></i></span></div><div class="voice-feedback" id="voiceFeedback"></div></div>
+            <div class="action-stack"><button class="practice-action" onclick="speakCurrent()"><i class="fa-solid fa-volume-high"></i> &nbsp; Dengar</button><button class="practice-action" onclick="openExampleModal()"><i class="fa-regular fa-comments"></i> &nbsp; Contoh Kalimat</button><button class="practice-action primary" id="voiceAnswerBtn" onclick="toggleMicMode()"><i class="fa-solid fa-microphone"></i> &nbsp; Mic ON</button><div class="listening" id="voiceListening"><i class="fa-solid fa-wave-square"></i> Mendengarkan... <span class="audio-bars"><i></i><i></i><i></i><i></i></span></div><div class="voice-feedback" id="voiceFeedback"></div></div>
             <div class="answer-row"><button class="btn btn-primary" style="background:linear-gradient(135deg,#23c89d,#0fa978)" onclick="answerCard(true)"><i class="fa-solid fa-circle-check"></i> Benar</button><button class="btn btn-red" onclick="answerCard(false)"><i class="fa-solid fa-circle-xmark"></i> Salah</button></div>
-            <div class="panel-card auto-row"><div style="display:flex;gap:14px;align-items:center"><span class="icon-bubble purple" style="width:45px;height:45px"><i class="fa-solid fa-volume-high"></i></span><div><h3>Suara Otomatis</h3><p style="font-size:13px;color:#64748b;margin-top:4px">Putar audio otomatis saat kartu berubah</p></div></div><button class="switch active" id="autoSwitch" onclick="toggleSwitch(this)"><i></i></button></div>
+            <div class="panel-card auto-row suara-otomatis-hidden" aria-hidden="true"><div style="display:flex;gap:14px;align-items:center"><span class="icon-bubble purple" style="width:45px;height:45px"><i class="fa-solid fa-volume-high"></i></span><div><h3>Suara Otomatis</h3><p style="font-size:13px;color:#64748b;margin-top:4px">Putar audio otomatis saat kartu berubah</p></div></div><button class="switch" id="autoSwitch" onclick="toggleSwitch(this)"><i></i></button></div>
+            <div class="panel-card mic-row"><div style="display:flex;gap:14px;align-items:center"><span class="icon-bubble purple" style="width:45px;height:45px"><i class="fa-solid fa-microphone"></i></span><div><h3>Mikrofon Jawaban</h3><p style="font-size:13px;color:#64748b;margin-top:4px">ON otomatis saat kuis dimulai, bisa dimatikan kapan saja.</p></div></div><button class="switch active" id="micSwitch" onclick="toggleMicMode()"><i></i></button></div>
             <div class="panel-card info-box"><i class="fa-solid fa-microphone"></i><p>Jawab dengan suara untuk pengalaman belajar yang lebih alami. Pastikan mikrofon perangkat Anda aktif dan tidak dibisukan.</p></div>
           </div>
         </div>
@@ -2366,6 +2722,56 @@
   <div class="modal-overlay" id="exampleModal" onclick="overlayClose(event,'exampleModal')"><div class="modal small-modal"><button class="close-modal" onclick="closeModal('exampleModal')"><i class="fa-solid fa-xmark"></i></button><h2 class="modal-title" style="text-align:left;font-size:28px">Contoh Kalimat</h2><p class="page-desc" id="exampleText" style="font-size:18px;margin-top:18px"></p><button class="btn btn-primary" style="margin-top:24px" onclick="closeModal('exampleModal')">Mengerti</button></div></div>
   <!-- Detail Modal -->
   <div class="modal-overlay" id="detailModal" onclick="overlayClose(event,'detailModal')"><div class="modal small-modal"><button class="close-modal" onclick="closeModal('detailModal')"><i class="fa-solid fa-xmark"></i></button><h2 class="modal-title" style="text-align:left;font-size:28px">Detail Peserta</h2><div class="detail-list" id="detailContent"></div><button class="btn btn-primary" style="margin-top:24px" onclick="closeModal('detailModal')">Tutup</button></div></div>
+
+
+  <div class="modal-overlay" id="quizSetupModal" onclick="overlayClose(event,'quizSetupModal')">
+    <div class="modal small-modal quiz-setup-modal">
+      <button class="close-modal" onclick="closeModal('quizSetupModal')" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-logo">あ</div>
+      <h2 class="modal-title">Atur Kuis Flashcard</h2>
+      <p class="modal-desc">Pilih arah soal terlebih dahulu, lalu tentukan urutan kartu sebelum mulai.</p>
+      <div class="quiz-setup-section">
+        <span class="group-label">1. Pilih arah bahasa soal</span>
+        <div class="quiz-option-grid">
+          <button class="quiz-option active" data-direction="id-jp" onclick="selectQuizDirection('id-jp')">
+            <strong>Indonesia → Jepang</strong>
+            <span>Kartu depan menampilkan bahasa Indonesia.</span>
+          </button>
+          <button class="quiz-option" data-direction="jp-id" onclick="selectQuizDirection('jp-id')">
+            <strong>Jepang → Indonesia</strong>
+            <span>Kartu depan menampilkan bahasa Jepang.</span>
+          </button>
+        </div>
+      </div>
+      <div class="quiz-setup-section">
+        <span class="group-label">2. Pilih urutan kartu</span>
+        <div class="quiz-option-grid">
+          <button class="quiz-option active" data-order="random" onclick="selectQuizOrder('random')">
+            <strong>Acak</strong>
+            <span>Urutan kartu diacak setiap mulai kuis.</span>
+          </button>
+          <button class="quiz-option" data-order="ordered" onclick="selectQuizOrder('ordered')">
+            <strong>Tidak Acak</strong>
+            <span>Urutan kartu mengikuti daftar materi.</span>
+          </button>
+        </div>
+      </div>
+      <div class="quiz-setup-section">
+        <span class="group-label">Kategori kosakata</span>
+        <select class="select-like" id="quizCategorySelect">
+          <option value="Semua">Semua</option>
+          <option value="Salam">Salam</option>
+          <option value="Sekolah">Sekolah</option>
+          <option value="Angka">Angka</option>
+          <option value="Keluarga">Keluarga</option>
+        </select>
+      </div>
+      <div class="modal-actions" style="grid-template-columns:1fr 1.3fr">
+        <button class="btn btn-secondary" onclick="closeModal('quizSetupModal')">Batal</button>
+        <button class="btn btn-primary" onclick="beginConfiguredQuiz()"><i class="fa-solid fa-play"></i> Mulai Kuis</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     const vocabData = [
@@ -2817,6 +3223,7 @@
       'fa-play': '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z"/></svg>',
       'fa-arrow-right-from-bracket': '<svg viewBox="0 0 24 24"><path d="M10 7V5h9v14h-9v-2"/><path d="M3 12h11"/><path d="m11 8 4 4-4 4"/></svg>',
       'fa-microphone': '<svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/><path d="M8 21h8"/></svg>',
+      'fa-microphone-slash': '<svg viewBox="0 0 24 24"><path d="M3 3l18 18"/><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 10.5 6"/><path d="M19 11a7 7 0 0 1-.7 3"/><path d="M12 18v3"/><path d="M8 21h8"/></svg>',
       'fa-microphone-lines': '<svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M12 7v.01M12 10v.01M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg>',
       'fa-headphones': '<svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="2"/><rect x="17" y="14" width="4" height="6" rx="2"/></svg>',
       'fa-eye': '<svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>',
@@ -2867,6 +3274,275 @@
 
     document.addEventListener('keydown',e=>{if(e.key==='Escape') document.querySelectorAll('.modal-overlay.active').forEach(m=>closeModal(m.id));});
     renderCategoryPills(); renderVocab(); loadPractice(false); updateResult(); renderParticipants(); applyUILanguage(); updateAuthUI(); syncFictionSwitch(); startHeroSlider(); applyLocalIcons(document);
+  
+
+    /* === TIMER KUIS 30 DETIK PER KARTU === */
+    let quizSecondsLeft = 30;
+    let quizTimerInterval = null;
+    let quizPaused = false;
+    function formatQuizTime(sec){
+      const m = String(Math.floor(sec/60)).padStart(2,'0');
+      const s = String(sec%60).padStart(2,'0');
+      return `${m}:${s}`;
+    }
+    function updateQuizTimerText(){
+      const el=document.getElementById('timeText');
+      if(el) el.textContent=formatQuizTime(quizSecondsLeft);
+    }
+    function startQuizTimer(){
+      clearInterval(quizTimerInterval);
+      quizSecondsLeft = 30;
+      quizPaused = false;
+      updateQuizTimerText();
+      quizTimerInterval = setInterval(()=>{
+        const page=document.getElementById('page-practice');
+        if(!page || !page.classList.contains('active')) return;
+        if(quizPaused) return;
+        quizSecondsLeft = Math.max(0, quizSecondsLeft - 1);
+        updateQuizTimerText();
+        if(quizSecondsLeft <= 0){
+          clearInterval(quizTimerInterval);
+          if(typeof answerCard === 'function') answerCard(false);
+        }
+      },1000);
+    }
+    const originalLoadPracticeTimerFix = loadPractice;
+    loadPractice = function(playAudio=true){
+      originalLoadPracticeTimerFix(playAudio);
+      startQuizTimer();
+    };
+    togglePause = function(btn){
+      quizPaused = !quizPaused;
+      if(btn) btn.textContent = quizPaused ? 'Lanjut' : 'Jeda';
+    };
+
+
+    /* === REVISI FLASHCARD QUIZ: arah bahasa, urutan acak/tidak, kartu bisa dibalik, mic ON/OFF === */
+    let quizDirection = 'id-jp';
+    let quizOrder = 'random';
+    let quizDeck = Array.isArray(vocabData) ? [...vocabData] : [];
+    let practiceFlipped = false;
+    let micAutoEnabled = true;
+
+    function syncQuizOptionUI(){
+      document.querySelectorAll('#quizSetupModal [data-direction]').forEach(btn=>btn.classList.toggle('active', btn.dataset.direction===quizDirection));
+      document.querySelectorAll('#quizSetupModal [data-order]').forEach(btn=>btn.classList.toggle('active', btn.dataset.order===quizOrder));
+    }
+    function selectQuizDirection(dir){ quizDirection = dir; langMode = dir; syncQuizOptionUI(); }
+    function selectQuizOrder(order){ quizOrder = order; syncQuizOptionUI(); }
+    function shuffleDeck(arr){
+      const a=[...arr];
+      for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+      return a;
+    }
+    function openQuizSetup(){
+      if(!currentUser) return requireUsernameBeforeAccess();
+      const sel=document.getElementById('quizCategorySelect');
+      if(sel) sel.value=activeCategory || 'Semua';
+      syncQuizOptionUI();
+      openModal('quizSetupModal');
+    }
+    startQuizFromNav = function(){ openQuizSetup(); };
+    function beginConfiguredQuiz(){
+      const selectedCat=document.getElementById('quizCategorySelect')?.value || 'Semua';
+      activeCategory = selectedCat;
+      renderCategoryPills();
+      const source = vocabData.filter(v=>selectedCat==='Semua' || v.cat===selectedCat);
+      quizDeck = quizOrder === 'random' ? shuffleDeck(source) : [...source];
+      if(!quizDeck.length) quizDeck=[...vocabData];
+      answered=0; correct=0; wrong=0; currentIndex=0; practiceFlipped=false;
+      langMode = quizDirection;
+      closeModal('quizSetupModal');
+      showPage('practice');
+      micAutoEnabled = true;
+      updateMicUI();
+      loadPractice(false);
+      setTimeout(()=>{ if(micAutoEnabled) startVoiceAnswer(); },450);
+    }
+    currentVocab = function(){
+      const deck = quizDeck && quizDeck.length ? quizDeck : vocabData;
+      return deck[currentIndex % deck.length];
+    };
+    function renderPracticeCardFace(){
+      const v=currentVocab();
+      const showJapanese = quizDirection === 'jp-id' ? !practiceFlipped : practiceFlipped;
+      const card=document.getElementById('practiceFlashcard');
+      if(card) card.classList.toggle('is-flipped', practiceFlipped);
+      if(showJapanese){
+        document.getElementById('practiceJapanese').textContent=v.jp;
+        document.getElementById('practiceKana').textContent=v.kana || '';
+        document.getElementById('practiceRomaji').textContent=v.romaji || '';
+        document.getElementById('rememberTitle').innerHTML = practiceFlipped
+          ? '<i class="fa-regular fa-lightbulb"></i> Jawaban bahasa Jepang'
+          : '<i class="fa-regular fa-lightbulb"></i> Klik kartu untuk melihat arti';
+        document.getElementById('rememberDesc').textContent = practiceFlipped
+          ? 'Ini sisi jawaban. Klik lagi untuk kembali ke soal.'
+          : 'Sebutkan arti bahasa Indonesianya terlebih dahulu.';
+      }else{
+        document.getElementById('practiceJapanese').textContent=cap(v.arti);
+        document.getElementById('practiceKana').textContent='Bahasa Indonesia';
+        document.getElementById('practiceRomaji').textContent='';
+        document.getElementById('rememberTitle').innerHTML = practiceFlipped
+          ? '<i class="fa-regular fa-lightbulb"></i> Jawaban bahasa Indonesia'
+          : '<i class="fa-regular fa-lightbulb"></i> Klik kartu untuk melihat bahasa Jepang';
+        document.getElementById('rememberDesc').textContent = practiceFlipped
+          ? 'Ini sisi jawaban. Klik lagi untuk kembali ke soal.'
+          : 'Coba sebutkan kosakata Jepangnya dari arti ini.';
+      }
+    }
+    function flipPracticeCard(){ practiceFlipped=!practiceFlipped; renderPracticeCardFace(); }
+    const oldLoadPracticeFlash = loadPractice;
+    loadPractice = function(playAudio=false){
+      const v=currentVocab();
+      const fb=document.getElementById('voiceFeedback'); if(fb) fb.className='voice-feedback';
+      setVoiceListening(false);
+      practiceFlipped=false;
+      document.getElementById('practiceCategory').innerHTML=`${iconForCat(v.cat)} ${v.cat}`;
+      renderPracticeCardFace();
+      const deck = quizDeck && quizDeck.length ? quizDeck : vocabData;
+      const num=answered+1;
+      const cardNum=document.getElementById('cardNum'); if(cardNum) cardNum.textContent=num;
+      const totalLabel=document.querySelector('#page-practice .progress-card h3');
+      if(totalLabel) totalLabel.innerHTML=`Kartu <span id="cardNum">${num}</span> / ${deck.length}`;
+      const pct=Math.min(100,Math.round((answered/deck.length)*100));
+      const progress=document.getElementById('practiceProgress'); if(progress) progress.style.width=pct+'%';
+      const percent=document.getElementById('practicePercent'); if(percent) percent.textContent=pct+'% Selesai';
+      if(typeof startQuizTimer==='function') startQuizTimer();
+      if(micAutoEnabled){ setTimeout(()=>{ const page=document.getElementById('page-practice'); if(page?.classList.contains('active')) startVoiceAnswer(); },350); }
+    };
+    answerCard = function(isCorrect){
+      answered++; if(isCorrect) correct++; else wrong++;
+      const deck = quizDeck && quizDeck.length ? quizDeck : vocabData;
+      currentIndex=(currentIndex+1)%deck.length;
+      if(answered>=deck.length){ showPage('hasil'); updateResult(); return; }
+      loadPractice(false);
+    };
+    resetPractice = function(){
+      const source = activeCategory==='Semua' ? vocabData : vocabData.filter(v=>v.cat===activeCategory);
+      quizDeck = quizOrder === 'random' ? shuffleDeck(source) : [...source];
+      if(!quizDeck.length) quizDeck=[...vocabData];
+      answered=0;correct=0;wrong=0;currentIndex=0;practiceFlipped=false;
+      micAutoEnabled=true; updateMicUI(); loadPractice(false);
+    };
+    function updateMicUI(){
+      const sw=document.getElementById('micSwitch');
+      const btn=document.getElementById('voiceAnswerBtn');
+      if(sw) sw.classList.toggle('active', micAutoEnabled);
+      if(btn){
+        btn.classList.toggle('mic-off', !micAutoEnabled);
+        btn.innerHTML = micAutoEnabled
+          ? '<i class="fa-solid fa-microphone"></i> &nbsp; Mic ON'
+          : '<i class="fa-solid fa-microphone-slash"></i> &nbsp; Mic OFF';
+        if(typeof applyLocalIcons==='function') applyLocalIcons(btn);
+      }
+    }
+    function toggleMicMode(){
+      micAutoEnabled = !micAutoEnabled;
+      updateMicUI();
+      if(!micAutoEnabled){
+        try{ if(recognition) recognition.stop(); }catch(e){}
+        voiceBusy=false; setVoiceListening(false);
+        const fb=document.getElementById('voiceFeedback'); if(fb) fb.className='voice-feedback';
+      }else{
+        startVoiceAnswer();
+      }
+    }
+    const oldSetVoiceListening = setVoiceListening;
+    setVoiceListening = function(active){
+      const box=document.getElementById('voiceListening');
+      const btn=document.getElementById('voiceAnswerBtn');
+      if(box) box.classList.toggle('active', active);
+      if(btn){
+        btn.classList.toggle('listening-now', active);
+        btn.disabled=false;
+        btn.innerHTML = active
+          ? '<i class="fa-solid fa-microphone-lines"></i> &nbsp; Mendengarkan...'
+          : (micAutoEnabled ? '<i class="fa-solid fa-microphone"></i> &nbsp; Mic ON' : '<i class="fa-solid fa-microphone-slash"></i> &nbsp; Mic OFF');
+        if(typeof applyLocalIcons==='function') applyLocalIcons(btn);
+      }
+      const sw=document.getElementById('micSwitch'); if(sw) sw.classList.toggle('active', micAutoEnabled);
+    };
+    voiceTargets = function(v){
+      const arr = quizDirection === 'jp-id' ? [v.arti] : [v.jp, v.kana, v.romaji];
+      return arr.filter(Boolean).map(normalizeVoiceText);
+    };
+    const oldStartVoiceAnswer = startVoiceAnswer;
+    startVoiceAnswer = function(){
+      if(!micAutoEnabled) return;
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const fb=document.getElementById('voiceFeedback');
+      if(fb) fb.className='voice-feedback';
+      if(!SpeechRecognition){
+        showVoiceFeedback('bad','<i class="fa-solid fa-triangle-exclamation"></i> Browser ini belum mendukung mikrofon. Gunakan Chrome/Edge dan izinkan akses mikrofon.');
+        return;
+      }
+      if(voiceBusy) return;
+      voiceBusy=true;
+      try{
+        if(recognition) recognition.stop();
+        recognition = new SpeechRecognition();
+        recognition.lang = quizDirection === 'jp-id' ? 'id-ID' : 'ja-JP';
+        recognition.interimResults=false;
+        recognition.maxAlternatives=3;
+        setVoiceListening(true);
+        recognition.onresult=(event)=>{
+          const results=Array.from(event.results?.[0]||[]);
+          const transcript=(results[0]?.transcript || '').trim();
+          voiceBusy=false; setVoiceListening(false); evaluateVoiceAnswer(transcript);
+        };
+        recognition.onerror=(event)=>{
+          voiceBusy=false; setVoiceListening(false);
+          const msg=event.error==='not-allowed'
+            ? 'Akses mikrofon ditolak. Izinkan mikrofon di browser, lalu coba lagi.'
+            : 'Suara belum terbaca. Coba ucapkan jawaban dengan lebih jelas.';
+          showVoiceFeedback('bad',`<i class="fa-solid fa-triangle-exclamation"></i> ${msg}`);
+        };
+        recognition.onend=()=>{ if(voiceBusy){ voiceBusy=false; setVoiceListening(false); } };
+        recognition.start();
+      }catch(e){
+        voiceBusy=false; setVoiceListening(false);
+        showVoiceFeedback('bad','<i class="fa-solid fa-triangle-exclamation"></i> Mikrofon belum bisa dimulai. Coba ulangi sekali lagi.');
+      }
+    };
+    evaluateVoiceAnswer = function(transcript){
+      const v=currentVocab();
+      const spoken=normalizeVoiceText(transcript);
+      const targets=voiceTargets(v);
+      const isCorrect=!!spoken && targets.some(t=>spoken===t || spoken.includes(t) || t.includes(spoken));
+      if(isCorrect){
+        const label = quizDirection === 'jp-id' ? cap(v.arti) : `${v.jp} (${v.romaji})`;
+        showVoiceFeedback('good',`<i class="fa-solid fa-circle-check"></i> Benar! Jawaban: <strong>${label}</strong>.`);
+      }else{
+        const label = quizDirection === 'jp-id' ? cap(v.arti) : `<strong>${v.jp}</strong> / ${v.kana} (${v.romaji})`;
+        showVoiceFeedback('bad',`<i class="fa-solid fa-circle-xmark"></i> Belum tepat. Terdengar: <strong>${transcript || '-'}</strong><br>Jawaban benar: ${label}.`);
+      }
+      setTimeout(()=>answerCard(isCorrect),1200);
+    };
+    document.addEventListener('DOMContentLoaded',()=>{
+      const auto=document.querySelector('.suara-otomatis-hidden'); if(auto) auto.style.display='none';
+      const card=document.getElementById('practiceFlashcard');
+      if(card && !card.dataset.flipReady){
+        card.dataset.flipReady='1';
+        card.addEventListener('click',e=>{
+          if(e.target.closest('button,a,input,select,.card-star,.badge')) return;
+          flipPracticeCard();
+        });
+      }
+      updateMicUI(); syncQuizOptionUI(); renderPracticeCardFace();
+      if(typeof applyLocalIcons==='function') applyLocalIcons(document);
+    });
+    // Jalankan juga untuk dokumen yang sudah selesai dimuat sebelum injeksi ini diproses.
+    setTimeout(()=>{
+      const auto=document.querySelector('.suara-otomatis-hidden'); if(auto) auto.style.display='none';
+      const card=document.getElementById('practiceFlashcard');
+      if(card && !card.dataset.flipReady){
+        card.dataset.flipReady='1';
+        card.addEventListener('click',e=>{ if(e.target.closest('button,a,input,select,.card-star,.badge')) return; flipPracticeCard(); });
+      }
+      updateMicUI(); syncQuizOptionUI(); renderPracticeCardFace();
+      if(typeof applyLocalIcons==='function') applyLocalIcons(document);
+    },0);
+
   </script>
 </body>
 </html>
