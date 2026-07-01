@@ -1530,6 +1530,453 @@
     #page-practice .voice-feedback.bad{background:#ffe4ec;color:#ff3b6b;border-color:rgba(255,59,107,.24);}
     #page-practice #voiceAnswerBtn.listening-now{background:linear-gradient(135deg,#10b981,#34d399);color:#fff;border-color:transparent;box-shadow:0 14px 30px rgba(16,185,129,.20);}
 
+  
+
+    /* FINAL REVISI HALAMAN MATERI - disamakan dengan referensi */
+    #page-materi{
+      padding:48px 0 72px!important;
+      background:transparent!important;
+    }
+    #page-materi .layout-with-sidebar{
+      grid-template-columns:270px minmax(0,1fr)!important;
+      gap:28px!important;
+      align-items:start!important;
+    }
+    #page-materi .side-card,
+    #page-materi .content-card,
+    #page-materi .vocab-card{
+      background:rgba(255,255,255,.92)!important;
+      border:1px solid rgba(124,77,255,.10)!important;
+      box-shadow:0 18px 48px rgba(80,70,140,.085)!important;
+    }
+    #page-materi .side-card{
+      border-radius:22px!important;
+      padding:22px!important;
+    }
+    #page-materi .side-menu{
+      gap:10px!important;
+    }
+    #page-materi .side-link{
+      height:54px!important;
+      padding:0 18px!important;
+      border-radius:12px!important;
+      font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif!important;
+      font-size:15px!important;
+      font-weight:650!important;
+      color:#53627d!important;
+      display:flex!important;
+      align-items:center!important;
+      gap:16px!important;
+    }
+    #page-materi .side-link i{
+      width:24px!important;
+      text-align:center!important;
+      font-size:18px!important;
+      color:inherit!important;
+    }
+    #page-materi .side-link.active,
+    #page-materi .side-link:hover{
+      color:#fff!important;
+      background:linear-gradient(135deg,#7c4dff,#6336e8)!important;
+      box-shadow:0 12px 28px rgba(124,77,255,.22)!important;
+    }
+    #page-materi .stat-list{
+      gap:18px!important;
+      margin-top:20px!important;
+    }
+    #page-materi .stat-item{
+      gap:16px!important;
+    }
+    #page-materi .stat-item .icon-bubble{
+      width:50px!important;
+      height:50px!important;
+      min-width:50px!important;
+      font-size:20px!important;
+    }
+    #page-materi .stat-item strong{
+      font-size:20px!important;
+      line-height:1!important;
+      font-weight:800!important;
+      color:#17213c!important;
+    }
+    #page-materi .stat-item span:not(.icon-bubble){
+      font-size:12px!important;
+      line-height:1.35!important;
+      color:#64748b!important;
+      font-weight:600!important;
+    }
+    #page-materi .motivation{
+      min-height:206px!important;
+      overflow:hidden!important;
+      background-image:linear-gradient(135deg,rgba(245,240,255,.72),rgba(235,246,255,.52)),url('https://iili.io/C7G05qQ.png')!important;
+      background-size:cover!important;
+      background-position:center!important;
+      position:relative!important;
+    }
+    #page-materi .motivation:after{display:none!important;}
+    #page-materi .motivation h3{
+      font-size:16px!important;
+      line-height:1.35!important;
+      font-weight:800!important;
+      margin-bottom:18px!important;
+      position:relative!important;
+      z-index:2!important;
+    }
+    #page-materi .motivation p{
+      font-size:14px!important;
+      line-height:1.65!important;
+      font-weight:500!important;
+      max-width:190px!important;
+      position:relative!important;
+      z-index:2!important;
+    }
+    #page-materi .motivation .btn{
+      height:48px!important;
+      padding:0 22px!important;
+      border-radius:14px!important;
+      font-size:14px!important;
+      font-weight:750!important;
+      position:relative!important;
+      z-index:2!important;
+      background:rgba(255,255,255,.88)!important;
+      color:#6b3df4!important;
+      border:1px solid rgba(124,77,255,.16)!important;
+      box-shadow:0 12px 28px rgba(80,70,140,.08)!important;
+    }
+    #page-materi .content-card{
+      border-radius:26px!important;
+      padding:32px!important;
+      min-height:760px!important;
+    }
+    #page-materi .page-title{
+      font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif!important;
+      font-size:32px!important;
+      line-height:1.15!important;
+      font-weight:800!important;
+      letter-spacing:-.04em!important;
+      color:#10213f!important;
+      margin:0 0 6px!important;
+    }
+    #page-materi .page-desc{
+      font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif!important;
+      font-size:14px!important;
+      line-height:1.55!important;
+      color:#64748b!important;
+      font-weight:500!important;
+    }
+    #page-materi .search-bar{
+      max-width:620px!important;
+      margin:24px 0 22px!important;
+    }
+    #page-materi .search-bar input{
+      height:50px!important;
+      border-radius:13px!important;
+      border:1px solid #dfe4ee!important;
+      background:rgba(255,255,255,.86)!important;
+      color:#34405c!important;
+      font-size:14px!important;
+      font-weight:500!important;
+      padding-left:48px!important;
+      box-shadow:none!important;
+    }
+    #page-materi .pill-row{
+      gap:22px!important;
+      margin:0 0 26px!important;
+      align-items:center!important;
+    }
+    #page-materi .pill{
+      height:48px!important;
+      min-width:92px!important;
+      padding:0 22px!important;
+      display:inline-flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      gap:10px!important;
+      border-radius:999px!important;
+      background:rgba(255,255,255,.94)!important;
+      border:1px solid #e4e8f1!important;
+      box-shadow:0 10px 26px rgba(80,70,140,.04)!important;
+      color:#53627d!important;
+      font-size:14px!important;
+      font-weight:750!important;
+    }
+    #page-materi .pill.active{
+      background:linear-gradient(135deg,#7c4dff,#6336e8)!important;
+      color:#fff!important;
+      border-color:transparent!important;
+      box-shadow:0 14px 28px rgba(124,77,255,.22)!important;
+    }
+    #page-materi .vocab-grid{
+      display:grid!important;
+      grid-template-columns:repeat(3,minmax(0,1fr))!important;
+      gap:22px!important;
+    }
+    #page-materi .vocab-card{
+      border-radius:20px!important;
+      overflow:hidden!important;
+      transition:.22s!important;
+    }
+    #page-materi .vocab-card:hover{
+      transform:translateY(-4px)!important;
+      box-shadow:0 22px 54px rgba(80,70,140,.13)!important;
+    }
+    #page-materi .thumb{
+      height:128px!important;
+      border-radius:0!important;
+      background:linear-gradient(135deg,#fbfcff,#f7f4ff)!important;
+      border-bottom:1px solid #edf0f6!important;
+    }
+    #page-materi .thumb:before,
+    #page-materi .thumb .emoji{
+      display:none!important;
+    }
+    #page-materi .card-star{
+      right:12px!important;
+      top:12px!important;
+      width:38px!important;
+      height:38px!important;
+      border-radius:50%!important;
+      background:#fff!important;
+      border:1px solid #dfe4ee!important;
+      box-shadow:0 8px 20px rgba(80,70,140,.12)!important;
+      color:#64748b!important;
+    }
+    #page-materi .vocab-body{
+      padding:16px 20px 18px!important;
+    }
+    #page-materi .vocab-body h3{
+      font-size:29px!important;
+      line-height:1.1!important;
+      font-weight:850!important;
+      color:#0f172a!important;
+      margin:0 0 4px!important;
+    }
+    #page-materi .vocab-body .romaji{
+      font-size:15px!important;
+      line-height:1.25!important;
+      font-weight:650!important;
+      color:#7c4dff!important;
+      margin:0!important;
+    }
+    #page-materi .meaning-sm{
+      margin-top:9px!important;
+      padding-top:10px!important;
+      border-top:1px solid #edf0f6!important;
+      font-size:15px!important;
+      line-height:1.35!important;
+      font-weight:600!important;
+      color:#475569!important;
+    }
+    #page-materi .cat-badge{
+      margin:12px 0 13px!important;
+      height:26px!important;
+      padding:0 11px!important;
+      border-radius:999px!important;
+      font-size:12px!important;
+      font-weight:750!important;
+      display:inline-flex!important;
+      align-items:center!important;
+      gap:7px!important;
+    }
+    #page-materi .listen-btn{
+      height:40px!important;
+      border-radius:10px!important;
+      font-size:14px!important;
+      font-weight:800!important;
+      background:#f0fff9!important;
+      border:1px solid rgba(16,185,129,.42)!important;
+      color:#10b981!important;
+    }
+    @media(max-width:1100px){
+      #page-materi .layout-with-sidebar{grid-template-columns:1fr!important;}
+      #page-materi .sidebar{grid-template-columns:1fr 1fr!important;}
+      #page-materi .side-menu{grid-template-columns:repeat(4,1fr)!important;}
+      #page-materi .vocab-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+    }
+    @media(max-width:760px){
+      #page-materi{padding:30px 0 54px!important;}
+      #page-materi .content-card{padding:20px!important;border-radius:22px!important;}
+      #page-materi .sidebar{grid-template-columns:1fr!important;}
+      #page-materi .side-menu{grid-template-columns:1fr 1fr!important;}
+      #page-materi .pill-row{gap:10px!important;}
+      #page-materi .pill{height:42px!important;min-width:auto!important;padding:0 16px!important;font-size:13px!important;}
+      #page-materi .vocab-grid{grid-template-columns:1fr!important;}
+    }
+
+  
+
+    /* REVISI FONT HALAMAN MATERI - dibuat lebih ringan seperti referensi */
+    #page-materi,
+    #page-materi *{
+      font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+      letter-spacing:-.01em!important;
+    }
+    #page-materi .side-link{
+      font-weight:500!important;
+      color:#53627d!important;
+    }
+    #page-materi .side-link.active,
+    #page-materi .side-link:hover{
+      font-weight:600!important;
+      color:#fff!important;
+    }
+    #page-materi .side-card h3,
+    #page-materi .motivation h3{
+      font-weight:650!important;
+      color:#17213c!important;
+    }
+    #page-materi .stat-item strong{
+      font-weight:650!important;
+      color:#17213c!important;
+    }
+    #page-materi .stat-item span:not(.icon-bubble),
+    #page-materi .motivation p{
+      font-weight:400!important;
+      color:#64748b!important;
+    }
+    #page-materi .motivation .btn{
+      font-weight:600!important;
+    }
+    #page-materi .page-title{
+      font-size:31px!important;
+      font-weight:700!important;
+      letter-spacing:-.035em!important;
+      color:#10213f!important;
+    }
+    #page-materi .page-desc{
+      font-weight:400!important;
+      color:#667085!important;
+    }
+    #page-materi .search-bar input{
+      font-weight:400!important;
+      color:#344054!important;
+    }
+    #page-materi .search-bar input::placeholder{
+      font-weight:400!important;
+      color:#94a3b8!important;
+    }
+    #page-materi .pill{
+      font-weight:500!important;
+      color:#53627d!important;
+    }
+    #page-materi .pill.active{
+      font-weight:600!important;
+      color:#fff!important;
+    }
+    #page-materi .vocab-body h3{
+      font-size:28px!important;
+      font-weight:700!important;
+      letter-spacing:-.02em!important;
+      color:#0f172a!important;
+    }
+    #page-materi .vocab-body .romaji{
+      font-weight:500!important;
+      color:#7c4dff!important;
+    }
+    #page-materi .meaning-sm{
+      font-weight:400!important;
+      color:#475569!important;
+    }
+    #page-materi .cat-badge{
+      font-weight:500!important;
+    }
+    #page-materi .listen-btn{
+      font-weight:600!important;
+    }
+    #page-materi .card-star i{
+      font-weight:400!important;
+    }
+
+    /* Revisi navbar saat berada di halaman materi agar tidak terlalu tebal */
+    .app-header .brand h1{
+      font-weight:700!important;
+      letter-spacing:-.02em!important;
+    }
+    .app-header .brand p{
+      font-weight:400!important;
+    }
+    .app-header .nav-link{
+      font-weight:500!important;
+    }
+    .app-header .nav-link.active{
+      font-weight:600!important;
+    }
+    .app-header .nav-actions .btn{
+      font-weight:600!important;
+    }
+
+
+
+    /* REVISI: ikon materi dikembalikan dan akses tab dikunci sebelum username */
+    #page-materi .side-link i,
+    #page-materi .pill i,
+    #page-materi .cat-badge i,
+    #page-materi .listen-btn i,
+    #page-materi .stat-item .icon-bubble i,
+    #page-materi .card-star i{
+      display:inline-flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      line-height:1!important;
+      text-align:center!important;
+      width:auto!important;
+      height:auto!important;
+      margin:0!important;
+      opacity:1!important;
+      visibility:visible!important;
+      transform:none!important;
+    }
+    #page-materi .side-link i{width:24px!important;font-size:18px!important;}
+    #page-materi .pill i{font-size:15px!important;color:inherit!important;}
+    #page-materi .cat-badge i{font-size:11px!important;color:inherit!important;}
+    #page-materi .listen-btn i{font-size:15px!important;color:inherit!important;}
+    #page-materi .card-star i{font-size:16px!important;color:#64748b!important;}
+    #page-materi .stat-item .icon-bubble i{font-size:20px!important;color:inherit!important;}
+    #page-materi .side-menu .side-link:nth-child(1) i::before{content:"\f015"!important;font-family:"Font Awesome 6 Free"!important;font-weight:900!important;}
+    #page-materi .side-menu .side-link:nth-child(2) i::before{content:"\f518"!important;font-family:"Font Awesome 6 Free"!important;font-weight:900!important;}
+    #page-materi .side-menu .side-link:nth-child(3) i::before{content:"\f328"!important;font-family:"Font Awesome 6 Free"!important;font-weight:400!important;}
+    #page-materi .side-menu .side-link:nth-child(4) i::before{content:"\e0e3"!important;font-family:"Font Awesome 6 Free"!important;font-weight:900!important;}
+    #startModal .login-required-notice{
+      display:none;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      width:100%;
+      margin:-10px auto 18px;
+      padding:10px 14px;
+      border-radius:13px;
+      background:#f4efff;
+      border:1px solid rgba(124,77,255,.16);
+      color:#6b3df4;
+      font-size:12.5px;
+      font-weight:600;
+      text-align:center;
+    }
+    #startModal.require-login .login-required-notice{display:flex!important;}
+    #startModal.require-login .modal-title::after{
+      content:"";
+    }
+
+
+    #page-materi .thumb-empty-icon{
+      position:absolute!important;
+      left:50%!important;
+      top:50%!important;
+      transform:translate(-50%,-50%)!important;
+      width:54px!important;
+      height:54px!important;
+      border-radius:50%!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      background:#f4efff!important;
+      color:#7c4dff!important;
+      opacity:.72!important;
+      font-size:23px!important;
+      pointer-events:none!important;
+    }
+    #page-materi .thumb-empty-icon i{font-size:23px!important;line-height:1!important;color:inherit!important;}
+
   </style>
 </head>
 <body>
@@ -1678,6 +2125,7 @@
       <div class="modal-logo">あ</div>
       <h2 class="modal-title">Siap mulai belajar?</h2>
       <p class="modal-desc">Masukkan nama Anda dan pilih grup untuk memulai petualangan belajar kosakata Jepang.</p>
+      <div class="login-required-notice" id="loginRequiredNotice"><i class="fa-solid fa-circle-info"></i> Masukkan nama terlebih dahulu untuk membuka menu ini.</div>
 
       <div class="field">
         <label>Nama peserta</label>
@@ -1864,13 +2312,14 @@
     }
 
     function toggleMenu(){ document.getElementById('navMenu').classList.toggle('show'); }
-    function startQuizFromNav(){ resetPractice(); showPage('practice'); }
+    function startQuizFromNav(){ if(!currentUser) return requireUsernameBeforeAccess(); resetPractice(); showPage('practice'); }
     function toggleLangMode(){
       siteLang = siteLang === 'id' ? 'ja' : 'id';
       langMode = siteLang === 'id' ? 'jp-id' : 'id-jp';
       applyUILanguage();
     }
     function showPage(page){
+      if(!canOpenPage(page)) return requireUsernameBeforeAccess();
       document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
       document.getElementById('page-'+page).classList.add('active');
       document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active', a.dataset.page===page));
@@ -1880,12 +2329,22 @@
     }
     const ADMIN_USERNAMES = ['admin44','admin404'];
     const ADMIN_PASSWORD = 'kuis44GAKKOU';
-    function openStartModal(){
+    function openStartModal(reason){
+      const modal=document.getElementById('startModal');
+      if(modal) modal.classList.toggle('require-login', reason === 'required');
       openModal('startModal');
       handleUsernameMode();
+      setTimeout(()=>document.getElementById('usernameInput')?.focus(),80);
+    }
+    function requireUsernameBeforeAccess(){
+      openStartModal('required');
+      return false;
+    }
+    function canOpenPage(page){
+      return page === 'home' || !!currentUser;
     }
     function openModal(id){ document.getElementById(id).classList.add('active'); document.body.classList.add('modal-open'); }
-    function closeModal(id){ document.getElementById(id).classList.remove('active'); if(!document.querySelector('.modal-overlay.active')) document.body.classList.remove('modal-open'); }
+    function closeModal(id){ const modal=document.getElementById(id); if(modal){ modal.classList.remove('active'); if(id==='startModal') modal.classList.remove('require-login'); } if(!document.querySelector('.modal-overlay.active')) document.body.classList.remove('modal-open'); }
     function overlayClose(e,id){ if(e.target.id===id) closeModal(id); }
     function toggleSwitch(el){ el.classList.toggle('active'); if(el.id==='fictionSwitch') syncFictionSwitch(); }
     function isAdminUsername(value){ return ADMIN_USERNAMES.includes((value||'').trim().toLowerCase()); }
@@ -2002,12 +2461,12 @@
       document.getElementById('categoryPills').innerHTML=cats.map(c=>`<button class="pill ${c===activeCategory?'active':''}" onclick="setCategory('${c}')">${iconForCat(c)} ${c}</button>`).join('');
     }
     function iconForCat(c){return c==='Salam'?'<i class="fa-solid fa-user"></i>':c==='Sekolah'?'<i class="fa-solid fa-graduation-cap"></i>':c==='Angka'?'<i class="fa-solid fa-123"></i>':c==='Keluarga'?'<i class="fa-solid fa-user-group"></i>':'';}
-    function setCategory(cat){activeCategory=cat;renderCategoryPills();renderVocab();}
+    function setCategory(cat){ if(!currentUser) return requireUsernameBeforeAccess(); activeCategory=cat;renderCategoryPills();renderVocab();}
     function visualIcon(v){ const m={library:'fa-solid fa-book-open',school:'fa-solid fa-school',book:'fa-solid fa-book',pen:'fa-solid fa-pen',person:'fa-solid fa-user',family:'fa-solid fa-people-roof',number:'fa-solid fa-1'}; return m[v.img]||'fa-solid fa-book-open'; }
     function renderVocab(){
       const q=(document.getElementById('vocabSearch')?.value||'').toLowerCase();
       const rows=vocabData.filter(v=>(activeCategory==='Semua'||v.cat===activeCategory) && [v.jp,v.kana,v.romaji,v.arti,v.cat].join(' ').toLowerCase().includes(q));
-      document.getElementById('vocabGrid').innerHTML=rows.map(v=>`<article class="vocab-card"><div class="thumb ${v.img}"><button class="card-star"><i class="fa-regular fa-star"></i></button><span class="emoji"><i class="${visualIcon(v)}"></i></span></div><div class="vocab-body"><h3>${v.jp}</h3><div class="romaji">${v.romaji}</div><div class="meaning-sm">${cap(v.arti)}</div><span class="cat-badge cat-${v.cat}">${iconForCat(v.cat)} ${v.cat}</span><button class="listen-btn" onclick="speakText('${v.jp}')"><i class="fa-solid fa-volume-high"></i> &nbsp; Dengar</button></div></article>`).join('');
+      document.getElementById('vocabGrid').innerHTML=rows.map(v=>`<article class="vocab-card"><div class="thumb ${v.img}"><span class="thumb-empty-icon">${iconForCat(v.cat) || '<i class="fa-solid fa-book-open"></i>'}</span><button class="card-star"><i class="fa-regular fa-star"></i></button></div><div class="vocab-body"><h3>${v.jp}</h3><div class="romaji">${v.romaji}</div><div class="meaning-sm">${cap(v.arti)}</div><span class="cat-badge cat-${v.cat}">${iconForCat(v.cat)} ${v.cat}</span><button class="listen-btn" onclick="speakText('${v.jp}')"><i class="fa-solid fa-volume-high"></i> &nbsp; Dengar</button></div></article>`).join('');
     }
     function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
     function speakText(text){
