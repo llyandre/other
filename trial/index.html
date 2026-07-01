@@ -1977,6 +1977,109 @@
     }
     #page-materi .thumb-empty-icon i{font-size:23px!important;line-height:1!important;color:inherit!important;}
 
+
+    /* FINAL REQUEST FIX: kembalikan seluruh ikon/gambar UI, tetapi jangan tampilkan gambar kosakata */
+    .fa-solid,.fa-regular,.fa-brands,
+    button i, a i, .badge i, .pill i, .cat-badge i, .listen-btn i,
+    .side-link i, .icon-bubble i, .card-star i, .star-btn i,
+    .search-bar i, .field-wrap i, .small-btn i, .status i{
+      display:inline-flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      visibility:visible!important;
+      opacity:1!important;
+      line-height:1!important;
+      text-indent:0!important;
+      transform:none!important;
+    }
+    .brand-icon,.modal-logo{
+      display:grid!important;
+      place-items:center!important;
+      visibility:visible!important;
+      opacity:1!important;
+    }
+    #startModal .group-icon-wrap,
+    #startModal .group-icon-img{
+      display:inline-flex!important;
+      visibility:visible!important;
+      opacity:1!important;
+    }
+    #startModal .group-icon-img{
+      width:38px!important;
+      height:38px!important;
+      object-fit:contain!important;
+    }
+    #page-materi .side-link i{width:24px!important;font-size:18px!important;color:inherit!important;}
+    #page-materi .stat-item .icon-bubble i{font-size:20px!important;color:inherit!important;}
+    #page-materi .pill i{font-size:15px!important;color:inherit!important;}
+    #page-materi .cat-badge i{font-size:11px!important;color:inherit!important;}
+    #page-materi .listen-btn i{font-size:15px!important;color:inherit!important;}
+    #page-materi .card-star i{font-size:16px!important;color:#64748b!important;}
+    #page-materi .search-bar i{font-size:16px!important;color:#718096!important;}
+
+    /* khusus kosakata: tidak memakai gambar/foto kosakata; hanya card dan ikon kategori tetap terlihat */
+    #page-materi .thumb{
+      background:linear-gradient(135deg,#fbfcff,#f7f4ff)!important;
+      background-image:linear-gradient(135deg,#fbfcff,#f7f4ff)!important;
+    }
+    #page-materi .thumb::before,
+    #page-materi .thumb .emoji{
+      display:none!important;
+    }
+    #page-materi .thumb-empty-icon{
+      display:flex!important;
+      visibility:visible!important;
+      opacity:.72!important;
+    }
+
+
+
+    /* FONT AWESOME FALLBACK FIX: ikon tetap muncul walaupun webfont Font Awesome gagal dimuat */
+    i.svg-fa-fallback::before{content:""!important;display:none!important;}
+    i.svg-fa-fallback{
+      font-family:inherit!important;
+      font-style:normal!important;
+      display:inline-flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      width:1.08em!important;
+      height:1.08em!important;
+      min-width:1.08em!important;
+      line-height:1!important;
+      vertical-align:-.12em!important;
+      color:inherit!important;
+      text-indent:0!important;
+      overflow:visible!important;
+    }
+    i.svg-fa-fallback svg{
+      width:1.08em!important;
+      height:1.08em!important;
+      display:block!important;
+      stroke:currentColor!important;
+      fill:none!important;
+      stroke-width:2.2!important;
+      stroke-linecap:round!important;
+      stroke-linejoin:round!important;
+      overflow:visible!important;
+    }
+    i.svg-fa-fallback[data-fa-name="fa-123"],
+    i.svg-fa-fallback[data-fa-name="fa-1"]{
+      width:auto!important;
+      min-width:1.45em!important;
+      height:1em!important;
+      font-weight:900!important;
+      font-size:.92em!important;
+      letter-spacing:-.03em!important;
+    }
+    .icon-bubble i.svg-fa-fallback,
+    .thumb-empty-icon i.svg-fa-fallback,
+    .card-star i.svg-fa-fallback,
+    .star-btn i.svg-fa-fallback{
+      width:1em!important;
+      height:1em!important;
+      min-width:1em!important;
+    }
+
   </style>
 </head>
 <body>
@@ -2606,8 +2709,85 @@
     }
     function resetAdminFilter(){document.getElementById('participantSearch').value='';document.getElementById('groupFilter').value='Semua Grup';renderParticipants();}
     function openDetail(nama){const p=participants.find(x=>x.nama===nama);document.getElementById('detailContent').innerHTML=`<div><span>Nama</span><strong>${p.nama}</strong></div><div><span>Grup</span><strong>${p.grup}</strong></div><div><span>Tanggal Terakhir</span><strong>${p.tanggal}</strong></div><div><span>Total Soal</span><strong>${p.total}</strong></div><div><span>Benar</span><strong>${p.benar}</strong></div><div><span>Salah</span><strong>${p.salah}</strong></div><div><span>Skor</span><strong>${p.skor.toFixed(1)}%</strong></div>`;openModal('detailModal');}
+
+
+    /* Ikon lokal: mengganti glyph Font Awesome menjadi SVG inline agar tidak berubah menjadi kotak X */
+    const LOCAL_ICON_SVGS = {
+      'fa-book-open': '<svg viewBox="0 0 24 24"><path d="M2 5.5A3.5 3.5 0 0 1 5.5 2H11v18H5.5A3.5 3.5 0 0 0 2 23V5.5Z"/><path d="M22 5.5A3.5 3.5 0 0 0 18.5 2H13v18h5.5A3.5 3.5 0 0 1 22 23V5.5Z"/></svg>',
+      'fa-clock': '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>',
+      'fa-table-cells': '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',
+      'fa-house': '<svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10.5V21h14V10.5"/><path d="M9 21v-6h6v6"/></svg>',
+      'fa-clipboard': '<svg viewBox="0 0 24 24"><path d="M9 4h6l1 2h3v15H5V6h3l1-2Z"/><path d="M9 4h6v4H9z"/><path d="M8 12h8M8 16h6"/></svg>',
+      'fa-chart-column': '<svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 20V10h3v10"/><path d="M11 20V5h3v15"/><path d="M16 20v-7h3v7"/></svg>',
+      'fa-chart-simple': '<svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 16v-6"/><path d="M12 16V5"/><path d="M17 16v-9"/></svg>',
+      'fa-chart-line': '<svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M5 16l4-4 3 3 6-8"/><path d="M16 7h2v2"/></svg>',
+      'fa-user': '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
+      'fa-circle-user': '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="9" r="3"/><path d="M7 19a6 6 0 0 1 10 0"/></svg>',
+      'fa-user-group': '<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3.5 20a6 6 0 0 1 11 0"/><path d="M14.5 19a5 5 0 0 1 6-2.8"/></svg>',
+      'fa-people-roof': '<svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 10v10h14V10"/><circle cx="9" cy="13" r="2"/><circle cx="15" cy="13" r="2"/><path d="M6.5 19a3 3 0 0 1 5 0M12.5 19a3 3 0 0 1 5 0"/></svg>',
+      'fa-graduation-cap': '<svg viewBox="0 0 24 24"><path d="M2 9 12 4l10 5-10 5L2 9Z"/><path d="M6 12v4c2.5 2 9.5 2 12 0v-4"/><path d="M22 9v6"/></svg>',
+      'fa-school': '<svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>',
+      'fa-book': '<svg viewBox="0 0 24 24"><path d="M5 4h12a2 2 0 0 1 2 2v15H7a2 2 0 0 1-2-2V4Z"/><path d="M7 4v15a2 2 0 0 0 2 2"/><path d="M9 8h6"/></svg>',
+      'fa-pen': '<svg viewBox="0 0 24 24"><path d="M4 20l4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z"/><path d="M13.5 7.5l3 3"/></svg>',
+      'fa-magnifying-glass': '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>',
+      'fa-star': '<svg viewBox="0 0 24 24"><path d="m12 3 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 21l1.1-6.5-4.7-4.6 6.5-.9L12 3Z"/></svg>',
+      'fa-volume-high': '<svg viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6l-5 4H4Z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M18.5 6.5a9 9 0 0 1 0 11"/></svg>',
+      'fa-chevron-right': '<svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>',
+      'fa-chevron-down': '<svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>',
+      'fa-bars': '<svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
+      'fa-play': '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5Z"/></svg>',
+      'fa-arrow-right-from-bracket': '<svg viewBox="0 0 24 24"><path d="M10 7V5h9v14h-9v-2"/><path d="M3 12h11"/><path d="m11 8 4 4-4 4"/></svg>',
+      'fa-microphone': '<svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/><path d="M8 21h8"/></svg>',
+      'fa-microphone-lines': '<svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M12 7v.01M12 10v.01M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg>',
+      'fa-headphones': '<svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="2"/><rect x="17" y="14" width="4" height="6" rx="2"/></svg>',
+      'fa-eye': '<svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>',
+      'fa-eye-slash': '<svg viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M10.6 10.6a3 3 0 0 0 4.2 4.2"/><path d="M9.8 5.4A10.8 10.8 0 0 1 12 5c6.5 0 10 7 10 7a18 18 0 0 1-3 4.1"/><path d="M6.2 6.8C3.5 8.8 2 12 2 12s3.5 7 10 7c1.4 0 2.7-.3 3.8-.8"/></svg>',
+      'fa-lightbulb': '<svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M8 14a6 6 0 1 1 8 0c-.7.7-1 1.5-1 2H9c0-.5-.3-1.3-1-2Z"/></svg>',
+      'fa-comments': '<svg viewBox="0 0 24 24"><path d="M4 5h12a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3Z"/><path d="M8 9h7M8 12h5"/></svg>',
+      'fa-wave-square': '<svg viewBox="0 0 24 24"><path d="M3 12h3l2-6 4 12 4-12 2 6h3"/></svg>',
+      'fa-circle-check': '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg>',
+      'fa-circle-xmark': '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></svg>',
+      'fa-circle-info': '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg>',
+      'fa-triangle-exclamation': '<svg viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 9v5M12 17h.01"/></svg>',
+      'fa-calendar': '<svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>',
+      'fa-lock': '<svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>',
+      'fa-shield-halved': '<svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8.5 7 10 4-1.5 7-5 7-10V6l-7-3Z"/><path d="M12 3v18"/></svg>',
+      'fa-floppy-disk': '<svg viewBox="0 0 24 24"><path d="M5 3h12l2 2v16H5V3Z"/><path d="M8 3v6h8V3"/><path d="M8 21v-7h8v7"/></svg>',
+      'fa-xmark': '<svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>',
+      'fa-wand-magic-sparkles': '<svg viewBox="0 0 24 24"><path d="m5 21 14-14"/><path d="m15 3 1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z"/><path d="M5 5l.7 1.8L7.5 7.5 5.7 8.2 5 10l-.7-1.8-1.8-.7 1.8-.7L5 5Z"/></svg>',
+      'fa-file-pdf': '<svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6V3Z"/><path d="M15 3v4h4"/><path d="M8 16h8"/><path d="M8 12h8"/></svg>',
+      'fa-123': '<span>123</span>',
+      'fa-1': '<span>1</span>'
+    };
+    function localIconName(el){
+      return Array.from(el.classList).find(c=>/^fa-/.test(c) && !['fa-solid','fa-regular','fa-brands'].includes(c));
+    }
+    function applyLocalIcons(root=document){
+      root.querySelectorAll('i[class*="fa-"]').forEach(el=>{
+        const name=localIconName(el);
+        const svg=LOCAL_ICON_SVGS[name] || '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>';
+        if(el.dataset.faName===name && el.classList.contains('svg-fa-fallback')) return;
+        el.dataset.faName=name || 'default';
+        el.classList.add('svg-fa-fallback');
+        el.innerHTML=svg;
+        el.setAttribute('aria-hidden','true');
+      });
+    }
+    const localIconObserver = new MutationObserver((items)=>{
+      let shouldRun=false;
+      for(const item of items){
+        if(item.type==='childList' && item.addedNodes.length){shouldRun=true;break;}
+        if(item.type==='attributes' && item.attributeName==='class'){shouldRun=true;break;}
+      }
+      if(shouldRun) requestAnimationFrame(()=>applyLocalIcons(document));
+    });
+    document.addEventListener('DOMContentLoaded',()=>{
+      applyLocalIcons(document);
+      localIconObserver.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+    });
+
     document.addEventListener('keydown',e=>{if(e.key==='Escape') document.querySelectorAll('.modal-overlay.active').forEach(m=>closeModal(m.id));});
-    renderCategoryPills(); renderVocab(); loadPractice(false); updateResult(); renderParticipants(); applyUILanguage(); updateAuthUI(); syncFictionSwitch(); startHeroSlider();
+    renderCategoryPills(); renderVocab(); loadPractice(false); updateResult(); renderParticipants(); applyUILanguage(); updateAuthUI(); syncFictionSwitch(); startHeroSlider(); applyLocalIcons(document);
   </script>
 </body>
 </html>
