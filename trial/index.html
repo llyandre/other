@@ -6,7 +6,7 @@
   <title>Kosakata Jepang - Kartu. Dengar. Ingat.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     :root{
@@ -36,7 +36,7 @@
     html{scroll-behavior:smooth}
     body{
       min-height:100vh;
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-family:Inter,"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       color:var(--navy);
       background:
         radial-gradient(circle at 12% 8%, rgba(124,77,255,.12), transparent 35%),
@@ -58,7 +58,7 @@
       border-radius:0 0 26px 26px;
       box-shadow:0 10px 30px rgba(80,70,140,.06);
     }
-    .nav-shell{height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .nav-shell{height:96px;display:flex;align-items:center;justify-content:flex-start;gap:20px}
     .brand{display:flex;align-items:center;gap:14px;min-width:250px}
     .brand-icon,.modal-logo{
       width:54px;height:54px;border-radius:14px;
@@ -73,11 +73,11 @@
     .brand-icon:after,.modal-logo:after{transform:translate(14px,-10px);opacity:.45}
     .brand h1{font-size:18px;line-height:1.1;color:#4f2fd6;font-weight:850}
     .brand p{font-size:13px;color:#52617c;margin-top:4px}
-    .nav-menu{display:flex;align-items:center;gap:10px}
+    .nav-menu{display:flex;align-items:center;gap:10px;margin-left:auto}
     .nav-link{padding:14px 18px;border-radius:16px;color:#45536f;font-weight:600;font-size:14px;position:relative;transition:.2s}
     .nav-link:hover,.nav-link.active{color:var(--primary)}
     .nav-link.active:after{content:"";position:absolute;left:18px;right:18px;bottom:4px;height:3px;border-radius:5px;background:var(--primary)}
-    .nav-actions{display:flex;align-items:center;gap:12px;min-width:190px;justify-content:flex-end}
+    .nav-actions{display:flex;align-items:center;gap:12px;min-width:auto;justify-content:flex-end}
     .hamburger{display:none;width:46px;height:46px;border-radius:14px;background:#fff;border:1px solid var(--line);color:var(--primary)}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:15px;font-weight:800;transition:.2s;border:1px solid transparent;white-space:nowrap}
     .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:white;box-shadow:0 15px 34px rgba(124,77,255,.28)}
@@ -91,7 +91,9 @@
     .page.active{display:block}
     @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
     .badge{display:inline-flex;align-items:center;gap:9px;background:var(--primary-soft);color:#6b3df4;border-radius:999px;padding:12px 18px;font-weight:750;font-size:14px;border:1px solid rgba(124,77,255,.10)}
-    .language-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.8);border:1px solid #dfe3ef;border-radius:999px;padding:11px 17px;color:#263454;font-weight:700}
+    .language-pill{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.86);border:1px solid #dfe3ef;border-radius:999px;padding:10px 14px;color:#263454;font-weight:900;cursor:pointer;user-select:none;transition:.2s;min-width:82px;justify-content:center}
+    .language-pill:hover{border-color:#b9a8ff;background:#f8f5ff;transform:translateY(-1px)}
+    .language-pill small{font-size:12px;color:#7c4dff;font-weight:850}
     .flag-jp{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle,#e6002d 0 38%,#fff 40% 100%);box-shadow:0 0 0 1px #e2e8f0}
 
     /* Homepage */
@@ -100,26 +102,36 @@
     .hero-title{font-size:clamp(48px,5vw,76px);line-height:1.12;letter-spacing:-.055em;font-weight:900;color:var(--navy);margin-bottom:24px}
     .hero-desc{max-width:520px;color:#53627d;font-size:18px;line-height:1.75;margin-bottom:34px}
     .hero-actions{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:30px}
-    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 18px;max-width:610px}
-    .mini-stat,.feature-card,.panel-card,.side-card,.table-wrap,.result-card,.admin-stat,.vocab-card{
+    .stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:24px 0 18px;max-width:610px}
+    .mini-stat,.panel-card,.side-card,.table-wrap,.result-card,.admin-stat,.vocab-card{
       background:var(--white);border:1px solid rgba(124,77,255,.14);box-shadow:var(--shadow-sm);border-radius:22px;
     }
-    .mini-stat{padding:20px 18px;display:flex;align-items:center;gap:16px}
-    .icon-bubble{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:24px;flex:0 0 auto}
-    .purple{background:var(--primary-soft);color:var(--primary)}.green{background:var(--green-soft);color:var(--green)}.pink{background:var(--pink-soft);color:var(--pink)}.blue{background:var(--blue-soft);color:var(--blue)}.red-soft{background:var(--red-soft);color:var(--red)}.yellow{background:var(--yellow-soft);color:var(--yellow)}
-    .mini-stat strong{font-size:25px}.mini-stat span{display:block;font-size:12px;color:var(--muted);line-height:1.4;margin-top:4px}
-    .fiction-toggle{max-width:610px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px}
-    .fiction-toggle h3{font-size:16px;margin-bottom:6px}.fiction-toggle p{font-size:14px;color:var(--muted);line-height:1.5}
-    .switch{width:66px;height:36px;border-radius:999px;background:#dbe1ee;padding:4px;transition:.25s;flex:0 0 auto}.switch i{display:block;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.25s}.switch.active{background:linear-gradient(135deg,#28d39c,#10b981)}.switch.active i{transform:translateX(30px)}
+    .mini-stat{padding:18px 18px 17px;display:flex;align-items:flex-start;gap:16px;min-height:124px}
+    .mini-stat > div:last-child{display:flex;flex-direction:column;justify-content:flex-start;padding-top:1px}
+    .icon-bubble{width:56px;height:56px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:22px;line-height:1;flex:0 0 auto;overflow:hidden;text-align:center;aspect-ratio:1/1;position:relative}
+    .icon-bubble i{display:inline-flex!important;align-items:center;justify-content:center;line-height:1;width:1.02em;height:1.02em;font-size:1em;transform:none!important}
+    .purple{background:#f1eaff;color:#8b5cf6}.green{background:#ddf8e9;color:#22c55e}.pink{background:#fde7f1;color:#f472b6}.blue{background:#eaf2ff;color:#3b82f6}.red-soft{background:var(--red-soft);color:var(--red)}.yellow{background:#fff4d6;color:#f6b51f}
+    .mini-stat strong{font-size:23px;line-height:1.08;font-weight:800;letter-spacing:-.03em;color:#111827;margin-top:2px}
+    .mini-stat span{display:block;font-size:13px;color:#667085;line-height:1.48;margin-top:8px;font-weight:600}
+    .fiction-toggle{max-width:610px;padding:22px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:112px}
+    .fiction-toggle .fiction-copy{display:flex;gap:16px;align-items:center;flex:1 1 auto;min-width:0}
+    .fiction-toggle h3{font-size:18px;line-height:1.25;font-weight:800;letter-spacing:-.02em;margin:0 0 8px;color:#19213d}.fiction-toggle p{font-size:14px;color:#667085;line-height:1.55;font-weight:600;max-width:360px;margin:0}
+    .switch{width:68px;height:38px;border-radius:999px;background:#dbe1ee;padding:4px;transition:.25s;flex:0 0 auto}.switch i{display:block;width:30px;height:30px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.25s}.switch.active{background:linear-gradient(135deg,#34d399,#10b981)}.switch.active i{transform:translateX(30px)}
     .hero-art{min-height:665px;border-radius:32px;padding:60px 58px;position:relative;overflow:hidden;border:1px solid rgba(124,77,255,.18);box-shadow:var(--shadow);background:linear-gradient(180deg,#eaf6ff 0%,#fff0f7 68%,#f9f1ff 100%)}
+    .hero-art.image-watashi{background-image:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08)),url('https://iili.io/C7G0YrB.png');background-size:cover;background-position:center}.hero-art.image-watashi .fuji,.hero-art.image-watashi .pagoda,.hero-art.image-watashi .sakura,.hero-art.image-watashi .petal{display:none}
     .hero-art:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 20%,rgba(255,255,255,.8),transparent 22%),radial-gradient(circle at 35% 88%,rgba(255,154,197,.45),transparent 28%)}
     .fuji{position:absolute;right:-20px;top:48px;width:280px;height:210px;background:linear-gradient(135deg,#dfe9ff,#97b9ff);clip-path:polygon(50% 0,100% 100%,0 100%);opacity:.9}.fuji:after{content:"";position:absolute;left:95px;top:0;border-left:45px solid transparent;border-right:45px solid transparent;border-bottom:54px solid rgba(255,255,255,.95)}
     .pagoda{position:absolute;right:38px;bottom:90px;width:150px;height:270px;opacity:.75}.pagoda div{height:28px;background:#db6f8c;margin:28px auto 0;border-radius:4px;position:relative;box-shadow:0 6px 0 rgba(108,66,160,.28)}.pagoda div:before{content:"";position:absolute;left:-22px;right:-22px;top:-12px;height:16px;background:#9d5ccc;border-radius:50% 50% 8px 8px}.pagoda div:nth-child(1){width:70px}.pagoda div:nth-child(2){width:92px}.pagoda div:nth-child(3){width:112px}.pagoda div:nth-child(4){width:130px}.sakura{position:absolute;left:-10%;right:-10%;bottom:-58px;height:150px;background:radial-gradient(circle at 10% 70%,#ffbad4 0 18%,transparent 20%),radial-gradient(circle at 30% 50%,#ffc8dd 0 22%,transparent 24%),radial-gradient(circle at 55% 80%,#ffb3d0 0 18%,transparent 20%),radial-gradient(circle at 78% 55%,#ffc7df 0 22%,transparent 24%),radial-gradient(circle at 95% 80%,#ffb0cf 0 18%,transparent 20%);opacity:.85}.petal{position:absolute;width:16px;height:9px;background:#ff9bbf;border-radius:80% 20%;opacity:.7;animation:float 6s ease-in-out infinite}.p1{left:18%;top:45%;transform:rotate(35deg)}.p2{right:8%;top:32%;animation-delay:1s}.p3{right:28%;top:6%;animation-delay:2s}.p4{left:48%;bottom:24%;animation-delay:1.8s}@keyframes float{50%{transform:translateY(-18px) rotate(55deg)}}
     .flashcard-showcase{position:relative;z-index:2;background:rgba(255,255,255,.88);border:1px solid rgba(124,77,255,.12);border-radius:30px;padding:34px 38px 30px;max-width:520px;margin:auto;margin-top:10px;box-shadow:0 24px 70px rgba(80,70,140,.16);text-align:center}.flashcard-showcase .tag{margin-right:auto}.star-btn{width:54px;height:54px;border-radius:50%;background:#fff;border:1px solid #dde3f1;display:grid;place-items:center;color:#64748b;font-size:22px;box-shadow:0 8px 18px rgba(80,70,140,.08)}.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.jp-large{font-size:82px;font-weight:900;letter-spacing:.02em}.romaji{color:var(--primary);font-weight:800;font-size:20px}.meaning{border-top:1px solid #e5e7eb;margin-top:18px;padding-top:24px;font-size:28px;font-weight:850}.dots{display:flex;justify-content:center;gap:10px;margin-top:28px;position:relative;z-index:3}.dot{width:14px;height:14px;border-radius:50%;border:1px solid #cdd5e3;background:#fff}.dot.active{background:var(--primary);border-color:var(--primary)}
-    .feature-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:34px}.feature-card{padding:22px 24px;display:flex;gap:16px;align-items:center}.feature-card h3{font-size:17px}.feature-card p{font-size:14px;color:var(--muted);line-height:1.45;margin-top:6px}
+    .feature-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:34px;background:var(--white);border:1px solid rgba(124,77,255,.14);box-shadow:var(--shadow-sm);border-radius:22px;overflow:hidden}
+    .feature-card{padding:22px 26px;display:flex;gap:18px;align-items:flex-start;background:transparent;border:none;box-shadow:none;min-height:104px}
+    .feature-card + .feature-card{border-left:1px solid rgba(124,77,255,.08)}
+    .feature-card .icon-bubble{width:54px;height:54px;font-size:22px}
+    .feature-card h3{font-size:17px;line-height:1.25;font-weight:800;letter-spacing:-.02em;color:#19213d;margin:0 0 6px}
+    .feature-card p{font-size:13px;color:#667085;line-height:1.52;font-weight:600;margin:0;max-width:190px}
 
     /* Shared content */
-    .layout-with-sidebar{display:grid;grid-template-columns:275px 1fr;gap:28px;align-items:start}.sidebar{display:grid;gap:20px}.side-card{padding:22px}.side-menu{display:grid;gap:10px}.side-link{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:14px;color:#54627c;font-weight:750;transition:.2s}.side-link.active,.side-link:hover{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:white}.stat-list{display:grid;gap:16px;margin-top:18px}.stat-item{display:flex;align-items:center;gap:14px}.stat-item strong{font-size:20px}.stat-item span{font-size:12px;color:var(--muted);display:block;line-height:1.35}.motivation{min-height:190px;background:linear-gradient(135deg,#f3ecff,#e8f4ff 52%,#ffeaf4);position:relative;overflow:hidden}.motivation:after{content:"";position:absolute;right:-40px;bottom:-30px;width:160px;height:120px;background:radial-gradient(circle,#ffc0da 0 18%,transparent 19%);opacity:.9}.page-title{font-size:34px;letter-spacing:-.035em;margin-bottom:8px}.page-desc{color:var(--muted);line-height:1.6}.content-card{background:rgba(255,255,255,.72);border:1px solid rgba(124,77,255,.14);border-radius:28px;box-shadow:var(--shadow);padding:32px}.search-bar{position:relative;margin:24px 0 22px;max-width:620px}.search-bar i{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:#718096}.search-bar input,.field input,.filter-row input,.filter-row select,.select-like{width:100%;height:50px;border:1px solid #dfe4ee;border-radius:15px;background:rgba(255,255,255,.8);padding:0 18px;color:#24324d;outline:none}.search-bar input{padding-left:48px}.search-bar input:focus,.field input:focus,.filter-row input:focus,.filter-row select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(124,77,255,.10)}.pill-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}.pill{padding:13px 20px;border-radius:999px;background:#fff;border:1px solid #e3e7f0;color:#53627d;font-weight:800}.pill.active{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border-color:transparent}.vocab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.vocab-card{overflow:hidden;transition:.22s}.vocab-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.thumb{height:128px;border-radius:18px 18px 0 0;position:relative;overflow:hidden;background:linear-gradient(135deg,#f5dcc7,#a9c5e8)}.thumb.library{background:linear-gradient(135deg,#e8c8a4,#ab7a45)}.thumb.school{background:linear-gradient(135deg,#cce6ff,#ffd2e0)}.thumb.book{background:linear-gradient(135deg,#b9804a,#ffdab2)}.thumb.pen{background:linear-gradient(135deg,#fff1d6,#d0b09a)}.thumb.person{background:linear-gradient(135deg,#fff4eb,#ffd2df)}.thumb.family{background:linear-gradient(135deg,#d9edff,#ffd7bd)}.thumb.number{background:linear-gradient(135deg,#e8f6ff,#e9d7ff)}.thumb:before{content:"";position:absolute;inset:18px;border-radius:18px;border:1px solid rgba(255,255,255,.45);background:linear-gradient(135deg,rgba(255,255,255,.25),transparent)}.thumb .emoji{position:absolute;inset:0;display:grid;place-items:center;font-size:54px}.vocab-body{padding:18px 20px}.vocab-body h3{font-size:30px;margin-bottom:3px}.vocab-body .romaji{font-size:15px}.vocab-body .meaning-sm{border-top:1px solid #edf0f6;margin-top:10px;padding-top:10px;color:#475569;font-weight:650}.cat-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:800;margin:12px 0;color:#6b3df4;background:var(--primary-soft)}.cat-Salam{background:var(--pink-soft);color:var(--pink)}.cat-Keluarga{background:#fff1df;color:#f97316}.cat-Angka{background:var(--blue-soft);color:var(--blue)}.listen-btn{width:100%;height:40px;border-radius:11px;background:#f0fff9;border:1px solid rgba(16,185,129,.42);color:#10b981;font-weight:850}.card-star{position:absolute;right:12px;top:12px;width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;border:1px solid #dfe3ee;color:#64748b;z-index:2}
+    .layout-with-sidebar{display:grid;grid-template-columns:275px 1fr;gap:28px;align-items:start}.sidebar{display:grid;gap:20px}.side-card{padding:22px}.side-menu{display:grid;gap:10px}.side-link{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:14px;color:#54627c;font-weight:750;transition:.2s}.side-link.active,.side-link:hover{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:white}.stat-list{display:grid;gap:16px;margin-top:18px}.stat-item{display:flex;align-items:center;gap:14px}.stat-item strong{font-size:20px}.stat-item span{font-size:12px;color:var(--muted);display:block;line-height:1.35}.motivation{min-height:190px;background:linear-gradient(135deg,#f3ecff,#e8f4ff 52%,#ffeaf4);position:relative;overflow:hidden}.motivation:after{content:"";position:absolute;right:-40px;bottom:-30px;width:160px;height:120px;background:radial-gradient(circle,#ffc0da 0 18%,transparent 19%);opacity:.9}.page-title{font-size:34px;letter-spacing:-.035em;margin-bottom:8px}.page-desc{color:var(--muted);line-height:1.6}.content-card{background:rgba(255,255,255,.72);border:1px solid rgba(124,77,255,.14);border-radius:28px;box-shadow:var(--shadow);padding:32px}.search-bar{position:relative;margin:24px 0 22px;max-width:620px}.search-bar i{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:#718096}.search-bar input,.field input,.filter-row input,.filter-row select,.select-like{width:100%;height:50px;border:1px solid #dfe4ee;border-radius:15px;background:rgba(255,255,255,.8);padding:0 18px;color:#24324d;outline:none}.search-bar input{padding-left:48px}.search-bar input:focus,.field input:focus,.filter-row input:focus,.filter-row select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(124,77,255,.10)}.pill-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}.pill{padding:13px 20px;border-radius:999px;background:#fff;border:1px solid #e3e7f0;color:#53627d;font-weight:800}.pill.active{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border-color:transparent}.vocab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.vocab-card{overflow:hidden;transition:.22s}.vocab-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.thumb{height:128px;border-radius:18px 18px 0 0;position:relative;overflow:hidden;background:linear-gradient(135deg,#f5dcc7,#a9c5e8)}.thumb.library{background:linear-gradient(135deg,#e8c8a4,#ab7a45)}.thumb.school{background:linear-gradient(135deg,#cce6ff,#ffd2e0)}.thumb.book{background:linear-gradient(135deg,#b9804a,#ffdab2)}.thumb.pen{background:linear-gradient(135deg,#fff1d6,#d0b09a)}.thumb.person{background:linear-gradient(135deg,#fff4eb,#ffd2df)}.thumb.family{background:linear-gradient(135deg,#d9edff,#ffd7bd)}.thumb.number{background:linear-gradient(135deg,#e8f6ff,#e9d7ff)}.thumb:before{content:"";position:absolute;inset:18px;border-radius:18px;border:1px solid rgba(255,255,255,.45);background:linear-gradient(135deg,rgba(255,255,255,.25),transparent)}.thumb .emoji{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:82px;height:82px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;line-height:1;background:rgba(255,255,255,.72);box-shadow:inset 0 0 0 1px rgba(255,255,255,.8);overflow:hidden;text-align:center;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;padding-bottom:1px}.vocab-body{padding:18px 20px}.vocab-body h3{font-size:30px;margin-bottom:3px}.vocab-body .romaji{font-size:15px}.vocab-body .meaning-sm{border-top:1px solid #edf0f6;margin-top:10px;padding-top:10px;color:#475569;font-weight:650}.cat-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:800;margin:12px 0;color:#6b3df4;background:var(--primary-soft)}.cat-Salam{background:var(--pink-soft);color:var(--pink)}.cat-Keluarga{background:#fff1df;color:#f97316}.cat-Angka{background:var(--blue-soft);color:var(--blue)}.listen-btn{width:100%;height:40px;border-radius:11px;background:#f0fff9;border:1px solid rgba(16,185,129,.42);color:#10b981;font-weight:850}.card-star{position:absolute;right:12px;top:12px;width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;border:1px solid #dfe3ee;color:#64748b;z-index:2}
 
     /* Practice */
     .practice-top{display:flex;justify-content:space-between;align-items:center;margin:8px 0 24px;gap:18px;flex-wrap:wrap}.practice-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px}.practice-card{padding:22px;border-radius:30px}.practice-image{height:235px;border-radius:22px;background:linear-gradient(135deg,#d9eafe,#fce3ef);position:relative;overflow:hidden}.practice-image:before{content:"LIBRARY";position:absolute;top:72px;left:50%;transform:translateX(-50%);font-size:20px;font-weight:900;color:#fff;letter-spacing:.08em;background:#a87951;padding:10px 45px;border-radius:7px}.practice-image:after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:repeating-linear-gradient(90deg,#a87951 0 22px,#d9b38f 23px 31px);opacity:.65}.practice-word{text-align:center;padding:26px 20px 10px}.practice-word h2{font-size:86px;line-height:1}.practice-word .kana{font-size:30px;color:var(--primary);font-weight:800;margin-top:8px}.practice-word .romaji{font-size:32px;color:#718096;margin-top:7px}.remember{border-top:1px solid #e6e9f1;margin-top:28px;padding-top:26px;text-align:center;color:#64748b}.remember strong{display:block;color:#334155;margin-bottom:8px}.control-panel{display:grid;gap:16px}.control-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.timer-card{padding:22px;display:flex;gap:16px;align-items:center}.timer-card strong{font-size:28px}.progress-card{padding:22px}.bar{height:9px;border-radius:999px;background:#eee9ff;overflow:hidden;margin:14px 0 8px}.bar span{display:block;height:100%;width:4%;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--primary-2));transition:.25s}.mode-row{padding:16px 18px;display:flex;justify-content:space-between;gap:12px;align-items:center}.action-stack{display:grid;gap:12px}.practice-action{height:58px;border-radius:15px;background:#faf7ff;border:1px solid #d9cfff;color:#6b3df4;font-weight:850}.practice-action.primary{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff}.listening{height:58px;border-radius:15px;background:#f7efff;border:1px solid #eadcff;color:#7c4dff;display:flex;align-items:center;justify-content:center;gap:22px;font-weight:800}.audio-bars{display:flex;gap:4px;align-items:center}.audio-bars i{display:block;width:4px;background:#10b981;border-radius:5px;animation:bounce .8s infinite alternate}.audio-bars i:nth-child(1){height:9px}.audio-bars i:nth-child(2){height:18px;animation-delay:.1s}.audio-bars i:nth-child(3){height:27px;animation-delay:.2s}.audio-bars i:nth-child(4){height:14px;animation-delay:.3s}@keyframes bounce{to{transform:scaleY(.45);opacity:.55}}.answer-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.answer-row .btn{height:62px}.auto-row,.info-box{padding:18px;display:flex;align-items:center;gap:15px}.auto-row{justify-content:space-between}.info-box{color:#64748b;line-height:1.5}.info-box i{color:var(--primary);font-size:24px}
@@ -143,11 +155,649 @@
     .icon-bubble i{line-height:1}
     .badge i,.btn i,.language-pill i{line-height:1}
     .result-title-icon{font-size:.75em;color:#f59e0b;margin-left:6px}
-    @media(max-width:1100px){.nav-menu{gap:4px}.nav-link{padding:14px 16px}}
+
+    /* Revisi ikon: semua simbol dipaksa tepat di tengah lingkaran */
+    .mini-stat .icon-bubble,.stat-item .icon-bubble,.summary-tile .icon-bubble,.admin-stat .icon-bubble,.timer-card .icon-bubble,.feature-card .icon-bubble{display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:0!important}
+    .mini-stat .icon-bubble i,.stat-item .icon-bubble i,.summary-tile .icon-bubble i,.admin-stat .icon-bubble i,.timer-card .icon-bubble i,.feature-card .icon-bubble i{margin:0!important;position:static!important;transform:none!important}
+    .langModeLabel{letter-spacing:.04em;min-width:24px;text-align:center;color:#6b3df4}
+
+
+    /* Revisi font, bahasa, dan ikon agar sama rapi dengan referensi */
+    .nav-shell{justify-content:flex-start}
+    .nav-menu{margin-left:auto;margin-right:8px;gap:26px}
+    .nav-actions{margin-left:0}
+    .language-pill{min-width:162px;height:44px;padding:9px 14px;gap:9px;border-radius:999px;background:rgba(255,255,255,.9);box-shadow:0 10px 26px rgba(80,70,140,.06);font-weight:800;color:#24324d}
+    .language-pill .fa-chevron-down{font-size:11px;color:#5e6a82;margin-left:2px}
+    .langModeLabel{letter-spacing:0;min-width:96px;text-align:left;color:#263454;font-size:14px;white-space:nowrap}
+    .flag-jp,.flag-id{width:18px;height:18px;border-radius:50%;flex:0 0 18px;box-shadow:0 0 0 1px #e2e8f0;background:#fff;position:relative;overflow:hidden}
+    .flag-jp:after{content:"";position:absolute;inset:5px;border-radius:50%;background:#e6002d}
+    .flag-id{background:linear-gradient(#ef4444 0 50%,#fff 50% 100%)}
+    .icon-bubble{width:58px;height:58px;min-width:58px;font-size:21px;border-radius:999px;display:inline-grid!important;place-items:center!important;overflow:hidden;line-height:1;vertical-align:middle}
+    .icon-bubble i,.thumb .emoji i{display:block!important;line-height:1!important;margin:0!important;position:static!important;transform:none!important;text-align:center!important}
+    .mini-stat .icon-bubble{width:58px;height:58px;min-width:58px}
+    .mini-stat{min-height:118px;padding:22px 22px;gap:20px}
+    .mini-stat strong{font-size:28px;letter-spacing:-.03em}
+    .mini-stat span{font-size:13px;line-height:1.55}
+    .thumb .emoji{width:78px;height:78px;border-radius:999px;font-size:31px;display:grid!important;place-items:center!important;padding:0!important;line-height:1!important}
+    .thumb .emoji i{font-size:31px;width:auto;height:auto;color:#6b3df4}
+    .thumb.library .emoji i,.thumb.book .emoji i,.thumb.pen .emoji i,.thumb.school .emoji i{color:#8b5e34}
+    .thumb.person .emoji i{color:#ec4899}.thumb.family .emoji i{color:#2563eb}.thumb.number .emoji i{color:#7c4dff}
+    @media(max-width:1100px){.language-pill{min-width:150px}.nav-menu{margin-right:0}}
+    @media(max-width:760px){.language-pill{min-width:136px}.langModeLabel{font-size:12px;min-width:82px}.mini-stat{min-height:auto}}
+
+    @media(max-width:1100px){.nav-menu{gap:4px;margin-left:0}.nav-link{padding:14px 16px}}
 
     @media(max-width:760px){
       .page{padding:30px 0 54px}.brand h1{font-size:16px}.brand p{font-size:11px}.brand-icon{width:46px;height:46px}.btn{padding:13px 16px}.nav-actions .btn span{display:none}.hero-eyebrow{gap:12px}.hero-title{font-size:46px}.stats-row,.control-row,.answer-row,.summary-grid,.group-grid,.modal-actions,.feature-row,.vocab-grid,.admin-stats,.filter-row,.sidebar{grid-template-columns:1fr}.side-menu{grid-template-columns:1fr 1fr}.content-card{padding:20px}.hero-art{padding:30px 18px;min-height:520px}.flashcard-showcase{padding:24px 20px}.jp-large{font-size:62px}.meaning{font-size:23px}.practice-word h2{font-size:60px}.score-inner{flex-direction:column;text-align:center;gap:22px}.admin-head,.table-footer{align-items:flex-start;flex-direction:column}.table-head{align-items:flex-start;flex-direction:column}.modal{padding:30px 20px 22px;border-radius:26px}.modal-title{font-size:29px}.group-card{justify-content:flex-start;padding-left:18px}.page-title{font-size:29px}.admin-stat{padding:18px}.hero-actions{display:grid;grid-template-columns:1fr}.fiction-toggle{align-items:flex-start}.feature-card{align-items:flex-start}.mini-stat strong{font-size:22px}
     }
+
+    /* Revisi card statistik homepage agar sama dengan referensi terbaru */
+    #page-home .stats-row{
+      max-width:610px;
+      gap:16px;
+      margin:22px 0 14px;
+    }
+    #page-home .stats-row .mini-stat{
+      min-height:96px;
+      height:96px;
+      padding:18px 20px;
+      gap:16px;
+      border-radius:13px;
+      align-items:center;
+      box-shadow:0 16px 44px rgba(80,70,140,.09);
+    }
+    #page-home .stats-row .mini-stat .icon-bubble{
+      width:56px!important;
+      height:56px!important;
+      min-width:56px!important;
+      border-radius:50%!important;
+      display:inline-flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      font-size:18px!important;
+      overflow:hidden!important;
+      line-height:1!important;
+    }
+    #page-home .stats-row .mini-stat .icon-bubble i{
+      width:auto!important;
+      height:auto!important;
+      display:block!important;
+      line-height:1!important;
+      font-size:18px!important;
+      margin:0!important;
+      transform:none!important;
+      position:static!important;
+    }
+    #page-home .stats-row .mini-stat strong{
+      display:block;
+      font-size:26px;
+      line-height:1;
+      letter-spacing:-.045em;
+      margin-bottom:8px;
+    }
+    #page-home .stats-row .mini-stat span:not(.icon-bubble){
+      display:block;
+      font-size:12px;
+      line-height:1.42;
+      color:#64748b;
+      margin:0;
+    }
+    @media(max-width:760px){
+      #page-home .stats-row .mini-stat{height:auto;min-height:88px;border-radius:16px;padding:16px 18px}
+      #page-home .stats-row .mini-stat .icon-bubble{width:52px!important;height:52px!important;min-width:52px!important}
+      #page-home .stats-row .mini-stat strong{font-size:24px}
+    }
+
+
+    /* FINAL HOMEPAGE POLISH - mengikuti referensi desktop */
+    body{
+      font-family:Inter,"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      letter-spacing:-0.01em;
+    }
+    #page-home .container{max-width:1380px;}
+    #page-home .hero-grid{
+      grid-template-columns:minmax(520px,610px) minmax(560px,1fr);
+      gap:36px;
+      align-items:center;
+    }
+    #page-home .hero-grid > div:first-child,
+    #page-home .hero-art{min-width:0;}
+    #page-home .hero-eyebrow{
+      margin:18px 0 28px;
+      gap:28px;
+    }
+    #page-home .badge{
+      height:44px;
+      padding:0 20px;
+      border-radius:999px;
+      font-size:15px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    #page-home .language-pill{
+      height:44px;
+      padding:0 16px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    #page-home .hero-title{
+      max-width:620px;
+      font-size:clamp(54px,4.7vw,72px);
+      line-height:1.11;
+      letter-spacing:-0.06em;
+      font-weight:900;
+      color:#10213f;
+      margin:0 0 22px;
+      overflow-wrap:normal;
+      word-break:normal;
+    }
+    #page-home .hero-desc{
+      max-width:520px;
+      font-size:17px;
+      line-height:1.75;
+      font-weight:500;
+      color:#53627d;
+      margin-bottom:34px;
+    }
+    #page-home .hero-actions{
+      gap:18px;
+      margin-bottom:28px;
+    }
+    #page-home .hero-actions .btn{
+      min-width:218px;
+      height:56px;
+      border-radius:14px;
+      font-size:15px;
+      font-weight:850;
+      padding:0 22px;
+    }
+    #page-home .stats-row{
+      width:100%;
+      max-width:610px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+      margin:24px 0 18px;
+    }
+    #page-home .stats-row .mini-stat{
+      height:116px;
+      min-height:116px;
+      min-width:0;
+      padding:18px 18px;
+      gap:15px;
+      border-radius:16px;
+      align-items:center;
+      overflow:hidden;
+      background:rgba(255,255,255,.94);
+      border:1px solid rgba(124,77,255,.12);
+      box-shadow:0 16px 42px rgba(80,70,140,.09);
+    }
+    #page-home .stats-row .mini-stat > div{min-width:0;}
+    #page-home .stats-row .mini-stat .icon-bubble{
+      width:56px!important;
+      height:56px!important;
+      min-width:56px!important;
+      flex-basis:56px!important;
+      font-size:20px!important;
+      display:inline-flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+    }
+    #page-home .stats-row .mini-stat .icon-bubble i{
+      font-size:20px!important;
+      line-height:1!important;
+      display:block!important;
+      margin:0!important;
+      transform:none!important;
+    }
+    #page-home .stats-row .mini-stat strong{
+      display:block;
+      font-size:27px;
+      line-height:1.05;
+      font-weight:900;
+      letter-spacing:-0.045em;
+      color:#10213f;
+      white-space:nowrap;
+      margin:0 0 8px;
+    }
+    #page-home .stats-row .mini-stat span:not(.icon-bubble){
+      display:block;
+      max-width:100%;
+      font-size:12px;
+      line-height:1.45;
+      font-weight:600;
+      color:#64748b;
+      overflow-wrap:normal;
+      word-break:normal;
+      margin:0;
+    }
+    #page-home .fiction-toggle{
+      width:100%;
+      max-width:610px;
+      min-height:106px;
+      border-radius:18px;
+      padding:18px 22px;
+      overflow:hidden;
+    }
+    #page-home .fiction-toggle h3{
+      font-size:16px;
+      font-weight:850;
+      letter-spacing:-.02em;
+      color:#10213f;
+    }
+    #page-home .fiction-toggle p{
+      font-size:14px;
+      line-height:1.55;
+      font-weight:500;
+    }
+    #page-home .hero-art{
+      width:100%;
+      min-height:665px;
+      border-radius:31px;
+      padding:60px 58px;
+    }
+    #page-home .flashcard-showcase{
+      max-width:500px;
+      margin:8px auto 0;
+      border-radius:28px;
+    }
+    #page-home .jp-large{
+      font-size:78px;
+      font-weight:900;
+      line-height:1.05;
+      letter-spacing:-.055em;
+    }
+    #page-home .meaning{
+      font-size:28px;
+      font-weight:900;
+      letter-spacing:-.035em;
+    }
+    #page-home .feature-row{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:0;
+      padding:20px 24px;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(124,77,255,.14);
+      border-radius:20px;
+      box-shadow:0 20px 60px rgba(80,70,140,.10);
+      overflow:hidden;
+    }
+    #page-home .feature-card{
+      min-width:0;
+      min-height:82px;
+      padding:0 22px;
+      border-radius:0;
+      overflow:visible;
+      background:transparent!important;
+      border:0!important;
+      box-shadow:none!important;
+    }
+    #page-home .feature-card:first-child{padding-left:0;}
+    #page-home .feature-card:last-child{padding-right:0;}
+    #page-home .feature-card h3{
+      font-size:16px;
+      line-height:1.2;
+      font-weight:900;
+      color:#10213f;
+      white-space:normal;
+    }
+    #page-home .feature-card p{
+      font-size:13px;
+      line-height:1.55;
+      font-weight:500;
+      color:#64748b;
+      overflow-wrap:normal;
+    }
+    #page-home .feature-card .icon-bubble{
+      width:56px!important;
+      height:56px!important;
+      min-width:56px!important;
+      font-size:21px!important;
+    }
+    @media(max-width:1280px){
+      #page-home .hero-grid{grid-template-columns:minmax(470px,570px) minmax(520px,1fr);gap:28px;}
+      #page-home .hero-title{font-size:clamp(50px,4.5vw,66px);}
+      #page-home .hero-art{padding:48px 42px;}
+      #page-home .stats-row .mini-stat{padding:16px 14px;gap:12px;}
+      #page-home .stats-row .mini-stat strong{font-size:25px;}
+      #page-home .stats-row .mini-stat span:not(.icon-bubble){font-size:11.5px;}
+    }
+    @media(max-width:1100px){
+      #page-home .hero-grid{grid-template-columns:1fr;}
+      #page-home .hero-title,#page-home .hero-desc,#page-home .stats-row,#page-home .fiction-toggle{max-width:100%;}
+      #page-home .feature-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:20px;}
+      #page-home .feature-card,#page-home .feature-card:first-child,#page-home .feature-card:last-child{padding:0;}
+    }
+    @media(max-width:760px){
+      #page-home .hero-eyebrow{gap:12px;margin-top:6px;}
+      #page-home .badge{height:auto;min-height:40px;font-size:13px;padding:10px 14px;}
+      #page-home .language-pill{height:40px;min-width:150px;font-size:12px;}
+      #page-home .hero-title{font-size:42px;line-height:1.14;letter-spacing:-.045em;}
+      #page-home .hero-desc{font-size:15px;line-height:1.7;}
+      #page-home .hero-actions{grid-template-columns:1fr;}
+      #page-home .hero-actions .btn{width:100%;min-width:0;}
+      #page-home .stats-row{grid-template-columns:1fr;gap:12px;}
+      #page-home .stats-row .mini-stat{height:auto;min-height:98px;border-radius:18px;padding:18px;}
+      #page-home .stats-row .mini-stat strong{font-size:26px;}
+      #page-home .stats-row .mini-stat span:not(.icon-bubble){font-size:12.5px;}
+      #page-home .fiction-toggle{align-items:center;}
+      #page-home .hero-art{min-height:520px;padding:26px 16px;border-radius:24px;}
+      #page-home .flashcard-showcase{padding:24px 18px;}
+      #page-home .jp-large{font-size:60px;}
+      #page-home .meaning{font-size:23px;}
+      #page-home .feature-row{grid-template-columns:1fr;gap:18px;padding:20px;}
+      #page-home .feature-card,#page-home .feature-card:first-child,#page-home .feature-card:last-child{padding:0;}
+    }
+
+
+    /* Revisi alignment icon dan teks homepage sesuai referensi */
+    #page-home .stats-row{
+      max-width:610px!important;
+      gap:10px!important;
+      align-items:stretch!important;
+      margin:22px 0 16px!important;
+    }
+    #page-home .stats-row .mini-stat{
+      height:112px!important;
+      min-height:112px!important;
+      padding:18px 18px!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:flex-start!important;
+      gap:17px!important;
+      border-radius:14px!important;
+    }
+    #page-home .stats-row .mini-stat .icon-bubble{
+      width:58px!important;
+      height:58px!important;
+      min-width:58px!important;
+      flex:0 0 58px!important;
+      border-radius:50%!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+    }
+    #page-home .stats-row .mini-stat .icon-bubble i{
+      font-size:20px!important;
+      line-height:1!important;
+      width:auto!important;
+      height:auto!important;
+      display:block!important;
+      margin:0!important;
+      padding:0!important;
+      position:static!important;
+      transform:none!important;
+    }
+    #page-home .stats-row .mini-stat > div{
+      display:flex!important;
+      flex-direction:column!important;
+      justify-content:center!important;
+      align-items:flex-start!important;
+      min-width:0!important;
+      text-align:left!important;
+    }
+    #page-home .stats-row .mini-stat strong{
+      font-size:27px!important;
+      line-height:1.05!important;
+      margin:0 0 8px!important;
+      font-weight:900!important;
+      letter-spacing:-.04em!important;
+    }
+    #page-home .stats-row .mini-stat span:not(.icon-bubble){
+      font-size:12px!important;
+      line-height:1.42!important;
+      font-weight:600!important;
+      text-align:left!important;
+    }
+    #page-home .fiction-toggle{
+      max-width:610px!important;
+      min-height:104px!important;
+      padding:18px 26px 18px 20px!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:space-between!important;
+      gap:18px!important;
+      border-radius:17px!important;
+    }
+    #page-home .fiction-toggle > div:first-child{
+      display:flex!important;
+      align-items:center!important;
+      gap:18px!important;
+      min-width:0!important;
+    }
+    #page-home .fiction-toggle .icon-bubble{
+      width:64px!important;
+      height:64px!important;
+      min-width:64px!important;
+      flex:0 0 64px!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+    }
+    #page-home .fiction-toggle .icon-bubble i{
+      font-size:24px!important;
+      line-height:1!important;
+      margin:0!important;
+      position:static!important;
+      transform:none!important;
+    }
+    #page-home .fiction-toggle h3{
+      margin:0 0 6px!important;
+      font-size:16px!important;
+      line-height:1.25!important;
+      font-weight:900!important;
+      text-align:left!important;
+    }
+    #page-home .fiction-toggle p{
+      margin:0!important;
+      font-size:14px!important;
+      line-height:1.45!important;
+      text-align:left!important;
+      max-width:390px!important;
+    }
+    #page-home .fiction-toggle .switch{
+      flex:0 0 auto!important;
+      margin-left:auto!important;
+    }
+    #page-home .feature-row{
+      min-height:112px!important;
+      padding:20px 22px!important;
+      display:grid!important;
+      grid-template-columns:repeat(4,minmax(0,1fr))!important;
+      gap:0!important;
+      align-items:center!important;
+      border-radius:18px!important;
+    }
+    #page-home .feature-card,
+    #page-home .feature-card:first-child,
+    #page-home .feature-card:last-child{
+      min-height:72px!important;
+      padding:0 20px!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:flex-start!important;
+      gap:16px!important;
+      text-align:left!important;
+      background:transparent!important;
+      box-shadow:none!important;
+      border:0!important;
+    }
+    #page-home .feature-card:first-child{padding-left:0!important;}
+    #page-home .feature-card:last-child{padding-right:0!important;}
+    #page-home .feature-card .icon-bubble{
+      width:56px!important;
+      height:56px!important;
+      min-width:56px!important;
+      flex:0 0 56px!important;
+      border-radius:50%!important;
+      display:flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+    }
+    #page-home .feature-card .icon-bubble i{
+      font-size:22px!important;
+      line-height:1!important;
+      margin:0!important;
+      padding:0!important;
+      position:static!important;
+      transform:none!important;
+    }
+    #page-home .feature-card > div{
+      min-width:0!important;
+      display:flex!important;
+      flex-direction:column!important;
+      justify-content:center!important;
+      align-items:flex-start!important;
+      text-align:left!important;
+    }
+    #page-home .feature-card h3{
+      margin:0 0 5px!important;
+      font-size:16px!important;
+      line-height:1.2!important;
+      font-weight:700!important;
+      letter-spacing:-.02em!important;
+      text-align:left!important;
+    }
+    #page-home .feature-card p{
+      margin:0!important;
+      font-size:13px!important;
+      line-height:1.45!important;
+      font-weight:500!important;
+      max-width:210px!important;
+      text-align:left!important;
+    }
+    @media(max-width:1100px){
+      #page-home .feature-row{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;}
+      #page-home .feature-card,#page-home .feature-card:first-child,#page-home .feature-card:last-child{padding:0!important;}
+    }
+    @media(max-width:760px){
+      #page-home .stats-row{grid-template-columns:1fr!important;}
+      #page-home .stats-row .mini-stat{height:auto!important;min-height:96px!important;}
+      #page-home .fiction-toggle{align-items:center!important;padding:18px!important;}
+      #page-home .fiction-toggle p{max-width:100%!important;}
+      #page-home .feature-row{grid-template-columns:1fr!important;gap:18px!important;}
+      #page-home .feature-card,#page-home .feature-card:first-child,#page-home .feature-card:last-child{padding:0!important;}
+    }
+
+  
+
+    /* Final homepage matching pass: font, weight, color, language pill, icon alignment */
+    #page-home .hero-title{
+      font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif!important;
+      font-size:clamp(52px,4.55vw,68px)!important;
+      line-height:1.13!important;
+      font-weight:700!important;
+      letter-spacing:-.055em!important;
+      color:#10213f!important;
+      margin-bottom:22px!important;
+    }
+    #page-home .hero-desc{
+      font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif!important;
+      font-size:17px!important;
+      line-height:1.72!important;
+      font-weight:500!important;
+      color:#5f6f89!important;
+      max-width:505px!important;
+    }
+    #page-home .badge{
+      height:44px!important;
+      padding:0 20px!important;
+      font-size:15px!important;
+      font-weight:600!important;
+      color:#6b3df4!important;
+      background:#f1eaff!important;
+      border-color:rgba(124,77,255,.08)!important;
+    }
+    #page-home .language-pill{
+      height:44px!important;
+      min-width:132px!important;
+      padding:0 15px!important;
+      gap:10px!important;
+      border-radius:999px!important;
+      background:rgba(255,255,255,.94)!important;
+      border:1px solid #dfe4ee!important;
+      box-shadow:0 10px 24px rgba(80,70,140,.055)!important;
+      font-size:15px!important;
+      font-weight:600!important;
+      color:#263454!important;
+      justify-content:center!important;
+    }
+    #page-home .langModeLabel{
+      min-width:auto!important;
+      font-size:15px!important;
+      font-weight:600!important;
+      letter-spacing:0!important;
+      color:#263454!important;
+      text-align:left!important;
+    }
+    #page-home .language-pill .fa-chevron-down{font-size:11px!important;color:#344054!important;margin-left:2px!important}
+    #page-home .flag-jp,#page-home .flag-id{width:18px!important;height:18px!important;flex-basis:18px!important;box-shadow:0 0 0 1px #e5e7eb!important}
+    #page-home .hero-actions .btn{
+      height:56px!important;
+      min-width:218px!important;
+      border-radius:14px!important;
+      font-size:15px!important;
+      font-weight:700!important;
+      letter-spacing:0!important;
+    }
+    #page-home .stats-row{max-width:610px!important;gap:12px!important;margin:24px 0 18px!important}
+    #page-home .stats-row .mini-stat{
+      height:116px!important;min-height:116px!important;
+      padding:18px 18px!important;gap:16px!important;
+      align-items:flex-start!important;border-radius:16px!important;
+      background:rgba(255,255,255,.95)!important;
+      box-shadow:0 16px 40px rgba(80,70,140,.085)!important;
+    }
+    #page-home .icon-bubble{
+      width:56px!important;height:56px!important;min-width:56px!important;flex:0 0 56px!important;
+      font-size:21px!important;border-radius:999px!important;
+      display:inline-flex!important;align-items:center!important;justify-content:center!important;
+      box-shadow:none!important;line-height:1!important;
+    }
+    #page-home .icon-bubble i{font-size:21px!important;line-height:1!important;margin:0!important;display:block!important;transform:none!important}
+    #page-home .purple{background:#f1eaff!important;color:#7c4dff!important}
+    #page-home .green{background:#ddf8e9!important;color:#22c5a0!important}
+    #page-home .pink{background:#fde7f1!important;color:#ef5da8!important}
+    #page-home .blue{background:#eaf2ff!important;color:#3478f6!important}
+    #page-home .stats-row .mini-stat > div:last-child{padding-top:0!important;display:block!important;min-width:0!important}
+    #page-home .stats-row .mini-stat strong{
+      font-size:26px!important;line-height:1.08!important;font-weight:700!important;
+      letter-spacing:-.045em!important;color:#111827!important;margin:0 0 8px!important;
+    }
+    #page-home .stats-row .mini-stat span:not(.icon-bubble){
+      font-size:12px!important;line-height:1.45!important;font-weight:500!important;color:#64748b!important;margin:0!important;
+    }
+    #page-home .fiction-toggle{
+      max-width:610px!important;min-height:106px!important;padding:18px 22px!important;
+      border-radius:18px!important;align-items:center!important;background:rgba(255,255,255,.95)!important;
+      box-shadow:0 16px 40px rgba(80,70,140,.085)!important;
+    }
+    #page-home .fiction-toggle .fiction-copy{gap:18px!important;align-items:center!important}
+    #page-home .fiction-toggle h3{font-size:17px!important;font-weight:700!important;line-height:1.25!important;color:#10213f!important;letter-spacing:-.02em!important;margin:0 0 6px!important}
+    #page-home .fiction-toggle p{font-size:14px!important;line-height:1.52!important;font-weight:500!important;color:#64748b!important;margin:0!important}
+    #page-home .switch{width:66px!important;height:36px!important;padding:4px!important;background:linear-gradient(135deg,#34d399,#10b981)!important}
+    #page-home .switch i{width:28px!important;height:28px!important}.switch.active i{transform:translateX(30px)!important}
+    #page-home .feature-row{padding:20px 24px!important;border-radius:20px!important;background:rgba(255,255,255,.9)!important;box-shadow:0 18px 54px rgba(80,70,140,.09)!important}
+    #page-home .feature-card{gap:18px!important;align-items:flex-start!important;padding:0 22px!important;min-height:82px!important}
+    #page-home .feature-card h3{font-size:16px!important;font-weight:700!important;line-height:1.25!important;letter-spacing:-.02em!important;color:#10213f!important;margin:0 0 6px!important}
+    #page-home .feature-card p{font-size:13px!important;line-height:1.52!important;font-weight:500!important;color:#64748b!important;margin:0!important}
+
+    /* Refinement: match reference card typography and language target toggle */
+    #page-home, #page-home button{font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif!important}
+    #page-home .language-pill{min-width:126px!important;font-weight:600!important}
+    #page-home .langModeLabel{font-weight:600!important}
+    #page-home .stats-row .mini-stat strong{font-weight:700!important;color:#0f172a!important}
+    #page-home .stats-row .mini-stat span:not(.icon-bubble){font-weight:500!important;color:#667085!important}
+    #page-home .fiction-toggle h3,#page-home .feature-card h3{font-weight:700!important;color:#17213c!important}
+    #page-home .fiction-toggle p,#page-home .feature-card p{font-weight:500!important;color:#667085!important}
+    #page-home .feature-row{align-items:center!important}
+    #page-home .feature-card{align-items:center!important}
+    #page-home .feature-card .icon-bubble{margin-top:0!important}
+
   </style>
 </head>
 <body>
@@ -160,7 +810,7 @@
       <nav class="nav-menu" id="navMenu">
         <a class="nav-link active" data-page="home" href="#" onclick="showPage('home')">Beranda</a>
         <a class="nav-link" data-page="materi" href="#" onclick="showPage('materi')">Materi</a>
-        <a class="nav-link" href="#" onclick="alert('Kosakata Jepang membantu belajar dengan kartu visual, audio, dan latihan suara.')">Tentang</a>
+        <a class="nav-link" data-page="practice" href="#" onclick="startQuizFromNav()">Kuis</a>
       </nav>
       <div class="nav-actions">
         <button class="hamburger" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
@@ -177,7 +827,7 @@
           <div>
             <div class="hero-eyebrow">
               <span class="badge"><i class="fa-solid fa-book-open"></i> Bab 1–5 • 264 kosakata</span>
-              <span class="language-pill"><span class="flag-jp"></span> Jepang <i class="fa-solid fa-chevron-down"></i></span>
+              <button class="language-pill" onclick="toggleLangMode()" title="Klik untuk mengganti bahasa website"><span class="flag-jp langFlag"></span> <span class="langModeLabel">日本語</span> <i class="fa-solid fa-chevron-down"></i></button>
             </div>
             <h2 class="hero-title">Belajar kosakata<br>Jepang</h2>
             <p class="hero-desc">Belajar lebih efektif dengan kartu visual, audio, jawaban suara, dan progress yang membantu kamu menguasai kosakata sehari-hari.</p>
@@ -186,16 +836,16 @@
               <button class="btn btn-secondary" onclick="showPage('materi')"><i class="fa-solid fa-book-open"></i> Lihat Materi</button>
             </div>
             <div class="stats-row">
-              <div class="mini-stat"><span class="icon-bubble purple"><i class="fa-solid fa-book-open-reader"></i></span><div><strong>264</strong><span>Total Kosakata<br>Bab 1–5</span></div></div>
+              <div class="mini-stat"><span class="icon-bubble purple"><i class="fa-solid fa-book-open"></i></span><div><strong>264</strong><span>Total Kosakata<br>Bab 1–5</span></div></div>
               <div class="mini-stat"><span class="icon-bubble green"><i class="fa-regular fa-clock"></i></span><div><strong>18 dtk</strong><span>Rata-rata Waktu<br>per Kartu</span></div></div>
-              <div class="mini-stat"><span class="icon-bubble pink"><i class="fa-solid fa-table-cells-large"></i></span><div><strong>12</strong><span>Jumlah Kategori<br>Topik</span></div></div>
+              <div class="mini-stat"><span class="icon-bubble pink"><i class="fa-solid fa-table-cells"></i></span><div><strong>12</strong><span>Jumlah Kategori<br>Topik</span></div></div>
             </div>
             <div class="mini-stat fiction-toggle">
-              <div style="display:flex;gap:16px;align-items:center"><span class="icon-bubble green"><i class="fa-solid fa-wand-magic-sparkles"></i></span><div><h3>Gunakan kosakata fiksi</h3><p>Sertakan kosakata dari anime, game, dan karya fiksi populer.</p></div></div>
+              <div class="fiction-copy"><span class="icon-bubble green"><i class="fa-solid fa-wand-magic-sparkles"></i></span><div><h3>Gunakan kosakata fiksi</h3><p>Sertakan kosakata dari anime, game, dan karya fiksi populer.</p></div></div>
               <button class="switch active" id="fictionSwitch" onclick="toggleSwitch(this)"><i></i></button>
             </div>
           </div>
-          <div class="hero-art">
+          <div class="hero-art image-watashi">
             <span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span><span class="petal p4"></span>
             <div class="fuji"></div><div class="pagoda"><div></div><div></div><div></div><div></div></div><div class="sakura"></div>
             <div class="flashcard-showcase">
@@ -228,8 +878,8 @@
             <a class="side-link" onclick="showPage('practice')"><i class="fa-regular fa-clipboard"></i> Kuis</a>
             <a class="side-link" onclick="showPage('hasil')"><i class="fa-solid fa-chart-column"></i> Hasil</a>
           </div>
-          <div class="side-card"><h3>Statistik Belajar</h3><div class="stat-list"><div class="stat-item"><span class="icon-bubble purple"><i class="fa-solid fa-book-open-reader"></i></span><div><strong>264</strong><span>Total Kosakata<br>Dipelajari</span></div></div><div class="stat-item"><span class="icon-bubble green"><i class="fa-regular fa-clock"></i></span><div><strong>18 dtk</strong><span>Rata-rata Waktu<br>per Kartu</span></div></div><div class="stat-item"><span class="icon-bubble pink"><i class="fa-solid fa-table-cells-large"></i></span><div><strong>12</strong><span>Jumlah Kategori<br>Topik</span></div></div></div></div>
-          <div class="side-card motivation"><h3 style="color:#6b3df4;margin-bottom:18px">Terus belajar setiap hari!</h3><p style="color:#53627d;line-height:1.6;margin-bottom:26px">Konsistensi adalah kunci menguasai kosakata.</p><button class="btn btn-secondary" onclick="showPage('practice')">Mulai Belajar <i class="fa-solid fa-chevron-right"></i></button></div>
+          <div class="side-card"><h3>Statistik Belajar</h3><div class="stat-list"><div class="stat-item"><span class="icon-bubble purple"><i class="fa-solid fa-book-open"></i></span><div><strong>264</strong><span>Total Kosakata<br>Dipelajari</span></div></div><div class="stat-item"><span class="icon-bubble green"><i class="fa-regular fa-clock"></i></span><div><strong>18 dtk</strong><span>Rata-rata Waktu<br>per Kartu</span></div></div><div class="stat-item"><span class="icon-bubble pink"><i class="fa-solid fa-table-cells"></i></span><div><strong>12</strong><span>Jumlah Kategori<br>Topik</span></div></div></div></div>
+          <div class="side-card motivation"><h3 style="color:#6b3df4;margin-bottom:18px">Terus belajar setiap hari!</h3><p style="color:#53627d;line-height:1.6;margin-bottom:26px">Konsistensi adalah kunci menguasai kosakata.</p><button class="btn btn-secondary" onclick="showPage('practice')">Mulai Kuis <i class="fa-solid fa-chevron-right"></i></button></div>
         </aside>
         <div class="content-card">
           <h2 class="page-title">Rangkuman Materi Belajar</h2>
@@ -244,12 +894,12 @@
     <!-- Practice -->
     <section class="page" id="page-practice">
       <div class="container">
-        <div class="practice-top"><div class="hero-eyebrow" style="margin:0"><span class="badge"><i class="fa-solid fa-book-open"></i> Bab 1–5 • 264 kosakata</span><span class="language-pill"><span class="flag-jp"></span> Jepang <i class="fa-solid fa-chevron-down"></i></span></div><button class="btn btn-ghost" onclick="showPage('home')"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar Latihan</button></div>
+        <div class="practice-top"><div class="hero-eyebrow" style="margin:0"><span class="badge"><i class="fa-solid fa-book-open"></i> Bab 1–5 • 264 kosakata</span><button class="language-pill" onclick="toggleLangMode()" title="Klik untuk mengganti bahasa website"><span class="flag-jp langFlag"></span> <span class="langModeLabel">日本語</span> <i class="fa-solid fa-chevron-down"></i></button></div><button class="btn btn-ghost" onclick="showPage('home')"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar Latihan</button></div>
         <div class="practice-grid">
           <div class="panel-card practice-card">
             <div class="practice-image"></div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin:22px 10px 0"><span class="badge" id="practiceCategory"><i class="fa-solid fa-user-group"></i> Sekolah</span><button class="star-btn" style="width:45px;height:45px"><i class="fa-regular fa-star"></i></button></div>
-            <div class="practice-word"><h2 id="practiceJapanese">図書館</h2><div class="kana" id="practiceKana">としょかん</div><div class="romaji" id="practiceRomaji">toshokan</div><div class="remember"><strong><i class="fa-regular fa-lightbulb"></i> Ingat artinya?</strong><span>Coba jawab dari ingatanmu terlebih dahulu.</span></div></div>
+            <div class="practice-word"><h2 id="practiceJapanese">図書館</h2><div class="kana" id="practiceKana">としょかん</div><div class="romaji" id="practiceRomaji">toshokan</div><div class="remember"><strong id="rememberTitle"><i class="fa-regular fa-lightbulb"></i> Ingat artinya?</strong><span id="rememberDesc">Coba jawab dari ingatanmu terlebih dahulu.</span></div></div>
             <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
           </div>
           <div class="control-panel">
@@ -269,7 +919,7 @@
       <div class="container">
         <span class="breadcrumb"><i class="fa-solid fa-book-open"></i> Beranda <i class="fa-solid fa-chevron-right"></i> Hasil Latihan</span>
         <h2 class="page-title">Ringkasan Belajar</h2><p class="page-desc">Hebat! Kamu telah menyelesaikan latihan kosakata.</p><div class="date-line"><i class="fa-regular fa-calendar"></i> 20 Mei 2025, 14:32</div>
-        <div class="result-grid"><div class="result-card score-hero"><div class="score-inner"><div class="circle-score"><div><strong id="scorePercent">86%</strong><span>Skor Akhir</span></div></div><div><span class="badge"><i class="fa-solid fa-star"></i> Sangat Baik!</span><h2 style="font-size:34px;margin:24px 0 12px">Kerja bagus! <i class="fa-solid fa-wand-magic-sparkles result-title-icon"></i></h2><p class="page-desc">Kamu menguasai sebagian besar kosakata hari ini. Terus tingkatkan konsistensi belajarmu!</p></div></div></div><div class="result-card" style="padding:28px"><h3>Ringkasan Hasil</h3><div class="summary-grid"><div class="summary-tile"><span class="icon-bubble purple"><i class="fa-solid fa-book-open-reader"></i></span><div><strong id="totalSoal">20</strong><span>Total Soal</span></div></div><div class="summary-tile"><span class="icon-bubble green"><i class="fa-solid fa-circle-check"></i></span><div><strong id="totalBenar">17</strong><span>Benar</span></div></div><div class="summary-tile"><span class="icon-bubble red-soft"><i class="fa-solid fa-circle-xmark"></i></span><div><strong id="totalSalah">3</strong><span>Salah</span></div></div><div class="summary-tile"><span class="icon-bubble blue"><i class="fa-regular fa-clock"></i></span><div><strong>12:34</strong><span>Waktu (mnt)</span></div></div></div></div></div>
+        <div class="result-grid"><div class="result-card score-hero"><div class="score-inner"><div class="circle-score"><div><strong id="scorePercent">86%</strong><span>Skor Akhir</span></div></div><div><span class="badge"><i class="fa-solid fa-star"></i> Sangat Baik!</span><h2 style="font-size:34px;margin:24px 0 12px">Kerja bagus! <i class="fa-solid fa-wand-magic-sparkles result-title-icon"></i></h2><p class="page-desc">Kamu menguasai sebagian besar kosakata hari ini. Terus tingkatkan konsistensi belajarmu!</p></div></div></div><div class="result-card" style="padding:28px"><h3>Ringkasan Hasil</h3><div class="summary-grid"><div class="summary-tile"><span class="icon-bubble purple"><i class="fa-solid fa-book-open"></i></span><div><strong id="totalSoal">20</strong><span>Total Soal</span></div></div><div class="summary-tile"><span class="icon-bubble green"><i class="fa-solid fa-circle-check"></i></span><div><strong id="totalBenar">17</strong><span>Benar</span></div></div><div class="summary-tile"><span class="icon-bubble red-soft"><i class="fa-solid fa-circle-xmark"></i></span><div><strong id="totalSalah">3</strong><span>Salah</span></div></div><div class="summary-tile"><span class="icon-bubble blue"><i class="fa-regular fa-clock"></i></span><div><strong>12:34</strong><span>Waktu (mnt)</span></div></div></div></div></div>
         <div class="result-actions"><button class="btn btn-primary" onclick="showPage('materi')"><i class="fa-solid fa-book-open"></i> Review Kosakata</button><button class="btn btn-secondary" onclick="alert('PDF berhasil disiapkan')"><i class="fa-solid fa-download"></i> Simpan PDF</button><button class="btn btn-secondary" onclick="resetPractice(); showPage('practice')"><i class="fa-solid fa-rotate-right"></i> Ulangi Latihan</button></div>
         <div class="table-wrap"><div class="table-head"><h3>Review Hasil Latihan</h3><div class="table-filters"><select class="select-mini"><option>Semua Status</option><option>Benar</option><option>Salah</option></select><select class="select-mini"><option>Urutkan</option><option>Tercepat</option><option>Terlama</option></select></div></div><div class="table-scroll"><table class="data-table"><thead><tr><th>#</th><th>Kosakata</th><th>Arti</th><th>Status</th><th>Waktu</th></tr></thead><tbody id="reviewRows"></tbody></table></div></div>
       </div>
@@ -328,8 +978,71 @@
     let selectedGroup = 'Badung';
     let currentIndex = 5;
     let answered = 0, correct = 0, wrong = 0;
+    let langMode = 'jp-id';
+    let siteLang = 'id';
+
+    const uiText = {
+      id:{
+        home:'Beranda', materi:'Materi', quiz:'Kuis', login:'Masuk', admin:'Admin',
+        lang:'日本語', badge:'Bab 1–5 • 264 kosakata', hero:'Belajar kosakata<br>Jepang',
+        desc:'Belajar lebih efektif dengan kartu visual, audio, jawaban suara, dan progress yang membantu kamu menguasai kosakata sehari-hari.',
+        username:'Isi Username', lihat:'Lihat Materi', stat1:'Total Kosakata<br>Bab 1–5', stat2:'Rata-rata Waktu<br>per Kartu', stat3:'Jumlah Kategori<br>Topik',
+        fiction:'Gunakan kosakata fiksi', fictionDesc:'Sertakan kosakata dari anime, game, dan karya fiksi populer.',
+        tag:'Kata Ganti Orang', hear:'Dengar', voice:'Coba jawab dengan suara kamu!',
+        f1:'Kartu Visual', f1d:'Gambar membantu mengingat lebih kuat.', f2:'Audio Jernih', f2d:'Dengar pelafalan asli penutur Jepang.',
+        f3:'Jawab dengan Suara', f3d:'Latih pengucapan dan dapatkan umpan balik instan.', f4:'Progress Belajar', f4d:'Lacak perkembangan dan tingkatkan setiap hari.',
+        startTitle:'Siap mulai belajar?', startDesc:'Masukkan nama Anda dan pilih grup untuk memulai petualangan belajar kosakata Jepang.', cancel:'Batal', mulai:'Mulai Belajar',
+        keluar:'Keluar Latihan', sedang:'Sedang Belajar', mode:'Mode: Belajar', contoh:'Contoh Kalimat', jawab:'Jawab dengan Suara', listening:'Mendengarkan...', benar:'Benar', salah:'Salah'
+      },
+      ja:{
+        home:'ホーム', materi:'教材', quiz:'クイズ', login:'ログイン', admin:'管理者',
+        lang:'Bahasa Indonesia', badge:'第1〜5章・264語', hero:'日本語の語彙を<br>学ぼう',
+        desc:'ビジュアルカード、音声、音声回答、学習進捗で、日常の日本語語彙をより効果的に身につけましょう。',
+        username:'ユーザー名入力', lihat:'教材を見る', stat1:'総語彙数<br>第1〜5章', stat2:'カード1枚あたり<br>平均時間', stat3:'カテゴリー数<br>トピック',
+        fiction:'フィクション語彙を使う', fictionDesc:'アニメ、ゲーム、人気作品の語彙も含めます。',
+        tag:'人称代名詞', hear:'聞く', voice:'声で答えてみよう！',
+        f1:'ビジュアルカード', f1d:'画像でより強く記憶できます。', f2:'クリアな音声', f2d:'日本語の発音を聞いて練習できます。',
+        f3:'音声で回答', f3d:'発音を練習し、すぐにフィードバックを得られます。', f4:'学習進捗', f4d:'成長を記録して毎日上達しましょう。',
+        startTitle:'学習を始めますか？', startDesc:'名前とグループを選んで、日本語語彙の学習を始めましょう。', cancel:'キャンセル', mulai:'学習開始',
+        keluar:'練習を終了', sedang:'学習中', mode:'モード: 学習', contoh:'例文', jawab:'音声で回答', listening:'聞き取り中...', benar:'正解', salah:'不正解'
+      }
+    };
+
+    function setHTML(selector, value){ const el=document.querySelector(selector); if(el) el.innerHTML=value; }
+    function setText(selector, value){ const el=document.querySelector(selector); if(el) el.textContent=value; }
+    function setAllHTML(selector, value){ document.querySelectorAll(selector).forEach(el=>el.innerHTML=value); }
+    function setAllText(selector, value){ document.querySelectorAll(selector).forEach(el=>el.textContent=value); }
+    function applyUILanguage(){
+      const t=uiText[siteLang];
+      document.documentElement.lang = siteLang === 'id' ? 'id' : 'ja';
+      document.querySelectorAll('.langModeLabel').forEach(el=>el.textContent=t.lang);
+      document.querySelectorAll('.langFlag').forEach(el=>{ const targetIsJapanese = siteLang === 'id'; el.classList.toggle('flag-jp',targetIsJapanese); el.classList.toggle('flag-id',!targetIsJapanese); });
+      setText('[data-page="home"]',t.home); setText('[data-page="materi"]',t.materi); setText('[data-page="practice"]',t.quiz);
+      setHTML('#loginBtn', (document.getElementById('loginBtn').textContent.includes('Admin')||document.getElementById('loginBtn').textContent.includes('管理者')) ? `<i class="fa-solid fa-shield-halved"></i> <span>${t.admin}</span> <i class="fa-solid fa-chevron-down"></i>` : `<i class="fa-solid fa-user"></i> <span>${t.login}</span>`);
+      setHTML('#page-home .hero-eyebrow .badge',`<i class="fa-solid fa-book-open"></i> ${t.badge}`);
+      setHTML('.hero-title',t.hero); setText('.hero-desc',t.desc);
+      setHTML('.hero-actions .btn-primary',`<i class="fa-solid fa-user"></i> ${t.username}`); setHTML('.hero-actions .btn-secondary',`<i class="fa-solid fa-book-open"></i> ${t.lihat}`);
+      const stats=document.querySelectorAll('#page-home .mini-stat:not(.fiction-toggle) span:last-child'); if(stats[0]) stats[0].innerHTML=t.stat1; if(stats[1]) stats[1].innerHTML=t.stat2; if(stats[2]) stats[2].innerHTML=t.stat3;
+      setText('.fiction-toggle h3',t.fiction); setText('.fiction-toggle p',t.fictionDesc);
+      setHTML('.flashcard-showcase .tag',`<i class="fa-solid fa-user-group"></i> ${t.tag}`); setHTML('.flashcard-showcase .btn',`<i class="fa-solid fa-volume-high"></i> ${t.hear}`); setHTML('.flashcard-showcase p',`<i class="fa-solid fa-microphone"></i> &nbsp; ${t.voice}`);
+      const f=document.querySelectorAll('.feature-card'); if(f.length>=4){ f[0].querySelector('h3').textContent=t.f1; f[0].querySelector('p').textContent=t.f1d; f[1].querySelector('h3').textContent=t.f2; f[1].querySelector('p').textContent=t.f2d; f[2].querySelector('h3').textContent=t.f3; f[2].querySelector('p').textContent=t.f3d; f[3].querySelector('h3').textContent=t.f4; f[3].querySelector('p').textContent=t.f4d; }
+      setText('.modal-title',t.startTitle); setText('.modal-desc',t.startDesc);
+      setAllText('.modal-actions .btn-secondary',t.cancel); setHTML('.modal-actions .btn-primary',`<i class="fa-solid fa-book-open"></i> ${t.mulai}`);
+      setHTML('#page-practice .practice-top .badge',`<i class="fa-solid fa-book-open"></i> ${t.badge}`); setHTML('#page-practice .practice-top .btn-ghost',`<i class="fa-solid fa-arrow-right-from-bracket"></i> ${t.keluar}`);
+      setHTML('.mode-row .badge',`<i class="fa-solid fa-book-open"></i> ${t.sedang}`); const modeRight=document.querySelector('.mode-row strong'); if(modeRight) modeRight.textContent=t.mode;
+      const actions=document.querySelectorAll('.practice-action'); if(actions[0]) actions[0].innerHTML=`<i class="fa-solid fa-volume-high"></i> ${t.hear}`; if(actions[1]) actions[1].innerHTML=`<i class="fa-regular fa-comments"></i> ${t.contoh}`; if(actions[2]) actions[2].innerHTML=`<i class="fa-solid fa-microphone"></i> ${t.jawab}`;
+      setHTML('.listening',`<i class="fa-solid fa-wave-square"></i> ${t.listening} <span class="audio-bars"><i></i><i></i><i></i><i></i></span>`);
+      const ans=document.querySelectorAll('.answer-row .btn'); if(ans[0]) ans[0].innerHTML=`<i class="fa-solid fa-circle-check"></i> ${t.benar}`; if(ans[1]) ans[1].innerHTML=`<i class="fa-solid fa-circle-xmark"></i> ${t.salah}`;
+      loadPractice(false);
+    }
 
     function toggleMenu(){ document.getElementById('navMenu').classList.toggle('show'); }
+    function startQuizFromNav(){ resetPractice(); showPage('practice'); }
+    function toggleLangMode(){
+      siteLang = siteLang === 'id' ? 'ja' : 'id';
+      langMode = siteLang === 'id' ? 'jp-id' : 'id-jp';
+      applyUILanguage();
+    }
     function showPage(page){
       document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
       document.getElementById('page-'+page).classList.add('active');
@@ -359,23 +1072,36 @@
     }
     function iconForCat(c){return c==='Salam'?'<i class="fa-solid fa-user"></i>':c==='Sekolah'?'<i class="fa-solid fa-graduation-cap"></i>':c==='Angka'?'<i class="fa-solid fa-123"></i>':c==='Keluarga'?'<i class="fa-solid fa-user-group"></i>':'';}
     function setCategory(cat){activeCategory=cat;renderCategoryPills();renderVocab();}
+    function visualIcon(v){ const m={library:'fa-solid fa-book-open',school:'fa-solid fa-school',book:'fa-solid fa-book',pen:'fa-solid fa-pen',person:'fa-solid fa-user',family:'fa-solid fa-people-roof',number:'fa-solid fa-1'}; return m[v.img]||'fa-solid fa-book-open'; }
     function renderVocab(){
       const q=(document.getElementById('vocabSearch')?.value||'').toLowerCase();
       const rows=vocabData.filter(v=>(activeCategory==='Semua'||v.cat===activeCategory) && [v.jp,v.kana,v.romaji,v.arti,v.cat].join(' ').toLowerCase().includes(q));
-      document.getElementById('vocabGrid').innerHTML=rows.map(v=>`<article class="vocab-card"><div class="thumb ${v.img}"><button class="card-star"><i class="fa-regular fa-star"></i></button><span class="emoji">${v.emoji}</span></div><div class="vocab-body"><h3>${v.jp}</h3><div class="romaji">${v.romaji}</div><div class="meaning-sm">${cap(v.arti)}</div><span class="cat-badge cat-${v.cat}">${iconForCat(v.cat)} ${v.cat}</span><button class="listen-btn" onclick="speakText('${v.jp}')"><i class="fa-solid fa-volume-high"></i> &nbsp; Dengar</button></div></article>`).join('');
+      document.getElementById('vocabGrid').innerHTML=rows.map(v=>`<article class="vocab-card"><div class="thumb ${v.img}"><button class="card-star"><i class="fa-regular fa-star"></i></button><span class="emoji"><i class="${visualIcon(v)}"></i></span></div><div class="vocab-body"><h3>${v.jp}</h3><div class="romaji">${v.romaji}</div><div class="meaning-sm">${cap(v.arti)}</div><span class="cat-badge cat-${v.cat}">${iconForCat(v.cat)} ${v.cat}</span><button class="listen-btn" onclick="speakText('${v.jp}')"><i class="fa-solid fa-volume-high"></i> &nbsp; Dengar</button></div></article>`).join('');
     }
     function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
     function speakText(text){
       try{ if('speechSynthesis' in window){ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang='ja-JP'; u.rate=.9; speechSynthesis.speak(u);} else alert('Audio tidak didukung browser ini.'); }catch(e){console.log(e)}
     }
     function currentVocab(){return vocabData[currentIndex % vocabData.length];}
-    function loadPractice(){
+    function loadPractice(playAudio=true){
       const v=currentVocab();
       document.getElementById('practiceCategory').innerHTML=`${iconForCat(v.cat)} ${v.cat}`;
-      document.getElementById('practiceJapanese').textContent=v.jp; document.getElementById('practiceKana').textContent=v.kana; document.getElementById('practiceRomaji').textContent=v.romaji;
+      if(langMode === 'jp-id'){
+        document.getElementById('practiceJapanese').textContent=v.jp;
+        document.getElementById('practiceKana').textContent=v.kana;
+        document.getElementById('practiceRomaji').textContent=v.romaji;
+        document.getElementById('rememberTitle').innerHTML= siteLang==='ja' ? '<i class="fa-regular fa-lightbulb"></i> 意味を覚えていますか？' : '<i class="fa-regular fa-lightbulb"></i> Ingat artinya?';
+        document.getElementById('rememberDesc').textContent= siteLang==='ja' ? 'まず日本語の意味を思い出して答えてみましょう。' : 'Coba jawab arti bahasa Indonesianya terlebih dahulu.';
+      }else{
+        document.getElementById('practiceJapanese').textContent=cap(v.arti);
+        document.getElementById('practiceKana').textContent= siteLang==='ja' ? 'インドネシア語' : 'Bahasa Indonesia';
+        document.getElementById('practiceRomaji').textContent= siteLang==='ja' ? `答え: ${v.jp} • ${v.romaji}` : `Jawab: ${v.jp} • ${v.romaji}`;
+        document.getElementById('rememberTitle').innerHTML= siteLang==='ja' ? '<i class="fa-regular fa-lightbulb"></i> 日本語の語彙を覚えていますか？' : '<i class="fa-regular fa-lightbulb"></i> Ingat kosakata Jepangnya?';
+        document.getElementById('rememberDesc').textContent= siteLang==='ja' ? 'この意味に合う日本語を言ってみましょう。' : 'Coba sebutkan kosakata Jepang dari arti ini.';
+      }
       const num=answered+1; document.getElementById('cardNum').textContent=num;
       const pct=Math.min(100,Math.round((answered/20)*100)); document.getElementById('practiceProgress').style.width=pct+'%'; document.getElementById('practicePercent').textContent=pct+'% Selesai';
-      if(document.getElementById('autoSwitch').classList.contains('active')) speakText(v.jp);
+      if(playAudio && document.getElementById('autoSwitch').classList.contains('active')) speakText(v.jp);
     }
     function speakCurrent(){ speakText(currentVocab().jp); }
     function answerCard(isCorrect){
@@ -401,7 +1127,7 @@
     function resetAdminFilter(){document.getElementById('participantSearch').value='';document.getElementById('groupFilter').value='Semua Grup';renderParticipants();}
     function openDetail(nama){const p=participants.find(x=>x.nama===nama);document.getElementById('detailContent').innerHTML=`<div><span>Nama</span><strong>${p.nama}</strong></div><div><span>Grup</span><strong>${p.grup}</strong></div><div><span>Tanggal Terakhir</span><strong>${p.tanggal}</strong></div><div><span>Total Soal</span><strong>${p.total}</strong></div><div><span>Benar</span><strong>${p.benar}</strong></div><div><span>Salah</span><strong>${p.salah}</strong></div><div><span>Skor</span><strong>${p.skor.toFixed(1)}%</strong></div>`;openModal('detailModal');}
     document.addEventListener('keydown',e=>{if(e.key==='Escape') document.querySelectorAll('.modal-overlay.active').forEach(m=>closeModal(m.id));});
-    renderCategoryPills(); renderVocab(); loadPractice(); updateResult(); renderParticipants();
+    renderCategoryPills(); renderVocab(); loadPractice(false); updateResult(); renderParticipants(); applyUILanguage();
   </script>
 </body>
 </html>
