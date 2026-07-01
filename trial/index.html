@@ -6032,5 +6032,743 @@
   setTimeout(initPatchV8,500);
 })();
 </script>
+
+<!-- === PATCH 2026-07-01 v10: Admin laporan peserta dinamis + laporan Excel new tab === -->
+<style id="patch-admin-report-v10">
+  /* Halaman laporan peserta disamakan dengan referensi: bersih, lebar, dan ringan */
+  #page-admin{
+    padding-top:58px!important;
+    background:
+      radial-gradient(circle at 6% 10%, rgba(124,77,255,.075), transparent 31%),
+      radial-gradient(circle at 94% 92%, rgba(236,72,153,.06), transparent 34%);
+  }
+  #page-admin .container{width:min(1380px,calc(100% - 72px))!important;}
+  #page-admin .breadcrumb{
+    height:40px!important;
+    padding:0 17px!important;
+    border-radius:999px!important;
+    background:#f3edff!important;
+    border:1px solid rgba(124,77,255,.10)!important;
+    color:#6b3df4!important;
+    font-size:14px!important;
+    font-weight:750!important;
+  }
+  #page-admin .admin-head{
+    margin:24px 0 30px!important;
+    display:flex!important;
+    align-items:flex-end!important;
+    justify-content:space-between!important;
+    gap:24px!important;
+  }
+  #page-admin .title-line{align-items:center!important;gap:16px!important;}
+  #page-admin .page-title{
+    font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif!important;
+    font-size:42px!important;
+    line-height:1.08!important;
+    letter-spacing:-.055em!important;
+    font-weight:900!important;
+    color:#10213f!important;
+    margin:0!important;
+  }
+  #page-admin .title-line .badge{
+    height:36px!important;
+    padding:0 16px!important;
+    border-radius:10px!important;
+    font-size:14px!important;
+    color:#6b3df4!important;
+    background:#f7f1ff!important;
+    border:1px solid #decfff!important;
+  }
+  #page-admin .page-desc{margin-top:12px!important;font-size:15px!important;color:#64748b!important;font-weight:500!important;}
+  #page-admin .admin-head .btn-primary{
+    height:54px!important;
+    padding:0 24px!important;
+    border-radius:10px!important;
+    background:linear-gradient(135deg,#7c4dff,#6336e8)!important;
+    box-shadow:0 14px 34px rgba(124,77,255,.24)!important;
+    font-size:15px!important;
+    font-weight:850!important;
+  }
+  #page-admin .admin-stats{
+    display:grid!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    gap:20px!important;
+    margin-bottom:24px!important;
+  }
+  #page-admin .admin-stat{
+    min-height:126px!important;
+    padding:24px!important;
+    border-radius:18px!important;
+    background:rgba(255,255,255,.95)!important;
+    border:1px solid rgba(226,232,240,.95)!important;
+    box-shadow:0 16px 42px rgba(80,70,140,.08)!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:22px!important;
+  }
+  #page-admin .admin-stat .icon-bubble{
+    width:70px!important;height:70px!important;min-width:70px!important;flex:0 0 70px!important;
+    border-radius:50%!important;font-size:28px!important;
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    box-shadow:none!important;
+  }
+  #page-admin .admin-stat .icon-bubble i,
+  #page-admin .admin-stat .icon-bubble svg{font-size:28px!important;width:30px!important;height:30px!important;}
+  #page-admin .admin-stat > div{min-width:0!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;}
+  #page-admin .admin-stat span:first-child{
+    margin:0 0 7px!important;
+    color:#465675!important;
+    font-size:14px!important;
+    line-height:1.25!important;
+    font-weight:650!important;
+  }
+  #page-admin .admin-stat strong{
+    color:#0b142c!important;
+    font-size:32px!important;
+    line-height:1.05!important;
+    font-weight:900!important;
+    letter-spacing:-.045em!important;
+    margin:0!important;
+    white-space:nowrap!important;
+  }
+  #page-admin .admin-stat span:last-child{
+    margin-top:9px!important;
+    color:#8390a7!important;
+    font-size:13px!important;
+    line-height:1.35!important;
+    font-weight:500!important;
+  }
+  #page-admin .admin-table-card{
+    padding:22px!important;
+    border-radius:18px!important;
+    background:rgba(255,255,255,.95)!important;
+    border:1px solid rgba(226,232,240,.98)!important;
+    box-shadow:0 18px 48px rgba(80,70,140,.075)!important;
+  }
+  #page-admin .filter-row{
+    display:grid!important;
+    grid-template-columns:minmax(260px,1.25fr) minmax(160px,.78fr) minmax(160px,.78fr) minmax(160px,.78fr) auto!important;
+    gap:18px!important;
+    margin-bottom:22px!important;
+    align-items:center!important;
+  }
+  #page-admin .filter-row .search-bar{height:44px!important;}
+  #page-admin .filter-row input,
+  #page-admin .filter-row select{
+    height:44px!important;
+    border-radius:9px!important;
+    border:1px solid #cfd7e7!important;
+    background:#fff!important;
+    color:#42526f!important;
+    font-size:14px!important;
+    font-weight:600!important;
+  }
+  #page-admin .filter-row .btn-secondary{
+    height:44px!important;
+    border-radius:9px!important;
+    background:#fbfaff!important;
+    color:#6b3df4!important;
+    border:1px solid #d8ccff!important;
+    box-shadow:none!important;
+  }
+  #page-admin .data-table{
+    border:1px solid #d9dff0!important;
+    border-radius:10px!important;
+    overflow:hidden!important;
+    min-width:980px!important;
+  }
+  #page-admin .data-table th{
+    height:58px!important;
+    padding:16px 20px!important;
+    background:linear-gradient(180deg,#f8f2ff,#f2ebff)!important;
+    color:#3d18b3!important;
+    font-size:14px!important;
+    font-weight:900!important;
+    border-bottom:1px solid #dcd0ff!important;
+  }
+  #page-admin .data-table td{
+    height:58px!important;
+    padding:14px 20px!important;
+    color:#263454!important;
+    font-size:14px!important;
+    font-weight:550!important;
+    border-bottom:1px solid #e8ecf4!important;
+  }
+  #page-admin .data-table tr:last-child td{border-bottom:0!important;}
+  #page-admin .participant{gap:12px!important;font-weight:850!important;color:#15233f!important;}
+  #page-admin .avatar{width:40px!important;height:40px!important;font-size:15px!important;}
+  #page-admin .group-badge,
+  #page-admin .score-badge{height:30px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:0 14px!important;border-radius:999px!important;font-size:13px!important;}
+  #page-admin .actions-cell{gap:10px!important;}
+  #page-admin .small-btn{height:36px!important;border-radius:8px!important;padding:0 14px!important;background:#fbfaff!important;border:1px solid #d8ccff!important;color:#6b3df4!important;font-size:14px!important;}
+  #page-admin .small-btn.pdf{background:#fff4f7!important;border-color:#ffc6d5!important;color:#ff3b6b!important;}
+  #page-admin .table-footer{margin-top:16px!important;color:#64748b!important;font-size:14px!important;}
+  #page-admin .pagination .select-mini{height:38px!important;border-radius:8px!important;min-width:148px!important;text-align:center!important;color:#263454!important;}
+  #page-admin .page-btn{width:38px!important;height:38px!important;border-radius:8px!important;background:#fff!important;}
+  #page-admin .page-btn.active{background:linear-gradient(135deg,#7c4dff,#6336e8)!important;color:#fff!important;}
+  @media(max-width:1180px){
+    #page-admin .admin-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+    #page-admin .filter-row{grid-template-columns:1fr 1fr!important;}
+    #page-admin .admin-head{align-items:flex-start!important;flex-direction:column!important;}
+  }
+  @media(max-width:760px){
+    #page-admin .container{width:min(100% - 32px,1380px)!important;}
+    #page-admin .page-title{font-size:32px!important;}
+    #page-admin .admin-stats{grid-template-columns:1fr!important;}
+    #page-admin .admin-stat{min-height:112px!important;padding:20px!important;}
+    #page-admin .filter-row{grid-template-columns:1fr!important;}
+    #page-admin .admin-head .btn-primary{width:100%!important;}
+  }
+</style>
+<script id="patch-admin-report-v10-script">
+(function(){
+  const HISTORY_KEY='kosakata_jepang_quiz_history_v6';
+  const LAST_KEY='kosakata_jepang_last_quiz_result_v4';
+  const ADMIN_ROWS_PER_PAGE=10;
+  let adminCurrentPage=1;
+
+  function parseJSON(raw,fallback){try{return raw?JSON.parse(raw):fallback;}catch(e){return fallback;}}
+  function esc(v){return String(v??'').replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
+  function norm(v){return String(v||'').toLowerCase().trim();}
+  function pad2(n){return String(Math.max(0,Math.floor(Number(n)||0))).padStart(2,'0');}
+  function formatIDDate(value){
+    const d=value?new Date(value):new Date();
+    const m=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+    return pad2(d.getDate())+' '+m[d.getMonth()]+' '+d.getFullYear()+', '+pad2(d.getHours())+':'+pad2(d.getMinutes());
+  }
+  function formatJPDate(value){
+    const d=value?new Date(value):new Date();
+    return d.getFullYear()+'年'+pad2(d.getMonth()+1)+'月'+pad2(d.getDate())+'日 '+pad2(d.getHours())+':'+pad2(d.getMinutes());
+  }
+  function fmtNumber(n){return new Intl.NumberFormat((getLang()==='ja')?'ja-JP':'id-ID').format(Number(n)||0);}
+  function getLang(){try{return siteLang==='ja'?'ja':'id';}catch(e){return 'id';}}
+  function t(id,ja){return getLang()==='ja'?ja:id;}
+  function statsFromRecords(records){
+    records=Array.isArray(records)?records:[];
+    const total=records.length;
+    const benar=records.filter(r=>!!r.status).length;
+    const salah=Math.max(0,total-benar);
+    const skor=total?+(benar/total*100).toFixed(1):0;
+    return {total,benar,salah,skor};
+  }
+  function baseRows(){
+    let base=[];
+    try{ if(typeof participants!=='undefined' && Array.isArray(participants)) base=participants; }catch(e){}
+    return base.map(function(p){return {
+      nama:p.nama||'-', avatar:p.avatar||String(p.nama||'?').charAt(0).toUpperCase(), cls:p.cls||'', grup:p.grup||'-', tanggal:p.tanggal||'-',
+      total:Number(p.total)||0, benar:Number(p.benar)||0, salah:Number(p.salah)||0, skor:Number(p.skor)||0,
+      attempts:1, source:'demo'
+    };});
+  }
+  function historyRows(){
+    let list=parseJSON(localStorage.getItem(HISTORY_KEY),[]).filter(Boolean);
+    const last=parseJSON(localStorage.getItem(LAST_KEY),null);
+    if(last && Array.isArray(last.records) && last.records.length && !list.some(x=>x && x.id===last.id)) list.push(last);
+    return list.filter(p=>Array.isArray(p.records)&&p.records.length).map(function(p,idx){
+      const s=statsFromRecords(p.records);
+      const name=p.user || p.nama || 'Peserta '+(idx+1);
+      return {
+        nama:name,
+        avatar:String(name||'?').trim().charAt(0).toUpperCase()||'?',
+        cls:'',
+        grup:p.group || p.grup || '-',
+        tanggal:formatIDDate(p.endedAt || p.startedAt || new Date()),
+        tanggalJP:formatJPDate(p.endedAt || p.startedAt || new Date()),
+        total:s.total,
+        benar:s.benar,
+        salah:s.salah,
+        skor:s.skor,
+        attempts:1,
+        source:'history',
+        raw:p
+      };
+    });
+  }
+  function combinedParticipantRows(){
+    const byKey=new Map();
+    baseRows().forEach(function(p){byKey.set(norm(p.nama)+'|'+norm(p.grup),p);});
+    historyRows().forEach(function(p){
+      const key=norm(p.nama)+'|'+norm(p.grup);
+      if(byKey.has(key)){ p.attempts=(byKey.get(key).attempts||1)+1; }
+      byKey.set(key,p);
+    });
+    return Array.from(byKey.values()).sort(function(a,b){return (b.source==='history')-(a.source==='history') || b.skor-a.skor;});
+  }
+  function filteredRows(){
+    const search=document.getElementById('participantSearch');
+    const group=document.getElementById('groupFilter');
+    const period=document.getElementById('adminPeriodFilter');
+    const status=document.getElementById('adminStatusFilter');
+    const q=norm(search && search.value);
+    const gf=group?group.value:t('Semua Grup','すべてのグループ');
+    const pf=period?period.value:t('Semua Periode','すべての期間');
+    const sf=status?status.value:t('Semua Status','すべてのステータス');
+    return combinedParticipantRows().filter(function(p){
+      const text=[p.nama,p.grup,p.tanggal,p.skor].join(' ').toLowerCase();
+      const okQ=!q || text.indexOf(q)>-1;
+      const okG=gf===t('Semua Grup','すべてのグループ') || gf==='Semua Grup' || gf==='すべてのグループ' || p.grup===gf;
+      let okS=true;
+      if(sf===t('Tinggi','高スコア') || sf==='Tinggi' || sf==='高スコア') okS=p.skor>=70;
+      if(sf===t('Rendah','低スコア') || sf==='Rendah' || sf==='低スコア') okS=p.skor<70;
+      let okP=true;
+      if(pf===t('Hari ini','今日') || pf==='Hari ini' || pf==='今日'){
+        const today=formatIDDate(new Date()).slice(0,10); okP=(p.tanggal||'').slice(0,10)===today;
+      }
+      if(pf===t('Minggu ini','今週') || pf==='Minggu ini' || pf==='今週') okP=true;
+      return okQ && okG && okS && okP;
+    });
+  }
+  function groupClass(grup){
+    grup=String(grup||'');
+    if(grup.includes('Menengah') || grup.includes('中級')) return 'group-green';
+    if(grup.includes('B')) return 'group-pink';
+    if(grup.includes('A')) return 'group-blue';
+    return '';
+  }
+  function scoreClass(skor){return Number(skor)<60?'low':'';}
+  function statusText(skor){return Number(skor)>=70?t('Tinggi','高スコア'):t('Rendah','低スコア');}
+  function updateGroupOptions(){
+    const group=document.getElementById('groupFilter'); if(!group) return;
+    const current=group.value;
+    const all=t('Semua Grup','すべてのグループ');
+    const groups=Array.from(new Set(combinedParticipantRows().map(p=>p.grup).filter(Boolean)));
+    group.innerHTML='<option>'+all+'</option>'+groups.map(g=>'<option>'+esc(g)+'</option>').join('');
+    group.value=groups.includes(current)?current:all;
+  }
+  function updateFilterLabels(){
+    const filterRow=document.querySelector('#page-admin .filter-row'); if(!filterRow) return;
+    const selects=filterRow.querySelectorAll('select');
+    if(selects[1] && !selects[1].id) selects[1].id='adminPeriodFilter';
+    if(selects[2] && !selects[2].id) selects[2].id='adminStatusFilter';
+    const search=document.getElementById('participantSearch');
+    if(search) search.placeholder=t('Cari nama peserta...','参加者名を検索...');
+    const period=document.getElementById('adminPeriodFilter');
+    if(period){
+      const cur=period.value;
+      period.innerHTML='<option>'+t('Semua Periode','すべての期間')+'</option><option>'+t('Hari ini','今日')+'</option><option>'+t('Minggu ini','今週')+'</option>';
+      period.value=[...period.options].some(o=>o.value===cur)?cur:t('Semua Periode','すべての期間');
+      period.onchange=function(){adminCurrentPage=1; renderParticipants();};
+    }
+    const status=document.getElementById('adminStatusFilter');
+    if(status){
+      const cur=status.value;
+      status.innerHTML='<option>'+t('Semua Status','すべてのステータス')+'</option><option>'+t('Tinggi','高スコア')+'</option><option>'+t('Rendah','低スコア')+'</option>';
+      status.value=[...status.options].some(o=>o.value===cur)?cur:t('Semua Status','すべてのステータス');
+      status.onchange=function(){adminCurrentPage=1; renderParticipants();};
+    }
+    const reset=filterRow.querySelector('.btn-secondary');
+    if(reset) reset.innerHTML='<i class="fa-solid fa-rotate-right"></i> '+t('Reset Filter','フィルターリセット');
+  }
+  function updateAdminStats(rows){
+    rows=rows||combinedParticipantRows();
+    const cards=document.querySelectorAll('#page-admin .admin-stat'); if(cards.length<5) return;
+    const uniqueUsers=rows.length;
+    const avg=uniqueUsers?rows.reduce((a,b)=>a+(Number(b.skor)||0),0)/uniqueUsers:0;
+    const sorted=[...rows].sort((a,b)=>b.skor-a.skor);
+    const high=sorted[0]||{skor:0,nama:'-'};
+    const low=sorted[sorted.length-1]||{skor:0,nama:'-'};
+    const attempts=baseRows().length + historyRows().length;
+    const data=[
+      [t('Total Peserta','参加者数'), fmtNumber(uniqueUsers), t('User pernah kuis','クイズ実施済み')],
+      [t('Rata-rata Skor','平均スコア'), (uniqueUsers?avg.toFixed(1):'0.0')+'%', t('Dari seluruh user','全ユーザー平均')],
+      [t('Skor Tertinggi','最高スコア'), (Number(high.skor)||0).toFixed(1).replace('.0','')+'%', t('Oleh ','参加者: ')+high.nama],
+      [t('Skor Terendah','最低スコア'), (Number(low.skor)||0).toFixed(1).replace('.0','')+'%', t('Oleh ','参加者: ')+low.nama],
+      [t('Total Pengerjaan','実施回数'), fmtNumber(attempts), t('Total kuis dikerjakan','クイズ実施合計')]
+    ];
+    cards.forEach(function(card,i){
+      const spans=card.querySelectorAll('span');
+      const strong=card.querySelector('strong');
+      if(spans[1]) spans[1].textContent=data[i][0];
+      if(strong) strong.textContent=data[i][1];
+      if(spans[2]) spans[2].textContent=data[i][2];
+    });
+  }
+  window.renderParticipants=function(){
+    updateFilterLabels(); updateGroupOptions();
+    const rows=filteredRows();
+    const total=rows.length;
+    const start=(adminCurrentPage-1)*ADMIN_ROWS_PER_PAGE;
+    const pageRows=rows.slice(start,start+ADMIN_ROWS_PER_PAGE);
+    const tbody=document.getElementById('participantRows');
+    if(tbody){
+      tbody.innerHTML=pageRows.length?pageRows.map(function(p,i){
+        const no=start+i+1;
+        return '<tr><td>'+no+'</td><td><span class="participant"><span class="avatar '+esc(p.cls||'')+'">'+esc(p.avatar||'?')+'</span>'+esc(p.nama)+'</span></td><td><span class="group-badge '+groupClass(p.grup)+'">'+esc(p.grup)+'</span></td><td>'+esc(getLang()==='ja'?(p.tanggalJP||p.tanggal):p.tanggal)+'</td><td>'+fmtNumber(p.total)+'</td><td style="color:#10b981;font-weight:850">'+fmtNumber(p.benar)+'</td><td style="color:#ff3b6b;font-weight:850">'+fmtNumber(p.salah)+'</td><td><span class="score-badge '+scoreClass(p.skor)+'">'+Number(p.skor).toFixed(1)+'%</span></td><td><span class="actions-cell"><button class="small-btn" onclick="openDetail(\''+String(p.nama).replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')"><i class="fa-regular fa-eye"></i> '+t('Detail','詳細')+'</button><button class="small-btn pdf" onclick="openSingleParticipantExcelReport(\''+String(p.nama).replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')"><i class="fa-regular fa-file-excel"></i> Excel</button></span></td></tr>';
+      }).join(''):'<tr><td colspan="9" style="text-align:center;color:#64748b;padding:28px!important">'+t('Belum ada data peserta yang sesuai filter.','条件に一致する参加者データはありません。')+'</td></tr>';
+    }
+    updateAdminStats(combinedParticipantRows());
+    updateFooter(total,start,pageRows.length);
+    if(typeof applyLocalIcons==='function') applyLocalIcons(document.getElementById('page-admin')||document);
+  };
+  function updateFooter(total,start,count){
+    const footer=document.querySelector('#page-admin .table-footer'); if(!footer) return;
+    const from=total?start+1:0, to=start+count;
+    const maxPage=Math.max(1,Math.ceil(total/ADMIN_ROWS_PER_PAGE));
+    footer.innerHTML='<span>'+t('Menampilkan','表示')+' '+fmtNumber(from)+'–'+fmtNumber(to)+' '+t('dari','/')+' '+fmtNumber(total)+' '+t('peserta','参加者')+'</span><div class="pagination"><select class="select-mini"><option>'+ADMIN_ROWS_PER_PAGE+' / '+t('halaman','ページ')+'</option></select><button class="page-btn" data-admin-page="prev"><i class="fa-solid fa-chevron-left"></i></button>'+Array.from({length:Math.min(3,maxPage)},function(_,i){const p=i+1;return '<button class="page-btn '+(p===adminCurrentPage?'active':'')+'" data-admin-page="'+p+'">'+p+'</button>';}).join('')+(maxPage>4?'<span>...</span><button class="page-btn '+(maxPage===adminCurrentPage?'active':'')+'" data-admin-page="'+maxPage+'">'+maxPage+'</button>':'')+'<button class="page-btn" data-admin-page="next"><i class="fa-solid fa-chevron-right"></i></button></div>';
+    footer.querySelectorAll('[data-admin-page]').forEach(function(btn){btn.onclick=function(){
+      const val=this.dataset.adminPage;
+      if(val==='prev') adminCurrentPage=Math.max(1,adminCurrentPage-1);
+      else if(val==='next') adminCurrentPage=Math.min(maxPage,adminCurrentPage+1);
+      else adminCurrentPage=Number(val)||1;
+      renderParticipants();
+    };});
+  }
+  window.resetAdminFilter=function(){
+    const search=document.getElementById('participantSearch'); if(search) search.value='';
+    const group=document.getElementById('groupFilter'); if(group) group.value=t('Semua Grup','すべてのグループ');
+    const period=document.getElementById('adminPeriodFilter'); if(period) period.value=t('Semua Periode','すべての期間');
+    const status=document.getElementById('adminStatusFilter'); if(status) status.value=t('Semua Status','すべてのステータス');
+    adminCurrentPage=1; renderParticipants();
+  };
+  window.openDetail=function(nama){
+    const p=combinedParticipantRows().find(x=>x.nama===nama) || combinedParticipantRows()[0]; if(!p) return;
+    const box=document.getElementById('detailContent');
+    if(box){
+      box.innerHTML='<div><span>'+t('Nama','氏名')+'</span><strong>'+esc(p.nama)+'</strong></div><div><span>'+t('Grup','グループ')+'</span><strong>'+esc(p.grup)+'</strong></div><div><span>'+t('Tanggal Terakhir','最終日時')+'</span><strong>'+esc(getLang()==='ja'?(p.tanggalJP||p.tanggal):p.tanggal)+'</strong></div><div><span>'+t('Total Soal','問題数')+'</span><strong>'+fmtNumber(p.total)+'</strong></div><div><span>'+t('Benar','正解')+'</span><strong>'+fmtNumber(p.benar)+'</strong></div><div><span>'+t('Salah','不正解')+'</span><strong>'+fmtNumber(p.salah)+'</strong></div><div><span>'+t('Skor','スコア')+'</span><strong>'+Number(p.skor).toFixed(1)+'%</strong></div>';
+    }
+    if(typeof openModal==='function') openModal('detailModal');
+  };
+  function makeReportHTML(rows, singleName){
+    const isJP=getLang()==='ja';
+    const now=isJP?formatJPDate(new Date()):formatIDDate(new Date());
+    const title=singleName
+      ? t('LAPORAN EXCEL PESERTA KUIS','参加者別クイズレポート')
+      : t('LAPORAN EXCEL SEMUA PESERTA','全参加者クイズレポート');
+    const subtitle=t('Rekap hasil kuis kosakata Jepang berdasarkan seluruh user yang melakukan kuis.','日本語語彙クイズを実施した全ユーザーの結果集計です。');
+    const avg=rows.length?rows.reduce((s,p)=>s+Number(p.skor||0),0)/rows.length:0;
+    const high=[...rows].sort((a,b)=>b.skor-a.skor)[0]||{nama:'-',skor:0};
+    const low=[...rows].sort((a,b)=>a.skor-b.skor)[0]||{nama:'-',skor:0};
+    const bodyRows=rows.map(function(p,i){return '<tr data-search="'+esc([p.nama,p.grup,p.tanggal,p.skor,statusText(p.skor)].join(' ').toLowerCase())+'" data-status="'+(p.skor>=70?'high':'low')+'"><td>'+(i+1)+'</td><td>'+esc(p.nama)+'</td><td>'+esc(p.grup)+'</td><td>'+esc(isJP?(p.tanggalJP||p.tanggal):p.tanggal)+'</td><td>'+p.total+'</td><td>'+p.benar+'</td><td>'+p.salah+'</td><td>'+Number(p.skor).toFixed(1)+'%</td><td>'+esc(statusText(p.skor))+'</td></tr>';}).join('') || '<tr><td colspan="9" class="empty">'+t('Belum ada data.','データがありません。')+'</td></tr>';
+    const html='<!DOCTYPE html><html lang="'+(isJP?'ja':'id')+'"><head><meta charset="UTF-8"><title>'+esc(title)+'</title><style>'+
+      'body{margin:0;background:#f4f7fb;color:#17213c;font-family:Arial,"Yu Gothic",sans-serif}.toolbar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;padding:14px 18px;background:#fff;border-bottom:1px solid #dbe1ee;box-shadow:0 8px 24px rgba(15,23,42,.08)}.toolbar .left{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.toolbar input,.toolbar select{height:38px;border:1px solid #cfd6e4;border-radius:8px;padding:0 12px;background:#fff;color:#17213c}.toolbar button{height:38px;border:0;border-radius:8px;padding:0 14px;font-weight:800;cursor:pointer}.primary{background:#16a34a;color:#fff}.ghost{background:#ede9fe;color:#5b21b6}.print{background:#7c4dff;color:#fff}.sheet{width:min(1200px,calc(100% - 32px));margin:22px auto;background:#fff;border:1px solid #cfd6e4;box-shadow:0 18px 50px rgba(15,23,42,.08)}.head{text-align:center;padding:22px 26px 16px;border-bottom:3px solid #1f2937}.head h1{margin:0 0 6px;font-size:22px;letter-spacing:.04em}.head p{margin:0;color:#64748b}.meta{width:100%;border-collapse:collapse}.meta td{border:1px solid #cfd6e4;padding:10px 12px}.meta td:first-child{width:220px;background:#f8fafc;font-weight:800}.summary{display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid #cfd6e4;border-top:1px solid #cfd6e4}.summary div{padding:12px;text-align:center;border-right:1px solid #cfd6e4;border-bottom:1px solid #cfd6e4}.summary span{display:block;color:#64748b;font-size:12px;font-weight:700}.summary strong{display:block;margin-top:5px;font-size:22px}.table-wrap{padding:18px}.excel{width:100%;border-collapse:collapse;table-layout:auto}.excel th,.excel td{border:1px solid #cfd6e4;padding:9px 10px;text-align:left;white-space:nowrap}.excel th{background:#e2f0d9;color:#1f4e22;font-weight:900}.excel tr:nth-child(even) td{background:#fbfdff}.empty{text-align:center!important;color:#64748b;padding:20px!important}.hidden-row{display:none!important}.footer{padding:16px 24px 26px;color:#64748b;font-size:12px}.sign{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px}.line{border-top:1px solid #111827;width:70%;margin:58px auto 0}@media print{body{background:#fff}.toolbar{display:none}.sheet{width:100%;margin:0;border:0;box-shadow:none}.excel th,.excel td{font-size:11px;padding:6px}.summary strong{font-size:18px}}' +
+      '</style></head><body><div class="toolbar"><div class="left"><input id="q" type="search" placeholder="'+esc(t('Cari nama/grup/status...','名前・グループ・状態を検索...'))+'"><select id="status"><option value="all">'+esc(t('Semua Status','すべてのステータス'))+'</option><option value="high">'+esc(t('Tinggi','高スコア'))+'</option><option value="low">'+esc(t('Rendah','低スコア'))+'</option></select><button class="ghost" onclick="resetFilter()">Reset</button></div><div><button class="primary" onclick="downloadExcel()">'+esc(t('Simpan Excel','Excel保存'))+'</button> <button class="print" onclick="window.print()">'+esc(t('Cetak / Save PDF','印刷 / PDF保存'))+'</button></div></div><main class="sheet" id="sheet"><section class="head"><h1>'+esc(title)+'</h1><p>'+esc(subtitle)+'</p></section><table class="meta"><tr><td>'+esc(t('Tanggal Cetak','出力日時'))+'</td><td>'+esc(now)+'</td></tr><tr><td>'+esc(t('Sumber Data','データ元'))+'</td><td>'+esc(t('Riwayat kuis tersimpan di browser + data peserta demo aplikasi','ブラウザ保存のクイズ履歴 + アプリのデモ参加者データ'))+'</td></tr><tr><td>'+esc(t('Standar Bahasa','言語設定'))+'</td><td>'+esc(isJP?'日本語':'Bahasa Indonesia')+'</td></tr></table><section class="summary"><div><span>'+esc(t('Total Peserta','参加者数'))+'</span><strong>'+rows.length+'</strong></div><div><span>'+esc(t('Rata-rata Skor','平均スコア'))+'</span><strong>'+avg.toFixed(1)+'%</strong></div><div><span>'+esc(t('Skor Tertinggi','最高スコア'))+'</span><strong>'+Number(high.skor).toFixed(1)+'%</strong></div><div><span>'+esc(t('Skor Terendah','最低スコア'))+'</span><strong>'+Number(low.skor).toFixed(1)+'%</strong></div><div><span>'+esc(t('Total Pengerjaan','実施回数'))+'</span><strong>'+rows.reduce((s,p)=>s+(p.attempts||1),0)+'</strong></div></section><div class="table-wrap"><table class="excel" id="excelTable"><thead><tr><th>No.</th><th>'+esc(t('Nama','氏名'))+'</th><th>'+esc(t('Grup','グループ'))+'</th><th>'+esc(t('Tanggal Terakhir','最終日時'))+'</th><th>'+esc(t('Total','合計'))+'</th><th>'+esc(t('Benar','正解'))+'</th><th>'+esc(t('Salah','不正解'))+'</th><th>'+esc(t('Skor','スコア'))+'</th><th>'+esc(t('Status','状態'))+'</th></tr></thead><tbody>'+bodyRows+'</tbody></table><section class="sign"><div>'+esc(t('Diperiksa oleh','確認者'))+'<div class="line"></div></div><div>'+esc(t('Admin','管理者'))+'<div class="line"></div></div></section></div><div class="footer">Kosakata Jepang • Kartu. Dengar. Ingat.</div></main><script>function applyFilter(){var q=(document.getElementById("q").value||"").toLowerCase();var s=document.getElementById("status").value;document.querySelectorAll("#excelTable tbody tr[data-status]").forEach(function(r){var okS=s==="all"||r.dataset.status===s;var okQ=!q||(r.dataset.search||"").indexOf(q)>-1;r.classList.toggle("hidden-row",!(okS&&okQ));});}function resetFilter(){document.getElementById("q").value="";document.getElementById("status").value="all";applyFilter();}document.getElementById("q").addEventListener("input",applyFilter);document.getElementById("status").addEventListener("change",applyFilter);function downloadExcel(){var html="<html><head><meta charset=\"UTF-8\"></head><body>"+document.getElementById("sheet").outerHTML+"</body></html>";var blob=new Blob([html],{type:"application/vnd.ms-excel"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="laporan-peserta-kosakata-jepang.xls";document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},800);}setTimeout(function(){window.focus();},300);<\/script></body></html>';
+    return html;
+  }
+  window.downloadAllParticipantsExcelReport=function(){
+    const rows=filteredRows().length?filteredRows():combinedParticipantRows();
+    const w=window.open('', '_blank');
+    if(!w){alert(t('Izinkan pop-up browser agar laporan dapat dibuka di tab baru.','新しいタブで開くため、ポップアップを許可してください。'));return;}
+    w.document.open(); w.document.write(makeReportHTML(rows)); w.document.close();
+  };
+  window.openSingleParticipantExcelReport=function(nama){
+    const row=combinedParticipantRows().find(p=>p.nama===nama); if(!row) return;
+    const w=window.open('', '_blank');
+    if(!w){alert(t('Izinkan pop-up browser agar laporan dapat dibuka di tab baru.','新しいタブで開くため、ポップアップを許可してください。'));return;}
+    w.document.open(); w.document.write(makeReportHTML([row],nama)); w.document.close();
+  };
+  function setupAdminButton(){
+    const btn=document.querySelector('#page-admin .admin-head .btn-primary');
+    if(btn){
+      btn.setAttribute('onclick','downloadAllParticipantsExcelReport()');
+      btn.innerHTML='<i class="fa-solid fa-download"></i> '+t('Download PDF Semua Peserta','全参加者PDFをダウンロード');
+    }
+  }
+  function patchApplyLanguage(){
+    try{
+      if(typeof applyUILanguage==='function' && !applyUILanguage.__adminReportV10){
+        const prev=applyUILanguage;
+        applyUILanguage=function(){const out=prev.apply(this,arguments); setTimeout(initAdminReport,20); return out;};
+        applyUILanguage.__adminReportV10=true;
+      }
+    }catch(e){}
+  }
+  function patchShowPage(){
+    try{
+      if(typeof showPage==='function' && !showPage.__adminReportV10){
+        const prev=showPage;
+        showPage=function(page){const out=prev.apply(this,arguments); if(page==='admin') setTimeout(initAdminReport,30); return out;};
+        showPage.__adminReportV10=true;
+      }
+    }catch(e){}
+  }
+  function initAdminReport(){
+    patchApplyLanguage(); patchShowPage(); updateFilterLabels(); updateGroupOptions(); setupAdminButton();
+    const search=document.getElementById('participantSearch'); if(search) search.oninput=function(){adminCurrentPage=1; renderParticipants();};
+    const group=document.getElementById('groupFilter'); if(group) group.onchange=function(){adminCurrentPage=1; renderParticipants();};
+    renderParticipants();
+  }
+  document.addEventListener('DOMContentLoaded',initAdminReport);
+  setTimeout(initAdminReport,0);
+  setTimeout(initAdminReport,500);
+})();
+</script>
+
+
+<!-- === PATCH FINAL ADMIN PDF v11: layout rapi, tombol PDF, detail riwayat, filter laporan === -->
+<style id="patch-admin-pdf-layout-v11">
+  #page-admin{font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,"Segoe UI",sans-serif!important;background:linear-gradient(135deg,#fbfaff 0%,#f8fbff 55%,#fff7fb 100%)!important;}
+  #page-admin .container{width:min(1380px,calc(100% - 72px))!important;max-width:1380px!important;margin:auto!important;}
+  #page-admin .admin-head{display:flex!important;align-items:flex-end!important;justify-content:space-between!important;gap:28px!important;margin:14px 0 28px!important;}
+  #page-admin .breadcrumb{height:42px!important;padding:0 18px!important;border-radius:999px!important;background:#f2eaff!important;color:#6b3df4!important;font-size:14px!important;font-weight:700!important;margin-bottom:24px!important;}
+  #page-admin .title-line{align-items:center!important;gap:16px!important;}
+  #page-admin .page-title{font-size:40px!important;line-height:1.1!important;letter-spacing:-.045em!important;font-weight:800!important;color:#10213f!important;margin:0!important;}
+  #page-admin .title-line .badge{height:34px!important;padding:0 16px!important;border-radius:10px!important;font-size:14px!important;font-weight:700!important;background:#fbfaff!important;border:1px solid #d8ccff!important;color:#6b3df4!important;}
+  #page-admin .page-desc{margin-top:10px!important;font-size:15px!important;line-height:1.55!important;font-weight:500!important;color:#667085!important;}
+  #page-admin .admin-head .btn-primary{height:58px!important;min-width:250px!important;border-radius:11px!important;font-size:14px!important;font-weight:700!important;background:linear-gradient(135deg,#7c4dff,#6336e8)!important;box-shadow:0 16px 32px rgba(124,77,255,.24)!important;}
+  #page-admin .admin-stats{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:20px!important;margin:0 0 24px!important;}
+  #page-admin .admin-stat{min-height:124px!important;padding:24px!important;border-radius:15px!important;background:rgba(255,255,255,.95)!important;border:1px solid rgba(124,77,255,.10)!important;box-shadow:0 14px 36px rgba(80,70,140,.075)!important;display:flex!important;align-items:center!important;gap:20px!important;}
+  #page-admin .admin-stat .icon-bubble{width:62px!important;height:62px!important;min-width:62px!important;flex:0 0 62px!important;border-radius:50%!important;font-size:23px!important;}
+  #page-admin .admin-stat span:not(.icon-bubble){display:block!important;margin:0!important;color:#53627d!important;font-size:13px!important;font-weight:600!important;line-height:1.35!important;}
+  #page-admin .admin-stat strong{display:block!important;margin:5px 0 6px!important;color:#07142d!important;font-size:28px!important;line-height:1!important;font-weight:800!important;letter-spacing:-.035em!important;}
+  #page-admin .admin-table-card{padding:22px!important;border-radius:18px!important;background:rgba(255,255,255,.96)!important;border:1px solid rgba(124,77,255,.12)!important;box-shadow:0 18px 50px rgba(80,70,140,.08)!important;overflow:hidden!important;}
+  #page-admin .filter-row{display:grid!important;grid-template-columns:1.35fr .78fr .78fr .78fr auto!important;gap:18px!important;align-items:center!important;margin:0 0 22px!important;}
+  #page-admin .filter-row .search-bar{height:46px!important;}
+  #page-admin .filter-row input,#page-admin .filter-row select{height:46px!important;border-radius:9px!important;border:1px solid #d8deec!important;background:#fff!important;color:#40506f!important;font-size:13px!important;font-weight:600!important;box-shadow:none!important;}
+  #page-admin .filter-row input{padding-left:44px!important;}
+  #page-admin .filter-row .btn-secondary{height:46px!important;border-radius:9px!important;background:#fbfaff!important;border:1px solid #d8ccff!important;color:#6b3df4!important;font-size:13px!important;font-weight:700!important;padding:0 22px!important;box-shadow:none!important;}
+  #page-admin .table-scroll{border-radius:12px!important;border:1px solid #e3e7f0!important;overflow:auto!important;}
+  #page-admin .data-table{width:100%!important;min-width:1120px!important;border:0!important;border-radius:0!important;border-collapse:separate!important;border-spacing:0!important;table-layout:fixed!important;}
+  #page-admin .data-table th{height:auto!important;padding:14px 18px!important;background:linear-gradient(180deg,#fbf7ff,#f5edff)!important;color:#3318a6!important;font-size:13px!important;line-height:1.2!important;font-weight:800!important;border-bottom:1px solid #dfd1ff!important;}
+  #page-admin .data-table td{height:auto!important;padding:12px 18px!important;color:#263454!important;font-size:13px!important;line-height:1.35!important;font-weight:600!important;border-bottom:1px solid #edf0f6!important;vertical-align:middle!important;}
+  #page-admin .data-table th:nth-child(1),#page-admin .data-table td:nth-child(1){width:58px!important;text-align:center!important;}
+  #page-admin .data-table th:nth-child(2),#page-admin .data-table td:nth-child(2){width:205px!important;}
+  #page-admin .data-table th:nth-child(3),#page-admin .data-table td:nth-child(3){width:140px!important;}
+  #page-admin .data-table th:nth-child(4),#page-admin .data-table td:nth-child(4){width:180px!important;}
+  #page-admin .data-table th:nth-child(5),#page-admin .data-table td:nth-child(5),#page-admin .data-table th:nth-child(6),#page-admin .data-table td:nth-child(6),#page-admin .data-table th:nth-child(7),#page-admin .data-table td:nth-child(7){width:82px!important;text-align:center!important;}
+  #page-admin .data-table th:nth-child(8),#page-admin .data-table td:nth-child(8){width:110px!important;text-align:center!important;}
+  #page-admin .data-table th:nth-child(9),#page-admin .data-table td:nth-child(9){width:190px!important;text-align:center!important;}
+  #page-admin .participant{display:flex!important;align-items:center!important;gap:12px!important;font-weight:800!important;color:#12203c!important;white-space:normal!important;}
+  #page-admin .avatar{width:42px!important;height:42px!important;min-width:42px!important;border-radius:50%!important;font-size:15px!important;font-weight:800!important;}
+  #page-admin .group-badge,#page-admin .score-badge{min-height:28px!important;height:auto!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:6px 14px!important;border-radius:999px!important;font-size:12px!important;line-height:1.15!important;font-weight:800!important;white-space:normal!important;}
+  #page-admin .actions-cell{display:flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;}
+  #page-admin .small-btn{height:36px!important;min-width:88px!important;border-radius:8px!important;padding:0 13px!important;font-size:13px!important;font-weight:800!important;background:#fbfaff!important;border:1px solid #d8ccff!important;color:#6b3df4!important;}
+  #page-admin .small-btn.pdf{background:#fff4f7!important;border-color:#ffc5d5!important;color:#ff3b6b!important;}
+  #page-admin .table-footer{margin-top:16px!important;color:#64748b!important;font-size:13px!important;font-weight:500!important;}
+  #page-admin .pagination{gap:8px!important;}
+  #page-admin .pagination .select-mini{height:38px!important;min-width:140px!important;border-radius:8px!important;font-size:13px!important;font-weight:700!important;color:#263454!important;}
+  #page-admin .page-btn{width:38px!important;height:38px!important;border-radius:8px!important;font-size:13px!important;font-weight:700!important;background:#fff!important;border:1px solid #dfe4ee!important;}
+  #page-admin .page-btn.active{background:linear-gradient(135deg,#7c4dff,#6336e8)!important;color:#fff!important;border:0!important;}
+  #detailModal .modal{width:min(880px,calc(100% - 28px))!important;border-radius:24px!important;padding:28px!important;}
+  #detailModal .modal-title{font-size:25px!important;font-weight:800!important;letter-spacing:-.03em!important;}
+  #detailContent .detail-mini-table{width:100%;border-collapse:collapse;margin-top:16px;border:1px solid #e3e7f0;border-radius:12px;overflow:hidden;display:table;}
+  #detailContent .detail-mini-table th,#detailContent .detail-mini-table td{border-bottom:1px solid #edf0f6;padding:10px 12px;text-align:left;font-size:12.5px;}
+  #detailContent .detail-mini-table th{background:#f8f5ff;color:#4c1d95;font-weight:800;}
+  #detailContent .detail-mini-table tr:last-child td{border-bottom:0;}
+  #detailContent .detail-section-title{font-size:15px;font-weight:800;color:#10213f;margin:20px 0 8px;}
+  @media(max-width:1180px){#page-admin .container{width:min(100% - 32px,1380px)!important}#page-admin .admin-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}#page-admin .filter-row{grid-template-columns:1fr 1fr!important}#page-admin .admin-head{align-items:flex-start!important;flex-direction:column!important}}
+  @media(max-width:760px){#page-admin .page-title{font-size:32px!important}#page-admin .admin-stats{grid-template-columns:1fr!important}#page-admin .filter-row{grid-template-columns:1fr!important}#page-admin .admin-head .btn-primary{width:100%!important}.actions-cell{flex-direction:column!important}}
+</style>
+<script id="patch-admin-pdf-layout-v11-script">
+(function(){
+  const HISTORY_KEY='kosakata_jepang_quiz_history_v6';
+  const LAST_KEY='kosakata_jepang_last_quiz_result_v4';
+  const ROWS_PER_PAGE=10;
+  let adminPage=1;
+  let cachedRows=[];
+
+  function esc(v){return String(v??'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function jsq(v){return String(v??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,' ');}
+  function norm(v){return String(v||'').toLowerCase().trim();}
+  function lang(){try{return siteLang==='ja'?'ja':'id';}catch(e){return 'id';}}
+  function tr(id,ja){return lang()==='ja'?ja:id;}
+  function parseJSON(v,f){try{return v?JSON.parse(v):f;}catch(e){return f;}}
+  function pad(n){return String(Number(n)||0).padStart(2,'0');}
+  function formatID(d){d=d?new Date(d):new Date();const m=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];return pad(d.getDate())+' '+m[d.getMonth()]+' '+d.getFullYear()+', '+pad(d.getHours())+':'+pad(d.getMinutes());}
+  function formatJP(d){d=d?new Date(d):new Date();return d.getFullYear()+'年'+pad(d.getMonth()+1)+'月'+pad(d.getDate())+'日 '+pad(d.getHours())+':'+pad(d.getMinutes());}
+  function fmt(n){return new Intl.NumberFormat(lang()==='ja'?'ja-JP':'id-ID').format(Number(n)||0);}
+  function pct(n){return (Number(n)||0).toFixed(1).replace('.0','')+'%';}
+  function secondsLabel(s){s=Number(s)||0;return pad(Math.floor(s/60))+':'+pad(s%60);}
+  function getVocabSample(i){try{return vocabData[i % vocabData.length] || {};}catch(e){return {};}}
+  function stats(records){records=Array.isArray(records)?records:[];const total=records.length;const benar=records.filter(r=>!!r.status).length;const salah=Math.max(0,total-benar);return {total,benar,salah,skor:total?+(benar/total*100).toFixed(1):0};}
+  function demoRecords(p){
+    const total=Math.max(0,Number(p.total)||0), benar=Math.max(0,Number(p.benar)||0);
+    const rows=[];
+    for(let i=0;i<total;i++){
+      const v=getVocabSample(i);
+      rows.push({jp:v.jp||'-',kana:v.kana||'',romaji:v.romaji||'',arti:v.arti||'',cat:v.cat||'-',status:i<benar,waktu:6+(i%9)});
+    }
+    return rows;
+  }
+  function makeRow(p,idx,source,raw){
+    const records=raw&&Array.isArray(raw.records)?raw.records:demoRecords(p);
+    const s=records.length?stats(records):{total:Number(p.total)||0,benar:Number(p.benar)||0,salah:Number(p.salah)||0,skor:Number(p.skor)||0};
+    const name=p.nama||p.user||p.name||'-';
+    const date=raw?(raw.endedAt||raw.startedAt||new Date()):(p.rawDate||p.tanggal||new Date());
+    return {key:source+'-'+idx+'-'+norm(name).replace(/[^a-z0-9]+/g,'-'),nama:name,avatar:p.avatar||String(name||'?').charAt(0).toUpperCase()||'?',cls:p.cls||'',grup:p.grup||p.group||'-',rawDate:date,tanggal:p.tanggal||formatID(date),tanggalJP:p.tanggalJP||formatJP(date),total:s.total,benar:s.benar,salah:s.salah,skor:s.skor,attempts:p.attempts||1,records:records,source:source,raw:raw||null};
+  }
+  function readHistoryRows(){
+    const list=parseJSON(localStorage.getItem(HISTORY_KEY),[]).filter(Boolean);
+    const last=parseJSON(localStorage.getItem(LAST_KEY),null);
+    if(last && Array.isArray(last.records) && !list.some(x=>x && x.id===last.id)) list.push(last);
+    return list.filter(x=>Array.isArray(x.records)).map(function(x,i){return makeRow({nama:x.user||x.nama||tr('Peserta','参加者')+' '+(i+1),grup:x.group||x.grup||'-'},i,'history',x);});
+  }
+  function readDemoRows(){
+    try{return (Array.isArray(participants)?participants:[]).map(function(p,i){return makeRow(p,i,'demo',null);});}catch(e){return [];}
+  }
+  function allRows(){
+    cachedRows=readHistoryRows().concat(readDemoRows());
+    return cachedRows;
+  }
+  function rowByKey(key){return (cachedRows.length?cachedRows:allRows()).find(r=>r.key===key) || allRows()[0];}
+  function groupClass(g){g=String(g||'');if(g.includes('Menengah')||g.includes('中級')) return 'group-green'; if(g.includes('B')||g.includes('Badung')) return 'group-pink'; if(g.includes('A')||g.includes('Jembrana')) return 'group-blue'; return '';}
+  function statusType(score){return Number(score)>=70?'high':'low';}
+  function statusLabel(score){return Number(score)>=70?tr('Tinggi','高スコア'):tr('Rendah','低スコア');}
+  function setupAdminStatic(){
+    const head=document.querySelector('#page-admin .admin-head');
+    if(head){
+      const bc=head.querySelector('.breadcrumb'); if(bc) bc.innerHTML='<i class="fa-solid fa-chart-column"></i> '+tr('Admin','管理者')+' <i class="fa-solid fa-chevron-right"></i> '+tr('Laporan Peserta','参加者レポート');
+      const title=head.querySelector('.page-title'); if(title) title.textContent=tr('Laporan Peserta','参加者レポート');
+      const badge=head.querySelector('.title-line .badge'); if(badge) badge.textContent=tr('Admin','管理者');
+      const desc=head.querySelector('.page-desc'); if(desc) desc.textContent=tr('Ringkasan hasil belajar seluruh peserta.','全参加者の学習結果の概要です。');
+      const btn=head.querySelector('.btn-primary'); if(btn){btn.setAttribute('onclick','openAllParticipantsPdf()');btn.innerHTML='<i class="fa-solid fa-download"></i> '+tr('Download PDF Semua Peserta','全参加者PDFをダウンロード');}
+    }
+    const filterRow=document.querySelector('#page-admin .filter-row');
+    if(filterRow){
+      const selects=filterRow.querySelectorAll('select');
+      if(selects[1]) selects[1].id='adminPeriodFilter';
+      if(selects[2]) selects[2].id='adminStatusFilter';
+      const q=document.getElementById('participantSearch'); if(q){q.placeholder=tr('Cari nama peserta...','参加者名を検索...'); q.oninput=function(){adminPage=1; renderParticipants();};}
+      const group=document.getElementById('groupFilter');
+      if(group){
+        const prev=group.value;
+        const groups=Array.from(new Set(allRows().map(r=>r.grup).filter(Boolean)));
+        group.innerHTML='<option>'+tr('Semua Grup','すべてのグループ')+'</option>'+groups.map(g=>'<option>'+esc(g)+'</option>').join('');
+        group.value=groups.includes(prev)?prev:tr('Semua Grup','すべてのグループ');
+        group.onchange=function(){adminPage=1; renderParticipants();};
+      }
+      const period=document.getElementById('adminPeriodFilter');
+      if(period){const prev=period.value;period.innerHTML='<option>'+tr('Semua Periode','すべての期間')+'</option><option>'+tr('Hari ini','今日')+'</option><option>'+tr('Minggu ini','今週')+'</option>';period.value=[...period.options].some(o=>o.value===prev)?prev:tr('Semua Periode','すべての期間');period.onchange=function(){adminPage=1; renderParticipants();};}
+      const status=document.getElementById('adminStatusFilter');
+      if(status){const prev=status.value;status.innerHTML='<option>'+tr('Semua Status','すべてのステータス')+'</option><option>'+tr('Tinggi','高スコア')+'</option><option>'+tr('Rendah','低スコア')+'</option>';status.value=[...status.options].some(o=>o.value===prev)?prev:tr('Semua Status','すべてのステータス');status.onchange=function(){adminPage=1; renderParticipants();};}
+      const reset=filterRow.querySelector('.btn-secondary'); if(reset){reset.setAttribute('onclick','resetAdminFilter()');reset.innerHTML='<i class="fa-solid fa-rotate-right"></i> '+tr('Reset Filter','フィルターリセット');}
+    }
+  }
+  function filteredRows(){
+    const rows=allRows();
+    const q=norm(document.getElementById('participantSearch')?.value);
+    const gf=document.getElementById('groupFilter')?.value || tr('Semua Grup','すべてのグループ');
+    const pf=document.getElementById('adminPeriodFilter')?.value || tr('Semua Periode','すべての期間');
+    const sf=document.getElementById('adminStatusFilter')?.value || tr('Semua Status','すべてのステータス');
+    const now=new Date();
+    const weekAgo=new Date(now.getTime()-7*24*3600*1000);
+    return rows.filter(function(r){
+      const text=norm([r.nama,r.grup,r.tanggal,r.tanggalJP,r.skor,statusLabel(r.skor)].join(' '));
+      let okQ=!q || text.includes(q);
+      let okG=gf===tr('Semua Grup','すべてのグループ') || gf==='Semua Grup' || gf==='すべてのグループ' || r.grup===gf;
+      let okS=true; if(sf==='Tinggi'||sf==='高スコア') okS=r.skor>=70; if(sf==='Rendah'||sf==='低スコア') okS=r.skor<70;
+      let okP=true; const d=new Date(r.rawDate); if(pf==='Hari ini'||pf==='今日') okP=d.toDateString()===now.toDateString(); if(pf==='Minggu ini'||pf==='今週') okP=d>=weekAgo;
+      return okQ&&okG&&okS&&okP;
+    });
+  }
+  function updateStats(){
+    const rows=allRows();
+    const cards=document.querySelectorAll('#page-admin .admin-stat'); if(cards.length<5) return;
+    const avg=rows.length?rows.reduce((s,r)=>s+r.skor,0)/rows.length:0;
+    const high=[...rows].sort((a,b)=>b.skor-a.skor)[0]||{nama:'-',skor:0};
+    const low=[...rows].sort((a,b)=>a.skor-b.skor)[0]||{nama:'-',skor:0};
+    const attempts=rows.reduce((s,r)=>s+(r.attempts||1),0);
+    const data=[
+      [tr('Total Peserta','参加者数'),fmt(rows.length),tr('User pernah kuis','クイズ実施済み')],
+      [tr('Rata-rata Skor','平均スコア'),pct(avg),tr('Dari seluruh user','全ユーザー平均')],
+      [tr('Skor Tertinggi','最高スコア'),pct(high.skor),tr('Oleh ','参加者: ')+high.nama],
+      [tr('Skor Terendah','最低スコア'),pct(low.skor),tr('Oleh ','参加者: ')+low.nama],
+      [tr('Total Pengerjaan','実施回数'),fmt(attempts),tr('Total kuis dikerjakan','クイズ実施合計')]
+    ];
+    cards.forEach(function(card,i){const spans=card.querySelectorAll('span');const strong=card.querySelector('strong');if(spans[1])spans[1].textContent=data[i][0];if(strong)strong.textContent=data[i][1];if(spans[2])spans[2].textContent=data[i][2];});
+  }
+  function renderFooter(total,start,count){
+    const footer=document.querySelector('#page-admin .table-footer'); if(!footer) return;
+    const max=Math.max(1,Math.ceil(total/ROWS_PER_PAGE));
+    if(adminPage>max) adminPage=max;
+    const from=total?start+1:0, to=start+count;
+    let pages='';
+    for(let i=1;i<=Math.min(3,max);i++) pages+='<button class="page-btn '+(i===adminPage?'active':'')+'" data-admin-page="'+i+'">'+i+'</button>';
+    if(max>4) pages+='<span>...</span><button class="page-btn '+(max===adminPage?'active':'')+'" data-admin-page="'+max+'">'+max+'</button>';
+    footer.innerHTML='<span>'+tr('Menampilkan','表示')+' '+fmt(from)+'–'+fmt(to)+' '+tr('dari','/')+' '+fmt(total)+' '+tr('peserta','参加者')+'</span><div class="pagination"><select class="select-mini"><option>'+ROWS_PER_PAGE+' / '+tr('halaman','ページ')+'</option></select><button class="page-btn" data-admin-page="prev"><i class="fa-solid fa-chevron-left"></i></button>'+pages+'<button class="page-btn" data-admin-page="next"><i class="fa-solid fa-chevron-right"></i></button></div>';
+    footer.querySelectorAll('[data-admin-page]').forEach(function(b){b.onclick=function(){const v=this.dataset.adminPage;if(v==='prev')adminPage=Math.max(1,adminPage-1);else if(v==='next')adminPage=Math.min(max,adminPage+1);else adminPage=Number(v)||1;renderParticipants();};});
+  }
+  window.renderParticipants=function(){
+    setupAdminStatic(); updateStats();
+    const rows=filteredRows();
+    const start=(adminPage-1)*ROWS_PER_PAGE;
+    const pageRows=rows.slice(start,start+ROWS_PER_PAGE);
+    const tbody=document.getElementById('participantRows');
+    if(tbody){
+      tbody.innerHTML=pageRows.length?pageRows.map(function(r,i){return '<tr><td>'+(start+i+1)+'</td><td><span class="participant"><span class="avatar '+esc(r.cls)+'">'+esc(r.avatar)+'</span><span>'+esc(r.nama)+'</span></span></td><td><span class="group-badge '+groupClass(r.grup)+'">'+esc(r.grup)+'</span></td><td>'+esc(lang()==='ja'?r.tanggalJP:r.tanggal)+'</td><td>'+fmt(r.total)+'</td><td style="color:#10b981;font-weight:800">'+fmt(r.benar)+'</td><td style="color:#ff3b6b;font-weight:800">'+fmt(r.salah)+'</td><td><span class="score-badge '+(r.skor<60?'low':'')+'">'+pct(r.skor)+'</span></td><td><span class="actions-cell"><button class="small-btn" onclick="openParticipantDetail(\''+jsq(r.key)+'\')"><i class="fa-regular fa-eye"></i> '+tr('Detail','詳細')+'</button><button class="small-btn pdf" onclick="openParticipantPdf(\''+jsq(r.key)+'\')"><i class="fa-regular fa-file-pdf"></i> PDF</button></span></td></tr>';}).join(''):'<tr><td colspan="9" style="text-align:center!important;color:#64748b;padding:26px!important">'+tr('Belum ada data peserta yang sesuai filter.','条件に一致する参加者データはありません。')+'</td></tr>';
+    }
+    renderFooter(rows.length,start,pageRows.length);
+    if(typeof applyLocalIcons==='function') applyLocalIcons(document.getElementById('page-admin')||document);
+  };
+  window.resetAdminFilter=function(){
+    const q=document.getElementById('participantSearch'); if(q) q.value='';
+    const g=document.getElementById('groupFilter'); if(g) g.value=tr('Semua Grup','すべてのグループ');
+    const p=document.getElementById('adminPeriodFilter'); if(p) p.value=tr('Semua Periode','すべての期間');
+    const s=document.getElementById('adminStatusFilter'); if(s) s.value=tr('Semua Status','すべてのステータス');
+    adminPage=1; renderParticipants();
+  };
+  window.openDetail=function(name){
+    const r=(cachedRows.length?cachedRows:allRows()).find(x=>x.nama===name)||allRows()[0]; if(r) window.openParticipantDetail(r.key);
+  };
+  window.openParticipantDetail=function(key){
+    const r=rowByKey(key); if(!r) return;
+    const box=document.getElementById('detailContent');
+    const recent=(r.records||[]).slice(0,12).map(function(v,i){return '<tr><td>'+(i+1)+'</td><td><strong>'+esc(v.jp||'-')+'</strong><br><small>'+esc(v.romaji||'')+'</small></td><td>'+esc(v.arti||'-')+'</td><td><span class="status '+(v.status?'good':'bad')+'">'+(v.status?tr('Benar','正解'):tr('Salah','不正解'))+'</span></td><td>'+secondsLabel(v.waktu)+'</td></tr>';}).join('') || '<tr><td colspan="5">'+tr('Belum ada riwayat detail.','詳細履歴はありません。')+'</td></tr>';
+    if(box){
+      box.innerHTML='<div><span>'+tr('Nama','氏名')+'</span><strong>'+esc(r.nama)+'</strong></div><div><span>'+tr('Grup','グループ')+'</span><strong>'+esc(r.grup)+'</strong></div><div><span>'+tr('Tanggal Terakhir','最終日時')+'</span><strong>'+esc(lang()==='ja'?r.tanggalJP:r.tanggal)+'</strong></div><div><span>'+tr('Total Soal','問題数')+'</span><strong>'+fmt(r.total)+'</strong></div><div><span>'+tr('Benar','正解')+'</span><strong>'+fmt(r.benar)+'</strong></div><div><span>'+tr('Salah','不正解')+'</span><strong>'+fmt(r.salah)+'</strong></div><div><span>'+tr('Skor','スコア')+'</span><strong>'+pct(r.skor)+'</strong></div><h3 class="detail-section-title">'+tr('Riwayat Pengerjaan Peserta','参加者の解答履歴')+'</h3><table class="detail-mini-table"><thead><tr><th>No.</th><th>'+tr('Kosakata','語彙')+'</th><th>'+tr('Arti','意味')+'</th><th>'+tr('Status','状態')+'</th><th>'+tr('Waktu','時間')+'</th></tr></thead><tbody>'+recent+'</tbody></table>';
+    }
+    const title=document.querySelector('#detailModal .modal-title'); if(title) title.textContent=tr('Detail Peserta','参加者詳細');
+    const close=document.querySelector('#detailModal .btn-primary'); if(close) close.textContent=tr('Tutup','閉じる');
+    if(typeof openModal==='function') openModal('detailModal');
+  };
+  function reportBaseCSS(){
+    return '@page{size:A4;margin:13mm 11mm}*{box-sizing:border-box}body{margin:0;background:#f3f6fb;color:#111827;font-family:"Plus Jakarta Sans","Inter","Segoe UI",Arial,"Noto Sans JP",sans-serif;font-size:12px;line-height:1.55}.toolbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;padding:14px 18px;background:#fff;border-bottom:1px solid #dbe1ee;box-shadow:0 8px 24px rgba(15,23,42,.08)}.toolbar .left,.toolbar .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.toolbar input,.toolbar select{height:38px;border:1px solid #cfd6e4;border-radius:8px;padding:0 12px;background:#fff;color:#17213c;font:inherit}.toolbar button{height:38px;border:0;border-radius:8px;padding:0 14px;font-weight:800;cursor:pointer}.primary{background:#7c4dff;color:#fff}.ghost{background:#ede9fe;color:#5b21b6}.sheet{width:min(1180px,calc(100% - 32px));margin:22px auto;background:#fff;border:1px solid #cfd6e4;border-radius:12px;box-shadow:0 18px 50px rgba(15,23,42,.08);overflow:hidden}.head{text-align:center;padding:24px 26px 16px;border-bottom:3px solid #10213f}.head h1{margin:0 0 6px;font-size:21px;letter-spacing:.04em;font-weight:900}.head p{margin:0;color:#64748b}.meta{width:100%;border-collapse:collapse}.meta td{border:1px solid #cfd6e4;padding:9px 11px}.meta td:first-child{width:220px;background:#f8fafc;font-weight:800}.summary{display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid #cfd6e4;border-top:1px solid #cfd6e4}.summary div{padding:11px;text-align:center;border-right:1px solid #cfd6e4;border-bottom:1px solid #cfd6e4}.summary span{display:block;color:#64748b;font-size:11px;font-weight:800}.summary strong{display:block;margin-top:4px;font-size:20px}.table-wrap{padding:18px}.report-table{width:100%;border-collapse:collapse}.report-table th,.report-table td{border:1px solid #cfd6e4;padding:8px 9px;text-align:left;vertical-align:top}.report-table th{background:#f3f0ff;color:#3d18b3;font-size:11px;font-weight:900}.report-table td small{color:#64748b}.status{display:inline-block;padding:4px 9px;border-radius:999px;font-weight:900}.ok{background:#dcfce7;color:#059669}.bad{background:#ffe4ec;color:#e11d48}.hidden-row{display:none!important}.sign{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:30px;text-align:center}.line{border-top:1px solid #111827;width:70%;margin:54px auto 0}.footer{padding:0 18px 18px;text-align:center;color:#64748b;font-size:11px}@media print{body{background:#fff}.toolbar{display:none}.sheet{width:100%;margin:0;border:0;border-radius:0;box-shadow:none}.report-table th,.report-table td{font-size:10.5px;padding:6px}.head h1{font-size:18px}}';
+  }
+  function toolbarHTML(mode, groups, cats){
+    const groupSelect=groups?'<select id="groupFilter"><option value="all">'+tr('Semua Grup','すべてのグループ')+'</option>'+groups.map(g=>'<option>'+esc(g)+'</option>').join('')+'</select>':'';
+    const catSelect=cats?'<select id="catFilter"><option value="all">'+tr('Semua Kategori','すべてのカテゴリー')+'</option>'+cats.map(c=>'<option>'+esc(c)+'</option>').join('')+'</select>':'';
+    const statusOptions = mode==='participant'
+      ? '<option value="all">'+tr('Semua Status','すべてのステータス')+'</option><option value="ok">'+tr('Benar','正解')+'</option><option value="bad">'+tr('Salah','不正解')+'</option>'
+      : '<option value="all">'+tr('Semua Status','すべてのステータス')+'</option><option value="high">'+tr('Tinggi','高スコア')+'</option><option value="low">'+tr('Rendah','低スコア')+'</option>';
+    return '<div class="toolbar"><div class="left"><input id="q" type="search" placeholder="'+esc(mode==='participant'?tr('Cari kosakata/arti...','語彙・意味を検索...'):tr('Cari nama/grup/status...','名前・グループ・状態を検索...'))+'">'+groupSelect+catSelect+'<select id="statusFilter">'+statusOptions+'</select><button class="ghost" onclick="resetFilter()">Reset</button></div><div class="right"><button class="primary" onclick="window.print()">'+tr('Simpan / Save PDF','PDFとして保存')+'</button></div></div>';
+  }
+  function reportScript(){
+    return '<scr'+'ipt>function low(v){return String(v||"").toLowerCase()}function applyFilter(){var q=low(document.getElementById("q")&&document.getElementById("q").value);var g=document.getElementById("groupFilter")?document.getElementById("groupFilter").value:"all";var c=document.getElementById("catFilter")?document.getElementById("catFilter").value:"all";var s=document.getElementById("statusFilter")?document.getElementById("statusFilter").value:"all";document.querySelectorAll("tbody tr[data-search]").forEach(function(r){var okQ=!q||low(r.dataset.search).indexOf(q)>-1;var okG=g==="all"||r.dataset.group===g;var okC=c==="all"||r.dataset.cat===c;var okS=s==="all"||r.dataset.status===s; if((s==="high"||s==="low")&&r.dataset.type!=="summary") okS=true; if((s==="ok"||s==="bad")&&r.dataset.type==="summary") okS=true; r.classList.toggle("hidden-row",!(okQ&&okG&&okC&&okS));});}function resetFilter(){document.getElementById("q").value="";if(document.getElementById("groupFilter"))document.getElementById("groupFilter").value="all";if(document.getElementById("catFilter"))document.getElementById("catFilter").value="all";if(document.getElementById("statusFilter"))document.getElementById("statusFilter").value="all";applyFilter();}document.querySelectorAll("#q,#groupFilter,#catFilter,#statusFilter").forEach(function(el){if(el)el.addEventListener(el.tagName==="INPUT"?"input":"change",applyFilter);});setTimeout(function(){window.focus();},300);</scr'+'ipt>';
+  }
+  function participantReportHTML(r){
+    const isJP=lang()==='ja';
+    const recs=r.records||[];
+    const cats=Array.from(new Set(recs.map(x=>x.cat||'-')));
+    const rowHTML=recs.map(function(v,i){const st=v.status?'ok':'bad';return '<tr data-type="detail" data-status="'+st+'" data-cat="'+esc(v.cat||'-')+'" data-search="'+esc([v.jp,v.kana,v.romaji,v.arti,v.cat,v.status?tr('Benar','正解'):tr('Salah','不正解')].join(' ').toLowerCase())+'"><td>'+(i+1)+'</td><td><strong>'+esc(v.jp||'-')+'</strong><br><small>'+esc((v.kana||'')+' • '+(v.romaji||''))+'</small></td><td>'+esc(v.arti||'-')+'</td><td>'+esc(v.cat||'-')+'</td><td><span class="status '+st+'">'+(v.status?tr('Benar','正解'):tr('Salah','不正解'))+'</span></td><td>'+secondsLabel(v.waktu)+'</td></tr>';}).join('') || '<tr><td colspan="6">'+tr('Belum ada data.','データがありません。')+'</td></tr>';
+    return '<!doctype html><html lang="'+(isJP?'ja':'id')+'"><head><meta charset="utf-8"><title>'+esc(tr('Laporan Peserta Kuis','参加者別クイズレポート'))+'</title><style>'+reportBaseCSS()+'</style></head><body>'+toolbarHTML('participant',null,cats)+'<main class="sheet"><section class="head"><h1>'+esc(tr('LAPORAN PESERTA KUIS KOSAKATA JEPANG','日本語語彙クイズ 参加者レポート'))+'</h1><p>'+esc(tr('Rekam jejak pengerjaan peserta dalam bentuk laporan tabel.','参加者の解答履歴を表形式で記録したレポートです。'))+'</p></section><table class="meta"><tr><td>'+tr('Nama Peserta','氏名')+'</td><td>'+esc(r.nama)+'</td></tr><tr><td>'+tr('Grup/Wilayah','グループ')+'</td><td>'+esc(r.grup)+'</td></tr><tr><td>'+tr('Tanggal Terakhir','最終日時')+'</td><td>'+esc(isJP?r.tanggalJP:r.tanggal)+'</td></tr><tr><td>'+tr('Bahasa Laporan','レポート言語')+'</td><td>'+esc(isJP?'日本語':'Bahasa Indonesia')+'</td></tr></table><section class="summary"><div><span>'+tr('Total','合計')+'</span><strong>'+fmt(r.total)+'</strong></div><div><span>'+tr('Benar','正解')+'</span><strong>'+fmt(r.benar)+'</strong></div><div><span>'+tr('Salah','不正解')+'</span><strong>'+fmt(r.salah)+'</strong></div><div><span>'+tr('Skor','スコア')+'</span><strong>'+pct(r.skor)+'</strong></div><div><span>'+tr('Status','状態')+'</span><strong>'+statusLabel(r.skor)+'</strong></div></section><div class="table-wrap"><table class="report-table"><thead><tr><th>No.</th><th>'+tr('Kosakata','語彙')+'</th><th>'+tr('Arti','意味')+'</th><th>'+tr('Kategori','カテゴリー')+'</th><th>'+tr('Status','状態')+'</th><th>'+tr('Waktu','時間')+'</th></tr></thead><tbody>'+rowHTML+'</tbody></table><section class="sign"><div>'+tr('Diperiksa oleh','確認者')+'<div class="line"></div></div><div>'+tr('Peserta','学習者')+'<div class="line"></div></div></section></div><div class="footer">Kosakata Jepang • Kartu. Dengar. Ingat.</div></main>'+reportScript()+'</body></html>';
+  }
+  function allReportHTML(rows){
+    const isJP=lang()==='ja', now=isJP?formatJP(new Date()):formatID(new Date());
+    const groups=Array.from(new Set(rows.map(r=>r.grup).filter(Boolean)));
+    const avg=rows.length?rows.reduce((s,r)=>s+r.skor,0)/rows.length:0;
+    const high=[...rows].sort((a,b)=>b.skor-a.skor)[0]||{skor:0,nama:'-'};
+    const low=[...rows].sort((a,b)=>a.skor-b.skor)[0]||{skor:0,nama:'-'};
+    const body=rows.map(function(r,i){return '<tr data-type="summary" data-status="'+statusType(r.skor)+'" data-group="'+esc(r.grup)+'" data-search="'+esc([r.nama,r.grup,r.tanggal,r.tanggalJP,r.skor,statusLabel(r.skor)].join(' ').toLowerCase())+'"><td>'+(i+1)+'</td><td>'+esc(r.nama)+'</td><td>'+esc(r.grup)+'</td><td>'+esc(isJP?r.tanggalJP:r.tanggal)+'</td><td>'+fmt(r.total)+'</td><td>'+fmt(r.benar)+'</td><td>'+fmt(r.salah)+'</td><td>'+pct(r.skor)+'</td><td>'+esc(statusLabel(r.skor))+'</td></tr>';}).join('') || '<tr><td colspan="9">'+tr('Belum ada data.','データがありません。')+'</td></tr>';
+    return '<!doctype html><html lang="'+(isJP?'ja':'id')+'"><head><meta charset="utf-8"><title>'+esc(tr('Laporan Semua Peserta','全参加者レポート'))+'</title><style>'+reportBaseCSS()+'</style></head><body>'+toolbarHTML('all',groups,null)+'<main class="sheet"><section class="head"><h1>'+esc(tr('LAPORAN SEMUA PESERTA KUIS KOSAKATA JEPANG','日本語語彙クイズ 全参加者レポート'))+'</h1><p>'+esc(tr('Rekap seluruh user yang telah melakukan kuis.','クイズを実施した全ユーザーの集計です。'))+'</p></section><table class="meta"><tr><td>'+tr('Tanggal Cetak','出力日時')+'</td><td>'+esc(now)+'</td></tr><tr><td>'+tr('Sumber Data','データ元')+'</td><td>'+esc(tr('Riwayat kuis browser dan data peserta aplikasi.','ブラウザ内のクイズ履歴とアプリ参加者データ。'))+'</td></tr><tr><td>'+tr('Bahasa Laporan','レポート言語')+'</td><td>'+esc(isJP?'日本語':'Bahasa Indonesia')+'</td></tr></table><section class="summary"><div><span>'+tr('Total Peserta','参加者数')+'</span><strong>'+fmt(rows.length)+'</strong></div><div><span>'+tr('Rata-rata Skor','平均スコア')+'</span><strong>'+pct(avg)+'</strong></div><div><span>'+tr('Skor Tertinggi','最高スコア')+'</span><strong>'+pct(high.skor)+'</strong></div><div><span>'+tr('Skor Terendah','最低スコア')+'</span><strong>'+pct(low.skor)+'</strong></div><div><span>'+tr('Total Pengerjaan','実施回数')+'</span><strong>'+fmt(rows.reduce((s,r)=>s+(r.attempts||1),0))+'</strong></div></section><div class="table-wrap"><table class="report-table"><thead><tr><th>No.</th><th>'+tr('Nama','氏名')+'</th><th>'+tr('Grup','グループ')+'</th><th>'+tr('Tanggal Terakhir','最終日時')+'</th><th>'+tr('Total','合計')+'</th><th>'+tr('Benar','正解')+'</th><th>'+tr('Salah','不正解')+'</th><th>'+tr('Skor','スコア')+'</th><th>'+tr('Status','状態')+'</th></tr></thead><tbody>'+body+'</tbody></table><section class="sign"><div>'+tr('Diperiksa oleh','確認者')+'<div class="line"></div></div><div>'+tr('Admin','管理者')+'<div class="line"></div></div></section></div><div class="footer">Kosakata Jepang • Kartu. Dengar. Ingat.</div></main>'+reportScript()+'</body></html>';
+  }
+  function openReport(html){const w=window.open('', '_blank');if(!w){alert(tr('Izinkan pop-up browser agar laporan dapat dibuka di tab baru.','新しいタブで開くため、ポップアップを許可してください。'));return;}w.document.open();w.document.write(html);w.document.close();}
+  window.openParticipantPdf=function(key){const r=rowByKey(key);if(r) openReport(participantReportHTML(r));};
+  window.openAllParticipantsPdf=function(){const rows=filteredRows().length?filteredRows():allRows();openReport(allReportHTML(rows));};
+  window.downloadAllParticipantsExcelReport=window.openAllParticipantsPdf;
+  window.openSingleParticipantExcelReport=function(name){const r=(cachedRows.length?cachedRows:allRows()).find(x=>x.nama===name)||allRows()[0];if(r) openReport(participantReportHTML(r));};
+
+  function resultPayload(){
+    const last=parseJSON(localStorage.getItem(LAST_KEY),null);
+    if(last&&Array.isArray(last.records)&&last.records.length) return last;
+    const list=parseJSON(localStorage.getItem(HISTORY_KEY),[]).filter(x=>x&&Array.isArray(x.records)&&x.records.length);
+    if(list.length) return list[list.length-1];
+    let total=20, b=17; try{total=answered||20;b=correct||17;}catch(e){}
+    const records=[]; for(let i=0;i<total;i++){const v=getVocabSample(i);records.push({jp:v.jp||'-',kana:v.kana||'',romaji:v.romaji||'',arti:v.arti||'',cat:v.cat||'-',status:i<b,waktu:6+(i%9)});}
+    return {user:(function(){try{return currentUser?.name||'Peserta';}catch(e){return 'Peserta';}})(),group:(function(){try{return currentUser?.group||selectedGroup||'-';}catch(e){return '-';}})(),startedAt:new Date(),endedAt:new Date(),records};
+  }
+  function resultReportHTML(){
+    const r=resultPayload(), recs=Array.isArray(r.records)?r.records:[], s=stats(recs), isJP=lang()==='ja', date=isJP?formatJP(r.endedAt||r.startedAt):formatID(r.endedAt||r.startedAt), cats=Array.from(new Set(recs.map(x=>x.cat||'-')));
+    const body=recs.map(function(v,i){const st=v.status?'ok':'bad';return '<tr data-type="detail" data-status="'+st+'" data-cat="'+esc(v.cat||'-')+'" data-search="'+esc([v.jp,v.kana,v.romaji,v.arti,v.cat,v.status?tr('Benar','正解'):tr('Salah','不正解')].join(' ').toLowerCase())+'"><td>'+(i+1)+'</td><td><strong>'+esc(v.jp||'-')+'</strong><br><small>'+esc((v.kana||'')+' • '+(v.romaji||''))+'</small></td><td>'+esc(v.arti||'-')+'</td><td>'+esc(v.cat||'-')+'</td><td><span class="status '+st+'">'+(v.status?tr('Benar','正解'):tr('Salah','不正解'))+'</span></td><td>'+secondsLabel(v.waktu)+'</td></tr>';}).join('');
+    return '<!doctype html><html lang="'+(isJP?'ja':'id')+'"><head><meta charset="utf-8"><title>'+esc(tr('Laporan Ringkasan Belajar','学習結果レポート'))+'</title><style>'+reportBaseCSS()+'</style></head><body>'+toolbarHTML('participant',null,cats)+'<main class="sheet"><section class="head"><h1>'+esc(tr('LAPORAN HASIL LATIHAN KOSAKATA JEPANG','日本語語彙練習結果報告書'))+'</h1><p>'+esc(tr('Ringkasan belajar dan review pengerjaan kuis.','学習結果とクイズ回答レビューです。'))+'</p></section><table class="meta"><tr><td>'+tr('Nama Peserta','氏名')+'</td><td>'+esc(r.user||'Peserta')+'</td></tr><tr><td>'+tr('Grup/Wilayah','グループ')+'</td><td>'+esc(r.group||'-')+'</td></tr><tr><td>'+tr('Tanggal dan Waktu','実施日時')+'</td><td>'+esc(date)+'</td></tr><tr><td>'+tr('Bahasa Laporan','レポート言語')+'</td><td>'+esc(isJP?'日本語':'Bahasa Indonesia')+'</td></tr></table><section class="summary"><div><span>'+tr('Total Soal','問題数')+'</span><strong>'+fmt(s.total)+'</strong></div><div><span>'+tr('Benar','正解')+'</span><strong>'+fmt(s.benar)+'</strong></div><div><span>'+tr('Salah','不正解')+'</span><strong>'+fmt(s.salah)+'</strong></div><div><span>'+tr('Skor','スコア')+'</span><strong>'+pct(s.skor)+'</strong></div><div><span>'+tr('Waktu','時間')+'</span><strong>'+secondsLabel(recs.reduce((a,b)=>a+(Number(b.waktu)||0),0))+'</strong></div></section><div class="table-wrap"><table class="report-table"><thead><tr><th>No.</th><th>'+tr('Kosakata','語彙')+'</th><th>'+tr('Arti','意味')+'</th><th>'+tr('Kategori','カテゴリー')+'</th><th>'+tr('Status','状態')+'</th><th>'+tr('Waktu','時間')+'</th></tr></thead><tbody>'+body+'</tbody></table><section class="sign"><div>'+tr('Diperiksa oleh','確認者')+'<div class="line"></div></div><div>'+tr('Peserta','学習者')+'<div class="line"></div></div></section></div><div class="footer">Kosakata Jepang • Kartu. Dengar. Ingat.</div></main>'+reportScript()+'</body></html>';
+  }
+  window.downloadResultPdf=function(){openReport(resultReportHTML());};
+  function patchLanguageAndShow(){
+    try{if(typeof applyUILanguage==='function'&&!applyUILanguage.__adminPdfV11){const prev=applyUILanguage;applyUILanguage=function(){const out=prev.apply(this,arguments);setTimeout(init,40);return out;};applyUILanguage.__adminPdfV11=true;}}catch(e){}
+    try{if(typeof showPage==='function'&&!showPage.__adminPdfV11){const prev=showPage;showPage=function(page){const out=prev.apply(this,arguments);if(page==='admin')setTimeout(init,40);return out;};showPage.__adminPdfV11=true;}}catch(e){}
+  }
+  function init(){patchLanguageAndShow(); setupAdminStatic(); renderParticipants(); const resultBtn=document.querySelector('.result-actions .btn-secondary'); if(resultBtn){resultBtn.setAttribute('onclick','downloadResultPdf()'); resultBtn.innerHTML='<i class="fa-solid fa-download"></i> '+tr('Simpan PDF','PDF保存');} if(typeof applyLocalIcons==='function') applyLocalIcons(document);}
+  document.addEventListener('DOMContentLoaded',init);
+  setTimeout(init,80);setTimeout(init,800);setTimeout(init,1500);
+})();
+</script>
 </body>
 </html>
