@@ -5232,88 +5232,13 @@
   };
 
   window.downloadResultPdf=function(){
-    saveCurrentResultToHistory();
-    const payload=loadLastUsefulPayload() || makePayload();
-    const records=Array.isArray(payload.records)?payload.records:[];
-    const s=statsFrom(records);
-    const isJP=(function(){try{return siteLang==='ja';}catch(e){return false;}})();
-    const title=isJP?'日本語語彙練習結果報告書':'LAPORAN HASIL LATIHAN KOSAKATA JEPANG';
-    const subtitle=isJP?'学習結果の記録':'Dokumen ringkasan hasil latihan kosakata';
-    const dateObj=payload.endedAt || payload.startedAt || new Date();
-    const dateText=isJP?formatDateJP(dateObj):formatDateID(dateObj);
-    const statusGood=isJP?'正解':'Benar';
-    const statusBad=isJP?'不正解':'Salah';
-    const emptyText=isJP?'練習結果はまだありません。':'Belum ada hasil latihan.';
-    const rows=records.map(function(r,i){
-      return '<tr data-status="'+(r.status?'benar':'salah')+'" data-search="'+htmlEscape([r.jp,r.kana,r.romaji,r.arti,r.cat].join(' ').toLowerCase())+'">'
-        +'<td>'+(i+1)+'</td>'
-        +'<td><strong>'+htmlEscape(r.jp||'')+'</strong><br><small>'+htmlEscape(r.kana||'')+' • '+htmlEscape(r.romaji||'')+'</small></td>'
-        +'<td>'+htmlEscape(r.arti||'')+'</td>'
-        +'<td>'+htmlEscape(r.cat||'-')+'</td>'
-        +'<td><span class="status '+(r.status?'ok':'bad')+'">'+(r.status?statusGood:statusBad)+'</span></td>'
-        +'<td>'+fmtTime(r.waktu)+'</td>'
-        +'</tr>';
-    }).join('') || '<tr><td colspan="6" class="empty">'+emptyText+'</td></tr>';
-    const filename=(isJP?'日本語語彙練習結果報告書':'Laporan_Hasil_Latihan_Kosakata_Jepang')+'.pdf';
-    const report='<!doctype html><html lang="'+(isJP?'ja':'id')+'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+htmlEscape(title)+'</title>'
-      +'<style>'
-      +'@page{size:A4;margin:14mm 12mm}*{box-sizing:border-box}body{margin:0;background:#f4f6fb;color:#111827;font-family:"Plus Jakarta Sans","Inter","Segoe UI",Arial,"Noto Sans JP",sans-serif;font-size:12px;line-height:1.55}.toolbar{position:sticky;top:0;z-index:10;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:14px 18px;background:#fff;border-bottom:1px solid #e5e7eb;box-shadow:0 8px 28px rgba(15,23,42,.08)}.toolbar .left{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.toolbar input,.toolbar select{height:38px;border:1px solid #cfd6e4;border-radius:10px;padding:0 12px;background:#fff;color:#17213c;font:inherit}.toolbar button{height:38px;border:0;border-radius:10px;padding:0 16px;font-weight:800;cursor:pointer}.primary{background:#7c4dff;color:#fff}.ghost{background:#eef2ff;color:#4c1d95}.report{width:min(1000px,calc(100% - 32px));margin:22px auto;background:#fff;border:1px solid #dbe1ee;border-radius:18px;padding:28px;box-shadow:0 18px 50px rgba(15,23,42,.08)}.head{text-align:center;border-bottom:3px solid #10213f;padding-bottom:14px;margin-bottom:18px}.head h1{margin:0 0 5px;font-size:22px;letter-spacing:.03em;font-weight:900}.head p{margin:0;color:#5f6f89}.meta,.summary,.detail{width:100%;border-collapse:collapse;table-layout:fixed}.meta{margin-bottom:16px}.meta td{border:1px solid #d1d5db;padding:9px 10px;vertical-align:top}.meta td:first-child{width:30%;background:#f8fafc;font-weight:800}.summary{margin:12px 0 18px}.summary th,.summary td,.detail th,.detail td{border:1px solid #d1d5db;padding:9px 10px;vertical-align:middle}.summary th{background:#ede9fe;color:#4c1d95;text-align:center;font-size:11px}.summary td{text-align:center;font-size:18px;font-weight:900}.detail th{background:#f3f4f6;color:#334155;text-align:left;font-size:11px;letter-spacing:.03em}.detail td{word-break:break-word}.detail small{color:#64748b}.status{display:inline-block;padding:5px 10px;border-radius:999px;font-weight:900}.status.ok{background:#dcfce7;color:#059669}.status.bad{background:#ffe4ec;color:#e11d48}.empty{text-align:center;color:#64748b;padding:18px!important}.note{margin-top:16px;padding:12px;border:1px solid #d1d5db;background:#fafafa}.sign{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:34px}.sign>div{text-align:center}.line{width:70%;border-top:1px solid #111827;margin:58px auto 0}.brand{margin-top:18px;text-align:center;color:#64748b;font-size:11px}.hidden-row{display:none!important}@media print{body{background:#fff}.toolbar{display:none}.report{width:100%;margin:0;padding:0;border:0;border-radius:0;box-shadow:none}.detail th,.detail td{padding:7px 8px}.head h1{font-size:20px}}'
-      +'</style></head><body>'
-      +'<div class="toolbar"><div class="left"><input id="q" type="search" placeholder="'+(isJP?'検索':'Cari kosakata/arti')+'"><select id="statusFilter"><option value="all">'+(isJP?'すべて':'Semua Status')+'</option><option value="benar">'+statusGood+'</option><option value="salah">'+statusBad+'</option></select><button class="ghost" onclick="resetFilter()">Reset</button></div><button class="primary" onclick="window.print()">'+(isJP?'PDFとして保存':'Simpan / Save as PDF')+'</button></div>'
-      +'<main class="report"><section class="head"><h1>'+htmlEscape(title)+'</h1><p>'+htmlEscape(subtitle)+'</p></section>'
-      +'<table class="meta"><tr><td>'+(isJP?'氏名':'Nama Peserta')+'</td><td>'+htmlEscape(payload.user || getUserLabel())+'</td></tr><tr><td>'+(isJP?'Grup':'Grup/Wilayah')+'</td><td>'+htmlEscape(payload.group || '-')+'</td></tr><tr><td>'+(isJP?'実施日時':'Tanggal dan Waktu')+'</td><td>'+htmlEscape(dateText)+'</td></tr><tr><td>'+(isJP?'練習方向':'Arah Latihan')+'</td><td>'+htmlEscape(getDirectionLabel(isJP))+'</td></tr><tr><td>'+(isJP?'評価方法':'Metode Penilaian')+'</td><td>'+(isJP?'正答数を総問題数で割って算出':'Persentase jawaban benar dari total soal')+'</td></tr></table>'
-      +'<table class="summary"><tr><th>'+(isJP?'総問題数':'Total Soal')+'</th><th>'+(isJP?'正解':'Benar')+'</th><th>'+(isJP?'不正解':'Salah')+'</th><th>'+(isJP?'スコア':'Skor')+'</th><th>'+(isJP?'所要時間':'Waktu')+'</th></tr><tr><td>'+s.total+'</td><td>'+s.benar+'</td><td>'+s.salah+'</td><td>'+s.score+'%</td><td>'+fmtTime(s.totalSeconds)+'</td></tr></table>'
-      +'<h2 style="font-size:15px;margin:18px 0 8px">'+(isJP?'解答レビュー':'Review Hasil Latihan')+'</h2><table class="detail" id="detailTable"><thead><tr><th style="width:42px">#</th><th>'+(isJP?'語彙':'Kosakata')+'</th><th>'+(isJP?'意味':'Arti')+'</th><th>'+(isJP?'カテゴリー':'Kategori')+'</th><th>'+(isJP?'状態':'Status')+'</th><th>'+(isJP?'時間':'Waktu')+'</th></tr></thead><tbody>'+rows+'</tbody></table>'
-      +'<div class="note"><strong>'+(isJP?'備考':'Catatan')+':</strong> '+(isJP?'本報告書は日本語語彙学習システムの練習結果に基づいて自動作成されました。':'Laporan ini dibuat otomatis berdasarkan hasil kuis/flashcard pada aplikasi Kosakata Jepang.')+'</div><section class="sign"><div>'+(isJP?'確認者':'Diperiksa oleh')+'<div class="line"></div></div><div>'+(isJP?'学習者':'Peserta')+'<div class="line"></div></div></section><div class="brand">Kosakata Jepang • Kartu. Dengar. Ingat.</div></main>'
-      +'<scr'+'ipt>function applyFilter(){var q=(document.getElementById("q").value||"").toLowerCase();var s=document.getElementById("statusFilter").value;document.querySelectorAll("#detailTable tbody tr[data-status]").forEach(function(r){var okS=s==="all"||r.dataset.status===s;var okQ=!q||(r.dataset.search||"").indexOf(q)>-1;r.classList.toggle("hidden-row",!(okS&&okQ));});}function resetFilter(){document.getElementById("q").value="";document.getElementById("statusFilter").value="all";applyFilter();}document.getElementById("q").addEventListener("input",applyFilter);document.getElementById("statusFilter").addEventListener("change",applyFilter);setTimeout(function(){window.focus();window.print();},700);<\/scr'+'ipt>'
-      +'
-
-<style id="patch-background-hero-v9">
-  /* Revisi gambar belakang homepage:
-     - gambar digeser sedikit ke kanan agar bagian bangunan/pagoda lebih terlihat
-     - diberi layer putih lembut agar tidak mengganggu tulisan pada kartu */
-  #page-home .hero-art.image-watashi{
-    background-image:
-      linear-gradient(90deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.32) 50%, rgba(255,255,255,.18) 100%),
-      linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.20) 100%),
-      url('https://iili.io/C7G0YrB.png')!important;
-    background-size:cover!important;
-    background-position:64% center!important;
-    background-repeat:no-repeat!important;
-  }
-  #page-home .hero-art.image-watashi:before{
-    background:
-      radial-gradient(circle at 76% 20%, rgba(255,255,255,.56), transparent 25%),
-      radial-gradient(circle at 34% 86%, rgba(255,154,197,.22), transparent 28%),
-      linear-gradient(90deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,.30) 52%, rgba(255,255,255,.10) 100%)!important;
-    opacity:.88!important;
-  }
-  #page-home .hero-art.image-watashi .flashcard-showcase{
-    background:rgba(255,255,255,.88)!important;
-    backdrop-filter:blur(4px) saturate(1.06)!important;
-    -webkit-backdrop-filter:blur(4px) saturate(1.06)!important;
-  }
-  @media(max-width:760px){
-    #page-home .hero-art.image-watashi{
-      background-image:
-        linear-gradient(90deg, rgba(255,255,255,.25) 0%, rgba(255,255,255,.36) 52%, rgba(255,255,255,.18) 100%),
-        linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.22) 100%),
-        url('https://iili.io/C7G0YrB.png')!important;
-      background-position:69% center!important;
-    }
-    #page-home .hero-art.image-watashi:before{
-      opacity:.9!important;
-    }
-    #page-home .hero-art.image-watashi .flashcard-showcase{
-      background:rgba(255,255,255,.90)!important;
-    }
-  }
-</style>
-
-</body></html>';
-    const w=window.open('', '_blank');
-    if(!w){alert(isJP?'ポップアップを許可してください。':'Izinkan pop-up browser agar laporan dapat dibuka di tab baru.');return;}
-    w.document.open(); w.document.write(report); w.document.close();
+    /* Versi lama dinonaktifkan agar tidak memunculkan error sintaks.
+       Fungsi PDF final akan dioverride oleh patch laporan terbaru di bawah. */
+    try{
+      if(typeof window.__openResultReportFinal==='function') return window.__openResultReportFinal();
+      if(typeof resultReportHTML==='function' && typeof openReport==='function') return openReport(resultReportHTML());
+    }catch(e){}
+    alert('Fitur PDF sedang disiapkan. Silakan buka halaman Hasil, lalu klik Simpan PDF kembali.');
   };
 
   function formatDateID(date){
@@ -7036,6 +6961,731 @@
   try{
     const target=document.getElementById('page-admin') || document.body;
     new MutationObserver(function(){requestAnimationFrame(init);}).observe(target,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
+  }catch(e){}
+})();
+</script>
+
+
+<!-- === PATCH FINAL v13: admin cleanup, auth persistence, dynamic stats, fiction toggle, modal polish === -->
+<style id="patch-final-request-v13">
+  /* Header dibuat lebih compact dan jarak brand lebih estetik */
+  .app-header{border-radius:0 0 22px 22px!important;}
+  .nav-shell{height:84px!important;min-height:84px!important;}
+  .brand{gap:11px!important;min-width:235px!important;}
+  .brand-icon{width:50px!important;height:50px!important;border-radius:14px!important;font-size:25px!important;}
+  .brand h1{font-size:18px!important;line-height:1.05!important;font-weight:800!important;letter-spacing:-.035em!important;margin:0!important;}
+  .brand p{font-size:12.5px!important;line-height:1.2!important;margin-top:3px!important;font-weight:500!important;color:#5f6f89!important;}
+
+  /* Homepage dan kuis lebih padat agar desktop tidak mudah memunculkan scroll */
+  @media(min-width:1101px){
+    #page-home{padding:28px 0 34px!important;}
+    #page-home .hero-grid{gap:30px!important;align-items:center!important;}
+    #page-home .hero-eyebrow{margin:10px 0 20px!important;}
+    #page-home .hero-title{font-size:clamp(46px,4.15vw,62px)!important;line-height:1.1!important;margin-bottom:18px!important;}
+    #page-home .hero-desc{font-size:16px!important;line-height:1.6!important;margin-bottom:24px!important;}
+    #page-home .hero-actions{margin-bottom:20px!important;}
+    #page-home .hero-actions .btn{height:52px!important;}
+    #page-home .stats-row{margin:18px 0 14px!important;}
+    #page-home .stats-row .mini-stat{height:104px!important;min-height:104px!important;}
+    #page-home .fiction-toggle{min-height:96px!important;}
+    #page-home .hero-art{min-height:570px!important;padding:42px 44px!important;}
+    #page-home .flashcard-showcase{max-width:460px!important;padding:28px 32px 26px!important;}
+    #page-home .jp-large{font-size:66px!important;}
+    #page-home .feature-row{margin-top:22px!important;min-height:96px!important;padding:18px 22px!important;}
+
+    #page-practice{padding:22px 0 30px!important;}
+    #page-practice .practice-top{margin:0 0 14px!important;}
+    #page-practice .practice-grid{gap:20px!important;}
+    #page-practice .practice-card{padding:18px!important;border-radius:24px!important;}
+    #page-practice .practice-image{height:185px!important;border-radius:18px!important;}
+    #page-practice .practice-word{padding:18px 16px 8px!important;}
+    #page-practice .practice-word h2{font-size:62px!important;}
+    #page-practice .practice-word .kana{font-size:25px!important;}
+    #page-practice .practice-word .romaji{font-size:27px!important;}
+    #page-practice .remember{margin-top:18px!important;padding-top:18px!important;}
+    #page-practice .timer-card,
+    #page-practice .progress-card,
+    #page-practice .mode-row,
+    #page-practice .auto-row,
+    #page-practice .info-box{padding:14px 16px!important;}
+    #page-practice .practice-action,
+    #page-practice .listening{height:50px!important;}
+    #page-practice .answer-row .btn{height:54px!important;}
+  }
+  @media(min-width:1101px) and (max-height:760px){
+    .nav-shell{height:76px!important;min-height:76px!important;}
+    #page-home .hero-art{min-height:500px!important;}
+    #page-home .flashcard-showcase{padding:22px 26px!important;}
+    #page-home .feature-row{display:none!important;}
+    #page-practice .practice-image{height:150px!important;}
+    #page-practice .practice-word h2{font-size:54px!important;}
+  }
+
+  /* Statistik homepage dinamis */
+  #page-home .stats-row .mini-stat strong,
+  #page-home .stats-row .mini-stat span,
+  .side-card .stat-item strong,
+  .side-card .stat-item span{letter-spacing:-.01em!important;}
+  #page-home .fiction-toggle.fiction-disabled{opacity:.78!important;}
+  #page-home .fiction-toggle.fiction-disabled .switch,
+  #page-home .fiction-toggle .switch:not(.active){
+    background:#dce3ee!important;
+    cursor:not-allowed!important;
+  }
+  #page-home .fiction-toggle:not(.fiction-disabled) .switch:not(.active){cursor:pointer!important;}
+  #page-home .fiction-toggle .switch:not(.active) i{transform:translateX(0)!important;}
+  #page-home .fiction-toggle .switch.active{background:linear-gradient(135deg,#34d399,#10b981)!important;cursor:pointer!important;}
+  #page-home .fiction-toggle .fiction-count{
+    display:inline-flex;
+    align-items:center;
+    margin-top:7px;
+    padding:4px 9px;
+    border-radius:999px;
+    background:#ecfdf5;
+    color:#0f9f74;
+    font-size:11px;
+    font-weight:800;
+  }
+  #page-home .fiction-toggle.fiction-disabled .fiction-count{background:#f1f5f9;color:#94a3b8;}
+
+  /* Admin action buttons */
+  #page-admin .admin-head-actions{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:12px!important;
+    flex-wrap:wrap!important;
+  }
+  #page-admin .clear-history-btn{
+    height:58px!important;
+    min-width:248px!important;
+    border-radius:11px!important;
+    padding:0 22px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:10px!important;
+    color:#e11d48!important;
+    background:#fff4f7!important;
+    border:1px solid #ffc4d4!important;
+    box-shadow:0 14px 28px rgba(244,63,94,.10)!important;
+    font-size:14px!important;
+    font-weight:800!important;
+    white-space:nowrap!important;
+  }
+  #page-admin .clear-history-btn:hover{transform:translateY(-1px)!important;background:#ffeaf1!important;}
+  @media(max-width:1180px){
+    #page-admin .admin-head-actions{width:100%!important;justify-content:flex-start!important;}
+  }
+  @media(max-width:760px){
+    #page-admin .admin-head-actions,
+    #page-admin .clear-history-btn,
+    #page-admin .admin-head-actions .btn-primary{width:100%!important;}
+  }
+
+  /* Detail peserta: tombol X lebih rapi dan tidak menempel sisi kanan */
+  #detailModal .modal{
+    width:min(860px,calc(100% - 32px))!important;
+    padding:34px 42px 34px!important;
+    border-radius:30px!important;
+    overflow:auto!important;
+    scrollbar-gutter:stable!important;
+  }
+  #detailModal .close-modal{
+    top:22px!important;
+    right:24px!important;
+    width:50px!important;
+    height:50px!important;
+    border-radius:999px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    background:rgba(255,255,255,.88)!important;
+    border:1px solid #dfe4ee!important;
+    color:#10213f!important;
+    font-size:21px!important;
+    box-shadow:0 14px 30px rgba(15,23,42,.08)!important;
+    transition:.2s ease!important;
+  }
+  #detailModal .close-modal:hover{
+    transform:translateY(-1px) rotate(4deg)!important;
+    color:#6d3df2!important;
+    border-color:#c8b8ff!important;
+    background:#fbfaff!important;
+  }
+  #detailModal .modal-title{padding-right:68px!important;text-transform:none!important;}
+  #detailModal .detail-list div span{font-weight:600!important;color:#697894!important;}
+  #detailModal .detail-list div strong{font-weight:800!important;color:#10213f!important;}
+
+  /* Modal konfirmasi hapus */
+  #clearHistoryModal .modal{
+    width:min(560px,calc(100% - 32px))!important;
+    border-radius:30px!important;
+    padding:34px 34px 30px!important;
+    text-align:center!important;
+  }
+  #clearHistoryModal .modal-logo{
+    background:linear-gradient(135deg,#ff6b8a,#e11d48)!important;
+    box-shadow:0 18px 34px rgba(225,29,72,.22)!important;
+  }
+  #clearHistoryModal .modal-title{font-size:29px!important;font-weight:800!important;letter-spacing:-.04em!important;}
+  #clearHistoryModal .modal-desc{font-size:15px!important;line-height:1.65!important;}
+  #clearHistoryModal .clear-progress{
+    display:none;
+    margin:18px 0 0;
+    color:#6b3df4;
+    font-size:13px;
+    font-weight:800;
+  }
+  #clearHistoryModal.downloading .clear-progress{display:block;}
+  #clearHistoryModal.downloading .clear-confirm-btn{pointer-events:none;opacity:.75;}
+
+  /* Popup pengaturan kuis lebih clean */
+  #quizSetupModal .quiz-setup-modal{
+    width:min(820px,calc(100% - 32px))!important;
+    border-radius:34px!important;
+    padding:34px 44px 30px!important;
+  }
+  #quizSetupModal .modal-title{
+    font-size:36px!important;
+    line-height:1.12!important;
+    font-weight:850!important;
+    letter-spacing:-.05em!important;
+    color:#10213f!important;
+  }
+  #quizSetupModal .modal-desc{
+    max-width:560px!important;
+    font-size:16px!important;
+    line-height:1.65!important;
+    color:#667085!important;
+  }
+  #quizSetupModal .group-label{
+    font-size:14.5px!important;
+    line-height:1.3!important;
+    font-weight:850!important;
+    color:#10213f!important;
+    margin-bottom:10px!important;
+  }
+  #quizSetupModal .quiz-option{
+    min-height:98px!important;
+    border-radius:18px!important;
+    padding:20px 22px!important;
+    text-align:left!important;
+    background:rgba(255,255,255,.94)!important;
+    box-shadow:0 14px 34px rgba(80,70,140,.06)!important;
+  }
+  #quizSetupModal .quiz-option strong{
+    display:block!important;
+    margin-bottom:9px!important;
+    font-size:17px!important;
+    line-height:1.25!important;
+    font-weight:850!important;
+    letter-spacing:-.025em!important;
+    color:#10213f!important;
+  }
+  #quizSetupModal .quiz-option span{
+    display:block!important;
+    font-size:14px!important;
+    line-height:1.5!important;
+    font-weight:600!important;
+    color:#6b7891!important;
+  }
+  #quizSetupModal .quiz-option.active{
+    background:#f5efff!important;
+    border-color:#8b5cf6!important;
+    box-shadow:0 0 0 5px rgba(124,77,255,.08),0 18px 38px rgba(124,77,255,.11)!important;
+  }
+  #quizSetupModal .quiz-option.active strong{color:#6d3df2!important;}
+  #quizSetupModal .select-like{
+    height:56px!important;
+    border-radius:16px!important;
+    font-size:15px!important;
+    font-weight:750!important;
+    color:#263454!important;
+  }
+</style>
+<script id="patch-final-request-v13-script">
+(function(){
+  const AUTH_KEY='kosakata_jepang_current_user_v13';
+  const FICTION_KEY='kosakata_jepang_include_fiction_v13';
+  const HISTORY_KEY='kosakata_jepang_quiz_history_v6';
+  const LAST_KEY='kosakata_jepang_last_quiz_result_v4';
+
+  function q(sel,root){return (root||document).querySelector(sel);}
+  function qa(sel,root){return Array.from((root||document).querySelectorAll(sel));}
+  function esc(v){return String(v??'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function parse(raw,fallback){try{return raw?JSON.parse(raw):fallback;}catch(e){return fallback;}}
+  function pad2(n){return String(Math.max(0,Math.floor(Number(n)||0))).padStart(2,'0');}
+  function lang(){try{return siteLang==='ja'?'ja':'id';}catch(e){return document.documentElement.lang==='ja'?'ja':'id';}}
+  function tr(id,ja){return lang()==='ja'?ja:id;}
+  function firstName(name){
+    const s=String(name||'-').trim();
+    if(!s || s==='-') return '-';
+    return s.split(/\s+/)[0].replace(/[,_;]+$/,'') || s;
+  }
+  window.__kosakataFirstName=firstName;
+
+  function isFictionVocab(v){
+    if(!v || typeof v!=='object') return false;
+    if(v.isFiction || v.fiction || v.isFiksi || v.fiksi) return true;
+    const fields=['fictionNote','fiksiNote','penjelasanFiksi','keteranganFiksi','sumberFiksi','asalFiksi','fiksiDesc'];
+    if(fields.some(k=>String(v[k]||'').trim().length>0)) return true;
+    return /(^|\s)(fiksi|fiction|anime|manga|game|novel|tokoh)(\s|$)/i.test(String(v.cat||''));
+  }
+  function fictionCount(){
+    try{return (Array.isArray(vocabData)?vocabData:[]).filter(isFictionVocab).length;}catch(e){return 0;}
+  }
+  function allVocab(){
+    try{return Array.isArray(vocabData)?vocabData:[];}catch(e){return [];}
+  }
+  function categories(){
+    return Array.from(new Set(allVocab().map(v=>v && v.cat).filter(Boolean)));
+  }
+  function fictionEnabled(){
+    const count=fictionCount();
+    if(!count) return false;
+    return localStorage.getItem(FICTION_KEY)!=='0';
+  }
+
+  function updateHomeStats(){
+    const total=allVocab().length;
+    const catCount=categories().length;
+    const ficCount=fictionCount();
+    const badgeText=lang()==='ja'?'第1〜5章・'+total+'語':'Bab 1–5 • '+total+' kosakata';
+
+    qa('#page-home .hero-eyebrow .badge,#page-practice .hero-eyebrow .badge').forEach(el=>{
+      el.innerHTML='<i class="fa-solid fa-book-open"></i> '+badgeText;
+    });
+
+    const homeStats=qa('#page-home .stats-row .mini-stat:not(.fiction-toggle)');
+    if(homeStats[0]){
+      q('strong',homeStats[0]).textContent=String(total);
+      const s=q('span:not(.icon-bubble)',homeStats[0]);
+      if(s) s.innerHTML=lang()==='ja'?'総語彙数<br>第1〜5章':'Total Kosakata<br>Bab 1–5';
+    }
+    if(homeStats[1]){
+      q('strong',homeStats[1]).textContent=lang()==='ja'?'30秒':'30 dtk';
+      const s=q('span:not(.icon-bubble)',homeStats[1]);
+      if(s) s.innerHTML=lang()==='ja'?'制限時間<br>1カード':'Limit Waktu<br>per Kartu';
+    }
+    if(homeStats[2]){
+      q('strong',homeStats[2]).textContent=String(catCount);
+      const s=q('span:not(.icon-bubble)',homeStats[2]);
+      if(s) s.innerHTML=lang()==='ja'?'カテゴリー数<br>トピック':'Jumlah Kategori<br>Topik';
+    }
+
+    const sideStats=qa('.side-card .stat-list .stat-item');
+    if(sideStats[0]){
+      const st=q('strong',sideStats[0]); if(st) st.textContent=String(total);
+      const sp=q('span:not(.icon-bubble)',sideStats[0]); if(sp) sp.innerHTML=lang()==='ja'?'総語彙数<br>学習対象':'Total Kosakata<br>Dipelajari';
+    }
+    if(sideStats[1]){
+      const st=q('strong',sideStats[1]); if(st) st.textContent=lang()==='ja'?'30秒':'30 dtk';
+      const sp=q('span:not(.icon-bubble)',sideStats[1]); if(sp) sp.innerHTML=lang()==='ja'?'制限時間<br>1カード':'Limit Waktu<br>per Kartu';
+    }
+    if(sideStats[2]){
+      const st=q('strong',sideStats[2]); if(st) st.textContent=String(catCount);
+      const sp=q('span:not(.icon-bubble)',sideStats[2]); if(sp) sp.innerHTML=lang()==='ja'?'カテゴリー数<br>トピック':'Jumlah Kategori<br>Topik';
+    }
+
+    syncFictionSwitchFinal();
+    syncQuizCategoryOptions();
+  }
+
+  function syncFictionSwitchFinal(){
+    const sw=q('#fictionSwitch');
+    const box=q('#page-home .fiction-toggle');
+    if(!sw || !box) return;
+    const count=fictionCount();
+    const enabled=fictionEnabled();
+    sw.disabled=!count;
+    sw.setAttribute('aria-disabled',(!count).toString());
+    sw.classList.toggle('active',enabled);
+    box.classList.toggle('fiction-off',!enabled || !count);
+    box.classList.toggle('fiction-disabled',!count);
+
+    const title=q('h3',box);
+    const desc=q('p',box);
+    if(title) title.textContent=tr('Gunakan kosakata fiksi','フィクション語彙を使う');
+    if(desc){
+      desc.innerHTML=count
+        ? tr('Aktifkan untuk menyertakan kosakata fiksi pada halaman kuis.','オンにするとクイズにフィクション語彙を含めます。')
+        : tr('Belum ada kosakata fiksi. Fitur ini otomatis nonaktif.','フィクション語彙がないため、自動的にオフになります。');
+      let pill=q('.fiction-count',box);
+      if(!pill){pill=document.createElement('span'); pill.className='fiction-count'; desc.after(pill);}
+      pill.textContent=count
+        ? tr(count+' kosakata fiksi tersedia',count+' 個のフィクション語彙')
+        : tr('0 kosakata fiksi','0 個のフィクション語彙');
+    }
+  }
+
+  function syncQuizCategoryOptions(){
+    const sel=q('#quizCategorySelect');
+    if(!sel) return;
+    const old=sel.value || 'Semua';
+    const allLabel=tr('Semua','すべて');
+    const opts=['<option value="Semua">'+allLabel+'</option>'].concat(categories().map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>'));
+    sel.innerHTML=opts.join('');
+    sel.value=categories().includes(old) || old==='Semua' ? old : 'Semua';
+  }
+
+  function localShuffle(arr){
+    const a=[...arr];
+    for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+    return a;
+  }
+
+  function patchFictionToggle(){
+    const oldToggle=(typeof toggleSwitch==='function')?toggleSwitch:null;
+    const next=function(el){
+      if(el && el.id==='fictionSwitch'){
+        const count=fictionCount();
+        if(!count){
+          el.classList.remove('active');
+          localStorage.setItem(FICTION_KEY,'0');
+          syncFictionSwitchFinal();
+          return false;
+        }
+        el.classList.toggle('active');
+        localStorage.setItem(FICTION_KEY,el.classList.contains('active')?'1':'0');
+        syncFictionSwitchFinal();
+        return false;
+      }
+      return oldToggle ? oldToggle.apply(this,arguments) : (el && el.classList.toggle('active'));
+    };
+    try{toggleSwitch=next;}catch(e){}
+    window.toggleSwitch=next;
+  }
+
+  function patchQuizStart(){
+    try{
+      const next=function(){
+        const selectedCat=q('#quizCategorySelect')?.value || 'Semua';
+        activeCategory=selectedCat;
+        if(typeof renderCategoryPills==='function') renderCategoryPills();
+
+        let source=allVocab().filter(v=>selectedCat==='Semua' || v.cat===selectedCat);
+        if(!fictionEnabled()) source=source.filter(v=>!isFictionVocab(v));
+        if(!source.length){
+          alert(tr('Tidak ada kosakata yang sesuai dengan pilihan ini. Aktifkan kosakata fiksi atau pilih kategori lain.','この条件に合う語彙がありません。フィクション語彙をオンにするか、別のカテゴリーを選んでください。'));
+          return;
+        }
+        quizDeck=(quizOrder==='random' ? (typeof shuffleDeck==='function'?shuffleDeck(source):localShuffle(source)) : [...source]);
+        answered=0; correct=0; wrong=0; currentIndex=0; practiceFlipped=false;
+        langMode=quizDirection;
+        if(typeof closeModal==='function') closeModal('quizSetupModal');
+        if(typeof showPage==='function') showPage('practice');
+        micAutoEnabled=true;
+        if(typeof updateMicUI==='function') updateMicUI();
+        if(typeof loadPractice==='function') loadPractice(false);
+        setTimeout(()=>{try{ if(micAutoEnabled && typeof startVoiceAnswer==='function') startVoiceAnswer(); }catch(e){}},450);
+      };
+      beginConfiguredQuiz=next;
+      window.beginConfiguredQuiz=next;
+    }catch(e){}
+  }
+
+  function polishQuizSetupCopy(){
+    const opts=qa('#quizSetupModal .quiz-option');
+    if(opts[0]){
+      q('strong',opts[0]).textContent=tr('Indonesia → Jepang','インドネシア語 → 日本語');
+      q('span',opts[0]).textContent=tr('Kartu menampilkan arti Indonesia, lalu jawab kosakata Jepang.','カードにインドネシア語の意味を表示し、日本語で答えます。');
+    }
+    if(opts[1]){
+      q('strong',opts[1]).textContent=tr('Jepang → Indonesia','日本語 → インドネシア語');
+      q('span',opts[1]).textContent=tr('Kartu menampilkan kosakata Jepang, lalu tebak artinya.','日本語の語彙を見て、意味を答えます。');
+    }
+    if(opts[2]){
+      q('strong',opts[2]).textContent=tr('Acak','ランダム');
+      q('span',opts[2]).textContent=tr('Urutan kartu diacak setiap kuis dimulai.','クイズ開始ごとにカード順をシャッフルします。');
+    }
+    if(opts[3]){
+      q('strong',opts[3]).textContent=tr('Tidak Acak','順番通り');
+      q('span',opts[3]).textContent=tr('Urutan kartu mengikuti daftar materi.','教材リストの順番でカードを表示します。');
+    }
+    const title=q('#quizSetupModal .modal-title'); if(title) title.textContent=tr('Atur Kuis Flashcard','フラッシュカード設定');
+    const desc=q('#quizSetupModal .modal-desc'); if(desc) desc.textContent=tr('Pilih arah soal, urutan kartu, dan kategori kosakata sebelum mulai.','開始前に、出題方向・カード順・語彙カテゴリーを選びます。');
+  }
+
+  function patchAuthPersistence(){
+    try{
+      if(Array.isArray(ADMIN_USERNAMES)){
+        ADMIN_USERNAMES.length=0;
+        ADMIN_USERNAMES.push('admin404');
+      }
+    }catch(e){}
+
+    try{
+      const oldStart=(typeof startLearning==='function')?startLearning:null;
+      if(oldStart && !oldStart.__persistV13){
+        const next=function(){
+          const out=oldStart.apply(this,arguments);
+          try{ if(currentUser) localStorage.setItem(AUTH_KEY,JSON.stringify(currentUser)); }catch(e){}
+          return out;
+        };
+        next.__persistV13=true;
+        startLearning=next;
+        window.startLearning=next;
+      }
+    }catch(e){}
+
+    try{
+      const oldLogout=(typeof logoutUser==='function')?logoutUser:null;
+      if(oldLogout && !oldLogout.__persistV13){
+        const next=function(){
+          try{localStorage.removeItem(AUTH_KEY);}catch(e){}
+          return oldLogout.apply(this,arguments);
+        };
+        next.__persistV13=true;
+        logoutUser=next;
+        window.logoutUser=next;
+      }
+    }catch(e){}
+
+    try{
+      const saved=parse(localStorage.getItem(AUTH_KEY),null);
+      if(saved && saved.name && !currentUser){
+        currentUser=saved;
+        if(typeof updateAuthUI==='function') updateAuthUI();
+      }
+    }catch(e){}
+  }
+
+  function compactAdminNameStats(){
+    const cards=qa('#page-admin .admin-stat');
+    [2,3].forEach(i=>{
+      const sub=cards[i]?.querySelectorAll('span')[2];
+      if(!sub) return;
+      const txt=sub.textContent || '';
+      const prefix=txt.includes(':') ? txt.split(':')[0]+': ' : (txt.startsWith('Oleh ') ? 'Oleh ' : (lang()==='ja'?'参加者: ':'Oleh '));
+      const name=txt.replace(/^Oleh\s+/,'').replace(/^参加者:\s*/,'').trim();
+      sub.textContent=prefix+firstName(name);
+    });
+  }
+
+  function ensureAdminActionButtons(){
+    const head=q('#page-admin .admin-head');
+    if(!head) return;
+    const downloadBtn=head.querySelector('.btn-primary:not(.clear-history-btn)');
+    if(!downloadBtn) return;
+    let actions=head.querySelector('.admin-head-actions');
+    if(!actions){
+      actions=document.createElement('div');
+      actions.className='admin-head-actions';
+      downloadBtn.parentNode.insertBefore(actions,downloadBtn);
+      actions.appendChild(downloadBtn);
+    }else if(downloadBtn.parentNode!==actions){
+      actions.appendChild(downloadBtn);
+    }
+
+    let clear=actions.querySelector('.clear-history-btn');
+    if(!clear){
+      clear=document.createElement('button');
+      clear.type='button';
+      clear.className='clear-history-btn';
+      clear.setAttribute('onclick','openClearHistoryConfirm()');
+      actions.insertBefore(clear,downloadBtn);
+    }
+    clear.innerHTML='<i class="fa-solid fa-trash-can"></i> '+tr('Hapus Riwayat Semua Peserta','全参加者の履歴を削除');
+    downloadBtn.innerHTML='<i class="fa-solid fa-download"></i> '+tr('Download PDF Semua Peserta','全参加者PDFをダウンロード');
+  }
+
+  function stats(records){
+    records=Array.isArray(records)?records:[];
+    const total=records.length;
+    const benar=records.filter(r=>!!r.status).length;
+    const salah=Math.max(0,total-benar);
+    const skor=total?+(benar/total*100).toFixed(1):0;
+    return {total,benar,salah,skor};
+  }
+  function fmtDate(value,language){
+    const d=value?new Date(value):new Date();
+    if(language==='ja') return d.getFullYear()+'年'+pad2(d.getMonth()+1)+'月'+pad2(d.getDate())+'日 '+pad2(d.getHours())+':'+pad2(d.getMinutes());
+    const m=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+    return pad2(d.getDate())+' '+m[d.getMonth()]+' '+d.getFullYear()+', '+pad2(d.getHours())+':'+pad2(d.getMinutes());
+  }
+  function demoRecords(p){
+    const total=Math.max(0,Number(p.total)||0);
+    const benar=Math.max(0,Number(p.benar)||0);
+    return Array.from({length:total},function(_,i){
+      const v=allVocab()[i%Math.max(1,allVocab().length)] || {};
+      return {jp:v.jp||'-',kana:v.kana||'',romaji:v.romaji||'',arti:v.arti||'',cat:v.cat||'-',status:i<benar,waktu:6+(i%10)};
+    });
+  }
+  function buildRowsForPdf(){
+    const rows=[];
+    const history=parse(localStorage.getItem(HISTORY_KEY),[]).filter(x=>x && Array.isArray(x.records) && x.records.length);
+    const last=parse(localStorage.getItem(LAST_KEY),null);
+    if(last && Array.isArray(last.records) && last.records.length && !history.some(x=>x && x.id===last.id)) history.push(last);
+    history.forEach(function(h,i){
+      const s=stats(h.records);
+      rows.push({
+        nama:h.user||h.nama||'Peserta '+(i+1),
+        grup:h.group||h.grup||'-',
+        tanggalID:fmtDate(h.endedAt||h.startedAt,'id'),
+        tanggalJA:fmtDate(h.endedAt||h.startedAt,'ja'),
+        total:s.total, benar:s.benar, salah:s.salah, skor:s.skor,
+        source:'history'
+      });
+    });
+    try{
+      if(Array.isArray(participants)){
+        participants.forEach(function(p){
+          const rec=demoRecords(p), s=stats(rec);
+          rows.push({
+            nama:p.nama||'-', grup:p.grup||'-', tanggalID:p.tanggal||fmtDate(new Date(),'id'), tanggalJA:p.tanggalJP||fmtDate(new Date(),'ja'),
+            total:s.total, benar:s.benar, salah:s.salah, skor:Number(p.skor)||s.skor, source:'demo'
+          });
+        });
+      }
+    }catch(e){}
+    return rows;
+  }
+
+  function reportElement(rows,language){
+    const isJA=language==='ja';
+    const total=rows.length;
+    const avg=total?rows.reduce((s,r)=>s+(Number(r.skor)||0),0)/total:0;
+    const high=[...rows].sort((a,b)=>b.skor-a.skor)[0]||{nama:'-',skor:0};
+    const low=[...rows].sort((a,b)=>a.skor-b.skor)[0]||{nama:'-',skor:0};
+    const el=document.createElement('div');
+    el.className='auto-admin-pdf-sheet';
+    el.style.cssText='width:1120px;padding:28px;background:#fff;color:#111827;font-family:Plus Jakarta Sans,Inter,Arial,sans-serif;';
+    const rowsHtml=rows.map((r,i)=>'<tr><td>'+(i+1)+'</td><td>'+esc(r.nama)+'</td><td>'+esc(r.grup)+'</td><td>'+esc(isJA?r.tanggalJA:r.tanggalID)+'</td><td>'+r.total+'</td><td>'+r.benar+'</td><td>'+r.salah+'</td><td>'+Number(r.skor).toFixed(1)+'%</td><td>'+esc(Number(r.skor)>=70?(isJA?'高スコア':'Tinggi'):(isJA?'低スコア':'Rendah'))+'</td></tr>').join('');
+    el.innerHTML=
+      '<style>.auto-admin-pdf-sheet *{box-sizing:border-box}.pdf-head{text-align:center;border-bottom:3px solid #10213f;padding-bottom:14px;margin-bottom:16px}.pdf-head h1{font-size:23px;margin:0 0 5px;letter-spacing:.03em}.pdf-head p{margin:0;color:#64748b}.pdf-meta,.pdf-table{width:100%;border-collapse:collapse}.pdf-meta td,.pdf-table th,.pdf-table td{border:1px solid #d1d5db;padding:8px 9px;font-size:12px}.pdf-meta td:first-child{width:210px;background:#f8fafc;font-weight:800}.pdf-summary{display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid #d1d5db;border-top:1px solid #d1d5db;margin:14px 0}.pdf-summary div{padding:10px;text-align:center;border-right:1px solid #d1d5db;border-bottom:1px solid #d1d5db}.pdf-summary span{display:block;color:#64748b;font-size:11px;font-weight:800}.pdf-summary strong{display:block;font-size:20px;margin-top:4px}.pdf-table th{background:#f3f0ff;color:#4c1d95;text-align:left;font-weight:900}.pdf-sign{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:32px;text-align:center}.pdf-line{border-top:1px solid #111827;width:70%;margin:54px auto 0}.pdf-foot{text-align:center;color:#64748b;font-size:11px;margin-top:18px}</style>'+
+      '<section class="pdf-head"><h1>'+esc(isJA?'全参加者PDFレポート':'LAPORAN PDF SEMUA PESERTA')+'</h1><p>'+esc(isJA?'削除前に自動保存された学習履歴です。':'Riwayat belajar yang otomatis disimpan sebelum penghapusan data.')+'</p></section>'+
+      '<table class="pdf-meta"><tr><td>'+esc(isJA?'出力日時':'Tanggal Unduh')+'</td><td>'+esc(fmtDate(new Date(),language))+'</td></tr><tr><td>'+esc(isJA?'Bahasa Laporan':'Bahasa Laporan')+'</td><td>'+esc(isJA?'日本語':'Bahasa Indonesia')+'</td></tr><tr><td>'+esc(isJA?'Sumber Data':'Sumber Data')+'</td><td>'+esc(isJA?'ブラウザ保存履歴 + data peserta aplikasi':'Riwayat browser + data peserta aplikasi')+'</td></tr></table>'+
+      '<section class="pdf-summary"><div><span>'+esc(isJA?'参加者数':'Total Peserta')+'</span><strong>'+total+'</strong></div><div><span>'+esc(isJA?'平均スコア':'Rata-rata Skor')+'</span><strong>'+avg.toFixed(1)+'%</strong></div><div><span>'+esc(isJA?'最高スコア':'Skor Tertinggi')+'</span><strong>'+Number(high.skor||0).toFixed(1)+'%</strong></div><div><span>'+esc(isJA?'最低スコア':'Skor Terendah')+'</span><strong>'+Number(low.skor||0).toFixed(1)+'%</strong></div><div><span>'+esc(isJA?'履歴件数':'Jumlah Riwayat')+'</span><strong>'+total+'</strong></div></section>'+
+      '<table class="pdf-table"><thead><tr><th>No.</th><th>'+esc(isJA?'氏名':'Nama')+'</th><th>'+esc(isJA?'グループ':'Grup')+'</th><th>'+esc(isJA?'最終日時':'Tanggal Terakhir')+'</th><th>'+esc(isJA?'合計':'Total')+'</th><th>'+esc(isJA?'正解':'Benar')+'</th><th>'+esc(isJA?'不正解':'Salah')+'</th><th>'+esc(isJA?'スコア':'Skor')+'</th><th>'+esc(isJA?'状態':'Status')+'</th></tr></thead><tbody>'+rowsHtml+'</tbody></table>'+
+      '<section class="pdf-sign"><div>'+esc(isJA?'確認者':'Diperiksa oleh')+'<div class="pdf-line"></div></div><div>'+esc(isJA?'管理者':'Admin')+'<div class="pdf-line"></div></div></section><div class="pdf-foot">Kosakata Jepang • Kartu. Dengar. Ingat.</div>';
+    return el;
+  }
+
+  async function savePdf(el,filename){
+    document.body.appendChild(el);
+    try{
+      if(window.html2pdf){
+        await window.html2pdf().set({
+          margin:[8,8,8,8],
+          filename:filename,
+          image:{type:'jpeg',quality:.98},
+          html2canvas:{scale:2,useCORS:true,letterRendering:true},
+          jsPDF:{unit:'mm',format:'a4',orientation:'landscape'}
+        }).from(el).save();
+      }else{
+        throw new Error('html2pdf belum dimuat, PDF otomatis tidak dapat dibuat.');
+      }
+    }finally{
+      el.remove();
+    }
+  }
+
+  function ensureClearModal(){
+    if(q('#clearHistoryModal')) return;
+    const modal=document.createElement('div');
+    modal.className='modal-overlay';
+    modal.id='clearHistoryModal';
+    modal.setAttribute('onclick',"overlayClose(event,'clearHistoryModal')");
+    modal.innerHTML='<div class="modal small-modal"><button class="close-modal" onclick="closeModal(\'clearHistoryModal\')" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button><div class="modal-logo"><i class="fa-solid fa-trash-can"></i></div><h2 class="modal-title">'+esc(tr('Hapus Riwayat Semua Peserta?','全参加者の履歴を削除しますか？'))+'</h2><p class="modal-desc">'+esc(tr('Sebelum riwayat dihapus, sistem akan mengunduh PDF semua peserta dalam Bahasa Indonesia dan Bahasa Jepang. Setelah kedua PDF selesai, riwayat akan dibersihkan dari perangkat ini.','削除前に、全参加者PDFをインドネシア語と日本語で保存します。2つのPDF保存後、この端末の履歴を削除します。'))+'</p><div class="clear-progress"><i class="fa-solid fa-spinner fa-spin"></i> '+esc(tr('Mengunduh PDF terlebih dahulu...','先にPDFを保存しています...'))+'</div><div class="modal-actions" style="margin-top:24px"><button class="btn btn-secondary" onclick="closeModal(\'clearHistoryModal\')">'+esc(tr('Batal','キャンセル'))+'</button><button class="btn btn-red clear-confirm-btn" onclick="confirmClearHistoryAndDownload()"><i class="fa-solid fa-check"></i> '+esc(tr('Yakin, Hapus','削除する'))+'</button></div></div>';
+    document.body.appendChild(modal);
+  }
+  window.openClearHistoryConfirm=function(){
+    ensureClearModal();
+    const modal=q('#clearHistoryModal');
+    modal.classList.remove('downloading');
+    if(typeof openModal==='function') openModal('clearHistoryModal');
+    else modal.classList.add('active');
+  };
+  window.confirmClearHistoryAndDownload=async function(){
+    const modal=q('#clearHistoryModal');
+    try{
+      modal?.classList.add('downloading');
+      const rows=buildRowsForPdf();
+      await savePdf(reportElement(rows,'id'),'Riwayat_Semua_Peserta_Bahasa_Indonesia.pdf');
+      await savePdf(reportElement(rows,'ja'),'全参加者履歴_日本語.pdf');
+      localStorage.removeItem(HISTORY_KEY);
+      localStorage.removeItem(LAST_KEY);
+      try{window.quizSessionRecords=[];window.quizSessionStartedAt=null;window.quizSessionEndedAt=null;}catch(e){}
+      if(typeof renderParticipants==='function') renderParticipants();
+      if(typeof updateResult==='function') updateResult();
+      if(typeof closeModal==='function') closeModal('clearHistoryModal');
+      alert(tr('PDF Bahasa Indonesia dan Jepang sudah diunduh. Riwayat semua peserta sudah dihapus.','インドネシア語と日本語のPDFを保存しました。全参加者の履歴を削除しました。'));
+    }catch(e){
+      console.error(e);
+      alert(tr('PDF belum berhasil diunduh, jadi riwayat tidak dihapus. Coba izinkan unduhan otomatis lalu ulangi.','PDF保存に失敗したため、履歴は削除されませんでした。自動ダウンロードを許可して再試行してください。'));
+    }finally{
+      modal?.classList.remove('downloading');
+    }
+  };
+
+  function patchAdminRendering(){
+    try{
+      const oldRender=(typeof renderParticipants==='function')?renderParticipants:null;
+      if(oldRender && !oldRender.__finalRequestV13){
+        const next=function(){
+          const out=oldRender.apply(this,arguments);
+          ensureAdminActionButtons();
+          compactAdminNameStats();
+          return out;
+        };
+        next.__finalRequestV13=true;
+        renderParticipants=next;
+        window.renderParticipants=next;
+      }
+    }catch(e){}
+    ensureAdminActionButtons();
+    compactAdminNameStats();
+  }
+
+  function patchLanguageHooks(){
+    try{
+      const oldApply=(typeof applyUILanguage==='function')?applyUILanguage:null;
+      if(oldApply && !oldApply.__finalRequestV13){
+        const next=function(){
+          const out=oldApply.apply(this,arguments);
+          setTimeout(function(){updateHomeStats();polishQuizSetupCopy();patchAdminRendering();},20);
+          return out;
+        };
+        next.__finalRequestV13=true;
+        applyUILanguage=next;
+        window.applyUILanguage=next;
+      }
+    }catch(e){}
+    try{
+      const oldShow=(typeof showPage==='function')?showPage:null;
+      if(oldShow && !oldShow.__finalRequestV13){
+        const next=function(page){
+          const out=oldShow.apply(this,arguments);
+          setTimeout(function(){updateHomeStats();patchAdminRendering();},30);
+          return out;
+        };
+        next.__finalRequestV13=true;
+        showPage=next;
+        window.showPage=next;
+      }
+    }catch(e){}
+  }
+
+  function init(){
+    patchAuthPersistence();
+    patchFictionToggle();
+    patchQuizStart();
+    patchLanguageHooks();
+    polishQuizSetupCopy();
+    updateHomeStats();
+    patchAdminRendering();
+    if(typeof updateAuthUI==='function') updateAuthUI();
+    if(typeof renderParticipants==='function') renderParticipants();
+  }
+
+  document.addEventListener('DOMContentLoaded',init);
+  window.addEventListener('load',init);
+  setTimeout(init,80);
+  setTimeout(init,600);
+  setTimeout(init,1600);
+  try{
+    new MutationObserver(function(){requestAnimationFrame(function(){ensureAdminActionButtons();compactAdminNameStats();syncFictionSwitchFinal();});}).observe(document.body,{childList:true,subtree:true});
   }catch(e){}
 })();
 </script>
