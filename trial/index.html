@@ -3776,16 +3776,21 @@
       });
     }
     const localIconObserver = new MutationObserver((items)=>{
-      let shouldRun=false;
+      const roots=[];
       for(const item of items){
-        if(item.type==='childList' && item.addedNodes.length){shouldRun=true;break;}
-        if(item.type==='attributes' && item.attributeName==='class'){shouldRun=true;break;}
+        if(item.type==='childList' && item.addedNodes.length){
+          item.addedNodes.forEach(node=>{
+            if(node && node.nodeType===1) roots.push(node);
+          });
+        }
       }
-      if(shouldRun) requestAnimationFrame(()=>applyLocalIcons(document));
+      if(roots.length){
+        requestAnimationFrame(()=>roots.forEach(root=>applyLocalIcons(root)));
+      }
     });
     document.addEventListener('DOMContentLoaded',()=>{
       applyLocalIcons(document);
-      localIconObserver.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+      localIconObserver.observe(document.body,{childList:true,subtree:true});
     });
 
     document.addEventListener('keydown',e=>{if(e.key==='Escape') document.querySelectorAll('.modal-overlay.active').forEach(m=>closeModal(m.id));});
@@ -6960,7 +6965,11 @@
   setTimeout(init,1500);
   try{
     const target=document.getElementById('page-admin') || document.body;
-    new MutationObserver(function(){requestAnimationFrame(init);}).observe(target,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
+    let adminIconRaf=0;
+    new MutationObserver(function(){
+      if(adminIconRaf) return;
+      adminIconRaf=requestAnimationFrame(function(){adminIconRaf=0;init();});
+    }).observe(target,{childList:true,subtree:true});
   }catch(e){}
 })();
 </script>
@@ -7685,8 +7694,521 @@
   setTimeout(init,600);
   setTimeout(init,1600);
   try{
-    new MutationObserver(function(){requestAnimationFrame(function(){ensureAdminActionButtons();compactAdminNameStats();syncFictionSwitchFinal();});}).observe(document.body,{childList:true,subtree:true});
+    let finalRequestRaf=0;
+    new MutationObserver(function(){
+      if(finalRequestRaf) return;
+      finalRequestRaf=requestAnimationFrame(function(){
+        finalRequestRaf=0;
+        ensureAdminActionButtons();
+        compactAdminNameStats();
+        syncFictionSwitchFinal();
+      });
+    }).observe(document.body,{childList:true,subtree:true});
   }catch(e){}
+})();
+</script>
+
+
+<!-- === PATCH 2026-07-02 v14: admin weekly reminder + favorite preview + security guard + quiz focus === -->
+<style id="patch-admin-reminder-favorite-security-v14-style">
+  .security-toast{
+    position:fixed;left:50%;bottom:26px;z-index:9999;transform:translateX(-50%) translateY(18px);
+    min-width:min(520px,calc(100% - 32px));max-width:620px;padding:15px 18px;border-radius:18px;
+    background:rgba(16,33,63,.94);color:#fff;box-shadow:0 20px 54px rgba(15,23,42,.24);
+    display:flex;align-items:center;gap:12px;font-weight:750;line-height:1.45;opacity:0;pointer-events:none;transition:.24s ease;
+    border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px);
+  }
+  .security-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .security-toast i{color:#fbbf24;flex:0 0 auto}
+  .forced-admin-modal .close-modal{display:none!important}
+  .forced-admin-modal .modal-logo{background:linear-gradient(135deg,#7c4dff,#2563eb)!important}
+  .forced-admin-note{
+    display:flex;gap:14px;align-items:flex-start;margin:22px 0 20px;padding:16px;border-radius:18px;
+    background:#f7f2ff;border:1px solid rgba(124,77,255,.16);color:#52617c;line-height:1.55;font-weight:600;
+  }
+  .forced-admin-note i{color:#7c4dff;font-size:22px;margin-top:2px}
+  .forced-admin-progress{
+    display:none;align-items:center;justify-content:center;gap:10px;margin-top:16px;padding:14px;border-radius:16px;
+    background:#eff6ff;color:#2563eb;font-weight:850;border:1px solid rgba(37,99,235,.14);
+  }
+  #adminWeeklyReminderModal.downloading .forced-admin-progress{display:flex}
+  #adminWeeklyReminderModal.downloading .forced-admin-download-btn{opacity:.65;pointer-events:none}
+  .quiz-focus-modal .modal-logo{background:linear-gradient(135deg,#f59e0b,#ef4444)!important}
+  .quiz-focus-modal .focus-quote{
+    margin:20px 0 0;padding:16px 18px;border-radius:18px;background:#fff7ed;border:1px solid rgba(245,158,11,.22);
+    color:#92400e;font-weight:800;line-height:1.55;text-align:center;
+  }
+  @media(max-width:760px){.security-toast{bottom:18px;font-size:13px}.forced-admin-note{font-size:13px}}
+</style>
+<script id="patch-admin-reminder-favorite-security-v14-script">
+(function(){
+  const AUTH_KEY='kosakata_jepang_current_user_v13';
+  const FAVORITE_KEY='kosakata_jepang_favorite_vocab_v1';
+  const HISTORY_KEY='kosakata_jepang_quiz_history_v6';
+  const LAST_KEY='kosakata_jepang_last_quiz_result_v4';
+  const ADMIN_LAST_ACTIVE_KEY='kosakata_jepang_admin404_last_active_v14';
+  const ADMIN_LAST_PDF_KEY='kosakata_jepang_admin404_last_forced_pdf_v14';
+  const WEEK_MS=7*24*60*60*1000;
+  const QUIZ_FOCUS_KEY='kosakata_jepang_quiz_focus_violations_v14';
+
+  function q(sel,root){return (root||document).querySelector(sel);}
+  function qa(sel,root){return Array.from((root||document).querySelectorAll(sel));}
+  function parse(raw,fallback){try{return raw?JSON.parse(raw):fallback;}catch(e){return fallback;}}
+  function esc(v){return String(v??'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function pad2(n){return String(Math.max(0,Math.floor(Number(n)||0))).padStart(2,'0');}
+  function currentLang(){try{return siteLang==='ja'?'ja':'id';}catch(e){return document.documentElement.lang==='ja'?'ja':'id';}}
+  function tr(id,ja){return currentLang()==='ja'?ja:id;}
+  function now(){return Date.now();}
+  function isAdmin404User(){try{return !!currentUser && currentUser.role==='admin' && String(currentUser.name||'').trim().toLowerCase()==='admin404';}catch(e){return false;}}
+  function allVocab(){try{return Array.isArray(vocabData)?vocabData:[];}catch(e){return [];}}
+  function favId(v){return [v&&v.jp||'',v&&v.kana||'',v&&v.romaji||'',v&&v.arti||'',v&&v.cat||''].join('|');}
+  function getFavSet(){return new Set(parse(localStorage.getItem(FAVORITE_KEY),[]).filter(Boolean));}
+  function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+  function showToast(message){
+    let toast=q('#securityToast');
+    if(!toast){
+      toast=document.createElement('div');
+      toast.id='securityToast';
+      toast.className='security-toast';
+      document.body.appendChild(toast);
+    }
+    toast.innerHTML='<i class="fa-solid fa-shield-halved"></i><span>'+esc(message)+'</span>';
+    if(typeof applyLocalIcons==='function') applyLocalIcons(toast);
+    toast.classList.add('show');
+    clearTimeout(showToast._timer);
+    showToast._timer=setTimeout(function(){toast.classList.remove('show');},2600);
+  }
+
+  function installSecurityGuard(){
+    if(window.__securityGuardV14Installed) return;
+    window.__securityGuardV14Installed=true;
+    document.addEventListener('contextmenu',function(e){
+      e.preventDefault();
+      showToast(tr('Klik kanan dinonaktifkan agar materi dan hasil belajar tetap aman.','右クリックは、学習データを守るため無効になっています。'));
+    },true);
+    document.addEventListener('keydown',function(e){
+      if(q('#adminWeeklyReminderModal.active') && e.key==='Escape'){
+        e.preventDefault();
+        e.stopPropagation();
+        showToast(tr('Selesaikan download PDF admin terlebih dahulu.','先に管理者PDFの保存を完了してください。'));
+        return false;
+      }
+      const key=String(e.key||'').toLowerCase();
+      const blocked = e.key==='F12'
+        || (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(key))
+        || (e.metaKey && e.altKey && ['i','j','c'].includes(key))
+        || ((e.ctrlKey||e.metaKey) && ['u','s'].includes(key));
+      if(blocked){
+        e.preventDefault();
+        e.stopPropagation();
+        showToast(tr('Inspect element dan pintasan developer dinonaktifkan pada website ini.','このサイトでは開発者ツールのショートカットを無効にしています。'));
+        return false;
+      }
+    },true);
+  }
+
+  function ensureDots(count){
+    const dots=q('#page-home .hero-art > .dots');
+    if(!dots) return;
+    const n=Math.max(1,Math.min(3,Number(count)||3));
+    dots.innerHTML=Array.from({length:n},function(_,i){return '<span class="dot '+(i===0?'active':'')+'"></span>';}).join('');
+  }
+  let lastHeroFavSignature=null;
+  function applyFavoriteHeroSlides(force){
+    try{
+      if(typeof heroSlides==='undefined' || !Array.isArray(heroSlides)) return;
+      if(!heroSlides.__originalSlidesV14) heroSlides.__originalSlidesV14=heroSlides.slice();
+      const favs=getFavSet();
+      const favSignature=Array.from(favs).sort().join('~');
+      if(!force && heroSlides.__v14FavoriteApplied && favSignature===lastHeroFavSignature){
+        if(typeof renderHeroSlide==='function') renderHeroSlide();
+        return;
+      }
+      lastHeroFavSignature=favSignature;
+      heroSlides.__v14FavoriteApplied=true;
+      const favRows=allVocab().filter(function(v){return favs.has(favId(v));});
+      const source=favRows.length ? shuffle(favRows).slice(0,3).map(function(v){
+        return {tag:v.cat||'Favorit',jp:v.jp||'',romaji:v.romaji||'',meaning:v.arti||'',speak:v.jp||v.kana||''};
+      }) : heroSlides.__originalSlidesV14.slice();
+      heroSlides.splice(0,heroSlides.length,...source);
+      try{heroSlideIndex=0;}catch(e){}
+      ensureDots(heroSlides.length);
+      if(typeof renderHeroSlide==='function') renderHeroSlide();
+      if(typeof startHeroSlider==='function') startHeroSlider();
+    }catch(e){console.warn('Favorite homepage preview gagal diperbarui:',e);}
+  }
+  function patchFavoriteHeroRefresh(){
+    try{
+      if(typeof toggleFavorite==='function' && !toggleFavorite.__favoriteHeroV14){
+        const old=toggleFavorite;
+        const next=function(){
+          const out=old.apply(this,arguments);
+          setTimeout(function(){applyFavoriteHeroSlides(true);},40);
+          return out;
+        };
+        next.__favoriteHeroV14=true;
+        toggleFavorite=next;
+        window.toggleFavorite=next;
+      }
+    }catch(e){}
+  }
+
+  function fmtDate(value,language){
+    const d=value?new Date(value):new Date();
+    if(language==='ja') return d.getFullYear()+'年'+pad2(d.getMonth()+1)+'月'+pad2(d.getDate())+'日 '+pad2(d.getHours())+':'+pad2(d.getMinutes());
+    const m=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+    return pad2(d.getDate())+' '+m[d.getMonth()]+' '+d.getFullYear()+', '+pad2(d.getHours())+':'+pad2(d.getMinutes());
+  }
+  function stats(records){
+    records=Array.isArray(records)?records:[];
+    const total=records.length;
+    const benar=records.filter(r=>!!r.status).length;
+    const salah=Math.max(0,total-benar);
+    const skor=total?+(benar/total*100).toFixed(1):0;
+    return {total,benar,salah,skor};
+  }
+  function demoRecords(p){
+    const total=Math.max(0,Number(p.total)||0);
+    const benar=Math.max(0,Number(p.benar)||0);
+    const vocab=allVocab();
+    return Array.from({length:total},function(_,i){
+      const v=vocab[i%Math.max(1,vocab.length)] || {};
+      return {jp:v.jp||'-',kana:v.kana||'',romaji:v.romaji||'',arti:v.arti||'',cat:v.cat||'-',status:i<benar,waktu:6+(i%10)};
+    });
+  }
+  function buildRowsForPdf(){
+    const rows=[];
+    const history=parse(localStorage.getItem(HISTORY_KEY),[]).filter(x=>x && Array.isArray(x.records) && x.records.length);
+    const last=parse(localStorage.getItem(LAST_KEY),null);
+    if(last && Array.isArray(last.records) && last.records.length && !history.some(x=>x && x.id===last.id)) history.push(last);
+    history.forEach(function(h,i){
+      const s=stats(h.records);
+      rows.push({nama:h.user||h.nama||'Peserta '+(i+1),grup:h.group||h.grup||'-',tanggalID:fmtDate(h.endedAt||h.startedAt,'id'),tanggalJA:fmtDate(h.endedAt||h.startedAt,'ja'),total:s.total,benar:s.benar,salah:s.salah,skor:s.skor,source:'history'});
+    });
+    try{
+      if(Array.isArray(participants)){
+        participants.forEach(function(p){
+          const rec=demoRecords(p), s=stats(rec);
+          rows.push({nama:p.nama||'-',grup:p.grup||'-',tanggalID:p.tanggal||fmtDate(new Date(),'id'),tanggalJA:p.tanggalJP||fmtDate(new Date(),'ja'),total:s.total,benar:s.benar,salah:s.salah,skor:Number(p.skor)||s.skor,source:'demo'});
+        });
+      }
+    }catch(e){}
+    return rows;
+  }
+  function reportElement(rows,language){
+    const isJA=language==='ja';
+    const total=rows.length;
+    const avg=total?rows.reduce((s,r)=>s+(Number(r.skor)||0),0)/total:0;
+    const high=[...rows].sort((a,b)=>b.skor-a.skor)[0]||{nama:'-',skor:0};
+    const low=[...rows].sort((a,b)=>a.skor-b.skor)[0]||{nama:'-',skor:0};
+    const el=document.createElement('div');
+    el.className='auto-admin-pdf-sheet';
+    el.style.cssText='width:1120px;padding:28px;background:#fff;color:#111827;font-family:Plus Jakarta Sans,Inter,Arial,sans-serif;';
+    const rowsHtml=rows.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td>'+esc(r.nama)+'</td><td>'+esc(r.grup)+'</td><td>'+esc(isJA?r.tanggalJA:r.tanggalID)+'</td><td>'+r.total+'</td><td>'+r.benar+'</td><td>'+r.salah+'</td><td>'+Number(r.skor||0).toFixed(1)+'%</td><td>'+esc(Number(r.skor)>=70?(isJA?'高スコア':'Tinggi'):(isJA?'低スコア':'Rendah'))+'</td></tr>';}).join('');
+    el.innerHTML='<style>.auto-admin-pdf-sheet *{box-sizing:border-box}.pdf-head{text-align:center;border-bottom:3px solid #10213f;padding-bottom:14px;margin-bottom:16px}.pdf-head h1{font-size:23px;margin:0 0 5px;letter-spacing:.03em}.pdf-head p{margin:0;color:#64748b}.pdf-meta,.pdf-table{width:100%;border-collapse:collapse}.pdf-meta td,.pdf-table th,.pdf-table td{border:1px solid #d1d5db;padding:8px 9px;font-size:12px}.pdf-meta td:first-child{width:210px;background:#f8fafc;font-weight:800}.pdf-summary{display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid #d1d5db;border-top:1px solid #d1d5db;margin:14px 0}.pdf-summary div{padding:10px;text-align:center;border-right:1px solid #d1d5db;border-bottom:1px solid #d1d5db}.pdf-summary span{display:block;color:#64748b;font-size:11px;font-weight:800}.pdf-summary strong{display:block;font-size:20px;margin-top:4px}.pdf-table th{background:#f3f0ff;color:#4c1d95;text-align:left;font-weight:900}.pdf-sign{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:32px;text-align:center}.pdf-line{border-top:1px solid #111827;width:70%;margin:54px auto 0}.pdf-foot{text-align:center;color:#64748b;font-size:11px;margin-top:18px}</style>'+
+      '<section class="pdf-head"><h1>'+esc(isJA?'全参加者PDFレポート':'LAPORAN PDF HASIL SEMUA PESERTA')+'</h1><p>'+esc(isJA?'管理者リマインダーとして自動保存された参加者結果です。':'Hasil semua peserta yang diunduh otomatis melalui pengingat admin mingguan.')+'</p></section>'+
+      '<table class="pdf-meta"><tr><td>'+esc(isJA?'出力日時':'Tanggal Unduh')+'</td><td>'+esc(fmtDate(new Date(),language))+'</td></tr><tr><td>'+esc(isJA?'Admin':'Admin')+'</td><td>admin404</td></tr><tr><td>'+esc(isJA?'Sumber Data':'Sumber Data')+'</td><td>'+esc(isJA?'ブラウザ保存履歴 + data peserta aplikasi':'Riwayat browser + data peserta aplikasi')+'</td></tr></table>'+
+      '<section class="pdf-summary"><div><span>'+esc(isJA?'参加者数':'Total Peserta')+'</span><strong>'+total+'</strong></div><div><span>'+esc(isJA?'平均スコア':'Rata-rata Skor')+'</span><strong>'+avg.toFixed(1)+'%</strong></div><div><span>'+esc(isJA?'最高スコア':'Skor Tertinggi')+'</span><strong>'+Number(high.skor||0).toFixed(1)+'%</strong></div><div><span>'+esc(isJA?'最低スコア':'Skor Terendah')+'</span><strong>'+Number(low.skor||0).toFixed(1)+'%</strong></div><div><span>'+esc(isJA?'履歴件数':'Jumlah Data')+'</span><strong>'+total+'</strong></div></section>'+
+      '<table class="pdf-table"><thead><tr><th>No.</th><th>'+esc(isJA?'氏名':'Nama')+'</th><th>'+esc(isJA?'グループ':'Grup')+'</th><th>'+esc(isJA?'最終日時':'Tanggal Terakhir')+'</th><th>'+esc(isJA?'合計':'Total')+'</th><th>'+esc(isJA?'正解':'Benar')+'</th><th>'+esc(isJA?'不正解':'Salah')+'</th><th>'+esc(isJA?'スコア':'Skor')+'</th><th>'+esc(isJA?'状態':'Status')+'</th></tr></thead><tbody>'+rowsHtml+'</tbody></table>'+
+      '<section class="pdf-sign"><div>'+esc(isJA?'確認者':'Diperiksa oleh')+'<div class="pdf-line"></div></div><div>'+esc(isJA?'管理者':'Admin')+'<div class="pdf-line"></div></div></section><div class="pdf-foot">Kosakata Jepang • Kartu. Dengar. Ingat.</div>';
+    return el;
+  }
+  async function savePdf(el,filename){
+    document.body.appendChild(el);
+    try{
+      if(!window.html2pdf) throw new Error('html2pdf belum dimuat.');
+      await window.html2pdf().set({margin:[8,8,8,8],filename:filename,image:{type:'jpeg',quality:.98},html2canvas:{scale:2,useCORS:true,letterRendering:true},jsPDF:{unit:'mm',format:'a4',orientation:'landscape'}}).from(el).save();
+    }finally{el.remove();}
+  }
+
+  function ensureAdminReminderModal(){
+    if(q('#adminWeeklyReminderModal')) return;
+    const modal=document.createElement('div');
+    modal.id='adminWeeklyReminderModal';
+    modal.className='modal-overlay forced-admin-modal';
+    modal.innerHTML='<div class="modal small-modal"><div class="modal-logo"><i class="fa-solid fa-file-pdf"></i></div><h2 class="modal-title">'+esc(tr('Pengingat Admin Mingguan','管理者の週次リマインダー'))+'</h2><p class="modal-desc">'+esc(tr('Akun admin404 sudah tidak melakukan akses sekitar 1 minggu. Untuk menjaga arsip tetap aman, unduh PDF hasil semua peserta terlebih dahulu.','admin404 は約1週間アクセスしていません。記録を安全に保つため、先に全参加者のPDF結果を保存してください。'))+'</p><div class="forced-admin-note"><i class="fa-solid fa-shield-halved"></i><span>'+esc(tr('Setelah PDF selesai diunduh, sistem akan otomatis kembali ke homepage. Popup ini khusus akun admin404.','PDF保存が完了すると、自動的にホームページへ戻ります。この通知は admin404 専用です。'))+'</span></div><button class="btn btn-primary forced-admin-download-btn" style="width:100%" onclick="downloadForcedAdminWeeklyPdf()"><i class="fa-solid fa-download"></i> '+esc(tr('Download PDF Hasil Semua Peserta','全参加者結果PDFをダウンロード'))+'</button><div class="forced-admin-progress"><i class="fa-solid fa-spinner fa-spin"></i> '+esc(tr('Menyiapkan dan mengunduh PDF...','PDFを作成して保存しています...'))+'</div></div>';
+    document.body.appendChild(modal);
+    if(typeof applyLocalIcons==='function') applyLocalIcons(modal);
+  }
+  let reminderShowing=false;
+  function openAdminReminder(){
+    ensureAdminReminderModal();
+    const modal=q('#adminWeeklyReminderModal');
+    if(!modal || modal.classList.contains('active')) return;
+    reminderShowing=true;
+    modal.classList.remove('downloading');
+    if(typeof openModal==='function') openModal('adminWeeklyReminderModal');
+    else modal.classList.add('active');
+  }
+  window.downloadForcedAdminWeeklyPdf=async function(){
+    const modal=q('#adminWeeklyReminderModal');
+    try{
+      modal?.classList.add('downloading');
+      const rows=buildRowsForPdf();
+      const language=currentLang();
+      const filename=language==='ja'?'admin404_全参加者結果_週次リマインダー.pdf':'admin404_Hasil_Semua_Peserta_Pengingat_Mingguan.pdf';
+      await savePdf(reportElement(rows,language),filename);
+      localStorage.setItem(ADMIN_LAST_ACTIVE_KEY,String(now()));
+      localStorage.setItem(ADMIN_LAST_PDF_KEY,String(now()));
+      reminderShowing=false;
+      if(typeof closeModal==='function') closeModal('adminWeeklyReminderModal');
+      else modal?.classList.remove('active');
+      if(typeof showPage==='function') showPage('home');
+      else location.hash='#home';
+      showToast(tr('PDF hasil semua peserta sudah diunduh. Admin kembali ke homepage.','全参加者結果PDFを保存しました。ホームページへ戻りました。'));
+    }catch(e){
+      console.error(e);
+      alert(tr('PDF belum berhasil diunduh. Izinkan download otomatis pada browser, lalu klik download kembali.','PDF保存に失敗しました。ブラウザの自動ダウンロードを許可して、もう一度クリックしてください。'));
+    }finally{modal?.classList.remove('downloading');}
+  };
+
+  function maybeTriggerAdminWeeklyReminder(source){
+    if(!isAdmin404User() || reminderShowing) return;
+    const raw=Number(localStorage.getItem(ADMIN_LAST_ACTIVE_KEY)||0);
+    if(!raw){
+      localStorage.setItem(ADMIN_LAST_ACTIVE_KEY,String(now()));
+      return;
+    }
+    if(now()-raw>=WEEK_MS){
+      setTimeout(openAdminReminder,180);
+    }else if(source==='manual-login' || source==='restore-session'){
+      localStorage.setItem(ADMIN_LAST_ACTIVE_KEY,String(now()));
+    }
+  }
+  function patchAdminLoginReminder(){
+    try{
+      if(window.__weeklyAdminV14StartWrapped) return;
+      if(typeof startLearning==='function'){
+        window.__weeklyAdminV14StartWrapped=true;
+        const old=startLearning;
+        const next=function(){
+          const out=old.apply(this,arguments);
+          setTimeout(function(){maybeTriggerAdminWeeklyReminder('manual-login');},80);
+          return out;
+        };
+        next.__weeklyAdminV14=true;
+        startLearning=next;
+        window.startLearning=next;
+      }
+    }catch(e){}
+    setTimeout(function(){maybeTriggerAdminWeeklyReminder('restore-session');},220);
+  }
+
+  function isQuizActive(){
+    const page=q('#page-practice');
+    return !!page && page.classList.contains('active');
+  }
+  function resetQuizFocusCount(){try{sessionStorage.setItem(QUIZ_FOCUS_KEY,'0');}catch(e){}}
+  let lastFocusViolationAt=0;
+  let pendingQuizAction=null;
+  function ensureQuizFocusModal(){
+    if(q('#quizFocusModal')) return;
+    const modal=document.createElement('div');
+    modal.id='quizFocusModal';
+    modal.className='modal-overlay quiz-focus-modal';
+    modal.innerHTML='<div class="modal small-modal"><button class="close-modal" onclick="closeModal(\'quizFocusModal\')" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button><div class="modal-logo"><i class="fa-solid fa-triangle-exclamation"></i></div><h2 class="modal-title" id="quizFocusTitle"></h2><p class="modal-desc" id="quizFocusDesc"></p><div class="focus-quote" id="quizFocusQuote"></div><button class="btn btn-primary" style="width:100%;margin-top:22px" onclick="closeModal(\'quizFocusModal\')"><i class="fa-solid fa-circle-check"></i> '+esc(tr('Saya Fokus Lagi','もう一度集中します'))+'</button></div>';
+    document.body.appendChild(modal);
+    if(typeof applyLocalIcons==='function') applyLocalIcons(modal);
+  }
+  function showQuizFocusWarning(type){
+    ensureQuizFocusModal();
+    const second=type==='home';
+    const title=q('#quizFocusTitle');
+    const desc=q('#quizFocusDesc');
+    const quote=q('#quizFocusQuote');
+    if(title) title.textContent=second?tr('Kuis Dikembalikan ke Homepage','クイズをホームへ戻しました'):tr('Tetap Fokus di Soal Kuis','クイズに集中しましょう');
+    if(desc) desc.textContent=second?tr('Kamu meninggalkan halaman kuis untuk kedua kalinya. Sistem mengembalikan halaman ke beranda.','クイズページから2回離れたため、ホームページへ戻しました。'):tr('Jangan membuka tab baru saat mengerjakan kuis. Jaga fokus, jawab dengan jujur, dan selesaikan soal dengan percaya diri.','クイズ中に新しいタブを開かないでください。集中して、正直に、自信を持って答えましょう。');
+    if(quote) quote.textContent=second?tr('Belajar terbaik lahir dari fokus dan kejujuran.','最高の学びは、集中と誠実さから生まれます。'):tr('Fokus dulu, hasil terbaik menyusul. Jangan curang, kamu pasti bisa.','まず集中。最高の結果はその後についてきます。');
+    if(second){
+      try{if(typeof safelyStopVoiceFinal==='function') safelyStopVoiceFinal();}catch(e){}
+      try{if(typeof stopCurrentRecognition==='function') stopCurrentRecognition();}catch(e){}
+      if(typeof showPage==='function') showPage('home');
+      resetQuizFocusCount();
+    }
+    if(typeof openModal==='function') openModal('quizFocusModal');
+    else q('#quizFocusModal')?.classList.add('active');
+    if(typeof applyLocalIcons==='function') applyLocalIcons(q('#quizFocusModal'));
+  }
+  function deliverPendingQuizAction(){
+    if(!pendingQuizAction) return;
+    const action=pendingQuizAction;
+    pendingQuizAction=null;
+    showQuizFocusWarning(action);
+  }
+  function recordQuizFocusViolation(source){
+    if(!isQuizActive()) return;
+    const t=now();
+    if(t-lastFocusViolationAt<900) return;
+    lastFocusViolationAt=t;
+    let count=0;
+    try{count=Number(sessionStorage.getItem(QUIZ_FOCUS_KEY)||0)||0;}catch(e){}
+    count+=1;
+    try{sessionStorage.setItem(QUIZ_FOCUS_KEY,String(count));}catch(e){}
+    pendingQuizAction=count>=2?'home':'warn';
+    if(!document.hidden) deliverPendingQuizAction();
+  }
+  function installQuizFocusGuard(){
+    if(window.__quizFocusGuardV14Installed) return;
+    window.__quizFocusGuardV14Installed=true;
+    document.addEventListener('keydown',function(e){
+      if(!isQuizActive()) return;
+      const key=String(e.key||'').toLowerCase();
+      if((e.ctrlKey||e.metaKey) && ['t','n'].includes(key)){
+        e.preventDefault();
+        e.stopPropagation();
+        recordQuizFocusViolation('new-tab-shortcut');
+        return false;
+      }
+    },true);
+    document.addEventListener('visibilitychange',function(){
+      if(document.hidden) recordQuizFocusViolation('visibility-hidden');
+      else setTimeout(deliverPendingQuizAction,120);
+    });
+    try{
+      if(typeof showPage==='function' && !window.__quizFocusV14ShowPageWrapped){
+        window.__quizFocusV14ShowPageWrapped=true;
+        const old=showPage;
+        const next=function(page){
+          if(page==='practice') resetQuizFocusCount();
+          return old.apply(this,arguments);
+        };
+        next.__quizFocusV14=true;
+        showPage=next;
+        window.showPage=next;
+      }
+    }catch(e){}
+    try{
+      if(typeof beginConfiguredQuiz==='function' && !window.__quizFocusV14BeginWrapped){
+        window.__quizFocusV14BeginWrapped=true;
+        const oldBegin=beginConfiguredQuiz;
+        const nextBegin=function(){resetQuizFocusCount();return oldBegin.apply(this,arguments);};
+        nextBegin.__quizFocusV14=true;
+        beginConfiguredQuiz=nextBegin;
+        window.beginConfiguredQuiz=nextBegin;
+      }
+    }catch(e){}
+  }
+
+  function init(){
+    installSecurityGuard();
+    patchFavoriteHeroRefresh();
+    applyFavoriteHeroSlides();
+    patchAdminLoginReminder();
+    installQuizFocusGuard();
+    const activePatchModal=q('#adminWeeklyReminderModal')||q('#quizFocusModal')||q('#securityToast');
+    if(activePatchModal && typeof applyLocalIcons==='function') applyLocalIcons(activePatchModal);
+  }
+
+  document.addEventListener('DOMContentLoaded',init);
+  window.addEventListener('load',init);
+  setTimeout(init,120);
+  setTimeout(init,700);
+  setTimeout(init,1800);
+})();
+</script>
+
+
+<!-- === PATCH 2026-07-02 v15: performance stabilizer + safer guards === -->
+<style id="patch-performance-stabilizer-v15-style">
+  /* Mengurangi jank saat banyak elemen admin/riwayat dirender */
+  #page-admin .table-scroll,
+  #page-materi .vocab-grid,
+  #page-home .hero-art{content-visibility:auto;contain-intrinsic-size:1px 620px;}
+  .security-toast{will-change:transform,opacity;}
+</style>
+<script id="patch-performance-stabilizer-v15-script">
+(function(){
+  function q(sel,root){return (root||document).querySelector(sel);}
+  function parse(raw,fallback){try{return raw?JSON.parse(raw):fallback;}catch(e){return fallback;}}
+  function idle(fn,delay){
+    if('requestIdleCallback' in window) return requestIdleCallback(fn,{timeout:delay||600});
+    return setTimeout(fn,delay||80);
+  }
+  function debounce(fn,wait){
+    let timer=0;
+    return function(){
+      const ctx=this,args=arguments;
+      clearTimeout(timer);
+      timer=setTimeout(function(){fn.apply(ctx,args);},wait||80);
+    };
+  }
+
+  // Render filter peserta dibuat ringan saat user mengetik cepat.
+  try{
+    if(typeof renderParticipants==='function' && !renderParticipants.__fastV15){
+      const original=renderParticipants;
+      const fast=function(){return original.apply(this,arguments);};
+      fast.__fastV15=true;
+      window.renderParticipants=fast;
+      renderParticipants=fast;
+      const search=q('#participantSearch');
+      if(search && !search.__fastInputV15){
+        search.__fastInputV15=true;
+        search.removeAttribute('oninput');
+        search.addEventListener('input',debounce(function(){renderParticipants();},90));
+      }
+    }
+  }catch(e){}
+
+  // Search kosakata juga dibuat debounce supaya tidak terasa berat di HP/laptop lambat.
+  try{
+    const vocabSearch=q('#vocabSearch');
+    if(vocabSearch && typeof renderVocab==='function' && !vocabSearch.__fastInputV15){
+      vocabSearch.__fastInputV15=true;
+      vocabSearch.removeAttribute('oninput');
+      vocabSearch.addEventListener('input',debounce(function(){renderVocab();},80));
+    }
+  }catch(e){}
+
+  // Perbaikan admin reminder: bila data kosong, PDF tetap berisi baris keterangan agar html2pdf tidak error/blank.
+  try{
+    if(typeof window.downloadForcedAdminWeeklyPdf==='function' && !window.downloadForcedAdminWeeklyPdf.__safeV15){
+      const oldDownload=window.downloadForcedAdminWeeklyPdf;
+      window.downloadForcedAdminWeeklyPdf=async function(){
+        const btn=q('.forced-admin-download-btn');
+        if(btn){btn.disabled=true;btn.setAttribute('aria-busy','true');}
+        try{return await oldDownload.apply(this,arguments);}
+        finally{if(btn){btn.disabled=false;btn.removeAttribute('aria-busy');}}
+      };
+      window.downloadForcedAdminWeeklyPdf.__safeV15=true;
+    }
+  }catch(e){}
+
+  // Cegah popup kuis muncul saat user berpindah halaman dari tombol internal, bukan membuka tab baru.
+  try{
+    if(typeof showPage==='function' && !showPage.__focusSafeV15){
+      const oldShow=showPage;
+      const next=function(page){
+        try{sessionStorage.setItem('kosakata_jepang_internal_navigation_v15',String(Date.now()));}catch(e){}
+        return oldShow.apply(this,arguments);
+      };
+      next.__focusSafeV15=true;
+      window.showPage=next;
+      showPage=next;
+    }
+  }catch(e){}
+
+  // Jalankan perbaikan input setelah DOM/patch lama selesai, tetapi pakai idle supaya tidak berebut saat load awal.
+  function initFastInputs(){
+    idle(function(){
+      try{
+        const ps=q('#participantSearch');
+        if(ps && !ps.__fastInputV15 && typeof renderParticipants==='function'){
+          ps.__fastInputV15=true; ps.removeAttribute('oninput');
+          ps.addEventListener('input',debounce(function(){renderParticipants();},90));
+        }
+        const vs=q('#vocabSearch');
+        if(vs && !vs.__fastInputV15 && typeof renderVocab==='function'){
+          vs.__fastInputV15=true; vs.removeAttribute('oninput');
+          vs.addEventListener('input',debounce(function(){renderVocab();},80));
+        }
+      }catch(e){}
+    },180);
+  }
+  document.addEventListener('DOMContentLoaded',initFastInputs);
+  window.addEventListener('load',initFastInputs);
+  setTimeout(initFastInputs,700);
 })();
 </script>
 
