@@ -2751,7 +2751,243 @@
       #page-hasil .circle-score strong{font-size:48px!important;}
     }
 
+
+    /* === REVISI MUTLAK HASIL LATIHAN: mengikuti gambar referensi === */
+    #page-hasil .result-page-container{max-width:1320px!important;}
+    #page-hasil .result-top-grid{
+      display:grid!important;
+      grid-template-columns:minmax(0,1.45fr) minmax(390px,.80fr)!important;
+      gap:26px!important;
+      align-items:stretch!important;
+      margin-bottom:20px!important;
+    }
+    #page-hasil .result-main-title{
+      font-size:34px!important;
+      font-weight:700!important;
+      letter-spacing:-.04em!important;
+      color:#10213f!important;
+    }
+    #page-hasil .result-main-desc,
+    #page-hasil .date-line{font-weight:500!important;color:#52617c!important;}
+
+    #page-hasil .result-score-hero{
+      min-height:265px!important;
+      padding:24px 34px!important;
+      border-radius:18px!important;
+      overflow:hidden!important;
+      position:relative!important;
+      background-image:
+        linear-gradient(90deg,rgba(247,251,255,.96) 0%,rgba(247,251,255,.88) 34%,rgba(247,251,255,.54) 62%,rgba(255,241,247,.25) 100%),
+        url('https://iili.io/C7G05qQ.png')!important;
+      background-size:cover!important;
+      background-position:center right!important;
+      background-repeat:no-repeat!important;
+      background-color:#f7fbff!important;
+      box-shadow:0 14px 38px rgba(80,70,140,.08)!important;
+    }
+    #page-hasil .result-score-hero:before,
+    #page-hasil .result-score-hero:after{display:none!important;content:none!important;}
+    #page-hasil .result-score-inner{
+      min-height:217px!important;
+      display:flex!important;
+      align-items:center!important;
+      gap:52px!important;
+      position:relative!important;
+      z-index:1!important;
+    }
+    #page-hasil .circle-score{
+      width:190px!important;
+      height:190px!important;
+      flex:0 0 190px!important;
+      border-radius:50%!important;
+      background:conic-gradient(#7c4dff var(--scoreDeg,0deg),#efeaff var(--scoreDeg,0deg) 360deg)!important;
+      display:grid!important;
+      place-items:center!important;
+      box-shadow:0 18px 36px rgba(124,77,255,.13)!important;
+    }
+    #page-hasil .circle-score div{
+      width:152px!important;
+      height:152px!important;
+      border-radius:50%!important;
+      background:#fff!important;
+      display:flex!important;
+      flex-direction:column!important;
+      align-items:center!important;
+      justify-content:center!important;
+      text-align:center!important;
+      box-shadow:inset 0 0 0 1px #edf0f6,0 8px 22px rgba(80,70,140,.08)!important;
+    }
+    #page-hasil .circle-score strong,
+    #page-hasil #scorePercent{
+      font-size:52px!important;
+      line-height:.95!important;
+      font-weight:700!important;
+      letter-spacing:-.055em!important;
+      color:#10213f!important;
+      white-space:nowrap!important;
+      max-width:132px!important;
+      display:block!important;
+      transform:translateX(-1px)!important;
+    }
+    #page-hasil .circle-score span{
+      display:block!important;
+      color:#7c4dff!important;
+      font-size:14px!important;
+      font-weight:600!important;
+      margin-top:12px!important;
+    }
+    #page-hasil .result-score-copy{max-width:440px!important;}
+    #page-hasil .result-score-badge{
+      height:34px!important;
+      padding:0 14px!important;
+      border-radius:10px!important;
+      background:#f1eaff!important;
+      color:#6b3df4!important;
+      border:0!important;
+      font-size:13px!important;
+      font-weight:600!important;
+      display:inline-flex!important;
+      align-items:center!important;
+      gap:8px!important;
+      box-shadow:none!important;
+    }
+    #page-hasil .result-score-copy h2{
+      margin:20px 0 12px!important;
+      font-size:31px!important;
+      line-height:1.18!important;
+      font-weight:700!important;
+      letter-spacing:-.04em!important;
+      color:#10213f!important;
+    }
+    #page-hasil .result-score-copy p{
+      max-width:420px!important;
+      font-size:15px!important;
+      line-height:1.7!important;
+      font-weight:500!important;
+      color:#52617c!important;
+    }
+
+    #page-hasil .result-summary-card{
+      min-height:265px!important;
+      padding:28px!important;
+      border-radius:18px!important;
+      background:rgba(255,255,255,.95)!important;
+      display:flex!important;
+      flex-direction:column!important;
+      justify-content:center!important;
+      box-shadow:0 14px 38px rgba(80,70,140,.08)!important;
+    }
+    #page-hasil .result-summary-card h3{
+      font-size:17px!important;
+      line-height:1.25!important;
+      font-weight:700!important;
+      color:#10213f!important;
+      margin:0 0 18px!important;
+      letter-spacing:-.02em!important;
+    }
+    #page-hasil .result-summary-grid{
+      display:grid!important;
+      grid-template-columns:repeat(2,minmax(0,1fr))!important;
+      gap:14px!important;
+      margin:0!important;
+    }
+    #page-hasil .summary-tile{
+      min-height:88px!important;
+      padding:18px!important;
+      border-radius:12px!important;
+      border:1px solid #e5e9f2!important;
+      background:rgba(255,255,255,.98)!important;
+      display:flex!important;
+      align-items:center!important;
+      gap:16px!important;
+      box-shadow:none!important;
+    }
+    #page-hasil .summary-tile .icon-bubble{
+      width:54px!important;
+      height:54px!important;
+      min-width:54px!important;
+      flex:0 0 54px!important;
+      border-radius:50%!important;
+      display:inline-flex!important;
+      align-items:center!important;
+      justify-content:center!important;
+      box-shadow:none!important;
+      opacity:1!important;
+    }
+    #page-hasil .summary-tile .icon-bubble.purple{background:#f1eaff!important;color:#7c4dff!important;}
+    #page-hasil .summary-tile .icon-bubble.green{background:#ddf8e9!important;color:#10b981!important;}
+    #page-hasil .summary-tile .icon-bubble.red-soft{background:#ffe4ec!important;color:#ff3b6b!important;}
+    #page-hasil .summary-tile .icon-bubble.blue{background:#eaf2ff!important;color:#3478f6!important;}
+    #page-hasil .summary-tile .icon-bubble i,
+    #page-hasil .summary-tile .icon-bubble i.svg-fa-fallback{
+      color:inherit!important;
+      width:22px!important;
+      height:22px!important;
+      min-width:22px!important;
+      font-size:22px!important;
+    }
+    #page-hasil .summary-tile .icon-bubble svg{
+      stroke:currentColor!important;
+      fill:none!important;
+      stroke-width:2.15!important;
+    }
+    #page-hasil .summary-tile strong{
+      display:block!important;
+      font-size:27px!important;
+      line-height:1!important;
+      font-weight:700!important;
+      color:#111827!important;
+      letter-spacing:-.035em!important;
+      margin:0 0 7px!important;
+    }
+    #page-hasil .summary-tile span:not(.icon-bubble){
+      display:block!important;
+      font-size:12px!important;
+      line-height:1.35!important;
+      font-weight:500!important;
+      color:#52617c!important;
+    }
+
+    #page-hasil .result-action-row{
+      display:grid!important;
+      grid-template-columns:1.05fr 1fr 1fr!important;
+      gap:12px!important;
+      margin:0!important;
+    }
+    #page-hasil .result-action-row .btn{
+      height:44px!important;
+      min-height:44px!important;
+      border-radius:9px!important;
+      font-size:14px!important;
+      font-weight:600!important;
+      padding:0 18px!important;
+      box-shadow:none!important;
+    }
+    #page-hasil .result-review-card{
+      padding:28px!important;
+      border-radius:18px!important;
+      background:rgba(255,255,255,.95)!important;
+      box-shadow:0 14px 38px rgba(80,70,140,.08)!important;
+    }
+    #page-hasil .result-review-card h3{font-size:17px!important;font-weight:700!important;color:#10213f!important;}
+    #page-hasil .result-data-table th{font-weight:500!important;background:#fff!important;color:#64748b!important;}
+    #page-hasil .result-data-table td{font-weight:500!important;color:#31405e!important;}
+    #page-hasil .status{font-weight:600!important;}
+
+    @media(max-width:1100px){
+      #page-hasil .result-top-grid{grid-template-columns:1fr!important;}
+    }
+    @media(max-width:760px){
+      #page-hasil .result-score-inner{flex-direction:column!important;text-align:center!important;gap:22px!important;}
+      #page-hasil .result-summary-grid,
+      #page-hasil .result-action-row{grid-template-columns:1fr!important;}
+      #page-hasil .circle-score{width:168px!important;height:168px!important;flex-basis:168px!important;}
+      #page-hasil .circle-score div{width:136px!important;height:136px!important;}
+      #page-hasil .circle-score strong,#page-hasil #scorePercent{font-size:44px!important;max-width:120px!important;}
+    }
+
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
   <header class="app-header">
@@ -2897,7 +3133,7 @@
 
             <div class="result-actions result-action-row">
               <button class="btn btn-primary" onclick="showPage('materi')"><i class="fa-solid fa-book-open"></i> Review Kosakata</button>
-              <button class="btn btn-secondary" onclick="alert('PDF berhasil disiapkan')"><i class="fa-solid fa-download"></i> Simpan PDF</button>
+              <button class="btn btn-secondary" onclick="downloadResultPdf()"><i class="fa-solid fa-download"></i> Simpan PDF</button>
               <button class="btn btn-secondary" onclick="resetPractice(); showPage('practice')"><i class="fa-solid fa-rotate-right"></i> Ulangi Latihan</button>
             </div>
           </div>
@@ -4269,6 +4505,165 @@
       document.addEventListener('DOMContentLoaded',()=>{ if(typeof updateResult==='function') updateResult(); });
       setTimeout(()=>{ if(typeof updateResult==='function') updateResult(); },0);
     })();
+
+    /* === PATCH FINAL: hasil kuis persisten + PDF bilingual + sinkron tampilan hasil === */
+    (function(){
+      const RESULT_KEY='kosakata_jepang_last_quiz_result_v4';
+      function safeJsonParse(raw){try{return raw?JSON.parse(raw):null;}catch(e){return null;}}
+      function pad2(n){return String(Math.max(0,Math.floor(n))).padStart(2,'0');}
+      function fmtTime(sec){sec=Math.max(0,Math.round(Number(sec)||0));return `${pad2(sec/60)}:${pad2(sec%60)}`;}
+      function fmtDateID(date){
+        const d=date?new Date(date):new Date();
+        const m=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+        return `${pad2(d.getDate())} ${m[d.getMonth()]} ${d.getFullYear()}, ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+      }
+      function fmtDateJP(date){
+        const d=date?new Date(date):new Date();
+        return `${d.getFullYear()}年${pad2(d.getMonth()+1)}月${pad2(d.getDate())}日 ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+      }
+      function htmlEscape(v){return String(v??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));}
+      function currentResultPayload(){
+        const records=Array.isArray(window.quizSessionRecords)?window.quizSessionRecords:[];
+        return {
+          records,
+          startedAt: window.quizSessionStartedAt || null,
+          endedAt: window.quizSessionEndedAt || (records.length?new Date().toISOString():null),
+          user: window.currentUser || localStorage.getItem('kosakataUser') || '-',
+          direction: window.quizDirection || 'id-jp',
+          orderMode: window.quizOrderMode || '-'
+        };
+      }
+      function saveResultPayload(){
+        try{
+          const payload=currentResultPayload();
+          if(payload.records && payload.records.length) localStorage.setItem(RESULT_KEY,JSON.stringify(payload));
+        }catch(e){}
+      }
+      function loadResultPayload(){
+        const payload=safeJsonParse(localStorage.getItem(RESULT_KEY));
+        if(payload && Array.isArray(payload.records) && payload.records.length){
+          if(!Array.isArray(window.quizSessionRecords) || !window.quizSessionRecords.length) window.quizSessionRecords=payload.records;
+          if(!window.quizSessionStartedAt) window.quizSessionStartedAt=payload.startedAt;
+          if(!window.quizSessionEndedAt) window.quizSessionEndedAt=payload.endedAt;
+          if(payload.direction && !window.quizDirection) window.quizDirection=payload.direction;
+          if(payload.orderMode && !window.quizOrderMode) window.quizOrderMode=payload.orderMode;
+        }
+        return payload;
+      }
+      function resultStats(){
+        loadResultPayload();
+        const records=Array.isArray(window.quizSessionRecords)?window.quizSessionRecords:[];
+        const total=records.length;
+        const benar=records.filter(r=>!!r.status).length;
+        const salah=Math.max(0,total-benar);
+        const score=total?Math.round((benar/total)*100):0;
+        const totalSeconds=records.reduce((sum,r)=>sum+(Number(r.waktu)||0),0);
+        return {records,total,benar,salah,score,totalSeconds};
+      }
+
+      if(typeof answerCard==='function' && !answerCard.__persistResultV4){
+        const prevAnswer=answerCard;
+        answerCard=function(isCorrect){
+          const out=prevAnswer.apply(this,arguments);
+          saveResultPayload();
+          return out;
+        };
+        answerCard.__persistResultV4=true;
+      }
+      if(typeof beginConfiguredQuiz==='function' && !beginConfiguredQuiz.__persistResultV4){
+        const prevBegin=beginConfiguredQuiz;
+        beginConfiguredQuiz=function(){
+          try{localStorage.removeItem(RESULT_KEY);}catch(e){}
+          return prevBegin.apply(this,arguments);
+        };
+        beginConfiguredQuiz.__persistResultV4=true;
+      }
+      if(typeof resetPractice==='function' && !resetPractice.__persistResultV4){
+        const prevReset=resetPractice;
+        resetPractice=function(){
+          try{localStorage.removeItem(RESULT_KEY);}catch(e){}
+          return prevReset.apply(this,arguments);
+        };
+        resetPractice.__persistResultV4=true;
+      }
+      if(typeof updateResult==='function' && !updateResult.__finalV4){
+        const prevUpdateResult=updateResult;
+        updateResult=function(){
+          loadResultPayload();
+          const out=prevUpdateResult.apply(this,arguments);
+          const s=resultStats();
+          const circle=document.getElementById('resultScoreCircle');
+          if(circle) circle.style.setProperty('--scoreDeg',`${Math.round(s.score*3.6)}deg`);
+          const pct=document.getElementById('scorePercent');
+          if(pct) pct.textContent=`${s.score}%`;
+          const total=document.getElementById('totalSoal'); if(total) total.textContent=s.total;
+          const benar=document.getElementById('totalBenar'); if(benar) benar.textContent=s.benar;
+          const salah=document.getElementById('totalSalah'); if(salah) salah.textContent=s.salah;
+          const waktu=document.getElementById('totalWaktu'); if(waktu) waktu.textContent=fmtTime(s.totalSeconds);
+          const dateLine=document.getElementById('resultDateLine');
+          if(dateLine) dateLine.innerHTML=`<i class="fa-regular fa-calendar"></i> ${fmtDateID(window.quizSessionEndedAt || window.quizSessionStartedAt || new Date())}`;
+          if(typeof applyLocalIcons==='function') applyLocalIcons(document.getElementById('page-hasil') || document);
+          return out;
+        };
+        updateResult.__finalV4=true;
+      }
+      if(typeof showPage==='function' && !showPage.__finalResultSyncV4){
+        const prevShowPage=showPage;
+        showPage=function(page){
+          const out=prevShowPage.apply(this,arguments);
+          if(page==='hasil') setTimeout(()=>{ if(typeof updateResult==='function') updateResult(); },30);
+          return out;
+        };
+        showPage.__finalResultSyncV4=true;
+      }
+
+      window.downloadResultPdf=function(){
+        loadResultPayload();
+        const s=resultStats();
+        const isJP=(window.siteLang==='ja');
+        const now=window.quizSessionEndedAt || window.quizSessionStartedAt || new Date();
+        const title=isJP?'日本語語彙練習結果報告書':'LAPORAN HASIL LATIHAN KOSAKATA JEPANG';
+        const subtitle=isJP?'学習結果の正式記録':'Dokumen ringkasan hasil latihan kosakata';
+        const direction=(window.quizDirection==='jp-id')
+          ? (isJP?'日本語 → インドネシア語':'Jepang → Indonesia')
+          : (isJP?'インドネシア語 → 日本語':'Indonesia → Jepang');
+        const statusGood=isJP?'正解':'Benar';
+        const statusBad=isJP?'不正解':'Salah';
+        const rows=s.records.map((r,i)=>`<tr>
+          <td>${i+1}</td>
+          <td><strong>${htmlEscape(r.jp||'')}</strong><br><small>${htmlEscape(r.romaji||'')}</small></td>
+          <td>${htmlEscape(r.arti||'')}</td>
+          <td class="${r.status?'ok':'bad'}">${r.status?statusGood:statusBad}</td>
+          <td>${fmtTime(r.waktu)}</td>
+        </tr>`).join('') || `<tr><td colspan="5" style="text-align:center;color:#6b7280">${isJP?'練習結果はまだありません。':'Belum ada hasil latihan.'}</td></tr>`;
+        const html=`<!doctype html><html><head><meta charset="utf-8"><title>${title}</title>
+        <style>
+          @page{size:A4;margin:18mm 16mm}*{box-sizing:border-box}body{font-family:Arial,'Noto Sans JP',sans-serif;color:#111827;margin:0;font-size:12px;line-height:1.55}.report{width:100%}.head{border-bottom:2px solid #111827;padding-bottom:12px;margin-bottom:18px;text-align:center}.head h1{font-size:${isJP?'21px':'20px'};letter-spacing:.02em;margin:0 0 4px;font-weight:700}.head p{margin:0;color:#4b5563}.meta,.summary{width:100%;border-collapse:collapse;margin-bottom:18px}.meta td{border:1px solid #d1d5db;padding:8px 10px}.meta td:first-child{width:32%;background:#f9fafb;font-weight:700}.summary th,.summary td,.detail th,.detail td{border:1px solid #d1d5db;padding:8px 10px}.summary th{background:#ede9fe;color:#4c1d95;text-align:center}.summary td{text-align:center;font-size:18px;font-weight:700}.summary small{display:block;font-size:11px;font-weight:400;color:#4b5563;margin-top:2px}.detail{width:100%;border-collapse:collapse}.detail th{background:#f3f4f6;text-align:left;font-weight:700}.detail small{color:#6b7280}.ok{color:#059669;font-weight:700}.bad{color:#e11d48;font-weight:700}.note{margin-top:18px;border:1px solid #d1d5db;padding:12px;background:#fafafa}.sign{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:32px}.sign div{text-align:center}.line{margin:58px auto 0;border-top:1px solid #111827;width:70%}.brand{margin-top:18px;color:#6b7280;font-size:11px;text-align:center}
+        </style></head><body><main class="report">
+          <section class="head"><h1>${title}</h1><p>${subtitle}</p></section>
+          <table class="meta"><tr><td>${isJP?'氏名':'Nama Peserta'}</td><td>${htmlEscape(window.currentUser || localStorage.getItem('kosakataUser') || '-')}</td></tr><tr><td>${isJP?'実施日時':'Tanggal dan Waktu'}</td><td>${isJP?fmtDateJP(now):fmtDateID(now)}</td></tr><tr><td>${isJP?'練習方向':'Arah Latihan'}</td><td>${direction}</td></tr><tr><td>${isJP?'評価方法':'Metode Penilaian'}</td><td>${isJP?'正答数を総問題数で割って算出':'Persentase jawaban benar dari total soal'}</td></tr></table>
+          <table class="summary"><tr><th>${isJP?'総問題数':'Total Soal'}</th><th>${isJP?'正解':'Benar'}</th><th>${isJP?'不正解':'Salah'}</th><th>${isJP?'最終スコア':'Skor Akhir'}</th><th>${isJP?'所要時間':'Waktu'}</th></tr><tr><td>${s.total}<small>${isJP?'問':'soal'}</small></td><td>${s.benar}</td><td>${s.salah}</td><td>${s.score}%</td><td>${fmtTime(s.totalSeconds)}</td></tr></table>
+          <h2 style="font-size:15px;margin:18px 0 8px">${isJP?'解答レビュー':'Review Hasil Latihan'}</h2>
+          <table class="detail"><thead><tr><th style="width:42px">#</th><th>${isJP?'語彙':'Kosakata'}</th><th>${isJP?'意味':'Arti'}</th><th>${isJP?'状態':'Status'}</th><th>${isJP?'時間':'Waktu'}</th></tr></thead><tbody>${rows}</tbody></table>
+          <div class="note"><strong>${isJP?'備考':'Catatan'}:</strong> ${isJP?'本報告書は日本語語彙学習システムの練習結果に基づいて自動作成されました。':'Laporan ini dibuat otomatis berdasarkan hasil kuis/flashcard pada aplikasi Kosakata Jepang.'}</div>
+          <section class="sign"><div>${isJP?'確認者':'Diperiksa oleh'}<div class="line"></div></div><div>${isJP?'学習者':'Peserta'}<div class="line"></div></div></section>
+          <div class="brand">Kosakata Jepang • Kartu. Dengar. Ingat.</div>
+        </main></body></html>`;
+        const filename=(isJP?'日本語語彙練習結果報告書':'Laporan_Hasil_Latihan_Kosakata_Jepang')+'.pdf';
+        if(window.html2pdf){
+          const wrap=document.createElement('div');wrap.innerHTML=html;const node=wrap.querySelector('main.report');
+          html2pdf().set({margin:[16,14,16,14],filename,image:{type:'jpeg',quality:.98},html2canvas:{scale:2,useCORS:true},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}}).from(node).save();
+        }else{
+          const w=window.open('','_blank');
+          if(!w){alert(isJP?'ポップアップを許可してください。':'Izinkan pop-up browser untuk menyimpan PDF.');return;}
+          w.document.open();w.document.write(html);w.document.close();
+          setTimeout(()=>{w.focus();w.print();},450);
+        }
+      };
+
+      document.addEventListener('DOMContentLoaded',()=>{loadResultPayload(); if(typeof updateResult==='function') updateResult();});
+    })();
+
 </script>
 </body>
 </html>
