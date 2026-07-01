@@ -134,6 +134,17 @@
     @media(max-width:1100px){
       .container{width:min(100% - 32px,1380px)}.nav-shell{height:auto;min-height:84px}.nav-menu{position:absolute;left:16px;right:16px;top:88px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:12px;display:none;flex-direction:column;align-items:stretch}.nav-menu.show{display:flex}.nav-link.active:after{display:none}.hamburger{display:grid;place-items:center}.brand{min-width:0}.nav-actions{min-width:0}.hero-grid,.practice-grid,.result-grid,.layout-with-sidebar{grid-template-columns:1fr}.hero-art{min-height:560px}.feature-row{grid-template-columns:repeat(2,1fr)}.vocab-grid{grid-template-columns:repeat(2,1fr)}.admin-stats{grid-template-columns:repeat(2,1fr)}.filter-row{grid-template-columns:1fr 1fr}.sidebar{grid-template-columns:1fr 1fr}.side-menu{grid-template-columns:repeat(4,1fr)}
     }
+
+    /* Revisi homepage: navbar lebih sederhana dan ikon lebih bersih */
+    .nav-menu{gap:28px}
+    .nav-link{font-size:14px;padding:14px 12px}
+    .nav-link.active:after{left:12px;right:12px}
+    .icon-bubble{font-size:21px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.72)}
+    .icon-bubble i{line-height:1}
+    .badge i,.btn i,.language-pill i{line-height:1}
+    .result-title-icon{font-size:.75em;color:#f59e0b;margin-left:6px}
+    @media(max-width:1100px){.nav-menu{gap:4px}.nav-link{padding:14px 16px}}
+
     @media(max-width:760px){
       .page{padding:30px 0 54px}.brand h1{font-size:16px}.brand p{font-size:11px}.brand-icon{width:46px;height:46px}.btn{padding:13px 16px}.nav-actions .btn span{display:none}.hero-eyebrow{gap:12px}.hero-title{font-size:46px}.stats-row,.control-row,.answer-row,.summary-grid,.group-grid,.modal-actions,.feature-row,.vocab-grid,.admin-stats,.filter-row,.sidebar{grid-template-columns:1fr}.side-menu{grid-template-columns:1fr 1fr}.content-card{padding:20px}.hero-art{padding:30px 18px;min-height:520px}.flashcard-showcase{padding:24px 20px}.jp-large{font-size:62px}.meaning{font-size:23px}.practice-word h2{font-size:60px}.score-inner{flex-direction:column;text-align:center;gap:22px}.admin-head,.table-footer{align-items:flex-start;flex-direction:column}.table-head{align-items:flex-start;flex-direction:column}.modal{padding:30px 20px 22px;border-radius:26px}.modal-title{font-size:29px}.group-card{justify-content:flex-start;padding-left:18px}.page-title{font-size:29px}.admin-stat{padding:18px}.hero-actions{display:grid;grid-template-columns:1fr}.fiction-toggle{align-items:flex-start}.feature-card{align-items:flex-start}.mini-stat strong{font-size:22px}
     }
@@ -149,8 +160,6 @@
       <nav class="nav-menu" id="navMenu">
         <a class="nav-link active" data-page="home" href="#" onclick="showPage('home')">Beranda</a>
         <a class="nav-link" data-page="materi" href="#" onclick="showPage('materi')">Materi</a>
-        <a class="nav-link" href="#" onclick="showPage('materi'); setCategory('Semua')">Kategori</a>
-        <a class="nav-link" href="#" onclick="showPage('practice')">Cara Belajar</a>
         <a class="nav-link" href="#" onclick="alert('Kosakata Jepang membantu belajar dengan kartu visual, audio, dan latihan suara.')">Tentang</a>
       </nav>
       <div class="nav-actions">
@@ -167,14 +176,14 @@
         <div class="hero-grid">
           <div>
             <div class="hero-eyebrow">
-              <span class="badge"><i class="fa-regular fa-book-open"></i> Bab 1–5 • 264 kosakata</span>
+              <span class="badge"><i class="fa-solid fa-book-open"></i> Bab 1–5 • 264 kosakata</span>
               <span class="language-pill"><span class="flag-jp"></span> Jepang <i class="fa-solid fa-chevron-down"></i></span>
             </div>
             <h2 class="hero-title">Belajar kosakata<br>Jepang</h2>
             <p class="hero-desc">Belajar lebih efektif dengan kartu visual, audio, jawaban suara, dan progress yang membantu kamu menguasai kosakata sehari-hari.</p>
             <div class="hero-actions">
               <button class="btn btn-primary" onclick="openStartModal()"><i class="fa-solid fa-user"></i> Isi Username</button>
-              <button class="btn btn-secondary" onclick="showPage('materi')"><i class="fa-regular fa-book-open"></i> Lihat Materi</button>
+              <button class="btn btn-secondary" onclick="showPage('materi')"><i class="fa-solid fa-book-open"></i> Lihat Materi</button>
             </div>
             <div class="stats-row">
               <div class="mini-stat"><span class="icon-bubble purple"><i class="fa-solid fa-book-open-reader"></i></span><div><strong>264</strong><span>Total Kosakata<br>Bab 1–5</span></div></div>
@@ -215,7 +224,7 @@
         <aside class="sidebar">
           <div class="side-card side-menu">
             <a class="side-link" onclick="showPage('home')"><i class="fa-solid fa-house"></i> Beranda</a>
-            <a class="side-link active" onclick="showPage('materi')"><i class="fa-regular fa-book-open"></i> Materi</a>
+            <a class="side-link active" onclick="showPage('materi')"><i class="fa-solid fa-book-open"></i> Materi</a>
             <a class="side-link" onclick="showPage('practice')"><i class="fa-regular fa-clipboard"></i> Kuis</a>
             <a class="side-link" onclick="showPage('hasil')"><i class="fa-solid fa-chart-column"></i> Hasil</a>
           </div>
@@ -235,7 +244,7 @@
     <!-- Practice -->
     <section class="page" id="page-practice">
       <div class="container">
-        <div class="practice-top"><div class="hero-eyebrow" style="margin:0"><span class="badge"><i class="fa-regular fa-book-open"></i> Bab 1–5 • 264 kosakata</span><span class="language-pill"><span class="flag-jp"></span> Jepang <i class="fa-solid fa-chevron-down"></i></span></div><button class="btn btn-ghost" onclick="showPage('home')"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar Latihan</button></div>
+        <div class="practice-top"><div class="hero-eyebrow" style="margin:0"><span class="badge"><i class="fa-solid fa-book-open"></i> Bab 1–5 • 264 kosakata</span><span class="language-pill"><span class="flag-jp"></span> Jepang <i class="fa-solid fa-chevron-down"></i></span></div><button class="btn btn-ghost" onclick="showPage('home')"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar Latihan</button></div>
         <div class="practice-grid">
           <div class="panel-card practice-card">
             <div class="practice-image"></div>
@@ -245,7 +254,7 @@
           </div>
           <div class="control-panel">
             <div class="control-row"><div class="panel-card timer-card"><span class="icon-bubble purple"><i class="fa-regular fa-clock"></i></span><div><span style="color:#7c4dff;font-weight:800">Waktu</span><strong id="timeText">01:32</strong></div><button class="pill" onclick="togglePause(this)">Jeda</button></div><div class="panel-card progress-card"><h3>Kartu <span id="cardNum">1</span> / 264</h3><div class="bar"><span id="practiceProgress"></span></div><small id="practicePercent">0% Selesai</small></div></div>
-            <div class="panel-card mode-row"><span class="badge" style="background:#dcfce7;color:#10b981"><i class="fa-regular fa-book-open"></i> Sedang Belajar</span><span>Mode: <b style="color:#7c4dff">Belajar</b> <i class="fa-solid fa-chevron-down"></i></span></div>
+            <div class="panel-card mode-row"><span class="badge" style="background:#dcfce7;color:#10b981"><i class="fa-solid fa-book-open"></i> Sedang Belajar</span><span>Mode: <b style="color:#7c4dff">Belajar</b> <i class="fa-solid fa-chevron-down"></i></span></div>
             <div class="action-stack"><button class="practice-action" onclick="speakCurrent()"><i class="fa-solid fa-volume-high"></i> &nbsp; Dengar</button><button class="practice-action" onclick="openExampleModal()"><i class="fa-regular fa-comments"></i> &nbsp; Contoh Kalimat</button><button class="practice-action primary" onclick="alert('Mode suara aktif. Silakan ucapkan arti kosakata.')"><i class="fa-solid fa-microphone"></i> &nbsp; Jawab dengan Suara</button><div class="listening"><i class="fa-solid fa-wave-square"></i> Mendegarkan... <span class="audio-bars"><i></i><i></i><i></i><i></i></span></div></div>
             <div class="answer-row"><button class="btn btn-primary" style="background:linear-gradient(135deg,#23c89d,#0fa978)" onclick="answerCard(true)"><i class="fa-solid fa-circle-check"></i> Benar</button><button class="btn btn-red" onclick="answerCard(false)"><i class="fa-solid fa-circle-xmark"></i> Salah</button></div>
             <div class="panel-card auto-row"><div style="display:flex;gap:14px;align-items:center"><span class="icon-bubble purple" style="width:45px;height:45px"><i class="fa-solid fa-volume-high"></i></span><div><h3>Suara Otomatis</h3><p style="font-size:13px;color:#64748b;margin-top:4px">Putar audio otomatis saat kartu berubah</p></div></div><button class="switch active" id="autoSwitch" onclick="toggleSwitch(this)"><i></i></button></div>
@@ -258,10 +267,10 @@
     <!-- Hasil -->
     <section class="page" id="page-hasil">
       <div class="container">
-        <span class="breadcrumb"><i class="fa-regular fa-book-open"></i> Beranda <i class="fa-solid fa-chevron-right"></i> Hasil Latihan</span>
+        <span class="breadcrumb"><i class="fa-solid fa-book-open"></i> Beranda <i class="fa-solid fa-chevron-right"></i> Hasil Latihan</span>
         <h2 class="page-title">Ringkasan Belajar</h2><p class="page-desc">Hebat! Kamu telah menyelesaikan latihan kosakata.</p><div class="date-line"><i class="fa-regular fa-calendar"></i> 20 Mei 2025, 14:32</div>
-        <div class="result-grid"><div class="result-card score-hero"><div class="score-inner"><div class="circle-score"><div><strong id="scorePercent">86%</strong><span>Skor Akhir</span></div></div><div><span class="badge"><i class="fa-solid fa-star"></i> Sangat Baik!</span><h2 style="font-size:34px;margin:24px 0 12px">Kerja bagus! 🎉</h2><p class="page-desc">Kamu menguasai sebagian besar kosakata hari ini. Terus tingkatkan konsistensi belajarmu!</p></div></div></div><div class="result-card" style="padding:28px"><h3>Ringkasan Hasil</h3><div class="summary-grid"><div class="summary-tile"><span class="icon-bubble purple"><i class="fa-solid fa-book-open-reader"></i></span><div><strong id="totalSoal">20</strong><span>Total Soal</span></div></div><div class="summary-tile"><span class="icon-bubble green"><i class="fa-solid fa-circle-check"></i></span><div><strong id="totalBenar">17</strong><span>Benar</span></div></div><div class="summary-tile"><span class="icon-bubble red-soft"><i class="fa-solid fa-circle-xmark"></i></span><div><strong id="totalSalah">3</strong><span>Salah</span></div></div><div class="summary-tile"><span class="icon-bubble blue"><i class="fa-regular fa-clock"></i></span><div><strong>12:34</strong><span>Waktu (mnt)</span></div></div></div></div></div>
-        <div class="result-actions"><button class="btn btn-primary" onclick="showPage('materi')"><i class="fa-regular fa-book-open"></i> Review Kosakata</button><button class="btn btn-secondary" onclick="alert('PDF berhasil disiapkan')"><i class="fa-solid fa-download"></i> Simpan PDF</button><button class="btn btn-secondary" onclick="resetPractice(); showPage('practice')"><i class="fa-solid fa-rotate-right"></i> Ulangi Latihan</button></div>
+        <div class="result-grid"><div class="result-card score-hero"><div class="score-inner"><div class="circle-score"><div><strong id="scorePercent">86%</strong><span>Skor Akhir</span></div></div><div><span class="badge"><i class="fa-solid fa-star"></i> Sangat Baik!</span><h2 style="font-size:34px;margin:24px 0 12px">Kerja bagus! <i class="fa-solid fa-wand-magic-sparkles result-title-icon"></i></h2><p class="page-desc">Kamu menguasai sebagian besar kosakata hari ini. Terus tingkatkan konsistensi belajarmu!</p></div></div></div><div class="result-card" style="padding:28px"><h3>Ringkasan Hasil</h3><div class="summary-grid"><div class="summary-tile"><span class="icon-bubble purple"><i class="fa-solid fa-book-open-reader"></i></span><div><strong id="totalSoal">20</strong><span>Total Soal</span></div></div><div class="summary-tile"><span class="icon-bubble green"><i class="fa-solid fa-circle-check"></i></span><div><strong id="totalBenar">17</strong><span>Benar</span></div></div><div class="summary-tile"><span class="icon-bubble red-soft"><i class="fa-solid fa-circle-xmark"></i></span><div><strong id="totalSalah">3</strong><span>Salah</span></div></div><div class="summary-tile"><span class="icon-bubble blue"><i class="fa-regular fa-clock"></i></span><div><strong>12:34</strong><span>Waktu (mnt)</span></div></div></div></div></div>
+        <div class="result-actions"><button class="btn btn-primary" onclick="showPage('materi')"><i class="fa-solid fa-book-open"></i> Review Kosakata</button><button class="btn btn-secondary" onclick="alert('PDF berhasil disiapkan')"><i class="fa-solid fa-download"></i> Simpan PDF</button><button class="btn btn-secondary" onclick="resetPractice(); showPage('practice')"><i class="fa-solid fa-rotate-right"></i> Ulangi Latihan</button></div>
         <div class="table-wrap"><div class="table-head"><h3>Review Hasil Latihan</h3><div class="table-filters"><select class="select-mini"><option>Semua Status</option><option>Benar</option><option>Salah</option></select><select class="select-mini"><option>Urutkan</option><option>Tercepat</option><option>Terlama</option></select></div></div><div class="table-scroll"><table class="data-table"><thead><tr><th>#</th><th>Kosakata</th><th>Arti</th><th>Status</th><th>Waktu</th></tr></thead><tbody id="reviewRows"></tbody></table></div></div>
       </div>
     </section>
@@ -284,7 +293,7 @@
       <div class="field"><label>Nama peserta</label><div class="field-wrap"><i class="fa-solid fa-user"></i><input id="usernameInput" placeholder="Contoh: Sakura Tanaka"></div></div>
       <label class="group-label">Pilih grup / wilayah</label><div class="group-grid" id="groupChoices"><button class="group-card active" data-group="Badung"><span class="icon-bubble pink" style="width:36px;height:36px;font-size:16px"><i class="fa-solid fa-torii-gate"></i></span>Badung</button><button class="group-card" data-group="Jembrana"><span class="icon-bubble yellow" style="width:36px;height:36px;font-size:16px"><i class="fa-solid fa-landmark"></i></span>Jembrana</button><button class="group-card" data-group="Singaraja"><span class="icon-bubble blue" style="width:36px;height:36px;font-size:16px"><i class="fa-solid fa-building-columns"></i></span>Singaraja</button><button class="group-card" data-group="Umum"><span class="icon-bubble green" style="width:36px;height:36px;font-size:16px"><i class="fa-solid fa-user-group"></i></span>Umum</button></div>
       <div class="admin-box"><div class="admin-note"><span class="icon-bubble purple" style="width:44px;height:44px;font-size:18px"><i class="fa-solid fa-shield-halved"></i></span><div><strong>Mode admin <span style="font-weight:600;color:#64748b">(opsional)</span></strong><p>Masukkan kata sandi admin untuk mengakses fitur pengelolaan.</p></div></div><div class="field-wrap"><i class="fa-solid fa-lock"></i><input id="adminPassword" type="password" placeholder="Kata sandi admin"><button class="eye-btn" onclick="togglePassword()"><i class="fa-regular fa-eye-slash"></i></button></div></div>
-      <div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal('startModal')">Batal</button><button class="btn btn-primary" onclick="startLearning()"><i class="fa-regular fa-book-open"></i> Mulai Belajar</button></div><div class="private-note"><i class="fa-solid fa-lock"></i> Aman dan privat • Nama Anda tidak akan dibagikan</div>
+      <div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal('startModal')">Batal</button><button class="btn btn-primary" onclick="startLearning()"><i class="fa-solid fa-book-open"></i> Mulai Belajar</button></div><div class="private-note"><i class="fa-solid fa-lock"></i> Aman dan privat • Nama Anda tidak akan dibagikan</div>
     </div>
   </div>
 
