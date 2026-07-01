@@ -4617,492 +4617,7 @@
         showPage.__finalResultSyncV4=true;
       }
 
-      window.downloadResultPdf=function(){
-        loadResultPayload();
-        const s=resultStats();
-        const isJP=(window.siteLang==='ja');
-        const now=window.quizSessionEndedAt || window.quizSessionStartedAt || new Date();
-        const title=isJP?'日本語語彙練習結果報告書':'LAPORAN HASIL LATIHAN KOSAKATA JEPANG';
-        const subtitle=isJP?'学習結果の正式記録':'Dokumen ringkasan hasil latihan kosakata';
-        const direction=(window.quizDirection==='jp-id')
-          ? (isJP?'日本語 → インドネシア語':'Jepang → Indonesia')
-          : (isJP?'インドネシア語 → 日本語':'Indonesia → Jepang');
-        const statusGood=isJP?'正解':'Benar';
-        const statusBad=isJP?'不正解':'Salah';
-        const rows=s.records.map((r,i)=>`<tr>
-          <td>${i+1}</td>
-          <td><strong>${htmlEscape(r.jp||'')}</strong><br><small>${htmlEscape(r.romaji||'')}</small></td>
-          <td>${htmlEscape(r.arti||'')}</td>
-          <td class="${r.status?'ok':'bad'}">${r.status?statusGood:statusBad}</td>
-          <td>${fmtTime(r.waktu)}</td>
-        </tr>`).join('') || `<tr><td colspan="5" style="text-align:center;color:#6b7280">${isJP?'練習結果はまだありません。':'Belum ada hasil latihan.'}</td></tr>`;
-        const html=`<!doctype html><html><head><meta charset="utf-8"><title>${title}</title>
-        <style>
-          @page{size:A4;margin:18mm 16mm}*{box-sizing:border-box}body{font-family:Arial,'Noto Sans JP',sans-serif;color:#111827;margin:0;font-size:12px;line-height:1.55}.report{width:100%}.head{border-bottom:2px solid #111827;padding-bottom:12px;margin-bottom:18px;text-align:center}.head h1{font-size:${isJP?'21px':'20px'};letter-spacing:.02em;margin:0 0 4px;font-weight:700}.head p{margin:0;color:#4b5563}.meta,.summary{width:100%;border-collapse:collapse;margin-bottom:18px}.meta td{border:1px solid #d1d5db;padding:8px 10px}.meta td:first-child{width:32%;background:#f9fafb;font-weight:700}.summary th,.summary td,.detail th,.detail td{border:1px solid #d1d5db;padding:8px 10px}.summary th{background:#ede9fe;color:#4c1d95;text-align:center}.summary td{text-align:center;font-size:18px;font-weight:700}.summary small{display:block;font-size:11px;font-weight:400;color:#4b5563;margin-top:2px}.detail{width:100%;border-collapse:collapse}.detail th{background:#f3f4f6;text-align:left;font-weight:700}.detail small{color:#6b7280}.ok{color:#059669;font-weight:700}.bad{color:#e11d48;font-weight:700}.note{margin-top:18px;border:1px solid #d1d5db;padding:12px;background:#fafafa}.sign{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:32px}.sign div{text-align:center}.line{margin:58px auto 0;border-top:1px solid #111827;width:70%}.brand{margin-top:18px;color:#6b7280;font-size:11px;text-align:center}
-        
-
-    /* === PATCH RAPINYA RINGKASAN HASIL + MICROPHONE ROW === */
-    #page-hasil .summary-tile{
-      min-width:0!important;
-      overflow:hidden!important;
-      padding:16px!important;
-      gap:14px!important;
-    }
-    #page-hasil .summary-tile > div{
-      min-width:0!important;
-      flex:1 1 auto!important;
-      overflow:hidden!important;
-    }
-    #page-hasil .summary-tile strong{
-      max-width:100%!important;
-      white-space:nowrap!important;
-      overflow:hidden!important;
-      text-overflow:clip!important;
-    }
-    #page-hasil #totalWaktu{
-      font-size:25px!important;
-      letter-spacing:-.055em!important;
-      transform:none!important;
-    }
-    #page-hasil .summary-tile span:not(.icon-bubble){
-      max-width:100%!important;
-      white-space:normal!important;
-      overflow-wrap:break-word!important;
-    }
-    @media(max-width:1180px){
-      #page-hasil .result-summary-card{padding:24px!important;}
-      #page-hasil .summary-tile{padding:16px 14px!important;gap:12px!important;}
-      #page-hasil #totalWaktu{font-size:23px!important;}
-    }
-
-    #page-practice .mic-row{
-      width:100%!important;
-      max-width:100%!important;
-      min-width:0!important;
-      overflow:hidden!important;
-      padding:18px 20px!important;
-      gap:14px!important;
-      box-sizing:border-box!important;
-    }
-    #page-practice .mic-row > div:first-child{
-      min-width:0!important;
-      flex:1 1 auto!important;
-      display:flex!important;
-      align-items:center!important;
-      gap:14px!important;
-    }
-    #page-practice .mic-row .icon-bubble{
-      width:45px!important;
-      height:45px!important;
-      min-width:45px!important;
-      flex:0 0 45px!important;
-    }
-    #page-practice .mic-row h3,
-    #page-practice .mic-row p{
-      max-width:100%!important;
-      white-space:normal!important;
-      overflow-wrap:break-word!important;
-    }
-    #page-practice #micSwitch{
-      width:58px!important;
-      height:34px!important;
-      min-width:58px!important;
-      flex:0 0 58px!important;
-      padding:4px!important;
-      margin:0!important;
-      position:relative!important;
-      overflow:visible!important;
-      box-sizing:border-box!important;
-    }
-    #page-practice #micSwitch i{
-      width:26px!important;
-      height:26px!important;
-    }
-    #page-practice #micSwitch.active i{
-      transform:translateX(24px)!important;
-    }
-    @media(max-width:520px){
-      #page-practice .mic-row{padding:16px!important;align-items:center!important;}
-      #page-practice #micSwitch{width:54px!important;min-width:54px!important;flex-basis:54px!important;}
-      #page-practice #micSwitch.active i{transform:translateX(20px)!important;}
-    }
-</style></head><body><main class="report">
-          <section class="head"><h1>${title}</h1><p>${subtitle}</p></section>
-          <table class="meta"><tr><td>${isJP?'氏名':'Nama Peserta'}</td><td>${htmlEscape(window.currentUser || localStorage.getItem('kosakataUser') || '-')}</td></tr><tr><td>${isJP?'実施日時':'Tanggal dan Waktu'}</td><td>${isJP?fmtDateJP(now):fmtDateID(now)}</td></tr><tr><td>${isJP?'練習方向':'Arah Latihan'}</td><td>${direction}</td></tr><tr><td>${isJP?'評価方法':'Metode Penilaian'}</td><td>${isJP?'正答数を総問題数で割って算出':'Persentase jawaban benar dari total soal'}</td></tr></table>
-          <table class="summary"><tr><th>${isJP?'総問題数':'Total Soal'}</th><th>${isJP?'正解':'Benar'}</th><th>${isJP?'不正解':'Salah'}</th><th>${isJP?'最終スコア':'Skor Akhir'}</th><th>${isJP?'所要時間':'Waktu'}</th></tr><tr><td>${s.total}<small>${isJP?'問':'soal'}</small></td><td>${s.benar}</td><td>${s.salah}</td><td>${s.score}%</td><td>${fmtTime(s.totalSeconds)}</td></tr></table>
-          <h2 style="font-size:15px;margin:18px 0 8px">${isJP?'解答レビュー':'Review Hasil Latihan'}</h2>
-          <table class="detail"><thead><tr><th style="width:42px">#</th><th>${isJP?'語彙':'Kosakata'}</th><th>${isJP?'意味':'Arti'}</th><th>${isJP?'状態':'Status'}</th><th>${isJP?'時間':'Waktu'}</th></tr></thead><tbody>${rows}</tbody></table>
-          <div class="note"><strong>${isJP?'備考':'Catatan'}:</strong> ${isJP?'本報告書は日本語語彙学習システムの練習結果に基づいて自動作成されました。':'Laporan ini dibuat otomatis berdasarkan hasil kuis/flashcard pada aplikasi Kosakata Jepang.'}</div>
-          <section class="sign"><div>${isJP?'確認者':'Diperiksa oleh'}<div class="line"></div></div><div>${isJP?'学習者':'Peserta'}<div class="line"></div></div></section>
-          <div class="brand">Kosakata Jepang • Kartu. Dengar. Ingat.</div>
-        </main>
-
-<!-- === PATCH 2026-07-01 v8: ringkasan waktu rapi + bookmark kuning + bookmark homepage/kuis + bicara homepage === -->
-<style id="patch-final-ringkasan-bookmark-audio-v8">
-  /* Ringkasan Belajar: kartu Waktu dibuat lebih lega agar angka tidak mepet/keluar kotak */
-  #page-hasil .result-summary-card{
-    overflow:visible!important;
-  }
-  #page-hasil .result-summary-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    gap:16px!important;
-    align-items:stretch!important;
-  }
-  #page-hasil .summary-tile{
-    min-width:0!important;
-    box-sizing:border-box!important;
-  }
-  #page-hasil .summary-tile:nth-child(4){
-    display:grid!important;
-    grid-template-columns:56px minmax(0,1fr)!important;
-    align-items:center!important;
-    column-gap:10px!important;
-    min-height:122px!important;
-    padding:18px 12px!important;
-    overflow:hidden!important;
-  }
-  #page-hasil .summary-tile:nth-child(4) .icon-bubble{
-    width:56px!important;
-    height:56px!important;
-    min-width:56px!important;
-    flex:0 0 56px!important;
-    margin:0!important;
-  }
-  #page-hasil .summary-tile:nth-child(4) > div{
-    min-width:0!important;
-    width:100%!important;
-    overflow:visible!important;
-    display:flex!important;
-    flex-direction:column!important;
-    justify-content:center!important;
-    align-items:flex-start!important;
-  }
-  #page-hasil #totalWaktu{
-    display:block!important;
-    width:100%!important;
-    max-width:100%!important;
-    font-size:clamp(24px,2.05vw,29px)!important;
-    line-height:1.05!important;
-    letter-spacing:-.025em!important;
-    white-space:nowrap!important;
-    overflow:visible!important;
-    text-overflow:clip!important;
-    font-variant-numeric:tabular-nums!important;
-    font-feature-settings:"tnum" 1!important;
-    text-align:left!important;
-    padding:0!important;
-    margin:0 0 8px!important;
-    transform:none!important;
-  }
-  #page-hasil .summary-tile:nth-child(4) span:not(.icon-bubble){
-    margin:0!important;
-    line-height:1.28!important;
-    text-align:left!important;
-  }
-  @media(max-width:430px){
-    #page-hasil .summary-tile:nth-child(4){
-      grid-template-columns:1fr!important;
-      justify-items:center!important;
-      row-gap:10px!important;
-      padding:18px!important;
-      text-align:center!important;
-    }
-    #page-hasil .summary-tile:nth-child(4) > div{align-items:center!important;text-align:center!important;}
-    #page-hasil #totalWaktu{text-align:center!important;font-size:30px!important;}
-    #page-hasil .summary-tile:nth-child(4) span:not(.icon-bubble){text-align:center!important;}
-  }
-
-  /* Bookmark: bintang benar-benar berubah menjadi kuning soft, bukan hanya glow */
-  #page-materi .card-star,
-  #page-home .star-btn,
-  #page-practice .star-btn{
-    transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease!important;
-  }
-  #page-materi .card-star.active,
-  #page-home .star-btn.active,
-  #page-practice .star-btn.active{
-    background:#fff8dc!important;
-    border-color:#fde68a!important;
-    color:#f6b51f!important;
-    box-shadow:0 10px 22px rgba(245,158,11,.14)!important;
-  }
-  #page-materi .card-star.active i,
-  #page-home .star-btn.active i,
-  #page-practice .star-btn.active i{
-    color:#f6b51f!important;
-  }
-  #page-materi .card-star:hover,
-  #page-home .star-btn:hover,
-  #page-practice .star-btn:hover{
-    transform:scale(1.06)!important;
-    border-color:#fcd34d!important;
-    color:#f6b51f!important;
-  }
-  #page-materi .card-star:hover i,
-  #page-home .star-btn:hover i,
-  #page-practice .star-btn:hover i{
-    color:#f6b51f!important;
-  }
-
-  /* Tombol bicara di kartu kosakata homepage */
-  #page-home .home-card-actions{
-    display:flex!important;
-    justify-content:center!important;
-    align-items:center!important;
-    gap:12px!important;
-    flex-wrap:wrap!important;
-    margin-top:28px!important;
-  }
-  #page-home .home-card-actions .btn{
-    margin-top:0!important;
-  }
-  #page-home .home-voice-btn{
-    background:#fff8dc!important;
-    border:1px solid #fde68a!important;
-    color:#b7791f!important;
-    box-shadow:0 10px 22px rgba(245,158,11,.10)!important;
-  }
-  #page-home .home-voice-feedback{
-    display:none;
-    margin:16px auto 0;
-    max-width:420px;
-    border-radius:16px;
-    padding:12px 14px;
-    font-size:13px;
-    line-height:1.45;
-    font-weight:700;
-    text-align:left;
-  }
-  #page-home .home-voice-feedback.show{display:block;}
-  #page-home .home-voice-feedback.good{background:#dcfce7;color:#0f9f75;border:1px solid rgba(16,185,129,.25);}
-  #page-home .home-voice-feedback.bad{background:#ffe4ec;color:#ff3b6b;border:1px solid rgba(255,59,107,.18);}
-</style>
-<script id="patch-final-ringkasan-bookmark-audio-v8-script">
-(function(){
-  var FAVORITE_KEY='kosakata_jepang_favorite_vocab_v1';
-
-  function safeParse(raw,fallback){try{return raw?JSON.parse(raw):fallback;}catch(e){return fallback;}}
-  function getFavArray(){return safeParse(localStorage.getItem(FAVORITE_KEY),[]).filter(Boolean);}
-  function setFavArray(arr){try{localStorage.setItem(FAVORITE_KEY,JSON.stringify(Array.from(new Set(arr))));}catch(e){}}
-  function getFavSet(){return new Set(getFavArray());}
-  function favId(v){return [v&&v.jp||'',v&&v.kana||'',v&&v.romaji||'',v&&v.arti||'',v&&v.cat||''].join('|');}
-  function encodeFav(v){return encodeURIComponent(favId(v));}
-  function escText(v){return String(v==null?'':v).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
-  function getAllVocab(){try{return Array.isArray(vocabData)?vocabData:[];}catch(e){return [];}}
-  function normalizeLocal(text){
-    if(typeof normalizeVoiceText==='function') return normalizeVoiceText(text);
-    return String(text||'').toLowerCase().replace(/\s+/g,'').replace(/[。、，,.!?！？ー\-]/g,'').trim();
-  }
-  function currentHomeVocab(){
-    try{
-      var slides = (typeof heroSlides!=='undefined' && Array.isArray(heroSlides)) ? heroSlides : [];
-      var index = (typeof heroSlideIndex!=='undefined') ? heroSlideIndex : 0;
-      var slide = slides.length ? slides[index % slides.length] : null;
-      if(slide){
-        var found = getAllVocab().find(function(v){return v.jp===slide.jp || v.romaji===slide.romaji;});
-        if(found) return found;
-        return {jp:slide.jp||'', kana:slide.speak||slide.jp||'', romaji:slide.romaji||'', arti:slide.meaning||'', cat:slide.tag||'Favorit', img:'person'};
-      }
-    }catch(e){}
-    return getAllVocab()[0] || {jp:'わたし',kana:'わたし',romaji:'watashi',arti:'saya, aku',cat:'Salam'};
-  }
-  function updateStarVisual(btn,v){
-    if(!btn || !v) return;
-    var active=getFavSet().has(favId(v));
-    btn.classList.toggle('active',active);
-    btn.setAttribute('aria-pressed',active?'true':'false');
-    btn.setAttribute('title',active?'Hapus dari kosakata favorit':'Tambahkan ke kosakata favorit');
-    btn.setAttribute('aria-label',active?'Hapus dari kosakata favorit':'Tambahkan ke kosakata favorit');
-    btn.dataset.favKey=encodeFav(v);
-    var icon=btn.querySelector('i');
-    if(icon){icon.className=active?'fa-solid fa-star':'fa-regular fa-star';}
-    if(typeof applyLocalIcons==='function') applyLocalIcons(btn);
-  }
-  function updateHomeFavoriteStar(){
-    var btn=document.querySelector('#page-home .flashcard-showcase .star-btn');
-    var v=currentHomeVocab();
-    if(!btn || !v) return;
-    updateStarVisual(btn,v);
-    btn.onclick=function(event){toggleFavorite(event,btn.dataset.favKey);};
-  }
-  function updatePracticeFavoriteStar(){
-    var btn=document.querySelector('#page-practice .practice-card .star-btn');
-    if(!btn) return;
-    var v=null;
-    try{v=typeof currentVocab==='function'?currentVocab():null;}catch(e){}
-    if(!v) return;
-    updateStarVisual(btn,v);
-    btn.onclick=function(event){toggleFavorite(event,btn.dataset.favKey);};
-  }
-  function refreshFavoriteStars(){
-    updateHomeFavoriteStar();
-    updatePracticeFavoriteStar();
-    document.querySelectorAll('#page-materi .card-star[data-fav-key]').forEach(function(btn){
-      var key=decodeURIComponent(btn.dataset.favKey||'');
-      var active=getFavSet().has(key);
-      btn.classList.toggle('active',active);
-      var icon=btn.querySelector('i');
-      if(icon) icon.className=active?'fa-solid fa-star':'fa-regular fa-star';
-    });
-  }
-
-  window.toggleFavorite=function(event,encodedKey){
-    if(event){event.preventDefault();event.stopPropagation();}
-    var key=decodeURIComponent(encodedKey||'');
-    if(!key) return;
-    var favs=getFavSet();
-    if(favs.has(key)) favs.delete(key); else favs.add(key);
-    setFavArray(Array.from(favs));
-    try{ if(typeof renderCategoryPills==='function') renderCategoryPills(); }catch(e){}
-    try{ if(typeof renderVocab==='function') renderVocab(); }catch(e){}
-    setTimeout(refreshFavoriteStars,0);
-  };
-
-  function ensureHomeVoiceTools(){
-    var card=document.querySelector('#page-home .flashcard-showcase');
-    if(!card) return;
-    var hearBtn=card.querySelector('button.btn-secondary:not(.home-voice-btn)');
-    if(hearBtn && !card.querySelector('.home-card-actions')){
-      var wrap=document.createElement('div');
-      wrap.className='home-card-actions';
-      hearBtn.parentNode.insertBefore(wrap,hearBtn);
-      wrap.appendChild(hearBtn);
-      var voiceBtn=document.createElement('button');
-      voiceBtn.type='button';
-      voiceBtn.className='btn btn-secondary home-voice-btn';
-      voiceBtn.innerHTML='<i class="fa-solid fa-microphone"></i> Bicara';
-      voiceBtn.onclick=function(e){e.preventDefault();e.stopPropagation();startHomeVoiceAnswer();};
-      wrap.appendChild(voiceBtn);
-    }
-    var p=card.querySelector('p');
-    if(p){
-      p.style.cursor='pointer';
-      p.onclick=function(e){e.preventDefault();startHomeVoiceAnswer();};
-      p.setAttribute('title','Klik untuk mencoba menjawab dengan suara');
-    }
-    if(!card.querySelector('.home-voice-feedback')){
-      var fb=document.createElement('div');
-      fb.className='home-voice-feedback';
-      fb.id='homeVoiceFeedback';
-      card.appendChild(fb);
-    }
-    if(typeof applyLocalIcons==='function') applyLocalIcons(card);
-  }
-  function setHomeVoiceFeedback(type,html){
-    var fb=document.getElementById('homeVoiceFeedback');
-    if(!fb) return;
-    fb.className='home-voice-feedback show '+type;
-    fb.innerHTML=html;
-    if(typeof applyLocalIcons==='function') applyLocalIcons(fb);
-  }
-  window.startHomeVoiceAnswer=function(){
-    var SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-    var v=currentHomeVocab();
-    if(!SpeechRecognition){
-      setHomeVoiceFeedback('bad','<i class="fa-solid fa-triangle-exclamation"></i> Browser belum mendukung pengenalan suara. Gunakan Chrome/Edge dan izinkan mikrofon.');
-      return;
-    }
-    try{
-      var rec=new SpeechRecognition();
-      rec.lang='ja-JP';
-      rec.interimResults=false;
-      rec.maxAlternatives=3;
-      setHomeVoiceFeedback('good','<i class="fa-solid fa-microphone-lines"></i> Mendengarkan... ucapkan <strong>'+escText(v.jp)+'</strong>.');
-      rec.onresult=function(event){
-        var results=Array.from(event.results&&event.results[0]||[]);
-        var transcript=(results[0]&&results[0].transcript||'').trim();
-        var spoken=normalizeLocal(transcript);
-        var targets=[v.jp,v.kana,v.romaji].filter(Boolean).map(normalizeLocal);
-        var ok=!!spoken && targets.some(function(t){return spoken===t || spoken.indexOf(t)>-1 || t.indexOf(spoken)>-1;});
-        if(ok){
-          setHomeVoiceFeedback('good','<i class="fa-solid fa-circle-check"></i> Benar! Terdengar: <strong>'+escText(transcript)+'</strong>.');
-        }else{
-          setHomeVoiceFeedback('bad','<i class="fa-solid fa-circle-info"></i> Kurang tepat. Terdengar: <strong>'+escText(transcript||'-')+'</strong>. Coba ucapkan: <strong>'+escText(v.jp)+'</strong> ('+escText(v.romaji)+').');
-        }
-      };
-      rec.onerror=function(){
-        setHomeVoiceFeedback('bad','<i class="fa-solid fa-circle-info"></i> Suara belum tertangkap. Pastikan mikrofon aktif, lalu coba lagi.');
-      };
-      rec.start();
-    }catch(e){
-      setHomeVoiceFeedback('bad','<i class="fa-solid fa-triangle-exclamation"></i> Mikrofon belum bisa dimulai. Coba klik tombol Bicara sekali lagi.');
-    }
-  };
-
-  function wrapFunctions(){
-    try{
-      if(typeof renderHeroSlide==='function' && !renderHeroSlide.__patchV8){
-        var prevHero=renderHeroSlide;
-        renderHeroSlide=function(){
-          var out=prevHero.apply(this,arguments);
-          ensureHomeVoiceTools();
-          updateHomeFavoriteStar();
-          return out;
-        };
-        renderHeroSlide.__patchV8=true;
-      }
-    }catch(e){}
-    try{
-      if(typeof applyUILanguage==='function' && !applyUILanguage.__patchV8){
-        var prevLang=applyUILanguage;
-        applyUILanguage=function(){
-          var out=prevLang.apply(this,arguments);
-          ensureHomeVoiceTools();
-          updateHomeFavoriteStar();
-          return out;
-        };
-        applyUILanguage.__patchV8=true;
-      }
-    }catch(e){}
-    try{
-      if(typeof loadPractice==='function' && !loadPractice.__patchV8Favorite){
-        var prevLoad=loadPractice;
-        loadPractice=function(){
-          var out=prevLoad.apply(this,arguments);
-          updatePracticeFavoriteStar();
-          return out;
-        };
-        loadPractice.__patchV8Favorite=true;
-      }
-    }catch(e){}
-    try{
-      if(typeof renderPracticeCardFace==='function' && !renderPracticeCardFace.__patchV8Favorite){
-        var prevFace=renderPracticeCardFace;
-        renderPracticeCardFace=function(){
-          var out=prevFace.apply(this,arguments);
-          updatePracticeFavoriteStar();
-          return out;
-        };
-        renderPracticeCardFace.__patchV8Favorite=true;
-      }
-    }catch(e){}
-  }
-  function initPatchV8(){
-    wrapFunctions();
-    ensureHomeVoiceTools();
-    updateHomeFavoriteStar();
-    updatePracticeFavoriteStar();
-    refreshFavoriteStars();
-  }
-  document.addEventListener('DOMContentLoaded',initPatchV8);
-  setTimeout(initPatchV8,0);
-  setTimeout(initPatchV8,500);
-})();
-</script>
-
-</body></html>`;
-        const filename=(isJP?'日本語語彙練習結果報告書':'Laporan_Hasil_Latihan_Kosakata_Jepang')+'.pdf';
-        if(window.html2pdf){
-          const wrap=document.createElement('div');wrap.innerHTML=html;const node=wrap.querySelector('main.report');
-          html2pdf().set({margin:[16,14,16,14],filename,image:{type:'jpeg',quality:.98},html2canvas:{scale:2,useCORS:true},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}}).from(node).save();
-        }else{
-          const w=window.open('','_blank');
-          if(!w){alert(isJP?'ポップアップを許可してください。':'Izinkan pop-up browser untuk menyimpan PDF.');return;}
-          w.document.open();w.document.write(html);w.document.close();
-          setTimeout(()=>{w.focus();w.print();},450);
-        }
-      };
-
+      /* downloadResultPdf diperbaiki oleh patch PDF v6 di bawah agar laporan terbuka di tab baru dan bisa Save as PDF. */
       document.addEventListener('DOMContentLoaded',()=>{loadResultPayload(); if(typeof updateResult==='function') updateResult();});
     })();
 
@@ -6117,6 +5632,360 @@
   document.addEventListener('DOMContentLoaded',initFavoritePatch);
   setTimeout(initFavoritePatch,0);
   setTimeout(initFavoritePatch,400);
+})();
+</script>
+
+
+<!-- === PATCH 2026-07-01 v8: ringkasan waktu rapi + bookmark kuning + bookmark homepage/kuis + bicara homepage === -->
+<style id="patch-final-ringkasan-bookmark-audio-v8">
+  /* Ringkasan Belajar: kartu Waktu dibuat lebih lega agar angka tidak mepet/keluar kotak */
+  #page-hasil .result-summary-card{
+    overflow:visible!important;
+  }
+  #page-hasil .result-summary-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:16px!important;
+    align-items:stretch!important;
+  }
+  #page-hasil .summary-tile{
+    min-width:0!important;
+    box-sizing:border-box!important;
+  }
+  #page-hasil .summary-tile:nth-child(4){
+    display:grid!important;
+    grid-template-columns:56px minmax(0,1fr)!important;
+    align-items:center!important;
+    column-gap:10px!important;
+    min-height:122px!important;
+    padding:18px 12px!important;
+    overflow:hidden!important;
+  }
+  #page-hasil .summary-tile:nth-child(4) .icon-bubble{
+    width:56px!important;
+    height:56px!important;
+    min-width:56px!important;
+    flex:0 0 56px!important;
+    margin:0!important;
+  }
+  #page-hasil .summary-tile:nth-child(4) > div{
+    min-width:0!important;
+    width:100%!important;
+    overflow:visible!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    align-items:flex-start!important;
+  }
+  #page-hasil #totalWaktu{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    font-size:clamp(24px,2.05vw,29px)!important;
+    line-height:1.05!important;
+    letter-spacing:-.025em!important;
+    white-space:nowrap!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    font-variant-numeric:tabular-nums!important;
+    font-feature-settings:"tnum" 1!important;
+    text-align:left!important;
+    padding:0!important;
+    margin:0 0 8px!important;
+    transform:none!important;
+  }
+  #page-hasil .summary-tile:nth-child(4) span:not(.icon-bubble){
+    margin:0!important;
+    line-height:1.28!important;
+    text-align:left!important;
+  }
+  @media(max-width:430px){
+    #page-hasil .summary-tile:nth-child(4){
+      grid-template-columns:1fr!important;
+      justify-items:center!important;
+      row-gap:10px!important;
+      padding:18px!important;
+      text-align:center!important;
+    }
+    #page-hasil .summary-tile:nth-child(4) > div{align-items:center!important;text-align:center!important;}
+    #page-hasil #totalWaktu{text-align:center!important;font-size:30px!important;}
+    #page-hasil .summary-tile:nth-child(4) span:not(.icon-bubble){text-align:center!important;}
+  }
+
+  /* Bookmark: bintang benar-benar berubah menjadi kuning soft, bukan hanya glow */
+  #page-materi .card-star,
+  #page-home .star-btn,
+  #page-practice .star-btn{
+    transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease!important;
+  }
+  #page-materi .card-star.active,
+  #page-home .star-btn.active,
+  #page-practice .star-btn.active{
+    background:#fff8dc!important;
+    border-color:#fde68a!important;
+    color:#f6b51f!important;
+    box-shadow:0 10px 22px rgba(245,158,11,.14)!important;
+  }
+  #page-materi .card-star.active i,
+  #page-home .star-btn.active i,
+  #page-practice .star-btn.active i{
+    color:#f6b51f!important;
+  }
+  #page-materi .card-star:hover,
+  #page-home .star-btn:hover,
+  #page-practice .star-btn:hover{
+    transform:scale(1.06)!important;
+    border-color:#fcd34d!important;
+    color:#f6b51f!important;
+  }
+  #page-materi .card-star:hover i,
+  #page-home .star-btn:hover i,
+  #page-practice .star-btn:hover i{
+    color:#f6b51f!important;
+  }
+
+  /* Tombol bicara di kartu kosakata homepage */
+  #page-home .home-card-actions{
+    display:flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+    gap:12px!important;
+    flex-wrap:wrap!important;
+    margin-top:28px!important;
+  }
+  #page-home .home-card-actions .btn{
+    margin-top:0!important;
+  }
+  #page-home .home-voice-btn{
+    background:#fff8dc!important;
+    border:1px solid #fde68a!important;
+    color:#b7791f!important;
+    box-shadow:0 10px 22px rgba(245,158,11,.10)!important;
+  }
+  #page-home .home-voice-feedback{
+    display:none;
+    margin:16px auto 0;
+    max-width:420px;
+    border-radius:16px;
+    padding:12px 14px;
+    font-size:13px;
+    line-height:1.45;
+    font-weight:700;
+    text-align:left;
+  }
+  #page-home .home-voice-feedback.show{display:block;}
+  #page-home .home-voice-feedback.good{background:#dcfce7;color:#0f9f75;border:1px solid rgba(16,185,129,.25);}
+  #page-home .home-voice-feedback.bad{background:#ffe4ec;color:#ff3b6b;border:1px solid rgba(255,59,107,.18);}
+</style>
+<script id="patch-final-ringkasan-bookmark-audio-v8-script">
+(function(){
+  var FAVORITE_KEY='kosakata_jepang_favorite_vocab_v1';
+
+  function safeParse(raw,fallback){try{return raw?JSON.parse(raw):fallback;}catch(e){return fallback;}}
+  function getFavArray(){return safeParse(localStorage.getItem(FAVORITE_KEY),[]).filter(Boolean);}
+  function setFavArray(arr){try{localStorage.setItem(FAVORITE_KEY,JSON.stringify(Array.from(new Set(arr))));}catch(e){}}
+  function getFavSet(){return new Set(getFavArray());}
+  function favId(v){return [v&&v.jp||'',v&&v.kana||'',v&&v.romaji||'',v&&v.arti||'',v&&v.cat||''].join('|');}
+  function encodeFav(v){return encodeURIComponent(favId(v));}
+  function escText(v){return String(v==null?'':v).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
+  function getAllVocab(){try{return Array.isArray(vocabData)?vocabData:[];}catch(e){return [];}}
+  function normalizeLocal(text){
+    if(typeof normalizeVoiceText==='function') return normalizeVoiceText(text);
+    return String(text||'').toLowerCase().replace(/\s+/g,'').replace(/[。、，,.!?！？ー\-]/g,'').trim();
+  }
+  function currentHomeVocab(){
+    try{
+      var slides = (typeof heroSlides!=='undefined' && Array.isArray(heroSlides)) ? heroSlides : [];
+      var index = (typeof heroSlideIndex!=='undefined') ? heroSlideIndex : 0;
+      var slide = slides.length ? slides[index % slides.length] : null;
+      if(slide){
+        var found = getAllVocab().find(function(v){return v.jp===slide.jp || v.romaji===slide.romaji;});
+        if(found) return found;
+        return {jp:slide.jp||'', kana:slide.speak||slide.jp||'', romaji:slide.romaji||'', arti:slide.meaning||'', cat:slide.tag||'Favorit', img:'person'};
+      }
+    }catch(e){}
+    return getAllVocab()[0] || {jp:'わたし',kana:'わたし',romaji:'watashi',arti:'saya, aku',cat:'Salam'};
+  }
+  function updateStarVisual(btn,v){
+    if(!btn || !v) return;
+    var active=getFavSet().has(favId(v));
+    btn.classList.toggle('active',active);
+    btn.setAttribute('aria-pressed',active?'true':'false');
+    btn.setAttribute('title',active?'Hapus dari kosakata favorit':'Tambahkan ke kosakata favorit');
+    btn.setAttribute('aria-label',active?'Hapus dari kosakata favorit':'Tambahkan ke kosakata favorit');
+    btn.dataset.favKey=encodeFav(v);
+    var icon=btn.querySelector('i');
+    if(icon){icon.className=active?'fa-solid fa-star':'fa-regular fa-star';}
+    if(typeof applyLocalIcons==='function') applyLocalIcons(btn);
+  }
+  function updateHomeFavoriteStar(){
+    var btn=document.querySelector('#page-home .flashcard-showcase .star-btn');
+    var v=currentHomeVocab();
+    if(!btn || !v) return;
+    updateStarVisual(btn,v);
+    btn.onclick=function(event){toggleFavorite(event,btn.dataset.favKey);};
+  }
+  function updatePracticeFavoriteStar(){
+    var btn=document.querySelector('#page-practice .practice-card .star-btn');
+    if(!btn) return;
+    var v=null;
+    try{v=typeof currentVocab==='function'?currentVocab():null;}catch(e){}
+    if(!v) return;
+    updateStarVisual(btn,v);
+    btn.onclick=function(event){toggleFavorite(event,btn.dataset.favKey);};
+  }
+  function refreshFavoriteStars(){
+    updateHomeFavoriteStar();
+    updatePracticeFavoriteStar();
+    document.querySelectorAll('#page-materi .card-star[data-fav-key]').forEach(function(btn){
+      var key=decodeURIComponent(btn.dataset.favKey||'');
+      var active=getFavSet().has(key);
+      btn.classList.toggle('active',active);
+      var icon=btn.querySelector('i');
+      if(icon) icon.className=active?'fa-solid fa-star':'fa-regular fa-star';
+    });
+  }
+
+  window.toggleFavorite=function(event,encodedKey){
+    if(event){event.preventDefault();event.stopPropagation();}
+    var key=decodeURIComponent(encodedKey||'');
+    if(!key) return;
+    var favs=getFavSet();
+    if(favs.has(key)) favs.delete(key); else favs.add(key);
+    setFavArray(Array.from(favs));
+    try{ if(typeof renderCategoryPills==='function') renderCategoryPills(); }catch(e){}
+    try{ if(typeof renderVocab==='function') renderVocab(); }catch(e){}
+    setTimeout(refreshFavoriteStars,0);
+  };
+
+  function ensureHomeVoiceTools(){
+    var card=document.querySelector('#page-home .flashcard-showcase');
+    if(!card) return;
+    var hearBtn=card.querySelector('button.btn-secondary:not(.home-voice-btn)');
+    if(hearBtn && !card.querySelector('.home-card-actions')){
+      var wrap=document.createElement('div');
+      wrap.className='home-card-actions';
+      hearBtn.parentNode.insertBefore(wrap,hearBtn);
+      wrap.appendChild(hearBtn);
+      var voiceBtn=document.createElement('button');
+      voiceBtn.type='button';
+      voiceBtn.className='btn btn-secondary home-voice-btn';
+      voiceBtn.innerHTML='<i class="fa-solid fa-microphone"></i> Bicara';
+      voiceBtn.onclick=function(e){e.preventDefault();e.stopPropagation();startHomeVoiceAnswer();};
+      wrap.appendChild(voiceBtn);
+    }
+    var p=card.querySelector('p');
+    if(p){
+      p.style.cursor='pointer';
+      p.onclick=function(e){e.preventDefault();startHomeVoiceAnswer();};
+      p.setAttribute('title','Klik untuk mencoba menjawab dengan suara');
+    }
+    if(!card.querySelector('.home-voice-feedback')){
+      var fb=document.createElement('div');
+      fb.className='home-voice-feedback';
+      fb.id='homeVoiceFeedback';
+      card.appendChild(fb);
+    }
+    if(typeof applyLocalIcons==='function') applyLocalIcons(card);
+  }
+  function setHomeVoiceFeedback(type,html){
+    var fb=document.getElementById('homeVoiceFeedback');
+    if(!fb) return;
+    fb.className='home-voice-feedback show '+type;
+    fb.innerHTML=html;
+    if(typeof applyLocalIcons==='function') applyLocalIcons(fb);
+  }
+  window.startHomeVoiceAnswer=function(){
+    var SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+    var v=currentHomeVocab();
+    if(!SpeechRecognition){
+      setHomeVoiceFeedback('bad','<i class="fa-solid fa-triangle-exclamation"></i> Browser belum mendukung pengenalan suara. Gunakan Chrome/Edge dan izinkan mikrofon.');
+      return;
+    }
+    try{
+      var rec=new SpeechRecognition();
+      rec.lang='ja-JP';
+      rec.interimResults=false;
+      rec.maxAlternatives=3;
+      setHomeVoiceFeedback('good','<i class="fa-solid fa-microphone-lines"></i> Mendengarkan... ucapkan <strong>'+escText(v.jp)+'</strong>.');
+      rec.onresult=function(event){
+        var results=Array.from(event.results&&event.results[0]||[]);
+        var transcript=(results[0]&&results[0].transcript||'').trim();
+        var spoken=normalizeLocal(transcript);
+        var targets=[v.jp,v.kana,v.romaji].filter(Boolean).map(normalizeLocal);
+        var ok=!!spoken && targets.some(function(t){return spoken===t || spoken.indexOf(t)>-1 || t.indexOf(spoken)>-1;});
+        if(ok){
+          setHomeVoiceFeedback('good','<i class="fa-solid fa-circle-check"></i> Benar! Terdengar: <strong>'+escText(transcript)+'</strong>.');
+        }else{
+          setHomeVoiceFeedback('bad','<i class="fa-solid fa-circle-info"></i> Kurang tepat. Terdengar: <strong>'+escText(transcript||'-')+'</strong>. Coba ucapkan: <strong>'+escText(v.jp)+'</strong> ('+escText(v.romaji)+').');
+        }
+      };
+      rec.onerror=function(){
+        setHomeVoiceFeedback('bad','<i class="fa-solid fa-circle-info"></i> Suara belum tertangkap. Pastikan mikrofon aktif, lalu coba lagi.');
+      };
+      rec.start();
+    }catch(e){
+      setHomeVoiceFeedback('bad','<i class="fa-solid fa-triangle-exclamation"></i> Mikrofon belum bisa dimulai. Coba klik tombol Bicara sekali lagi.');
+    }
+  };
+
+  function wrapFunctions(){
+    try{
+      if(typeof renderHeroSlide==='function' && !renderHeroSlide.__patchV8){
+        var prevHero=renderHeroSlide;
+        renderHeroSlide=function(){
+          var out=prevHero.apply(this,arguments);
+          ensureHomeVoiceTools();
+          updateHomeFavoriteStar();
+          return out;
+        };
+        renderHeroSlide.__patchV8=true;
+      }
+    }catch(e){}
+    try{
+      if(typeof applyUILanguage==='function' && !applyUILanguage.__patchV8){
+        var prevLang=applyUILanguage;
+        applyUILanguage=function(){
+          var out=prevLang.apply(this,arguments);
+          ensureHomeVoiceTools();
+          updateHomeFavoriteStar();
+          return out;
+        };
+        applyUILanguage.__patchV8=true;
+      }
+    }catch(e){}
+    try{
+      if(typeof loadPractice==='function' && !loadPractice.__patchV8Favorite){
+        var prevLoad=loadPractice;
+        loadPractice=function(){
+          var out=prevLoad.apply(this,arguments);
+          updatePracticeFavoriteStar();
+          return out;
+        };
+        loadPractice.__patchV8Favorite=true;
+      }
+    }catch(e){}
+    try{
+      if(typeof renderPracticeCardFace==='function' && !renderPracticeCardFace.__patchV8Favorite){
+        var prevFace=renderPracticeCardFace;
+        renderPracticeCardFace=function(){
+          var out=prevFace.apply(this,arguments);
+          updatePracticeFavoriteStar();
+          return out;
+        };
+        renderPracticeCardFace.__patchV8Favorite=true;
+      }
+    }catch(e){}
+  }
+  function initPatchV8(){
+    wrapFunctions();
+    ensureHomeVoiceTools();
+    updateHomeFavoriteStar();
+    updatePracticeFavoriteStar();
+    refreshFavoriteStars();
+  }
+  document.addEventListener('DOMContentLoaded',initPatchV8);
+  setTimeout(initPatchV8,0);
+  setTimeout(initPatchV8,500);
 })();
 </script>
 </body>
