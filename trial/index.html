@@ -36,7 +36,7 @@
     html{scroll-behavior:smooth}
     body{
       min-height:100vh;
-      font-family:Inter,"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       color:var(--navy);
       background:
         radial-gradient(circle at 12% 8%, rgba(124,77,255,.12), transparent 35%),
@@ -251,7 +251,7 @@
 
     /* FINAL HOMEPAGE POLISH - mengikuti referensi desktop */
     body{
-      font-family:Inter,"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       letter-spacing:-0.01em;
     }
     #page-home .container{max-width:1380px;}
@@ -798,6 +798,36 @@
     #page-home .feature-card{align-items:center!important}
     #page-home .feature-card .icon-bubble{margin-top:0!important}
 
+
+    /* Final override: samakan header/home dengan referensi */
+    body{font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:500;color:#14223f}
+    .app-header{background:rgba(255,255,255,.82);box-shadow:0 8px 28px rgba(80,70,140,.045);border-bottom:1px solid rgba(124,77,255,.08)}
+    .brand{gap:13px}
+    .brand h1{font-size:17px!important;font-weight:760!important;letter-spacing:-.018em;color:#4f2fd6!important;line-height:1.12}
+    .brand p{font-size:13px!important;font-weight:500!important;color:#56657f!important;line-height:1.2;margin-top:4px}
+    .brand-icon{font-weight:700!important;font-size:26px!important;box-shadow:0 12px 24px rgba(124,77,255,.22)!important}
+    .nav-menu{gap:26px!important;margin-right:8px!important}
+    .nav-link{font-size:13.5px!important;font-weight:560!important;color:#42516d!important;padding:14px 15px!important;letter-spacing:-.005em}
+    .nav-link:hover,.nav-link.active{color:#6b3df4!important}
+    .nav-link.active:after{height:2.5px!important;left:15px!important;right:15px!important;bottom:4px!important;background:#6b3df4!important}
+    #loginBtn{height:46px!important;padding:0 20px!important;border-radius:11px!important;font-weight:700!important;color:#4f3a91!important;background:#fff!important;box-shadow:0 8px 20px rgba(80,70,140,.055)!important;border-color:#dfe3ef!important}
+    .badge{font-size:15px!important;font-weight:650!important;color:#6b3df4!important;background:#f1eaff!important;padding:12px 19px!important;letter-spacing:-.01em}
+    .language-pill{min-width:142px!important;height:44px!important;padding:0 14px!important;border-radius:999px!important;background:#fff!important;border:1px solid #dfe4ee!important;box-shadow:0 8px 20px rgba(80,70,140,.045)!important;color:#22314f!important;font-weight:650!important;gap:10px!important}
+    .langModeLabel{font-size:14px!important;font-weight:650!important;color:#22314f!important;min-width:70px!important;text-align:left!important;letter-spacing:0!important;line-height:1!important}
+    .language-pill .fa-chevron-down{font-size:11px!important;color:#475569!important;margin-left:auto!important}
+    .flag-jp,.flag-id{width:18px!important;height:18px!important;flex:0 0 18px!important;border-radius:50%!important;box-shadow:0 0 0 1px #e2e8f0!important;background:#fff!important;position:relative!important;overflow:hidden!important}
+    .flag-jp:after{content:""!important;position:absolute!important;inset:5px!important;border-radius:50%!important;background:#e6002d!important}
+    .flag-id:after{content:none!important}.flag-id{background:linear-gradient(#ef4444 0 50%,#fff 50% 100%)!important}
+    .hero-eyebrow{gap:32px!important;margin:18px 0 28px!important}
+    .hero-title{font-size:clamp(52px,5vw,72px)!important;line-height:1.12!important;letter-spacing:-.045em!important;font-weight:780!important;color:#10213f!important;margin-bottom:24px!important}
+    .hero-desc{font-size:17px!important;line-height:1.72!important;font-weight:500!important;color:#56657f!important;max-width:515px!important;margin-bottom:34px!important}
+    .btn{font-weight:700!important;letter-spacing:-.01em!important}
+    .hero-actions .btn{height:56px!important;border-radius:14px!important;font-size:15px!important;padding:0 30px!important}
+    #page-home .stats-row .mini-stat strong{font-weight:740!important;color:#111827!important;font-size:26px!important;letter-spacing:-.035em!important}
+    #page-home .stats-row .mini-stat span:not(.icon-bubble){font-weight:500!important;color:#667085!important;font-size:12px!important;line-height:1.45!important}
+    .fiction-toggle h3,.feature-card h3{font-weight:720!important;color:#19213d!important;letter-spacing:-.015em!important}
+    .fiction-toggle p,.feature-card p{font-weight:500!important;color:#667085!important}
+
   </style>
 </head>
 <body>
@@ -827,7 +857,7 @@
           <div>
             <div class="hero-eyebrow">
               <span class="badge"><i class="fa-solid fa-book-open"></i> Bab 1–5 • 264 kosakata</span>
-              <button class="language-pill" onclick="toggleLangMode()" title="Klik untuk mengganti bahasa website"><span class="flag-jp langFlag"></span> <span class="langModeLabel">日本語</span> <i class="fa-solid fa-chevron-down"></i></button>
+              <button class="language-pill" onclick="toggleLangMode()" title="Klik untuk mengganti bahasa website"><span class="flag-id langFlag"></span> <span class="langModeLabel">Indonesia</span> <i class="fa-solid fa-chevron-down"></i></button>
             </div>
             <h2 class="hero-title">Belajar kosakata<br>Jepang</h2>
             <p class="hero-desc">Belajar lebih efektif dengan kartu visual, audio, jawaban suara, dan progress yang membantu kamu menguasai kosakata sehari-hari.</p>
@@ -894,7 +924,7 @@
     <!-- Practice -->
     <section class="page" id="page-practice">
       <div class="container">
-        <div class="practice-top"><div class="hero-eyebrow" style="margin:0"><span class="badge"><i class="fa-solid fa-book-open"></i> Bab 1–5 • 264 kosakata</span><button class="language-pill" onclick="toggleLangMode()" title="Klik untuk mengganti bahasa website"><span class="flag-jp langFlag"></span> <span class="langModeLabel">日本語</span> <i class="fa-solid fa-chevron-down"></i></button></div><button class="btn btn-ghost" onclick="showPage('home')"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar Latihan</button></div>
+        <div class="practice-top"><div class="hero-eyebrow" style="margin:0"><span class="badge"><i class="fa-solid fa-book-open"></i> Bab 1–5 • 264 kosakata</span><button class="language-pill" onclick="toggleLangMode()" title="Klik untuk mengganti bahasa website"><span class="flag-id langFlag"></span> <span class="langModeLabel">Indonesia</span> <i class="fa-solid fa-chevron-down"></i></button></div><button class="btn btn-ghost" onclick="showPage('home')"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar Latihan</button></div>
         <div class="practice-grid">
           <div class="panel-card practice-card">
             <div class="practice-image"></div>
@@ -984,7 +1014,7 @@
     const uiText = {
       id:{
         home:'Beranda', materi:'Materi', quiz:'Kuis', login:'Masuk', admin:'Admin',
-        lang:'日本語', badge:'Bab 1–5 • 264 kosakata', hero:'Belajar kosakata<br>Jepang',
+        lang:'Indonesia', badge:'Bab 1–5 • 264 kosakata', hero:'Belajar kosakata<br>Jepang',
         desc:'Belajar lebih efektif dengan kartu visual, audio, jawaban suara, dan progress yang membantu kamu menguasai kosakata sehari-hari.',
         username:'Isi Username', lihat:'Lihat Materi', stat1:'Total Kosakata<br>Bab 1–5', stat2:'Rata-rata Waktu<br>per Kartu', stat3:'Jumlah Kategori<br>Topik',
         fiction:'Gunakan kosakata fiksi', fictionDesc:'Sertakan kosakata dari anime, game, dan karya fiksi populer.',
@@ -996,7 +1026,7 @@
       },
       ja:{
         home:'ホーム', materi:'教材', quiz:'クイズ', login:'ログイン', admin:'管理者',
-        lang:'Bahasa Indonesia', badge:'第1〜5章・264語', hero:'日本語の語彙を<br>学ぼう',
+        lang:'日本語', badge:'第1〜5章・264語', hero:'日本語の語彙を<br>学ぼう',
         desc:'ビジュアルカード、音声、音声回答、学習進捗で、日常の日本語語彙をより効果的に身につけましょう。',
         username:'ユーザー名入力', lihat:'教材を見る', stat1:'総語彙数<br>第1〜5章', stat2:'カード1枚あたり<br>平均時間', stat3:'カテゴリー数<br>トピック',
         fiction:'フィクション語彙を使う', fictionDesc:'アニメ、ゲーム、人気作品の語彙も含めます。',
@@ -1016,7 +1046,7 @@
       const t=uiText[siteLang];
       document.documentElement.lang = siteLang === 'id' ? 'id' : 'ja';
       document.querySelectorAll('.langModeLabel').forEach(el=>el.textContent=t.lang);
-      document.querySelectorAll('.langFlag').forEach(el=>{ const targetIsJapanese = siteLang === 'id'; el.classList.toggle('flag-jp',targetIsJapanese); el.classList.toggle('flag-id',!targetIsJapanese); });
+      document.querySelectorAll('.langFlag').forEach(el=>{ const isJapanese = siteLang === 'ja'; el.classList.toggle('flag-jp',isJapanese); el.classList.toggle('flag-id',!isJapanese); });
       setText('[data-page="home"]',t.home); setText('[data-page="materi"]',t.materi); setText('[data-page="practice"]',t.quiz);
       setHTML('#loginBtn', (document.getElementById('loginBtn').textContent.includes('Admin')||document.getElementById('loginBtn').textContent.includes('管理者')) ? `<i class="fa-solid fa-shield-halved"></i> <span>${t.admin}</span> <i class="fa-solid fa-chevron-down"></i>` : `<i class="fa-solid fa-user"></i> <span>${t.login}</span>`);
       setHTML('#page-home .hero-eyebrow .badge',`<i class="fa-solid fa-book-open"></i> ${t.badge}`);
