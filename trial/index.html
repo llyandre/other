@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minna no Nihongo I & II - Kuis Flashcard</title>
+  <title>Minna no Nihongo I & II - Kuis Kartu Belajar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -944,6 +944,147 @@
       #loginModal .login-card{padding:24px 18px;border-radius:26px}.login-icon{width:50px;height:50px;border-radius:18px}.login-head h2{font-size:30px}.review-filters{grid-template-columns:1fr}.summary-stat{min-height:82px}.admin-page-controls select{min-width:110px}
     }
 
+
+    /* ===== PATCH FINAL: fullscreen image preview, minimalist navbar, exclusive filters, material cards ===== */
+    :root{--soft-purple:#f1eaff;--soft-blue:#eef6ff;--soft-pink:#ffeaf1;--soft-green:#e5fbf2;--soft-yellow:#fff4d8;--soft-border:rgba(124,77,255,.14);--soft-shadow:0 14px 34px rgba(80,67,130,.08)}
+    html,body{max-width:100%;overflow-x:hidden}
+    body{font-weight:520;letter-spacing:-.008em}
+    .top-nav{height:78px!important;background:rgba(255,255,255,.78)!important;border-bottom:1px solid rgba(124,77,255,.12)!important;box-shadow:0 8px 24px rgba(80,67,130,.055)!important;backdrop-filter:blur(20px) saturate(1.1)!important;-webkit-backdrop-filter:blur(20px) saturate(1.1)!important}
+    .app{padding-top:88px!important}
+    .nav-inner{width:min(1280px,calc(100% - 44px))!important;gap:18px!important}
+    .brand{min-width:238px!important;gap:12px!important;letter-spacing:-.025em!important}
+    .brand-icon{width:50px!important;height:50px!important;border-radius:18px!important;box-shadow:0 12px 26px rgba(124,77,255,.18)!important}
+    .brand-copy strong{font-size:17px!important;font-weight:780!important;letter-spacing:-.035em!important;color:#211354!important}
+    .brand-copy small{font-size:11px!important;font-weight:650!important;color:#81769f!important}
+    .nav-links{gap:10px!important;justify-content:center!important}
+    .nav-link{min-height:42px!important;padding:0 16px!important;border-radius:999px!important;font-size:15px!important;font-weight:720!important;color:#4e5970!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;transition:background .18s ease,color .18s ease,transform .18s ease!important}
+    .nav-link::after{display:none!important}
+    .nav-link:hover{background:#f7f3ff!important;color:#6f3ff5!important;transform:translateY(-1px)}
+    .nav-link.active{background:#f1eaff!important;color:#6f3ff5!important;box-shadow:inset 0 0 0 1px rgba(124,77,255,.12)!important}
+    .nav-actions{gap:10px!important;min-width:0!important}
+    .nav-lang-btn,.nav-fiction-toggle,.user-btn{min-height:46px!important;border-radius:999px!important;padding:0 12px!important;box-shadow:0 10px 24px rgba(80,67,130,.07)!important;border-color:rgba(124,77,255,.16)!important;background:rgba(255,255,255,.86)!important;font-weight:730!important}
+    .nav-lang-globe,.flag-circle,.fiction-icon{width:30px!important;height:30px!important}
+    .lang-name,.fiction-label,#userMenuText{font-size:14px!important;font-weight:760!important}
+    .lang-code,.fiction-state{min-width:31px!important;min-height:26px!important;font-size:11px!important;font-weight:800!important}
+    .nav-fiction-toggle.is-disabled{opacity:.48!important;filter:saturate(.5);cursor:not-allowed!important;background:#f7f8fc!important;color:#8791a7!important}
+    .nav-fiction-toggle.is-disabled .fiction-icon,.nav-fiction-toggle.is-disabled .fiction-state{background:#e8edf7!important;color:#8a94a8!important}
+    .nav-fiction-toggle:not(.is-disabled):hover,.nav-lang-btn:hover,.user-btn:hover{transform:translateY(-1px)!important;border-color:rgba(124,77,255,.28)!important}
+
+    #materialPage .content-card{border-radius:30px!important;padding:32px!important;background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(255,255,255,.76))!important;border:1px solid rgba(255,255,255,.82)!important}
+    #materialPage .content-card>h2{font-size:clamp(30px,3vw,44px)!important;font-weight:820!important;letter-spacing:-.045em!important;margin-bottom:6px!important}
+    #materialPage .content-card>p{max-width:720px;margin-top:0!important;font-weight:560!important;color:#68758e!important}
+    .material-toolbar{display:grid!important;grid-template-columns:minmax(280px,1fr) minmax(170px,220px) minmax(190px,250px);gap:12px!important;align-items:center;margin:22px 0 24px!important}
+    .material-search-box{min-width:0!important;flex:auto!important}
+    .material-filter-select{min-height:52px!important;border-radius:18px!important;background:rgba(255,255,255,.92)!important;border:1px solid #dfe5f6!important;color:#24304a!important;font-weight:650!important}
+    .vocab-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))!important;gap:18px!important}
+    .vocab-card{padding:20px!important;border-radius:26px!important;background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(252,249,255,.9))!important;border:1px solid #e7e2ff!important;box-shadow:0 14px 34px rgba(80,67,130,.075)!important;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease!important}
+    .vocab-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(80,67,130,.11)!important;border-color:rgba(124,77,255,.28)!important}
+    .vocab-top{gap:15px!important;align-items:center!important}
+    .thumb,.thumb-placeholder{width:74px!important;height:74px!important;border-radius:22px!important;object-fit:contain!important;background:linear-gradient(135deg,#faf7ff,#eef6ff)!important;border:1px solid rgba(124,77,255,.12)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+    .thumb-placeholder{display:grid;place-items:center;color:#8a6dff;font-size:22px;flex:0 0 auto}
+    .vocab-jp{font-size:29px!important;font-weight:810!important;letter-spacing:-.015em;color:#071b45!important}
+    .vocab-romaji{font-size:13px!important;color:#7c4dff!important;font-weight:760!important;margin-top:4px!important}
+    .vocab-id{font-size:14.5px!important;line-height:1.55!important;color:#4c5870!important;font-weight:570!important;margin:16px 0!important}
+    .tag-row{gap:8px!important}.tag{font-weight:780!important;background:#f1eaff!important;color:#5e35d6!important}.tag.green{background:#e5fbf2!important;color:#128362!important}.tag.pink{background:#ffeaf1!important;color:#ca315d!important}.tag.blue{background:#eef6ff!important;color:#2e6ab9!important}.tag.fiction-badge{background:linear-gradient(135deg,#e8fbf8,#eef6ff)!important;color:#13806c!important}
+    .card-actions{gap:9px!important;margin-top:16px!important}.icon-btn{width:40px!important;height:40px!important;border-radius:15px!important;box-shadow:0 8px 18px rgba(80,67,130,.065)!important}
+    .empty{border-radius:24px!important;background:linear-gradient(145deg,rgba(255,255,255,.86),rgba(248,245,255,.76))!important;border:1px dashed rgba(124,77,255,.28)!important;text-align:center!important}
+
+    .answer-image-wrap{position:relative;display:inline-grid;place-items:center;border-radius:24px;line-height:0}
+    .answer-img.answer-img-preview{cursor:zoom-in!important;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease!important}
+    .answer-image-wrap:hover .answer-img.answer-img-preview{transform:scale(1.03);box-shadow:0 18px 38px rgba(80,67,130,.15);border-color:rgba(124,77,255,.32)}
+    .answer-image-zoom-icon{position:absolute;right:10px;top:10px;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.92);color:#6f3ff5;box-shadow:0 10px 22px rgba(80,67,130,.14);font-size:13px;pointer-events:none;opacity:.95}
+    .image-preview-modal{z-index:260!important;background:rgba(10,13,26,.74)!important;backdrop-filter:blur(18px) saturate(1.05)!important;-webkit-backdrop-filter:blur(18px) saturate(1.05)!important;padding:22px!important}
+    .image-preview-card{position:relative;display:grid;gap:12px;place-items:center;max-width:92vw;max-height:90vh;padding:18px;border-radius:30px;background:rgba(255,255,255,.96);border:1px solid rgba(255,255,255,.78);box-shadow:0 36px 110px rgba(0,0,0,.35)}
+    .image-preview-card img{max-width:80vw;max-height:80vh;object-fit:contain;border-radius:24px;background:linear-gradient(135deg,#faf7ff,#eef6ff)}
+    .image-preview-close{position:absolute!important;right:-14px!important;top:-14px!important;float:none!important;width:48px!important;height:48px!important;z-index:3!important}
+    .image-preview-help{margin:0!important;color:#66728a!important;font-weight:650!important;font-size:13px!important;text-align:center!important}
+    .check-pill{position:relative;min-height:50px!important;border-radius:999px!important;font-weight:760!important;transition:background .18s ease,color .18s ease,border-color .18s ease,box-shadow .18s ease!important}
+    .check-pill:has(input:checked){background:#f1eaff!important;color:#6537dc!important;border-color:#8b5cff!important;box-shadow:0 10px 24px rgba(124,77,255,.12)!important}
+
+    @media (max-width:1050px){.nav-inner{width:min(100% - 28px,1280px)!important;gap:10px!important}.brand{min-width:auto!important}.nav-links{gap:4px!important}.nav-link{padding:0 11px!important}.lang-name,.fiction-label{display:none!important}.material-toolbar{grid-template-columns:1fr 1fr!important}.material-search-box{grid-column:1/-1!important}}
+    @media (max-width:760px){.top-nav{height:68px!important}.app{padding-top:76px!important}.brand-icon{width:44px!important;height:44px!important}.brand-copy strong{font-size:14px!important}.brand-copy small{display:none!important}.nav-actions{gap:6px!important}.nav-lang-btn,.nav-fiction-toggle,.user-btn{min-height:42px!important;padding:0 8px!important}.material-toolbar{grid-template-columns:1fr!important}.vocab-grid{grid-template-columns:1fr!important}.image-preview-card img{max-width:92vw;max-height:78vh}.image-preview-card{padding:14px;border-radius:24px}.image-preview-close{right:4px!important;top:4px!important}}
+    @media (max-width:450px){.brand-copy strong{display:none!important}.lang-code,.fiction-state{display:none!important}.user-btn span{max-width:78px!important}}
+
+    /* ===== REVISI KHUSUS: ikon soft, terjemahan UI, dan modal filter PDF ===== */
+    .soft-step-icon,
+    .option-soft-icon {
+      width:34px;
+      height:34px;
+      border-radius:14px;
+      display:inline-grid;
+      place-items:center;
+      margin-right:9px;
+      color:#6f43e8;
+      background:linear-gradient(135deg,#f2ecff,#eef8ff);
+      border:1px solid rgba(124,77,255,.14);
+      box-shadow:0 8px 18px rgba(80,67,130,.08);
+      vertical-align:middle;
+      font-size:14px;
+    }
+    .option-card .option-soft-icon {
+      width:42px;
+      height:42px;
+      border-radius:16px;
+      margin:0 12px 0 0;
+      flex:0 0 auto;
+    }
+    .option-card.icon-option {
+      display:flex!important;
+      align-items:center!important;
+      gap:0!important;
+    }
+    .option-card.icon-option > div {
+      min-width:0;
+    }
+    .option-card.icon-option small {
+      margin-top:4px;
+    }
+    .login-icon {
+      background:linear-gradient(135deg,#8b5cff 0%,#7db5ff 58%,#60d8c0 100%)!important;
+      border-radius:22px!important;
+      box-shadow:0 18px 40px rgba(124,77,255,.22), inset 0 1px 0 rgba(255,255,255,.35)!important;
+    }
+    .login-icon i {
+      font-size:25px;
+      filter:drop-shadow(0 4px 8px rgba(50,35,120,.18));
+    }
+    .pdf-filter-card { width:min(780px,100%)!important; }
+    .pdf-filter-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+    .pdf-filter-field label {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:800;
+      color:#24304a;
+      margin:0 0 8px;
+    }
+    .pdf-filter-field label i {
+      color:#7c4dff;
+    }
+    .pdf-filter-field select {
+      min-height:52px;
+      border-radius:17px;
+      background:#fff;
+    }
+    .pdf-filter-message {
+      margin-top:14px;
+      padding:13px 15px;
+      border-radius:16px;
+      background:#fff5d9;
+      color:#8a6100;
+      border:1px solid #ffe5a4;
+      font-weight:750;
+    }
+    @media (max-width:760px){
+      .pdf-filter-grid { grid-template-columns:1fr; }
+      .pdf-filter-card { max-height:92vh; overflow:auto; }
+    }
+
   </style>
 </head>
 <body>
@@ -951,7 +1092,7 @@
     <div class="loader-card">
       <div class="loader-icon">あ</div>
       <h3>Menyiapkan kartu belajar...</h3>
-      <p>Flashcard sedang disusun agar kuis berjalan lancar.</p>
+      <p>Kartu belajar sedang disusun agar kuis berjalan lancar.</p>
       <div class="loader-bar"><div class="loader-fill"></div></div>
     </div>
   </div>
@@ -966,9 +1107,9 @@
 
   <header class="top-nav" id="topNav">
     <div class="nav-inner">
-      <div class="brand" aria-label="Minna no Nihongo Flashcard">
+      <div class="brand" aria-label="Minna no Nihongo Kartu Belajar">
         <div class="brand-icon"><i class="fa-solid fa-book-open"></i><span class="brand-kana jp">み</span></div>
-        <div class="brand-copy"><strong>Minna no Nihongo</strong><small>Flashcard • <span class="jp">みんなの日本語</span></small></div>
+        <div class="brand-copy"><strong>Minna no Nihongo</strong><small>Kartu Belajar • <span class="jp">みんなの日本語</span></small></div>
       </div>
       <nav class="nav-links">
         <button class="nav-link active" data-page="home" data-i18n="navHome">Beranda</button>
@@ -986,14 +1127,14 @@
         <button class="nav-fiction-toggle active" id="navFictionToggle" type="button" aria-pressed="true" title="Filter kosakata fiksi">
           <span class="fiction-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
           <span class="fiction-label">Fiksi</span>
-          <span class="fiction-state">ON</span>
+          <span class="fiction-state">Aktif</span>
         </button>
         <div class="user-menu">
           <button class="user-btn" id="userMenuBtn"><i class="fa-regular fa-user"></i><span id="userMenuText" data-i18n="login">Masuk</span></button>
           <div class="dropdown" id="userDropdown">
             <button class="drop-item" id="changeCategoryBtn"><i class="fa-solid fa-layer-group"></i><span data-i18n="changeCategory">Ganti kategori</span></button>
             <button class="drop-item" id="langToggleDrop"><i class="fa-solid fa-language"></i><span data-i18n="changeLanguage">Ganti bahasa</span></button>
-            <button class="drop-item hidden" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i><span data-i18n="logout">Logout</span></button>
+            <button class="drop-item hidden" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i><span data-i18n="logout">Keluar</span></button>
           </div>
         </div>
       </div>
@@ -1005,17 +1146,17 @@
       <div class="hero glass">
         <div>
           <span class="badge"><i class="fa-solid fa-wand-magic-sparkles"></i><span id="activeChoiceText">Minna no Nihongo I • Materi Umum • Bab 1</span></span>
-          <h1 data-i18n="homeTitle">Kuis Flashcard Kosakata Jepang</h1>
-          <p data-i18n="homeDesc">Belajar kosakata Minna no Nihongo I & II dengan kartu interaktif, suara pelafalan, latihan berbicara, dan laporan hasil yang tersimpan.</p>
+          <h1 data-i18n="homeTitle">Kuis Kartu Kosakata Jepang</h1>
+          <p data-i18n="homeDesc">Belajar kosakata Minna no Nihongo I & II dengan kartu belajar interaktif, suara pelafalan, latihan berbicara, dan laporan hasil yang tersimpan.</p>
           <div class="info-grid">
             <div class="info-card"><i class="fa-solid fa-book-open"></i><strong id="homeVocabCount">0</strong><span data-i18n="totalVocab">Total Kosakata</span></div>
-            <div class="info-card"><i class="fa-regular fa-clock"></i><strong>30 dtk</strong><span data-i18n="timeLimit">Limit Waktu per Kartu</span></div>
+            <div class="info-card"><i class="fa-regular fa-clock"></i><strong>30 dtk</strong><span data-i18n="timeLimit">Batas Waktu per Kartu</span></div>
             <div class="info-card"><i class="fa-solid fa-layer-group"></i><strong id="homeChapterCount">1</strong><span data-i18n="chapterScope">Lingkup Bab</span></div>
           </div>
           <div class="hero-actions">
             <button class="btn hidden" id="homeStartBtn"><i class="fa-solid fa-play"></i><span data-i18n="startQuiz">Mulai Kuis</span></button>
             <button class="btn secondary hidden" id="homeMaterialBtn"><i class="fa-solid fa-book"></i><span data-i18n="seeMaterial">Lihat Materi</span></button>
-            <button class="btn soft" id="homeLoginBtn"><i class="fa-regular fa-user"></i><span data-i18n="fillUsername">Isi Username</span></button>
+            <button class="btn soft" id="homeLoginBtn"><i class="fa-regular fa-user"></i><span data-i18n="fillUsername">Isi Nama Peserta</span></button>
             <button class="choice-chip" id="homeLangBtn"><i class="fa-solid fa-language"></i><span>日本語 / Indonesia</span></button>
           </div>
         </div>
@@ -1041,16 +1182,29 @@
           <div class="stat-box glass">
             <h3 data-i18n="studyStats">Statistik Belajar</h3>
             <div class="mini-stat"><div class="mini-icon"><i class="fa-solid fa-book-open"></i></div><div><strong id="matCount">0</strong><span data-i18n="totalVocab">Total Kosakata</span></div></div>
-            <div class="mini-stat"><div class="mini-icon" style="background:#dcfaef;color:#16a374"><i class="fa-regular fa-clock"></i></div><div><strong>30 dtk</strong><span data-i18n="timeLimit">Limit Waktu per Kartu</span></div></div>
+            <div class="mini-stat"><div class="mini-icon" style="background:#dcfaef;color:#16a374"><i class="fa-regular fa-clock"></i></div><div><strong>30 dtk</strong><span data-i18n="timeLimit">Batas Waktu per Kartu</span></div></div>
           </div>
         </aside>
         <div class="content-card glass">
-          <h2 data-i18n="materialTitle">Rangkuman Tambahan</h2>
-          <p data-i18n="materialDesc">Cari kosakata, baca arti dan romajinya, lalu dengarkan pelafalannya sebelum mulai kuis.</p>
+          <h2 data-i18n="materialTitle">Kumpulan Kosakata</h2>
+          <p data-i18n="materialDesc">Pelajari kosakata berdasarkan buku, materi, dan kategori yang dipilih.</p>
           <div class="notice"><i class="fa-solid fa-book-open"></i><div><h3 data-i18n="studyFirst">Pelajari dulu sebelum mulai kuis</h3><p data-i18n="studyFirstDesc">Di halaman ini kamu bisa melihat arti, romaji, contoh kalimat, dan mendengarkan pelafalan.</p></div></div>
-          <div class="search-row">
-            <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="materialSearch" class="input" placeholder="Cari kosakata, romaji, atau arti..."></div>
-
+          <div class="search-row material-toolbar">
+            <div class="search-box material-search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="materialSearch" class="input" placeholder="Cari kosakata, romaji, atau arti..."></div>
+            <select id="materialSectionFilter" class="material-filter-select" aria-label="Filter bagian">
+              <option value="all">Semua Bagian</option>
+              <option value="Kosakata">Kosakata</option>
+              <option value="Latihan C">Latihan C</option>
+              <option value="Percakapan">Percakapan</option>
+            </select>
+            <select id="materialTypeFilter" class="material-filter-select" aria-label="Filter jenis kata">
+              <option value="all">Semua Jenis Kata</option>
+              <option value="Kata Benda">Kata Benda</option>
+              <option value="Kata Sifat-i">Kata Sifat-i</option>
+              <option value="Kata Sifat-na">Kata Sifat-na</option>
+              <option value="Kata Kerja">Kata Kerja</option>
+              <option value="Kosakata Tambahan">Kosakata Tambahan</option>
+            </select>
           </div>
           <div id="materialGrid" class="vocab-grid"></div>
           <div id="materialEmpty" class="empty hidden"><h3 data-i18n="categoryEmptyTitle">Kategori belum tersedia</h3><p data-i18n="categoryEmptyDesc">Bagian ini sudah disiapkan, tetapi kosakata belum ditambahkan.</p></div>
@@ -1108,16 +1262,16 @@
     <section class="page" id="adminPage">
       <div class="admin-hero">
         <div class="admin-title-block">
-          <div class="breadcrumb"><i class="fa-solid fa-user-shield"></i><span data-i18n="breadcrumbAdmin">Admin > Laporan Peserta</span></div>
+          <div class="breadcrumb"><i class="fa-solid fa-user-shield"></i><span data-i18n="breadcrumbAdmin">Pengelola > Laporan Peserta</span></div>
           <div class="admin-title-row">
             <h2 data-i18n="adminTitle">Laporan Peserta</h2>
-            <span class="admin-badge"><i class="fa-solid fa-shield-halved"></i>Admin</span>
+            <span class="admin-badge"><i class="fa-solid fa-shield-halved"></i>Pengelola</span>
           </div>
           <p data-i18n="adminDesc">Ringkasan hasil belajar seluruh peserta.</p>
         </div>
         <div class="admin-hero-actions">
           <button class="btn danger admin-top-btn" id="deleteAllBtn"><i class="fa-solid fa-trash-can"></i><span data-i18n="deleteAll">Hapus Riwayat Semua Peserta</span></button>
-          <button class="btn admin-top-btn" id="downloadAllBtn"><i class="fa-solid fa-download"></i><span data-i18n="downloadAllPdf">Download PDF Semua Peserta</span></button>
+          <button class="btn admin-top-btn" id="downloadAllBtn"><i class="fa-solid fa-download"></i><span data-i18n="downloadAllPdf">Unduh PDF Semua Peserta</span></button>
         </div>
       </div>
       <div class="admin-stats" id="adminStats"></div>
@@ -1152,10 +1306,10 @@
         </div>
       </div>
       <div class="modal-scroll-body">
-        <div class="step-block active" data-setup-step="1"><h3 data-i18n="stepLanguage">1. Pilih bahasa tampilan</h3><div class="option-grid" id="setupLangGrid"></div></div>
-        <div class="step-block" data-setup-step="2"><h3 data-i18n="stepBook">2. Pilih buku</h3><div class="option-grid" id="setupBookGrid"></div></div>
-        <div class="step-block" data-setup-step="3"><h3 data-i18n="stepCategory">3. Pilih kategori besar</h3><div class="option-grid" id="setupMaterialGrid"></div></div>
-        <div class="step-block" data-setup-step="4"><h3 data-i18n="stepChapter">4. Pilih kategori bab</h3><div class="multi-grid" id="setupChapterGrid"></div></div>
+        <div class="step-block active" data-setup-step="1"><h3><span class="soft-step-icon"><i class="fa-solid fa-language"></i></span><span data-i18n="stepLanguage">1. Pilih bahasa tampilan</span></h3><div class="option-grid" id="setupLangGrid"></div></div>
+        <div class="step-block" data-setup-step="2"><h3><span class="soft-step-icon"><i class="fa-solid fa-book-open"></i></span><span data-i18n="stepBook">2. Pilih buku</span></h3><div class="option-grid" id="setupBookGrid"></div></div>
+        <div class="step-block" data-setup-step="3"><h3><span class="soft-step-icon"><i class="fa-solid fa-layer-group"></i></span><span data-i18n="stepCategory">3. Pilih kategori besar</span></h3><div class="option-grid" id="setupMaterialGrid"></div></div>
+        <div class="step-block" data-setup-step="4"><h3><span class="soft-step-icon"><i class="fa-solid fa-bookmark"></i></span><span data-i18n="stepChapter">4. Pilih kategori bab</span></h3><div class="multi-grid" id="setupChapterGrid"></div></div>
       </div>
       <div class="modal-footer">
         <div class="row-actions setup-actions" style="justify-content:flex-end">
@@ -1172,25 +1326,25 @@
     <div class="modal-card login-card">
       <button class="close-x login-close" id="closeLogin" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
       <div class="login-head">
-        <span class="login-icon"><i class="fa-solid fa-user-graduate"></i></span>
+        <span class="login-icon"><i class="fa-solid fa-user-pen"></i></span>
         <div>
           <h2 data-i18n="loginTitle">Masuk Peserta</h2>
-          <p data-i18n="loginDesc">Isi data untuk menyimpan hasil latihanmu.</p>
+          <p data-i18n="loginDesc">Isi nama peserta untuk menyimpan hasil latihanmu.</p>
         </div>
       </div>
       <div class="login-form">
         <label class="pretty-field">
-          <span class="field-label"><i class="fa-regular fa-user"></i>Username</span>
-          <div class="field-shell"><i class="fa-regular fa-user"></i><input class="input" id="usernameInput" placeholder="Masukkan username" autocomplete="off"></div>
+          <span class="field-label" id="usernameLabel"><i class="fa-regular fa-id-badge"></i>Nama Peserta</span>
+          <div class="field-shell"><i class="fa-regular fa-user"></i><input class="input" id="usernameInput" placeholder="Masukkan nama peserta" autocomplete="off"></div>
         </label>
         <div id="groupBox" class="login-dynamic hidden">
-          <strong class="field-label"><i class="fa-solid fa-location-dot"></i>Group / Wilayah</strong>
-          <p class="field-help">Pilih wilayah peserta untuk menyimpan laporan latihan.</p>
+          <strong class="field-label" id="groupLabel"><i class="fa-solid fa-location-dot"></i>Grup / Wilayah</strong>
+          <p class="field-help" id="groupHelp">Pilih wilayah peserta untuk menyimpan laporan latihan.</p>
           <div class="option-grid login-group-grid" id="groupGrid"></div>
         </div>
         <div id="adminPassBox" class="login-dynamic hidden">
-          <strong class="field-label"><i class="fa-solid fa-lock"></i>Password Admin</strong>
-          <div class="field-shell password-shell"><i class="fa-solid fa-lock"></i><input class="input" id="adminPasswordInput" type="password" placeholder="Masukkan password admin"><button class="password-toggle" id="togglePassword" type="button" aria-label="Tampilkan password"><i class="fa-regular fa-eye"></i></button></div>
+          <strong class="field-label" id="adminPassLabel"><i class="fa-solid fa-lock"></i>Kata Sandi Pengelola</strong>
+          <div class="field-shell password-shell"><i class="fa-solid fa-lock"></i><input class="input" id="adminPasswordInput" type="password" placeholder="Masukkan kata sandi pengelola"><button class="password-toggle" id="togglePassword" type="button" aria-label="Tampilkan kata sandi"><i class="fa-regular fa-eye"></i></button></div>
         </div>
         <p id="loginError" class="login-error" aria-live="polite"></p>
       </div>
@@ -1202,7 +1356,7 @@
     <div class="modal-card">
       <button class="close-x" id="closeQuizSettings"><i class="fa-solid fa-xmark"></i></button>
       <div class="modal-fixed-head">
-        <div class="modal-title"><div class="kana-icon">あ</div><h2 data-i18n="quizSettingTitle">Atur Kuis Flashcard</h2><p data-i18n="quizSettingDesc">Tentukan arah bahasa, urutan kartu, dan lingkup kuis secara bertahap.</p></div>
+        <div class="modal-title"><div class="kana-icon">あ</div><h2 data-i18n="quizSettingTitle">Atur Kuis Kartu</h2><p data-i18n="quizSettingDesc">Tentukan arah bahasa, urutan kartu, dan lingkup kuis secara bertahap.</p></div>
         <div class="setup-progress" aria-hidden="true">
           <div class="setup-progress-top"><span id="quizStepBadge">Langkah 1 dari 5</span><span id="quizStepHint">Arah Bahasa</span></div>
           <div class="setup-progress-line"><span id="quizProgressFill"></span></div>
@@ -1210,32 +1364,32 @@
       </div>
       <div class="modal-scroll-body">
         <div class="step-block active" data-quiz-step="1">
-          <h3 data-i18n="chooseDirection">1. Pilih arah bahasa soal</h3>
+          <h3><span class="soft-step-icon"><i class="fa-solid fa-language"></i></span><span data-i18n="chooseDirection">1. Pilih arah bahasa soal</span></h3>
           <div class="option-grid">
-            <button class="option-card active" data-qdir="idToJp">Indonesia → Jepang<small>Kartu depan menampilkan bahasa Indonesia.</small></button>
-            <button class="option-card" data-qdir="jpToId">Jepang → Indonesia<small>Kartu depan menampilkan bahasa Jepang.</small></button>
+            <button class="option-card icon-option active" data-qdir="idToJp"><span class="option-soft-icon"><i class="fa-solid fa-language"></i></span><div><span class="qdir-label" data-id="Indonesia → Jepang" data-ja="インドネシア語 → 日本語">Indonesia → Jepang</span><small class="qdir-note" data-id="Kartu depan menampilkan bahasa Indonesia." data-ja="カードの表にインドネシア語を表示します。">Kartu depan menampilkan bahasa Indonesia.</small></div></button>
+            <button class="option-card icon-option" data-qdir="jpToId"><span class="option-soft-icon"><i class="fa-solid fa-language"></i></span><div><span class="qdir-label" data-id="Jepang → Indonesia" data-ja="日本語 → インドネシア語">Jepang → Indonesia</span><small class="qdir-note" data-id="Kartu depan menampilkan bahasa Jepang." data-ja="カードの表に日本語を表示します。">Kartu depan menampilkan bahasa Jepang.</small></div></button>
           </div>
         </div>
         <div class="step-block" data-quiz-step="2">
-          <h3 data-i18n="shuffleStepTitle">2A. Pilih urutan kartu</h3>
+          <h3><span class="soft-step-icon"><i class="fa-solid fa-shuffle"></i></span><span data-i18n="shuffleStepTitle">2A. Pilih urutan kartu</span></h3>
           <span class="quiz-setting-subtitle" data-i18n="cardOrder">Urutan kartu</span>
           <div class="option-grid">
-            <button class="option-card active" data-shuffle="true">Acak<small>Urutan kartu diacak setiap mulai kuis.</small></button>
-            <button class="option-card" data-shuffle="false">Tidak Acak<small>Urutan kartu mengikuti daftar materi.</small></button>
+            <button class="option-card icon-option active" data-shuffle="true"><span class="option-soft-icon"><i class="fa-solid fa-shuffle"></i></span><div><span class="qstatic-label" data-id="Acak" data-ja="シャッフル">Acak</span><small class="qstatic-note" data-id="Urutan kartu diacak setiap mulai kuis." data-ja="クイズ開始時にカード順をランダムにします。">Urutan kartu diacak setiap mulai kuis.</small></div></button>
+            <button class="option-card icon-option" data-shuffle="false"><span class="option-soft-icon"><i class="fa-solid fa-list"></i></span><div><span class="qstatic-label" data-id="Tidak Acak" data-ja="順番どおり">Tidak Acak</span><small class="qstatic-note" data-id="Urutan kartu mengikuti daftar materi." data-ja="教材一覧の順番で表示します。">Urutan kartu mengikuti daftar materi.</small></div></button>
           </div>
         </div>
         <div class="step-block" data-quiz-step="3">
-          <h3 data-i18n="chapterScopeStep">3A. Pilih kategori bab</h3>
+          <h3><span class="soft-step-icon"><i class="fa-solid fa-bookmark"></i></span><span data-i18n="chapterScopeStep">3A. Pilih kategori bab</span></h3>
           <p><strong data-i18n="chapterCategory">Kategori Bab</strong></p>
           <div class="multi-grid" id="quizChapterFilters"></div>
         </div>
         <div class="step-block" data-quiz-step="4">
-          <h3 data-i18n="sectionScopeStep">3B. Pilih kategori section</h3>
-          <p><strong data-i18n="sectionCategory">Kategori Section</strong></p>
+          <h3><span class="soft-step-icon"><i class="fa-solid fa-table-cells-large"></i></span><span data-i18n="sectionScopeStep">3B. Pilih kategori bagian</span></h3>
+          <p><strong data-i18n="sectionCategory">Kategori Bagian</strong></p>
           <div class="multi-grid" id="quizSectionFilters"></div>
         </div>
         <div class="step-block" data-quiz-step="5">
-          <h3 data-i18n="typeScopeStep">3C. Pilih kategori jenis kata</h3>
+          <h3><span class="soft-step-icon"><i class="fa-solid fa-tags"></i></span><span data-i18n="typeScopeStep">3C. Pilih kategori jenis kata</span></h3>
           <p><strong data-i18n="typeCategory">Kategori Jenis Kata</strong></p>
           <div class="multi-grid" id="quizTypeFilters"></div>
           <div id="quizFilterMessage" class="empty hidden">Tidak ada kosakata untuk filter ini.</div>
@@ -1252,24 +1406,74 @@
     </div>
   </div>
 
-  <div class="modal" id="exampleModal">
+  
+  <div class="modal" id="pdfFilterModal">
+    <div class="modal-card pdf-filter-card">
+      <button class="close-x" id="closePdfFilter" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-title">
+        <div class="kana-icon"><i class="fa-regular fa-file-pdf"></i></div>
+        <h2 id="pdfFilterTitle">Filter Sebelum Simpan PDF</h2>
+        <p id="pdfFilterDesc">Pilih kategori hasil latihan yang ingin dimasukkan ke PDF.</p>
+      </div>
+      <div class="pdf-filter-grid">
+        <div class="pdf-filter-field">
+          <label for="pdfBookFilter" id="pdfBookLabel"><i class="fa-solid fa-book-open"></i>Buku</label>
+          <select id="pdfBookFilter"></select>
+        </div>
+        <div class="pdf-filter-field">
+          <label for="pdfMaterialFilter" id="pdfMaterialLabel"><i class="fa-solid fa-layer-group"></i>Kategori Materi</label>
+          <select id="pdfMaterialFilter"></select>
+        </div>
+        <div class="pdf-filter-field">
+          <label for="pdfChapterFilter" id="pdfChapterLabel"><i class="fa-solid fa-bookmark"></i>Bab</label>
+          <select id="pdfChapterFilter"></select>
+        </div>
+        <div class="pdf-filter-field">
+          <label for="pdfSectionFilter" id="pdfSectionLabel"><i class="fa-solid fa-table-cells-large"></i>Bagian</label>
+          <select id="pdfSectionFilter"></select>
+        </div>
+        <div class="pdf-filter-field">
+          <label for="pdfTypeFilter" id="pdfTypeLabel"><i class="fa-solid fa-tags"></i>Jenis Kata</label>
+          <select id="pdfTypeFilter"></select>
+        </div>
+        <div class="pdf-filter-field">
+          <label for="pdfStatusFilter" id="pdfStatusLabel"><i class="fa-solid fa-circle-check"></i>Status Jawaban</label>
+          <select id="pdfStatusFilter"></select>
+        </div>
+      </div>
+      <div id="pdfFilterMessage" class="pdf-filter-message hidden"></div>
+      <div class="row-actions" style="justify-content:flex-end;margin-top:20px">
+        <button class="btn secondary" id="cancelPdfFilter"><i class="fa-solid fa-xmark"></i><span id="pdfCancelText">Batal</span></button>
+        <button class="btn secondary" id="resetPdfFilterBtn"><i class="fa-solid fa-rotate-left"></i><span id="pdfResetText">Reset Filter</span></button>
+        <button class="btn" id="saveFilteredPdf"><i class="fa-regular fa-file-pdf"></i><span id="pdfSaveText">Simpan PDF</span></button>
+      </div>
+    </div>
+  </div>
+
+<div class="modal" id="exampleModal">
     <div class="modal-card small example-modal-card">
       <button class="close-x" id="closeExample"><i class="fa-solid fa-xmark"></i></button>
       <div class="example-modal-head">
         <span class="example-icon jp">例</span>
-        <div><h2 data-i18n="exampleSentence">Contoh Kalimat</h2><p>Contoh penggunaan kosakata dengan cara baca dan arti.</p></div>
+        <div><h2 data-i18n="exampleSentence">Contoh Kalimat</h2><p id="exampleModalDesc">Contoh penggunaan kosakata dengan cara baca dan arti.</p></div>
       </div>
       <div class="example-content" id="exampleContent">
-        <div class="example-info-card"><span>Jepang</span><strong class="jp" id="exampleJa">-</strong></div>
-        <div class="example-info-card"><span>Cara baca</span><strong id="exampleReading">-</strong></div>
-        <div class="example-info-card"><span>Arti Indonesia</span><strong id="exampleId">-</strong></div>
+        <div class="example-info-card"><span id="exampleJaLabel">Jepang</span><strong class="jp" id="exampleJa">-</strong></div>
+        <div class="example-info-card"><span id="exampleReadingLabel">Cara baca</span><strong id="exampleReading">-</strong></div>
+        <div class="example-info-card"><span id="exampleIdLabel">Arti Indonesia</span><strong id="exampleId">-</strong></div>
       </div>
     </div>
   </div>
-  <div class="modal" id="imageModal"><div class="modal-card small"><button class="close-x" id="closeImage"><i class="fa-solid fa-xmark"></i></button><img id="zoomImage" style="width:100%;max-height:70vh;object-fit:contain;border-radius:22px;background:#f7f4ff"></div></div>
+  <div class="modal image-preview-modal" id="imageModal" aria-hidden="true">
+    <div class="image-preview-card" role="dialog" aria-modal="true" aria-label="Pratinjau gambar">
+      <button class="close-x image-preview-close" id="closeImage" aria-label="Tutup pratinjau"><i class="fa-solid fa-xmark"></i></button>
+      <img id="zoomImage" alt="Pratinjau gambar kosakata">
+      <p class="image-preview-help" id="imagePreviewHelp">Klik di luar gambar atau tekan ESC untuk menutup.</p>
+    </div>
+  </div>
   <div class="modal" id="confirmDeleteModal"><div class="modal-card small"><h2 data-i18n="confirmDeleteTitle">Hapus Riwayat?</h2><p data-i18n="confirmDeleteDesc">Apakah Anda yakin ingin menghapus semua riwayat peserta?</p><div class="row-actions" style="justify-content:flex-end"><button class="btn secondary" id="cancelDelete" data-i18n="cancel">Batal</button><button class="btn danger" id="confirmDelete" data-i18n="delete">Hapus</button></div></div></div>
   <div class="modal" id="detailModal"><div class="modal-card"><button class="close-x" id="closeDetail"><i class="fa-solid fa-xmark"></i></button><div id="detailContent"></div></div></div>
-  <div class="modal" id="adminWarningModal"><div class="modal-card small"><h2>Pemberitahuan Admin</h2><p>Admin tidak login selama 7 hari. Simpan riwayat hasil sebagai PDF sebelum melanjutkan.</p><div class="row-actions"><button class="btn" id="adminSavePdfWarn">Simpan PDF</button><button class="btn secondary" id="adminBackHomeWarn">Kembali ke Homepage</button></div></div></div>
+  <div class="modal" id="adminWarningModal"><div class="modal-card small"><h2 id="adminWarnTitle">Pemberitahuan Pengelola</h2><p id="adminWarnDesc">Pengelola tidak masuk selama 7 hari. Simpan riwayat hasil sebagai PDF sebelum melanjutkan.</p><div class="row-actions"><button class="btn" id="adminSavePdfWarn">Simpan PDF</button><button class="btn secondary" id="adminBackHomeWarn">Kembali ke Beranda</button></div></div></div>
   <div class="toast" id="toast"></div>
 
   <script type="module">
@@ -1758,7 +1962,7 @@
     "chapter": "Bab 1",
     "chapterNumber": 1,
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Percakapan",
+    "sectionCategory": "Latihan C",
     "indonesia": "Perkenalkan.（ucapan salam pada waktu pertama kali berkenalan）",
     "kanji": "初めまして",
     "kana": "はじめまして",
@@ -1778,7 +1982,7 @@
     "chapter": "Bab 1",
     "chapterNumber": 1,
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Percakapan",
+    "sectionCategory": "Latihan C",
     "indonesia": "datang dari ～, berasal dari ～",
     "kanji": "〜から来ました",
     "kana": "〜からきました",
@@ -1798,7 +2002,7 @@
     "chapter": "Bab 1",
     "chapterNumber": 1,
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Percakapan",
+    "sectionCategory": "Latihan C",
     "indonesia": "Salam kenal.（ucapan terakhir untuk perkenalkan diri）",
     "kanji": "どうぞよろしくお願いします",
     "kana": "どうぞよろしくおねがいします",
@@ -1818,7 +2022,7 @@
     "chapter": "Bab 1",
     "chapterNumber": 1,
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Percakapan",
+    "sectionCategory": "Latihan C",
     "indonesia": "permisi, maaf（digunakan ketika bertanya tentang hal yang pribadi seperti nama, alamat, dan sebagainya）",
     "kanji": "失礼ですが",
     "kana": "しつれいですが",
@@ -1838,7 +2042,7 @@
     "chapter": "Bab 1",
     "chapterNumber": 1,
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Percakapan",
+    "sectionCategory": "Latihan C",
     "indonesia": "Siapa namanya?",
     "kanji": "お名前は？",
     "kana": "おなまえは？",
@@ -1858,7 +2062,7 @@
     "chapter": "Bab 1",
     "chapterNumber": 1,
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Percakapan",
+    "sectionCategory": "Latihan C",
     "indonesia": "Ini Bapak ～./Ini Ibu, Sdr. ～.",
     "kanji": "こちらは〜さんです",
     "kana": "こちらは〜さんです",
@@ -2236,30 +2440,30 @@
     ];
     const labels = {
       id: {
-        navHome:"Beranda", navMaterial:"Materi", navQuiz:"Kuis", navResult:"Hasil", login:"Masuk", logout:"Logout", changeCategory:"Ganti kategori", changeLanguage:"Ganti bahasa",
-        homeTitle:"Kuis Flashcard Kosakata Jepang", homeDesc:"Belajar kosakata Minna no Nihongo I & II dengan kartu interaktif, suara pelafalan, latihan berbicara, dan laporan hasil yang tersimpan.",
-        totalVocab:"Total Kosakata", timeLimit:"Limit Waktu per Kartu", chapterScope:"Lingkup Bab", startQuiz:"Mulai Kuis", seeMaterial:"Lihat Materi", fillUsername:"Isi Username", fictionFilter:"Filter Fiksi",
-        materialTitle:"Rangkuman Tambahan", materialDesc:"Cari kosakata, baca arti dan romajinya, lalu dengarkan pelafalannya sebelum mulai kuis.", studyFirst:"Pelajari dulu sebelum mulai kuis", studyFirstDesc:"Di halaman ini kamu bisa melihat arti, romaji, contoh kalimat, dan mendengarkan pelafalan.", studyStats:"Statistik Belajar",
+        navHome:"Beranda", navMaterial:"Materi", navQuiz:"Kuis", navResult:"Hasil", login:"Masuk", logout:"Keluar", changeCategory:"Ganti kategori", changeLanguage:"Ganti bahasa",
+        homeTitle:"Kuis Kartu Kosakata Jepang", homeDesc:"Belajar kosakata Minna no Nihongo I & II dengan kartu belajar interaktif, suara pelafalan, latihan berbicara, dan laporan hasil yang tersimpan.",
+        totalVocab:"Total Kosakata", timeLimit:"Batas Waktu per Kartu", chapterScope:"Lingkup Bab", startQuiz:"Mulai Kuis", seeMaterial:"Lihat Materi", fillUsername:"Isi Nama Peserta", fictionFilter:"Kosakata Fiksi",
+        materialTitle:"Kumpulan Kosakata", materialDesc:"Pelajari kosakata berdasarkan buku, materi, dan kategori yang dipilih.", studyFirst:"Pelajari dulu sebelum mulai kuis", studyFirstDesc:"Di halaman ini kamu bisa melihat arti, romaji, contoh kalimat, dan mendengarkan pelafalan.", studyStats:"Statistik Belajar",
         categoryEmptyTitle:"Kategori belum tersedia", categoryEmptyDesc:"Bagian ini sudah disiapkan, tetapi kosakata belum ditambahkan.", quizFiltered:"Kuis mengikuti kategori pilihanmu", quizFilteredDesc:"Kartu yang tampil sudah disaring berdasarkan Bab, Jenis Materi, dan Kategori Kata.",
         answer:"Jawaban", clickFlipBack:"Klik kartu untuk kembali", time:"Waktu", pause:"Jeda", resume:"Lanjut", studyMode:"Sedang Belajar", listen:"Dengar", exampleSentence:"Contoh Kalimat", listening:"Mendengarkan...", correct:"Benar", wrong:"Salah", speechFeature:"Fungsi Bicara",
-        breadcrumbResult:"Beranda > Hasil Latihan", resultTitle:"Ringkasan Belajar", breadcrumbAdmin:"Admin > Laporan Peserta", adminTitle:"Laporan Peserta", adminDesc:"Ringkasan hasil belajar seluruh peserta.", deleteAll:"Hapus Riwayat Semua Peserta", downloadAllPdf:"Download PDF Semua Peserta", resetFilter:"Reset Filter",
+        breadcrumbResult:"Beranda > Hasil Latihan", resultTitle:"Ringkasan Belajar", breadcrumbAdmin:"Pengelola > Laporan Peserta", adminTitle:"Laporan Peserta", adminDesc:"Ringkasan hasil belajar seluruh peserta.", deleteAll:"Hapus Riwayat Semua Peserta", downloadAllPdf:"Unduh PDF Semua Peserta", resetFilter:"Reset Filter",
         setupTitle:"Pilih Kategori Belajar", setupDesc:"Pilih bahasa, buku, kategori, dan bab secara bertahap agar tampilan lebih ringkas.", stepLanguage:"1. Pilih bahasa tampilan", stepBook:"2. Pilih buku", stepCategory:"3. Pilih kategori besar", stepChapter:"4. Pilih kategori bab", cancel:"Batal", save:"Simpan",
-        loginTitle:"Masuk Peserta", loginDesc:"Isi username untuk menyimpan hasil latihanmu.", chooseGroup:"Pilih Group/Wilayah", quizSettingTitle:"Atur Kuis Flashcard", quizSettingDesc:"Tentukan arah bahasa dan urutan kartu, lalu pilih lingkup kuis yang ingin dikerjakan.", chooseDirection:"1. Pilih arah bahasa soal", shuffleMode:"2. Pengaturan tambahan", shuffleStepTitle:"2A. Pilih urutan kartu", cardOrder:"Urutan kartu", fictionQuizTitle:"Filter Fiksi", fictionStepTitle:"2B. Pilih filter fiksi", chooseScope:"3. Pilih lingkup kuis", chapterScopeStep:"3A. Pilih kategori bab", sectionScopeStep:"3B. Pilih kategori section", typeScopeStep:"3C. Pilih kategori jenis kata", chapterCategory:"Kategori Bab", sectionCategory:"Kategori Section", typeCategory:"Kategori Jenis Kata", saveStart:"Simpan / Mulai Kuis",
+        loginTitle:"Masuk Peserta", loginDesc:"Isi nama peserta untuk menyimpan hasil latihanmu.", chooseGroup:"Pilih Grup/Wilayah", quizSettingTitle:"Atur Kuis Kartu", quizSettingDesc:"Tentukan arah bahasa dan urutan kartu, lalu pilih lingkup kuis yang ingin dikerjakan.", chooseDirection:"1. Pilih arah bahasa soal", shuffleMode:"2. Pengaturan tambahan", shuffleStepTitle:"2A. Pilih urutan kartu", cardOrder:"Urutan kartu", fictionQuizTitle:"Filter Fiksi", fictionStepTitle:"2B. Pilih filter fiksi", chooseScope:"3. Pilih lingkup kuis", chapterScopeStep:"3A. Pilih kategori bab", sectionScopeStep:"3B. Pilih kategori bagian", typeScopeStep:"3C. Pilih kategori jenis kata", chapterCategory:"Kategori Bab", sectionCategory:"Kategori Bagian", typeCategory:"Kategori Jenis Kata", saveStart:"Simpan / Mulai Kuis",
         confirmDeleteTitle:"Hapus Riwayat?", confirmDeleteDesc:"Apakah Anda yakin ingin menghapus semua riwayat peserta?", delete:"Hapus",
-        searchPlaceholder:"Cari kosakata, romaji, atau arti...", noVocabFilter:"Tidak ada kosakata untuk filter ini.", focusWarn:"Tetap fokus mengerjakan kuis.", focusStop:"Kuis dihentikan karena kamu pindah tab dua kali.", browserSpeechNo:"Fitur bicara tidak didukung di browser ini.", accessDisabled:"Akses ini dinonaktifkan untuk menjaga pengalaman belajar.", localOnly:"Firebase belum tersedia. Data disimpan sementara di perangkat ini.", saved:"Hasil tersimpan.", needLogin:"Silakan isi username dulu.", noExample:"Contoh kalimat belum tersedia.", scoreGood:"Bagus! Kamu sudah memahami banyak kosakata.", scoreBad:"Ayo belajar lebih giat lagi. Ulangi kartu yang masih salah.", reviewVocab:"Tinjau Kosakata", savePdf:"Simpan PDF", retry:"Ulangi Latihan", emptyResult:"Belum ada hasil latihan.", allStatus:"Semua Status", fastest:"Tercepat", slowest:"Terlama"
+        searchPlaceholder:"Cari kosakata, romaji, atau arti...", noVocabFilter:"Tidak ada kosakata untuk filter ini.", focusWarn:"Tetap fokus mengerjakan kuis.", focusStop:"Kuis dihentikan karena kamu pindah tab dua kali.", browserSpeechNo:"Fitur bicara tidak didukung di browser ini.", accessDisabled:"Akses ini dinonaktifkan untuk menjaga pengalaman belajar.", localOnly:"Firebase belum tersedia. Data disimpan sementara di perangkat ini.", saved:"Hasil tersimpan.", needLogin:"Silakan isi username dulu.", noExample:"Contoh kalimat belum tersedia.", scoreGood:"Bagus! Kamu sudah memahami banyak kosakata.", scoreBad:"Ayo belajar lebih giat lagi. Ulangi kartu yang masih salah.", reviewVocab:"Tinjau Kosakata", savePdf:"Simpan PDF", retry:"Ulangi Latihan", emptyResult:"Belum ada hasil latihan.", allStatus:"Semua", fastest:"Tercepat", slowest:"Terlama", pdfFilterTitle:"Filter Sebelum Simpan PDF", pdfFilterDesc:"Pilih kategori hasil latihan yang ingin dimasukkan ke PDF.", book:"Buku", materialCategoryLabel:"Kategori Materi", chapter:"Bab", section:"Bagian", type:"Jenis Kata", answerStatus:"Status Jawaban", allBooks:"Semua Buku", allMaterials:"Semua Kategori Materi", allChapters:"Semua Bab", allSections:"Semua Bagian", allTypes:"Semua Jenis Kata", allAnswers:"Semua Jawaban", resetPdfFilter:"Reset Filter", savePdfBtn:"Simpan PDF", noPdfRows:"Tidak ada data yang sesuai dengan filter PDF.", participantName:"Nama Peserta", adminLabel:"Pengelola", passwordAdmin:"Kata Sandi Pengelola"
       },
       ja: {
-        navHome:"ホーム", navMaterial:"教材", navQuiz:"クイズ", navResult:"結果", login:"ログイン", logout:"ログアウト", changeCategory:"カテゴリー変更", changeLanguage:"言語変更",
+        navHome:"ホーム", navMaterial:"教材", navQuiz:"クイズ", navResult:"結果", login:"参加者名", logout:"ログアウト", changeCategory:"カテゴリー変更", changeLanguage:"言語変更",
         homeTitle:"日本語語彙フラッシュカード", homeDesc:"みんなの日本語 I・II の語彙を、音声、発話練習、学習記録つきのカードで練習できます。",
-        totalVocab:"語彙数", timeLimit:"カードごとの制限時間", chapterScope:"章の範囲", startQuiz:"クイズ開始", seeMaterial:"教材を見る", fillUsername:"ユーザー名入力", fictionFilter:"架空語フィルター",
-        materialTitle:"追加まとめ", materialDesc:"クイズの前に語彙、ローマ字、意味、発音を確認しましょう。", studyFirst:"まず学習しましょう", studyFirstDesc:"このページで意味、ローマ字、例文、発音を確認できます。", studyStats:"学習統計",
+        totalVocab:"語彙数", timeLimit:"1枚あたりの制限時間", chapterScope:"章の範囲", startQuiz:"クイズ開始", seeMaterial:"教材を見る", fillUsername:"参加者名入力", fictionFilter:"架空語",
+        materialTitle:"語彙一覧", materialDesc:"選択した教科書・教材・カテゴリーに基づいて語彙を学習しましょう。", studyFirst:"まず学習しましょう", studyFirstDesc:"このページで意味、ローマ字、例文、発音を確認できます。", studyStats:"学習統計",
         categoryEmptyTitle:"カテゴリーは未登録です", categoryEmptyDesc:"この部分は準備済みですが、語彙データはまだ追加されていません。", quizFiltered:"選択したカテゴリーで出題", quizFilteredDesc:"カードは章・セクション・語彙タイプで絞り込まれています。",
         answer:"答え", clickFlipBack:"カードをクリックして戻る", time:"時間", pause:"一時停止", resume:"再開", studyMode:"学習中", listen:"聞く", exampleSentence:"例文", listening:"聞き取り中...", correct:"正解", wrong:"不正解", speechFeature:"発話機能",
-        breadcrumbResult:"ホーム > 学習結果", resultTitle:"学習まとめ", breadcrumbAdmin:"管理者 > 参加者レポート", adminTitle:"参加者レポート", adminDesc:"全参加者の学習結果まとめです。", deleteAll:"全履歴を削除", downloadAllPdf:"全参加者PDF", resetFilter:"リセット",
+        breadcrumbResult:"ホーム > 学習結果", resultTitle:"学習まとめ", breadcrumbAdmin:"管理者 > 参加者レポート", adminTitle:"参加者レポート", adminDesc:"全参加者の学習結果まとめです。", deleteAll:"全履歴を削除", downloadAllPdf:"全参加者PDFを保存", resetFilter:"リセット",
         setupTitle:"学習カテゴリーを選択", setupDesc:"言語、教科書、カテゴリー、章を一つずつ選択します。", stepLanguage:"1. 表示言語を選択", stepBook:"2. 教科書を選択", stepCategory:"3. 大カテゴリーを選択", stepChapter:"4. 章カテゴリーを選択", cancel:"キャンセル", save:"保存",
-        loginTitle:"ログイン", loginDesc:"学習結果を保存するため、ユーザー名を入力してください。", chooseGroup:"グループ/地域を選択", quizSettingTitle:"フラッシュカード設定", quizSettingDesc:"問題の方向、カード順、クイズ範囲を選択してください。", chooseDirection:"1. 問題の言語方向", shuffleMode:"2. 追加設定", shuffleStepTitle:"2A. カード順を選択", cardOrder:"カード順", fictionQuizTitle:"架空語フィルター", fictionStepTitle:"2B. 架空語フィルターを選択", chooseScope:"3. クイズ範囲", chapterScopeStep:"3A. 章カテゴリーを選択", sectionScopeStep:"3B. セクションを選択", typeScopeStep:"3C. 語彙タイプを選択", chapterCategory:"章カテゴリー", sectionCategory:"セクション", typeCategory:"語彙タイプ", saveStart:"保存して開始",
+        loginTitle:"参加者ログイン", loginDesc:"学習結果を保存するため、参加者名を入力してください。", chooseGroup:"グループ / 地域を選択", quizSettingTitle:"カードクイズ設定", quizSettingDesc:"問題の方向、カード順、クイズ範囲を選択してください。", chooseDirection:"1. 問題の言語方向", shuffleMode:"2. 追加設定", shuffleStepTitle:"2A. カード順を選択", cardOrder:"カード順", fictionQuizTitle:"架空語フィルター", fictionStepTitle:"2B. 架空語フィルターを選択", chooseScope:"3. クイズ範囲", chapterScopeStep:"3A. 章カテゴリーを選択", sectionScopeStep:"3B. セクションを選択", typeScopeStep:"3C. 語彙タイプを選択", chapterCategory:"章カテゴリー", sectionCategory:"項目カテゴリー", typeCategory:"品詞カテゴリー", saveStart:"保存して開始",
         confirmDeleteTitle:"履歴を削除しますか？", confirmDeleteDesc:"全参加者の履歴を削除してもよろしいですか？", delete:"削除",
-        searchPlaceholder:"語彙、ローマ字、意味を検索...", noVocabFilter:"この条件に合う語彙はありません。", focusWarn:"クイズに集中してください。", focusStop:"タブ移動が2回あったため、クイズを終了しました。", browserSpeechNo:"このブラウザは発話機能に対応していません。", accessDisabled:"学習体験を守るため、この操作は無効です。", localOnly:"Firebase が利用できません。データは一時的に端末へ保存されます。", saved:"結果を保存しました。", needLogin:"先にユーザー名を入力してください。", noExample:"例文はまだありません。", scoreGood:"よくできました。多くの語彙を理解しています。", scoreBad:"もう少し練習しましょう。間違えたカードを復習してください。", reviewVocab:"語彙確認", savePdf:"PDF保存", retry:"もう一度練習", emptyResult:"まだ結果がありません。", allStatus:"すべて", fastest:"最速", slowest:"最遅"
+        searchPlaceholder:"語彙、ローマ字、意味を検索...", noVocabFilter:"この条件に合う語彙はありません。", focusWarn:"クイズに集中してください。", focusStop:"タブ移動が2回あったため、クイズを終了しました。", browserSpeechNo:"このブラウザは発話機能に対応していません。", accessDisabled:"学習体験を守るため、この操作は無効です。", localOnly:"Firebase が利用できません。データは一時的に端末へ保存されます。", saved:"結果を保存しました。", needLogin:"先にユーザー名を入力してください。", noExample:"例文はまだありません。", scoreGood:"よくできました。多くの語彙を理解しています。", scoreBad:"もう少し練習しましょう。間違えたカードを復習してください。", reviewVocab:"語彙確認", savePdf:"PDFを保存", retry:"もう一度練習", emptyResult:"まだ結果がありません。", allStatus:"すべて", fastest:"最速", slowest:"最遅", pdfFilterTitle:"PDF保存前のフィルター", pdfFilterDesc:"PDFに入れる学習結果のカテゴリーを選択してください。", book:"教科書", materialCategoryLabel:"教材カテゴリー", chapter:"章", section:"項目", type:"品詞", answerStatus:"解答状態", allBooks:"すべての教科書", allMaterials:"すべての教材カテゴリー", allChapters:"すべての章", allSections:"すべての項目", allTypes:"すべての品詞", allAnswers:"すべての解答", resetPdfFilter:"フィルターをリセット", savePdfBtn:"PDFを保存", noPdfRows:"PDFフィルターに合うデータがありません。", participantName:"参加者名", adminLabel:"管理者", passwordAdmin:"管理者パスワード"
       }
     };
     const state = {
@@ -2303,6 +2507,30 @@
     function esc(s=""){ return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m])); }
     function jpText(v){ return v.kanji || v.kana; }
     function cleanIndo(v){ return String(v.indonesia).replace(/（.*?）/g,"").replace(/\(.*?\)/g,"").trim(); }
+    function fictionExplanation(v={}){
+      const text = [v.indonesia, v.kanji, v.kana, v.romaji, v.typeCategory, v.sectionCategory].filter(Boolean).join(" ").toLowerCase();
+      if(/大学|daigaku|universitas|sekolah|kampus|gakkou|学校/.test(text)) return "nama sekolah/universitas rekaan";
+      if(/病院|byouin|rumah sakit|hospital/.test(text)) return "nama tempat rekaan";
+      if(/perusahaan|organisasi|company|denki|air|akc|imc|電気/.test(text)) return "nama perusahaan/organisasi rekaan";
+      if(/さん|nama orang|orang/.test(text)) return "nama orang rekaan";
+      if(/tempat|kota|daerah|国|kuni/.test(text)) return "nama tempat rekaan";
+      return "contoh rekaan";
+    }
+    function formatIndonesianMeaning(v={}){
+      const raw = cleanIndo(v);
+      if(!isFictionVocab(v)) return raw;
+      if(/—\s*fiksi\s*\(/i.test(raw)) return raw;
+      const inside = String(v.indonesia||"").match(/\(([^()]+)\)/);
+      let base = inside ? inside[1].split("/")[0].trim() : raw.replace(/\bfiksi\b/ig,"").replace(/\s{2,}/g," ").trim();
+      base = base.replace(/^(universitas|perusahaan|organisasi|rumah sakit)\s*$/i, raw).trim();
+      if(!base) base = raw.replace(/\bfiksi\b/ig,"").trim() || raw;
+      return `${base} — fiksi (${fictionExplanation(v)})`;
+    }
+    function formatDetailIndonesianMeaning(d={}){
+      if(!d.isFiction) return cleanDetailIndo(d.indonesia);
+      return formatIndonesianMeaning(d);
+    }
+    function hasFictionVocabulary(list){ return (list || []).some(v=>isFictionVocab(v)); }
     function isFictionVocab(v={}){
       const direct = v.isFiction === true || v.fiction === true || v.is_fiction === true;
       const meta = [v.label, v.labels, v.tag, v.tags, v.category, v.kategori, v.typeCategory, v.sectionCategory, v.indonesia]
@@ -2340,7 +2568,7 @@
       return book;
     }
     function setupLabel(){
-      return `${bookLabel()} / ${state.setup.materialCategory} / ${state.setup.chapter}`;
+      return `${bookLabel()} / ${state.lang==="ja"?categoryLabel(state.setup.materialCategory):state.setup.materialCategory} / ${state.lang==="ja"?categoryLabel(state.setup.chapter):state.setup.chapter}`;
     }
     function chapterNumbers(label){
       const nums = [...String(label).matchAll(/\d+/g)].map(m=>Number(m[0]));
@@ -2364,7 +2592,38 @@
       if(!state.includeFiction) arr = arr.filter(v=>!isFictionVocab(v));
       return arr.map(v=>({...v, favorite: state.favorites.includes(v.id)}));
     }
-    function anyFictionInBase(){ return baseVocab().some(v=>isFictionVocab(v)); }
+    function anyFictionInBase(){ return hasFictionVocabulary(baseVocab()); }
+    function currentFictionScope(){
+      try {
+        let arr = baseVocab();
+        const chapterInputs = $$("#quizChapterFilters input:checked");
+        if($("#quizSettingsModal")?.classList.contains("show") && chapterInputs.length){
+          const chapters = chapterInputs.flatMap(i=>chapterNumbers(i.value));
+          const sections = selectedChecks("#quizSectionFilters");
+          const types = selectedChecks("#quizTypeFilters");
+          if(chapters.length) arr = arr.filter(v=>chapters.includes(v.chapterNumber));
+          if(sections.length && !sections.includes("Semua")) arr = arr.filter(v=>sections.includes(v.sectionCategory));
+          if(types.length && !types.includes("Semua")) arr = arr.filter(v=>types.includes(v.typeCategory));
+          return arr;
+        }
+        if(state.page === "material"){
+          const sectionFilter = $("#materialSectionFilter")?.value || "all";
+          const typeFilter = $("#materialTypeFilter")?.value || "all";
+          if(sectionFilter !== "all") arr = arr.filter(v=>v.sectionCategory === sectionFilter);
+          if(typeFilter !== "all") arr = arr.filter(v=>v.typeCategory === typeFilter);
+        }
+        return arr;
+      } catch(e){ return baseVocab(); }
+    }
+    function setFictionToggleState(isOn, force=false){
+      const available = hasFictionVocabulary(currentFictionScope());
+      state.includeFiction = force ? !!isOn : (!!isOn && available);
+      if(!available) localStorage.setItem(storeKey+"_includeFiction","false");
+      saveState();
+      updateFictionToggle();
+      renderMaterial();
+      updateQuizFilterCount();
+    }
 
     function updateNavLanguageButton(){
       const btn = $("#navLangBtn");
@@ -2378,34 +2637,78 @@
       if(code) code.textContent = isId ? "ID" : "JP";
       if(name) name.textContent = isId ? "Indonesia" : "日本語";
       if(globe) globe.className = isId ? "fa-solid fa-globe" : "fa-solid fa-language";
-      btn.title = isId ? "Bahasa Indonesia aktif — klik untuk 日本語" : "日本語が有効 — klik untuk Indonesia";
-      btn.setAttribute("aria-label", isId ? "Ganti bahasa ke Jepang" : "Ganti bahasa ke Indonesia");
+      btn.title = isId ? "Bahasa Indonesia aktif — klik untuk mengganti ke 日本語" : "日本語が有効です — インドネシア語に切り替えるにはクリック";
+      btn.setAttribute("aria-label", isId ? "Ganti bahasa ke Jepang" : "インドネシア語に切り替え");
     }
 
     function updateFictionToggle(){
       const btn = $("#navFictionToggle");
       if(!btn) return;
-      const available = anyFictionInBase();
-      if(!available && state.includeFiction !== true){ state.includeFiction = true; saveState(); }
-      btn.disabled = !available;
+      const available = hasFictionVocabulary(currentFictionScope());
+      if(!available && state.includeFiction){ state.includeFiction = false; localStorage.setItem(storeKey+"_includeFiction","false"); }
+      btn.disabled = false;
+      btn.classList.toggle("is-disabled", !available);
       btn.classList.toggle("active", !!state.includeFiction && available);
+      btn.setAttribute("aria-disabled", String(!available));
       btn.setAttribute("aria-pressed", String(!!state.includeFiction && available));
       const label = btn.querySelector(".fiction-label");
       const st = btn.querySelector(".fiction-state");
+      const active = !!state.includeFiction && available;
       if(label) label.textContent = state.lang === "ja" ? "架空語" : "Fiksi";
-      if(st) st.textContent = state.includeFiction ? "ON" : "OFF";
+      if(st) st.textContent = state.lang === "ja" ? (active ? "有効" : "無効") : (active ? "Aktif" : "Nonaktif");
       btn.title = !available
-        ? (state.lang === "ja" ? "この範囲には架空語がありません" : "Tidak ada kosakata fiksi pada lingkup ini")
-        : (state.includeFiction
-          ? (state.lang === "ja" ? "架空語を含める — klik untuk OFF" : "Kosakata fiksi ikut aktif — klik untuk OFF")
-          : (state.lang === "ja" ? "架空語を非表示 — klik untuk ON" : "Kosakata fiksi dimatikan — klik untuk ON"));
+        ? (state.lang === "ja" ? "この範囲には架空語がありません" : "Tidak ada kosakata fiksi pada pilihan ini.")
+        : (active
+          ? (state.lang === "ja" ? "架空語が有効です — 無効にするにはクリック" : "Kosakata fiksi aktif — klik untuk menonaktifkan")
+          : (state.lang === "ja" ? "架空語が無効です — 有効にするにはクリック" : "Kosakata fiksi nonaktif — klik untuk mengaktifkan"));
+    }
+    function syncFictionToggleAvailability(){
+      const available = hasFictionVocabulary(currentFictionScope());
+      if(!available && state.includeFiction){ state.includeFiction=false; localStorage.setItem(storeKey+"_includeFiction","false"); saveState(); }
+      updateFictionToggle();
+      return available;
     }
 
     function applyTranslations(){
       document.documentElement.lang = state.lang === "ja" ? "ja" : "id";
       $$("[data-i18n]").forEach(el=>{ el.textContent = t(el.dataset.i18n); });
       $("#materialSearch").placeholder = t("searchPlaceholder");
+      renderMaterialFilterOptions();
+      $$(".qdir-label,.qstatic-label").forEach(el=>{ el.textContent = state.lang==="ja" ? el.dataset.ja : el.dataset.id; });
+      $$(".qdir-note,.qstatic-note").forEach(el=>{ el.textContent = state.lang==="ja" ? el.dataset.ja : el.dataset.id; });
+      if($("#pdfFilterModal")?.classList.contains("show")) renderPdfFilterOptions();
+
       $("#adminSearch").placeholder = state.lang==="ja" ? "参加者名を検索..." : "Cari nama peserta...";
+      if($("#usernameInput")) $("#usernameInput").placeholder = state.lang==="ja" ? "参加者名を入力" : "Masukkan nama peserta";
+      if($("#usernameLabel")) $("#usernameLabel").innerHTML = `<i class="fa-regular fa-id-badge"></i>${state.lang==="ja"?"参加者名":"Nama Peserta"}`;
+      if($("#groupLabel")) $("#groupLabel").innerHTML = `<i class="fa-solid fa-location-dot"></i>${state.lang==="ja"?"グループ / 地域":"Grup / Wilayah"}`;
+      if($("#groupHelp")) $("#groupHelp").textContent = state.lang==="ja" ? "学習レポートを保存する参加者の地域を選択してください。" : "Pilih wilayah peserta untuk menyimpan laporan latihan.";
+      if($("#adminPassLabel")) $("#adminPassLabel").innerHTML = `<i class="fa-solid fa-lock"></i>${state.lang==="ja"?"管理者パスワード":"Kata Sandi Pengelola"}`;
+      if($("#adminPasswordInput")) $("#adminPasswordInput").placeholder = state.lang==="ja" ? "管理者パスワードを入力" : "Masukkan kata sandi pengelola";
+      if($("#exampleModalDesc")) $("#exampleModalDesc").textContent = state.lang==="ja" ? "語彙の使い方、読み方、意味を確認します。" : "Contoh penggunaan kosakata dengan cara baca dan arti.";
+      if($("#exampleJaLabel")) $("#exampleJaLabel").textContent = state.lang==="ja" ? "日本語" : "Jepang";
+      if($("#exampleReadingLabel")) $("#exampleReadingLabel").textContent = state.lang==="ja" ? "読み方" : "Cara baca";
+      if($("#exampleIdLabel")) $("#exampleIdLabel").textContent = state.lang==="ja" ? "インドネシア語の意味" : "Arti Indonesia";
+      if($("#imagePreviewHelp")) $("#imagePreviewHelp").textContent = state.lang==="ja" ? "画像の外側をクリックするか、ESCキーで閉じます。" : "Klik di luar gambar atau tekan ESC untuk menutup.";
+      if($("#adminWarnTitle")) $("#adminWarnTitle").textContent = state.lang==="ja" ? "管理者への通知" : "Pemberitahuan Pengelola";
+      if($("#adminWarnDesc")) $("#adminWarnDesc").textContent = state.lang==="ja" ? "管理者が7日間ログインしていません。続行する前に履歴をPDFで保存してください。" : "Pengelola tidak masuk selama 7 hari. Simpan riwayat hasil sebagai PDF sebelum melanjutkan.";
+      if($("#adminSavePdfWarn")) $("#adminSavePdfWarn").textContent = state.lang==="ja" ? "PDFを保存" : "Simpan PDF";
+      if($("#adminBackHomeWarn")) $("#adminBackHomeWarn").textContent = state.lang==="ja" ? "ホームに戻る" : "Kembali ke Beranda";
+      if($("#adminPeriod")){
+        const p=$("#adminPeriod").value || "all";
+        $("#adminPeriod").innerHTML = state.lang==="ja"
+          ? `<option value="all">すべての期間</option><option value="today">今日</option><option value="week">7日間</option><option value="month">30日間</option>`
+          : `<option value="all">Semua Periode</option><option value="today">Hari ini</option><option value="week">7 hari</option><option value="month">30 hari</option>`;
+        if([...$("#adminPeriod").options].some(o=>o.value===p)) $("#adminPeriod").value=p;
+      }
+      if($("#adminStatus")){
+        const st=$("#adminStatus").value || "all";
+        $("#adminStatus").innerHTML = state.lang==="ja"
+          ? `<option value="all">すべての状態</option><option value="pass">KKM達成</option><option value="fail">未達成</option>`
+          : `<option value="all">Semua Status</option><option value="pass">Lulus KKM</option><option value="fail">Belum Lulus</option>`;
+        if([...$("#adminStatus").options].some(o=>o.value===st)) $("#adminStatus").value=st;
+      }
+
       $("#homeLangBtn span").textContent = state.lang==="id" ? "日本語" : "Indonesia";
       updateNavLanguageButton();
       updateFictionToggle();
@@ -2462,19 +2765,69 @@
       window.scrollTo({top:0,behavior:"smooth"});
     }
 
+
+    function categoryLabel(value, kind="general"){
+      const v = String(value || "");
+      if(state.lang !== "ja") return v;
+      const map = {
+        "Semua":"すべて",
+        "Semua Bagian":"すべての項目",
+        "Semua Jenis Kata":"すべての品詞",
+        "Kosakata":"語彙",
+        "Latihan C":"練習C",
+        "Percakapan":"会話",
+        "Kata Benda":"名詞",
+        "Kata Kerja":"動詞",
+        "Kata Sifat-i":"い形容詞",
+        "Kata Sifat-na":"な形容詞",
+        "Kosakata Tambahan":"追加語彙",
+        "Materi Umum":"一般教材",
+        "Kata-Kata Informasi dan Referensi":"情報・参考語彙",
+        "Bab":"第",
+        "Fiksi":"架空語",
+        "Benar":"正解",
+        "Salah":"不正解"
+      };
+      if(/^Bab\s+\d+/.test(v)) return v.replace(/^Bab\s+/, "第") + "課";
+      return map[v] || v;
+    }
+    function renderMaterialFilterOptions(){
+      const sectionSel = $("#materialSectionFilter"), typeSel = $("#materialTypeFilter");
+      if(!sectionSel || !typeSel) return;
+      const secVal = sectionSel.value || "all", typeVal = typeSel.value || "all";
+      const sections=[["all", state.lang==="ja"?"すべての項目":"Semua Bagian"],["Kosakata", categoryLabel("Kosakata")],["Latihan C", categoryLabel("Latihan C")],["Percakapan", categoryLabel("Percakapan")]];
+      const types=[["all", state.lang==="ja"?"すべての品詞":"Semua Jenis Kata"],["Kata Benda", categoryLabel("Kata Benda")],["Kata Sifat-i", categoryLabel("Kata Sifat-i")],["Kata Sifat-na", categoryLabel("Kata Sifat-na")],["Kata Kerja", categoryLabel("Kata Kerja")],["Kosakata Tambahan", categoryLabel("Kosakata Tambahan")]];
+      sectionSel.innerHTML = sections.map(([v,l])=>`<option value="${esc(v)}">${esc(l)}</option>`).join("");
+      typeSel.innerHTML = types.map(([v,l])=>`<option value="${esc(v)}">${esc(l)}</option>`).join("");
+      sectionSel.value = sections.some(x=>x[0]===secVal) ? secVal : "all";
+      typeSel.value = types.some(x=>x[0]===typeVal) ? typeVal : "all";
+      sectionSel.setAttribute("aria-label", state.lang==="ja" ? "項目フィルター" : "Filter bagian");
+      typeSel.setAttribute("aria-label", state.lang==="ja" ? "品詞フィルター" : "Filter jenis kata");
+    }
+
     function renderMaterial(){
+      syncFictionToggleAvailability();
       const search = ($("#materialSearch")?.value || "").toLowerCase();
-      const arr = activeVocab().filter(v => [v.indonesia,v.kana,v.kanji,v.romaji,v.typeCategory,v.sectionCategory].join(" ").toLowerCase().includes(search));
-      $("#materialGrid").innerHTML = arr.map(v=>`
-        <article class="vocab-card">
+      const sectionFilter = $("#materialSectionFilter")?.value || "all";
+      const typeFilter = $("#materialTypeFilter")?.value || "all";
+      let arr = activeVocab().filter(v => [formatIndonesianMeaning(v),v.indonesia,v.kana,v.kanji,v.romaji,v.typeCategory,v.sectionCategory,v.chapter].join(" ").toLowerCase().includes(search));
+      if(sectionFilter !== "all") arr = arr.filter(v=>v.sectionCategory === sectionFilter);
+      if(typeFilter !== "all") arr = arr.filter(v=>v.typeCategory === typeFilter);
+      $("#materialGrid").innerHTML = arr.map(v=>{
+        const fav = state.favorites.includes(v.id);
+        const meaning = formatIndonesianMeaning(v);
+        const thumb = v.image ? `<img class="thumb" src="${esc(v.image)}" alt="${esc(meaning)}" data-zoom="${esc(v.image)}">` : `<span class="thumb-placeholder"><i class="fa-regular fa-image"></i></span>`;
+        return `<article class="vocab-card">
           <div class="vocab-top">
-            ${v.image ? `<img class="thumb" src="${esc(v.image)}" alt="${esc(cleanIndo(v))}" data-zoom="${esc(v.image)}">` : ""}
+            ${thumb}
             <div><div class="vocab-jp jp">${esc(jpText(v))}</div><div class="vocab-romaji">${esc(v.romaji)}</div></div>
           </div>
-          <div class="vocab-id">${esc(cleanIndo(v))}</div>
-          <div class="tag-row"><span class="tag">${esc(v.chapter)}</span><span class="tag green">${esc(v.typeCategory)}</span><span class="tag pink">${esc(v.sectionCategory)}</span>${isFictionVocab(v)?`<span class="tag">Fiksi</span>`:""}</div>
-          <div class="card-actions"><button class="icon-btn" data-speak="${esc(jpText(v))}"><i class="fa-solid fa-volume-high"></i></button><button class="icon-btn ${state.favorites.includes(v.id)?"active":""}" data-fav="${v.id}"><i class="${state.favorites.includes(v.id)?"fa-solid":"fa-regular"} fa-star"></i></button></div>
-        </article>`).join("");
+          <div class="vocab-id">${esc(meaning)}</div>
+          <div class="tag-row"><span class="tag">${esc(v.chapter)}</span><span class="tag green">${esc(categoryLabel(v.typeCategory,"type"))}</span><span class="tag pink">${esc(categoryLabel(v.sectionCategory,"section"))}</span>${isFictionVocab(v)?`<span class="tag fiction-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> ${esc(categoryLabel("Fiksi"))}</span>`:""}</div>
+          <div class="card-actions"><button class="icon-btn" data-speak="${esc(jpText(v))}" title="${state.lang==="ja"?"聞く":"Dengar"}"><i class="fa-solid fa-volume-high"></i></button><button class="icon-btn ${fav?"active":""}" data-fav="${v.id}" title="${state.lang==="ja"?"お気に入り":"Favorit"}"><i class="${fav?"fa-solid":"fa-regular"} fa-star"></i></button><button class="icon-btn" data-example-material="${esc(v.id)}" title="${state.lang==="ja"?"例文":"Contoh kalimat"}"><i class="fa-regular fa-comment-dots"></i></button></div>
+        </article>`;
+      }).join("");
+      $("#materialEmpty").innerHTML = `<div style="font-size:34px;color:#7c4dff;margin-bottom:10px"><i class="fa-solid fa-magnifying-glass"></i></div><h3>${state.lang==="ja"?"語彙が見つかりません":"Kosakata tidak ditemukan"}</h3><p>${state.lang==="ja"?"フィルター、検索語、または架空語モードを変更してください。":"Coba ubah filter, kata kunci, atau matikan mode fiksi."}</p>`;
       $("#materialEmpty").classList.toggle("hidden",arr.length>0);
     }
 
@@ -2507,7 +2860,7 @@
     function quizSettingTitle(step){
       const titles = state.lang === "ja"
         ? ["言語方向", "カード順", "章", "セクション", "語彙タイプ"]
-        : ["Arah Bahasa", "Urutan Kartu", "Bab", "Section", "Jenis Kata"];
+        : ["Arah Bahasa", "Urutan Kartu", "Bab", "Bagian", "Jenis Kata"];
       return titles[step-1] || titles[0];
     }
     function updateQuizSettingSteps(){
@@ -2534,16 +2887,19 @@
 
     function renderSetup(){
       const bookOptions=[
-        {value:"Minna no Nihongo I (2nd Edition)",label: state.lang==="ja" ? "みんなの日本語 I（第2版）" : "Minna no Nihongo I (2nd Edition)"},
-        {value:"Minna no Nihongo II (2nd Edition)",label: state.lang==="ja" ? "みんなの日本語 II（第2版）" : "Minna no Nihongo II (2nd Edition)"}
+        {value:"Minna no Nihongo I (2nd Edition)",label: state.lang==="ja" ? "みんなの日本語 I（第2版）" : "Minna no Nihongo I (Edisi ke-2)",icon:"fa-book-open",note:state.lang==="ja"?"第1巻":"Buku 1"},
+        {value:"Minna no Nihongo II (2nd Edition)",label: state.lang==="ja" ? "みんなの日本語 II（第2版）" : "Minna no Nihongo II (Edisi ke-2)",icon:"fa-book",note:state.lang==="ja"?"第2巻":"Buku 2"}
       ];
-      const matOptions=["Materi Umum","Kata-Kata Informasi dan Referensi"];
-      $("#setupLangGrid").innerHTML = `<button class="option-card ${state.lang==="id"?"active":""}" data-setup-lang="id">Bahasa Indonesia</button><button class="option-card ${state.lang==="ja"?"active":""}" data-setup-lang="ja">日本語</button>`;
-      $("#setupBookGrid").innerHTML = bookOptions.map(o=>`<button class="option-card ${tempSetup.book===o.value?"active":""}" data-setup-book="${esc(o.value)}">${esc(o.label)}</button>`).join("");
-      $("#setupMaterialGrid").innerHTML = matOptions.map(o=>`<button class="option-card ${tempSetup.materialCategory===o?"active":""}" data-setup-material="${esc(o)}">${esc(o)}</button>`).join("");
+      const matOptions=[
+        {value:"Materi Umum",label:categoryLabel("Materi Umum"),icon:"fa-book-open-reader",note:state.lang==="ja"?"基本語彙と練習":"Kosakata utama dan latihan"},
+        {value:"Kata-Kata Informasi dan Referensi",label:categoryLabel("Kata-Kata Informasi dan Referensi"),icon:"fa-circle-info",note:state.lang==="ja"?"参考語彙":"Informasi dan referensi"}
+      ];
+      $("#setupLangGrid").innerHTML = `<button class="option-card icon-option ${state.lang==="id"?"active":""}" data-setup-lang="id"><span class="option-soft-icon"><i class="fa-solid fa-language"></i></span><div>Bahasa Indonesia<small>Antarmuka Bahasa Indonesia</small></div></button><button class="option-card icon-option ${state.lang==="ja"?"active":""}" data-setup-lang="ja"><span class="option-soft-icon"><i class="fa-solid fa-language"></i></span><div>日本語<small>日本語インターフェース</small></div></button>`;
+      $("#setupBookGrid").innerHTML = bookOptions.map(o=>`<button class="option-card icon-option ${tempSetup.book===o.value?"active":""}" data-setup-book="${esc(o.value)}"><span class="option-soft-icon"><i class="fa-solid ${o.icon}"></i></span><div>${esc(o.label)}<small>${esc(o.note)}</small></div></button>`).join("");
+      $("#setupMaterialGrid").innerHTML = matOptions.map(o=>`<button class="option-card icon-option ${tempSetup.materialCategory===o.value?"active":""}" data-setup-material="${esc(o.value)}"><span class="option-soft-icon"><i class="fa-solid ${o.icon}"></i></span><div>${esc(o.label)}<small>${esc(o.note)}</small></div></button>`).join("");
       const chapters = chaptersForSetup(tempSetup.book,tempSetup.materialCategory);
       if(!chapters.includes(tempSetup.chapter)) tempSetup.chapter=chapters[0];
-      $("#setupChapterGrid").innerHTML = chapters.map(ch=>`<button class="choice-chip ${tempSetup.chapter===ch?"active":""}" data-setup-chapter="${esc(ch)}">${esc(ch)}</button>`).join("");
+      $("#setupChapterGrid").innerHTML = chapters.map(ch=>`<button class="choice-chip ${tempSetup.chapter===ch?"active":""}" data-setup-chapter="${esc(ch)}"><i class="fa-regular fa-bookmark"></i>${esc(state.lang==="ja"?categoryLabel(ch):ch)}</button>`).join("");
       updateSetupSteps();
     }
 
@@ -2563,7 +2919,7 @@
       setTimeout(()=>$("#usernameInput").focus(),50);
     }
     function renderGroupGrid(activeGroup=""){
-      $("#groupGrid").innerHTML = groups.map(g=>`<button class="option-card login-group-card ${activeGroup===g.name?"active":""}" data-group="${esc(g.name)}" type="button"><span><i class="fa-solid ${g.icon}"></i></span><div><strong>${esc(g.name)}</strong><small>Wilayah peserta</small></div></button>`).join("");
+      $("#groupGrid").innerHTML = groups.map(g=>`<button class="option-card login-group-card ${activeGroup===g.name?"active":""}" data-group="${esc(g.name)}" type="button"><span><i class="fa-solid ${g.icon}"></i></span><div><strong>${esc(g.name)}</strong><small>${state.lang==="ja"?"参加者地域":"Wilayah peserta"}</small></div></button>`).join("");
     }
     function updateAdminLoginMode(){
       const username = $("#usernameInput").value.trim();
@@ -2571,14 +2927,14 @@
       $("#loginError").textContent = "";
       $("#groupBox").classList.toggle("hidden", !username || isAdm);
       $("#adminPassBox").classList.toggle("hidden", !username || !isAdm);
-      $("#loginModal .login-icon i").className = isAdm ? "fa-solid fa-user-shield" : "fa-solid fa-user-graduate";
+      $("#loginModal .login-icon i").className = isAdm ? "fa-solid fa-user-shield" : "fa-solid fa-user-pen";
     }
     function saveLogin(){
       const username = $("#usernameInput").value.trim();
       const loginError = $("#loginError");
-      if(!username){ loginError.textContent = state.lang==="ja" ? "ユーザー名を入力してください。" : "Username wajib diisi."; return; }
+      if(!username){ loginError.textContent = state.lang==="ja" ? "参加者名を入力してください。" : "Nama peserta wajib diisi."; return; }
       if(isAdminUsername(username)){
-        if($("#adminPasswordInput").value !== adminPass){ loginError.textContent = state.lang==="ja" ? "管理者パスワードが正しくありません。" : "Password admin salah."; return; }
+        if($("#adminPasswordInput").value !== adminPass){ loginError.textContent = state.lang==="ja" ? "管理者パスワードが正しくありません。" : "Kata sandi pengelola salah."; return; }
         const last = localStorage.getItem(storeKey+"_adminLastLogin");
         const now = Date.now();
         state.session={username:"admin404",group:"Admin",role:"admin",loggedAt:new Date().toISOString()};
@@ -2591,7 +2947,7 @@
         return;
       }
       const selected = $("#groupGrid .option-card.active")?.dataset.group;
-      if(!selected){ loginError.textContent = state.lang==="ja" ? "グループを選択してください。" : "Pilih group/wilayah terlebih dahulu."; return; }
+      if(!selected){ loginError.textContent = state.lang==="ja" ? "グループを選択してください。" : "Pilih grup/wilayah terlebih dahulu."; return; }
       state.session={username,group:selected,role:"user",loggedAt:new Date().toISOString()};
       saveState();
       closeModal("#loginModal");
@@ -2602,17 +2958,33 @@
     function buildQuizFilters(){
       const nums = chapterNumbers(state.setup.chapter);
       const chapterOpts = nums.map(n=>`Bab ${n}`);
-      $("#quizChapterFilters").innerHTML = chapterOpts.map(ch=>`<label class="check-pill"><input type="checkbox" value="${ch}" checked>${ch}</label>`).join("");
+      $("#quizChapterFilters").innerHTML = chapterOpts.map(ch=>`<label class="check-pill"><input type="checkbox" value="${ch}" checked><i class="fa-regular fa-bookmark"></i>${esc(state.lang==="ja"?categoryLabel(ch):ch)}</label>`).join("");
       const sections=["Semua","Kosakata","Latihan C","Percakapan"];
-      $("#quizSectionFilters").innerHTML = sections.map(s=>`<label class="check-pill"><input type="checkbox" value="${s}" ${s==="Semua"?"checked":""}>${s}</label>`).join("");
+      $("#quizSectionFilters").innerHTML = sections.map(s=>`<label class="check-pill"><input type="checkbox" value="${s}" ${s==="Semua"?"checked":""}><i class="fa-solid ${s==="Latihan C"?"fa-pen-nib":s==="Percakapan"?"fa-comments":"fa-book-open"}"></i>${esc(s==="Semua"?(state.lang==="ja"?"すべて":"Semua"):categoryLabel(s))}</label>`).join("");
       const types=["Semua","Kata Benda","Kata Sifat-i","Kata Sifat-na","Kata Kerja","Kosakata Tambahan"];
-      $("#quizTypeFilters").innerHTML = types.map(s=>`<label class="check-pill"><input type="checkbox" value="${s}" ${s==="Semua"?"checked":""}>${s}</label>`).join("");
+      $("#quizTypeFilters").innerHTML = types.map(s=>`<label class="check-pill"><input type="checkbox" value="${s}" ${s==="Semua"?"checked":""}><i class="fa-solid fa-tag"></i>${esc(s==="Semua"?(state.lang==="ja"?"すべて":"Semua"):categoryLabel(s))}</label>`).join("");
+      handleExclusiveAllSelection("#quizSectionFilters");
+      handleExclusiveAllSelection("#quizTypeFilters");
       syncQuizFictionOptions();
       updateQuizFilterCount();
       updateQuizSettingSteps();
     }
     function selectedChecks(sel){ return $$(`${sel} input:checked`).map(i=>i.value); }
+    function handleExclusiveAllSelection(groupSelector, changedInput=null){
+      const box=$(groupSelector);
+      if(!box) return;
+      const inputs=$$(`${groupSelector} input[type=checkbox]`);
+      const all=inputs.find(i=>i.value === "Semua");
+      const others=inputs.filter(i=>i !== all);
+      if(!all) return;
+      if(changedInput === all && all.checked){ others.forEach(i=>i.checked=false); }
+      if(changedInput && changedInput !== all && changedInput.checked){ all.checked=false; }
+      const checkedOthers=others.filter(i=>i.checked);
+      if(checkedOthers.length === 0){ all.checked=true; others.forEach(i=>i.checked=false); }
+      if(checkedOthers.length === others.length && others.length>0){ others.forEach(i=>i.checked=false); all.checked=true; }
+    }
     function filterQuizData(){
+      syncFictionToggleAvailability();
       let arr=baseVocab().map(v=>({...v, favorite: state.favorites.includes(v.id)}));
       if(!state.includeFiction) arr = arr.filter(v=>!isFictionVocab(v));
       const chapters=selectedChecks("#quizChapterFilters").flatMap(ch=>chapterNumbers(ch));
@@ -2623,6 +2995,7 @@
       if(!types.includes("Semua")) arr=arr.filter(v=>types.includes(v.typeCategory));
       return arr;
     }
+
     function updateQuizFilterCount(){
       const msg = $("#quizFilterMessage");
       const startBtn = $("#startQuizFromSettings");
@@ -2646,7 +3019,7 @@
       quiz = {
         cards, index:0, direction: $('[data-qdir].active').dataset.qdir, shuffle: $('[data-shuffle="true"]').classList.contains("active"),
         details:[], correct:0, wrong:0, startedAt:Date.now(), cardStart:Date.now(), remaining:30, timer:null, paused:false, flipped:false, focusLost:0, micOn:true, answered:false, finishing:false, speechWrongCount:0, lastHeard:"", _speechHold:false,
-        chapterFilters:selectedChecks("#quizChapterFilters"), sectionFilters:selectedChecks("#quizSectionFilters"), typeFilters:selectedChecks("#quizTypeFilters"), fictionFilter:state.includeFiction?"Fiksi ON":"Fiksi OFF"
+        chapterFilters:selectedChecks("#quizChapterFilters"), sectionFilters:selectedChecks("#quizSectionFilters"), typeFilters:selectedChecks("#quizTypeFilters"), fictionFilter:state.includeFiction?(state.lang==="ja"?"架空語 有効":"Fiksi Aktif"):(state.lang==="ja"?"架空語 無効":"Fiksi Nonaktif")
       };
       closeModal("#quizSettingsModal");
       showPage("quiz");
@@ -2722,6 +3095,23 @@
       $("#exampleId").textContent = tidyExampleText(exampleMeaningFallback(v), "Arti contoh belum tersedia.");
       $("#exampleModal").classList.add("show");
     }
+    function openImagePreview(src, alt="Pratinjau gambar kosakata"){
+      const img=$("#zoomImage"), modal=$("#imageModal");
+      if(!img || !modal || !src) return;
+      img.src=src; img.alt=alt || (state.lang==="ja"?"語彙画像のプレビュー":"Pratinjau gambar kosakata");
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden","false");
+    }
+    function closeImagePreview(){
+      const modal=$("#imageModal"), img=$("#zoomImage");
+      if(modal){ modal.classList.remove("show"); modal.setAttribute("aria-hidden","true"); }
+      if(img) img.removeAttribute("src");
+    }
+    function bindQuizImagePreview(){
+      $$("#answerArea .answer-img-preview").forEach(img=>{
+        img.onclick = e => { e.preventDefault(); e.stopPropagation(); openImagePreview(img.currentSrc || img.src, img.alt); };
+      });
+    }
 
     function renderQuizCard(){
       const v=quiz.cards[quiz.index];
@@ -2737,10 +3127,11 @@
       $("#quizLabel").textContent = `${v.chapter} • ${v.sectionCategory} • ${v.typeCategory}`;
       updateQuizFavButtons(v);
       const frontIsJp = quiz.direction==="jpToId";
-      const q = frontIsJp ? jpText(v) : cleanIndo(v);
+      const q = frontIsJp ? jpText(v) : formatIndonesianMeaning(v);
       $("#frontQuestion").textContent = q;
       $("#frontQuestion").className = "question-text" + (frontIsJp ? " jp" : "") + textSizeClass(q);
       $("#answerArea").innerHTML = renderAnswerHtml(v);
+      bindQuizImagePreview();
       $("#cardCounter").textContent = `Kartu ${quiz.index+1} / ${quiz.cards.length}`;
       const prog = Math.round((quiz.index/quiz.cards.length)*100);
       $("#quizProgress").style.width = prog + "%";
@@ -2754,9 +3145,10 @@
       if(quiz.micOn) startRecognition();
     }
     function renderAnswerHtml(v){
-      const img = v.image ? `<img class="answer-img" src="${esc(v.image)}" alt="${esc(cleanIndo(v))}">` : "";
+      const meaning = formatIndonesianMeaning(v);
+      const img = v.image ? `<span class="answer-image-wrap"><img class="answer-img answer-img-preview" src="${esc(v.image)}" alt="${esc(meaning)}"><span class="answer-image-zoom-icon"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></span></span>` : "";
       if(quiz.direction==="idToJp") return `${img}<div><div class="answer-main jp${textSizeClass(jpText(v))}">${esc(jpText(v))}</div><div class="answer-sub jp">${esc(v.kana)} • ${esc(v.romaji)}</div></div>`;
-      return `${img}<div><div class="answer-main${textSizeClass(cleanIndo(v))}">${esc(cleanIndo(v))}</div><div class="answer-sub jp">${esc(v.romaji)}</div></div>`;
+      return `${img}<div><div class="answer-main${textSizeClass(meaning)}">${esc(meaning)}</div><div class="answer-sub jp">${esc(v.romaji)}</div></div>`;
     }
     function updateQuizFavButtons(v){
       const active=state.favorites.includes(v.id);
@@ -2808,7 +3200,7 @@
       const timeSpent = Math.min(30, Math.max(0, Math.round((Date.now() - quiz.cardStart) / 1000)));
       quiz.details.push({
         no: quiz.index + 1, id: v.id, chapter: v.chapter, typeCategory: v.typeCategory, sectionCategory: v.sectionCategory,
-        indonesia: v.indonesia, kanji: v.kanji, kana: v.kana, romaji: v.romaji,
+        indonesia: v.indonesia, isFiction: isFictionVocab(v), kanji: v.kanji, kana: v.kana, romaji: v.romaji,
         userStatus: isCorrect ? "Benar" : "Salah", isCorrect, timeSpent, heard: quiz.lastHeard || "", answeredAt: new Date().toISOString()
       });
       if(isCorrect) quiz.correct++; else quiz.wrong++;
@@ -2943,7 +3335,7 @@
           <div class="review-search-row"><div class="search-box review-search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="resSearch" class="input" placeholder="Cari kosakata, romaji, arti, atau status..."></div></div>
           <div id="reviewTable"></div>
         </section>`;
-      $("#pdfResultBtn").onclick=()=>openResultPdf(r,state.lang);
+      $("#pdfResultBtn").onclick=()=>openPdfFilterModal(r);
       $("#retryBtn").onclick=retrySameQuiz;
       $("#reviewBtn").onclick=()=>$("#reviewTableCard").scrollIntoView({behavior:"smooth",block:"start"});
       $("#resStatus").onchange=renderReviewTable; $("#resSort").onchange=renderReviewTable; $("#resSearch").oninput=renderReviewTable;
@@ -2978,7 +3370,7 @@
         d.no,
         `<div class="review-vocab-cell"><div><div class="review-jp">${esc(d.kanji||d.kana)}</div><div class="review-romaji jp">${esc(d.kana||"")}</div></div><button class="review-speaker" data-speak="${esc(d.kanji||d.kana)}" title="${state.lang==="ja"?"聞く":"Dengar"}"><i class="fa-solid fa-volume-high"></i></button></div>`,
         esc(d.romaji||"-"),
-        esc(cleanDetailIndo(d.indonesia)),
+        esc(formatDetailIndonesianMeaning(d)),
         statusHtml(d.isCorrect),
         formatTime(Number(d.timeSpent||0))
       ]);
@@ -3021,8 +3413,8 @@
       const statItems = [
         {icon:"fa-users",value:unique.size,label:state.lang==="ja"?"参加者数":"Total Peserta",sub:state.lang==="ja"?"登録済み":"Peserta terdaftar",tone:"purple"},
         {icon:"fa-arrow-trend-up",value:avg+"%",label:state.lang==="ja"?"平均スコア":"Rata-rata Skor",sub:state.lang==="ja"?"平均":"Rata-rata keseluruhan",tone:"green"},
-        {icon:"fa-star",value:best?best.scorePercent+"%":"0%",label:state.lang==="ja"?"最高":"Skor Tertinggi",sub:best?`Oleh ${esc(shortName(best.username))}`:"-",tone:"yellow"},
-        {icon:"fa-arrow-trend-down",value:low?low.scorePercent+"%":"0%",label:state.lang==="ja"?"最低":"Skor Terendah",sub:low?`Oleh ${esc(shortName(low.username))}`:"-",tone:"pink"},
+        {icon:"fa-star",value:best?best.scorePercent+"%":"0%",label:state.lang==="ja"?"最高":"Skor Tertinggi",sub:best?(state.lang==="ja"?`${esc(shortName(best.username))} より`:`Oleh ${esc(shortName(best.username))}`):"-",tone:"yellow"},
+        {icon:"fa-arrow-trend-down",value:low?low.scorePercent+"%":"0%",label:state.lang==="ja"?"最低":"Skor Terendah",sub:low?(state.lang==="ja"?`${esc(shortName(low.username))} より`:`Oleh ${esc(shortName(low.username))}`):"-",tone:"pink"},
         {icon:"fa-file-lines",value:allResults.length,label:state.lang==="ja"?"総実施数":"Total Pengerjaan",sub:state.lang==="ja"?"クイズ":"Total kuis dikerjakan",tone:"blue"}
       ];
       $("#adminStats").innerHTML = statItems.map(x=>`<div class="admin-stat admin-stat-${x.tone}"><i class="fa-solid ${x.icon}"></i><div><span>${x.label}</span><strong>${x.value}</strong><small>${x.sub}</small></div></div>`).join("");
@@ -3083,13 +3475,114 @@
     }
     function shortName(n){ return String(n||"").length>11 ? String(n).slice(0,10)+"…" : String(n); }
     function openDetail(r){
-      $("#detailContent").innerHTML = `<h2>${esc(r.username)} - ${r.scorePercent}%</h2><p>${esc(r.group||"-")} • ${new Date(r.finishedAt).toLocaleString()}</p>` + tableHtml(["No","Jepang","Romaji","Arti","Status","Waktu"], (r.details||[]).map(d=>[d.no,`<span class="jp">${esc(d.kanji||d.kana)}</span>`,esc(d.romaji),esc(cleanDetailIndo(d.indonesia)),statusHtml(d.isCorrect),formatTime(d.timeSpent)]));
+      const heads = state.lang==="ja" ? ["番号","日本語","ローマ字","意味","状態","時間"] : ["No","Jepang","Romaji","Arti","Status","Waktu"];
+      $("#detailContent").innerHTML = `<h2>${esc(r.username)} - ${r.scorePercent}%</h2><p>${esc(r.group||"-")} • ${new Date(r.finishedAt).toLocaleString(state.lang==="ja"?"ja-JP":"id-ID")}</p>` + tableHtml(heads, (r.details||[]).map(d=>[d.no,`<span class="jp">${esc(d.kanji||d.kana)}</span>`,esc(d.romaji),esc(formatDetailIndonesianMeaning(d)),statusHtml(d.isCorrect),formatTime(d.timeSpent)]));
       $("#detailModal").classList.add("show");
     }
 
     function slugifyFileName(s){
       return String(s||"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9一-龯ぁ-んァ-ン\s_-]/gi," ").trim().replace(/\s+/g,"_").replace(/_+/g,"_");
     }
+
+    let pdfTargetResult = null;
+    function uniqueValues(arr){
+      return [...new Set((arr || []).filter(v=>v !== undefined && v !== null && String(v).trim() !== "").map(v=>String(v)))];
+    }
+    function optionHtml(value,label,selected=false){
+      return `<option value="${esc(value)}" ${selected?"selected":""}>${esc(label)}</option>`;
+    }
+    function renderPdfFilterTexts(){
+      const jp = state.lang === "ja";
+      const pairs = [
+        ["#pdfFilterTitle", t("pdfFilterTitle")], ["#pdfFilterDesc", t("pdfFilterDesc")],
+        ["#pdfBookLabel", `<i class="fa-solid fa-book-open"></i>${t("book")}`],
+        ["#pdfMaterialLabel", `<i class="fa-solid fa-layer-group"></i>${t("materialCategoryLabel")}`],
+        ["#pdfChapterLabel", `<i class="fa-solid fa-bookmark"></i>${t("chapter")}`],
+        ["#pdfSectionLabel", `<i class="fa-solid fa-table-cells-large"></i>${t("section")}`],
+        ["#pdfTypeLabel", `<i class="fa-solid fa-tags"></i>${t("type")}`],
+        ["#pdfStatusLabel", `<i class="fa-solid fa-circle-check"></i>${t("answerStatus")}`],
+        ["#pdfCancelText", t("cancel")], ["#pdfResetText", t("resetPdfFilter")], ["#pdfSaveText", t("savePdfBtn")]
+      ];
+      pairs.forEach(([sel,val])=>{ const el=$(sel); if(!el) return; if(String(val).includes("<i")) el.innerHTML=val; else el.textContent=val; });
+    }
+    function renderPdfFilterOptions(){
+      const r = pdfTargetResult || currentResult;
+      if(!r) return;
+      renderPdfFilterTexts();
+      const details = r.details || [];
+      const books = uniqueValues([r.selectedBook || state.setup.book]);
+      const materials = uniqueValues([r.selectedMaterialCategory || state.setup.materialCategory]);
+      const chapters = uniqueValues(details.map(d=>d.chapter).concat(r.selectedChapter ? [r.selectedChapter] : []));
+      const sections = ["Kosakata","Latihan C","Percakapan"].filter(v=>details.some(d=>d.sectionCategory===v));
+      const types = ["Kata Benda","Kata Kerja","Kata Sifat-i","Kata Sifat-na","Kosakata Tambahan"].filter(v=>details.some(d=>d.typeCategory===v));
+      const bookSel = $("#pdfBookFilter"), matSel = $("#pdfMaterialFilter"), chSel = $("#pdfChapterFilter"), secSel = $("#pdfSectionFilter"), typeSel = $("#pdfTypeFilter"), statSel = $("#pdfStatusFilter");
+      const keep = sel => sel?.value || "all";
+      const prev = {book:keep(bookSel), mat:keep(matSel), ch:keep(chSel), sec:keep(secSel), type:keep(typeSel), stat:keep(statSel)};
+      bookSel.innerHTML = optionHtml("all", t("allBooks")) + books.map(b=>optionHtml(b, bookLabel(b))).join("");
+      matSel.innerHTML = optionHtml("all", t("allMaterials")) + materials.map(m=>optionHtml(m, categoryLabel(m))).join("");
+      chSel.innerHTML = optionHtml("all", t("allChapters")) + chapters.map(c=>optionHtml(c, state.lang==="ja"?categoryLabel(c):c)).join("");
+      secSel.innerHTML = optionHtml("all", t("allSections")) + sections.map(c=>optionHtml(c, categoryLabel(c))).join("");
+      typeSel.innerHTML = optionHtml("all", t("allTypes")) + types.map(c=>optionHtml(c, categoryLabel(c))).join("");
+      statSel.innerHTML = optionHtml("all", t("allAnswers")) + optionHtml("correct", t("correct")) + optionHtml("wrong", t("wrong"));
+      [[bookSel,prev.book],[matSel,prev.mat],[chSel,prev.ch],[secSel,prev.sec],[typeSel,prev.type],[statSel,prev.stat]].forEach(([el,val])=>{ if([...el.options].some(o=>o.value===val)) el.value=val; });
+      updatePdfFilterCount();
+    }
+    function filteredPdfDetails(r){
+      const book=$("#pdfBookFilter")?.value || "all";
+      const mat=$("#pdfMaterialFilter")?.value || "all";
+      const ch=$("#pdfChapterFilter")?.value || "all";
+      const sec=$("#pdfSectionFilter")?.value || "all";
+      const typ=$("#pdfTypeFilter")?.value || "all";
+      const stat=$("#pdfStatusFilter")?.value || "all";
+      if(book !== "all" && r.selectedBook !== book) return [];
+      if(mat !== "all" && r.selectedMaterialCategory !== mat) return [];
+      let rows=[...(r.details||[])];
+      if(ch !== "all") rows=rows.filter(d=>d.chapter===ch);
+      if(sec !== "all") rows=rows.filter(d=>d.sectionCategory===sec);
+      if(typ !== "all") rows=rows.filter(d=>d.typeCategory===typ);
+      if(stat === "correct") rows=rows.filter(d=>d.isCorrect);
+      if(stat === "wrong") rows=rows.filter(d=>!d.isCorrect);
+      return rows;
+    }
+    function updatePdfFilterCount(){
+      const r = pdfTargetResult || currentResult;
+      if(!r) return;
+      const rows = filteredPdfDetails(r);
+      const msg = $("#pdfFilterMessage");
+      if(!msg) return;
+      msg.classList.toggle("hidden", rows.length > 0);
+      msg.textContent = rows.length ? "" : t("noPdfRows");
+    }
+    function openPdfFilterModal(r=currentResult){
+      if(!r) return toast(t("emptyResult"));
+      pdfTargetResult = r;
+      renderPdfFilterOptions();
+      $("#pdfFilterModal").classList.add("show");
+      updatePdfFilterCount();
+    }
+    function resetPdfFilterModal(){
+      ["#pdfBookFilter","#pdfMaterialFilter","#pdfChapterFilter","#pdfSectionFilter","#pdfTypeFilter","#pdfStatusFilter"].forEach(sel=>{ const el=$(sel); if(el) el.value="all"; });
+      updatePdfFilterCount();
+    }
+    function saveFilteredPdf(){
+      const r = pdfTargetResult || currentResult;
+      if(!r) return;
+      const rows = filteredPdfDetails(r);
+      if(!rows.length){ updatePdfFilterCount(); return toast(t("noPdfRows")); }
+      const clone = {...r, details: rows};
+      clone.totalQuestions = rows.length;
+      clone.correctCount = rows.filter(d=>d.isCorrect).length;
+      clone.wrongCount = rows.filter(d=>!d.isCorrect).length;
+      clone.scorePercent = rows.length ? Math.round((clone.correctCount / rows.length) * 100) : 0;
+      clone.selectedChapterFilters = uniqueValues(rows.map(d=>d.chapter));
+      clone.selectedSectionFilters = uniqueValues(rows.map(d=>d.sectionCategory));
+      clone.selectedTypeFilters = uniqueValues(rows.map(d=>d.typeCategory));
+      clone.pdfFiltered = true;
+      closeModal("#pdfFilterModal");
+      openResultPdf(clone,state.lang);
+    }
+
+
     function resultPdfFileName(r, lang=state.lang){
       const d=new Date(r.finishedAt||Date.now());
       const stamp=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}_${String(d.getHours()).padStart(2,"0")}-${String(d.getMinutes()).padStart(2,"0")}`;
@@ -3105,23 +3598,23 @@
         headers:["No","Kosakata","Cara Baca","Arti","Status","Waktu","Kategori"], ok:"Benar", no:"Salah", print:"Simpan / Cetak PDF"
       };
       const filename=resultPdfFileName(r,lang);
-      const title = `${tx.docTitle} - ${bookLabel(r.selectedBook)} - ${r.selectedMaterialCategory} - ${r.selectedChapter}`;
-      const rows=(r.details||[]).map(d=>`<tr><td>${d.no}</td><td class="jp">${esc(d.kanji||d.kana)}<br><small>${esc(d.kana||"")}</small></td><td>${esc(d.romaji||"-")}</td><td>${esc(cleanDetailIndo(d.indonesia))}</td><td>${d.isCorrect?tx.ok:tx.no}</td><td>${formatTime(Number(d.timeSpent||0))}</td><td>${esc([d.chapter,d.sectionCategory,d.typeCategory].filter(Boolean).join(" / "))}</td></tr>`).join("");
+      const title = `${tx.docTitle} - ${bookLabel(r.selectedBook)} - ${state.lang==="ja"?categoryLabel(r.selectedMaterialCategory):r.selectedMaterialCategory} - ${state.lang==="ja"?categoryLabel(r.selectedChapter):r.selectedChapter}`;
+      const rows=(r.details||[]).map(d=>`<tr><td>${d.no}</td><td class="jp">${esc(d.kanji||d.kana)}<br><small>${esc(d.kana||"")}</small></td><td>${esc(d.romaji||"-")}</td><td>${esc(cleanDetailIndo(d.indonesia))}</td><td>${d.isCorrect?tx.ok:tx.no}</td><td>${formatTime(Number(d.timeSpent||0))}</td><td>${esc([state.lang==="ja"?categoryLabel(d.chapter):d.chapter,state.lang==="ja"?categoryLabel(d.sectionCategory):d.sectionCategory,state.lang==="ja"?categoryLabel(d.typeCategory):d.typeCategory].filter(Boolean).join(" / "))}</td></tr>`).join("");
       const body = `<h1>${esc(title)}</h1>
-        <p class="meta"><b>${tx.participant}:</b> ${esc(r.username||"-")}<br><b>${tx.group}:</b> ${esc(r.group||"-")}<br><b>${tx.book}:</b> ${esc(bookLabel(r.selectedBook))}<br><b>${tx.category}:</b> ${esc(r.selectedMaterialCategory)} / ${esc(r.selectedChapter)}<br><b>${tx.date}:</b> ${esc(formatResultDate(r.finishedAt,lang))}</p>
+        <p class="meta"><b>${tx.participant}:</b> ${esc(r.username||"-")}<br><b>${tx.group}:</b> ${esc(r.group||"-")}<br><b>${tx.book}:</b> ${esc(bookLabel(r.selectedBook))}<br><b>${tx.category}:</b> ${esc(state.lang==="ja"?categoryLabel(r.selectedMaterialCategory):r.selectedMaterialCategory)} / ${esc(state.lang==="ja"?categoryLabel(r.selectedChapter):r.selectedChapter)}<br><b>${tx.date}:</b> ${esc(formatResultDate(r.finishedAt,lang))}</p>
         <div class="summary"><div>${tx.total}<b>${r.totalQuestions}</b></div><div>${tx.correct}<b>${r.correctCount}</b></div><div>${tx.wrong}<b>${r.wrongCount}</b></div><div>${tx.score}<b>${r.scorePercent}%</b></div><div>${tx.duration}<b>${formatDuration(Number(r.totalDuration||0))}</b></div></div>
         <table><thead><tr>${tx.headers.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table>`;
       const html = reportShell(filename, body, tx.print);
       printWindow(html, filename);
     }
     function openAllPdf(lang=state.lang){
-      const jp=lang==="ja", title=`all-participants_${new Date().toISOString().slice(0,16).replace("T","_").replace(":","-")}_${lang}`;
+      const jp=lang==="ja", title=`${jp?"zen_sankasha":"semua_peserta"}_${new Date().toISOString().slice(0,16).replace("T","_").replace(":","-")}_${lang}`;
       const rows=allResults.map((r,i)=>`<tr><td>${i+1}</td><td>${esc(r.username)}</td><td>${esc(r.group||"-")}</td><td>${new Date(r.finishedAt).toLocaleString(jp?"ja-JP":"id-ID")}</td><td>${r.totalQuestions}</td><td>${r.correctCount}</td><td>${r.wrongCount}</td><td>${r.scorePercent}%</td></tr>`).join("");
-      const detail=allResults.map(r=>`<h2>${esc(r.username)} - ${r.scorePercent}%</h2><table><thead><tr><th>No</th><th>${jp?"日本語":"Jepang"}</th><th>Romaji</th><th>${jp?"意味":"Arti"}</th><th>Status</th><th>${jp?"時間":"Waktu"}</th></tr></thead><tbody>${(r.details||[]).map(d=>`<tr><td>${d.no}</td><td>${esc(d.kanji||d.kana)}</td><td>${esc(d.romaji)}</td><td>${esc(cleanDetailIndo(d.indonesia))}</td><td>${d.isCorrect?(jp?"正解":"Benar"):(jp?"不正解":"Salah")}</td><td>${formatTime(d.timeSpent)}</td></tr>`).join("")}</tbody></table>`).join("");
-      const html=reportShell(title,`<h1>${jp?"全参加者レポート":"Laporan Semua Peserta"}</h1><p>${new Date().toLocaleString(jp?"ja-JP":"id-ID")}</p><table><thead><tr><th>No</th><th>${jp?"名前":"Nama"}</th><th>Group</th><th>${jp?"最終日時":"Tanggal Terakhir"}</th><th>Total</th><th>${jp?"正解":"Benar"}</th><th>${jp?"不正解":"Salah"}</th><th>Score</th></tr></thead><tbody>${rows}</tbody></table>${detail}`, jp?"印刷 / PDF保存":"Print / Save PDF");
+      const detail=allResults.map(r=>`<h2>${esc(r.username)} - ${r.scorePercent}%</h2><table><thead><tr><th>${jp?"番号":"No"}</th><th>${jp?"日本語":"Jepang"}</th><th>Romaji</th><th>${jp?"意味":"Arti"}</th><th>${jp?"状態":"Status"}</th><th>${jp?"時間":"Waktu"}</th></tr></thead><tbody>${(r.details||[]).map(d=>`<tr><td>${d.no}</td><td>${esc(d.kanji||d.kana)}</td><td>${esc(d.romaji)}</td><td>${esc(cleanDetailIndo(d.indonesia))}</td><td>${d.isCorrect?(jp?"正解":"Benar"):(jp?"不正解":"Salah")}</td><td>${formatTime(d.timeSpent)}</td></tr>`).join("")}</tbody></table>`).join("");
+      const html=reportShell(title,`<h1>${jp?"全参加者レポート":"Laporan Semua Peserta"}</h1><p>${new Date().toLocaleString(jp?"ja-JP":"id-ID")}</p><table><thead><tr><th>${jp?"番号":"No"}</th><th>${jp?"名前":"Nama"}</th><th>${jp?"グループ":"Grup"}</th><th>${jp?"最終日時":"Tanggal Terakhir"}</th><th>${jp?"総数":"Total Soal"}</th><th>${jp?"正解":"Benar"}</th><th>${jp?"不正解":"Salah"}</th><th>${jp?"スコア":"Skor"}</th></tr></thead><tbody>${rows}</tbody></table>${detail}`, jp?"印刷 / PDF保存":"Cetak / Simpan PDF");
       printWindow(html,title);
     }
-    function reportShell(title,body,buttonLabel="Print / Save PDF"){
+    function reportShell(title,body,buttonLabel=(state.lang==="ja"?"印刷 / PDF保存":"Cetak / Simpan PDF")){
       return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(title)}</title><style>@page{size:A4;margin:14mm}body{font-family:Arial,'Noto Sans JP',sans-serif;margin:0;color:#111827;background:#fff;font-size:12px}.toolbar{position:sticky;top:0;background:#fff;padding:10px 0;border-bottom:1px solid #e5e7eb;margin-bottom:18px}button{border:0;border-radius:10px;background:#7c4dff;color:#fff;font-weight:700;padding:10px 14px}h1{margin:0 0 10px;font-size:22px}.meta{line-height:1.7}.summary{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.summary div{border:1px solid #d8d4ef;border-radius:12px;padding:10px;background:#faf8ff}.summary b{display:block;font-size:18px;margin-top:5px}table{width:100%;border-collapse:collapse;margin-top:14px;font-size:11px}th,td{border:1px solid #d1d5db;padding:7px;text-align:left;vertical-align:top}th{background:#f3f0ff;color:#4c2bb7}.jp{font-family:'Noto Sans JP',Arial,sans-serif}small{color:#6b7280}@media print{.toolbar{display:none}body{font-size:11px}.summary{grid-template-columns:repeat(5,1fr)}}<\/style></head><body><div class="toolbar"><button onclick="print()">${esc(buttonLabel)}</button></div>${body}<script>document.title=${JSON.stringify(title)};setTimeout(()=>print(),700)<\/script></body></html>`;
     }
     function printWindow(html,title){ const w=window.open("","_blank"); if(!w) return toast("Popup diblokir browser."); w.document.open(); w.document.write(html); w.document.close(); }
@@ -3244,7 +3737,8 @@
         if(e.target.closest("[data-action='openQuizSettings']")) openQuizSettings();
         const speakBtn=e.target.closest("[data-speak]"); if(speakBtn) speak(speakBtn.dataset.speak,"ja-JP");
         const fav=e.target.closest("[data-fav]"); if(fav) toggleFav(fav.dataset.fav);
-        const zoom=e.target.closest("[data-zoom]"); if(zoom){ $("#zoomImage").src=zoom.dataset.zoom; $("#imageModal").classList.add("show"); }
+        const zoom=e.target.closest("[data-zoom]"); if(zoom){ e.preventDefault(); openImagePreview(zoom.dataset.zoom, zoom.getAttribute("alt") || (state.lang==="ja"?"語彙画像のプレビュー":"Pratinjau gambar kosakata")); }
+        const matExample=e.target.closest("[data-example-material]"); if(matExample){ const v=VOCABULARY.find(x=>x.id===matExample.dataset.exampleMaterial); if(v){ $("#exampleJa").textContent=tidyExampleText(v.exampleJa,t("noExample")); $("#exampleReading").textContent=tidyExampleText(exampleReadingFallback(v),state.lang==="ja"?"読み方はまだありません":"Cara baca belum tersedia"); $("#exampleId").textContent=tidyExampleText(exampleMeaningFallback(v),state.lang==="ja"?"例文の意味はまだありません。":"Arti contoh belum tersedia."); $("#exampleModal").classList.add("show"); } }
         const sl=e.target.closest("[data-setup-lang]"); if(sl){ state.lang=sl.dataset.setupLang; saveState(); renderSetup(); applyTranslations(); setSetupStep(2); }
         const sb=e.target.closest("[data-setup-book]"); if(sb){ tempSetup.book=sb.dataset.setupBook; renderSetup(); setSetupStep(3); }
         const sm=e.target.closest("[data-setup-material]"); if(sm){ tempSetup.materialCategory=sm.dataset.setupMaterial; renderSetup(); setSetupStep(4); }
@@ -3263,10 +3757,12 @@
       $("#navLangBtn").onclick=toggleLanguage;
       $("#langToggleDrop").onclick=toggleLanguage;
       const oldMaterialFictionBtn = $("#materialFictionBtn");
-      if(oldMaterialFictionBtn) oldMaterialFictionBtn.onclick=()=>{ if(anyFictionInBase()){ state.includeFiction=!state.includeFiction; saveState(); renderAll(); updateQuizFilterCount(); } };
-      $("#navFictionToggle").onclick=()=>{ if(anyFictionInBase()){ state.includeFiction=!state.includeFiction; saveState(); renderAll(); updateQuizFilterCount(); } };
+      if(oldMaterialFictionBtn) oldMaterialFictionBtn.onclick=()=>{ if(!hasFictionVocabulary(currentFictionScope())) return toast(state.lang==="ja"?"この範囲には架空語がありません。":"Kosakata fiksi tidak tersedia untuk pilihan ini."); setFictionToggleState(!state.includeFiction,true); renderAll(); updateQuizFilterCount(); };
+      $("#navFictionToggle").onclick=()=>{ if(!hasFictionVocabulary(currentFictionScope())){ state.includeFiction=false; updateFictionToggle(); return toast(state.lang==="ja"?"この範囲には架空語がありません。":"Kosakata fiksi tidak tersedia untuk pilihan ini."); } setFictionToggleState(!state.includeFiction,true); renderAll(); updateQuizFilterCount(); };
       $("#logoutBtn").onclick=logout; $("#sideLogout").onclick=logout;
       $("#materialSearch").oninput=renderMaterial;
+      $("#materialSectionFilter").onchange=renderMaterial;
+      $("#materialTypeFilter").onchange=renderMaterial;
       $("#closeSetup").onclick=()=>closeModal("#setupModal"); $("#cancelSetup").onclick=()=>closeModal("#setupModal");
       $("#prevSetupStep").onclick=()=>setSetupStep(setupStep-1);
       $("#nextSetupStep").onclick=()=>setSetupStep(setupStep+1);
@@ -3282,14 +3778,16 @@
         setQuizSettingStep(quizSettingStep+1);
       };
       $("#startQuizFromSettings").onclick=startQuiz;
-      $("#quizSettingsModal").addEventListener("change",e=>{ if(e.target.matches("input[type=checkbox]")) updateQuizFilterCount(); });
+      $("#quizSettingsModal").addEventListener("change",e=>{ if(e.target.matches("input[type=checkbox]")){ if(e.target.closest("#quizSectionFilters")) handleExclusiveAllSelection("#quizSectionFilters", e.target); if(e.target.closest("#quizTypeFilters")) handleExclusiveAllSelection("#quizTypeFilters", e.target); updateQuizFilterCount(); } });
       $("#flashcard").onclick=flipCard; $("#quizFavBtn").onclick=e=>{ e.stopPropagation(); toggleFav(quiz.cards[quiz.index].id); }; $("#quizFavBtnBack").onclick=e=>{ e.stopPropagation(); toggleFav(quiz.cards[quiz.index].id); };
       $("#pauseBtn").onclick=()=>{ if(!quiz) return; quiz.paused=!quiz.paused; $("#pauseBtn span").textContent=quiz.paused?t("resume"):t("pause"); if(quiz.paused){ stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"一時停止中です。":"Kuis dijeda."); } else { setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } updateMicBoxState(); };
       $("#hearBtn").onclick=()=>{ if(!quiz || !quiz.flipped) return toast(state.lang==="ja"?"先にカードを裏返してください。":"Balik kartu dulu untuk menggunakan fitur ini."); if(!("speechSynthesis" in window)){ setSpeechStatus("unsupported",state.lang==="ja"?"このブラウザは音声再生に対応していません。":"Audio tidak didukung browser ini"); return; } speak(jpText(quiz.cards[quiz.index]),"ja-JP"); };
       $("#exampleBtn").onclick=openExampleModal;
       $("#correctBtn").onclick=()=>answerCard(true); $("#wrongBtn").onclick=()=>answerCard(false);
       $("#micSwitch").onclick=()=>{ if(!speechSupported) return setSpeechStatus("unsupported",t("browserSpeechNo")); if(!quiz || quiz.flipped) return; quiz.micOn=!quiz.micOn; $("#micSwitch").classList.toggle("on",quiz.micOn); updateMicBoxState(); if(quiz.micOn){ setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } else { stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"マイクはオフです。":"Mikrofon dimatikan."); } };
-      $("#closeExample").onclick=()=>closeModal("#exampleModal"); $("#closeImage").onclick=()=>closeModal("#imageModal"); $("#closeDetail").onclick=()=>closeModal("#detailModal");
+      $("#closePdfFilter").onclick=()=>closeModal("#pdfFilterModal"); $("#cancelPdfFilter").onclick=()=>closeModal("#pdfFilterModal"); $("#resetPdfFilterBtn").onclick=resetPdfFilterModal; $("#saveFilteredPdf").onclick=saveFilteredPdf;
+      ["#pdfBookFilter","#pdfMaterialFilter","#pdfChapterFilter","#pdfSectionFilter","#pdfTypeFilter","#pdfStatusFilter"].forEach(sel=>{ const el=$(sel); if(el) el.onchange=updatePdfFilterCount; });
+      $("#closeExample").onclick=()=>closeModal("#exampleModal"); $("#closeImage").onclick=closeImagePreview; $("#imageModal").onclick=e=>{ if(e.target.id==="imageModal") closeImagePreview(); }; $("#closeDetail").onclick=()=>closeModal("#detailModal");
       $("#adminSearch").oninput=()=>{ adminCurrentPage=1; renderAdmin(); }; $("#adminGroup").onchange=()=>{ adminCurrentPage=1; renderAdmin(); }; $("#adminPeriod").onchange=()=>{ adminCurrentPage=1; renderAdmin(); }; $("#adminStatus").onchange=()=>{ adminCurrentPage=1; renderAdmin(); };
       $("#resetAdminFilter").onclick=()=>{ $("#adminSearch").value=""; $("#adminGroup").value="all"; $("#adminPeriod").value="all"; $("#adminStatus").value="all"; adminCurrentPage=1; renderAdmin(); };
       $("#downloadAllBtn").onclick=()=>openAllPdf(state.lang); $("#deleteAllBtn").onclick=()=>$("#confirmDeleteModal").classList.add("show"); $("#cancelDelete").onclick=()=>closeModal("#confirmDeleteModal"); $("#confirmDelete").onclick=deleteAllHistory;
@@ -3297,7 +3795,7 @@
       $("#adminBackHomeWarn").onclick=()=>{ closeModal("#adminWarningModal"); showPage("home"); };
       $("#closeDevOverlay").onclick=()=>$("#devtoolsOverlay").classList.remove("show");
       window.addEventListener("visibilitychange",()=>{ if(document.hidden && quiz && state.page==="quiz" && !quiz.paused){ quiz.focusLost++; if(quiz.focusLost===1) toast(t("focusWarn")); if(quiz.focusLost>=2){ clearInterval(quiz.timer); stopRecognition(); quiz=null; toast(t("focusStop")); showPage("home"); } } });
-      window.addEventListener("keydown",e=>{ if(e.key==="Escape") $$(".modal.show").forEach(m=>m.classList.remove("show")); });
+      window.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeImagePreview(); $$(".modal.show").forEach(m=>m.classList.remove("show")); } });
       document.addEventListener("click",e=>{ if(!e.target.closest(".user-menu")) $("#userDropdown").classList.remove("show"); });
     }
     function logout(){ state.session=null; saveState(); renderAll(); showPage("home"); }
