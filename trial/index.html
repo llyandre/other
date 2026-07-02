@@ -3071,7 +3071,7 @@
             <a class="side-link" onclick="showPage('practice')"><i class="fa-regular fa-clipboard"></i> Kuis</a>
             <a class="side-link" onclick="showPage('hasil')"><i class="fa-solid fa-chart-column"></i> Hasil</a>
           </div>
-          <div class="side-card"><h3>Statistik Belajar</h3><div class="stat-list"><div class="stat-item"><span class="icon-bubble purple"><i class="fa-solid fa-book-open"></i></span><div><strong>264</strong><span>Total Kosakata<br>Dipelajari</span></div></div><div class="stat-item"><span class="icon-bubble green"><i class="fa-regular fa-clock"></i></span><div><strong>18 dtk</strong><span>Rata-rata Waktu<br>per Kartu</span></div></div><div class="stat-item"><span class="icon-bubble pink"><i class="fa-solid fa-table-cells"></i></span><div><strong>12</strong><span>Jumlah Kategori<br>Topik</span></div></div></div></div>
+          <div class="side-card"><h3>Statistik Belajar</h3><div class="stat-list"><div class="stat-item"><span class="icon-bubble purple"><i class="fa-solid fa-book-open"></i></span><div><strong>264</strong><span>Total Kosakata<br>Bab 1–5</span></div></div><div class="stat-item"><span class="icon-bubble green"><i class="fa-regular fa-clock"></i></span><div><strong>18 dtk</strong><span>Rata-rata Waktu<br>per Kartu</span></div></div><div class="stat-item"><span class="icon-bubble pink"><i class="fa-solid fa-table-cells"></i></span><div><strong>12</strong><span>Jumlah Kategori<br>Topik</span></div></div></div></div>
           <div class="side-card motivation"><h3 style="color:#6b3df4;margin-bottom:18px">Terus belajar setiap hari!</h3><p style="color:#53627d;line-height:1.6;margin-bottom:26px">Konsistensi adalah kunci menguasai kosakata.</p><button class="btn btn-secondary" onclick="showPage('practice')">Mulai Kuis <i class="fa-solid fa-chevron-right"></i></button></div>
         </aside>
         <div class="content-card">
@@ -3271,16 +3271,6 @@
             <span>Urutan kartu mengikuti daftar materi.</span>
           </button>
         </div>
-      </div>
-      <div class="quiz-setup-section">
-        <span class="group-label">Kategori kosakata</span>
-        <select class="select-like" id="quizCategorySelect">
-          <option value="Semua">Semua</option>
-          <option value="Salam">Salam</option>
-          <option value="Sekolah">Sekolah</option>
-          <option value="Angka">Angka</option>
-          <option value="Keluarga">Keluarga</option>
-        </select>
       </div>
       <div class="modal-actions" style="grid-template-columns:1fr 1.3fr">
         <button class="btn btn-secondary" onclick="closeModal('quizSetupModal')">Batal</button>
@@ -7286,7 +7276,7 @@
     const sideStats=qa('.side-card .stat-list .stat-item');
     if(sideStats[0]){
       const st=q('strong',sideStats[0]); if(st) st.textContent=String(total);
-      const sp=q('span:not(.icon-bubble)',sideStats[0]); if(sp) sp.innerHTML=lang()==='ja'?'総語彙数<br>学習対象':'Total Kosakata<br>Dipelajari';
+      const sp=q('span:not(.icon-bubble)',sideStats[0]); if(sp) sp.innerHTML=lang()==='ja'?'総語彙数<br>学習対象':'Total Kosakata<br>Bab 1–5';
     }
     if(sideStats[1]){
       const st=q('strong',sideStats[1]); if(st) st.textContent=lang()==='ja'?'30秒':'30 dtk';
@@ -9159,7 +9149,7 @@
       randomDesc:'Urutan kartu diacak setiap mulai kuis.',
       ordered:'Tidak Acak',
       orderedDesc:'Urutan kartu mengikuti daftar materi.',
-      vocabCategory:'Kategori kosakata',
+      vocabCategory:'Filter kuis',
       all:'Semua',
       greeting:'Salam',
       school:'Sekolah',
@@ -9492,7 +9482,7 @@
     if(sidebarCards[1]){
       const h=one('h3',sidebarCards[1]); if(h) h.textContent=t.learningStats;
       const spans=all('.stat-item span:not(.icon-bubble)', sidebarCards[1]);
-      if(spans[0]) spans[0].innerHTML=t.totalVocab.replace('Bab 1–5',t.learned);
+      if(spans[0]) spans[0].innerHTML=t.totalVocab;
       if(spans[1]) spans[1].innerHTML=t.avgTime;
       if(spans[2]) spans[2].innerHTML=t.topicCount;
       const avg=all('.stat-item strong', sidebarCards[1])[1]; if(avg) avg.textContent=t.avgTimeValue;
@@ -11032,9 +11022,9 @@
     setText('#page-materi .page-title',materialTitle());
     setText('#page-materi .page-desc',materialDesc());
     var setupDesc=document.querySelector('#quizSetupModal .modal-desc');
-    if(setupDesc) setupDesc.textContent=isJa()?('選択中: '+selectedBook().name+' / '+selectionLabel()):('Pilihan aktif: '+selectedBook().name+' / '+selectionLabel()+'. Kategori kosakata di bawah hanya menampilkan kosakata sesuai kategori yang dipilih.');
+    if(setupDesc) setupDesc.textContent=isJa()?('選択中: '+selectedBook().name+' / '+selectionLabel()):('Pilihan aktif: '+selectedBook().name+' / '+selectionLabel()+'.');
     var selectLabel=document.querySelector('#quizSetupModal .quiz-setup-section:nth-of-type(3) .group-label');
-    if(selectLabel) selectLabel.textContent=tr('Kategori kosakata '+selectionShort(),'語彙カテゴリー '+selectionShort());
+    if(selectLabel) selectLabel.textContent=tr('Filter kuis '+selectionShort(),'クイズフィルター '+selectionShort());
     var adminDesc=document.querySelector('#page-admin .admin-head .page-desc');
     if(adminDesc) adminDesc.textContent=isJa()?('全参加者の学習結果: '+selectedBook().name+' / '+selectionLabel()):('Ringkasan hasil belajar seluruh peserta untuk '+selectedBook().name+' / '+selectionLabel()+'.');
     var resultDesc=document.querySelector('#page-hasil .result-main-desc');
@@ -12220,7 +12210,7 @@
     const materiTitle=q('#page-materi .page-title');
     if(materiTitle) materiTitle.textContent=tr('Materi Kosakata yang Siap Dipelajari','学習できる語彙教材');
     const materiDesc=q('#page-materi .page-desc');
-    if(materiDesc) materiDesc.textContent=tr('Cari, dengarkan, dan pahami kosakata sebelum masuk ke kuis. Gunakan materi ini sebagai ruang review agar jawaban saat latihan semakin percaya diri.','クイズ前に語彙を検索・確認・音声練習できます。復習ページとして使うことで、より自信を持って答えられます。');
+    if(materiDesc) materiDesc.textContent=tr('Cari kosakata, baca arti dan romajinya, lalu dengarkan pelafalannya sebelum mulai kuis. Halaman ini membantu kamu memahami kata lebih dulu, bukan sekadar menghafal.','クイズ前に語彙を検索し、意味とローマ字を確認して発音を聞けます。暗記だけでなく、先に理解してから練習できます。');
     const practiceTitle=q('#page-practice .badge');
     if(practiceTitle && !q('#page-practice .practice-top .practice-filter-chip')) practiceTitle.innerHTML='<i class="fa-solid fa-book-open"></i> '+esc(tr('Latihan Kuis Terarah','体系的なクイズ練習'));
     const setupTitle=q('#quizSetupModal .modal-title');
@@ -12234,20 +12224,12 @@
     applyIcons(document);
   }
   function addHomeLearningPath(){
-    const desc=q('#page-home .hero-desc');
-    if(!desc || q('#page-home .learning-path-card')) return;
-    const box=document.createElement('div');
-    box.className='learning-path-card';
-    box.innerHTML=''+
-      '<div class="path-item"><i class="fa-solid fa-layer-group"></i><strong>'+esc(tr('1. Pilih Bab','1. 章を選択'))+'</strong><span>'+esc(tr('Bab 1, Bab 2, Bab 3, dan seterusnya tanpa pilihan Semua.','第1章、第2章、第3章…。「すべて」はありません。'))+'</span></div>'+
-      '<div class="path-item"><i class="fa-solid fa-book-open-reader"></i><strong>'+esc(tr('2. Pilih Materi','2. 教材を選択'))+'</strong><span>'+esc(tr('Kosakata, Latihan C, Percakapan, atau Semua.','語彙・練習C・会話、またはすべて。'))+'</span></div>'+
-      '<div class="path-item"><i class="fa-solid fa-tags"></i><strong>'+esc(tr('3. Pilih Kelas Kata','3. 品詞を選択'))+'</strong><span>'+esc(tr('Kata benda, sifat-i, sifat-na, kata kerja, atau Semua.','名詞・い形容詞・な形容詞・動詞、またはすべて。'))+'</span></div>';
-    desc.insertAdjacentElement('afterend',box);
-    applyIcons(box);
+    const old=q('#page-home .learning-path-card');
+    if(old) old.remove();
   }
   function addPageIntroCards(){
     const configs=[
-      ['#page-materi .content-card .page-desc','fa-book-open',tr('Review dulu, kuis lebih lancar','復習してから、スムーズにクイズへ'),tr('Gunakan halaman ini untuk meninjau kosakata, mendengar pelafalan, dan mencari kata yang ingin dipelajari lagi.','このページで語彙を確認し、発音を聞き、復習したい単語を探せます。')],
+      ['#page-materi .content-card .page-desc','fa-book-open',tr('Pelajari dulu sebelum mulai kuis','クイズ前にしっかり復習'),tr('Di halaman ini kamu bisa melihat arti, romaji, contoh kalimat, dan mendengarkan pelafalan. Gunakan kolom cari atau kategori untuk menemukan kosakata yang ingin dipelajari ulang.','このページでは意味・ローマ字・例文を確認し、発音も聞けます。検索やカテゴリーを使って復習したい語彙を探しましょう。')],
       ['#page-practice .practice-top','fa-bullseye',tr('Kuis mengikuti kategori pilihanmu','選んだカテゴリーでクイズ開始'),tr('Kartu yang tampil sudah disaring berdasarkan Bab, Jenis Materi, dan Kategori Kata yang kamu pilih di awal.','表示されるカードは、最初に選んだ章・教材タイプ・品詞に基づいています。')]
     ];
     configs.forEach(function(c){
@@ -12308,6 +12290,1251 @@
 })();
 </script>
 
+
+
+<!-- PATCH USER 2026-07-02: hapus kartu homepage, hapus dropdown kategori kosakata lama, sinkron statistik, perjelas materi -->
+<script id="patch-user-request-cleanup-20260702">
+(function(){
+  'use strict';
+  function q(sel,root){return (root||document).querySelector(sel);}
+  function qa(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel));}
+  function isJa(){try{return document.documentElement.lang==='ja' || (typeof siteLang!=='undefined' && siteLang==='ja');}catch(e){return false;}}
+
+  function removeHomepageLearningPath(){
+    qa('#page-home .learning-path-card').forEach(function(el){ el.remove(); });
+  }
+
+  function removeOldQuizCategoryDropdown(){
+    var section = q('#quizCategorySelect') && q('#quizCategorySelect').closest('.quiz-setup-section');
+    if(section && !section.classList.contains('quiz-filter-panel')) section.remove();
+    var panelLabel=q('#quizSetupModal .quiz-filter-panel > .group-label');
+    if(panelLabel){ var labelText = isJa() ? '3. クイズの範囲を選択' : '3. Pilih lingkup kuis'; if(panelLabel.textContent !== labelText) panelLabel.textContent = labelText; }
+    var modalDesc=q('#quizSetupModal .modal-desc');
+    if(modalDesc){ var modalText = isJa()
+      ? '出題方向とカード順を決めてから、出題範囲を選んでください。'
+      : 'Tentukan arah bahasa dan urutan kartu, lalu pilih lingkup kuis yang ingin dikerjakan.'; if(modalDesc.textContent !== modalText) modalDesc.textContent = modalText; }
+  }
+
+  function syncStatsFromHomepage(){
+    var homeStats = qa('#page-home .stats-row .mini-stat:not(.fiction-toggle)');
+    var sideStats = qa('#page-materi .side-card .stat-list .stat-item');
+    if(homeStats.length < 3 || sideStats.length < 3) return;
+    for(var i=0;i<3;i++){
+      var homeValue = q('strong', homeStats[i]);
+      var homeLabel = q('span:not(.icon-bubble)', homeStats[i]);
+      var sideValue = q('strong', sideStats[i]);
+      var sideLabel = q('span:not(.icon-bubble)', sideStats[i]);
+      if(homeValue && sideValue && sideValue.textContent !== homeValue.textContent) sideValue.textContent = homeValue.textContent;
+      if(homeLabel && sideLabel && sideLabel.innerHTML !== homeLabel.innerHTML) sideLabel.innerHTML = homeLabel.innerHTML;
+    }
+  }
+
+  function improveMaterialCopy(){
+    var desc=q('#page-materi .content-card > .page-desc');
+    if(desc){
+      var descText = isJa()
+        ? 'クイズ前に語彙を検索し、意味とローマ字を確認して発音を聞けます。暗記だけでなく、先に理解してから練習できます。'
+        : 'Cari kosakata, baca arti dan romajinya, lalu dengarkan pelafalannya sebelum mulai kuis. Halaman ini membantu kamu memahami kata lebih dulu, bukan sekadar menghafal.';
+      if(desc.textContent !== descText) desc.textContent = descText;
+    }
+    var intro=q('#page-materi .page-intro-soft');
+    if(intro){
+      var title=q('strong',intro), paragraph=q('p',intro);
+      if(title){ var titleText = isJa() ? 'クイズ前にしっかり復習' : 'Pelajari dulu sebelum mulai kuis'; if(title.textContent !== titleText) title.textContent = titleText; }
+      if(paragraph){ var paragraphText = isJa()
+        ? 'このページでは意味・ローマ字・例文を確認し、発音も聞けます。検索やカテゴリーを使って復習したい語彙を探しましょう。'
+        : 'Di halaman ini kamu bisa melihat arti, romaji, contoh kalimat, dan mendengarkan pelafalan. Gunakan kolom cari atau kategori untuk menemukan kosakata yang ingin dipelajari ulang.'; if(paragraph.textContent !== paragraphText) paragraph.textContent = paragraphText; }
+    }
+  }
+
+  function runCleanup(){
+    removeHomepageLearningPath();
+    removeOldQuizCategoryDropdown();
+    syncStatsFromHomepage();
+    improveMaterialCopy();
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',runCleanup); else runCleanup();
+  window.addEventListener('load',runCleanup);
+  [0,60,150,300,700,1200,1800,2600,3800,5200].forEach(function(ms){setTimeout(runCleanup,ms);});
+  try{
+    new MutationObserver(function(){ setTimeout(runCleanup,0); }).observe(document.body,{childList:true,subtree:true,characterData:true});
+  }catch(e){}
+})();
+</script>
+
+
+<!-- PATCH USER 2026-07-02: stabilkan pilihan homepage + munculkan pemilihan buku tiap tab baru -->
+<style id="patch-user-stabilize-selection-gate-20260702">
+  #page-home #selectionSummaryChip.final-compact-choice{
+    cursor:pointer!important;
+    order:1!important;
+    user-select:none!important;
+    animation:none!important;
+    transition:none!important;
+  }
+  #page-home #selectionSummaryChip.final-compact-choice *,
+  #page-home .hero-eyebrow,
+  #page-home .hero-eyebrow *{
+    animation:none!important;
+  }
+  #page-home #selectionSummaryChip.final-compact-choice .choice-label{
+    display:inline-block!important;
+    font-size:16px!important;
+    font-weight:850!important;
+    line-height:1!important;
+    color:#6841ee!important;
+    white-space:nowrap!important;
+  }
+  #page-home #selectionSummaryChip.final-compact-choice .selection-change-btn{
+    cursor:pointer!important;
+  }
+  #page-home .hero-eyebrow .language-pill{
+    order:2!important;
+  }
+</style>
+<script id="patch-user-stabilize-selection-gate-20260702">
+(function(){
+  'use strict';
+
+  var TAB_SELECTION_FLAG = 'kosakata_book_content_selected_this_tab_20260702';
+  var OPEN_ONCE_FLAG = 'kosakata_book_gate_opened_this_tab_20260702';
+
+  function q(sel,root){return (root||document).querySelector(sel);}
+  function qa(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel));}
+  function isJa(){
+    try{return (typeof siteLang!=='undefined' && siteLang==='ja') || document.documentElement.lang==='ja';}
+    catch(e){return document.documentElement.lang==='ja';}
+  }
+  function tr(id,ja){return isJa()?ja:id;}
+  function applyIcons(root){try{if(typeof applyLocalIcons==='function') applyLocalIcons(root||document);}catch(e){}}
+
+  function selectedContentKey(){
+    var key = document.body.getAttribute('data-selected-content');
+    if(key) return key;
+    try{
+      var saved = JSON.parse(localStorage.getItem('kosakata_selected_book_content_v20260702') || '{}');
+      if(saved && saved.content) return saved.content;
+    }catch(e){}
+    return 'general';
+  }
+
+  function selectedChoiceLabel(){
+    var key = selectedContentKey();
+    if(isJa()) return key === 'reference' ? '追加' : '一般教材';
+    return key === 'reference' ? 'Tambahan' : 'Materi Umum';
+  }
+
+  function changeText(){
+    return tr('Ganti pilihan','選択変更');
+  }
+
+  function freezeHeroBlink(){
+    try{
+      if(typeof heroSlideTimer !== 'undefined' && heroSlideTimer){
+        clearInterval(heroSlideTimer);
+        heroSlideTimer = null;
+      }
+    }catch(e){}
+    try{ if(typeof heroSlideIndex !== 'undefined') heroSlideIndex = 0; }catch(e){}
+    try{
+      if(typeof renderHeroSlide === 'function' && !renderHeroSlide.__stableNoBlink20260702){
+        var oldRender = renderHeroSlide;
+        renderHeroSlide = function(){
+          try{ if(typeof heroSlideIndex !== 'undefined') heroSlideIndex = 0; }catch(e){}
+          return oldRender.apply(this, arguments);
+        };
+        renderHeroSlide.__stableNoBlink20260702 = true;
+        window.renderHeroSlide = renderHeroSlide;
+      }
+    }catch(e){}
+    try{
+      window.startHeroSlider = function(){
+        try{
+          if(typeof heroSlideTimer !== 'undefined' && heroSlideTimer){
+            clearInterval(heroSlideTimer);
+            heroSlideTimer = null;
+          }
+          if(typeof heroSlideIndex !== 'undefined') heroSlideIndex = 0;
+          if(typeof renderHeroSlide === 'function') renderHeroSlide();
+          if(typeof heroSlideTimer !== 'undefined' && heroSlideTimer){
+            clearInterval(heroSlideTimer);
+            heroSlideTimer = null;
+          }
+        }catch(e){}
+      };
+      try{ startHeroSlider = window.startHeroSlider; }catch(e){}
+    }catch(e){}
+  }
+
+  function normalizeSelectionChip(){
+    var hero = q('#page-home .hero-eyebrow');
+    if(!hero) return;
+    var lang = q('.language-pill', hero);
+    var chip = q('#selectionSummaryChip');
+
+    if(!chip){
+      chip = document.createElement('div');
+      chip.id = 'selectionSummaryChip';
+    }
+
+    chip.className = 'selection-summary-chip clean-selection-chip final-compact-choice';
+    chip.setAttribute('role','button');
+    chip.setAttribute('tabindex','0');
+    chip.setAttribute('title', tr('Klik Materi Umum untuk membuka halaman materi. Klik Ganti pilihan untuk memilih buku lagi.','教材名をクリックすると教材ページを開きます。「選択変更」で本を選び直せます。'));
+
+    /*
+      Sengaja memakai <strong>, bukan <span>.
+      Patch lama selalu mencari span di dalam #selectionSummaryChip dan menulis teks panjang
+      “Minna no Nihongo I • Materi Umum”. Dengan tidak memakai span, teks tidak lagi saling
+      ditimpa sehingga bagian pilihan tidak berkedip/berubah-ubah.
+    */
+    var icon = q(':scope > i', chip);
+    var label = q('.choice-label', chip);
+    var btn = q('.selection-change-btn', chip);
+    if(!icon || !label || !btn || q('span', chip)){
+      chip.innerHTML = '<i class="fa-solid fa-circle-plus"></i><strong class="choice-label"></strong><button type="button" class="selection-change-btn"></button>';
+      icon = q(':scope > i', chip);
+      label = q('.choice-label', chip);
+      btn = q('.selection-change-btn', chip);
+    }
+
+    if(label) label.textContent = selectedChoiceLabel();
+    if(btn){
+      btn.textContent = changeText();
+      btn.setAttribute('aria-label', changeText());
+      btn.onclick = function(ev){
+        if(ev){ev.preventDefault();ev.stopPropagation();}
+        clearTabSelection();
+        openRealBookGate(true);
+        return false;
+      };
+    }
+
+    if(lang){
+      if(chip.parentNode !== hero || chip.nextElementSibling !== lang){
+        hero.insertBefore(chip, lang);
+      }
+    }else if(chip.parentNode !== hero){
+      hero.insertBefore(chip, hero.firstChild);
+    }
+
+    chip.onclick = function(ev){
+      if(ev && ev.target && ev.target.closest && ev.target.closest('.selection-change-btn')) return false;
+      openMainMaterialPage();
+      return false;
+    };
+    chip.onkeydown = function(ev){
+      if(ev.key === 'Enter' || ev.key === ' '){
+        ev.preventDefault();
+        openMainMaterialPage();
+      }
+    };
+
+    applyIcons(chip);
+  }
+
+  function openMainMaterialPage(){
+    try{
+      if(typeof showPage === 'function') showPage('materi');
+      else{
+        qa('.page').forEach(function(page){ page.classList.toggle('active', page.id === 'page-materi'); });
+      }
+      setTimeout(function(){try{window.scrollTo({top:0,behavior:'smooth'});}catch(e){window.scrollTo(0,0);}},20);
+    }catch(e){}
+  }
+
+  function clearTabSelection(){
+    try{sessionStorage.removeItem(TAB_SELECTION_FLAG);}catch(e){}
+    try{sessionStorage.removeItem(OPEN_ONCE_FLAG);}catch(e){}
+  }
+
+  function markTabSelected(){
+    try{sessionStorage.setItem(TAB_SELECTION_FLAG,'1');}catch(e){}
+  }
+
+  function hasTabSelection(){
+    try{return sessionStorage.getItem(TAB_SELECTION_FLAG) === '1';}catch(e){return false;}
+  }
+
+  function openRealBookGate(force){
+    var gate = q('#bookCategoryGate');
+    if(!gate) return false;
+
+    try{
+      if(typeof window.backGateStep20260702 === 'function') window.backGateStep20260702();
+    }catch(e){}
+
+    gate.classList.add('active');
+    document.body.classList.add('selection-gate-open');
+
+    if(force){
+      try{sessionStorage.setItem(OPEN_ONCE_FLAG,'1');}catch(e){}
+    }
+    applyIcons(gate);
+    return true;
+  }
+
+  function shouldAutoOpenGate(){
+    if(hasTabSelection()) return false;
+    try{
+      if(sessionStorage.getItem(OPEN_ONCE_FLAG) === '1') return false;
+    }catch(e){}
+    return true;
+  }
+
+  function restoreGateButton(){
+    window.openBookCategoryGate20260702 = function(){
+      clearTabSelection();
+      openRealBookGate(true);
+      return false;
+    };
+  }
+
+  function autoOpenGateForNewTab(){
+    if(!shouldAutoOpenGate()) return;
+    if(openRealBookGate(true)){
+      try{sessionStorage.setItem(OPEN_ONCE_FLAG,'1');}catch(e){}
+    }
+  }
+
+  function installGateListeners(){
+    document.addEventListener('click', function(ev){
+      var changeBtn = ev.target && ev.target.closest ? ev.target.closest('#selectionSummaryChip .selection-change-btn') : null;
+      if(changeBtn){
+        ev.preventDefault();
+        ev.stopPropagation();
+        if(ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+        clearTabSelection();
+        openRealBookGate(true);
+        return false;
+      }
+
+      var selectedContent = ev.target && ev.target.closest ? ev.target.closest('#bookCategoryGate [data-content]') : null;
+      if(selectedContent){
+        markTabSelected();
+        setTimeout(function(){
+          normalizeSelectionChip();
+          restoreGateButton();
+        },120);
+      }
+    }, true);
+  }
+
+  function runStablePatch(){
+    freezeHeroBlink();
+    restoreGateButton();
+    normalizeSelectionChip();
+  }
+
+  function install(){
+    runStablePatch();
+    installGateListeners();
+
+    if(shouldAutoOpenGate()){
+      setTimeout(autoOpenGateForNewTab, 450);
+    }
+
+    [80,220,520,900,1500,2400,3300,4600,6500,8500].forEach(function(ms){
+      setTimeout(function(){
+        runStablePatch();
+        if(shouldAutoOpenGate()) autoOpenGateForNewTab();
+      }, ms);
+    });
+
+    try{
+      new MutationObserver(function(){
+        setTimeout(runStablePatch,0);
+      }).observe(document.body,{childList:true,subtree:true,characterData:true});
+    }catch(e){}
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', install);
+  else install();
+  window.addEventListener('load', function(){
+    runStablePatch();
+    if(shouldAutoOpenGate()) setTimeout(autoOpenGateForNewTab, 200);
+  }, {once:true});
+})();
+</script>
+
+<!-- PATCH FINAL USER 2026-07-02: slider hanya kartu homepage, tombol ganti pilihan kembali ke gerbang awal, modal kuis lebih estetik -->
+<style id="patch-final-user-toggle-modal-aesthetic-20260702">
+  /* Slider hanya terjadi pada kartu kosakata yang memiliki titik ●, bukan pada judul homepage */
+  #page-home .hero-title,
+  #page-home .hero-desc,
+  #page-home #selectionSummaryChip,
+  #page-home .hero-eyebrow .badge,
+  #page-home .hero-actions,
+  #page-home .stats-row,
+  #page-home .fiction-toggle{
+    animation:none!important;
+    transition:box-shadow .2s ease, transform .2s ease, border-color .2s ease!important;
+  }
+  #page-home .flashcard-showcase{
+    transition:opacity .22s ease, transform .22s ease, box-shadow .22s ease!important;
+    will-change:opacity, transform;
+  }
+  #page-home .flashcard-showcase.is-card-changing{
+    opacity:.82!important;
+    transform:translateY(2px) scale(.992)!important;
+  }
+  #page-home .hero-art > .dots{
+    display:flex!important;
+    justify-content:center!important;
+    gap:9px!important;
+    margin-top:24px!important;
+  }
+  #page-home .hero-art > .dots .dot{
+    width:10px!important;
+    height:10px!important;
+    border-radius:999px!important;
+    border:1px solid #cfd7e6!important;
+    background:#ffffff!important;
+    box-shadow:0 4px 12px rgba(80,70,140,.10)!important;
+    transition:width .22s ease, background .22s ease, border-color .22s ease, box-shadow .22s ease!important;
+  }
+  #page-home .hero-art > .dots .dot.active{
+    width:26px!important;
+    background:#7c4dff!important;
+    border-color:#7c4dff!important;
+    box-shadow:0 8px 18px rgba(124,77,255,.25)!important;
+  }
+
+  /* Tombol pilihan homepage: “Ganti pilihan” benar-benar membuka halaman pemilihan awal */
+  #page-home #selectionSummaryChip.final-compact-choice{
+    cursor:default!important;
+  }
+  #page-home #selectionSummaryChip.final-compact-choice .choice-label{
+    cursor:pointer!important;
+  }
+  #page-home #selectionSummaryChip.final-compact-choice .selection-change-btn{
+    cursor:pointer!important;
+    position:relative!important;
+    z-index:4!important;
+  }
+
+  /* Modal setup kuis: ukuran, font, dan scrollbar dibuat lebih clean */
+  body.modal-open{overflow:hidden!important;}
+  #quizSetupModal.active{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    padding:18px!important;
+    overflow:hidden!important;
+  }
+  #quizSetupModal .quiz-setup-modal{
+    width:min(760px,calc(100vw - 36px))!important;
+    max-width:760px!important;
+    max-height:min(88vh,780px)!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    overscroll-behavior:contain!important;
+    scrollbar-gutter:stable!important;
+    padding:28px 44px 24px!important;
+    border-radius:30px!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(249,250,255,.97))!important;
+    border:1px solid rgba(124,77,255,.16)!important;
+    box-shadow:0 28px 90px rgba(37,31,71,.22)!important;
+  }
+  #quizSetupModal .quiz-setup-modal::-webkit-scrollbar{width:9px!important;}
+  #quizSetupModal .quiz-setup-modal::-webkit-scrollbar-track{
+    background:rgba(241,234,255,.75)!important;
+    border-radius:999px!important;
+    margin:22px 0!important;
+  }
+  #quizSetupModal .quiz-setup-modal::-webkit-scrollbar-thumb{
+    background:linear-gradient(180deg,#c4b5fd,#8b5cf6)!important;
+    border-radius:999px!important;
+    border:2px solid rgba(249,250,255,.97)!important;
+  }
+  #quizSetupModal .quiz-setup-modal{scrollbar-width:thin!important;scrollbar-color:#a78bfa #f1eaff!important;}
+  #quizSetupModal .close-modal{
+    right:24px!important;
+    top:20px!important;
+    width:48px!important;
+    height:48px!important;
+    font-size:21px!important;
+    border-radius:999px!important;
+    color:#1f2a44!important;
+    background:rgba(255,255,255,.96)!important;
+    border:1px solid #dfe4ee!important;
+    box-shadow:0 10px 26px rgba(80,70,140,.07)!important;
+  }
+  #quizSetupModal .close-modal:hover{
+    transform:translateY(-1px)!important;
+    border-color:#c9bbff!important;
+    background:#fbfaff!important;
+  }
+  #quizSetupModal .modal-logo{
+    width:58px!important;
+    height:58px!important;
+    margin:0 auto 20px!important;
+    border-radius:16px!important;
+    font-size:29px!important;
+    box-shadow:0 18px 42px rgba(124,77,255,.24)!important;
+  }
+  #quizSetupModal .modal-title{
+    font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif!important;
+    font-size:30px!important;
+    line-height:1.15!important;
+    font-weight:760!important;
+    letter-spacing:-.045em!important;
+    color:#10213f!important;
+    margin:0 0 10px!important;
+  }
+  #quizSetupModal .modal-desc{
+    max-width:610px!important;
+    margin:0 auto 26px!important;
+    font-size:16px!important;
+    line-height:1.68!important;
+    font-weight:450!important;
+    color:#667085!important;
+    text-align:center!important;
+  }
+  #quizSetupModal .quiz-setup-section{
+    margin-bottom:20px!important;
+  }
+  #quizSetupModal .group-label{
+    display:flex!important;
+    align-items:center!important;
+    gap:8px!important;
+    margin:0 0 12px!important;
+    font-family:"Plus Jakarta Sans",Inter,system-ui,sans-serif!important;
+    font-size:15px!important;
+    line-height:1.35!important;
+    font-weight:740!important;
+    letter-spacing:-.02em!important;
+    color:#17213c!important;
+  }
+  #quizSetupModal .quiz-option-grid{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:14px!important;
+  }
+  #quizSetupModal .quiz-option{
+    min-height:98px!important;
+    padding:20px 22px!important;
+    border-radius:20px!important;
+    border:1px solid #dfe4ee!important;
+    background:rgba(255,255,255,.94)!important;
+    color:#475569!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    gap:8px!important;
+    text-align:left!important;
+    box-shadow:0 14px 32px rgba(80,70,140,.055)!important;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease!important;
+  }
+  #quizSetupModal .quiz-option:hover{
+    transform:translateY(-1px)!important;
+    border-color:#c9bbff!important;
+    box-shadow:0 18px 42px rgba(80,70,140,.085)!important;
+  }
+  #quizSetupModal .quiz-option strong{
+    font-size:18px!important;
+    line-height:1.24!important;
+    font-weight:720!important;
+    letter-spacing:-.025em!important;
+    color:#18233f!important;
+  }
+  #quizSetupModal .quiz-option span{
+    font-size:14px!important;
+    line-height:1.55!important;
+    font-weight:500!important;
+    color:#667085!important;
+  }
+  #quizSetupModal .quiz-option.active{
+    border-color:#8b5cf6!important;
+    background:#f4efff!important;
+    box-shadow:0 0 0 4px rgba(124,77,255,.10),0 16px 42px rgba(124,77,255,.09)!important;
+  }
+  #quizSetupModal .quiz-option.active strong{color:#6d3df2!important;}
+  #quizSetupModal .quiz-filter-panel{
+    display:grid!important;
+    gap:14px!important;
+    margin:22px 0 22px!important;
+    padding:20px!important;
+    border-radius:24px!important;
+    background:linear-gradient(135deg,#fbfaff,#f5f8ff)!important;
+    border:1px solid rgba(124,77,255,.13)!important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.75)!important;
+  }
+  #quizSetupModal .quiz-filter-grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:14px!important;
+  }
+  #quizSetupModal .quiz-filter-field label{
+    display:flex!important;
+    align-items:center!important;
+    gap:9px!important;
+    margin:0 0 8px!important;
+    font-size:14px!important;
+    font-weight:680!important;
+    color:#25304a!important;
+  }
+  #quizSetupModal .quiz-filter-field label i{color:#7c4dff!important;}
+  #quizSetupModal .quiz-filter-select{
+    width:100%!important;
+    height:54px!important;
+    border-radius:17px!important;
+    border:1px solid #dfe4ee!important;
+    background:#fff!important;
+    color:#22314f!important;
+    padding:0 18px!important;
+    font-size:15px!important;
+    font-weight:650!important;
+    outline:none!important;
+    box-shadow:0 10px 24px rgba(80,70,140,.035)!important;
+  }
+  #quizSetupModal .quiz-filter-select:focus{
+    border-color:#8b5cf6!important;
+    box-shadow:0 0 0 4px rgba(124,77,255,.10)!important;
+  }
+  #quizSetupModal .quiz-filter-help{
+    display:flex!important;
+    gap:10px!important;
+    align-items:flex-start!important;
+    padding:13px 15px!important;
+    border-radius:16px!important;
+    background:#fff!important;
+    border:1px solid #edf0f6!important;
+    color:#667085!important;
+    font-size:13px!important;
+    line-height:1.5!important;
+    font-weight:560!important;
+  }
+  #quizSetupModal .quiz-filter-help i{color:#10b981!important;margin-top:2px!important;}
+  #quizSetupModal .modal-actions{
+    grid-template-columns:1fr 1.28fr!important;
+    gap:14px!important;
+    margin-top:6px!important;
+  }
+  #quizSetupModal .modal-actions .btn{
+    height:54px!important;
+    border-radius:16px!important;
+    font-size:14px!important;
+    font-weight:720!important;
+    letter-spacing:0!important;
+  }
+  @media(max-width:640px){
+    #quizSetupModal.active{padding:12px!important;align-items:flex-start!important;}
+    #quizSetupModal .quiz-setup-modal{
+      width:calc(100vw - 24px)!important;
+      max-height:calc(100vh - 24px)!important;
+      padding:28px 18px 20px!important;
+      border-radius:24px!important;
+    }
+    #quizSetupModal .close-modal{right:14px!important;top:14px!important;width:42px!important;height:42px!important;}
+    #quizSetupModal .modal-title{font-size:25px!important;padding:0 42px!important;}
+    #quizSetupModal .modal-desc{font-size:14px!important;line-height:1.6!important;}
+    #quizSetupModal .quiz-option-grid{grid-template-columns:1fr!important;}
+    #quizSetupModal .quiz-option{min-height:86px!important;padding:17px 18px!important;}
+    #quizSetupModal .quiz-option strong{font-size:16px!important;}
+    #quizSetupModal .quiz-option span{font-size:13px!important;}
+    #quizSetupModal .modal-actions{grid-template-columns:1fr!important;}
+  }
+</style>
+<script id="patch-final-user-toggle-modal-aesthetic-20260702">
+(function(){
+  'use strict';
+  var HOME_SLIDES = [
+    {tag:'Kata Ganti Orang', icon:'fa-user-group', jp:'わたし', romaji:'watashi', meaning:'saya, aku', speak:'わたし'},
+    {tag:'Sekolah', icon:'fa-school', jp:'がっこう', romaji:'gakkou', meaning:'sekolah', speak:'がっこう'},
+    {tag:'Salam', icon:'fa-hand', jp:'ありがとう', romaji:'arigatou', meaning:'terima kasih', speak:'ありがとう'}
+  ];
+  var homeCardTimer = null;
+  var homeCardIndex = 0;
+  var changeLock = false;
+  var TAB_SELECTED_FLAG='kosakata_book_content_selected_this_tab_20260702';
+  var OPEN_ONCE_FLAG='kosakata_book_gate_opened_this_tab_20260702';
+
+  function q(sel,root){return (root||document).querySelector(sel);}
+  function qa(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel));}
+  function isJa(){try{return document.documentElement.lang==='ja' || (typeof siteLang!=='undefined' && siteLang==='ja');}catch(e){return false;}}
+  function tr(id,ja){return isJa()?ja:id;}
+  function applyIcons(root){try{if(typeof applyLocalIcons==='function') applyLocalIcons(root||document);}catch(e){}}
+
+  function setHomeCardSlide(index, animate){
+    var card=q('#page-home .flashcard-showcase');
+    if(!card) return;
+    var n=HOME_SLIDES.length;
+    homeCardIndex=((index%n)+n)%n;
+    var slide=HOME_SLIDES[homeCardIndex];
+    var doSet=function(){
+      var tag=q('.tag',card), jp=q('.jp-large',card), romaji=q('.romaji',card), meaning=q('.meaning',card), hear=q('button.btn',card);
+      if(tag) tag.innerHTML='<i class="fa-solid '+slide.icon+'"></i> '+slide.tag;
+      if(jp) jp.textContent=slide.jp;
+      if(romaji) romaji.textContent=slide.romaji;
+      if(meaning) meaning.textContent=slide.meaning;
+      if(hear) hear.setAttribute('onclick',"speakText('"+slide.speak.replace(/'/g,"\\'")+"')");
+      qa('#page-home .hero-art > .dots .dot').forEach(function(dot,i){
+        dot.classList.toggle('active',i===homeCardIndex);
+        dot.setAttribute('aria-label','Slide '+(i+1));
+        dot.setAttribute('role','button');
+        dot.style.cursor='pointer';
+        dot.onclick=function(){restartHomeCardSlider(i);};
+      });
+      applyIcons(card);
+    };
+    if(animate){
+      card.classList.add('is-card-changing');
+      setTimeout(function(){doSet(); card.classList.remove('is-card-changing');},120);
+    }else doSet();
+  }
+  function restartHomeCardSlider(index){
+    if(typeof index==='number') setHomeCardSlide(index,true);
+    if(homeCardTimer) clearInterval(homeCardTimer);
+    homeCardTimer=setInterval(function(){setHomeCardSlide(homeCardIndex+1,true);},3000);
+  }
+  function installHomeCardOnlySlider(){
+    if(changeLock) return;
+    changeLock=true;
+    try{if(typeof heroSlideTimer!=='undefined' && heroSlideTimer){clearInterval(heroSlideTimer); heroSlideTimer=null;}}catch(e){}
+    try{window.startHeroSlider=function(){restartHomeCardSlider(0);}; startHeroSlider=window.startHeroSlider;}catch(e){}
+    setHomeCardSlide(homeCardIndex,false);
+    restartHomeCardSlider(homeCardIndex);
+    setTimeout(function(){changeLock=false;},50);
+  }
+
+  function openSelectionGateAtFirstStep(){
+    try{sessionStorage.removeItem(TAB_SELECTED_FLAG); sessionStorage.removeItem(OPEN_ONCE_FLAG);}catch(e){}
+    try{if(typeof window.backGateStep20260702==='function') window.backGateStep20260702();}catch(e){}
+    var gate=q('#bookCategoryGate');
+    if(gate){
+      gate.classList.add('active');
+      document.body.classList.add('selection-gate-open');
+      document.body.classList.remove('modal-open');
+      applyIcons(gate);
+      return true;
+    }
+    return false;
+  }
+  function installSelectionButton(){
+    document.addEventListener('click',function(ev){
+      var btn=ev.target && ev.target.closest ? ev.target.closest('#page-home #selectionSummaryChip .selection-change-btn') : null;
+      if(!btn) return;
+      ev.preventDefault();
+      ev.stopPropagation();
+      if(ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+      openSelectionGateAtFirstStep();
+      return false;
+    },true);
+  }
+
+  function getQuizState(){
+    var direction='id-jp', order='random';
+    try{if(typeof quizDirection!=='undefined' && quizDirection) direction=quizDirection;}catch(e){}
+    try{if(typeof quizOrder!=='undefined' && quizOrder) order=quizOrder;}catch(e){}
+    return {direction:direction,order:order};
+  }
+  function sectionMarkup(type,state){
+    if(type==='direction'){
+      return '<span class="group-label">'+tr('1. Pilih arah bahasa soal','1. 出題方向を選択')+'</span>'+
+        '<div class="quiz-option-grid">'+
+          '<button class="quiz-option '+(state.direction==='id-jp'?'active':'')+'" type="button" data-direction="id-jp" onclick="selectQuizDirection(\'id-jp\')"><strong>'+tr('Indonesia → Jepang','インドネシア語 → 日本語')+'</strong><span>'+tr('Kartu depan menampilkan bahasa Indonesia.','カード表面にインドネシア語を表示します。')+'</span></button>'+
+          '<button class="quiz-option '+(state.direction==='jp-id'?'active':'')+'" type="button" data-direction="jp-id" onclick="selectQuizDirection(\'jp-id\')"><strong>'+tr('Jepang → Indonesia','日本語 → インドネシア語')+'</strong><span>'+tr('Kartu depan menampilkan bahasa Jepang.','カード表面に日本語を表示します。')+'</span></button>'+
+        '</div>';
+    }
+    return '<span class="group-label">'+tr('2. Pilih urutan kartu','2. カード順を選択')+'</span>'+
+      '<div class="quiz-option-grid">'+
+        '<button class="quiz-option '+(state.order==='random'?'active':'')+'" type="button" data-order="random" onclick="selectQuizOrder(\'random\')"><strong>'+tr('Acak','ランダム')+'</strong><span>'+tr('Urutan kartu diacak setiap mulai kuis.','開始ごとにカード順をシャッフルします。')+'</span></button>'+
+        '<button class="quiz-option '+(state.order==='ordered'?'active':'')+'" type="button" data-order="ordered" onclick="selectQuizOrder(\'ordered\')"><strong>'+tr('Tidak Acak','順番通り')+'</strong><span>'+tr('Urutan kartu mengikuti daftar materi.','教材リストの順番で表示します。')+'</span></button>'+
+      '</div>';
+  }
+  function normalizeQuizModal(){
+    var modal=q('#quizSetupModal .quiz-setup-modal');
+    if(!modal) return;
+    var logo=q('.modal-logo',modal), title=q('.modal-title',modal), desc=q('.modal-desc',modal), actions=q('.modal-actions',modal);
+    if(title) title.textContent=tr('Atur Kuis Flashcard','フラッシュカードクイズ設定');
+    if(desc) desc.textContent=tr('Tentukan arah bahasa dan urutan kartu, lalu pilih lingkup kuis yang ingin dikerjakan.','出題方向とカード順を決めてから、クイズ範囲を選んでください。');
+    var state=getQuizState();
+    var sections=qa(':scope > .quiz-setup-section',modal).filter(function(s){return !s.classList.contains('quiz-filter-panel');});
+    var directionSection=sections[0];
+    var orderSection=sections[1];
+    if(!directionSection){
+      directionSection=document.createElement('div');
+      directionSection.className='quiz-setup-section quiz-direction-section';
+      (logo&&logo.nextSibling?null:null);
+      if(actions) modal.insertBefore(directionSection,actions); else modal.appendChild(directionSection);
+    }
+    if(!orderSection){
+      orderSection=document.createElement('div');
+      orderSection.className='quiz-setup-section quiz-order-section';
+      if(actions) modal.insertBefore(orderSection,actions); else modal.appendChild(orderSection);
+    }
+    directionSection.className='quiz-setup-section quiz-direction-section';
+    orderSection.className='quiz-setup-section quiz-order-section';
+    var afterDesc=desc ? desc.nextSibling : (title ? title.nextSibling : null);
+    if(afterDesc && directionSection.previousElementSibling!==desc){
+      modal.insertBefore(directionSection, afterDesc);
+    }
+    if(orderSection.previousElementSibling!==directionSection){
+      modal.insertBefore(orderSection, directionSection.nextSibling);
+    }
+    directionSection.innerHTML=sectionMarkup('direction',state);
+    orderSection.innerHTML=sectionMarkup('order',state);
+    var panel=q('.quiz-filter-panel',modal);
+    if(panel && panel.previousElementSibling!==orderSection){
+      modal.insertBefore(panel, orderSection.nextSibling);
+    }
+    if(panel){
+      var label=q(':scope > .group-label',panel);
+      if(label) label.textContent=tr('3. Pilih lingkup kuis','3. クイズ範囲を選択');
+    }
+    if(actions){
+      var cancel=q('.btn-secondary',actions), start=q('.btn-primary',actions);
+      if(cancel) cancel.textContent=tr('Batal','キャンセル');
+      if(start) start.innerHTML='<i class="fa-solid fa-play"></i> '+tr('Mulai Kuis','クイズ開始');
+      modal.appendChild(actions);
+    }
+    applyIcons(modal);
+  }
+  function patchQuizFunctions(){
+    function wrap(name){
+      try{
+        var fn=window[name] || eval('typeof '+name+'!=="undefined" ? '+name+' : null');
+        if(typeof fn!=='function' || fn.__userFinalAestheticPatch) return;
+        var wrapped=function(){
+          var out=fn.apply(this,arguments);
+          setTimeout(normalizeQuizModal,0);
+          return out;
+        };
+        wrapped.__userFinalAestheticPatch=true;
+        window[name]=wrapped;
+        try{eval(name+'=wrapped');}catch(e){}
+      }catch(e){}
+    }
+    ['openQuizSetup','startQuizFromNav','selectQuizDirection','selectQuizOrder','syncQuizOptionUI','renderQuizCategorySelectors','applyUILanguage','toggleLangMode'].forEach(wrap);
+  }
+  function install(){
+    installHomeCardOnlySlider();
+    installSelectionButton();
+    patchQuizFunctions();
+    normalizeQuizModal();
+    [80,220,500,1000,1800,3000,5200,9000].forEach(function(ms){
+      setTimeout(function(){installHomeCardOnlySlider(); normalizeQuizModal();},ms);
+    });
+    // Tidak memakai MutationObserver di modal agar tidak membuat loop render;
+    // normalize dijalankan lewat wrapper fungsi dan interval pendek di atas.
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',install); else install();
+  window.addEventListener('load',function(){installHomeCardOnlySlider(); normalizeQuizModal();},{once:true});
+})();
+</script>
+
+
+<!-- PATCH FINAL REQUEST 2026-07-02: pilihan Minna, bab bertingkat, filter kuis/materi, stabilisasi flicker -->
+<style id="patch-request-minna-bab-stable-final-20260702">
+  /* Gerbang pilihan buku wajib terlihat saat aktif, walaupun patch lama menyembunyikannya. */
+  #bookCategoryGate.book-gate-overlay{display:none!important;}
+  #bookCategoryGate.book-gate-overlay.active{display:flex!important;}
+  body.selection-gate-open{overflow:hidden!important;}
+
+  /* Tombol pilihan di header tetap seperti desain awal, tetapi stabil dan tidak berkedip. */
+  #page-home #selectionSummaryChip.final-minna-choice,
+  #page-home #selectionSummaryChip.final-compact-choice{
+    display:inline-flex!important;
+    align-items:center!important;
+    gap:10px!important;
+    height:50px!important;
+    margin:0!important;
+    padding:0 7px 0 20px!important;
+    border-radius:999px!important;
+    background:rgba(241,234,255,.92)!important;
+    border:1px solid rgba(124,77,255,.18)!important;
+    color:#6841ee!important;
+    box-shadow:0 12px 30px rgba(80,70,140,.07)!important;
+    cursor:pointer!important;
+    animation:none!important;
+    transition:border-color .18s ease, box-shadow .18s ease, background .18s ease!important;
+  }
+  #page-home #selectionSummaryChip.final-minna-choice:hover{
+    background:#f6f1ff!important;
+    border-color:#c9b8ff!important;
+    box-shadow:0 14px 32px rgba(80,70,140,.10)!important;
+  }
+  #page-home #selectionSummaryChip.final-minna-choice > i{color:#6841ee!important;width:18px!important;height:18px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;}
+  #page-home #selectionSummaryChip.final-minna-choice .choice-label{font-size:17px!important;font-weight:850!important;line-height:1!important;color:#6841ee!important;white-space:nowrap!important;}
+  #page-home #selectionSummaryChip.final-minna-choice .selection-change-btn{
+    height:38px!important;min-width:0!important;margin-left:8px!important;padding:0 18px!important;border-radius:999px!important;
+    background:#fff!important;border:1px solid #d9d0ff!important;color:#6841ee!important;font-size:14px!important;font-weight:850!important;
+    box-shadow:none!important;cursor:pointer!important;
+  }
+
+  /* Pilihan bab di halaman materi dibuat rapi, tidak mengubah total tampilan. */
+  #categoryPills.final-chapter-pills{gap:10px!important;max-height:132px!important;overflow:auto!important;padding:2px 2px 8px!important;scrollbar-width:thin;}
+  #categoryPills.final-chapter-pills .pill{padding:11px 15px!important;font-size:13px!important;border-radius:999px!important;background:#fff!important;}
+  #categoryPills.final-chapter-pills .pill.active{background:linear-gradient(135deg,var(--primary),var(--primary-2))!important;color:#fff!important;}
+  #categoryPills.final-chapter-pills .pill.disabled{opacity:.62!important;cursor:not-allowed!important;background:#f8fafc!important;color:#94a3b8!important;border-color:#e5e7eb!important;}
+
+  .vocab-empty-reference{
+    grid-column:1/-1!important;
+    padding:32px 28px!important;
+    border-radius:24px!important;
+    background:rgba(255,255,255,.92)!important;
+    border:1px dashed rgba(124,77,255,.30)!important;
+    box-shadow:0 16px 42px rgba(80,70,140,.08)!important;
+    color:#52617c!important;
+    line-height:1.65!important;
+  }
+  .vocab-empty-reference strong{display:block;color:#10213f;font-size:20px;margin-bottom:8px;}
+
+  /* Modal kuis: dropdown bab mendukung rentang seperti 1-25 tanpa terlihat penuh/berantakan. */
+  #quizSetupModal .quiz-filter-grid{grid-template-columns:1fr!important;}
+  #quizSetupModal .quiz-filter-select option[disabled]{color:#94a3b8!important;}
+  #quizSetupModal .quiz-filter-help strong{color:#10213f!important;}
+
+  /* Pergantian kartu dibuat mulus: tidak ada efek scale/geser yang terasa seperti ganti kartu kasar. */
+  #page-home .flashcard-showcase{
+    animation:none!important;
+    transition:opacity .28s ease, box-shadow .18s ease!important;
+    transform:none!important;
+    will-change:auto!important;
+  }
+  #page-home .flashcard-showcase.is-card-changing{
+    opacity:.94!important;
+    transform:none!important;
+  }
+  #page-home .hero-title,
+  #page-home .hero-desc,
+  #page-home .hero-actions,
+  #page-home .stats-row,
+  #page-home .fiction-toggle,
+  #page-home .hero-eyebrow,
+  #page-home #selectionSummaryChip,
+  #page-home .language-pill,
+  .page{animation:none!important;}
+  #page-home .hero-title,
+  #page-home .hero-desc{transition:none!important;}
+
+  /* Saat bicara/mikrofon aktif, kartu tidak bergerak sampai proses bicara selesai. */
+  #page-practice.voice-card-lock #practiceFlashcard,
+  #page-practice.voice-card-lock .practice-card,
+  #page-practice.voice-card-lock .practice-word,
+  #page-practice.voice-card-lock .content-card{
+    animation:none!important;
+    transition:none!important;
+    transform:none!important;
+  }
+
+  @media(max-width:760px){
+    #page-home #selectionSummaryChip.final-minna-choice{width:auto!important;max-width:100%!important;height:auto!important;min-height:46px!important;flex-wrap:wrap!important;padding:8px 8px 8px 16px!important;}
+    #page-home #selectionSummaryChip.final-minna-choice .selection-change-btn{height:34px!important;font-size:13px!important;padding:0 13px!important;}
+    #categoryPills.final-chapter-pills{max-height:180px!important;}
+  }
+</style>
+<script id="patch-request-minna-bab-stable-final-20260702">
+(function(){
+  'use strict';
+  if(window.__MINNA_BAB_STABLE_FINAL_20260702) return;
+  window.__MINNA_BAB_STABLE_FINAL_20260702 = true;
+
+  var STORE_KEY='kosakata_selected_book_content_v20260702';
+  var TAB_SELECTED_KEY='kosakata_book_content_selected_this_tab_20260702_final';
+  var QUIZ_FILTER_KEY='kosakata_jepang_quiz_filter_final_20260702';
+  var MATERIAL_OPTIONS=['Semua','Kosakata','Latihan C','Percakapan'];
+  var WORD_CLASS_OPTIONS=['Semua','Kata benda','Kata Sifat-i','Kata-sifat-na','Kata Kerja'];
+  var selectedChapterFilter=null;
+
+  var MINNA_CHAPTERS={
+    minna1:['Bab 1','Bab 2','Bab 3','Bab 4','Bab 5','Bab 1-5','Bab 6','Bab 7','Bab 8','Bab 9','Bab 10','Bab 6-10','Bab 1-10','Bab 11','Bab 12','Bab 13','Bab 14','Bab 15','Bab 11-15','Bab 1-15','Bab 16','Bab 17','Bab 18','Bab 19','Bab 20','Bab 16-20','Bab 1-20','Bab 21','Bab 22','Bab 23','Bab 24','Bab 25','Bab 21-25','Bab 1-25'],
+    minna2:['Bab 26','Bab 27','Bab 28','Bab 29','Bab 30','Bab 26-30','Bab 31','Bab 32','Bab 33','Bab 34','Bab 35','Bab 31-35','Bab 26-35','Bab 36','Bab 37','Bab 38','Bab 39','Bab 40','Bab 36-40','Bab 26-40','Bab 41','Bab 42','Bab 43','Bab 44','Bab 45','Bab 41-45','Bab 26-45','Bab 46','Bab 47','Bab 48','Bab 49','Bab 50','Bab 46-50','Bab 26-50']
+  };
+  var BOOK_NAMES={
+    minna1:{id:'Minna no Nihongo I (2nd Edition)',ja:'みんなの日本語 I（第2版）'},
+    minna2:{id:'Minna no Nihongo II (2nd Edition)',ja:'みんなの日本語 II（第2版）'}
+  };
+
+  function q(sel,root){return (root||document).querySelector(sel);}
+  function qa(sel,root){return Array.prototype.slice.call((root||document).querySelectorAll(sel));}
+  function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function isJa(){try{return document.documentElement.lang==='ja' || (typeof siteLang!=='undefined' && siteLang==='ja');}catch(e){return false;}}
+  function tr(id,ja){return isJa()?ja:id;}
+  function applyIcons(root){try{if(typeof applyLocalIcons==='function') applyLocalIcons(root||document);}catch(e){}}
+  function parse(raw,fallback){try{return raw?JSON.parse(raw):fallback;}catch(e){return fallback;}}
+  function getState(){
+    var s=parse((function(){try{return localStorage.getItem(STORE_KEY);}catch(e){return null;}})(),{});
+    return {book:s.book||document.body.getAttribute('data-selected-book')||'minna1', content:s.content||document.body.getAttribute('data-selected-content')||'general'};
+  }
+  function saveState(s){try{localStorage.setItem(STORE_KEY,JSON.stringify({book:s.book||'minna1',content:s.content||'general'}));}catch(e){}; document.body.setAttribute('data-selected-book',s.book||'minna1'); document.body.setAttribute('data-selected-content',s.content||'general');}
+  function bookKey(){return getState().book==='minna2'?'minna2':'minna1';}
+  function contentKey(){return getState().content==='reference'?'reference':'general';}
+  function bookLabel(){var b=BOOK_NAMES[bookKey()]||BOOK_NAMES.minna1; return isJa()?b.ja:b.id;}
+  function contentLabel(){return contentKey()==='reference'?tr('Kata-Kata Referensi dan Informasi','参考語彙・情報'):tr('Materi Umum','一般教材');}
+  function contentShort(){return contentKey()==='reference'?tr('Tambahan','追加'):tr('Materi Umum','一般教材');}
+  function chapterOptions(){return contentKey()==='reference'?[]:(MINNA_CHAPTERS[bookKey()]||MINNA_CHAPTERS.minna1).slice();}
+  function firstChapter(){return chapterOptions()[0]||'';}
+  function ensureChapterSelection(){var opts=chapterOptions(); if(!opts.length){selectedChapterFilter=null; return null;} if(!selectedChapterFilter || opts.indexOf(selectedChapterFilter)<0) selectedChapterFilter=opts[0]; return selectedChapterFilter;}
+
+  function chapterNums(label){
+    var text=String(label||'');
+    var range=text.match(/(\d+)\s*[-–—]\s*(\d+)/);
+    if(range){var a=Number(range[1]), b=Number(range[2]); if(a>b){var t=a;a=b;b=t;} var arr=[]; for(var i=a;i<=b;i++) arr.push(i); return arr;}
+    var single=text.match(/(\d+)/); return single?[Number(single[1])]:[];
+  }
+  function normalizeMaterial(v){
+    var raw=String(v==null?'':v).toLowerCase();
+    if(/latihan\s*c|exercise\s*c|練習\s*c/.test(raw)) return 'Latihan C';
+    if(/percakapan|dialog|conversation|会話/.test(raw)) return 'Percakapan';
+    if(/kosakata|vocab|語彙|単語/.test(raw)) return 'Kosakata';
+    return '';
+  }
+  function inferMaterial(v){return normalizeMaterial(v.materi||v.material||v.materialCategory||v.kategoriMateri||v.jenisMateri||v.section||v.type||v.cat)||'Kosakata';}
+  function normalizeWordClass(v){
+    var raw=String(v==null?'':v).toLowerCase();
+    if(/kata\s*benda|noun|名詞/.test(raw)) return 'Kata benda';
+    if(/sifat\s*-?\s*i|i\s*adjective|い形容詞/.test(raw)) return 'Kata Sifat-i';
+    if(/sifat\s*-?\s*na|na\s*adjective|な形容詞/.test(raw)) return 'Kata-sifat-na';
+    if(/kata\s*kerja|verb|動詞/.test(raw)) return 'Kata Kerja';
+    return '';
+  }
+  function inferWordClass(v){
+    var explicit=normalizeWordClass(v.kelasKata||v.wordClass||v.kategoriKata||v.jenisKata||v.pos||v.partOfSpeech);
+    if(explicit) return explicit;
+    var jp=String((v.jp||'')+' '+(v.kana||'')+' '+(v.romaji||'')).toLowerCase();
+    var arti=String(v.arti||'').toLowerCase();
+    if(/ます|する|くる|いく|たべる|のむ|よむ|かく|みる|kimasu|shimasu|ikimasu|taberu|nomu|yomu|kaku|miru/.test(jp) || /\b(pergi|makan|minum|membaca|menulis|melihat|berbicara|belajar|datang|melakukan)\b/.test(arti)) return 'Kata Kerja';
+    if(/い$/.test(String(v.jp||'')) && !/ともだち|いち|はち/.test(jp)) return 'Kata Sifat-i';
+    if(/きれい|しずか|しんせつ|べんり|kantan|kirei|shizuka|shinsetsu|benri/.test(jp+arti)) return 'Kata-sifat-na';
+    return 'Kata benda';
+  }
+  function existingChapterNumber(v){
+    var raw=v.bab||v.chapter||v.babKategori||v.kategoriBab||v.lesson||v.unit||v.__quizBab||'';
+    var m=String(raw).match(/(\d+)/);
+    return m?Number(m[1]):null;
+  }
+  function enrichVocab(){
+    var start=bookKey()==='minna2'?26:1;
+    var len=25;
+    try{(vocabData||[]).forEach(function(v,i){
+      var n=existingChapterNumber(v);
+      if(!n || (bookKey()==='minna1' && (n<1 || n>25)) || (bookKey()==='minna2' && (n<26 || n>50))){ n=start+(i%len); }
+      v.__minnaBook=bookKey();
+      v.__minnaContent=contentKey();
+      v.__chapterNumber=n;
+      v.__quizBab='Bab '+n;
+      v.__quizMaterial=inferMaterial(v);
+      v.__quizWordClass=inferWordClass(v);
+    });}catch(e){}
+  }
+  function matchChapter(v,label){var nums=chapterNums(label); if(!nums.length) return true; return nums.indexOf(Number(v.__chapterNumber))>-1;}
+  function filteredVocabFor(filter){
+    enrichVocab();
+    if(contentKey()==='reference') return [];
+    filter=filter||{};
+    var bab=filter.bab || ensureChapterSelection();
+    return (function(){try{return (vocabData||[]).filter(function(v){
+      var okBab=!bab || matchChapter(v,bab);
+      var okMat=!filter.material || filter.material==='Semua' || v.__quizMaterial===filter.material;
+      var okWord=!filter.wordClass || filter.wordClass==='Semua' || v.__quizWordClass===filter.wordClass;
+      return okBab && okMat && okWord;
+    });}catch(e){return [];}})();
+  }
+  function countFor(filter){return filteredVocabFor(filter).length;}
+  function localOptionText(label,count){
+    var mapJa={'Semua':'すべて','Kosakata':'語彙','Latihan C':'練習C','Percakapan':'会話','Kata benda':'名詞','Kata Sifat-i':'い形容詞','Kata-sifat-na':'な形容詞','Kata Kerja':'動詞'};
+    var base=isJa()?(mapJa[label]||label):label;
+    return typeof count==='number'?base+' ('+count+')':base;
+  }
+
+  function renderChapterPills(){
+    var holder=q('#categoryPills');
+    if(!holder) return;
+    holder.classList.add('final-chapter-pills');
+    if(contentKey()==='reference'){
+      holder.innerHTML='<button class="pill disabled" type="button"><i class="fa-solid fa-circle-info"></i> '+esc(tr('Kategori belum tersedia','カテゴリー未設定'))+'</button>';
+      applyIcons(holder); return;
+    }
+    var opts=chapterOptions(); var selected=ensureChapterSelection();
+    holder.innerHTML=opts.map(function(ch){return '<button class="pill '+(ch===selected?'active':'')+'" type="button" data-final-chapter="'+esc(ch)+'"><i class="fa-solid fa-layer-group"></i> '+esc(ch.replace('Bab ',tr('Bab ','第')).replace(/^(第)(\d+)$/,'$1$2章'))+'</button>';}).join('');
+    qa('[data-final-chapter]',holder).forEach(function(btn){btn.onclick=function(){selectedChapterFilter=btn.getAttribute('data-final-chapter'); try{activeCategory=selectedChapterFilter;}catch(e){} renderChapterPills(); renderVocabFinal();};});
+    applyIcons(holder);
+  }
+
+  function visualIcon(v){try{if(typeof window.visualIcon==='function') return window.visualIcon(v);}catch(e){}; var m={library:'fa-solid fa-book-open',school:'fa-solid fa-school',book:'fa-solid fa-book',pen:'fa-solid fa-pen',person:'fa-solid fa-user',family:'fa-solid fa-people-roof',number:'fa-solid fa-1'}; return m[v.img]||'fa-solid fa-book-open';}
+  function iconFor(vcat){try{if(typeof iconForCat==='function') return iconForCat(vcat);}catch(e){} return '<i class="fa-solid fa-book-open"></i>';}
+  function capLocal(s){s=String(s||''); return s.charAt(0).toUpperCase()+s.slice(1);}
+  function renderVocabFinal(){
+    var grid=q('#vocabGrid'); if(!grid) return;
+    renderChapterPills();
+    if(contentKey()==='reference'){
+      grid.innerHTML='<div class="vocab-empty-reference"><strong>'+esc(tr('Kategori belum tersedia','カテゴリーはまだ設定されていません'))+'</strong>'+esc(tr('Bagian Kata-Kata Referensi dan Informasi sudah disiapkan, tetapi kategori bab belum ditambahkan. Silakan gunakan Materi Umum terlebih dahulu.','参考語彙・情報の欄は用意されていますが、章カテゴリーはまだ追加されていません。まず一般教材を使用してください。'))+'</div>';
+      return;
+    }
+    var search=(q('#vocabSearch')&&q('#vocabSearch').value||'').toLowerCase();
+    var rows=filteredVocabFor({bab:ensureChapterSelection()}).filter(function(v){return !search || [v.jp,v.kana,v.romaji,v.arti,v.cat,v.__quizBab,v.__quizMaterial,v.__quizWordClass].join(' ').toLowerCase().indexOf(search)>-1;});
+    if(!rows.length){grid.innerHTML='<div class="vocab-empty-reference"><strong>'+esc(tr('Belum ada kartu pada pilihan ini','この選択にはカードがありません'))+'</strong>'+esc(tr('Pilih rentang bab lain, misalnya gabungan 1-5 atau 1-25, agar kartu yang tersedia bisa muncul.','1-5や1-25など、別の章範囲を選ぶと利用可能なカードが表示されます。'))+'</div>'; return;}
+    grid.innerHTML=rows.map(function(v){return '<article class="vocab-card"><div class="thumb '+esc(v.img||'book')+'"><span class="thumb-empty-icon">'+(iconFor(v.cat)||'<i class="fa-solid fa-book-open"></i>')+'</span><button class="card-star" type="button"><i class="fa-regular fa-star"></i></button></div><div class="vocab-body"><h3>'+esc(v.jp)+'</h3><div class="romaji">'+esc(v.romaji||'')+'</div><div class="meaning-sm">'+esc(capLocal(v.arti))+'</div><span class="cat-badge cat-'+esc(v.cat)+'">'+iconFor(v.cat)+' '+esc(v.__quizBab)+' • '+esc(v.__quizWordClass)+'</span><button class="listen-btn" onclick="speakText(\''+esc(String(v.jp).replace(/'/g,"\\'"))+'\')"><i class="fa-solid fa-volume-high"></i> &nbsp; '+esc(tr('Dengar','聞く'))+'</button></div></article>';}).join('');
+    applyIcons(grid);
+  }
+
+  function renderQuizCategorySelectorsFinal(){
+    var modal=q('#quizSetupModal .quiz-setup-modal'); if(!modal) return;
+    var panel=q('#quizSetupModal .quiz-filter-panel');
+    if(!panel){
+      panel=document.createElement('div'); panel.className='quiz-setup-section quiz-filter-panel';
+      var actions=q('#quizSetupModal .modal-actions'); if(actions) modal.insertBefore(panel,actions); else modal.appendChild(panel);
+    }
+    var saved=parse((function(){try{return localStorage.getItem(QUIZ_FILTER_KEY);}catch(e){return null;}})(),{});
+    var opts=chapterOptions();
+    var selected={
+      bab: opts.indexOf(saved.bab)>-1 ? saved.bab : (ensureChapterSelection()||''),
+      material: MATERIAL_OPTIONS.indexOf(saved.material)>-1 ? saved.material : 'Semua',
+      wordClass: WORD_CLASS_OPTIONS.indexOf(saved.wordClass)>-1 ? saved.wordClass : 'Semua'
+    };
+    if(!opts.length){
+      panel.innerHTML='<span class="group-label">'+esc(tr('3. Pilih lingkup kuis','3. クイズ範囲を選択'))+'</span><div class="quiz-filter-grid"><div class="quiz-filter-field"><label><i class="fa-solid fa-layer-group"></i>'+esc(tr('Kategori Bab','章カテゴリー'))+'</label><select class="quiz-filter-select" disabled><option>'+esc(tr('Belum ada kategori','カテゴリー未設定'))+'</option></select></div></div><div class="quiz-filter-help"><i class="fa-solid fa-circle-info"></i><span>'+esc(tr('Kata-Kata Referensi dan Informasi belum memiliki kategori bab, jadi kuis belum bisa diracik dari bagian ini.','参考語彙・情報にはまだ章カテゴリーがないため、この部分からクイズを作成できません。'))+'</span></div>';
+      applyIcons(panel); return;
+    }
+    if(opts.indexOf(selected.bab)<0) selected.bab=opts[0];
+    var babOptions=opts.map(function(ch){var c=countFor({bab:ch,material:selected.material,wordClass:selected.wordClass}); return '<option value="'+esc(ch)+'" '+(ch===selected.bab?'selected':'')+'>'+esc(ch+' ('+c+')')+'</option>';}).join('');
+    var materialOptions=MATERIAL_OPTIONS.map(function(opt){var c=countFor({bab:selected.bab,material:opt,wordClass:selected.wordClass}); return '<option value="'+esc(opt)+'" '+(opt===selected.material?'selected':'')+'>'+esc(localOptionText(opt,c))+'</option>';}).join('');
+    var wordOptions=WORD_CLASS_OPTIONS.map(function(opt){var c=countFor({bab:selected.bab,material:selected.material,wordClass:opt}); return '<option value="'+esc(opt)+'" '+(opt===selected.wordClass?'selected':'')+'>'+esc(localOptionText(opt,c))+'</option>';}).join('');
+    var available=countFor(selected);
+    panel.innerHTML='<span class="group-label">'+esc(tr('3. Pilih lingkup kuis','3. クイズ範囲を選択'))+'</span>'+ 
+      '<div class="quiz-filter-grid">'+
+        '<div class="quiz-filter-field"><label for="quizBabSelect"><i class="fa-solid fa-layer-group"></i>'+esc(tr('Kategori Bab','章カテゴリー'))+'</label><select class="quiz-filter-select" id="quizBabSelect">'+babOptions+'</select></div>'+ 
+        '<div class="quiz-filter-field"><label for="quizMaterialSelect"><i class="fa-solid fa-book-open-reader"></i>'+esc(tr('Jenis Materi','教材タイプ'))+'</label><select class="quiz-filter-select" id="quizMaterialSelect">'+materialOptions+'</select></div>'+ 
+        '<div class="quiz-filter-field"><label for="quizWordClassSelect"><i class="fa-solid fa-tags"></i>'+esc(tr('Kategori Kata','品詞カテゴリー'))+'</label><select class="quiz-filter-select" id="quizWordClassSelect">'+wordOptions+'</select></div>'+ 
+      '</div><div class="quiz-filter-help"><i class="fa-solid fa-circle-check"></i><span>'+esc(tr('Filter ini hanya menampilkan kartu sesuai buku dan bab yang dipilih. Rentang seperti Bab 1-25 akan meracik soal dari semua bab di dalam rentang tersebut.','選択した本と章に合うカードだけを表示します。第1-25章のような範囲は、その範囲内の章から問題を作ります。'))+' <strong>'+esc(tr('Tersedia','利用可能'))+': '+available+' '+esc(tr('kartu','カード'))+'</strong>.</span></div>';
+    ['quizBabSelect','quizMaterialSelect','quizWordClassSelect'].forEach(function(id){var el=q('#'+id,panel); if(el) el.onchange=function(){var next={bab:q('#quizBabSelect')&&q('#quizBabSelect').value||selected.bab, material:q('#quizMaterialSelect')&&q('#quizMaterialSelect').value||'Semua', wordClass:q('#quizWordClassSelect')&&q('#quizWordClassSelect').value||'Semua'}; try{localStorage.setItem(QUIZ_FILTER_KEY,JSON.stringify(next));}catch(e){}; selectedChapterFilter=next.bab; renderQuizCategorySelectorsFinal(); renderChapterPills();};});
+    applyIcons(panel);
+  }
+
+  function getQuizFilter(){var opts=chapterOptions(); var saved=parse((function(){try{return localStorage.getItem(QUIZ_FILTER_KEY);}catch(e){return null;}})(),{}); return {bab:opts.indexOf(saved.bab)>-1?saved.bab:(ensureChapterSelection()||''), material:MATERIAL_OPTIONS.indexOf(saved.material)>-1?saved.material:'Semua', wordClass:WORD_CLASS_OPTIONS.indexOf(saved.wordClass)>-1?saved.wordClass:'Semua'};}
+  function beginConfiguredQuizFinal(){
+    if(contentKey()==='reference') {alert(tr('Kategori bab untuk Kata-Kata Referensi dan Informasi belum tersedia. Pilih Materi Umum terlebih dahulu.','参考語彙・情報の章カテゴリーはまだありません。先に一般教材を選択してください。')); return;}
+    var filter=getQuizFilter();
+    try{localStorage.setItem(QUIZ_FILTER_KEY,JSON.stringify(filter));}catch(e){}
+    selectedChapterFilter=filter.bab;
+    var source=filteredVocabFor(filter);
+    if(!source.length){alert(tr('Belum ada kartu pada lingkup ini. Coba pilih rentang bab yang lebih luas.','この範囲にはカードがありません。より広い章範囲を選んでください。')); return;}
+    try{activeCategory=filter.bab;}catch(e){}
+    try{quizDeck=(typeof quizOrder!=='undefined' && quizOrder==='ordered')?source.slice():shuffleLocal(source);}catch(e){window.quizDeck=source.slice();}
+    try{answered=0; correct=0; wrong=0; currentIndex=0; practiceFlipped=false;}catch(e){}
+    try{langMode=quizDirection;}catch(e){}
+    try{closeModal('quizSetupModal');}catch(e){q('#quizSetupModal')&&q('#quizSetupModal').classList.remove('active');}
+    try{showPage('practice');}catch(e){}
+    setTimeout(function(){try{loadPractice(false);}catch(e){} updatePracticeChipFinal();},60);
+  }
+  function shuffleLocal(arr){var a=arr.slice(); for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t;} return a;}
+  function openQuizSetupFinal(){
+    try{if(!currentUser) return requireUsernameBeforeAccess();}catch(e){}
+    enrichVocab(); renderQuizCategorySelectorsFinal();
+    try{syncQuizOptionUI();}catch(e){}
+    try{openModal('quizSetupModal');}catch(e){q('#quizSetupModal')&&q('#quizSetupModal').classList.add('active');}
+    setTimeout(renderQuizCategorySelectorsFinal,80);
+  }
+
+  function updatePracticeChipFinal(){
+    var top=q('#page-practice .practice-top'); if(!top) return;
+    var holder=q('#page-practice .practice-filter-holder');
+    if(!holder){holder=document.createElement('div'); holder.className='practice-filter-holder'; top.appendChild(holder);}
+    var f=getQuizFilter();
+    holder.innerHTML='<span class="practice-filter-chip"><i class="fa-solid fa-layer-group"></i> '+esc(bookLabel())+' <small>•</small> '+esc(contentShort())+' <small>•</small> '+esc(f.bab||'-')+' <small>•</small> '+esc(f.material)+' <small>•</small> '+esc(f.wordClass)+'</span>';
+    applyIcons(holder);
+  }
+
+  function showGateFirstStep(){
+    var gate=q('#bookCategoryGate'); if(!gate) return false;
+    try{if(typeof window.backGateStep20260702==='function') window.backGateStep20260702();}catch(e){}
+    gate.classList.add('active'); document.body.classList.add('selection-gate-open');
+    applyIcons(gate); return true;
+  }
+  function markTabSelected(){try{sessionStorage.setItem(TAB_SELECTED_KEY,'1'); sessionStorage.setItem('kosakata_book_content_selected_this_tab_20260702','1');}catch(e){}}
+  function hasTabSelected(){try{return sessionStorage.getItem(TAB_SELECTED_KEY)==='1' || sessionStorage.getItem('kosakata_book_content_selected_this_tab_20260702')==='1';}catch(e){return false;}}
+  function normalizeGateCopy(){
+    var gate=q('#bookCategoryGate'); if(!gate) return;
+    var langBtn=q('.book-gate-lang [data-gate="lang"]',gate); if(langBtn) langBtn.textContent=tr('Bahasa Indonesia','日本語');
+    var b1=q('[data-book="minna1"]',gate), b2=q('[data-book="minna2"]',gate);
+    if(b1){var s=q('strong',b1), sp=q('span:not(.book-gate-icon)',b1); if(s) s.textContent='みんなの日本語 I (2nd Edition)'; if(sp) sp.textContent='Minna no Nihongo I';}
+    if(b2){var s2=q('strong',b2), sp2=q('span:not(.book-gate-icon)',b2); if(s2) s2.textContent='みんなの日本語 II (2nd Edition)'; if(sp2) sp2.textContent='Minna no Nihongo II';}
+    var gen=q('[data-content="general"] [data-gate="generalTitle"]',gate); if(gen) gen.textContent=tr('Materi Umum','一般教材');
+    var ref=q('[data-content="reference"] [data-gate="refTitle"]',gate); if(ref) ref.textContent=tr('Kata-Kata Referensi dan Informasi','参考語彙・情報');
+  }
+  function installGateListeners(){
+    document.addEventListener('click',function(ev){
+      var content=ev.target&&ev.target.closest&&ev.target.closest('#bookCategoryGate [data-content]');
+      if(content){markTabSelected(); setTimeout(function(){var s=getState(); saveState(s); selectedChapterFilter=firstChapter(); renderStableChoiceChip(); renderChapterPills(); renderVocabFinal(); renderQuizCategorySelectorsFinal();},160);}
+      var book=ev.target&&ev.target.closest&&ev.target.closest('#bookCategoryGate [data-book]');
+      if(book){setTimeout(normalizeGateCopy,80);}
+      var change=ev.target&&ev.target.closest&&ev.target.closest('#page-home #selectionSummaryChip .selection-change-btn');
+      if(change){ev.preventDefault(); ev.stopPropagation(); if(ev.stopImmediatePropagation) ev.stopImmediatePropagation(); try{sessionStorage.removeItem(TAB_SELECTED_KEY);sessionStorage.removeItem('kosakata_book_content_selected_this_tab_20260702');}catch(e){} showGateFirstStep(); return false;}
+    },true);
+  }
+  function renderStableChoiceChip(){
+    var hero=q('#page-home .hero-eyebrow'); if(!hero) return;
+    var lang=q('.language-pill',hero); var chip=q('#selectionSummaryChip');
+    if(!chip){chip=document.createElement('div'); chip.id='selectionSummaryChip';}
+    chip.className='selection-summary-chip clean-selection-chip final-compact-choice final-minna-choice';
+    chip.setAttribute('role','button'); chip.setAttribute('tabindex','0');
+    chip.innerHTML='<i class="fa-solid fa-circle-plus"></i><strong class="choice-label">'+esc(contentShort())+'</strong><button type="button" class="selection-change-btn">'+esc(tr('Ganti pilihan','選択変更'))+'</button>';
+    chip.onclick=function(ev){ if(ev&&ev.target&&ev.target.closest&&ev.target.closest('.selection-change-btn')) return false; try{showPage('materi');}catch(e){} return false; };
+    chip.onkeydown=function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();try{showPage('materi');}catch(e){}}};
+    if(lang) hero.insertBefore(chip,lang); else hero.insertBefore(chip,hero.firstChild);
+    applyIcons(chip);
+  }
+
+  function updateStaticLabels(){
+    var homeTitle=q('#page-home .hero-title'); if(homeTitle) homeTitle.innerHTML=tr('Belajar kosakata<br>Jepang lebih terarah','日本語の語彙を<br>もっと体系的に学ぼう');
+    var homeDesc=q('#page-home .hero-desc'); if(homeDesc) homeDesc.textContent=tr('Pilih Bab, jenis materi, dan kategori kata sebelum kuis dimulai. Belajar jadi lebih fokus, rapi, dan mudah diikuti dari kartu pertama sampai hasil akhir.','章・教材タイプ・品詞を選んでからクイズを始められます。最初のカードから結果まで、学習をより見やすく進められます。');
+    var materiTitle=q('#page-materi .page-title'); if(materiTitle) materiTitle.textContent=contentKey()==='reference'?contentLabel():tr('Materi Umum - '+bookLabel(),bookLabel()+' - 一般教材');
+    var materiDesc=q('#page-materi .page-desc'); if(materiDesc) materiDesc.textContent=contentKey()==='reference'?tr('Kategori untuk bagian Kata-Kata Referensi dan Informasi belum ditambahkan.','参考語彙・情報のカテゴリーはまだ追加されていません。'):tr('Pilih bab atau rentang bab untuk menampilkan kosakata yang sesuai. Rentang seperti Bab 1-25 akan menampilkan gabungan semua bab di dalamnya.','章または章範囲を選ぶと、該当する語彙だけが表示されます。第1-25章のような範囲は、その範囲内の語彙をまとめて表示します。');
+    var setupTitle=q('#quizSetupModal .modal-title'); if(setupTitle) setupTitle.textContent=tr('Atur Kuis Flashcard','フラッシュカードクイズ設定');
+    var setupDesc=q('#quizSetupModal .modal-desc'); if(setupDesc) setupDesc.textContent=tr('Tentukan arah bahasa dan urutan kartu, lalu pilih lingkup kuis yang ingin dikerjakan.','出題方向とカード順を決めてから、クイズ範囲を選んでください。');
+    var start=q('#quizSetupModal .modal-actions .btn-primary'); if(start) start.innerHTML='<i class="fa-solid fa-play"></i> '+esc(tr('Mulai Kuis','クイズ開始'));
+    var cancel=q('#quizSetupModal .modal-actions .btn-secondary'); if(cancel) cancel.textContent=tr('Batal','キャンセル');
+    applyIcons(document);
+  }
+
+  function stopRoughFlicker(){
+    try{if(typeof heroSlideTimer!=='undefined' && heroSlideTimer){clearInterval(heroSlideTimer); heroSlideTimer=null;}}catch(e){}
+    try{if(typeof homeCardTimer!=='undefined' && homeCardTimer){clearInterval(homeCardTimer); homeCardTimer=null;}}catch(e){}
+    try{window.startHeroSlider=function(){return false;}; startHeroSlider=window.startHeroSlider;}catch(e){}
+  }
+  function startVoiceLock(){var page=q('#page-practice'); if(page) page.classList.add('voice-card-lock'); try{quizPaused=true;}catch(e){}; window.__voiceCardLockedFinal=true;}
+  function stopVoiceLock(){var page=q('#page-practice'); if(page) page.classList.remove('voice-card-lock'); try{quizPaused=false;}catch(e){}; window.__voiceCardLockedFinal=false;}
+  function patchVoiceLocks(){
+    try{if(typeof startVoiceAnswer==='function' && !startVoiceAnswer.__minnaVoiceLock){var old=startVoiceAnswer; startVoiceAnswer=function(){startVoiceLock(); var out=old.apply(this,arguments); setTimeout(function(){if(window.__voiceCardLockedFinal) stopVoiceLock();},11000); return out;}; startVoiceAnswer.__minnaVoiceLock=true; window.startVoiceAnswer=startVoiceAnswer;}}catch(e){}
+    try{if(typeof evaluateVoiceAnswer==='function' && !evaluateVoiceAnswer.__minnaVoiceLock){var evOld=evaluateVoiceAnswer; evaluateVoiceAnswer=function(){var out=evOld.apply(this,arguments); setTimeout(stopVoiceLock,400); return out;}; evaluateVoiceAnswer.__minnaVoiceLock=true; window.evaluateVoiceAnswer=evaluateVoiceAnswer;}}catch(e){}
+    document.addEventListener('click',function(ev){var btn=ev.target&&ev.target.closest&&ev.target.closest('#voiceAnswerBtn,[onclick*="startVoiceAnswer"],[onclick*="toggleMicMode"]'); if(btn) startVoiceLock();},true);
+  }
+
+  function patchGlobals(){
+    try{renderCategoryPills=renderChapterPills; window.renderCategoryPills=renderChapterPills;}catch(e){window.renderCategoryPills=renderChapterPills;}
+    try{renderVocab=renderVocabFinal; window.renderVocab=renderVocabFinal;}catch(e){window.renderVocab=renderVocabFinal;}
+    try{renderQuizCategorySelectors=renderQuizCategorySelectorsFinal; window.renderQuizCategorySelectors=renderQuizCategorySelectorsFinal;}catch(e){window.renderQuizCategorySelectors=renderQuizCategorySelectorsFinal;}
+    try{openQuizSetup=openQuizSetupFinal; window.openQuizSetup=openQuizSetupFinal; startQuizFromNav=openQuizSetupFinal; window.startQuizFromNav=openQuizSetupFinal;}catch(e){window.openQuizSetup=openQuizSetupFinal; window.startQuizFromNav=openQuizSetupFinal;}
+    try{beginConfiguredQuiz=beginConfiguredQuizFinal; window.beginConfiguredQuiz=beginConfiguredQuizFinal;}catch(e){window.beginConfiguredQuiz=beginConfiguredQuizFinal;}
+    window.openBookCategoryGate20260702=function(){try{sessionStorage.removeItem(TAB_SELECTED_KEY);sessionStorage.removeItem('kosakata_book_content_selected_this_tab_20260702');}catch(e){}; showGateFirstStep(); return false;};
+  }
+
+  function syncAll(){
+    normalizeGateCopy();
+    patchGlobals();
+    stopRoughFlicker();
+    renderStableChoiceChip();
+    updateStaticLabels();
+    ensureChapterSelection();
+    renderChapterPills();
+    renderVocabFinal();
+    renderQuizCategorySelectorsFinal();
+    updatePracticeChipFinal();
+  }
+  function maybeAutoOpenGate(){if(!hasTabSelected()){setTimeout(function(){showGateFirstStep();},180);}}
+  function install(){
+    patchGlobals(); installGateListeners(); patchVoiceLocks(); syncAll(); maybeAutoOpenGate();
+    [80,220,500,1000,1800,3000,5200].forEach(function(ms){setTimeout(syncAll,ms);});
+    window.addEventListener('storage',function(){setTimeout(syncAll,50);});
+    document.addEventListener('change',function(ev){if(ev.target&&/^quiz(Bab|Material|WordClass)Select$/.test(ev.target.id||'')) setTimeout(syncAll,40);},true);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',install); else install();
+  window.addEventListener('load',function(){syncAll(); maybeAutoOpenGate();},{once:true});
+})();
+</script>
 
 </body>
 </html>
