@@ -6,7 +6,7 @@
   <title>Minna no Nihongo I & II - Kuis Flashcard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
   <style>
     :root {
@@ -14,7 +14,7 @@
       --text:#17223b; --muted:#66728a; --line:#ded7ff; --primary:#7c4dff; --primary2:#5e35d6;
       --soft:#f0eaff; --pink:#ff4f79; --green:#23c79a; --blue:#7db5ff; --yellow:#ffd36d;
       --shadow:0 22px 60px rgba(80,67,130,.13); --shadow2:0 12px 28px rgba(80,67,130,.09);
-      --radius:26px; --radius2:18px; --jp:"Noto Sans JP",sans-serif; --font:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --radius:26px; --radius2:18px; --jp:"Noto Sans JP",sans-serif; --font:"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
@@ -214,6 +214,9 @@
     }
     .option-card small { display:block;margin-top:8px;color:var(--muted);font-weight:700;line-height:1.4; }
     .option-card.active { border-color:var(--primary); background:#f2ecff; color:var(--primary); box-shadow:0 0 0 4px rgba(124,77,255,.12); }
+    .option-card:disabled { opacity:.48; cursor:not-allowed; box-shadow:none; transform:none; }
+    .quiz-setting-subtitle { display:block; margin:14px 0 9px; color:#071b45; font-weight:750; }
+    .quiz-setting-note { margin:8px 0 0; font-size:13px; line-height:1.55; color:var(--muted); font-weight:550; }
     .multi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(118px,1fr)); gap:10px; }
     .check-pill { min-height:44px; border:1px solid #dde4f5; border-radius:999px; display:flex; align-items:center; justify-content:center; padding:0 12px; font-weight:900; background:#fff; color:#536078; }
     .check-pill input { display:none; }
@@ -269,6 +272,447 @@
       .question-text { font-size:clamp(28px,11vw,48px); }
       .answer-main { font-size:clamp(24px,9vw,38px); }
     }
+
+
+    /* Revisi desain: tipografi lebih ringan, tombol lebih lembut, dan pop-up lebih fokus */
+    body { font-weight:500; letter-spacing:-.012em; }
+    h1 { font-weight:800; letter-spacing:-.055em; }
+    h2 { font-weight:780; letter-spacing:-.045em; }
+    h3, .brand, .badge, .nav-link, .user-btn, .drop-item, .side-btn, .choice-chip, .btn, .control-btn, .option-card, .check-pill { font-weight:700; }
+    p, .vocab-id, td, .input, select { font-weight:500; }
+    th, .tag, .status, .vocab-romaji, .metric span, .mini-stat span, .admin-stat span { font-weight:650; }
+    .question-text, .answer-main, .big-kana span, .loader-icon, .modal-title .kana-icon { font-weight:800; }
+    .btn, .choice-chip, .control-btn, .icon-btn, .option-card, .drop-item, .side-btn { transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease; }
+    .btn { border-radius:17px; min-height:50px; padding:0 20px; box-shadow:0 12px 26px rgba(124,77,255,.18); }
+    .btn.secondary, .choice-chip, .control-btn, .option-card { background:rgba(255,255,255,.92); border-color:rgba(124,77,255,.14); box-shadow:0 10px 24px rgba(80,67,130,.07); }
+    .btn.secondary:hover, .choice-chip:hover, .control-btn:hover, .option-card:hover { transform:translateY(-2px); box-shadow:0 16px 34px rgba(80,67,130,.12); border-color:rgba(124,77,255,.32); }
+    .option-card { min-height:86px; border-radius:22px; line-height:1.35; }
+    .option-card small { font-weight:500; color:#748097; }
+    .option-card.active, .choice-chip.active { box-shadow:0 14px 30px rgba(124,77,255,.18); }
+    .close-x { font-size:18px; color:#536078; font-weight:600; box-shadow:0 10px 22px rgba(80,67,130,.08); }
+    .close-x:hover { transform:rotate(90deg); color:var(--primary2); border-color:rgba(124,77,255,.28); }
+    .modal { background:rgba(11,14,27,.62); backdrop-filter:blur(34px) saturate(1.15); -webkit-backdrop-filter:blur(34px) saturate(1.15); }
+    body:has(.modal.show) .top-nav,
+    body:has(.modal.show) .app,
+    body:has(.modal.show) .bottom-nav { filter:blur(8px); transform:scale(.992); transition:filter .22s ease, transform .22s ease; pointer-events:none; }
+    .modal-card { box-shadow:0 36px 120px rgba(7,12,30,.34); }
+    #setupModal .modal-card, #quizSettingsModal .modal-card { width:min(720px,100%); overflow:hidden; }
+    .setup-progress { margin:6px 0 22px; padding:14px; border:1px solid rgba(124,77,255,.13); border-radius:22px; background:linear-gradient(135deg,rgba(244,238,255,.9),rgba(239,247,255,.9)); }
+    .setup-progress-top { display:flex; align-items:center; justify-content:space-between; gap:12px; color:#4f3aa8; font-weight:700; font-size:13px; }
+    .setup-progress-line { height:9px; border-radius:999px; background:#e8ddff; overflow:hidden; margin-top:10px; }
+    .setup-progress-line span { display:block; height:100%; width:25%; border-radius:inherit; background:linear-gradient(90deg,var(--primary),#75d7e8); transition:width .25s ease; }
+    #setupModal .step-block, #quizSettingsModal .step-block { display:none; animation:setupSlide .26s ease both; margin:10px 0 18px; }
+    #setupModal .step-block.active, #quizSettingsModal .step-block.active { display:block; }
+    #setupModal .step-block h3, #quizSettingsModal .step-block h3 { font-size:20px; margin-bottom:14px; }
+    #setupModal .option-grid, #quizSettingsModal .option-grid { grid-template-columns:1fr; }
+    #setupModal .multi-grid, #quizSettingsModal .multi-grid { max-height:330px; overflow:auto; padding:3px 4px 8px 0; }
+    .setup-actions { gap:10px; }
+    @keyframes setupSlide { from{opacity:0; transform:translateX(16px)} to{opacity:1; transform:none} }
+    @media (max-width:760px) {
+      h1 { letter-spacing:-.045em; }
+      #setupModal .modal-card, #quizSettingsModal .modal-card { max-height:88vh; overflow:auto; }
+      #setupModal .multi-grid, #quizSettingsModal .multi-grid { max-height:290px; }
+      .setup-actions { display:grid; grid-template-columns:1fr 1fr; }
+      .setup-actions .btn { width:100%; }
+    }
+
+
+    /* ===== Final responsive fixes: modal footer, sidebar gap, and navbar language ===== */
+    .nav-actions {
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:12px;
+      min-width:0;
+    }
+    .nav-lang-btn {
+      min-height:48px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.95);
+      color:#4c2bb7;
+      font-weight:800;
+      padding:0 14px 0 10px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      box-shadow:var(--shadow2);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      white-space:nowrap;
+    }
+    .nav-lang-btn:hover {
+      transform:translateY(-2px);
+      border-color:rgba(124,77,255,.35);
+      box-shadow:0 16px 34px rgba(80,67,130,.12);
+    }
+    .flag-circle {
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#fff;
+      border:1px solid rgba(124,77,255,.16);
+      box-shadow:0 6px 16px rgba(80,67,130,.08);
+      font-size:18px;
+      line-height:1;
+      overflow:hidden;
+    }
+    .lang-code { font-size:13px; letter-spacing:.02em; }
+    #homeLangBtn { display:none!important; }
+
+    .layout > aside {
+      position:sticky;
+      top:104px;
+      display:flex;
+      flex-direction:column;
+      gap:24px;
+      align-self:start;
+    }
+    .layout > aside .sidebar {
+      position:static;
+      margin-bottom:0;
+    }
+    .layout > aside .stat-box {
+      margin-top:0;
+    }
+    .side-btn:hover,
+    .side-btn.active {
+      transform:none!important;
+    }
+
+    #setupModal .modal-card,
+    #quizSettingsModal .modal-card {
+      width:min(760px,100%);
+      max-height:calc(100vh - 40px);
+      height:auto;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+      padding:28px 28px 0;
+    }
+    #setupModal .close-x,
+    #quizSettingsModal .close-x {
+      position:absolute;
+      top:22px;
+      right:22px;
+      float:none;
+      z-index:12;
+    }
+    .modal-fixed-head {
+      flex:0 0 auto;
+      padding-right:54px;
+    }
+    #setupModal .modal-title,
+    #quizSettingsModal .modal-title {
+      margin-bottom:14px;
+    }
+    #setupModal .setup-progress,
+    #quizSettingsModal .setup-progress {
+      margin:6px 0 18px;
+    }
+    .modal-scroll-body {
+      flex:1 1 auto;
+      overflow-y:auto;
+      overflow-x:hidden;
+      max-height:calc(100vh - 330px);
+      padding:2px 8px 8px 0;
+      scrollbar-width:thin;
+      scrollbar-color:rgba(124,77,255,.45) rgba(240,234,255,.9);
+    }
+    .modal-scroll-body::-webkit-scrollbar { width:8px; }
+    .modal-scroll-body::-webkit-scrollbar-track { background:rgba(240,234,255,.9); border-radius:999px; }
+    .modal-scroll-body::-webkit-scrollbar-thumb { background:rgba(124,77,255,.45); border-radius:999px; }
+    .modal-footer {
+      flex:0 0 auto;
+      position:sticky;
+      bottom:0;
+      z-index:8;
+      margin:0 -28px;
+      padding:14px 28px 20px;
+      background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.98) 35%,#fff);
+      border-top:1px solid rgba(124,77,255,.08);
+      box-shadow:0 -14px 28px rgba(255,255,255,.9);
+    }
+    #setupModal .multi-grid,
+    #quizSettingsModal .multi-grid {
+      max-height:320px;
+      overflow-y:auto;
+      padding:3px 6px 8px 0;
+      grid-template-columns:repeat(auto-fit,minmax(132px,1fr));
+      gap:11px;
+      scrollbar-width:thin;
+      scrollbar-color:rgba(124,77,255,.45) rgba(240,234,255,.9);
+    }
+    #setupModal .option-grid,
+    #quizSettingsModal .option-grid {
+      gap:12px;
+    }
+    #quizSettingsModal .check-pill,
+    #setupModal .choice-chip {
+      min-height:48px;
+      padding:0 16px;
+      line-height:1.2;
+      text-align:center;
+    }
+    #quizSettingsModal .step-block p {
+      margin:4px 0 12px;
+    }
+    #quizFilterMessage {
+      margin-top:16px;
+      padding:18px;
+      border-radius:18px;
+    }
+
+    @media (max-width:1050px) {
+      .layout > aside {
+        position:static;
+        top:auto;
+      }
+    }
+    @media (max-width:760px) {
+      .nav-inner {
+        width:min(100% - 22px,1180px);
+        gap:10px;
+      }
+      .nav-actions { gap:8px; }
+      .nav-lang-btn {
+        min-height:44px;
+        padding:0 10px 0 8px;
+      }
+      .flag-circle {
+        width:28px;
+        height:28px;
+        font-size:17px;
+      }
+      .lang-code { font-size:12px; }
+      .user-btn {
+        min-height:44px;
+        padding:0 12px;
+        border-radius:16px;
+      }
+      #setupModal .modal-card,
+      #quizSettingsModal .modal-card {
+        width:100%;
+        max-height:92vh;
+        padding:20px 20px 0;
+      }
+      #setupModal .close-x,
+      #quizSettingsModal .close-x {
+        top:14px;
+        right:14px;
+        width:42px;
+        height:42px;
+      }
+      .modal-fixed-head {
+        padding-right:44px;
+      }
+      .modal-scroll-body {
+        max-height:calc(92vh - 285px);
+        padding-right:4px;
+      }
+      .modal-footer {
+        margin:0 -20px;
+        padding:12px 20px 16px;
+      }
+      #setupModal .multi-grid,
+      #quizSettingsModal .multi-grid {
+        max-height:275px;
+        grid-template-columns:repeat(auto-fit,minmax(118px,1fr));
+      }
+      .setup-actions {
+        display:grid;
+        grid-template-columns:1fr 1fr;
+      }
+      .setup-actions .btn {
+        width:100%;
+      }
+      .setup-actions .btn.hidden {
+        display:none!important;
+      }
+    }
+    @media (max-width:450px) {
+      .nav-lang-btn .lang-code { display:none; }
+      .nav-lang-btn { padding:0 8px; min-width:44px; justify-content:center; }
+      .user-btn span { max-width:96px; overflow:hidden; text-overflow:ellipsis; }
+      #setupModal .modal-title .kana-icon,
+      #quizSettingsModal .modal-title .kana-icon {
+        width:58px;
+        height:58px;
+        border-radius:18px;
+        font-size:30px;
+      }
+      #setupModal .modal-title h2,
+      #quizSettingsModal .modal-title h2 {
+        font-size:clamp(26px,8vw,34px);
+      }
+      .modal-scroll-body {
+        max-height:calc(92vh - 255px);
+      }
+    }
+
+
+    /* ===== REVISI FINAL AI: navbar, quiz page, status bicara, dan modal contoh ===== */
+    .top-nav { height:84px; }
+    .app { padding-top:96px; }
+    .nav-inner { width:min(1260px,calc(100% - 36px)); gap:28px; }
+    .brand { gap:14px; min-width:260px; }
+    .brand-icon {
+      width:54px; height:54px; border-radius:20px; position:relative; overflow:hidden;
+      background:linear-gradient(145deg,#7c4dff 0%,#8f6bff 48%,#5e35d6 100%);
+      box-shadow:0 18px 36px rgba(124,77,255,.24), inset 0 1px 0 rgba(255,255,255,.45);
+    }
+    .brand-icon i { font-size:19px; transform:translate(-4px,-3px); opacity:.96; }
+    .brand-kana {
+      position:absolute; right:8px; bottom:6px; display:grid!important; place-items:center;
+      width:23px; height:23px; border-radius:10px; background:rgba(255,255,255,.2);
+      color:#fff; font-size:15px; font-weight:800; line-height:1;
+    }
+    .brand-copy { display:flex; flex-direction:column; gap:3px; line-height:1.05; }
+    .brand-copy strong { color:#211354; font-weight:850; font-size:18px; letter-spacing:-.045em; }
+    .brand-copy small { color:#7a6fa0; font-weight:700; font-size:11px; letter-spacing:.01em; }
+    .nav-links { flex:1; justify-content:center; gap:38px; }
+    .nav-actions { gap:14px; }
+    .nav-lang-btn {
+      min-height:50px; padding:0 10px; gap:8px; border-radius:999px;
+      border:1px solid rgba(124,77,255,.2);
+      background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(250,247,255,.9));
+      color:#4622ac; box-shadow:0 12px 28px rgba(80,67,130,.1), inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .nav-lang-globe {
+      width:32px; height:32px; display:grid; place-items:center; border-radius:50%;
+      background:linear-gradient(135deg,#f4eeff,#eef7ff); color:#7c4dff; font-size:14px;
+      border:1px solid rgba(124,77,255,.12);
+    }
+    .flag-circle { width:32px; height:32px; font-size:17px; }
+    .lang-name { font-size:14px; font-weight:800; min-width:72px; text-align:left; }
+    .lang-code {
+      display:inline-grid; place-items:center; min-width:34px; min-height:28px; padding:0 9px;
+      border-radius:999px; color:#fff; background:linear-gradient(135deg,#7c4dff,#5e35d6);
+      font-size:12px; font-weight:850; box-shadow:0 9px 18px rgba(124,77,255,.2);
+    }
+    .user-btn { min-height:52px; border-radius:20px; }
+
+    .quiz-mode .page#quizPage { width:min(1500px,calc(100% - 48px)); }
+    #quizPage > .notice { display:none; }
+    .quiz-grid { grid-template-columns:minmax(560px,1.58fr) minmax(390px,.82fr); gap:34px; align-items:stretch; }
+    .quiz-card-wrap {
+      min-height:640px; padding:28px; border-radius:30px;
+      background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(255,255,255,.78));
+    }
+    .flashcard { min-height:584px; }
+    .flash-face { padding:28px; border-radius:26px; border-color:#e7e0ff; }
+    .flash-labels { align-items:flex-start; }
+    #quizLabel.tag {
+      max-width:calc(100% - 62px); padding:9px 13px; border-radius:999px;
+      background:linear-gradient(135deg,#f3edff,#edf7ff); border:1px solid rgba(124,77,255,.12);
+      color:#5e35d6; font-size:12px; line-height:1.35; white-space:normal;
+    }
+    #quizFavBtn,#quizFavBtnBack { width:44px; height:44px; border-radius:16px; flex:0 0 auto; }
+    .flash-main { padding:34px 18px; min-height:0; }
+    .question-text {
+      width:100%; max-width:820px; margin:auto; font-size:clamp(36px,4.8vw,76px);
+      line-height:1.08; letter-spacing:-.06em; text-wrap:balance; overflow-wrap:anywhere; word-break:normal;
+    }
+    .question-text.jp { font-weight:760; letter-spacing:-.018em; line-height:1.18; }
+    .question-text.is-long { font-size:clamp(28px,3.7vw,56px); line-height:1.14; letter-spacing:-.045em; }
+    .question-text.is-very-long { font-size:clamp(24px,3vw,42px); line-height:1.22; letter-spacing:-.025em; }
+    .answer-main { max-width:780px; margin:auto; text-wrap:balance; }
+    .flip-help { color:#758198; font-weight:750; font-size:14px; }
+
+    .control-panel {
+      padding:28px; gap:16px; border-radius:30px;
+      background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(255,255,255,.74));
+    }
+    .control-row { gap:14px; }
+    .metric { padding:18px 20px; border-radius:22px; border-color:#e8e2ff; box-shadow:0 12px 26px rgba(80,67,130,.06); }
+    .metric strong { font-size:clamp(25px,2vw,34px); letter-spacing:-.035em; }
+    #modeSelect { min-height:58px; border-radius:20px; font-weight:750; }
+    .status.ok { min-height:58px; padding:0 16px; border-radius:20px; justify-content:center; }
+    .control-btn {
+      min-height:58px; border-radius:20px; color:#24304a; background:rgba(255,255,255,.94);
+      border-color:#e8e2ff; box-shadow:0 10px 22px rgba(80,67,130,.055);
+    }
+    .control-btn:not(:disabled):hover { color:#5e35d6; border-color:rgba(124,77,255,.36); transform:translateY(-2px); }
+    .control-btn:disabled { opacity:.55; }
+    .listen-wave.speech-state {
+      justify-content:flex-start; gap:10px; min-height:58px; padding:12px 16px; border-radius:20px;
+      border:1px solid rgba(124,77,255,.12); box-shadow:0 10px 22px rgba(80,67,130,.055);
+      text-align:left; line-height:1.35; flex-wrap:wrap;
+    }
+    .speech-state span { flex:1 1 190px; }
+    .speech-state.idle { background:#f7f8fc; color:#63708a; border-color:#e8edf7; }
+    .speech-state.listening { background:#f4ecff; color:#6d45ec; }
+    .speech-state.success { background:#ddfbf1; color:#137d61; border-color:#baf2df; }
+    .speech-state.warning { background:#fff5d9; color:#9b6a00; border-color:#ffe5a4; }
+    .speech-state.error { background:#ffe8ef; color:#ce2f5a; border-color:#ffc2d1; }
+    .speech-state.unsupported { background:#eef2f8; color:#65738d; }
+    .speech-state:not(.listening) b { display:none; }
+    .speech-heard {
+      flex:0 0 100%; margin-left:31px; color:inherit; opacity:.85; font-size:12px; font-weight:750;
+      overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    }
+    .btn.good,.btn.bad { min-height:60px; border-radius:20px; position:relative; overflow:hidden; }
+    .btn.answer-selected { outline:4px solid rgba(255,255,255,.9); box-shadow:0 0 0 5px rgba(124,77,255,.24),0 18px 36px rgba(80,67,130,.18); transform:translateY(-2px) scale(1.01); }
+    .btn.good.answer-selected { box-shadow:0 0 0 5px rgba(35,199,154,.18),0 18px 36px rgba(35,199,154,.24); }
+    .btn.bad.answer-selected { box-shadow:0 0 0 5px rgba(255,79,121,.18),0 18px 36px rgba(255,79,121,.24); }
+    .btn.answer-lock { pointer-events:none; filter:saturate(.9); }
+    .mic-box { border-radius:22px; padding:18px 20px; border-color:#e8e2ff; box-shadow:0 10px 22px rgba(80,67,130,.05); }
+
+    .example-modal-card { width:min(560px,100%)!important; padding:28px!important; overflow:visible!important; }
+    .example-modal-head { display:flex; gap:15px; align-items:center; margin-bottom:18px; padding-right:44px; }
+    .example-modal-head h2 { margin:0 0 4px; font-size:clamp(26px,3vw,36px); }
+    .example-modal-head p { margin:0; font-size:13px; line-height:1.45; }
+    .example-icon { width:52px; height:52px; border-radius:18px; display:grid; place-items:center; color:#fff; font-weight:850; background:linear-gradient(135deg,#7c4dff,#64d4c4); box-shadow:0 14px 28px rgba(124,77,255,.22); flex:0 0 auto; }
+    .example-content { display:grid; gap:12px; }
+    .example-info-card { padding:16px; border-radius:20px; background:linear-gradient(135deg,#fff,#faf7ff); border:1px solid #e8e2ff; }
+    .example-info-card span { display:block; margin-bottom:7px; color:#7c4dff; font-size:12px; font-weight:850; text-transform:uppercase; letter-spacing:.04em; }
+    .example-info-card strong { display:block; color:#071b45; font-size:16px; line-height:1.55; font-weight:760; user-select:text; }
+    #exampleJa { font-size:21px; font-weight:750; }
+
+    @media (max-width:1050px){
+      .top-nav { height:76px; }
+      .app { padding-top:86px; }
+      .quiz-grid { grid-template-columns:1fr; }
+      .quiz-card-wrap { min-height:560px; }
+      .flashcard { min-height:500px; }
+      .control-panel { display:grid; grid-template-columns:1fr 1fr; }
+      .control-panel > .control-row:first-child, .control-panel > .mic-box, .control-panel > .speech-state { grid-column:1/-1; }
+    }
+    @media (max-width:760px){
+      .top-nav { height:68px; }
+      .app { padding-top:76px; }
+      .brand { min-width:0; gap:10px; }
+      .brand-icon { width:46px; height:46px; border-radius:17px; }
+      .brand-copy { display:flex!important; }
+      .brand-copy strong { font-size:14px; max-width:132px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+      .brand-copy small { display:none!important; }
+      .brand .brand-kana { display:grid!important; }
+      .nav-lang-btn { min-height:44px; padding:0 8px; gap:6px; }
+      .nav-lang-globe { width:28px; height:28px; }
+      .flag-circle { display:none; }
+      .lang-name { display:none!important; }
+      .lang-code { min-width:32px; min-height:26px; font-size:11px; }
+      .quiz-mode .page#quizPage { width:min(100% - 22px,1500px); }
+      .quiz-card-wrap { padding:16px; min-height:510px; }
+      .flashcard { min-height:470px; }
+      .flash-face { padding:18px; }
+      .question-text { font-size:clamp(30px,10vw,52px); }
+      .question-text.is-long { font-size:clamp(24px,8vw,40px); }
+      .question-text.is-very-long { font-size:clamp(21px,6.6vw,32px); }
+      .control-panel { display:flex; padding:18px; border-radius:24px; }
+      .control-row { grid-template-columns:1fr; }
+      .status.ok, #modeSelect, .control-btn, .btn.good, .btn.bad { min-height:54px; }
+      .example-modal-card { padding:22px!important; }
+    }
+    @media (max-width:450px){
+      .brand-copy strong { display:none!important; }
+      .user-btn span { max-width:82px; }
+      .control-panel .btn { width:100%; }
+      .speech-heard { margin-left:0; }
+    }
+
   </style>
 </head>
 <body>
@@ -291,19 +735,30 @@
 
   <header class="top-nav" id="topNav">
     <div class="nav-inner">
-      <div class="brand"><div class="brand-icon"><i class="fa-solid fa-book-open"></i></div><span>Minna Flashcard</span></div>
+      <div class="brand" aria-label="Minna no Nihongo Flashcard">
+        <div class="brand-icon"><i class="fa-solid fa-book-open"></i><span class="brand-kana jp">み</span></div>
+        <div class="brand-copy"><strong>Minna no Nihongo</strong><small>Flashcard • <span class="jp">みんなの日本語</span></small></div>
+      </div>
       <nav class="nav-links">
         <button class="nav-link active" data-page="home" data-i18n="navHome">Beranda</button>
         <button class="nav-link" data-page="material" data-i18n="navMaterial">Materi</button>
         <button class="nav-link" data-action="openQuizSettings" data-i18n="navQuiz">Kuis</button>
         <button class="nav-link admin-only hidden" data-page="admin" data-i18n="navResult">Hasil</button>
       </nav>
-      <div class="user-menu">
-        <button class="user-btn" id="userMenuBtn"><i class="fa-regular fa-user"></i><span id="userMenuText" data-i18n="login">Masuk</span></button>
-        <div class="dropdown" id="userDropdown">
-          <button class="drop-item" id="changeCategoryBtn"><i class="fa-solid fa-layer-group"></i><span data-i18n="changeCategory">Ganti kategori</span></button>
-          <button class="drop-item" id="langToggleDrop"><i class="fa-solid fa-language"></i><span data-i18n="changeLanguage">Ganti bahasa</span></button>
-          <button class="drop-item hidden" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i><span data-i18n="logout">Logout</span></button>
+      <div class="nav-actions">
+        <button class="nav-lang-btn" id="navLangBtn" aria-label="Ganti bahasa">
+          <span class="nav-lang-globe"><i class="fa-solid fa-globe"></i></span>
+          <span class="flag-circle">🇮🇩</span>
+          <span class="lang-name">Indonesia</span>
+          <span class="lang-code">ID</span>
+        </button>
+        <div class="user-menu">
+          <button class="user-btn" id="userMenuBtn"><i class="fa-regular fa-user"></i><span id="userMenuText" data-i18n="login">Masuk</span></button>
+          <div class="dropdown" id="userDropdown">
+            <button class="drop-item" id="changeCategoryBtn"><i class="fa-solid fa-layer-group"></i><span data-i18n="changeCategory">Ganti kategori</span></button>
+            <button class="drop-item" id="langToggleDrop"><i class="fa-solid fa-language"></i><span data-i18n="changeLanguage">Ganti bahasa</span></button>
+            <button class="drop-item hidden" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i><span data-i18n="logout">Logout</span></button>
+          </div>
         </div>
       </div>
     </div>
@@ -326,8 +781,6 @@
             <button class="btn secondary hidden" id="homeMaterialBtn"><i class="fa-solid fa-book"></i><span data-i18n="seeMaterial">Lihat Materi</span></button>
             <button class="btn soft" id="homeLoginBtn"><i class="fa-regular fa-user"></i><span data-i18n="fillUsername">Isi Username</span></button>
             <button class="choice-chip" id="homeLangBtn"><i class="fa-solid fa-language"></i><span>日本語 / Indonesia</span></button>
-            <button class="choice-chip" id="homeFictionBtn"><i class="fa-solid fa-filter"></i><span data-i18n="fictionFilter">Filter Fiksi</span></button>
-            <button class="choice-chip" id="homeChangeCategoryBtn"><i class="fa-solid fa-rotate"></i><span data-i18n="changeCategory">Ganti kategori</span></button>
           </div>
         </div>
         <div class="hero-visual">
@@ -450,12 +903,27 @@
   <div class="modal" id="setupModal">
     <div class="modal-card">
       <button class="close-x" id="closeSetup"><i class="fa-solid fa-xmark"></i></button>
-      <div class="modal-title"><div class="kana-icon">み</div><h2 data-i18n="setupTitle">Pilih Kategori Belajar</h2><p data-i18n="setupDesc">Tentukan bahasa tampilan, buku, kategori, dan bab sebelum mulai belajar.</p></div>
-      <div class="step-block"><h3 data-i18n="stepLanguage">1. Pilih bahasa tampilan</h3><div class="option-grid" id="setupLangGrid"></div></div>
-      <div class="step-block"><h3 data-i18n="stepBook">2. Pilih buku</h3><div class="option-grid" id="setupBookGrid"></div></div>
-      <div class="step-block"><h3 data-i18n="stepCategory">3. Pilih kategori besar</h3><div class="option-grid" id="setupMaterialGrid"></div></div>
-      <div class="step-block"><h3 data-i18n="stepChapter">4. Pilih kategori bab</h3><div class="multi-grid" id="setupChapterGrid"></div></div>
-      <div class="row-actions" style="justify-content:flex-end;margin-top:18px"><button class="btn secondary" id="cancelSetup" data-i18n="cancel">Batal</button><button class="btn" id="saveSetup"><span data-i18n="save">Simpan</span></button></div>
+      <div class="modal-fixed-head">
+        <div class="modal-title"><div class="kana-icon">み</div><h2 data-i18n="setupTitle">Pilih Kategori Belajar</h2><p data-i18n="setupDesc">Pilih satu per satu agar tampilan tetap ringkas dan nyaman dibaca.</p></div>
+        <div class="setup-progress" aria-hidden="true">
+          <div class="setup-progress-top"><span id="setupStepBadge">Langkah 1 dari 4</span><span id="setupStepHint">Bahasa</span></div>
+          <div class="setup-progress-line"><span id="setupProgressFill"></span></div>
+        </div>
+      </div>
+      <div class="modal-scroll-body">
+        <div class="step-block active" data-setup-step="1"><h3 data-i18n="stepLanguage">1. Pilih bahasa tampilan</h3><div class="option-grid" id="setupLangGrid"></div></div>
+        <div class="step-block" data-setup-step="2"><h3 data-i18n="stepBook">2. Pilih buku</h3><div class="option-grid" id="setupBookGrid"></div></div>
+        <div class="step-block" data-setup-step="3"><h3 data-i18n="stepCategory">3. Pilih kategori besar</h3><div class="option-grid" id="setupMaterialGrid"></div></div>
+        <div class="step-block" data-setup-step="4"><h3 data-i18n="stepChapter">4. Pilih kategori bab</h3><div class="multi-grid" id="setupChapterGrid"></div></div>
+      </div>
+      <div class="modal-footer">
+        <div class="row-actions setup-actions" style="justify-content:flex-end">
+          <button class="btn secondary" id="cancelSetup" data-i18n="cancel">Batal</button>
+          <button class="btn secondary hidden" id="prevSetupStep">Kembali</button>
+          <button class="btn" id="nextSetupStep">Lanjut</button>
+          <button class="btn hidden" id="saveSetup"><span data-i18n="save">Simpan</span></button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -475,20 +943,79 @@
   <div class="modal" id="quizSettingsModal">
     <div class="modal-card">
       <button class="close-x" id="closeQuizSettings"><i class="fa-solid fa-xmark"></i></button>
-      <div class="modal-title"><div class="kana-icon">あ</div><h2 data-i18n="quizSettingTitle">Atur Kuis Flashcard</h2><p data-i18n="quizSettingDesc">Tentukan arah bahasa dan urutan kartu, lalu pilih lingkup kuis.</p></div>
-      <div class="step-block"><h3 data-i18n="chooseDirection">1. Pilih arah bahasa soal</h3><div class="option-grid"><button class="option-card active" data-qdir="idToJp">Indonesia → Jepang<small>Kartu depan menampilkan bahasa Indonesia.</small></button><button class="option-card" data-qdir="jpToId">Jepang → Indonesia<small>Kartu depan menampilkan bahasa Jepang.</small></button></div></div>
-      <div class="step-block"><h3 data-i18n="shuffleMode">2. Filter kuis Tambahan</h3><div class="option-grid"><button class="option-card active" data-shuffle="true">Acak<small>Urutan kartu diacak setiap mulai kuis.</small></button><button class="option-card" data-shuffle="false">Tidak Acak<small>Urutan kartu mengikuti daftar materi.</small></button></div></div>
-      <div class="step-block"><h3 data-i18n="chooseScope">3. Pilih lingkup kuis</h3>
-        <p><strong data-i18n="chapterCategory">Kategori Bab</strong></p><div class="multi-grid" id="quizChapterFilters"></div>
-        <p><strong data-i18n="sectionCategory">Kategori Section</strong></p><div class="multi-grid" id="quizSectionFilters"></div>
-        <p><strong data-i18n="typeCategory">Kategori Jenis Kata</strong></p><div class="multi-grid" id="quizTypeFilters"></div>
+      <div class="modal-fixed-head">
+        <div class="modal-title"><div class="kana-icon">あ</div><h2 data-i18n="quizSettingTitle">Atur Kuis Flashcard</h2><p data-i18n="quizSettingDesc">Tentukan arah bahasa, urutan kartu, dan lingkup kuis secara bertahap.</p></div>
+        <div class="setup-progress" aria-hidden="true">
+          <div class="setup-progress-top"><span id="quizStepBadge">Langkah 1 dari 6</span><span id="quizStepHint">Arah Bahasa</span></div>
+          <div class="setup-progress-line"><span id="quizProgressFill"></span></div>
+        </div>
       </div>
-      <div id="quizFilterMessage" class="empty hidden">Tidak ada kosakata untuk filter ini.</div>
-      <div class="row-actions" style="justify-content:flex-end;margin-top:18px"><button class="btn secondary" id="cancelQuizSettings" data-i18n="cancel">Batal</button><button class="btn" id="startQuizFromSettings" data-i18n="saveStart">Simpan / Mulai Kuis</button></div>
+      <div class="modal-scroll-body">
+        <div class="step-block active" data-quiz-step="1">
+          <h3 data-i18n="chooseDirection">1. Pilih arah bahasa soal</h3>
+          <div class="option-grid">
+            <button class="option-card active" data-qdir="idToJp">Indonesia → Jepang<small>Kartu depan menampilkan bahasa Indonesia.</small></button>
+            <button class="option-card" data-qdir="jpToId">Jepang → Indonesia<small>Kartu depan menampilkan bahasa Jepang.</small></button>
+          </div>
+        </div>
+        <div class="step-block" data-quiz-step="2">
+          <h3 data-i18n="shuffleStepTitle">2A. Pilih urutan kartu</h3>
+          <span class="quiz-setting-subtitle" data-i18n="cardOrder">Urutan kartu</span>
+          <div class="option-grid">
+            <button class="option-card active" data-shuffle="true">Acak<small>Urutan kartu diacak setiap mulai kuis.</small></button>
+            <button class="option-card" data-shuffle="false">Tidak Acak<small>Urutan kartu mengikuti daftar materi.</small></button>
+          </div>
+        </div>
+        <div class="step-block" data-quiz-step="3">
+          <h3 data-i18n="fictionStepTitle">2B. Pilih filter fiksi</h3>
+          <div class="option-grid">
+            <button class="option-card active" data-qfiction="all">Semua Kosakata<small>Menampilkan kosakata biasa dan fiksi sesuai lingkup bab.</small></button>
+            <button class="option-card" data-qfiction="fiction">Hanya Fiksi<small>Kuis hanya memakai kosakata yang diberi label fiksi.</small></button>
+          </div>
+          <p class="quiz-setting-note" id="quizFictionNote">Filter fiksi sekarang dipilih di pop-up Mulai Kuis, bukan di halaman beranda.</p>
+        </div>
+        <div class="step-block" data-quiz-step="4">
+          <h3 data-i18n="chapterScopeStep">3A. Pilih kategori bab</h3>
+          <p><strong data-i18n="chapterCategory">Kategori Bab</strong></p>
+          <div class="multi-grid" id="quizChapterFilters"></div>
+        </div>
+        <div class="step-block" data-quiz-step="5">
+          <h3 data-i18n="sectionScopeStep">3B. Pilih kategori section</h3>
+          <p><strong data-i18n="sectionCategory">Kategori Section</strong></p>
+          <div class="multi-grid" id="quizSectionFilters"></div>
+        </div>
+        <div class="step-block" data-quiz-step="6">
+          <h3 data-i18n="typeScopeStep">3C. Pilih kategori jenis kata</h3>
+          <p><strong data-i18n="typeCategory">Kategori Jenis Kata</strong></p>
+          <div class="multi-grid" id="quizTypeFilters"></div>
+          <div id="quizFilterMessage" class="empty hidden">Tidak ada kosakata untuk filter ini.</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="row-actions setup-actions" style="justify-content:flex-end">
+          <button class="btn secondary" id="cancelQuizSettings" data-i18n="cancel">Batal</button>
+          <button class="btn secondary hidden" id="prevQuizSetting">Kembali</button>
+          <button class="btn" id="nextQuizSetting">Lanjut</button>
+          <button class="btn hidden" id="startQuizFromSettings" data-i18n="saveStart">Simpan / Mulai Kuis</button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="modal" id="exampleModal"><div class="modal-card small"><button class="close-x" id="closeExample"><i class="fa-solid fa-xmark"></i></button><h2 data-i18n="exampleSentence">Contoh Kalimat</h2><p class="jp" id="exampleText"></p></div></div>
+  <div class="modal" id="exampleModal">
+    <div class="modal-card small example-modal-card">
+      <button class="close-x" id="closeExample"><i class="fa-solid fa-xmark"></i></button>
+      <div class="example-modal-head">
+        <span class="example-icon jp">例</span>
+        <div><h2 data-i18n="exampleSentence">Contoh Kalimat</h2><p>Contoh penggunaan kosakata dengan cara baca dan arti.</p></div>
+      </div>
+      <div class="example-content" id="exampleContent">
+        <div class="example-info-card"><span>Jepang</span><strong class="jp" id="exampleJa">-</strong></div>
+        <div class="example-info-card"><span>Cara baca</span><strong id="exampleReading">-</strong></div>
+        <div class="example-info-card"><span>Arti Indonesia</span><strong id="exampleId">-</strong></div>
+      </div>
+    </div>
+  </div>
   <div class="modal" id="imageModal"><div class="modal-card small"><button class="close-x" id="closeImage"><i class="fa-solid fa-xmark"></i></button><img id="zoomImage" style="width:100%;max-height:70vh;object-fit:contain;border-radius:22px;background:#f7f4ff"></div></div>
   <div class="modal" id="confirmDeleteModal"><div class="modal-card small"><h2 data-i18n="confirmDeleteTitle">Hapus Riwayat?</h2><p data-i18n="confirmDeleteDesc">Apakah Anda yakin ingin menghapus semua riwayat peserta?</p><div class="row-actions" style="justify-content:flex-end"><button class="btn secondary" id="cancelDelete" data-i18n="cancel">Batal</button><button class="btn danger" id="confirmDelete" data-i18n="delete">Hapus</button></div></div></div>
   <div class="modal" id="detailModal"><div class="modal-card"><button class="close-x" id="closeDetail"><i class="fa-solid fa-xmark"></i></button><div id="detailContent"></div></div></div>
@@ -1376,8 +1903,8 @@
         categoryEmptyTitle:"Kategori belum tersedia", categoryEmptyDesc:"Bagian ini sudah disiapkan, tetapi kosakata belum ditambahkan.", quizFiltered:"Kuis mengikuti kategori pilihanmu", quizFilteredDesc:"Kartu yang tampil sudah disaring berdasarkan Bab, Jenis Materi, dan Kategori Kata.",
         answer:"Jawaban", clickFlipBack:"Klik kartu untuk kembali", time:"Waktu", pause:"Jeda", resume:"Lanjut", studyMode:"Sedang Belajar", listen:"Dengar", exampleSentence:"Contoh Kalimat", listening:"Mendengarkan...", correct:"Benar", wrong:"Salah", speechFeature:"Fungsi Bicara",
         breadcrumbResult:"Beranda > Hasil Latihan", resultTitle:"Ringkasan Belajar", breadcrumbAdmin:"Admin > Laporan Peserta", adminTitle:"Laporan Peserta", adminDesc:"Ringkasan hasil belajar seluruh peserta.", deleteAll:"Hapus Riwayat Semua Peserta", downloadAllPdf:"Download PDF Semua Peserta", resetFilter:"Reset Filter",
-        setupTitle:"Pilih Kategori Belajar", setupDesc:"Tentukan bahasa tampilan, buku, kategori, dan bab sebelum mulai belajar.", stepLanguage:"1. Pilih bahasa tampilan", stepBook:"2. Pilih buku", stepCategory:"3. Pilih kategori besar", stepChapter:"4. Pilih kategori bab", cancel:"Batal", save:"Simpan",
-        loginTitle:"Masuk Peserta", loginDesc:"Isi username untuk menyimpan hasil latihanmu.", chooseGroup:"Pilih Group/Wilayah", quizSettingTitle:"Atur Kuis Flashcard", quizSettingDesc:"Tentukan arah bahasa dan urutan kartu, lalu pilih lingkup kuis yang ingin dikerjakan.", chooseDirection:"1. Pilih arah bahasa soal", shuffleMode:"2. Filter kuis Tambahan", chooseScope:"3. Pilih lingkup kuis", chapterCategory:"Kategori Bab", sectionCategory:"Kategori Section", typeCategory:"Kategori Jenis Kata", saveStart:"Simpan / Mulai Kuis",
+        setupTitle:"Pilih Kategori Belajar", setupDesc:"Pilih bahasa, buku, kategori, dan bab secara bertahap agar tampilan lebih ringkas.", stepLanguage:"1. Pilih bahasa tampilan", stepBook:"2. Pilih buku", stepCategory:"3. Pilih kategori besar", stepChapter:"4. Pilih kategori bab", cancel:"Batal", save:"Simpan",
+        loginTitle:"Masuk Peserta", loginDesc:"Isi username untuk menyimpan hasil latihanmu.", chooseGroup:"Pilih Group/Wilayah", quizSettingTitle:"Atur Kuis Flashcard", quizSettingDesc:"Tentukan arah bahasa dan urutan kartu, lalu pilih lingkup kuis yang ingin dikerjakan.", chooseDirection:"1. Pilih arah bahasa soal", shuffleMode:"2. Pengaturan tambahan", shuffleStepTitle:"2A. Pilih urutan kartu", cardOrder:"Urutan kartu", fictionQuizTitle:"Filter Fiksi", fictionStepTitle:"2B. Pilih filter fiksi", chooseScope:"3. Pilih lingkup kuis", chapterScopeStep:"3A. Pilih kategori bab", sectionScopeStep:"3B. Pilih kategori section", typeScopeStep:"3C. Pilih kategori jenis kata", chapterCategory:"Kategori Bab", sectionCategory:"Kategori Section", typeCategory:"Kategori Jenis Kata", saveStart:"Simpan / Mulai Kuis",
         confirmDeleteTitle:"Hapus Riwayat?", confirmDeleteDesc:"Apakah Anda yakin ingin menghapus semua riwayat peserta?", delete:"Hapus",
         searchPlaceholder:"Cari kosakata, romaji, atau arti...", noVocabFilter:"Tidak ada kosakata untuk filter ini.", focusWarn:"Tetap fokus mengerjakan kuis.", focusStop:"Kuis dihentikan karena kamu pindah tab dua kali.", browserSpeechNo:"Fitur bicara tidak didukung di browser ini.", accessDisabled:"Akses ini dinonaktifkan untuk menjaga pengalaman belajar.", localOnly:"Firebase belum tersedia. Data disimpan sementara di perangkat ini.", saved:"Hasil tersimpan.", needLogin:"Silakan isi username dulu.", noExample:"Contoh kalimat belum tersedia.", scoreGood:"Bagus! Kamu sudah memahami banyak kosakata.", scoreBad:"Ayo belajar lebih giat lagi. Ulangi kartu yang masih salah.", reviewVocab:"Tinjau Kosakata", savePdf:"Simpan PDF", retry:"Ulangi Latihan", emptyResult:"Belum ada hasil latihan.", allStatus:"Semua Status", fastest:"Tercepat", slowest:"Terlama"
       },
@@ -1389,8 +1916,8 @@
         categoryEmptyTitle:"カテゴリーは未登録です", categoryEmptyDesc:"この部分は準備済みですが、語彙データはまだ追加されていません。", quizFiltered:"選択したカテゴリーで出題", quizFilteredDesc:"カードは章・セクション・語彙タイプで絞り込まれています。",
         answer:"答え", clickFlipBack:"カードをクリックして戻る", time:"時間", pause:"一時停止", resume:"再開", studyMode:"学習中", listen:"聞く", exampleSentence:"例文", listening:"聞き取り中...", correct:"正解", wrong:"不正解", speechFeature:"発話機能",
         breadcrumbResult:"ホーム > 学習結果", resultTitle:"学習まとめ", breadcrumbAdmin:"管理者 > 参加者レポート", adminTitle:"参加者レポート", adminDesc:"全参加者の学習結果まとめです。", deleteAll:"全履歴を削除", downloadAllPdf:"全参加者PDF", resetFilter:"リセット",
-        setupTitle:"学習カテゴリーを選択", setupDesc:"表示言語、教科書、カテゴリー、章を選んでください。", stepLanguage:"1. 表示言語を選択", stepBook:"2. 教科書を選択", stepCategory:"3. 大カテゴリーを選択", stepChapter:"4. 章カテゴリーを選択", cancel:"キャンセル", save:"保存",
-        loginTitle:"ログイン", loginDesc:"学習結果を保存するため、ユーザー名を入力してください。", chooseGroup:"グループ/地域を選択", quizSettingTitle:"フラッシュカード設定", quizSettingDesc:"問題の方向、カード順、クイズ範囲を選択してください。", chooseDirection:"1. 問題の言語方向", shuffleMode:"2. カード順", chooseScope:"3. クイズ範囲", chapterCategory:"章カテゴリー", sectionCategory:"セクション", typeCategory:"語彙タイプ", saveStart:"保存して開始",
+        setupTitle:"学習カテゴリーを選択", setupDesc:"言語、教科書、カテゴリー、章を一つずつ選択します。", stepLanguage:"1. 表示言語を選択", stepBook:"2. 教科書を選択", stepCategory:"3. 大カテゴリーを選択", stepChapter:"4. 章カテゴリーを選択", cancel:"キャンセル", save:"保存",
+        loginTitle:"ログイン", loginDesc:"学習結果を保存するため、ユーザー名を入力してください。", chooseGroup:"グループ/地域を選択", quizSettingTitle:"フラッシュカード設定", quizSettingDesc:"問題の方向、カード順、クイズ範囲を選択してください。", chooseDirection:"1. 問題の言語方向", shuffleMode:"2. 追加設定", shuffleStepTitle:"2A. カード順を選択", cardOrder:"カード順", fictionQuizTitle:"架空語フィルター", fictionStepTitle:"2B. 架空語フィルターを選択", chooseScope:"3. クイズ範囲", chapterScopeStep:"3A. 章カテゴリーを選択", sectionScopeStep:"3B. セクションを選択", typeScopeStep:"3C. 語彙タイプを選択", chapterCategory:"章カテゴリー", sectionCategory:"セクション", typeCategory:"語彙タイプ", saveStart:"保存して開始",
         confirmDeleteTitle:"履歴を削除しますか？", confirmDeleteDesc:"全参加者の履歴を削除してもよろしいですか？", delete:"削除",
         searchPlaceholder:"語彙、ローマ字、意味を検索...", noVocabFilter:"この条件に合う語彙はありません。", focusWarn:"クイズに集中してください。", focusStop:"タブ移動が2回あったため、クイズを終了しました。", browserSpeechNo:"このブラウザは発話機能に対応していません。", accessDisabled:"学習体験を守るため、この操作は無効です。", localOnly:"Firebase が利用できません。データは一時的に端末へ保存されます。", saved:"結果を保存しました。", needLogin:"先にユーザー名を入力してください。", noExample:"例文はまだありません。", scoreGood:"よくできました。多くの語彙を理解しています。", scoreBad:"もう少し練習しましょう。間違えたカードを復習してください。", reviewVocab:"語彙確認", savePdf:"PDF保存", retry:"もう一度練習", emptyResult:"まだ結果がありません。", allStatus:"すべて", fastest:"最速", slowest:"最遅"
       }
@@ -1401,9 +1928,14 @@
       session: JSON.parse(localStorage.getItem(storeKey+"_session") || "null"),
       favorites: JSON.parse(localStorage.getItem(storeKey+"_fav") || "[]"),
       fictionOnly: localStorage.getItem(storeKey+"_fiction") === "true",
+      quizFictionOnly: localStorage.getItem(storeKey+"_quizFiction") === "true",
       page:"home"
     };
     let tempSetup = {...state.setup};
+    let setupStep = 1;
+    const setupMaxStep = 4;
+    let quizSettingStep = 1;
+    const quizSettingMaxStep = 6;
     let currentResult = JSON.parse(localStorage.getItem(storeKey+"_lastResult") || "null");
     let allResults = [];
     let quiz = null;
@@ -1435,6 +1967,7 @@
       localStorage.setItem(storeKey+"_session",JSON.stringify(state.session));
       localStorage.setItem(storeKey+"_fav",JSON.stringify(state.favorites));
       localStorage.setItem(storeKey+"_fiction",String(state.fictionOnly));
+      localStorage.setItem(storeKey+"_quizFiction",String(state.quizFictionOnly));
     }
     function localResults(){ return JSON.parse(localStorage.getItem(storeKey+"_results") || "[]"); }
     function setLocalResults(arr){ localStorage.setItem(storeKey+"_results",JSON.stringify(arr)); }
@@ -1486,25 +2019,43 @@
     }
     function anyFictionInBase(){ return baseVocab().some(v=>v.isFiction); }
 
+    function updateNavLanguageButton(){
+      const btn = $("#navLangBtn");
+      if(!btn) return;
+      const flag = btn.querySelector(".flag-circle");
+      const code = btn.querySelector(".lang-code");
+      const name = btn.querySelector(".lang-name");
+      const globe = btn.querySelector(".nav-lang-globe i");
+      const isId = state.lang === "id";
+      if(flag) flag.textContent = isId ? "🇮🇩" : "🇯🇵";
+      if(code) code.textContent = isId ? "ID" : "JP";
+      if(name) name.textContent = isId ? "Indonesia" : "日本語";
+      if(globe) globe.className = isId ? "fa-solid fa-globe" : "fa-solid fa-language";
+      btn.title = isId ? "Bahasa Indonesia aktif — klik untuk 日本語" : "日本語が有効 — klik untuk Indonesia";
+      btn.setAttribute("aria-label", isId ? "Ganti bahasa ke Jepang" : "Ganti bahasa ke Indonesia");
+    }
+
     function applyTranslations(){
       document.documentElement.lang = state.lang === "ja" ? "ja" : "id";
       $$("[data-i18n]").forEach(el=>{ el.textContent = t(el.dataset.i18n); });
       $("#materialSearch").placeholder = t("searchPlaceholder");
       $("#adminSearch").placeholder = state.lang==="ja" ? "参加者名を検索..." : "Cari nama peserta...";
       $("#homeLangBtn span").textContent = state.lang==="id" ? "日本語" : "Indonesia";
+      updateNavLanguageButton();
       renderSetup();
     }
 
     function renderAll(){
       applyTranslations();
+      const baseCount = baseVocab().length;
       const count = activeVocab().length;
-      $("#homeVocabCount").textContent = count;
+      $("#homeVocabCount").textContent = baseCount;
       $("#homeChapterCount").textContent = chapterNumbers(state.setup.chapter).length;
       $("#activeChoiceText").textContent = setupLabel();
       $("#matCount").textContent = count;
       $("#activeChoiceText").classList.toggle("jp",state.lang==="ja");
       const ficDisabled = !anyFictionInBase();
-      [$("#homeFictionBtn"),$("#materialFictionBtn")].forEach(btn=>{
+      [$("#materialFictionBtn")].filter(Boolean).forEach(btn=>{
         btn.disabled = ficDisabled;
         btn.classList.toggle("active",state.fictionOnly && !ficDisabled);
       });
@@ -1563,6 +2114,73 @@
       $("#materialEmpty").classList.toggle("hidden",arr.length>0);
     }
 
+    function setupStepTitle(step){
+      const titles = state.lang === "ja" ? ["言語", "教科書", "カテゴリー", "章"] : ["Bahasa", "Buku", "Kategori", "Bab"];
+      return titles[step-1] || titles[0];
+    }
+    function updateSetupSteps(){
+      $$("#setupModal [data-setup-step]").forEach(block=>{
+        block.classList.toggle("active", Number(block.dataset.setupStep) === setupStep);
+      });
+      const badge = $("#setupStepBadge");
+      const hint = $("#setupStepHint");
+      const fill = $("#setupProgressFill");
+      if(badge) badge.textContent = state.lang === "ja" ? `ステップ ${setupStep} / ${setupMaxStep}` : `Langkah ${setupStep} dari ${setupMaxStep}`;
+      if(hint) hint.textContent = setupStepTitle(setupStep);
+      if(fill) fill.style.width = `${(setupStep/setupMaxStep)*100}%`;
+      const prevBtn = $("#prevSetupStep"), nextBtn = $("#nextSetupStep");
+      if(prevBtn) prevBtn.textContent = state.lang === "ja" ? "戻る" : "Kembali";
+      if(nextBtn) nextBtn.textContent = state.lang === "ja" ? "次へ" : "Lanjut";
+      prevBtn?.classList.toggle("hidden", setupStep === 1);
+      nextBtn?.classList.toggle("hidden", setupStep === setupMaxStep);
+      $("#saveSetup")?.classList.toggle("hidden", setupStep !== setupMaxStep);
+    }
+    function setSetupStep(step){
+      setupStep = Math.max(1, Math.min(setupMaxStep, step));
+      updateSetupSteps();
+    }
+
+    function quizSettingTitle(step){
+      const titles = state.lang === "ja"
+        ? ["言語方向", "カード順", "架空語", "章", "セクション", "語彙タイプ"]
+        : ["Arah Bahasa", "Urutan Kartu", "Filter Fiksi", "Bab", "Section", "Jenis Kata"];
+      return titles[step-1] || titles[0];
+    }
+    function updateQuizSettingSteps(){
+      $$("#quizSettingsModal [data-quiz-step]").forEach(block=>{
+        block.classList.toggle("active", Number(block.dataset.quizStep) === quizSettingStep);
+      });
+      const badge = $("#quizStepBadge"), hint = $("#quizStepHint"), fill = $("#quizProgressFill");
+      if(badge) badge.textContent = state.lang === "ja" ? `ステップ ${quizSettingStep} / ${quizSettingMaxStep}` : `Langkah ${quizSettingStep} dari ${quizSettingMaxStep}`;
+      if(hint) hint.textContent = quizSettingTitle(quizSettingStep);
+      if(fill) fill.style.width = `${(quizSettingStep/quizSettingMaxStep)*100}%`;
+      const prevBtn = $("#prevQuizSetting"), nextBtn = $("#nextQuizSetting");
+      if(prevBtn) prevBtn.textContent = state.lang === "ja" ? "戻る" : "Kembali";
+      if(nextBtn) nextBtn.textContent = state.lang === "ja" ? "次へ" : "Lanjut";
+      prevBtn?.classList.toggle("hidden", quizSettingStep === 1);
+      nextBtn?.classList.toggle("hidden", quizSettingStep === quizSettingMaxStep);
+      $("#startQuizFromSettings")?.classList.toggle("hidden", quizSettingStep !== quizSettingMaxStep);
+      updateQuizFilterCount();
+    }
+    function setQuizSettingStep(step){
+      quizSettingStep = Math.max(1, Math.min(quizSettingMaxStep, step));
+      updateQuizSettingSteps();
+    }
+    function syncQuizFictionOptions(){
+      const allBtn = $('[data-qfiction="all"]');
+      const fictionBtn = $('[data-qfiction="fiction"]');
+      const note = $("#quizFictionNote");
+      if(!allBtn || !fictionBtn) return;
+      const available = anyFictionInBase();
+      if(!available) state.quizFictionOnly = false;
+      fictionBtn.disabled = !available;
+      allBtn.classList.toggle("active", !state.quizFictionOnly || !available);
+      fictionBtn.classList.toggle("active", state.quizFictionOnly && available);
+      if(note) note.textContent = available
+        ? (state.lang === "ja" ? "架空語フィルターはホームではなく、クイズ開始時のポップアップで選択します。" : "Filter fiksi sekarang dipilih di pop-up Mulai Kuis, bukan di halaman beranda.")
+        : (state.lang === "ja" ? "この範囲には架空語がありません。" : "Tidak ada kosakata fiksi pada lingkup pilihan ini.");
+    }
+
     function renderSetup(){
       const bookOptions=[
         {value:"Minna no Nihongo I (2nd Edition)",label: state.lang==="ja" ? "みんなの日本語 I（第2版）" : "Minna no Nihongo I (2nd Edition)"},
@@ -1575,9 +2193,10 @@
       const chapters = chaptersForSetup(tempSetup.book,tempSetup.materialCategory);
       if(!chapters.includes(tempSetup.chapter)) tempSetup.chapter=chapters[0];
       $("#setupChapterGrid").innerHTML = chapters.map(ch=>`<button class="choice-chip ${tempSetup.chapter===ch?"active":""}" data-setup-chapter="${esc(ch)}">${esc(ch)}</button>`).join("");
+      updateSetupSteps();
     }
 
-    function openSetup(){ tempSetup={...state.setup}; renderSetup(); $("#setupModal").classList.add("show"); }
+    function openSetup(){ tempSetup={...state.setup}; setupStep=1; renderSetup(); $("#setupModal").classList.add("show"); updateSetupSteps(); }
     function closeModal(id){ $(id).classList.remove("show"); }
 
     function openLogin(){
@@ -1630,11 +2249,15 @@
       $("#quizSectionFilters").innerHTML = sections.map(s=>`<label class="check-pill"><input type="checkbox" value="${s}" ${s==="Semua"?"checked":""}>${s}</label>`).join("");
       const types=["Semua","Kata Benda","Kata Sifat-i","Kata Sifat-na","Kata Kerja","Kosakata Tambahan"];
       $("#quizTypeFilters").innerHTML = types.map(s=>`<label class="check-pill"><input type="checkbox" value="${s}" ${s==="Semua"?"checked":""}>${s}</label>`).join("");
+      syncQuizFictionOptions();
       updateQuizFilterCount();
+      updateQuizSettingSteps();
     }
     function selectedChecks(sel){ return $$(`${sel} input:checked`).map(i=>i.value); }
     function filterQuizData(){
-      let arr=activeVocab();
+      let arr=baseVocab().map(v=>({...v, favorite: state.favorites.includes(v.id)}));
+      const fictionChoice = $('[data-qfiction].active')?.dataset.qfiction || (state.quizFictionOnly ? "fiction" : "all");
+      if(fictionChoice === "fiction") arr = arr.filter(v=>v.isFiction);
       const chapters=selectedChecks("#quizChapterFilters").flatMap(ch=>chapterNumbers(ch));
       const sections=selectedChecks("#quizSectionFilters");
       const types=selectedChecks("#quizTypeFilters");
@@ -1644,23 +2267,30 @@
       return arr;
     }
     function updateQuizFilterCount(){
+      const msg = $("#quizFilterMessage");
+      const startBtn = $("#startQuizFromSettings");
+      if(!msg || !startBtn) return;
       const arr=filterQuizData();
-      $("#quizFilterMessage").classList.toggle("hidden",arr.length>0);
-      $("#startQuizFromSettings").disabled = arr.length===0;
+      msg.classList.toggle("hidden",arr.length>0);
+      startBtn.disabled = arr.length===0;
     }
     function openQuizSettings(){
       if(!state.session?.username) return openLogin();
+      quizSettingStep = 1;
       buildQuizFilters();
       $("#quizSettingsModal").classList.add("show");
+      updateQuizSettingSteps();
     }
     function startQuiz(){
+      state.quizFictionOnly = $('[data-qfiction="fiction"]')?.classList.contains("active") || false;
+      saveState();
       let cards = filterQuizData();
       if(!cards.length) return toast(t("noVocabFilter"));
       if($('[data-shuffle="true"]').classList.contains("active")) cards = shuffle(cards);
       quiz = {
         cards, index:0, direction: $('[data-qdir].active').dataset.qdir, shuffle: $('[data-shuffle="true"]').classList.contains("active"),
-        details:[], correct:0, wrong:0, startedAt:Date.now(), cardStart:Date.now(), remaining:30, timer:null, paused:false, flipped:false, focusLost:0, micOn:true, answered:false,
-        chapterFilters:selectedChecks("#quizChapterFilters"), sectionFilters:selectedChecks("#quizSectionFilters"), typeFilters:selectedChecks("#quizTypeFilters")
+        details:[], correct:0, wrong:0, startedAt:Date.now(), cardStart:Date.now(), remaining:30, timer:null, paused:false, flipped:false, focusLost:0, micOn:true, answered:false, speechWrongCount:0, lastHeard:"", _speechHold:false,
+        chapterFilters:selectedChecks("#quizChapterFilters"), sectionFilters:selectedChecks("#quizSectionFilters"), typeFilters:selectedChecks("#quizTypeFilters"), fictionFilter:state.quizFictionOnly?"Hanya Fiksi":"Semua Kosakata"
       };
       closeModal("#quizSettingsModal");
       showPage("quiz");
@@ -1669,29 +2299,86 @@
     }
     function shuffle(a){ const x=[...a]; for(let i=x.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [x[i],x[j]]=[x[j],x[i]]; } return x; }
 
+    function textSizeClass(text=""){
+      const len = String(text).trim().length;
+      if(len > 28) return " is-very-long";
+      if(len > 14) return " is-long";
+      return "";
+    }
+    function resetAnswerButtons(){
+      [$("#correctBtn"),$("#wrongBtn")].forEach(btn=>{
+        if(!btn) return;
+        btn.disabled = false;
+        btn.classList.remove("answer-selected","answer-lock");
+      });
+    }
+    function selectAnswerButton(isCorrect){
+      const good=$("#correctBtn"), bad=$("#wrongBtn");
+      [good,bad].forEach(btn=>btn?.classList.add("answer-lock"));
+      good?.classList.toggle("answer-selected", !!isCorrect);
+      bad?.classList.toggle("answer-selected", !isCorrect);
+    }
+    function setSpeechStatus(type="idle",message="",heard=""){
+      const el = $("#speechStatus");
+      if(!el) return;
+      const iconMap = {
+        idle:"fa-circle-info", listening:"fa-wave-square", success:"fa-circle-check",
+        warning:"fa-triangle-exclamation", error:"fa-circle-xmark", unsupported:"fa-microphone-slash"
+      };
+      el.className = `listen-wave speech-state ${type}`;
+      el.innerHTML = `<i class="fa-solid ${iconMap[type]||iconMap.idle}"></i><span>${esc(message)}</span>${type==="listening"?"<b></b><b></b><b></b><b></b>":""}${heard?`<small class="speech-heard">Terdengar: ${esc(heard)}</small>`:""}`;
+    }
+    function currentSpeechTarget(v){
+      return quiz.direction === "idToJp" ? jpText(v) : cleanIndo(v);
+    }
+    function exampleReadingFallback(v){
+      return v.exampleReading || v.exampleRomaji || v.exampleRomajiText || v.romaji || v.kana || "Cara baca belum tersedia";
+    }
+    function exampleMeaningFallback(v){
+      return v.exampleId || v.exampleIndonesia || v.exampleMeaningId || "Arti contoh belum tersedia";
+    }
+    function openExampleModal(){
+      if(!quiz) return;
+      const v = quiz.cards[quiz.index];
+      $("#exampleJa").textContent = v.exampleJa || t("noExample");
+      $("#exampleReading").textContent = exampleReadingFallback(v);
+      $("#exampleId").textContent = exampleMeaningFallback(v);
+      $("#exampleModal").classList.add("show");
+    }
+
     function renderQuizCard(){
-      const v=quiz.cards[quiz.index]; quiz.flipped=false; quiz.answered=false; quiz.cardStart=Date.now(); quiz.remaining=30;
+      const v=quiz.cards[quiz.index];
+      quiz.flipped=false;
+      quiz.answered=false;
+      quiz.cardStart=Date.now();
+      quiz.remaining=30;
+      quiz.speechWrongCount=0;
+      quiz.lastHeard="";
+      quiz._speechHold=false;
+      resetAnswerButtons();
       $("#flashcard").classList.remove("flipped");
       $("#quizLabel").textContent = `${v.chapter} • ${v.sectionCategory} • ${v.typeCategory}`;
       updateQuizFavButtons(v);
       const frontIsJp = quiz.direction==="jpToId";
       const q = frontIsJp ? jpText(v) : cleanIndo(v);
       $("#frontQuestion").textContent = q;
-      $("#frontQuestion").className = "question-text" + (frontIsJp ? " jp" : "");
+      $("#frontQuestion").className = "question-text" + (frontIsJp ? " jp" : "") + textSizeClass(q);
       $("#answerArea").innerHTML = renderAnswerHtml(v);
       $("#cardCounter").textContent = `Kartu ${quiz.index+1} / ${quiz.cards.length}`;
       const prog = Math.round((quiz.index/quiz.cards.length)*100);
-      $("#quizProgress").style.width = prog + "%"; $("#progressText").textContent = `${prog}% Selesai`;
+      $("#quizProgress").style.width = prog + "%";
+      $("#progressText").textContent = `${prog}% Selesai`;
       $("#flipHint").textContent = quiz.direction==="idToJp" ? (state.lang==="ja"?"カードをクリックして日本語を表示":"Klik kartu untuk melihat bahasa Jepang") : (state.lang==="ja"?"カードをクリックして意味を表示":"Klik kartu untuk melihat arti Indonesia");
       updateHearButtons();
       $("#micSwitch").classList.toggle("on",quiz.micOn && speechSupported);
-      $("#speechStatus").innerHTML = `<i class="fa-solid fa-wave-square"></i><span>${speechSupported?t("listening"):t("browserSpeechNo")}</span><b></b><b></b><b></b><b></b>`;
+      if(!speechSupported) setSpeechStatus("unsupported",t("browserSpeechNo"));
+      else setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu");
       if(quiz.micOn) startRecognition();
     }
     function renderAnswerHtml(v){
       const img = v.image ? `<img class="answer-img" src="${esc(v.image)}" alt="${esc(cleanIndo(v))}">` : "";
-      if(quiz.direction==="idToJp") return `${img}<div><div class="answer-main jp">${esc(jpText(v))}</div><div class="answer-sub jp">${esc(v.kana)} • ${esc(v.romaji)}</div></div>`;
-      return `${img}<div><div class="answer-main">${esc(cleanIndo(v))}</div><div class="answer-sub jp">${esc(v.romaji)}</div></div>`;
+      if(quiz.direction==="idToJp") return `${img}<div><div class="answer-main jp${textSizeClass(jpText(v))}">${esc(jpText(v))}</div><div class="answer-sub jp">${esc(v.kana)} • ${esc(v.romaji)}</div></div>`;
+      return `${img}<div><div class="answer-main${textSizeClass(cleanIndo(v))}">${esc(cleanIndo(v))}</div><div class="answer-sub jp">${esc(v.romaji)}</div></div>`;
     }
     function updateQuizFavButtons(v){
       const active=state.favorites.includes(v.id);
@@ -1701,16 +2388,18 @@
       if(!quiz) return;
       quiz.flipped=!quiz.flipped;
       $("#flashcard").classList.toggle("flipped",quiz.flipped);
-      if(quiz.flipped){ quiz.micOn=false; stopRecognition(); $("#micSwitch").classList.remove("on"); }
+      if(quiz.flipped){ quiz.micOn=false; stopRecognition(); $("#micSwitch").classList.remove("on"); setSpeechStatus("idle",state.lang==="ja"?"カードを戻すと発話できます。":"Kartu dibalik. Kembalikan kartu untuk memakai fitur bicara."); }
       updateHearButtons();
     }
     function canUseJapaneseTools(){
-      if(!quiz) return false;
-      return quiz.direction==="jpToId" || (quiz.direction==="idToJp" && quiz.flipped);
+      return !!quiz;
     }
     function updateHearButtons(){
-      const can=canUseJapaneseTools();
-      $("#hearBtn").disabled=!can; $("#exampleBtn").disabled=!can;
+      const hasQuiz=!!quiz;
+      const audioOk="speechSynthesis" in window;
+      $("#hearBtn").disabled=!hasQuiz || !audioOk;
+      $("#exampleBtn").disabled=!hasQuiz;
+      if(hasQuiz && !audioOk) setSpeechStatus("unsupported",state.lang==="ja"?"このブラウザは音声再生に対応していません。":"Audio tidak didukung browser ini");
     }
     function startTimer(){
       clearInterval(quiz.timer);
@@ -1724,28 +2413,51 @@
       $("#quizProgress").style.width = Math.round((quiz.index/quiz.cards.length)*100)+"%";
     }
     function answerCard(isCorrect,auto=false){
-      if(!quiz || quiz.answered) return; quiz.answered=true; stopRecognition(); playTone(isCorrect?"ok":"wrong");
+      if(!quiz || quiz.answered) return;
+      quiz.answered=true;
+      quiz._speechHold=true;
+      stopRecognition();
+      selectAnswerButton(isCorrect);
+      [$("#correctBtn"),$("#wrongBtn")].forEach(btn=>{ if(btn) btn.disabled=true; });
+      playTone(isCorrect?"ok":"wrong");
       const v=quiz.cards[quiz.index], timeSpent=Math.min(30,Math.max(0,Math.round((Date.now()-quiz.cardStart)/1000)));
-      quiz.details.push({ no:quiz.index+1,id:v.id,chapter:v.chapter,typeCategory:v.typeCategory,sectionCategory:v.sectionCategory,indonesia:v.indonesia,kanji:v.kanji,kana:v.kana,romaji:v.romaji,userStatus:isCorrect?"Benar":"Salah",isCorrect,timeSpent,answeredAt:new Date().toISOString() });
+      quiz.details.push({ no:quiz.index+1,id:v.id,chapter:v.chapter,typeCategory:v.typeCategory,sectionCategory:v.sectionCategory,indonesia:v.indonesia,kanji:v.kanji,kana:v.kana,romaji:v.romaji,userStatus:isCorrect?"Benar":"Salah",isCorrect,timeSpent,heard:quiz.lastHeard||"",answeredAt:new Date().toISOString() });
       if(isCorrect) quiz.correct++; else quiz.wrong++;
+      const delay = auto ? 700 : 460;
       setTimeout(()=>{
-        quiz.index++;
-        if(quiz.index>=quiz.cards.length) finishQuiz(); else { renderQuizCard(); startTimer(); }
-      }, auto?350:420);
+        if(!quiz) return;
+        if(quiz.index >= quiz.cards.length - 1){
+          finishQuiz();
+        } else {
+          quiz.index++;
+          renderQuizCard();
+          startTimer();
+        }
+      }, delay);
     }
     async function finishQuiz(){
-      clearInterval(quiz.timer); stopRecognition();
+      if(!quiz) return;
+      clearInterval(quiz.timer);
+      stopRecognition();
+      $("#quizProgress").style.width="100%";
+      $("#progressText").textContent="100% Selesai";
       const total=quiz.cards.length, score=Math.round((quiz.correct/total)*100), duration=Math.round((Date.now()-quiz.startedAt)/1000);
       const result = {
         username:state.session.username, group:state.session.group, role:state.session.role, selectedLanguage:state.lang,
         selectedBook:state.setup.book, selectedMaterialCategory:state.setup.materialCategory, selectedChapter:state.setup.chapter,
-        quizDirection:quiz.direction, shuffleMode:quiz.shuffle?"Acak":"Tidak Acak",
+        quizDirection:quiz.direction, shuffleMode:quiz.shuffle?"Acak":"Tidak Acak", fictionFilter:quiz.fictionFilter,
         selectedChapterFilters:quiz.chapterFilters, selectedSectionFilters:quiz.sectionFilters, selectedTypeFilters:quiz.typeFilters,
         totalQuestions:total, correctCount:quiz.correct, wrongCount:quiz.wrong, scorePercent:score, kkmStatus:score>=60?"Lulus":"Belum Lulus",
         totalDuration:duration, finishedAt:new Date().toISOString(), details:quiz.details, localId:"local-"+Date.now()
       };
-      currentResult=result; localStorage.setItem(storeKey+"_lastResult",JSON.stringify(result));
-      await saveResult(result); toast(t("saved")); quiz=null; showPage("result"); renderResult();
+      currentResult=result;
+      localStorage.setItem(storeKey+"_lastResult",JSON.stringify(result));
+      await saveResult(result);
+      toast(t("saved"));
+      quiz=null;
+      renderResult();
+      showPage("result");
+      setTimeout(renderResult,0);
     }
     async function saveResult(result){
       const local=[result,...localResults().filter(r=>r.localId!==result.localId)].slice(0,500); setLocalResults(local);
@@ -1910,23 +2622,101 @@
       },900);
     }
 
+    function canListenNow(){
+      return !!(quiz && quiz.micOn && !quiz.flipped && !quiz.answered && !quiz.paused && speechSupported);
+    }
     function startRecognition(){
       stopRecognition();
-      if(!quiz || !quiz.micOn || quiz.flipped || !speechSupported) return;
+      if(!canListenNow()) return;
       const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
       try {
-        recognition=new SR(); recognition.lang=quiz.direction==="idToJp"?"ja-JP":"id-ID"; recognition.interimResults=false; recognition.continuous=false;
-        recognition.onresult=e=>{ const heard=e.results[0][0].transcript; const ok=compareSpeech(heard,quiz.cards[quiz.index]); $("#speechStatus").innerHTML=`<i class="fa-solid ${ok?"fa-circle-check":"fa-circle-xmark"}"></i><span>${ok?(state.lang==="ja"?"答えが合っています":"Jawaban terdengar benar"):(state.lang==="ja"?"答えがまだ違います":"Jawaban belum sesuai")}</span>`; };
-        recognition.onerror=()=>{ $("#speechStatus").innerHTML=`<i class="fa-solid fa-microphone-slash"></i><span>${state.lang==="ja"?"音声を検出できません":"Suara belum tertangkap"}</span>`; };
-        recognition.onend=()=>{ if(quiz && quiz.micOn && !quiz.flipped && !quiz.answered) setTimeout(startRecognition,900); };
+        recognition=new SR();
+        recognition.lang=quiz.direction==="idToJp"?"ja-JP":"id-ID";
+        recognition.interimResults=false;
+        recognition.continuous=false;
+        quiz._speechHold=false;
+        setSpeechStatus("listening",state.lang==="ja"?"発話を聞き取り中...":"Mendengarkan ucapan...");
+        recognition.onresult=e=>{
+          if(!quiz || quiz.answered) return;
+          const heard=e.results?.[0]?.[0]?.transcript || "";
+          quiz.lastHeard=heard;
+          const ok=compareSpeech(heard,quiz.cards[quiz.index]);
+          quiz._speechHold=true;
+          if(ok){
+            setSpeechStatus("success",state.lang==="ja"?`答えが合っています。自動で正解にします。`:`Jawaban cocok, otomatis dipilih Benar.`,heard);
+            selectAnswerButton(true);
+            setTimeout(()=>answerCard(true,true),700);
+            return;
+          }
+          quiz.speechWrongCount=(quiz.speechWrongCount||0)+1;
+          const count=quiz.speechWrongCount;
+          const target=currentSpeechTarget(quiz.cards[quiz.index]);
+          if(count>=5){
+            setSpeechStatus("error",state.lang==="ja"?`5回違いました。自動で不正解にします。`:`Sudah 5 kali salah, otomatis dipilih Salah. Target: ${target}`,heard);
+            selectAnswerButton(false);
+            setTimeout(()=>answerCard(false,true),700);
+          } else {
+            setSpeechStatus("warning",state.lang==="ja"?`まだ一致していません。もう一度言ってください。${count}/5`:`Terdengar kosakata lain. Target belum sesuai. Percobaan ${count}/5.`,heard);
+            setTimeout(()=>{ if(canListenNow()){ quiz._speechHold=false; startRecognition(); } },800);
+          }
+        };
+        recognition.onerror=e=>{
+          if(!quiz || quiz.answered) return;
+          quiz._speechHold=true;
+          const err=e.error || "unknown";
+          const msgMap={
+            "no-speech": state.lang==="ja"?"音声が聞こえません。もう少しはっきり発話してください。":"Belum terdengar suara, coba ucapkan lebih jelas.",
+            "not-allowed": state.lang==="ja"?"マイクの許可が有効ではありません。":"Izin mikrofon belum aktif.",
+            "audio-capture": state.lang==="ja"?"マイクが検出されません。":"Mikrofon tidak terdeteksi.",
+            "network": state.lang==="ja"?"ネットワークエラーで音声認識に失敗しました。":"Gangguan jaringan saat mengenali suara."
+          };
+          const type = err==="not-allowed" ? "error" : "warning";
+          setSpeechStatus(type,msgMap[err] || (state.lang==="ja"?"音声認識に失敗しました。":"Speech recognition gagal, coba lagi."));
+          if(err!=="not-allowed") setTimeout(()=>{ if(canListenNow()){ quiz._speechHold=false; startRecognition(); } },1100);
+        };
+        recognition.onend=()=>{
+          recognition=null;
+          if(canListenNow() && !quiz._speechHold) setTimeout(startRecognition,900);
+        };
         recognition.start();
-      } catch(e){}
+      } catch(e){
+        setSpeechStatus("error",state.lang==="ja"?"音声認識を開始できません。":"Speech recognition tidak bisa dimulai.");
+      }
     }
-    function stopRecognition(){ if(recognition){ try{ recognition.onend=null; recognition.stop(); }catch(e){} recognition=null; } }
-    function normalize(s){ return String(s).toLowerCase().replace(/[\s、。,.!?！？ー\-~〜]/g,""); }
+    function stopRecognition(){
+      if(recognition){
+        try{ recognition.onend=null; recognition.abort ? recognition.abort() : recognition.stop(); }catch(e){}
+        recognition=null;
+      }
+    }
+    function normalize(s){ return String(s||"").toLowerCase().normalize("NFKC").replace(/[\s、。,.!?！？ー\-~〜'"“”‘’()（）\[\]{}]/g,""); }
+    function kanaNormalize(s){ return normalize(s).replace(/[ァ-ン]/g,ch=>String.fromCharCode(ch.charCodeAt(0)-0x60)); }
+    function latinTokens(s){
+      return String(s||"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9\s]/g," ").split(/\s+/).filter(x=>x.length>1);
+    }
+    function compareTextLoose(heard,candidates){
+      const h=normalize(heard), hk=kanaNormalize(heard), ht=latinTokens(heard).join(" ");
+      return candidates.filter(Boolean).some(c=>{
+        const n=normalize(c), nk=kanaNormalize(c), ct=latinTokens(c).join(" ");
+        if(!n && !ct) return false;
+        if(n && h && (h===n || (h.length>=2 && (h.includes(n) || n.includes(h))))) return true;
+        if(nk && hk && (hk===nk || (hk.length>=2 && (hk.includes(nk) || nk.includes(hk))))) return true;
+        if(ct && ht){
+          if(ht===ct || ht.includes(ct) || ct.includes(ht)) return true;
+          const heardTokens=new Set(latinTokens(heard));
+          const candTokens=latinTokens(c);
+          return candTokens.length>0 && candTokens.every(tok=>heardTokens.has(tok));
+        }
+        return false;
+      });
+    }
     function compareSpeech(heard,v){
-      if(quiz.direction==="idToJp"){ const h=normalize(heard), a=normalize(v.kana), k=normalize(jpText(v)); return h.includes(a)||h.includes(k)||a.includes(h); }
-      const h=normalize(heard), a=normalize(cleanIndo(v)).slice(0,18); return h.includes(a.slice(0,Math.min(6,a.length))) || a.includes(h.slice(0,Math.min(6,h.length)));
+      if(!heard || !v) return false;
+      if(quiz.direction==="idToJp"){
+        return compareTextLoose(heard,[v.kana,jpText(v),v.kanji,v.romaji]);
+      }
+      const meanings=cleanIndo(v).split(/[,;/]| atau | dan /i).map(x=>x.trim()).filter(Boolean);
+      return compareTextLoose(heard,[cleanIndo(v),...meanings]);
     }
 
     function toggleFav(id){
@@ -1941,37 +2731,48 @@
         const speakBtn=e.target.closest("[data-speak]"); if(speakBtn) speak(speakBtn.dataset.speak,"ja-JP");
         const fav=e.target.closest("[data-fav]"); if(fav) toggleFav(fav.dataset.fav);
         const zoom=e.target.closest("[data-zoom]"); if(zoom){ $("#zoomImage").src=zoom.dataset.zoom; $("#imageModal").classList.add("show"); }
-        const sl=e.target.closest("[data-setup-lang]"); if(sl){ state.lang=sl.dataset.setupLang; saveState(); renderSetup(); applyTranslations(); }
-        const sb=e.target.closest("[data-setup-book]"); if(sb){ tempSetup.book=sb.dataset.setupBook; renderSetup(); }
-        const sm=e.target.closest("[data-setup-material]"); if(sm){ tempSetup.materialCategory=sm.dataset.setupMaterial; renderSetup(); }
+        const sl=e.target.closest("[data-setup-lang]"); if(sl){ state.lang=sl.dataset.setupLang; saveState(); renderSetup(); applyTranslations(); setSetupStep(2); }
+        const sb=e.target.closest("[data-setup-book]"); if(sb){ tempSetup.book=sb.dataset.setupBook; renderSetup(); setSetupStep(3); }
+        const sm=e.target.closest("[data-setup-material]"); if(sm){ tempSetup.materialCategory=sm.dataset.setupMaterial; renderSetup(); setSetupStep(4); }
         const sc=e.target.closest("[data-setup-chapter]"); if(sc){ tempSetup.chapter=sc.dataset.setupChapter; renderSetup(); }
         const gg=e.target.closest("[data-group]"); if(gg){ $$("#groupGrid .option-card").forEach(b=>b.classList.remove("active")); gg.classList.add("active"); }
-        const qd=e.target.closest("[data-qdir]"); if(qd){ $$("[data-qdir]").forEach(b=>b.classList.remove("active")); qd.classList.add("active"); }
-        const sh=e.target.closest("[data-shuffle]"); if(sh){ $$("[data-shuffle]").forEach(b=>b.classList.remove("active")); sh.classList.add("active"); }
+        const qd=e.target.closest("[data-qdir]"); if(qd){ $$("[data-qdir]").forEach(b=>b.classList.remove("active")); qd.classList.add("active"); updateQuizFilterCount(); }
+        const sh=e.target.closest("[data-shuffle]"); if(sh){ $$("[data-shuffle]").forEach(b=>b.classList.remove("active")); sh.classList.add("active"); updateQuizFilterCount(); }
+        const qf=e.target.closest("[data-qfiction]"); if(qf && !qf.disabled){ $$("[data-qfiction]").forEach(b=>b.classList.remove("active")); qf.classList.add("active"); state.quizFictionOnly = qf.dataset.qfiction === "fiction"; updateQuizFilterCount(); }
       });
       document.addEventListener("openQuizSettings",openQuizSettings);
       $("#userMenuBtn").onclick=()=>{ if(!state.session?.username) openLogin(); else $("#userDropdown").classList.toggle("show"); };
       $("#homeLoginBtn").onclick=openLogin; $("#homeStartBtn").onclick=openQuizSettings; $("#homeMaterialBtn").onclick=()=>showPage("material");
-      $("#changeCategoryBtn").onclick=openSetup; $("#homeChangeCategoryBtn").onclick=openSetup;
-      $("#homeLangBtn").onclick=()=>{ state.lang=state.lang==="id"?"ja":"id"; saveState(); renderAll(); };
-      $("#langToggleDrop").onclick=()=>{ state.lang=state.lang==="id"?"ja":"id"; saveState(); renderAll(); };
-      $("#homeFictionBtn").onclick=()=>{ if(anyFictionInBase()){ state.fictionOnly=!state.fictionOnly; saveState(); renderAll(); } };
+      $("#changeCategoryBtn").onclick=openSetup;
+      const toggleLanguage = ()=>{ state.lang=state.lang==="id"?"ja":"id"; saveState(); renderAll(); };
+      $("#homeLangBtn").onclick=toggleLanguage;
+      $("#navLangBtn").onclick=toggleLanguage;
+      $("#langToggleDrop").onclick=toggleLanguage;
       $("#materialFictionBtn").onclick=()=>{ if(anyFictionInBase()){ state.fictionOnly=!state.fictionOnly; saveState(); renderAll(); } };
       $("#logoutBtn").onclick=logout; $("#sideLogout").onclick=logout;
       $("#materialSearch").oninput=renderMaterial;
       $("#closeSetup").onclick=()=>closeModal("#setupModal"); $("#cancelSetup").onclick=()=>closeModal("#setupModal");
+      $("#prevSetupStep").onclick=()=>setSetupStep(setupStep-1);
+      $("#nextSetupStep").onclick=()=>setSetupStep(setupStep+1);
       $("#saveSetup").onclick=()=>{ state.setup={...tempSetup}; state.fictionOnly=false; saveState(); closeModal("#setupModal"); renderAll(); };
       $("#closeLogin").onclick=()=>closeModal("#loginModal"); $("#cancelLogin").onclick=()=>closeModal("#loginModal");
       $("#usernameInput").oninput=updateAdminLoginMode; $("#saveLogin").onclick=saveLogin;
       $("#togglePassword").onclick=e=>{ e.preventDefault(); const i=$("#adminPasswordInput"); i.type=i.type==="password"?"text":"password"; };
-      $("#closeQuizSettings").onclick=()=>closeModal("#quizSettingsModal"); $("#cancelQuizSettings").onclick=()=>closeModal("#quizSettingsModal"); $("#startQuizFromSettings").onclick=startQuiz;
+      $("#closeQuizSettings").onclick=()=>closeModal("#quizSettingsModal"); $("#cancelQuizSettings").onclick=()=>closeModal("#quizSettingsModal");
+      $("#prevQuizSetting").onclick=()=>setQuizSettingStep(quizSettingStep-1);
+      $("#nextQuizSetting").onclick=()=>{
+        updateQuizFilterCount();
+        if(quizSettingStep >= 4 && filterQuizData().length===0) return toast(t("noVocabFilter"));
+        setQuizSettingStep(quizSettingStep+1);
+      };
+      $("#startQuizFromSettings").onclick=startQuiz;
       $("#quizSettingsModal").addEventListener("change",e=>{ if(e.target.matches("input[type=checkbox]")) updateQuizFilterCount(); });
       $("#flashcard").onclick=flipCard; $("#quizFavBtn").onclick=e=>{ e.stopPropagation(); toggleFav(quiz.cards[quiz.index].id); }; $("#quizFavBtnBack").onclick=e=>{ e.stopPropagation(); toggleFav(quiz.cards[quiz.index].id); };
-      $("#pauseBtn").onclick=()=>{ if(!quiz) return; quiz.paused=!quiz.paused; $("#pauseBtn span").textContent=quiz.paused?t("resume"):t("pause"); if(quiz.paused) stopRecognition(); else startRecognition(); };
-      $("#hearBtn").onclick=()=>{ if(quiz && canUseJapaneseTools()) speak(jpText(quiz.cards[quiz.index]),"ja-JP"); };
-      $("#exampleBtn").onclick=()=>{ if(!quiz || !canUseJapaneseTools()) return; $("#exampleText").textContent=quiz.cards[quiz.index].exampleJa || t("noExample"); $("#exampleModal").classList.add("show"); };
+      $("#pauseBtn").onclick=()=>{ if(!quiz) return; quiz.paused=!quiz.paused; $("#pauseBtn span").textContent=quiz.paused?t("resume"):t("pause"); if(quiz.paused){ stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"一時停止中です。":"Kuis dijeda."); } else { setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } };
+      $("#hearBtn").onclick=()=>{ if(!quiz) return; if(!("speechSynthesis" in window)){ setSpeechStatus("unsupported",state.lang==="ja"?"このブラウザは音声再生に対応していません。":"Audio tidak didukung browser ini"); return; } speak(jpText(quiz.cards[quiz.index]),"ja-JP"); };
+      $("#exampleBtn").onclick=openExampleModal;
       $("#correctBtn").onclick=()=>answerCard(true); $("#wrongBtn").onclick=()=>answerCard(false);
-      $("#micSwitch").onclick=()=>{ if(!speechSupported) return toast(t("browserSpeechNo")); if(quiz?.flipped) return; quiz.micOn=!quiz.micOn; $("#micSwitch").classList.toggle("on",quiz.micOn); if(quiz.micOn) startRecognition(); else stopRecognition(); };
+      $("#micSwitch").onclick=()=>{ if(!speechSupported) return setSpeechStatus("unsupported",t("browserSpeechNo")); if(!quiz || quiz.flipped) return; quiz.micOn=!quiz.micOn; $("#micSwitch").classList.toggle("on",quiz.micOn); if(quiz.micOn){ setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } else { stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"マイクはオフです。":"Mikrofon dimatikan."); } };
       $("#closeExample").onclick=()=>closeModal("#exampleModal"); $("#closeImage").onclick=()=>closeModal("#imageModal"); $("#closeDetail").onclick=()=>closeModal("#detailModal");
       $("#adminSearch").oninput=renderAdmin; $("#adminGroup").onchange=renderAdmin; $("#adminPeriod").onchange=renderAdmin; $("#adminStatus").onchange=renderAdmin;
       $("#resetAdminFilter").onclick=()=>{ $("#adminSearch").value=""; $("#adminGroup").value="all"; $("#adminPeriod").value="all"; $("#adminStatus").value="all"; renderAdmin(); };
