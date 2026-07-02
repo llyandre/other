@@ -790,6 +790,72 @@
       .example-icon { width:50px; height:50px; border-radius:18px; }
     }
 
+  
+
+    /* ===== REVISI HASIL LATIHAN + PDF + CONTOH KALIMAT LENGKAP ===== */
+    #resultPage { width:min(1320px,calc(100% - 54px)); }
+    #resultPage .result-head { margin-bottom:18px; }
+    #resultPage .result-head h2 { font-size:clamp(28px,3.2vw,42px); margin:8px 0 6px; }
+    #resultActiveChoice, #resultDate { margin:5px 0; font-size:13px; line-height:1.4; color:#65738d; font-weight:650; }
+    .learning-summary-grid { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(330px,.85fr); gap:24px; align-items:stretch; }
+    .learning-score-card {
+      min-height:250px; padding:30px; display:grid; grid-template-columns:178px 1fr; gap:30px; align-items:center; overflow:hidden; position:relative;
+      background:
+        radial-gradient(circle at 84% 22%,rgba(255,201,226,.65),transparent 28%),
+        radial-gradient(circle at 92% 12%,rgba(255,231,185,.75),transparent 26%),
+        linear-gradient(135deg,#fff,#f8f3ff 48%,#fff2fb);
+      border:1px solid rgba(226,217,255,.9); border-radius:22px; box-shadow:var(--shadow2);
+    }
+    .learning-score-card::after { content:""; position:absolute; inset:auto -30px -60px auto; width:260px; height:160px; background:linear-gradient(135deg,rgba(125,181,255,.22),rgba(255,255,255,.05)); border-radius:50%; transform:rotate(-12deg); }
+    .score-donut { width:168px; height:168px; border-radius:50%; display:grid; place-items:center; position:relative; background:conic-gradient(var(--primary) 0deg,#efe9ff 0deg); box-shadow:0 18px 34px rgba(124,77,255,.18); }
+    .score-donut::before { content:""; position:absolute; inset:28px; border-radius:50%; background:#fff; box-shadow:inset 0 0 0 1px rgba(124,77,255,.07); }
+    .score-donut strong { position:relative; color:#071b45; font-size:42px; font-weight:900; letter-spacing:-.05em; }
+    .score-donut span { position:relative; display:block; margin-top:4px; color:#7c4dff; font-size:12px; font-weight:850; text-align:center; }
+    .score-copy { position:relative; z-index:1; }
+    .score-copy h2 { margin:12px 0 10px!important; font-size:clamp(26px,2.8vw,34px); letter-spacing:-.05em; }
+    .score-copy p { margin:0; max-width:560px; line-height:1.65; font-size:14px; }
+    .result-summary-card { padding:28px; border-radius:22px; background:rgba(255,255,255,.92); border:1px solid rgba(226,217,255,.9); box-shadow:var(--shadow2); }
+    .result-summary-card h3 { margin:0 0 18px; font-size:18px; }
+    .result-summary-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .summary-stat { min-height:104px; padding:18px; border:1px solid #e6e0ff; border-radius:18px; background:#fff; display:flex; align-items:center; gap:16px; }
+    .summary-stat i { width:48px; height:48px; border-radius:50%; display:grid; place-items:center; background:#f0eaff; color:#7c4dff; font-size:18px; flex:0 0 auto; }
+    .summary-stat.good i { background:#dffbf2; color:#16a374; }
+    .summary-stat.bad i { background:#ffe4ed; color:#ef3f69; }
+    .summary-stat.time i { background:#eaf3ff; color:#3b82f6; }
+    .summary-stat strong { display:block; color:#071b45; font-size:28px; line-height:1; font-weight:900; letter-spacing:-.035em; }
+    .summary-stat span { color:#66728a; font-size:12px; font-weight:750; }
+    .result-actions { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:14px 0 26px; }
+    .result-actions .btn { min-height:46px; border-radius:12px; }
+    .review-card { padding:28px; border-radius:22px; background:rgba(255,255,255,.94); border:1px solid rgba(226,217,255,.9); box-shadow:var(--shadow2); }
+    .review-card-head { display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:18px; }
+    .review-card-head h3 { margin:0; font-size:18px; }
+    .review-filters { display:flex; gap:10px; flex-wrap:wrap; margin:0; justify-content:flex-end; }
+    .review-filters select { min-height:38px; border-radius:12px; padding:0 38px 0 14px; font-size:12px; font-weight:750; }
+    .review-speaker { width:32px; height:32px; display:inline-grid; place-items:center; border:0; background:#f2ecff; color:#7c4dff; border-radius:10px; }
+    .review-table-wrap { overflow-x:auto; border:1px solid #e5e1f7; border-radius:18px; background:#fff; max-width:100%; }
+    .review-table-wrap table { min-width:940px; }
+    .review-table-wrap th { background:#f7f3ff; color:#5e35d6; font-size:11px; }
+    .review-table-wrap td { font-size:13px; }
+    .review-jp { font-family:var(--jp); font-size:18px; font-weight:800; color:#071b45; }
+    .review-romaji { color:#66728a; font-size:11px; font-weight:650; margin-top:2px; }
+    @media (max-width:1050px){ .learning-summary-grid { grid-template-columns:1fr; } .learning-score-card { grid-template-columns:160px 1fr; } }
+    @media (max-width:760px){
+      #resultPage { width:min(100% - 24px,1320px); }
+      .learning-score-card { grid-template-columns:1fr; justify-items:center; text-align:center; padding:24px; }
+      .score-donut { width:150px; height:150px; }
+      .result-summary-grid, .result-actions { grid-template-columns:1fr; }
+      .review-card { padding:18px; }
+      .review-card-head { align-items:stretch; }
+      .review-filters { width:100%; }
+      .review-filters select { flex:1 1 150px; }
+    }
+
+  
+
+    /* ===== PATCH FINAL KARTU TERAKHIR: tombol jawaban tetap aktif sampai submit ===== */
+    #correctBtn:not(:disabled), #wrongBtn:not(:disabled) { opacity:1!important; cursor:pointer!important; }
+    #correctBtn.answer-lock, #wrongBtn.answer-lock { pointer-events:none; }
+
   </style>
 </head>
 <body>
@@ -1114,7 +1180,9 @@
     "image": "https://iili.io/C5S70LG.png",
     "exampleJa": "わたしはインドネシア人です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya orang Indonesia.",
+    "exampleReading": "watashi wa Indoneshia-jin desu"
   },
   {
     "id": "mni-b1-02",
@@ -1132,7 +1200,9 @@
     "image": "https://iili.io/C5S7EBf.png",
     "exampleJa": "あなたは学生ですか。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Apakah Anda mahasiswa?",
+    "exampleReading": "anata wa gakusei desu ka"
   },
   {
     "id": "mni-b1-03",
@@ -1150,7 +1220,9 @@
     "image": "https://iili.io/C5S7cIn.png",
     "exampleJa": "あの人は先生です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Orang itu adalah guru.",
+    "exampleReading": "ano hito wa sensei desu"
   },
   {
     "id": "mni-b1-04",
@@ -1168,7 +1240,9 @@
     "image": "https://iili.io/C5S7lXs.png",
     "exampleJa": "あの方はどなたですか。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Siapakah beliau?",
+    "exampleReading": "ano kata wa donata desu ka"
   },
   {
     "id": "mni-b1-05",
@@ -1222,7 +1296,9 @@
     "image": "https://iili.io/C5S7W22.png",
     "exampleJa": "アメリカ人です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia orang Amerika.",
+    "exampleReading": "Amerika-jin desu"
   },
   {
     "id": "mni-b1-08",
@@ -1240,7 +1316,9 @@
     "image": "https://iili.io/C5S7X7S.png",
     "exampleJa": "田中さんは先生です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Tanaka adalah guru.",
+    "exampleReading": "Tanaka-san wa sensei desu"
   },
   {
     "id": "mni-b1-09",
@@ -1258,7 +1336,9 @@
     "image": "https://iili.io/C5S7jp9.png",
     "exampleJa": "わたしは教師です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya adalah guru.",
+    "exampleReading": "watashi wa kyoushi desu"
   },
   {
     "id": "mni-b1-10",
@@ -1276,7 +1356,9 @@
     "image": "https://iili.io/C5S7Ohu.png",
     "exampleJa": "ミラーさんは学生です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Miller adalah mahasiswa.",
+    "exampleReading": "Miraa-san wa gakusei desu"
   },
   {
     "id": "mni-b1-11",
@@ -1294,7 +1376,9 @@
     "image": "https://iili.io/C5S7eLb.png",
     "exampleJa": "山田さんは会社員です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Yamada adalah karyawan perusahaan.",
+    "exampleReading": "Yamada-san wa kaishain desu"
   },
   {
     "id": "mni-b1-12",
@@ -1312,7 +1396,9 @@
     "image": "https://iili.io/C5S7vBj.png",
     "exampleJa": "IMCの社員です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia adalah karyawan perusahaan IMC.",
+    "exampleReading": "IMC no shain desu"
   },
   {
     "id": "mni-b1-13",
@@ -1330,7 +1416,9 @@
     "image": "https://iili.io/C5S7SrQ.png",
     "exampleJa": "佐藤さんは銀行員です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Sato adalah pegawai bank.",
+    "exampleReading": "Satou-san wa ginkouin desu"
   },
   {
     "id": "mni-b1-14",
@@ -1348,7 +1436,9 @@
     "image": "https://iili.io/C5S7g2V.png",
     "exampleJa": "山田さんは医者です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Yamada adalah dokter.",
+    "exampleReading": "Yamada-san wa isha desu"
   },
   {
     "id": "mni-b1-15",
@@ -1366,7 +1456,9 @@
     "image": "https://iili.io/C5S76p1.png",
     "exampleJa": "鈴木さんは研究者です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Suzuki adalah peneliti.",
+    "exampleReading": "Suzuki-san wa kenkyuusha desu"
   },
   {
     "id": "mni-b1-16",
@@ -1384,7 +1476,9 @@
     "image": "https://iili.io/C5S7shg.png",
     "exampleJa": "ここは大学です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Di sini adalah universitas.",
+    "exampleReading": "koko wa daigaku desu"
   },
   {
     "id": "mni-b1-17",
@@ -1402,7 +1496,9 @@
     "image": "https://iili.io/C5S7ZCJ.png",
     "exampleJa": "あそこは病院です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Di sana adalah rumah sakit.",
+    "exampleReading": "asoko wa byouin desu"
   },
   {
     "id": "mni-b1-18",
@@ -1420,7 +1516,9 @@
     "image": "https://iili.io/C5S7m2p.png",
     "exampleJa": "あの人は誰ですか。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Siapa orang itu?",
+    "exampleReading": "ano hito wa dare desu ka"
   },
   {
     "id": "mni-b1-19",
@@ -1438,7 +1536,9 @@
     "image": "https://iili.io/C5S7yvI.png",
     "exampleJa": "あの方はどなたですか。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Siapakah beliau?",
+    "exampleReading": "ano kata wa donata desu ka"
   },
   {
     "id": "mni-b1-20",
@@ -1456,7 +1556,9 @@
     "image": "https://iili.io/C5SY9pt.png",
     "exampleJa": "ミラーさんは二十八歳です。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Miller berusia dua puluh delapan tahun.",
+    "exampleReading": "Miraa-san wa nijuu-hassai desu"
   },
   {
     "id": "mni-b1-21",
@@ -1474,7 +1576,9 @@
     "image": "https://iili.io/C5SYFCG.png",
     "exampleJa": "何歳ですか。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Berapa umur Anda?",
+    "exampleReading": "nansai desu ka"
   },
   {
     "id": "mni-b1-22",
@@ -1492,7 +1596,9 @@
     "image": "https://iili.io/C5SYKGf.png",
     "exampleJa": "おいくつですか。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Berapa usia Anda?",
+    "exampleReading": "oikutsu desu ka"
   },
   {
     "id": "mni-b1-23",
@@ -1510,7 +1616,9 @@
     "image": "https://iili.io/C5SYf44.png",
     "exampleJa": "はい、そうです。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Ya, benar.",
+    "exampleReading": "hai, sou desu"
   },
   {
     "id": "mni-b1-24",
@@ -1528,7 +1636,9 @@
     "image": "https://iili.io/C5SYCa2.png",
     "exampleJa": "いいえ、違います。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Tidak, bukan. / Tidak, berbeda.",
+    "exampleReading": "iie, chigaimasu"
   },
   {
     "id": "mni-b1-25",
@@ -1546,7 +1656,9 @@
     "image": "https://iili.io/C5SYnvS.png",
     "exampleJa": "初めまして。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Perkenalkan.",
+    "exampleReading": "hajimemashite"
   },
   {
     "id": "mni-b1-26",
@@ -1564,7 +1676,9 @@
     "image": "https://iili.io/C5SYoy7.png",
     "exampleJa": "アメリカから来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari Amerika.",
+    "exampleReading": "Amerika kara kimashita"
   },
   {
     "id": "mni-b1-27",
@@ -1582,7 +1696,9 @@
     "image": "https://iili.io/C5SYzu9.png",
     "exampleJa": "どうぞよろしくお願いします。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Senang berkenalan dengan Anda.",
+    "exampleReading": "douzo yoroshiku onegaishimasu"
   },
   {
     "id": "mni-b1-28",
@@ -1600,7 +1716,9 @@
     "image": "https://iili.io/C5SYTZu.png",
     "exampleJa": "失礼ですが、お名前は？",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Permisi, boleh tahu nama Anda?",
+    "exampleReading": "shitsurei desu ga, onamae wa?"
   },
   {
     "id": "mni-b1-29",
@@ -1618,7 +1736,9 @@
     "image": "https://iili.io/C5SYRGj.png",
     "exampleJa": "お名前は？",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Siapa nama Anda?",
+    "exampleReading": "onamae wa?"
   },
   {
     "id": "mni-b1-30",
@@ -1636,7 +1756,9 @@
     "image": "https://iili.io/C5SY56x.png",
     "exampleJa": "こちらは佐藤さんです。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Ini Bapak/Ibu/Saudara Sato.",
+    "exampleReading": "kochira wa Satou-san desu"
   },
   {
     "id": "mni-b1-31",
@@ -1654,7 +1776,9 @@
     "image": "https://iili.io/C5SYaaV.png",
     "exampleJa": "アメリカから来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari Amerika.",
+    "exampleReading": "Amerika kara kimashita"
   },
   {
     "id": "mni-b1-32",
@@ -1672,7 +1796,9 @@
     "image": "https://iili.io/C5SYc8B.png",
     "exampleJa": "イギリスから来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari Inggris.",
+    "exampleReading": "Igirisu kara kimashita"
   },
   {
     "id": "mni-b1-33",
@@ -1690,7 +1816,9 @@
     "image": "https://iili.io/C5SYlyP.png",
     "exampleJa": "インドから来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari India.",
+    "exampleReading": "Indo kara kimashita"
   },
   {
     "id": "mni-b1-34",
@@ -1708,7 +1836,9 @@
     "image": "https://iili.io/C5SYEwF.png",
     "exampleJa": "インドネシアから来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari Indonesia.",
+    "exampleReading": "Indoneshia kara kimashita"
   },
   {
     "id": "mni-b1-35",
@@ -1726,7 +1856,9 @@
     "image": "https://iili.io/C5SYGZg.png",
     "exampleJa": "韓国から来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari Korea Selatan.",
+    "exampleReading": "Kankoku kara kimashita"
   },
   {
     "id": "mni-b1-36",
@@ -1744,7 +1876,9 @@
     "image": "https://iili.io/C5SYVna.png",
     "exampleJa": "タイから来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari Thailand.",
+    "exampleReading": "Tai kara kimashita"
   },
   {
     "id": "mni-b1-37",
@@ -1762,7 +1896,9 @@
     "image": "https://iili.io/C5SYX6v.png",
     "exampleJa": "中国から来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari Cina.",
+    "exampleReading": "Chuugoku kara kimashita"
   },
   {
     "id": "mni-b1-38",
@@ -1780,7 +1916,9 @@
     "image": "https://iili.io/C5SYjFR.png",
     "exampleJa": "ドイツから来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari Jerman.",
+    "exampleReading": "Doitsu kara kimashita"
   },
   {
     "id": "mni-b1-39",
@@ -1798,7 +1936,9 @@
     "image": "https://iili.io/C5SY8tn.png",
     "exampleJa": "日本から来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari Jepang.",
+    "exampleReading": "Nihon kara kimashita"
   },
   {
     "id": "mni-b1-40",
@@ -1816,7 +1956,9 @@
     "image": "https://iili.io/C5SYe9I.png",
     "exampleJa": "ブラジルから来ました。",
     "isFiction": false,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia datang dari Brasil.",
+    "exampleReading": "Burajiru kara kimashita"
   },
   {
     "id": "mni-b1-41",
@@ -1834,7 +1976,9 @@
     "image": "https://iili.io/C5SYUns.png",
     "exampleJa": "IMCの社員です。",
     "isFiction": true,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia adalah karyawan perusahaan IMC.",
+    "exampleReading": "IMC no shain desu"
   },
   {
     "id": "mni-b1-42",
@@ -1852,7 +1996,9 @@
     "image": "https://iili.io/C5SYPcl.png",
     "exampleJa": "パワー電気の社員です。",
     "isFiction": true,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia adalah karyawan perusahaan Power Denki.",
+    "exampleReading": "Pawaa Denki no shain desu"
   },
   {
     "id": "mni-b1-43",
@@ -1870,7 +2016,9 @@
     "image": "https://iili.io/C5SYL9S.png",
     "exampleJa": "ブラジルエアーの社員です。",
     "isFiction": true,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia adalah karyawan Brazil Air.",
+    "exampleReading": "Burajiru Eaa no shain desu"
   },
   {
     "id": "mni-b1-44",
@@ -1888,7 +2036,9 @@
     "image": "https://iili.io/C5SYQA7.png",
     "exampleJa": "AKCの社員です。",
     "isFiction": true,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia adalah karyawan AKC.",
+    "exampleReading": "AKC no shain desu"
   },
   {
     "id": "mni-b1-45",
@@ -1906,7 +2056,9 @@
     "image": "https://iili.io/C5SYZN9.png",
     "exampleJa": "神戸病院の医者です。",
     "isFiction": true,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia adalah dokter di Rumah Sakit Kobe.",
+    "exampleReading": "Koube Byouin no isha desu"
   },
   {
     "id": "mni-b1-46",
@@ -1924,7 +2076,9 @@
     "image": "https://iili.io/C5SaHcQ.png",
     "exampleJa": "さくら大学の学生です。",
     "isFiction": true,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia adalah mahasiswa Universitas Sakura.",
+    "exampleReading": "Sakura Daigaku no gakusei desu"
   },
   {
     "id": "mni-b1-47",
@@ -1942,7 +2096,9 @@
     "image": "https://iili.io/C5Sa2HB.png",
     "exampleJa": "富士大学の先生です。",
     "isFiction": true,
-    "favorite": false
+    "favorite": false,
+    "exampleId": "Saya/Dia adalah dosen/guru Universitas Fuji.",
+    "exampleReading": "Fuji Daigaku no sensei desu"
   }
 ];
 
@@ -2182,12 +2338,15 @@
     function showPage(page){
       if(page==="admin" && !isAdmin()) { toast(t("needLogin")); return; }
       if(page==="material" && !state.session?.username) { openLogin(); return; }
+      const targetPage = $("#" + page + "Page");
+      if(!targetPage){ toast(state.lang==="ja"?"ページが見つかりません。":"Halaman tidak ditemukan."); return; }
       state.page=page;
       $$(".page").forEach(p=>p.classList.remove("active"));
-      $("#" + page + "Page").classList.add("active");
+      targetPage.classList.add("active");
       document.body.classList.toggle("quiz-mode",page==="quiz");
       updateNavActive();
       if(page==="admin") loadAdmin();
+      if(page==="result") renderResult();
       window.scrollTo({top:0,behavior:"smooth"});
     }
 
@@ -2367,7 +2526,7 @@
       if($('[data-shuffle="true"]').classList.contains("active")) cards = shuffle(cards);
       quiz = {
         cards, index:0, direction: $('[data-qdir].active').dataset.qdir, shuffle: $('[data-shuffle="true"]').classList.contains("active"),
-        details:[], correct:0, wrong:0, startedAt:Date.now(), cardStart:Date.now(), remaining:30, timer:null, paused:false, flipped:false, focusLost:0, micOn:true, answered:false, speechWrongCount:0, lastHeard:"", _speechHold:false,
+        details:[], correct:0, wrong:0, startedAt:Date.now(), cardStart:Date.now(), remaining:30, timer:null, paused:false, flipped:false, focusLost:0, micOn:true, answered:false, finishing:false, speechWrongCount:0, lastHeard:"", _speechHold:false,
         chapterFilters:selectedChecks("#quizChapterFilters"), sectionFilters:selectedChecks("#quizSectionFilters"), typeFilters:selectedChecks("#quizTypeFilters"), fictionFilter:state.includeFiction?"Fiksi ON":"Fiksi OFF"
       };
       closeModal("#quizSettingsModal");
@@ -2388,11 +2547,17 @@
         if(!btn) return;
         btn.disabled = false;
         btn.classList.remove("answer-selected","answer-lock");
+        btn.style.pointerEvents = "";
+        btn.removeAttribute("aria-disabled");
       });
     }
     function selectAnswerButton(isCorrect){
       const good=$("#correctBtn"), bad=$("#wrongBtn");
-      [good,bad].forEach(btn=>btn?.classList.add("answer-lock"));
+      [good,bad].forEach(btn=>{
+        if(!btn) return;
+        btn.disabled = false;
+        btn.classList.add("answer-lock");
+      });
       good?.classList.toggle("answer-selected", !!isCorrect);
       bad?.classList.toggle("answer-selected", !isCorrect);
     }
@@ -2419,7 +2584,10 @@
       return v.exampleReading || v.exampleRomaji || v.exampleRomajiText || v.romaji || v.kana || "Cara baca belum tersedia";
     }
     function exampleMeaningFallback(v){
-      return v.exampleId || v.exampleIndonesia || v.exampleMeaningId || "Arti contoh belum tersedia.";
+      const value = v.exampleId || v.exampleIndonesia || v.exampleMeaningId;
+      if(value) return value;
+      if(v.exampleJa) return cleanIndo(v) ? `Contoh ini menggunakan kosakata: ${cleanIndo(v)}.` : "Arti contoh belum tersedia.";
+      return "Arti contoh belum tersedia.";
     }
     function tidyExampleText(text,fallback){
       const raw = String(text || fallback || "").replace(/\s+/g," ").trim();
@@ -2508,58 +2676,76 @@
       $("#quizProgress").style.width = Math.round((quiz.index/quiz.cards.length)*100)+"%";
     }
     function answerCard(isCorrect,auto=false){
-      if(!quiz || quiz.answered) return;
-      quiz.answered=true;
-      quiz._speechHold=true;
+      if(!quiz || quiz.answered || quiz.finishing) return;
+      const v = quiz.cards?.[quiz.index];
+      if(!v){ toast(t("noVocabFilter")); return; }
+
+      quiz.answered = true;
+      quiz._speechHold = true;
       stopRecognition();
       selectAnswerButton(isCorrect);
-      playTone(isCorrect?"ok":"wrong");
-      const v=quiz.cards[quiz.index], timeSpent=Math.min(30,Math.max(0,Math.round((Date.now()-quiz.cardStart)/1000)));
-      quiz.details.push({ no:quiz.index+1,id:v.id,chapter:v.chapter,typeCategory:v.typeCategory,sectionCategory:v.sectionCategory,indonesia:v.indonesia,kanji:v.kanji,kana:v.kana,romaji:v.romaji,userStatus:isCorrect?"Benar":"Salah",isCorrect,timeSpent,heard:quiz.lastHeard||"",answeredAt:new Date().toISOString() });
+      playTone(isCorrect ? "ok" : "wrong");
+
+      const timeSpent = Math.min(30, Math.max(0, Math.round((Date.now() - quiz.cardStart) / 1000)));
+      quiz.details.push({
+        no: quiz.index + 1, id: v.id, chapter: v.chapter, typeCategory: v.typeCategory, sectionCategory: v.sectionCategory,
+        indonesia: v.indonesia, kanji: v.kanji, kana: v.kana, romaji: v.romaji,
+        userStatus: isCorrect ? "Benar" : "Salah", isCorrect, timeSpent, heard: quiz.lastHeard || "", answeredAt: new Date().toISOString()
+      });
       if(isCorrect) quiz.correct++; else quiz.wrong++;
+
       const isLastCard = quiz.index >= quiz.cards.length - 1;
       if(isLastCard){
+        quiz.finishing = true;
         clearInterval(quiz.timer);
-        $("#quizProgress").style.width="100%";
-        $("#progressText").textContent="100% Selesai";
-        $("#cardCounter").textContent = `Kartu ${quiz.cards.length} / ${quiz.cards.length}`;
+        if($("#quizProgress")) $("#quizProgress").style.width = "100%";
+        if($("#progressText")) $("#progressText").textContent = "100% Selesai";
+        if($("#cardCounter")) $("#cardCounter").textContent = `Kartu ${quiz.cards.length} / ${quiz.cards.length}`;
+        setTimeout(()=>finishQuiz(), auto ? 350 : 220);
+        return;
       }
-      [$("#correctBtn"),$("#wrongBtn")].forEach(btn=>{ if(btn) btn.disabled=true; });
-      const delay = auto ? 700 : 460;
+
+      const delay = auto ? 650 : 420;
       setTimeout(()=>{
         if(!quiz) return;
-        if(isLastCard || quiz.index >= quiz.cards.length - 1){
-          finishQuiz();
-        } else {
-          quiz.index++;
-          renderQuizCard();
-          startTimer();
-        }
+        quiz.index++;
+        renderQuizCard();
+        startTimer();
       }, delay);
     }
-    async function finishQuiz(){
+    function finishQuiz(){
       if(!quiz) return;
       clearInterval(quiz.timer);
       stopRecognition();
-      $("#quizProgress").style.width="100%";
-      $("#progressText").textContent="100% Selesai";
-      const total=quiz.cards.length, score=Math.round((quiz.correct/total)*100), duration=Math.round((Date.now()-quiz.startedAt)/1000);
+      if($("#quizProgress")) $("#quizProgress").style.width = "100%";
+      if($("#progressText")) $("#progressText").textContent = "100% Selesai";
+      if($("#cardCounter")) $("#cardCounter").textContent = `Kartu ${quiz.cards.length} / ${quiz.cards.length}`;
+
+      const total = quiz.cards.length;
+      if(!total){ quiz=null; toast(t("noVocabFilter")); showPage("home"); return; }
+
+      const score = Math.round((quiz.correct / total) * 100);
+      const duration = Math.round((Date.now() - quiz.startedAt) / 1000);
       const result = {
-        username:state.session.username, group:state.session.group, role:state.session.role, selectedLanguage:state.lang,
-        selectedBook:state.setup.book, selectedMaterialCategory:state.setup.materialCategory, selectedChapter:state.setup.chapter,
-        quizDirection:quiz.direction, shuffleMode:quiz.shuffle?"Acak":"Tidak Acak", fictionFilter:quiz.fictionFilter,
-        selectedChapterFilters:quiz.chapterFilters, selectedSectionFilters:quiz.sectionFilters, selectedTypeFilters:quiz.typeFilters,
-        totalQuestions:total, correctCount:quiz.correct, wrongCount:quiz.wrong, scorePercent:score, kkmStatus:score>=60?"Lulus":"Belum Lulus",
-        totalDuration:duration, finishedAt:new Date().toISOString(), details:quiz.details, localId:"local-"+Date.now()
+        username: state.session?.username || "Peserta", group: state.session?.group || "-", role: state.session?.role || "user", selectedLanguage: state.lang,
+        selectedBook: state.setup.book, selectedMaterialCategory: state.setup.materialCategory, selectedChapter: state.setup.chapter,
+        quizDirection: quiz.direction, shuffleMode: quiz.shuffle ? "Acak" : "Tidak Acak", fictionFilter: quiz.fictionFilter,
+        selectedChapterFilters: quiz.chapterFilters, selectedSectionFilters: quiz.sectionFilters, selectedTypeFilters: quiz.typeFilters,
+        totalQuestions: total, correctCount: quiz.correct, wrongCount: quiz.wrong, scorePercent: score, kkmStatus: score >= 60 ? "Lulus" : "Belum Lulus",
+        totalDuration: duration, finishedAt: new Date().toISOString(), details: quiz.details, localId: "local-" + Date.now()
       };
-      currentResult=result;
-      localStorage.setItem(storeKey+"_lastResult",JSON.stringify(result));
-      await saveResult(result);
-      toast(t("saved"));
-      quiz=null;
-      renderResult();
+
+      currentResult = result;
+      localStorage.setItem(storeKey + "_lastResult", JSON.stringify(result));
+
+      // Pindahkan peserta ke Ringkasan Belajar terlebih dahulu. Penyimpanan online dilakukan di belakang
+      // agar halaman tidak stuck pada kartu 47/47 ketika koneksi Firebase lambat/gagal.
+      quiz = null;
       showPage("result");
-      setTimeout(renderResult,0);
+      renderResult();
+      toast(t("saved"));
+
+      Promise.resolve(saveResult(result)).catch(()=>toast(t("localOnly")));
     }
     async function saveResult(result){
       const local=[result,...localResults().filter(r=>r.localId!==result.localId)].slice(0,500); setLocalResults(local);
@@ -2571,64 +2757,118 @@
       }
     }
 
+    function resultTextMap(){
+      const jp = state.lang === "ja";
+      return jp ? {
+        breadcrumb:"ホーム 〉 学習結果", title:"学習まとめ", active:"選択中", score:"最終スコア", summary:"結果概要", total:"問題数", correct:"正解", wrong:"不正解", time:"時間",
+        review:"単語を確認", pdf:"PDF保存", retry:"もう一度練習", list:"練習結果一覧", all:"すべて", order:"並び替え", correctFirst:"正解を先に", wrongFirst:"不正解を先に", fast:"時間が短い順", slow:"時間が長い順",
+        goodTitle:"よくできました！", goodDesc:"語彙をよく理解できています。さらに繰り返すともっと自然に使えるようになります。",
+        badTitle:"もう少し頑張りましょう！", badDesc:"まだKKMに届いていません。間違えた語彙を確認して、もう一度練習しましょう。",
+        category:"カテゴリー", romaji:"読み方", meaning:"意味", status:"状態", no:"番号", vocab:"単語", heard:"聞こえた音声", dateLabel:"完了日時"
+      } : {
+        breadcrumb:"Beranda 〉 Hasil Latihan", title:"Ringkasan Belajar", active:"Pilihan aktif", score:"Skor Akhir", summary:"Ringkasan Hasil", total:"Total Soal", correct:"Benar", wrong:"Salah", time:"Waktu",
+        review:"Tinjau Kosakata", pdf:"Simpan PDF", retry:"Ulangi Latihan", list:"Tinjauan Hasil Latihan", all:"Semua Status", order:"Urutan", correctFirst:"Benar dulu", wrongFirst:"Salah dulu", fast:"Waktu tercepat", slow:"Waktu terlama",
+        goodTitle:"Bagus, pertahankan!", goodDesc:"Kamu sudah memahami kosakata dengan baik. Tetap ulangi agar makin lancar.",
+        badTitle:"Ayo belajar lebih giat lagi!", badDesc:"Nilaimu belum mencapai KKM. Ulangi latihan dan tinjau kosakata yang masih salah.",
+        category:"Kategori", romaji:"Cara Baca", meaning:"Arti", status:"Status", no:"No", vocab:"Kosakata Jepang", heard:"Terdengar", dateLabel:"Tanggal selesai"
+      };
+    }
+    function formatResultDate(iso, lang=state.lang){
+      const d = new Date(iso || Date.now());
+      if(lang === "ja") return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
+      return d.toLocaleString("id-ID", { day:"2-digit", month:"long", year:"numeric", hour:"2-digit", minute:"2-digit" }).replace(" pukul", ",");
+    }
+    function activeChoiceForResult(r){
+      const chapters = Array.isArray(r.selectedChapterFilters) && r.selectedChapterFilters.length ? r.selectedChapterFilters.join(", ") : r.selectedChapter;
+      const sections = Array.isArray(r.selectedSectionFilters) && r.selectedSectionFilters.length && !r.selectedSectionFilters.includes("Semua") ? ` / ${r.selectedSectionFilters.join(", ")}` : "";
+      const types = Array.isArray(r.selectedTypeFilters) && r.selectedTypeFilters.length && !r.selectedTypeFilters.includes("Semua") ? ` / ${r.selectedTypeFilters.join(", ")}` : "";
+      return `${bookLabel(r.selectedBook)} / ${r.selectedMaterialCategory} / ${chapters}${sections}${types}`;
+    }
     function renderResult(){
-      if(state.page!=="result" && !$("#resultPage").classList.contains("active")) return;
+      const tx = resultTextMap();
       if(!currentResult) {
         $("#resultContent").innerHTML = `<div class="empty"><h3>${t("emptyResult")}</h3><button class="btn" onclick="document.dispatchEvent(new CustomEvent('openQuizSettings'))">${t("startQuiz")}</button></div>`;
         return;
       }
-      const r=currentResult, deg=Math.round((r.scorePercent/100)*360);
-      $("#resultActiveChoice").textContent = `Pilihan aktif: ${bookLabel(r.selectedBook)} / ${r.selectedMaterialCategory} / ${r.selectedChapter}.`;
-      $("#resultDate").textContent = new Date(r.finishedAt).toLocaleString(state.lang==="ja"?"ja-JP":"id-ID");
+      const r=currentResult, deg=Math.round((Number(r.scorePercent||0)/100)*360), passed=Number(r.scorePercent)>=60;
+      const head = $("#resultPage .result-head");
+      if(head){
+        head.querySelector(".breadcrumb span").textContent = tx.breadcrumb;
+        head.querySelector("h2").textContent = tx.title;
+      }
+      $("#resultActiveChoice").textContent = `${tx.active}: ${activeChoiceForResult(r)}.`;
+      $("#resultDate").innerHTML = `<i class="fa-regular fa-calendar"></i> ${formatResultDate(r.finishedAt)}`;
       $("#resultContent").innerHTML = `
-        <div class="result-grid">
-          <div class="score-card glass">
-            <div class="circle" style="background:conic-gradient(var(--primary) ${deg}deg,#eee7ff 0deg)"><strong>${r.scorePercent}%</strong></div>
-            <div><span class="badge"><i class="fa-regular fa-star"></i>${r.kkmStatus}</span><h2>${r.scorePercent>=60?t("scoreGood"):t("scoreBad")}</h2><p>${r.scorePercent>=60?t("scoreGood"):t("scoreBad")}</p></div>
-          </div>
-          <div class="result-stats glass">
-            ${resultStat("fa-book-open",r.totalQuestions,state.lang==="ja"?"問題数":"Total Soal")}
-            ${resultStat("fa-circle-check",r.correctCount,t("correct"))}
-            ${resultStat("fa-circle-xmark",r.wrongCount,t("wrong"))}
-            ${resultStat("fa-clock",formatDuration(r.totalDuration),state.lang==="ja"?"時間":"Waktu")}
-          </div>
+        <div class="learning-summary-grid">
+          <section class="learning-score-card">
+            <div class="score-donut" style="background:conic-gradient(var(--primary) ${deg}deg,#eee7ff 0deg)"><div><strong>${Number(r.scorePercent||0)}%</strong><span>${tx.score}</span></div></div>
+            <div class="score-copy"><span class="badge"><i class="fa-regular fa-star"></i>${passed ? (state.lang==="ja"?"KKM達成":"KKM Tercapai") : (state.lang==="ja"?"要復習":"Mulai Latihan")}</span><h2>${passed?tx.goodTitle:tx.badTitle}</h2><p>${passed?tx.goodDesc:tx.badDesc}</p></div>
+          </section>
+          <aside class="result-summary-card"><h3>${tx.summary}</h3><div class="result-summary-grid">
+            ${summaryStat("fa-book-open", r.totalQuestions, tx.total, "")}
+            ${summaryStat("fa-circle-check", r.correctCount, tx.correct, "good")}
+            ${summaryStat("fa-circle-xmark", r.wrongCount, tx.wrong, "bad")}
+            ${summaryStat("fa-clock", formatDuration(Number(r.totalDuration||0)), tx.time, "time")}
+          </div></aside>
         </div>
-        <div class="row-actions" style="margin-top:16px">
-          <button class="btn" id="reviewBtn"><i class="fa-solid fa-book-open"></i>${t("reviewVocab")}</button>
-          <button class="btn secondary" id="pdfResultBtn"><i class="fa-regular fa-file-pdf"></i>${t("savePdf")}</button>
-          <button class="btn secondary" id="retryBtn"><i class="fa-solid fa-rotate"></i>${t("retry")}</button>
+        <div class="result-actions">
+          <button class="btn" id="reviewBtn"><i class="fa-solid fa-book-open"></i>${tx.review}</button>
+          <button class="btn secondary" id="pdfResultBtn"><i class="fa-regular fa-file-pdf"></i>${tx.pdf}</button>
+          <button class="btn secondary" id="retryBtn"><i class="fa-solid fa-rotate"></i>${tx.retry}</button>
         </div>
-        <div class="table-card glass" id="reviewTableCard">
-          <div class="filters">
-            <select id="resStatus"><option value="all">${t("allStatus")}</option><option value="correct">${t("correct")}</option><option value="wrong">${t("wrong")}</option></select>
-            <select id="resSort"><option value="order">Urutan</option><option value="fast">${t("fastest")}</option><option value="slow">${t("slowest")}</option></select>
-          </div>
+        <section class="review-card" id="reviewTableCard">
+          <div class="review-card-head"><h3>${tx.list}</h3><div class="review-filters">
+            <select id="resStatus"><option value="all">${tx.all}</option><option value="correct">${tx.correct}</option><option value="wrong">${tx.wrong}</option></select>
+            <select id="resSort"><option value="order">${tx.order}</option><option value="correctFirst">${tx.correctFirst}</option><option value="wrongFirst">${tx.wrongFirst}</option><option value="fast">${tx.fast}</option><option value="slow">${tx.slow}</option></select>
+          </div></div>
           <div id="reviewTable"></div>
-        </div>`;
+        </section>`;
       $("#pdfResultBtn").onclick=()=>openResultPdf(r,state.lang);
-      $("#retryBtn").onclick=openQuizSettings;
-      $("#reviewBtn").onclick=()=>$("#reviewTableCard").scrollIntoView({behavior:"smooth"});
+      $("#retryBtn").onclick=retrySameQuiz;
+      $("#reviewBtn").onclick=()=>$("#reviewTableCard").scrollIntoView({behavior:"smooth",block:"start"});
       $("#resStatus").onchange=renderReviewTable; $("#resSort").onchange=renderReviewTable;
       renderReviewTable();
     }
-    function resultStat(icon,val,label){ return `<div class="result-stat"><i class="fa-solid ${icon}"></i><div><strong>${val}</strong><span>${label}</span></div></div>`; }
+    function summaryStat(icon,val,label,klass=""){ return `<div class="summary-stat ${klass}"><i class="fa-solid ${icon}"></i><div><strong>${val}</strong><span>${label}</span></div></div>`; }
+    function retrySameQuiz(){
+      if(!state.session?.username) return openLogin();
+      currentResult = null;
+      const cards = filterQuizData();
+      if(!cards.length){ toast(t("noVocabFilter")); return openQuizSettings(); }
+      startQuiz();
+    }
     function renderReviewTable(){
       const r=currentResult; if(!r) return;
-      let rows=[...r.details];
+      const tx=resultTextMap();
+      let rows=[...(r.details||[])];
       const status=$("#resStatus")?.value||"all", sort=$("#resSort")?.value||"order";
       if(status==="correct") rows=rows.filter(x=>x.isCorrect); if(status==="wrong") rows=rows.filter(x=>!x.isCorrect);
-      if(sort==="fast") rows.sort((a,b)=>a.timeSpent-b.timeSpent); if(sort==="slow") rows.sort((a,b)=>b.timeSpent-a.timeSpent);
-      $("#reviewTable").innerHTML = tableHtml(["No","Kosakata Jepang","Romaji","Arti","Status","Waktu"], rows.map(d=>[d.no, `<span class="jp">${esc(d.kanji||d.kana)}</span><div class="jp" style="color:#718096;font-size:12px">${esc(d.kana)}</div>`, esc(d.romaji), esc(cleanDetailIndo(d.indonesia)), statusHtml(d.isCorrect), formatTime(d.timeSpent)]));
+      if(sort==="correctFirst") rows.sort((a,b)=>Number(b.isCorrect)-Number(a.isCorrect)||a.no-b.no);
+      if(sort==="wrongFirst") rows.sort((a,b)=>Number(a.isCorrect)-Number(b.isCorrect)||a.no-b.no);
+      if(sort==="fast") rows.sort((a,b)=>Number(a.timeSpent||0)-Number(b.timeSpent||0));
+      if(sort==="slow") rows.sort((a,b)=>Number(b.timeSpent||0)-Number(a.timeSpent||0));
+      const headers=[tx.no, tx.vocab, tx.romaji, "", tx.meaning, tx.status, tx.time, tx.category];
+      const data=rows.map(d=>[
+        d.no,
+        `<div class="review-jp">${esc(d.kanji||d.kana)}</div><div class="review-romaji jp">${esc(d.kana||"")}</div>`,
+        esc(d.romaji||"-"),
+        `<button class="review-speaker" data-speak="${esc(d.kanji||d.kana)}" title="${state.lang==="ja"?"聞く":"Dengar"}"><i class="fa-solid fa-volume-high"></i></button>`,
+        esc(cleanDetailIndo(d.indonesia)),
+        statusHtml(d.isCorrect),
+        formatTime(Number(d.timeSpent||0)),
+        esc([d.chapter,d.sectionCategory,d.typeCategory].filter(Boolean).join(" • "))
+      ]);
+      $("#reviewTable").innerHTML = tableHtml(headers,data,"review-table-wrap");
     }
 
-    function cleanDetailIndo(s){ return String(s).replace(/（.*?）/g,"").trim(); }
-    function tableHtml(headers, rows){
+    function cleanDetailIndo(s){ return String(s||"").replace(/（.*?）/g,"").replace(/\(.*?\)/g,"").trim(); }
+    function tableHtml(headers, rows, wrapClass="table-wrap"){
       if(!rows.length) return `<div class="empty">${state.lang==="ja"?"データがありません。":"Data tidak tersedia."}</div>`;
-      return `<div class="table-wrap"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+      return `<div class="${wrapClass}"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
     }
     function statusHtml(ok){ return `<span class="status ${ok?"ok":"no"}"><i class="fa-regular ${ok?"fa-circle-check":"fa-circle-xmark"}"></i>${ok?t("correct"):t("wrong")}</span>`; }
-    function formatTime(s){ return `00:${String(s).padStart(2,"0")}`; }
-    function formatDuration(sec){ const m=Math.floor(sec/60), s=sec%60; return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`; }
+    function formatTime(s){ s=Number(s||0); const m=Math.floor(s/60), sec=s%60; return `${String(m).padStart(2,"0")}:${String(sec).padStart(2,"0")}`; }
+    function formatDuration(sec){ sec=Number(sec||0); const m=Math.floor(sec/60), s=sec%60; return `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`; }
 
     async function loadAdmin(){
       allResults = await fetchResults();
@@ -2695,22 +2935,42 @@
       $("#detailModal").classList.add("show");
     }
 
+    function slugifyFileName(s){
+      return String(s||"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9一-龯ぁ-んァ-ン\s_-]/gi," ").trim().replace(/\s+/g,"_").replace(/_+/g,"_");
+    }
+    function resultPdfFileName(r, lang=state.lang){
+      const d=new Date(r.finishedAt||Date.now());
+      const stamp=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}_${String(d.getHours()).padStart(2,"0")}-${String(d.getMinutes()).padStart(2,"0")}`;
+      const category=[bookLabel(r.selectedBook), r.selectedMaterialCategory, r.selectedChapter].filter(Boolean).join(" ");
+      return `${lang==="ja"?"gakushu_kekka":"hasil_latihan"}_${slugifyFileName(category)}_${slugifyFileName(r.username||"peserta")}_${stamp}.pdf`;
+    }
     function openResultPdf(r, lang=state.lang){
-      const title = `${(r.selectedChapter||"kategori").replace(/\s+/g,"-")}_${r.username}_${new Date(r.finishedAt).toISOString().slice(0,16).replace("T","_").replace(":","-")}`;
-      const jp = lang==="ja";
-      const rows=(r.details||[]).map(d=>`<tr><td>${d.no}</td><td>${esc(d.kanji||d.kana)}<br><small>${esc(d.kana)}</small></td><td>${esc(d.romaji)}</td><td>${esc(cleanDetailIndo(d.indonesia))}</td><td>${d.isCorrect?(jp?"正解":"Benar"):(jp?"不正解":"Salah")}</td><td>${formatTime(d.timeSpent)}</td></tr>`).join("");
-      const html = reportShell(title, `<h1>${jp?"学習結果レポート":"Laporan Hasil Belajar"}</h1><p><b>${jp?"参加者":"Nama peserta"}:</b> ${esc(r.username)}<br><b>Group:</b> ${esc(r.group||"-")}<br><b>${jp?"教科書":"Buku"}:</b> ${esc(bookLabel(r.selectedBook))}<br><b>${jp?"カテゴリー":"Kategori"}:</b> ${esc(r.selectedMaterialCategory)} / ${esc(r.selectedChapter)}<br><b>${jp?"日時":"Tanggal"}:</b> ${new Date(r.finishedAt).toLocaleString(jp?"ja-JP":"id-ID")}</p><div class="summary"><div>Total<br><b>${r.totalQuestions}</b></div><div>${jp?"正解":"Benar"}<br><b>${r.correctCount}</b></div><div>${jp?"不正解":"Salah"}<br><b>${r.wrongCount}</b></div><div>Score<br><b>${r.scorePercent}%</b></div></div><table><thead><tr><th>No</th><th>${jp?"日本語":"Kosakata Jepang"}</th><th>Romaji</th><th>${jp?"意味":"Arti"}</th><th>Status</th><th>${jp?"時間":"Waktu"}</th></tr></thead><tbody>${rows}</tbody></table>`);
-      printWindow(html,title);
+      const jp = lang==="ja", tx = jp ? {
+        docTitle:"学習結果", participant:"名前", group:"グループ", book:"教科書", category:"カテゴリー", date:"日時", total:"問題数", correct:"正解", wrong:"不正解", score:"最終スコア", duration:"時間",
+        headers:["番号","単語","読み方","意味","状態","時間","カテゴリー"], ok:"正解", no:"不正解", print:"PDF保存 / 印刷"
+      } : {
+        docTitle:"Hasil Latihan", participant:"Nama peserta", group:"Grup", book:"Buku", category:"Kategori", date:"Tanggal", total:"Total Soal", correct:"Benar", wrong:"Salah", score:"Skor Akhir", duration:"Waktu pengerjaan",
+        headers:["No","Kosakata","Cara Baca","Arti","Status","Waktu","Kategori"], ok:"Benar", no:"Salah", print:"Simpan / Cetak PDF"
+      };
+      const filename=resultPdfFileName(r,lang);
+      const title = `${tx.docTitle} - ${bookLabel(r.selectedBook)} - ${r.selectedMaterialCategory} - ${r.selectedChapter}`;
+      const rows=(r.details||[]).map(d=>`<tr><td>${d.no}</td><td class="jp">${esc(d.kanji||d.kana)}<br><small>${esc(d.kana||"")}</small></td><td>${esc(d.romaji||"-")}</td><td>${esc(cleanDetailIndo(d.indonesia))}</td><td>${d.isCorrect?tx.ok:tx.no}</td><td>${formatTime(Number(d.timeSpent||0))}</td><td>${esc([d.chapter,d.sectionCategory,d.typeCategory].filter(Boolean).join(" / "))}</td></tr>`).join("");
+      const body = `<h1>${esc(title)}</h1>
+        <p class="meta"><b>${tx.participant}:</b> ${esc(r.username||"-")}<br><b>${tx.group}:</b> ${esc(r.group||"-")}<br><b>${tx.book}:</b> ${esc(bookLabel(r.selectedBook))}<br><b>${tx.category}:</b> ${esc(r.selectedMaterialCategory)} / ${esc(r.selectedChapter)}<br><b>${tx.date}:</b> ${esc(formatResultDate(r.finishedAt,lang))}</p>
+        <div class="summary"><div>${tx.total}<b>${r.totalQuestions}</b></div><div>${tx.correct}<b>${r.correctCount}</b></div><div>${tx.wrong}<b>${r.wrongCount}</b></div><div>${tx.score}<b>${r.scorePercent}%</b></div><div>${tx.duration}<b>${formatDuration(Number(r.totalDuration||0))}</b></div></div>
+        <table><thead><tr>${tx.headers.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table>`;
+      const html = reportShell(filename, body, tx.print);
+      printWindow(html, filename);
     }
     function openAllPdf(lang=state.lang){
       const jp=lang==="ja", title=`all-participants_${new Date().toISOString().slice(0,16).replace("T","_").replace(":","-")}_${lang}`;
       const rows=allResults.map((r,i)=>`<tr><td>${i+1}</td><td>${esc(r.username)}</td><td>${esc(r.group||"-")}</td><td>${new Date(r.finishedAt).toLocaleString(jp?"ja-JP":"id-ID")}</td><td>${r.totalQuestions}</td><td>${r.correctCount}</td><td>${r.wrongCount}</td><td>${r.scorePercent}%</td></tr>`).join("");
       const detail=allResults.map(r=>`<h2>${esc(r.username)} - ${r.scorePercent}%</h2><table><thead><tr><th>No</th><th>${jp?"日本語":"Jepang"}</th><th>Romaji</th><th>${jp?"意味":"Arti"}</th><th>Status</th><th>${jp?"時間":"Waktu"}</th></tr></thead><tbody>${(r.details||[]).map(d=>`<tr><td>${d.no}</td><td>${esc(d.kanji||d.kana)}</td><td>${esc(d.romaji)}</td><td>${esc(cleanDetailIndo(d.indonesia))}</td><td>${d.isCorrect?(jp?"正解":"Benar"):(jp?"不正解":"Salah")}</td><td>${formatTime(d.timeSpent)}</td></tr>`).join("")}</tbody></table>`).join("");
-      const html=reportShell(title,`<h1>${jp?"全参加者レポート":"Laporan Semua Peserta"}</h1><p>${new Date().toLocaleString(jp?"ja-JP":"id-ID")}</p><table><thead><tr><th>No</th><th>${jp?"名前":"Nama"}</th><th>Group</th><th>${jp?"最終日時":"Tanggal Terakhir"}</th><th>Total</th><th>${jp?"正解":"Benar"}</th><th>${jp?"不正解":"Salah"}</th><th>Score</th></tr></thead><tbody>${rows}</tbody></table>${detail}`);
+      const html=reportShell(title,`<h1>${jp?"全参加者レポート":"Laporan Semua Peserta"}</h1><p>${new Date().toLocaleString(jp?"ja-JP":"id-ID")}</p><table><thead><tr><th>No</th><th>${jp?"名前":"Nama"}</th><th>Group</th><th>${jp?"最終日時":"Tanggal Terakhir"}</th><th>Total</th><th>${jp?"正解":"Benar"}</th><th>${jp?"不正解":"Salah"}</th><th>Score</th></tr></thead><tbody>${rows}</tbody></table>${detail}`, jp?"印刷 / PDF保存":"Print / Save PDF");
       printWindow(html,title);
     }
-    function reportShell(title,body){
-      return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(title)}</title><style>body{font-family:Arial,'Noto Sans JP',sans-serif;margin:28px;color:#111827}h1{margin:0 0 12px}h2{margin-top:28px}table{width:100%;border-collapse:collapse;margin-top:14px;font-size:12px}th,td{border:1px solid #d1d5db;padding:8px;text-align:left;vertical-align:top}th{background:#f3f4f6}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.summary div{border:1px solid #d1d5db;border-radius:12px;padding:12px}@media print{button{display:none}}</style></head><body><button onclick="print()">Print / Save PDF</button>${body}<script>setTimeout(()=>print(),500)<\/script></body></html>`;
+    function reportShell(title,body,buttonLabel="Print / Save PDF"){
+      return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(title)}</title><style>@page{size:A4;margin:14mm}body{font-family:Arial,'Noto Sans JP',sans-serif;margin:0;color:#111827;background:#fff;font-size:12px}.toolbar{position:sticky;top:0;background:#fff;padding:10px 0;border-bottom:1px solid #e5e7eb;margin-bottom:18px}button{border:0;border-radius:10px;background:#7c4dff;color:#fff;font-weight:700;padding:10px 14px}h1{margin:0 0 10px;font-size:22px}.meta{line-height:1.7}.summary{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.summary div{border:1px solid #d8d4ef;border-radius:12px;padding:10px;background:#faf8ff}.summary b{display:block;font-size:18px;margin-top:5px}table{width:100%;border-collapse:collapse;margin-top:14px;font-size:11px}th,td{border:1px solid #d1d5db;padding:7px;text-align:left;vertical-align:top}th{background:#f3f0ff;color:#4c2bb7}.jp{font-family:'Noto Sans JP',Arial,sans-serif}small{color:#6b7280}@media print{.toolbar{display:none}body{font-size:11px}.summary{grid-template-columns:repeat(5,1fr)}}<\/style></head><body><div class="toolbar"><button onclick="print()">${esc(buttonLabel)}</button></div>${body}<script>document.title=${JSON.stringify(title)};setTimeout(()=>print(),700)<\/script></body></html>`;
     }
     function printWindow(html,title){ const w=window.open("","_blank"); if(!w) return toast("Popup diblokir browser."); w.document.open(); w.document.write(html); w.document.close(); }
 
