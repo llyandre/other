@@ -713,6 +713,83 @@
       .speech-heard { margin-left:0; }
     }
 
+
+    /* ===== Revisi final request: filter fiksi navbar, panel kuis, modal contoh, dan bug akhir ===== */
+    html, body { max-width:100%; overflow-x:hidden; }
+    .nav-fiction-toggle {
+      min-height:50px; border:1px solid rgba(124,77,255,.22); border-radius:999px;
+      background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(250,247,255,.88));
+      color:#4d5870; padding:0 10px; display:inline-flex; align-items:center; gap:8px;
+      font-weight:850; white-space:nowrap; box-shadow:0 12px 28px rgba(80,67,130,.09), inset 0 1px 0 rgba(255,255,255,.78);
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    }
+    .nav-fiction-toggle:hover { transform:translateY(-2px); box-shadow:0 16px 34px rgba(80,67,130,.13); border-color:rgba(124,77,255,.36); }
+    .nav-fiction-toggle .fiction-icon { width:32px; height:32px; display:grid; place-items:center; border-radius:50%; background:#f5f1ff; color:#7c4dff; }
+    .nav-fiction-toggle .fiction-state { min-width:34px; min-height:28px; display:grid; place-items:center; padding:0 9px; border-radius:999px; background:#edf1f8; color:#6b7890; font-size:12px; }
+    .nav-fiction-toggle.active { color:#4b20b6; background:linear-gradient(135deg,#f5efff,#eef8ff); border-color:rgba(124,77,255,.36); }
+    .nav-fiction-toggle.active .fiction-icon, .nav-fiction-toggle.active .fiction-state { color:#fff; background:linear-gradient(135deg,#7c4dff,#60d8c0); }
+    .nav-fiction-toggle:disabled { opacity:.46; cursor:not-allowed; transform:none; }
+
+    .quiz-status-row { grid-template-columns:minmax(0,1fr) minmax(150px,auto)!important; align-items:stretch; }
+    .study-status.status.ok { min-height:58px; font-size:15px; font-weight:850; gap:9px; line-height:1; background:#dcfaef; color:#128362; border:0; }
+    .study-status i { font-size:15px; }
+    .mode-select-wrap { position:relative; min-width:158px; }
+    .mode-select-wrap select {
+      appearance:none; -webkit-appearance:none; width:100%; min-height:58px; border-radius:20px; padding:0 42px 0 18px;
+      background:rgba(255,255,255,.96); border:1px solid #e8e2ff; color:#24304a; font-weight:850; box-shadow:0 10px 22px rgba(80,67,130,.055);
+      overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+    }
+    .mode-select-wrap i { position:absolute; right:16px; top:50%; transform:translateY(-50%); pointer-events:none; color:#24304a; font-size:12px; }
+    .mode-select-wrap select::-ms-expand { display:none; }
+
+    .control-btn[disabled], .control-btn.disabled-before-flip {
+      opacity:.42!important; cursor:not-allowed!important; background:#f7f8fc!important; color:#8a94a8!important; border-color:#e8edf7!important;
+      box-shadow:none!important; transform:none!important;
+    }
+    .control-btn[disabled] i { opacity:.75; }
+    .speech-card { gap:13px; align-items:center; background:linear-gradient(135deg,#fff,#fbf8ff); transition:background .2s ease, border-color .2s ease, box-shadow .2s ease; }
+    .speech-card.speech-on { background:linear-gradient(135deg,#fbf7ff,#eefcff); border-color:rgba(124,77,255,.26); box-shadow:0 14px 30px rgba(124,77,255,.1); }
+    .mic-icon { width:36px; height:36px; display:grid; place-items:center; border-radius:14px; color:#7c4dff; background:#f2ecff; flex:0 0 auto; font-size:18px; }
+    .speech-card.speech-on .mic-icon { color:#fff; background:linear-gradient(135deg,#7c4dff,#60d8c0); }
+    .mic-copy { min-width:0; }
+    .mic-copy strong { display:block; color:#071b45; font-size:16px; font-weight:850; line-height:1.15; }
+    .mic-copy p { margin:4px 0 0!important; font-size:12px!important; line-height:1.35; color:#6f7c94; }
+    .listen-wave.speech-state { min-height:50px; padding:10px 14px; gap:9px; font-size:13px; font-weight:800; border-radius:18px; }
+    .speech-state i { font-size:14px; width:18px; text-align:center; }
+    .speech-state span { flex:1 1 160px; font-size:13.5px; line-height:1.35; }
+    .speech-state.warning span, .speech-state.success span, .speech-state.error span { font-size:13.25px; }
+    .speech-heard { margin-left:27px; font-size:11.5px; font-weight:750; opacity:.78; }
+    .listen-wave b { width:10px; height:8px; }
+
+    .example-modal-card { width:min(620px,calc(100% - 24px))!important; padding:30px!important; border:1px solid rgba(226,217,255,.95)!important; background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(250,247,255,.96))!important; }
+    .example-modal-card .close-x { position:absolute; top:22px; right:22px; float:none; }
+    .example-modal-head { gap:16px; align-items:center; margin:0 50px 20px 0; }
+    .example-icon { width:58px; height:58px; border-radius:20px; position:relative; background:linear-gradient(135deg,#7c4dff 0%,#7db5ff 58%,#60d8c0 100%); box-shadow:0 16px 34px rgba(124,77,255,.22); font-size:22px; }
+    .example-icon::after { content:""; position:absolute; inset:8px; border-radius:15px; border:1px solid rgba(255,255,255,.28); }
+    .example-modal-head h2 { letter-spacing:-.055em; font-weight:850; }
+    .example-modal-head p { color:#66728a; font-size:14px; }
+    .example-content { gap:14px; }
+    .example-info-card { padding:18px 20px; border-radius:22px; background:linear-gradient(135deg,#fff,#fbf8ff); border:1px solid #e7e0ff; box-shadow:0 10px 24px rgba(80,67,130,.055); }
+    .example-info-card span { color:#7c4dff; font-size:12px; font-weight:900; letter-spacing:.045em; margin-bottom:8px; }
+    .example-info-card strong { color:#071b45; font-size:17px; line-height:1.55; font-weight:780; letter-spacing:normal; word-spacing:.08em; white-space:normal; }
+    #exampleJa { font-size:22px; line-height:1.6; font-family:var(--jp); }
+
+    @media (max-width:900px){
+      .nav-actions { gap:8px; }
+      .nav-fiction-toggle { min-height:44px; padding:0 8px; gap:6px; }
+      .nav-fiction-toggle .fiction-icon { width:28px; height:28px; }
+      .nav-fiction-toggle .fiction-label { display:none; }
+      .nav-fiction-toggle .fiction-state { min-width:30px; min-height:25px; font-size:10.5px; padding:0 7px; }
+      .quiz-status-row { grid-template-columns:1fr!important; }
+      .mode-select-wrap { min-width:0; }
+    }
+    @media (max-width:450px){
+      .nav-fiction-toggle .fiction-state { display:none; }
+      .nav-fiction-toggle { min-width:44px; justify-content:center; }
+      .example-modal-head { margin-right:42px; }
+      .example-icon { width:50px; height:50px; border-radius:18px; }
+    }
+
   </style>
 </head>
 <body>
@@ -751,6 +828,11 @@
           <span class="flag-circle">🇮🇩</span>
           <span class="lang-name">Indonesia</span>
           <span class="lang-code">ID</span>
+        </button>
+        <button class="nav-fiction-toggle active" id="navFictionToggle" type="button" aria-pressed="true" title="Filter kosakata fiksi">
+          <span class="fiction-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+          <span class="fiction-label">Fiksi</span>
+          <span class="fiction-state">ON</span>
         </button>
         <div class="user-menu">
           <button class="user-btn" id="userMenuBtn"><i class="fa-regular fa-user"></i><span id="userMenuText" data-i18n="login">Masuk</span></button>
@@ -814,7 +896,7 @@
           <div class="notice"><i class="fa-solid fa-book-open"></i><div><h3 data-i18n="studyFirst">Pelajari dulu sebelum mulai kuis</h3><p data-i18n="studyFirstDesc">Di halaman ini kamu bisa melihat arti, romaji, contoh kalimat, dan mendengarkan pelafalan.</p></div></div>
           <div class="search-row">
             <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="materialSearch" class="input" placeholder="Cari kosakata, romaji, atau arti..."></div>
-            <button class="btn secondary" id="materialFictionBtn"><i class="fa-solid fa-filter"></i><span data-i18n="fictionFilter">Filter Fiksi</span></button>
+
           </div>
           <div id="materialGrid" class="vocab-grid"></div>
           <div id="materialEmpty" class="empty hidden"><h3 data-i18n="categoryEmptyTitle">Kategori belum tersedia</h3><p data-i18n="categoryEmptyDesc">Bagian ini sudah disiapkan, tetapi kosakata belum ditambahkan.</p></div>
@@ -846,7 +928,7 @@
             <div class="metric"><span data-i18n="time">Waktu</span><strong id="timerText">00:30</strong><button class="btn soft" id="pauseBtn" style="margin-top:10px;min-height:38px;width:100%"><span data-i18n="pause">Jeda</span></button></div>
             <div class="metric"><strong id="cardCounter">Kartu 1 / 1</strong><div class="bar"><div id="quizProgress"></div></div><span id="progressText">0% Selesai</span></div>
           </div>
-          <div class="control-row" style="grid-template-columns:1fr auto"><span class="status ok"><i class="fa-solid fa-book-open"></i><span data-i18n="studyMode">Sedang Belajar</span></span><select id="modeSelect"><option>Mode: Belajar</option></select></div>
+          <div class="control-row quiz-status-row"><span class="status ok study-status"><i class="fa-solid fa-book-open"></i><span data-i18n="studyMode">Sedang Belajar</span></span><div class="mode-select-wrap"><select id="modeSelect"><option>Mode: Belajar</option></select><i class="fa-solid fa-chevron-down"></i></div></div>
           <button class="control-btn" id="hearBtn"><i class="fa-solid fa-volume-high"></i><span data-i18n="listen">Dengar</span></button>
           <button class="control-btn" id="exampleBtn"><i class="fa-regular fa-message"></i><span data-i18n="exampleSentence">Contoh Kalimat</span></button>
           <div class="listen-wave" id="speechStatus"><i class="fa-solid fa-wave-square"></i><span data-i18n="listening">Mendengarkan...</span><b></b><b></b><b></b><b></b></div>
@@ -854,7 +936,7 @@
             <button class="btn good" id="correctBtn"><i class="fa-regular fa-circle-check"></i><span data-i18n="correct">Benar</span></button>
             <button class="btn bad" id="wrongBtn"><i class="fa-regular fa-circle-xmark"></i><span data-i18n="wrong">Salah</span></button>
           </div>
-          <div class="mic-box"><i class="fa-solid fa-microphone" style="color:var(--primary);font-size:24px"></i><div><strong data-i18n="speechFeature">Fungsi Bicara</strong><p id="speechHelp" style="margin:4px 0 0;font-size:12px">Jawab dengan suara untuk pengalaman belajar.</p></div><button class="switch on" id="micSwitch" aria-label="Mic toggle"></button></div>
+          <div class="mic-box speech-card" id="micBox"><span class="mic-icon"><i class="fa-solid fa-microphone"></i></span><div class="mic-copy"><strong data-i18n="speechFeature">Fungsi Bicara</strong><p id="speechHelp">Jawab dengan suara untuk pengalaman belajar.</p></div><button class="switch on" id="micSwitch" aria-label="Mic toggle"></button></div>
         </aside>
       </div>
     </section>
@@ -946,7 +1028,7 @@
       <div class="modal-fixed-head">
         <div class="modal-title"><div class="kana-icon">あ</div><h2 data-i18n="quizSettingTitle">Atur Kuis Flashcard</h2><p data-i18n="quizSettingDesc">Tentukan arah bahasa, urutan kartu, dan lingkup kuis secara bertahap.</p></div>
         <div class="setup-progress" aria-hidden="true">
-          <div class="setup-progress-top"><span id="quizStepBadge">Langkah 1 dari 6</span><span id="quizStepHint">Arah Bahasa</span></div>
+          <div class="setup-progress-top"><span id="quizStepBadge">Langkah 1 dari 5</span><span id="quizStepHint">Arah Bahasa</span></div>
           <div class="setup-progress-line"><span id="quizProgressFill"></span></div>
         </div>
       </div>
@@ -967,24 +1049,16 @@
           </div>
         </div>
         <div class="step-block" data-quiz-step="3">
-          <h3 data-i18n="fictionStepTitle">2B. Pilih filter fiksi</h3>
-          <div class="option-grid">
-            <button class="option-card active" data-qfiction="all">Semua Kosakata<small>Menampilkan kosakata biasa dan fiksi sesuai lingkup bab.</small></button>
-            <button class="option-card" data-qfiction="fiction">Hanya Fiksi<small>Kuis hanya memakai kosakata yang diberi label fiksi.</small></button>
-          </div>
-          <p class="quiz-setting-note" id="quizFictionNote">Filter fiksi sekarang dipilih di pop-up Mulai Kuis, bukan di halaman beranda.</p>
-        </div>
-        <div class="step-block" data-quiz-step="4">
           <h3 data-i18n="chapterScopeStep">3A. Pilih kategori bab</h3>
           <p><strong data-i18n="chapterCategory">Kategori Bab</strong></p>
           <div class="multi-grid" id="quizChapterFilters"></div>
         </div>
-        <div class="step-block" data-quiz-step="5">
+        <div class="step-block" data-quiz-step="4">
           <h3 data-i18n="sectionScopeStep">3B. Pilih kategori section</h3>
           <p><strong data-i18n="sectionCategory">Kategori Section</strong></p>
           <div class="multi-grid" id="quizSectionFilters"></div>
         </div>
-        <div class="step-block" data-quiz-step="6">
+        <div class="step-block" data-quiz-step="5">
           <h3 data-i18n="typeScopeStep">3C. Pilih kategori jenis kata</h3>
           <p><strong data-i18n="typeCategory">Kategori Jenis Kata</strong></p>
           <div class="multi-grid" id="quizTypeFilters"></div>
@@ -1927,15 +2001,15 @@
       setup: JSON.parse(localStorage.getItem(storeKey+"_setup") || "null") || { book:"Minna no Nihongo I (2nd Edition)", materialCategory:"Materi Umum", chapter:"Bab 1" },
       session: JSON.parse(localStorage.getItem(storeKey+"_session") || "null"),
       favorites: JSON.parse(localStorage.getItem(storeKey+"_fav") || "[]"),
-      fictionOnly: localStorage.getItem(storeKey+"_fiction") === "true",
-      quizFictionOnly: localStorage.getItem(storeKey+"_quizFiction") === "true",
+      includeFiction: localStorage.getItem(storeKey+"_includeFiction") !== "false",
+      quizFictionOnly: false,
       page:"home"
     };
     let tempSetup = {...state.setup};
     let setupStep = 1;
     const setupMaxStep = 4;
     let quizSettingStep = 1;
-    const quizSettingMaxStep = 6;
+    const quizSettingMaxStep = 5;
     let currentResult = JSON.parse(localStorage.getItem(storeKey+"_lastResult") || "null");
     let allResults = [];
     let quiz = null;
@@ -1961,13 +2035,18 @@
     function esc(s=""){ return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m])); }
     function jpText(v){ return v.kanji || v.kana; }
     function cleanIndo(v){ return String(v.indonesia).replace(/（.*?）/g,"").replace(/\(.*?\)/g,"").trim(); }
+    function isFictionVocab(v={}){
+      const direct = v.isFiction === true || v.fiction === true || v.is_fiction === true;
+      const meta = [v.label, v.labels, v.tag, v.tags, v.category, v.kategori, v.typeCategory, v.sectionCategory, v.indonesia]
+        .flat().filter(Boolean).join(" ").toLowerCase();
+      return direct || /(^|\s|[,;|/])fiksi($|\s|[,;|/])/.test(meta);
+    }
     function saveState(){
       localStorage.setItem(storeKey+"_lang",state.lang);
       localStorage.setItem(storeKey+"_setup",JSON.stringify(state.setup));
       localStorage.setItem(storeKey+"_session",JSON.stringify(state.session));
       localStorage.setItem(storeKey+"_fav",JSON.stringify(state.favorites));
-      localStorage.setItem(storeKey+"_fiction",String(state.fictionOnly));
-      localStorage.setItem(storeKey+"_quizFiction",String(state.quizFictionOnly));
+      localStorage.setItem(storeKey+"_includeFiction",String(state.includeFiction));
     }
     function localResults(){ return JSON.parse(localStorage.getItem(storeKey+"_results") || "[]"); }
     function setLocalResults(arr){ localStorage.setItem(storeKey+"_results",JSON.stringify(arr)); }
@@ -2014,10 +2093,10 @@
     }
     function activeVocab(){
       let arr = baseVocab();
-      if(state.fictionOnly) arr = arr.filter(v=>v.isFiction);
+      if(!state.includeFiction) arr = arr.filter(v=>!isFictionVocab(v));
       return arr.map(v=>({...v, favorite: state.favorites.includes(v.id)}));
     }
-    function anyFictionInBase(){ return baseVocab().some(v=>v.isFiction); }
+    function anyFictionInBase(){ return baseVocab().some(v=>isFictionVocab(v)); }
 
     function updateNavLanguageButton(){
       const btn = $("#navLangBtn");
@@ -2035,6 +2114,25 @@
       btn.setAttribute("aria-label", isId ? "Ganti bahasa ke Jepang" : "Ganti bahasa ke Indonesia");
     }
 
+    function updateFictionToggle(){
+      const btn = $("#navFictionToggle");
+      if(!btn) return;
+      const available = anyFictionInBase();
+      if(!available && state.includeFiction !== true){ state.includeFiction = true; saveState(); }
+      btn.disabled = !available;
+      btn.classList.toggle("active", !!state.includeFiction && available);
+      btn.setAttribute("aria-pressed", String(!!state.includeFiction && available));
+      const label = btn.querySelector(".fiction-label");
+      const st = btn.querySelector(".fiction-state");
+      if(label) label.textContent = state.lang === "ja" ? "架空語" : "Fiksi";
+      if(st) st.textContent = state.includeFiction ? "ON" : "OFF";
+      btn.title = !available
+        ? (state.lang === "ja" ? "この範囲には架空語がありません" : "Tidak ada kosakata fiksi pada lingkup ini")
+        : (state.includeFiction
+          ? (state.lang === "ja" ? "架空語を含める — klik untuk OFF" : "Kosakata fiksi ikut aktif — klik untuk OFF")
+          : (state.lang === "ja" ? "架空語を非表示 — klik untuk ON" : "Kosakata fiksi dimatikan — klik untuk ON"));
+    }
+
     function applyTranslations(){
       document.documentElement.lang = state.lang === "ja" ? "ja" : "id";
       $$("[data-i18n]").forEach(el=>{ el.textContent = t(el.dataset.i18n); });
@@ -2042,24 +2140,19 @@
       $("#adminSearch").placeholder = state.lang==="ja" ? "参加者名を検索..." : "Cari nama peserta...";
       $("#homeLangBtn span").textContent = state.lang==="id" ? "日本語" : "Indonesia";
       updateNavLanguageButton();
+      updateFictionToggle();
       renderSetup();
     }
 
     function renderAll(){
       applyTranslations();
-      const baseCount = baseVocab().length;
       const count = activeVocab().length;
-      $("#homeVocabCount").textContent = baseCount;
+      $("#homeVocabCount").textContent = count;
       $("#homeChapterCount").textContent = chapterNumbers(state.setup.chapter).length;
       $("#activeChoiceText").textContent = setupLabel();
       $("#matCount").textContent = count;
       $("#activeChoiceText").classList.toggle("jp",state.lang==="ja");
-      const ficDisabled = !anyFictionInBase();
-      [$("#materialFictionBtn")].filter(Boolean).forEach(btn=>{
-        btn.disabled = ficDisabled;
-        btn.classList.toggle("active",state.fictionOnly && !ficDisabled);
-      });
-      if(ficDisabled && state.fictionOnly) { state.fictionOnly=false; saveState(); }
+      updateFictionToggle();
       renderUser();
       renderMaterial();
       renderResult();
@@ -2108,7 +2201,7 @@
             <div><div class="vocab-jp jp">${esc(jpText(v))}</div><div class="vocab-romaji">${esc(v.romaji)}</div></div>
           </div>
           <div class="vocab-id">${esc(cleanIndo(v))}</div>
-          <div class="tag-row"><span class="tag">${esc(v.chapter)}</span><span class="tag green">${esc(v.typeCategory)}</span><span class="tag pink">${esc(v.sectionCategory)}</span>${v.isFiction?`<span class="tag">Fiksi</span>`:""}</div>
+          <div class="tag-row"><span class="tag">${esc(v.chapter)}</span><span class="tag green">${esc(v.typeCategory)}</span><span class="tag pink">${esc(v.sectionCategory)}</span>${isFictionVocab(v)?`<span class="tag">Fiksi</span>`:""}</div>
           <div class="card-actions"><button class="icon-btn" data-speak="${esc(jpText(v))}"><i class="fa-solid fa-volume-high"></i></button><button class="icon-btn ${state.favorites.includes(v.id)?"active":""}" data-fav="${v.id}"><i class="${state.favorites.includes(v.id)?"fa-solid":"fa-regular"} fa-star"></i></button></div>
         </article>`).join("");
       $("#materialEmpty").classList.toggle("hidden",arr.length>0);
@@ -2142,8 +2235,8 @@
 
     function quizSettingTitle(step){
       const titles = state.lang === "ja"
-        ? ["言語方向", "カード順", "架空語", "章", "セクション", "語彙タイプ"]
-        : ["Arah Bahasa", "Urutan Kartu", "Filter Fiksi", "Bab", "Section", "Jenis Kata"];
+        ? ["言語方向", "カード順", "章", "セクション", "語彙タイプ"]
+        : ["Arah Bahasa", "Urutan Kartu", "Bab", "Section", "Jenis Kata"];
       return titles[step-1] || titles[0];
     }
     function updateQuizSettingSteps(){
@@ -2166,20 +2259,7 @@
       quizSettingStep = Math.max(1, Math.min(quizSettingMaxStep, step));
       updateQuizSettingSteps();
     }
-    function syncQuizFictionOptions(){
-      const allBtn = $('[data-qfiction="all"]');
-      const fictionBtn = $('[data-qfiction="fiction"]');
-      const note = $("#quizFictionNote");
-      if(!allBtn || !fictionBtn) return;
-      const available = anyFictionInBase();
-      if(!available) state.quizFictionOnly = false;
-      fictionBtn.disabled = !available;
-      allBtn.classList.toggle("active", !state.quizFictionOnly || !available);
-      fictionBtn.classList.toggle("active", state.quizFictionOnly && available);
-      if(note) note.textContent = available
-        ? (state.lang === "ja" ? "架空語フィルターはホームではなく、クイズ開始時のポップアップで選択します。" : "Filter fiksi sekarang dipilih di pop-up Mulai Kuis, bukan di halaman beranda.")
-        : (state.lang === "ja" ? "この範囲には架空語がありません。" : "Tidak ada kosakata fiksi pada lingkup pilihan ini.");
-    }
+    function syncQuizFictionOptions(){ updateFictionToggle(); }
 
     function renderSetup(){
       const bookOptions=[
@@ -2256,8 +2336,7 @@
     function selectedChecks(sel){ return $$(`${sel} input:checked`).map(i=>i.value); }
     function filterQuizData(){
       let arr=baseVocab().map(v=>({...v, favorite: state.favorites.includes(v.id)}));
-      const fictionChoice = $('[data-qfiction].active')?.dataset.qfiction || (state.quizFictionOnly ? "fiction" : "all");
-      if(fictionChoice === "fiction") arr = arr.filter(v=>v.isFiction);
+      if(!state.includeFiction) arr = arr.filter(v=>!isFictionVocab(v));
       const chapters=selectedChecks("#quizChapterFilters").flatMap(ch=>chapterNumbers(ch));
       const sections=selectedChecks("#quizSectionFilters");
       const types=selectedChecks("#quizTypeFilters");
@@ -2282,7 +2361,6 @@
       updateQuizSettingSteps();
     }
     function startQuiz(){
-      state.quizFictionOnly = $('[data-qfiction="fiction"]')?.classList.contains("active") || false;
       saveState();
       let cards = filterQuizData();
       if(!cards.length) return toast(t("noVocabFilter"));
@@ -2290,7 +2368,7 @@
       quiz = {
         cards, index:0, direction: $('[data-qdir].active').dataset.qdir, shuffle: $('[data-shuffle="true"]').classList.contains("active"),
         details:[], correct:0, wrong:0, startedAt:Date.now(), cardStart:Date.now(), remaining:30, timer:null, paused:false, flipped:false, focusLost:0, micOn:true, answered:false, speechWrongCount:0, lastHeard:"", _speechHold:false,
-        chapterFilters:selectedChecks("#quizChapterFilters"), sectionFilters:selectedChecks("#quizSectionFilters"), typeFilters:selectedChecks("#quizTypeFilters"), fictionFilter:state.quizFictionOnly?"Hanya Fiksi":"Semua Kosakata"
+        chapterFilters:selectedChecks("#quizChapterFilters"), sectionFilters:selectedChecks("#quizSectionFilters"), typeFilters:selectedChecks("#quizTypeFilters"), fictionFilter:state.includeFiction?"Fiksi ON":"Fiksi OFF"
       };
       closeModal("#quizSettingsModal");
       showPage("quiz");
@@ -2328,6 +2406,12 @@
       el.className = `listen-wave speech-state ${type}`;
       el.innerHTML = `<i class="fa-solid ${iconMap[type]||iconMap.idle}"></i><span>${esc(message)}</span>${type==="listening"?"<b></b><b></b><b></b><b></b>":""}${heard?`<small class="speech-heard">Terdengar: ${esc(heard)}</small>`:""}`;
     }
+    function updateMicBoxState(){
+      const box = $("#micBox");
+      if(!box) return;
+      const active = !!(quiz && quiz.micOn && speechSupported && !quiz.flipped && !quiz.paused);
+      box.classList.toggle("speech-on", active);
+    }
     function currentSpeechTarget(v){
       return quiz.direction === "idToJp" ? jpText(v) : cleanIndo(v);
     }
@@ -2335,14 +2419,20 @@
       return v.exampleReading || v.exampleRomaji || v.exampleRomajiText || v.romaji || v.kana || "Cara baca belum tersedia";
     }
     function exampleMeaningFallback(v){
-      return v.exampleId || v.exampleIndonesia || v.exampleMeaningId || "Arti contoh belum tersedia";
+      return v.exampleId || v.exampleIndonesia || v.exampleMeaningId || "Arti contoh belum tersedia.";
+    }
+    function tidyExampleText(text,fallback){
+      const raw = String(text || fallback || "").replace(/\s+/g," ").trim();
+      if(!raw) return fallback || "-";
+      if(normalize(raw) === normalize("Arti contoh belum tersedia")) return "Arti contoh belum tersedia.";
+      return raw;
     }
     function openExampleModal(){
-      if(!quiz) return;
+      if(!quiz || !quiz.flipped) return toast(state.lang==="ja"?"先にカードを裏返してください。":"Balik kartu dulu untuk menggunakan fitur ini.");
       const v = quiz.cards[quiz.index];
-      $("#exampleJa").textContent = v.exampleJa || t("noExample");
-      $("#exampleReading").textContent = exampleReadingFallback(v);
-      $("#exampleId").textContent = exampleMeaningFallback(v);
+      $("#exampleJa").textContent = tidyExampleText(v.exampleJa, t("noExample"));
+      $("#exampleReading").textContent = tidyExampleText(exampleReadingFallback(v), "Cara baca belum tersedia");
+      $("#exampleId").textContent = tidyExampleText(exampleMeaningFallback(v), "Arti contoh belum tersedia.");
       $("#exampleModal").classList.add("show");
     }
 
@@ -2371,6 +2461,7 @@
       $("#flipHint").textContent = quiz.direction==="idToJp" ? (state.lang==="ja"?"カードをクリックして日本語を表示":"Klik kartu untuk melihat bahasa Jepang") : (state.lang==="ja"?"カードをクリックして意味を表示":"Klik kartu untuk melihat arti Indonesia");
       updateHearButtons();
       $("#micSwitch").classList.toggle("on",quiz.micOn && speechSupported);
+      updateMicBoxState();
       if(!speechSupported) setSpeechStatus("unsupported",t("browserSpeechNo"));
       else setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu");
       if(quiz.micOn) startRecognition();
@@ -2390,15 +2481,19 @@
       $("#flashcard").classList.toggle("flipped",quiz.flipped);
       if(quiz.flipped){ quiz.micOn=false; stopRecognition(); $("#micSwitch").classList.remove("on"); setSpeechStatus("idle",state.lang==="ja"?"カードを戻すと発話できます。":"Kartu dibalik. Kembalikan kartu untuk memakai fitur bicara."); }
       updateHearButtons();
+      updateMicBoxState();
     }
     function canUseJapaneseTools(){
-      return !!quiz;
+      return !!(quiz && quiz.flipped);
     }
     function updateHearButtons(){
       const hasQuiz=!!quiz;
       const audioOk="speechSynthesis" in window;
-      $("#hearBtn").disabled=!hasQuiz || !audioOk;
-      $("#exampleBtn").disabled=!hasQuiz;
+      const mustFlip = hasQuiz && !quiz.flipped;
+      const title = mustFlip ? (state.lang==="ja"?"先にカードを裏返してください。":"Balik kartu dulu untuk menggunakan fitur ini.") : "";
+      const hear = $("#hearBtn"), ex = $("#exampleBtn");
+      if(hear){ hear.disabled=!hasQuiz || !audioOk || !quiz.flipped; hear.title=title; hear.classList.toggle("disabled-before-flip", mustFlip); }
+      if(ex){ ex.disabled=!hasQuiz || !quiz.flipped; ex.title=title; ex.classList.toggle("disabled-before-flip", mustFlip); }
       if(hasQuiz && !audioOk) setSpeechStatus("unsupported",state.lang==="ja"?"このブラウザは音声再生に対応していません。":"Audio tidak didukung browser ini");
     }
     function startTimer(){
@@ -2418,15 +2513,22 @@
       quiz._speechHold=true;
       stopRecognition();
       selectAnswerButton(isCorrect);
-      [$("#correctBtn"),$("#wrongBtn")].forEach(btn=>{ if(btn) btn.disabled=true; });
       playTone(isCorrect?"ok":"wrong");
       const v=quiz.cards[quiz.index], timeSpent=Math.min(30,Math.max(0,Math.round((Date.now()-quiz.cardStart)/1000)));
       quiz.details.push({ no:quiz.index+1,id:v.id,chapter:v.chapter,typeCategory:v.typeCategory,sectionCategory:v.sectionCategory,indonesia:v.indonesia,kanji:v.kanji,kana:v.kana,romaji:v.romaji,userStatus:isCorrect?"Benar":"Salah",isCorrect,timeSpent,heard:quiz.lastHeard||"",answeredAt:new Date().toISOString() });
       if(isCorrect) quiz.correct++; else quiz.wrong++;
+      const isLastCard = quiz.index >= quiz.cards.length - 1;
+      if(isLastCard){
+        clearInterval(quiz.timer);
+        $("#quizProgress").style.width="100%";
+        $("#progressText").textContent="100% Selesai";
+        $("#cardCounter").textContent = `Kartu ${quiz.cards.length} / ${quiz.cards.length}`;
+      }
+      [$("#correctBtn"),$("#wrongBtn")].forEach(btn=>{ if(btn) btn.disabled=true; });
       const delay = auto ? 700 : 460;
       setTimeout(()=>{
         if(!quiz) return;
-        if(quiz.index >= quiz.cards.length - 1){
+        if(isLastCard || quiz.index >= quiz.cards.length - 1){
           finishQuiz();
         } else {
           quiz.index++;
@@ -2748,13 +2850,15 @@
       $("#homeLangBtn").onclick=toggleLanguage;
       $("#navLangBtn").onclick=toggleLanguage;
       $("#langToggleDrop").onclick=toggleLanguage;
-      $("#materialFictionBtn").onclick=()=>{ if(anyFictionInBase()){ state.fictionOnly=!state.fictionOnly; saveState(); renderAll(); } };
+      const oldMaterialFictionBtn = $("#materialFictionBtn");
+      if(oldMaterialFictionBtn) oldMaterialFictionBtn.onclick=()=>{ if(anyFictionInBase()){ state.includeFiction=!state.includeFiction; saveState(); renderAll(); updateQuizFilterCount(); } };
+      $("#navFictionToggle").onclick=()=>{ if(anyFictionInBase()){ state.includeFiction=!state.includeFiction; saveState(); renderAll(); updateQuizFilterCount(); } };
       $("#logoutBtn").onclick=logout; $("#sideLogout").onclick=logout;
       $("#materialSearch").oninput=renderMaterial;
       $("#closeSetup").onclick=()=>closeModal("#setupModal"); $("#cancelSetup").onclick=()=>closeModal("#setupModal");
       $("#prevSetupStep").onclick=()=>setSetupStep(setupStep-1);
       $("#nextSetupStep").onclick=()=>setSetupStep(setupStep+1);
-      $("#saveSetup").onclick=()=>{ state.setup={...tempSetup}; state.fictionOnly=false; saveState(); closeModal("#setupModal"); renderAll(); };
+      $("#saveSetup").onclick=()=>{ state.setup={...tempSetup}; saveState(); closeModal("#setupModal"); renderAll(); };
       $("#closeLogin").onclick=()=>closeModal("#loginModal"); $("#cancelLogin").onclick=()=>closeModal("#loginModal");
       $("#usernameInput").oninput=updateAdminLoginMode; $("#saveLogin").onclick=saveLogin;
       $("#togglePassword").onclick=e=>{ e.preventDefault(); const i=$("#adminPasswordInput"); i.type=i.type==="password"?"text":"password"; };
@@ -2762,17 +2866,17 @@
       $("#prevQuizSetting").onclick=()=>setQuizSettingStep(quizSettingStep-1);
       $("#nextQuizSetting").onclick=()=>{
         updateQuizFilterCount();
-        if(quizSettingStep >= 4 && filterQuizData().length===0) return toast(t("noVocabFilter"));
+        if(quizSettingStep >= 3 && filterQuizData().length===0) return toast(t("noVocabFilter"));
         setQuizSettingStep(quizSettingStep+1);
       };
       $("#startQuizFromSettings").onclick=startQuiz;
       $("#quizSettingsModal").addEventListener("change",e=>{ if(e.target.matches("input[type=checkbox]")) updateQuizFilterCount(); });
       $("#flashcard").onclick=flipCard; $("#quizFavBtn").onclick=e=>{ e.stopPropagation(); toggleFav(quiz.cards[quiz.index].id); }; $("#quizFavBtnBack").onclick=e=>{ e.stopPropagation(); toggleFav(quiz.cards[quiz.index].id); };
-      $("#pauseBtn").onclick=()=>{ if(!quiz) return; quiz.paused=!quiz.paused; $("#pauseBtn span").textContent=quiz.paused?t("resume"):t("pause"); if(quiz.paused){ stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"一時停止中です。":"Kuis dijeda."); } else { setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } };
-      $("#hearBtn").onclick=()=>{ if(!quiz) return; if(!("speechSynthesis" in window)){ setSpeechStatus("unsupported",state.lang==="ja"?"このブラウザは音声再生に対応していません。":"Audio tidak didukung browser ini"); return; } speak(jpText(quiz.cards[quiz.index]),"ja-JP"); };
+      $("#pauseBtn").onclick=()=>{ if(!quiz) return; quiz.paused=!quiz.paused; $("#pauseBtn span").textContent=quiz.paused?t("resume"):t("pause"); if(quiz.paused){ stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"一時停止中です。":"Kuis dijeda."); } else { setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } updateMicBoxState(); };
+      $("#hearBtn").onclick=()=>{ if(!quiz || !quiz.flipped) return toast(state.lang==="ja"?"先にカードを裏返してください。":"Balik kartu dulu untuk menggunakan fitur ini."); if(!("speechSynthesis" in window)){ setSpeechStatus("unsupported",state.lang==="ja"?"このブラウザは音声再生に対応していません。":"Audio tidak didukung browser ini"); return; } speak(jpText(quiz.cards[quiz.index]),"ja-JP"); };
       $("#exampleBtn").onclick=openExampleModal;
       $("#correctBtn").onclick=()=>answerCard(true); $("#wrongBtn").onclick=()=>answerCard(false);
-      $("#micSwitch").onclick=()=>{ if(!speechSupported) return setSpeechStatus("unsupported",t("browserSpeechNo")); if(!quiz || quiz.flipped) return; quiz.micOn=!quiz.micOn; $("#micSwitch").classList.toggle("on",quiz.micOn); if(quiz.micOn){ setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } else { stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"マイクはオフです。":"Mikrofon dimatikan."); } };
+      $("#micSwitch").onclick=()=>{ if(!speechSupported) return setSpeechStatus("unsupported",t("browserSpeechNo")); if(!quiz || quiz.flipped) return; quiz.micOn=!quiz.micOn; $("#micSwitch").classList.toggle("on",quiz.micOn); updateMicBoxState(); if(quiz.micOn){ setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } else { stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"マイクはオフです。":"Mikrofon dimatikan."); } };
       $("#closeExample").onclick=()=>closeModal("#exampleModal"); $("#closeImage").onclick=()=>closeModal("#imageModal"); $("#closeDetail").onclick=()=>closeModal("#detailModal");
       $("#adminSearch").oninput=renderAdmin; $("#adminGroup").onchange=renderAdmin; $("#adminPeriod").onchange=renderAdmin; $("#adminStatus").onchange=renderAdmin;
       $("#resetAdminFilter").onclick=()=>{ $("#adminSearch").value=""; $("#adminGroup").value="all"; $("#adminPeriod").value="all"; $("#adminStatus").value="all"; renderAdmin(); };
