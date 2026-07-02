@@ -856,6 +856,94 @@
     #correctBtn:not(:disabled), #wrongBtn:not(:disabled) { opacity:1!important; cursor:pointer!important; }
     #correctBtn.answer-lock, #wrongBtn.answer-lock { pointer-events:none; }
 
+  
+
+    /* ===== FINAL EDIT: Ringkasan Belajar, Login, dan Dashboard Admin Estetik ===== */
+    :root{
+      --soft-purple:#f1eaff; --soft-blue:#eef6ff; --soft-pink:#ffeaf1; --soft-green:#e5fbf2; --soft-yellow:#fff4d8;
+      --ink:#071b45; --thin-line:rgba(124,77,255,.14);
+    }
+    html,body{max-width:100%;overflow-x:hidden;}
+    body{font-weight:500;letter-spacing:-.006em;}
+    h1,h2{font-weight:800;letter-spacing:-.035em;}
+    h3{font-weight:750;letter-spacing:-.018em;}
+    p{font-weight:500;}
+
+    /* Result page */
+    #resultPage{width:min(1320px,calc(100% - 54px));padding-top:34px;}
+    #resultPage .result-head{margin-bottom:18px;}
+    #resultPage .breadcrumb{font-weight:750;background:linear-gradient(135deg,var(--soft-purple),var(--soft-blue));box-shadow:0 10px 24px rgba(124,77,255,.08);}
+    #resultPage .result-head h2{font-size:clamp(30px,3.2vw,42px);font-weight:800;margin:8px 0 5px;color:var(--ink);}
+    #resultActiveChoice,#resultDate{margin:5px 0;font-size:13px;line-height:1.45;color:#65738d;font-weight:600;}
+    .learning-summary-grid{display:grid;grid-template-columns:minmax(0,1.58fr) minmax(330px,.86fr);gap:24px;align-items:stretch;}
+    .learning-score-card{min-height:250px;padding:30px;display:grid;grid-template-columns:176px 1fr;gap:30px;align-items:center;overflow:hidden;position:relative;background:radial-gradient(circle at 80% 15%,rgba(255,230,239,.86),transparent 23%),radial-gradient(circle at 90% 28%,rgba(255,246,214,.75),transparent 22%),linear-gradient(135deg,#fff,#f7f2ff 50%,#fff4fa);border:1px solid rgba(226,217,255,.95);border-radius:24px;box-shadow:0 18px 42px rgba(80,67,130,.10);}
+    .learning-score-card:before{content:"";position:absolute;right:28px;top:28px;width:165px;height:56px;border-radius:60px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(255,255,255,.20));box-shadow:70px 36px 0 rgba(255,255,255,.42),-42px 44px 0 rgba(255,255,255,.32);opacity:.8;}
+    .learning-score-card:after{content:"";position:absolute;right:-45px;bottom:-70px;width:280px;height:170px;border-radius:50%;background:linear-gradient(135deg,rgba(125,181,255,.20),rgba(255,255,255,.05));transform:rotate(-12deg);}
+    .score-donut{width:168px;height:168px;border-radius:50%;display:grid;place-items:center;position:relative;box-shadow:0 18px 34px rgba(124,77,255,.16);z-index:1;}
+    .score-donut:before{content:"";position:absolute;inset:24px;background:#fff;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(124,77,255,.08);}
+    .score-donut div{position:relative;text-align:center;display:grid;gap:5px;}
+    .score-donut strong{font-size:40px;font-weight:800;line-height:1;color:var(--ink);}
+    .score-donut span{font-size:12px;font-weight:750;color:#6b43e6;}
+    .score-copy{position:relative;z-index:1;}
+    .score-copy .badge{padding:8px 12px;background:rgba(241,234,255,.92);font-weight:750;}
+    .score-copy h2{font-size:clamp(25px,2.2vw,33px);margin:18px 0 6px;font-weight:800;}
+    .score-copy p{margin:0;max-width:520px;line-height:1.7;color:#5f6d84;}
+    .result-summary-card{padding:28px;border-radius:24px;background:rgba(255,255,255,.92);border:1px solid rgba(226,217,255,.95);box-shadow:0 18px 42px rgba(80,67,130,.09);}
+    .result-summary-card h3{margin:0 0 16px;font-size:18px;color:var(--ink);}
+    .result-summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .summary-stat{min-height:96px;padding:17px;border-radius:18px;background:#fff;border:1px solid #e8e2ff;display:flex;align-items:center;gap:14px;}
+    .summary-stat i{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--soft-purple);color:var(--primary);font-size:18px;}
+    .summary-stat.good i{background:var(--soft-green);color:#19a77f}.summary-stat.bad i{background:var(--soft-pink);color:#e24169}.summary-stat.time i{background:var(--soft-blue);color:#4b7be5}
+    .summary-stat strong{display:block;font-size:24px;font-weight:800;color:var(--ink);line-height:1.1;}.summary-stat span{font-size:12px;color:#66728a;font-weight:650;}
+    .result-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:14px 0 24px;}
+    .result-actions .btn{min-height:48px;border-radius:12px;font-weight:750;box-shadow:none;}
+    .result-actions .btn:first-child{box-shadow:0 12px 24px rgba(124,77,255,.18);}
+    .review-card{padding:26px;border-radius:24px;background:rgba(255,255,255,.92);border:1px solid rgba(226,217,255,.92);box-shadow:0 18px 44px rgba(80,67,130,.09);}
+    .review-card-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;}
+    .review-card-head h3{margin:0;font-size:18px;color:var(--ink);}
+    .review-filters{display:flex;align-items:center;gap:10px;}
+    .review-filters select{width:auto;min-width:128px;min-height:40px;border-radius:11px;font-size:12px;font-weight:650;}
+    .review-search-row{display:flex;align-items:center;gap:12px;margin:0 0 14px;}
+    .review-search-box{flex:1 1 auto;}.review-search-box .input{min-height:46px;border-radius:14px;font-weight:550;}
+    .review-table-wrap{overflow-x:auto;border:1px solid #e8e2ff;border-radius:16px;background:#fff;}
+    .review-table-wrap table{min-width:760px;}.review-table-wrap th{background:#f8f4ff;color:#5e35d6;font-size:11px;font-weight:750;text-transform:none;}.review-table-wrap td{font-size:13px;font-weight:550;color:#1c2945;}
+    .review-vocab-cell{display:flex;align-items:center;gap:12px;justify-content:space-between;}.review-jp{font-family:var(--jp);font-size:20px;font-weight:750;color:#071b45;}.review-romaji{font-size:10.5px;color:#65738d;font-weight:600;}
+    .review-speaker{width:28px;height:28px;border:0;border-radius:50%;display:grid;place-items:center;background:#f1eaff;color:var(--primary);}
+    .status{min-height:26px;border-radius:999px;font-size:11px;font-weight:750;}.status.ok{background:#dff9ee;color:#17a779}.status.no{background:#ffe1eb;color:#e43d68}
+
+    /* Login modal */
+    #loginModal .login-card{width:min(620px,calc(100% - 28px));padding:34px;border-radius:32px;background:linear-gradient(145deg,#fff,#fbf9ff);border:1px solid rgba(255,255,255,.9);box-shadow:0 34px 110px rgba(7,12,30,.32);overflow:visible;position:relative;}
+    #loginModal .login-close{position:absolute;top:26px;right:26px;float:none;width:48px;height:48px;z-index:2;}
+    .login-head{display:flex;gap:16px;align-items:center;padding-right:58px;margin-bottom:22px;}.login-icon{width:58px;height:58px;border-radius:21px;display:grid;place-items:center;background:linear-gradient(135deg,#7c4dff,#7db5ff 58%,#60d8c0);color:#fff;box-shadow:0 18px 34px rgba(124,77,255,.20);font-size:22px;flex:0 0 auto;}
+    .login-head h2{margin:0 0 6px;font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-.04em;color:var(--ink);}.login-head p{margin:0;color:#65738d;font-size:15px;line-height:1.5;font-weight:600;}
+    .login-form{display:grid;gap:16px;}.pretty-field{display:grid;gap:8px;}.field-label{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:750;color:#202a42;}.field-label i{color:#7c4dff;}
+    .field-shell{position:relative;display:flex;align-items:center;}.field-shell>i{position:absolute;left:18px;color:#7b89a2;font-size:15px;z-index:1;}.field-shell .input{min-height:56px;border-radius:18px;padding-left:48px;padding-right:16px;font-size:16px;font-weight:550;background:#fff;}.field-shell .input:focus{border-color:rgba(124,77,255,.45);box-shadow:0 0 0 4px rgba(124,77,255,.10);}
+    .password-shell .input{padding-right:70px;}.password-toggle{position:absolute;right:8px;width:44px;height:44px;border-radius:15px;border:1px solid rgba(124,77,255,.18);background:#fff;color:#66728a;display:grid;place-items:center;z-index:2;box-shadow:0 8px 18px rgba(80,67,130,.07);}.password-toggle:hover{color:#6d45ec;background:#f6f2ff;}
+    .login-dynamic{display:grid;gap:8px;padding:14px;border-radius:22px;background:linear-gradient(135deg,#fbf8ff,#f4fbff);border:1px solid rgba(124,77,255,.12);animation:fade .2s ease both;}.field-help{margin:0;color:#738096;font-size:12px;line-height:1.45;font-weight:550;}
+    .login-group-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;margin-top:4px!important;}.login-group-card{min-height:72px!important;display:flex!important;align-items:center!important;gap:12px!important;padding:12px!important;text-align:left!important;border-radius:18px!important;}.login-group-card span{width:40px;height:40px;display:grid;place-items:center;border-radius:15px;background:#f1eaff;color:#7c4dff;flex:0 0 auto;}.login-group-card strong{display:block;font-size:14px;font-weight:800;color:#17223b;}.login-group-card small{display:block;font-size:11px;color:#72809a;font-weight:550;margin-top:2px;}.login-group-card.active{background:#f1eaff!important;border-color:#7c4dff!important;box-shadow:0 0 0 4px rgba(124,77,255,.10)!important;}
+    .login-error{min-height:22px;margin:0;color:#d8345f;font-weight:750;font-size:13px;}.login-error:not(:empty){padding:10px 12px;border-radius:14px;background:#ffeaf1;border:1px solid #ffc8d7;}
+    .login-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:22px;}.login-actions .btn{min-height:54px;border-radius:18px;font-weight:800;}
+
+    /* Admin dashboard */
+    #adminPage{width:min(1320px,calc(100% - 54px));padding-top:36px;}
+    .admin-hero{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:20px;}.admin-title-row{display:flex;align-items:center;gap:12px;}.admin-title-row h2{margin:8px 0 2px;font-size:clamp(30px,3.4vw,42px);font-weight:800;color:var(--ink);}.admin-title-block p{margin:0;color:#66728a;font-weight:550;}.admin-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:11px;background:#f1eaff;color:#6d45ec;border:1px solid rgba(124,77,255,.18);font-size:12px;font-weight:800;}.admin-hero-actions{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap;}.admin-top-btn{min-height:48px;border-radius:12px;font-size:14px;font-weight:800;padding:0 18px;}
+    #adminPage .breadcrumb{background:linear-gradient(135deg,#f1eaff,#f8f4ff);font-weight:750;box-shadow:0 8px 18px rgba(124,77,255,.07);}
+    #adminPage .admin-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin:22px 0;}.admin-stat{min-height:116px;padding:20px!important;border-radius:18px!important;background:rgba(255,255,255,.92)!important;border:1px solid rgba(226,217,255,.90)!important;box-shadow:0 16px 36px rgba(80,67,130,.08)!important;gap:14px!important;}.admin-stat i{width:56px!important;height:56px!important;border-radius:50%!important;font-size:18px!important;}.admin-stat-purple i{background:#f1eaff!important;color:#7c4dff!important;}.admin-stat-green i{background:#e5fbf2!important;color:#19a77f!important;}.admin-stat-yellow i{background:#fff4d8!important;color:#f0a400!important;}.admin-stat-pink i{background:#ffeaf1!important;color:#e24169!important;}.admin-stat-blue i{background:#eef6ff!important;color:#4b7be5!important;}.admin-stat span{display:block;color:#56627a;font-size:12px;font-weight:750;}.admin-stat strong{display:block;margin:3px 0;font-size:27px!important;font-weight:800;color:#071b45;}.admin-stat small{display:block;color:#66728a;font-size:11px;line-height:1.25;font-weight:550;}
+    .admin-report-card{padding:22px;border-radius:22px;background:rgba(255,255,255,.90);border:1px solid rgba(226,217,255,.88);box-shadow:0 18px 44px rgba(80,67,130,.08);}.admin-filter-bar{display:grid;grid-template-columns:minmax(240px,1.25fr) minmax(150px,.7fr) minmax(150px,.7fr) minmax(150px,.7fr) auto;gap:12px;align-items:center;margin-bottom:16px;}.admin-filter-bar .input,.admin-filter-bar select{min-height:46px;border-radius:10px;font-size:13px;font-weight:600;}.admin-search-box i{left:15px}.admin-search-box .input{padding-left:42px}.admin-reset-btn{min-height:46px;border-radius:10px;white-space:nowrap;font-size:13px;}
+    .admin-table-card{display:grid;gap:14px;}.admin-table-wrap{border-radius:14px;border:1px solid #e3dcff;overflow-x:auto;background:#fff;}.admin-table{min-width:1040px;}.admin-table th{background:#f4efff;color:#5e35d6;text-transform:none;font-size:12px;font-weight:800;padding:12px 16px;}.admin-table td{font-size:13px;font-weight:600;color:#17223b;padding:13px 16px;}.admin-name-cell{display:flex;align-items:center;gap:10px;}.admin-name-cell .avatar{margin-right:0;width:34px;height:34px;font-size:13px;}.group-badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:#eaf3ff;color:#3772d8;font-size:11px;font-weight:750;}.score-badge{display:inline-flex;align-items:center;justify-content:center;min-width:58px;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:800;}.score-badge.high{background:#dff9ee;color:#18a779;}.score-badge.mid{background:#fff4d8;color:#b47a00;}.score-badge.low{background:#ffe2eb;color:#e43d68;}.admin-action-cell{display:flex;align-items:center;gap:8px;}.admin-mini-btn{min-height:32px;border-radius:9px;padding:0 10px;border:1px solid #d8ccff;background:#fff;color:#6d45ec;font-size:12px;font-weight:750;display:inline-flex;align-items:center;gap:6px;}.admin-mini-btn.pdf{border-color:#ffc1d0;color:#ff3366;}.admin-mini-btn:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(80,67,130,.10);}
+    .admin-pagination{display:flex;justify-content:space-between;align-items:center;gap:16px;}.admin-pagination p{margin:0;color:#59657d;font-size:12px;font-weight:550;}.admin-page-controls{display:flex;align-items:center;gap:8px;}.admin-page-controls select{width:auto;min-width:118px;min-height:38px;border-radius:9px;font-size:12px;font-weight:650;}.page-btn,.page-current{width:38px;height:38px;border-radius:10px;border:1px solid #dfe4f3;background:#fff;color:#1e2a44;display:grid;place-items:center;font-weight:800;}.page-btn:disabled{opacity:.45;cursor:not-allowed;}.page-current{border-color:#7c4dff;background:#7c4dff;color:#fff;}
+    .admin-empty{border-style:dashed;background:#fff;}.admin-empty p{margin:6px 0 0;}
+
+    @media (max-width:1100px){
+      .learning-summary-grid{grid-template-columns:1fr}.admin-hero{align-items:flex-start;flex-direction:column}.admin-hero-actions{width:100%;justify-content:flex-start}#adminPage .admin-stats{grid-template-columns:repeat(2,minmax(0,1fr));}.admin-filter-bar{grid-template-columns:1fr 1fr;}.admin-search-box{grid-column:1/-1;}.admin-reset-btn{width:100%;}
+    }
+    @media (max-width:760px){
+      #resultPage,#adminPage{width:min(100% - 24px,1320px);padding-top:20px;}.learning-score-card{grid-template-columns:1fr;justify-items:center;text-align:center;padding:22px}.score-copy p{max-width:none}.result-summary-grid{grid-template-columns:1fr}.result-actions{grid-template-columns:1fr}.review-card{padding:18px}.review-card-head{align-items:stretch;flex-direction:column}.review-filters{display:grid;grid-template-columns:1fr 1fr}.review-filters select{width:100%;}.review-search-row{display:block}.admin-hero-actions,.admin-top-btn{width:100%;}.admin-hero-actions{display:grid;grid-template-columns:1fr}.admin-top-btn{justify-content:center}#adminPage .admin-stats{grid-template-columns:1fr}.admin-filter-bar{grid-template-columns:1fr}.admin-report-card{padding:16px;border-radius:20px}.admin-pagination{align-items:stretch;flex-direction:column}.admin-page-controls{justify-content:flex-end}.login-head{align-items:flex-start}.login-group-grid{grid-template-columns:1fr!important}.login-actions{display:grid;grid-template-columns:1fr}.login-actions .btn{width:100%;}
+    }
+    @media (max-width:450px){
+      #loginModal .login-card{padding:24px 18px;border-radius:26px}.login-icon{width:50px;height:50px;border-radius:18px}.login-head h2{font-size:30px}.review-filters{grid-template-columns:1fr}.summary-stat{min-height:82px}.admin-page-controls select{min-width:110px}
+    }
+
   </style>
 </head>
 <body>
@@ -1018,23 +1106,28 @@
     </section>
 
     <section class="page" id="adminPage">
-      <div class="result-head">
-        <div class="breadcrumb"><i class="fa-solid fa-user-shield"></i><span data-i18n="breadcrumbAdmin">Admin > Laporan Peserta</span></div>
-        <h2 data-i18n="adminTitle">Laporan Peserta</h2>
-        <p data-i18n="adminDesc">Ringkasan hasil belajar seluruh peserta.</p>
-      </div>
-      <div class="row-actions" style="justify-content:flex-end">
-        <button class="btn danger" id="deleteAllBtn"><i class="fa-solid fa-trash-can"></i><span data-i18n="deleteAll">Hapus Riwayat Semua Peserta</span></button>
-        <button class="btn" id="downloadAllBtn"><i class="fa-solid fa-download"></i><span data-i18n="downloadAllPdf">Download PDF Semua Peserta</span></button>
+      <div class="admin-hero">
+        <div class="admin-title-block">
+          <div class="breadcrumb"><i class="fa-solid fa-user-shield"></i><span data-i18n="breadcrumbAdmin">Admin > Laporan Peserta</span></div>
+          <div class="admin-title-row">
+            <h2 data-i18n="adminTitle">Laporan Peserta</h2>
+            <span class="admin-badge"><i class="fa-solid fa-shield-halved"></i>Admin</span>
+          </div>
+          <p data-i18n="adminDesc">Ringkasan hasil belajar seluruh peserta.</p>
+        </div>
+        <div class="admin-hero-actions">
+          <button class="btn danger admin-top-btn" id="deleteAllBtn"><i class="fa-solid fa-trash-can"></i><span data-i18n="deleteAll">Hapus Riwayat Semua Peserta</span></button>
+          <button class="btn admin-top-btn" id="downloadAllBtn"><i class="fa-solid fa-download"></i><span data-i18n="downloadAllPdf">Download PDF Semua Peserta</span></button>
+        </div>
       </div>
       <div class="admin-stats" id="adminStats"></div>
-      <div class="content-card glass">
-        <div class="search-row">
-          <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="adminSearch" class="input" placeholder="Cari nama peserta..."></div>
+      <div class="admin-report-card glass">
+        <div class="admin-filter-bar">
+          <div class="search-box admin-search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="adminSearch" class="input" placeholder="Cari nama peserta..."></div>
           <select id="adminGroup"><option value="all">Semua Grup</option></select>
           <select id="adminPeriod"><option value="all">Semua Periode</option><option value="today">Hari ini</option><option value="week">7 hari</option><option value="month">30 hari</option></select>
           <select id="adminStatus"><option value="all">Semua Status</option><option value="pass">Lulus KKM</option><option value="fail">Belum Lulus</option></select>
-          <button class="btn secondary" id="resetAdminFilter"><i class="fa-solid fa-rotate-left"></i><span data-i18n="resetFilter">Reset Filter</span></button>
+          <button class="btn secondary admin-reset-btn" id="resetAdminFilter"><i class="fa-solid fa-rotate-left"></i><span data-i18n="resetFilter">Reset Filter</span></button>
         </div>
         <div id="adminTableWrap"></div>
       </div>
@@ -1076,15 +1169,32 @@
   </div>
 
   <div class="modal" id="loginModal">
-    <div class="modal-card small">
-      <button class="close-x" id="closeLogin"><i class="fa-solid fa-xmark"></i></button>
-      <h2 data-i18n="loginTitle">Masuk Peserta</h2>
-      <p data-i18n="loginDesc">Isi username untuk menyimpan hasil latihanmu.</p>
-      <label><strong>Username</strong><input class="input" id="usernameInput" placeholder="Michael Kaiser" autocomplete="off"></label>
-      <div id="groupBox" style="margin-top:16px"><strong data-i18n="chooseGroup">Pilih Group/Wilayah</strong><div class="option-grid" id="groupGrid" style="margin-top:10px"></div></div>
-      <div id="adminPassBox" class="hidden" style="margin-top:16px"><strong>Password Admin</strong><div class="search-box" style="margin-top:8px"><input class="input" id="adminPasswordInput" type="password" placeholder="Password"><button class="icon-btn" id="togglePassword" style="position:absolute;right:8px;top:6px"><i class="fa-regular fa-eye"></i></button></div></div>
-      <p id="loginError" style="color:#d8345f;font-weight:900;min-height:22px"></p>
-      <div class="row-actions" style="justify-content:flex-end"><button class="btn secondary" id="cancelLogin" data-i18n="cancel">Batal</button><button class="btn" id="saveLogin" data-i18n="save">Simpan</button></div>
+    <div class="modal-card login-card">
+      <button class="close-x login-close" id="closeLogin" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
+      <div class="login-head">
+        <span class="login-icon"><i class="fa-solid fa-user-graduate"></i></span>
+        <div>
+          <h2 data-i18n="loginTitle">Masuk Peserta</h2>
+          <p data-i18n="loginDesc">Isi data untuk menyimpan hasil latihanmu.</p>
+        </div>
+      </div>
+      <div class="login-form">
+        <label class="pretty-field">
+          <span class="field-label"><i class="fa-regular fa-user"></i>Username</span>
+          <div class="field-shell"><i class="fa-regular fa-user"></i><input class="input" id="usernameInput" placeholder="Masukkan username" autocomplete="off"></div>
+        </label>
+        <div id="groupBox" class="login-dynamic hidden">
+          <strong class="field-label"><i class="fa-solid fa-location-dot"></i>Group / Wilayah</strong>
+          <p class="field-help">Pilih wilayah peserta untuk menyimpan laporan latihan.</p>
+          <div class="option-grid login-group-grid" id="groupGrid"></div>
+        </div>
+        <div id="adminPassBox" class="login-dynamic hidden">
+          <strong class="field-label"><i class="fa-solid fa-lock"></i>Password Admin</strong>
+          <div class="field-shell password-shell"><i class="fa-solid fa-lock"></i><input class="input" id="adminPasswordInput" type="password" placeholder="Masukkan password admin"><button class="password-toggle" id="togglePassword" type="button" aria-label="Tampilkan password"><i class="fa-regular fa-eye"></i></button></div>
+        </div>
+        <p id="loginError" class="login-error" aria-live="polite"></p>
+      </div>
+      <div class="login-actions"><button class="btn secondary" id="cancelLogin"><i class="fa-solid fa-xmark"></i><span data-i18n="cancel">Batal</span></button><button class="btn" id="saveLogin"><i class="fa-solid fa-check"></i><span data-i18n="save">Simpan</span></button></div>
     </div>
   </div>
 
@@ -2168,6 +2278,8 @@
     const quizSettingMaxStep = 5;
     let currentResult = JSON.parse(localStorage.getItem(storeKey+"_lastResult") || "null");
     let allResults = [];
+    let adminCurrentPage = 1;
+    let adminPageSize = 10;
     let quiz = null;
     let recognition = null;
     let speechSupported = "SpeechRecognition" in window || "webkitSpeechRecognition" in window;
@@ -2438,28 +2550,35 @@
     function openSetup(){ tempSetup={...state.setup}; setupStep=1; renderSetup(); $("#setupModal").classList.add("show"); updateSetupSteps(); }
     function closeModal(id){ $(id).classList.remove("show"); }
 
+    function isAdminUsername(name){ return ["admin","admin404"].includes(String(name||"").trim().toLowerCase()); }
     function openLogin(){
       $("#usernameInput").value = state.session?.username || "";
       $("#adminPasswordInput").value = "";
+      $("#adminPasswordInput").type = "password";
+      const eye = $("#togglePassword i"); if(eye) eye.className = "fa-regular fa-eye";
       $("#loginError").textContent = "";
-      renderGroupGrid();
+      renderGroupGrid(state.session?.group || "");
       updateAdminLoginMode();
       $("#loginModal").classList.add("show");
       setTimeout(()=>$("#usernameInput").focus(),50);
     }
-    function renderGroupGrid(){
-      $("#groupGrid").innerHTML = groups.map(g=>`<button class="option-card" data-group="${g.name}"><i class="fa-solid ${g.icon}"></i> ${g.name}</button>`).join("");
+    function renderGroupGrid(activeGroup=""){
+      $("#groupGrid").innerHTML = groups.map(g=>`<button class="option-card login-group-card ${activeGroup===g.name?"active":""}" data-group="${esc(g.name)}" type="button"><span><i class="fa-solid ${g.icon}"></i></span><div><strong>${esc(g.name)}</strong><small>Wilayah peserta</small></div></button>`).join("");
     }
     function updateAdminLoginMode(){
-      const isAdm = $("#usernameInput").value.trim().toLowerCase()==="admin404";
-      $("#groupBox").classList.toggle("hidden",isAdm);
-      $("#adminPassBox").classList.toggle("hidden",!isAdm);
+      const username = $("#usernameInput").value.trim();
+      const isAdm = isAdminUsername(username);
+      $("#loginError").textContent = "";
+      $("#groupBox").classList.toggle("hidden", !username || isAdm);
+      $("#adminPassBox").classList.toggle("hidden", !username || !isAdm);
+      $("#loginModal .login-icon i").className = isAdm ? "fa-solid fa-user-shield" : "fa-solid fa-user-graduate";
     }
     function saveLogin(){
       const username = $("#usernameInput").value.trim();
-      if(!username) return $("#loginError").textContent = state.lang==="ja" ? "ユーザー名を入力してください。" : "Username wajib diisi.";
-      if(username.toLowerCase()==="admin404"){
-        if($("#adminPasswordInput").value !== adminPass) return $("#loginError").textContent = state.lang==="ja" ? "管理者パスワードが正しくありません。" : "Password admin salah.";
+      const loginError = $("#loginError");
+      if(!username){ loginError.textContent = state.lang==="ja" ? "ユーザー名を入力してください。" : "Username wajib diisi."; return; }
+      if(isAdminUsername(username)){
+        if($("#adminPasswordInput").value !== adminPass){ loginError.textContent = state.lang==="ja" ? "管理者パスワードが正しくありません。" : "Password admin salah."; return; }
         const last = localStorage.getItem(storeKey+"_adminLastLogin");
         const now = Date.now();
         state.session={username:"admin404",group:"Admin",role:"admin",loggedAt:new Date().toISOString()};
@@ -2472,7 +2591,7 @@
         return;
       }
       const selected = $("#groupGrid .option-card.active")?.dataset.group;
-      if(!selected) return $("#loginError").textContent = state.lang==="ja" ? "グループを選択してください。" : "Pilih group/wilayah dulu.";
+      if(!selected){ loginError.textContent = state.lang==="ja" ? "グループを選択してください。" : "Pilih group/wilayah terlebih dahulu."; return; }
       state.session={username,group:selected,role:"user",loggedAt:new Date().toISOString()};
       saveState();
       closeModal("#loginModal");
@@ -2802,7 +2921,7 @@
         <div class="learning-summary-grid">
           <section class="learning-score-card">
             <div class="score-donut" style="background:conic-gradient(var(--primary) ${deg}deg,#eee7ff 0deg)"><div><strong>${Number(r.scorePercent||0)}%</strong><span>${tx.score}</span></div></div>
-            <div class="score-copy"><span class="badge"><i class="fa-regular fa-star"></i>${passed ? (state.lang==="ja"?"KKM達成":"KKM Tercapai") : (state.lang==="ja"?"要復習":"Mulai Latihan")}</span><h2>${passed?tx.goodTitle:tx.badTitle}</h2><p>${passed?tx.goodDesc:tx.badDesc}</p></div>
+            <div class="score-copy"><span class="badge"><i class="fa-regular fa-star"></i>${passed ? (state.lang==="ja"?"KKM達成":"Mulai Latihan") : (state.lang==="ja"?"要復習":"Mulai Latihan")}</span><h2>${passed?tx.goodTitle:tx.badTitle}</h2><p>${passed?tx.goodDesc:tx.badDesc}</p></div>
           </section>
           <aside class="result-summary-card"><h3>${tx.summary}</h3><div class="result-summary-grid">
             ${summaryStat("fa-book-open", r.totalQuestions, tx.total, "")}
@@ -2821,12 +2940,13 @@
             <select id="resStatus"><option value="all">${tx.all}</option><option value="correct">${tx.correct}</option><option value="wrong">${tx.wrong}</option></select>
             <select id="resSort"><option value="order">${tx.order}</option><option value="correctFirst">${tx.correctFirst}</option><option value="wrongFirst">${tx.wrongFirst}</option><option value="fast">${tx.fast}</option><option value="slow">${tx.slow}</option></select>
           </div></div>
+          <div class="review-search-row"><div class="search-box review-search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="resSearch" class="input" placeholder="Cari kosakata, romaji, arti, atau status..."></div></div>
           <div id="reviewTable"></div>
         </section>`;
       $("#pdfResultBtn").onclick=()=>openResultPdf(r,state.lang);
       $("#retryBtn").onclick=retrySameQuiz;
       $("#reviewBtn").onclick=()=>$("#reviewTableCard").scrollIntoView({behavior:"smooth",block:"start"});
-      $("#resStatus").onchange=renderReviewTable; $("#resSort").onchange=renderReviewTable;
+      $("#resStatus").onchange=renderReviewTable; $("#resSort").onchange=renderReviewTable; $("#resSearch").oninput=renderReviewTable;
       renderReviewTable();
     }
     function summaryStat(icon,val,label,klass=""){ return `<div class="summary-stat ${klass}"><i class="fa-solid ${icon}"></i><div><strong>${val}</strong><span>${label}</span></div></div>`; }
@@ -2842,25 +2962,28 @@
       const tx=resultTextMap();
       let rows=[...(r.details||[])];
       const status=$("#resStatus")?.value||"all", sort=$("#resSort")?.value||"order";
+      const query=($("#resSearch")?.value||"").trim().toLowerCase();
       if(status==="correct") rows=rows.filter(x=>x.isCorrect); if(status==="wrong") rows=rows.filter(x=>!x.isCorrect);
+      if(query){
+        rows=rows.filter(d=>[
+          d.kanji,d.kana,d.romaji,cleanDetailIndo(d.indonesia),d.isCorrect?t("correct"):t("wrong"),d.isCorrect?"benar correct":"salah wrong"
+        ].join(" ").toLowerCase().includes(query));
+      }
       if(sort==="correctFirst") rows.sort((a,b)=>Number(b.isCorrect)-Number(a.isCorrect)||a.no-b.no);
       if(sort==="wrongFirst") rows.sort((a,b)=>Number(a.isCorrect)-Number(b.isCorrect)||a.no-b.no);
       if(sort==="fast") rows.sort((a,b)=>Number(a.timeSpent||0)-Number(b.timeSpent||0));
       if(sort==="slow") rows.sort((a,b)=>Number(b.timeSpent||0)-Number(a.timeSpent||0));
-      const headers=[tx.no, tx.vocab, tx.romaji, "", tx.meaning, tx.status, tx.time, tx.category];
+      const headers=[tx.no, tx.vocab, tx.romaji, tx.meaning, tx.status, tx.time];
       const data=rows.map(d=>[
         d.no,
-        `<div class="review-jp">${esc(d.kanji||d.kana)}</div><div class="review-romaji jp">${esc(d.kana||"")}</div>`,
+        `<div class="review-vocab-cell"><div><div class="review-jp">${esc(d.kanji||d.kana)}</div><div class="review-romaji jp">${esc(d.kana||"")}</div></div><button class="review-speaker" data-speak="${esc(d.kanji||d.kana)}" title="${state.lang==="ja"?"聞く":"Dengar"}"><i class="fa-solid fa-volume-high"></i></button></div>`,
         esc(d.romaji||"-"),
-        `<button class="review-speaker" data-speak="${esc(d.kanji||d.kana)}" title="${state.lang==="ja"?"聞く":"Dengar"}"><i class="fa-solid fa-volume-high"></i></button>`,
         esc(cleanDetailIndo(d.indonesia)),
         statusHtml(d.isCorrect),
-        formatTime(Number(d.timeSpent||0)),
-        esc([d.chapter,d.sectionCategory,d.typeCategory].filter(Boolean).join(" • "))
+        formatTime(Number(d.timeSpent||0))
       ]);
       $("#reviewTable").innerHTML = tableHtml(headers,data,"review-table-wrap");
     }
-
     function cleanDetailIndo(s){ return String(s||"").replace(/（.*?）/g,"").replace(/\(.*?\)/g,"").trim(); }
     function tableHtml(headers, rows, wrapClass="table-wrap"){
       if(!rows.length) return `<div class="empty">${state.lang==="ja"?"データがありません。":"Data tidak tersedia."}</div>`;
@@ -2887,26 +3010,55 @@
       }
       return arr.sort((a,b)=>new Date(b.finishedAt)-new Date(a.finishedAt));
     }
+    function adminScoreClass(score){ score=Number(score||0); return score>=80?"high":score>=60?"mid":"low"; }
+    function adminInitial(name){ return esc(String(name||"?").trim().charAt(0).toUpperCase() || "?"); }
     function renderAdmin(){
       const rows=filterAdmin(allResults);
-      const unique=new Set(allResults.map(r=>r.username));
+      const unique=new Set(allResults.map(r=>r.username).filter(Boolean));
       const avg=allResults.length?Math.round(allResults.reduce((a,b)=>a+Number(b.scorePercent||0),0)/allResults.length):0;
-      const best=[...allResults].sort((a,b)=>b.scorePercent-a.scorePercent)[0];
-      const low=[...allResults].sort((a,b)=>a.scorePercent-b.scorePercent)[0];
-      $("#adminStats").innerHTML = [
-        ["fa-users",unique.size,state.lang==="ja"?"参加者数":"Total Peserta"],
-        ["fa-arrow-trend-up",avg+"%",state.lang==="ja"?"平均スコア":"Rata-rata Skor"],
-        ["fa-star",best?best.scorePercent+"%":"0%",state.lang==="ja"?"最高":"Skor Tertinggi",best?.username],
-        ["fa-arrow-trend-down",low?low.scorePercent+"%":"0%",state.lang==="ja"?"最低":"Skor Terendah",low?.username],
-        ["fa-file-lines",allResults.length,state.lang==="ja"?"総実施数":"Total Pengerjaan"]
-      ].map(x=>`<div class="admin-stat"><i class="fa-solid ${x[0]}"></i><div><strong>${x[1]}</strong><span>${x[2]}${x[3]?`<br>${esc(shortName(x[3]))}`:""}</span></div></div>`).join("");
+      const best=[...allResults].sort((a,b)=>Number(b.scorePercent||0)-Number(a.scorePercent||0))[0];
+      const low=[...allResults].sort((a,b)=>Number(a.scorePercent||0)-Number(b.scorePercent||0))[0];
+      const statItems = [
+        {icon:"fa-users",value:unique.size,label:state.lang==="ja"?"参加者数":"Total Peserta",sub:state.lang==="ja"?"登録済み":"Peserta terdaftar",tone:"purple"},
+        {icon:"fa-arrow-trend-up",value:avg+"%",label:state.lang==="ja"?"平均スコア":"Rata-rata Skor",sub:state.lang==="ja"?"平均":"Rata-rata keseluruhan",tone:"green"},
+        {icon:"fa-star",value:best?best.scorePercent+"%":"0%",label:state.lang==="ja"?"最高":"Skor Tertinggi",sub:best?`Oleh ${esc(shortName(best.username))}`:"-",tone:"yellow"},
+        {icon:"fa-arrow-trend-down",value:low?low.scorePercent+"%":"0%",label:state.lang==="ja"?"最低":"Skor Terendah",sub:low?`Oleh ${esc(shortName(low.username))}`:"-",tone:"pink"},
+        {icon:"fa-file-lines",value:allResults.length,label:state.lang==="ja"?"総実施数":"Total Pengerjaan",sub:state.lang==="ja"?"クイズ":"Total kuis dikerjakan",tone:"blue"}
+      ];
+      $("#adminStats").innerHTML = statItems.map(x=>`<div class="admin-stat admin-stat-${x.tone}"><i class="fa-solid ${x.icon}"></i><div><span>${x.label}</span><strong>${x.value}</strong><small>${x.sub}</small></div></div>`).join("");
       renderAdminGroupOptions();
-      if(!rows.length) return $("#adminTableWrap").innerHTML = `<div class="empty"><h3>${state.lang==="ja"?"参加者履歴はまだありません。":"Belum ada riwayat peserta."}</h3></div>`;
-      $("#adminTableWrap").innerHTML = tableHtml(["No","Nama","Grup","Tanggal Terakhir","Total","Benar","Salah","Skor Akhir","Aksi"], rows.map((r,i)=>[
-        i+1, `<span class="avatar">${esc((r.username||"?")[0].toUpperCase())}</span>${esc(r.username)}`, esc(r.group||"-"), new Date(r.finishedAt).toLocaleString(state.lang==="ja"?"ja-JP":"id-ID"), r.totalQuestions, r.correctCount, r.wrongCount, `<span class="status ${r.scorePercent>=60?"ok":"no"}">${r.scorePercent}%</span>`, `<button class="choice-chip" data-detail="${i}"><i class="fa-regular fa-eye"></i> Detail</button> <button class="choice-chip" data-pdf="${i}"><i class="fa-regular fa-file-pdf"></i> PDF</button>`
-      ]));
-      $$("[data-detail]").forEach(btn=>btn.onclick=()=>openDetail(rows[Number(btn.dataset.detail)]));
-      $$("[data-pdf]").forEach(btn=>btn.onclick=()=>openResultPdf(rows[Number(btn.dataset.pdf)],state.lang));
+      const total=rows.length;
+      adminPageSize = Number($("#adminPageSize")?.value || adminPageSize || 10);
+      const totalPages=Math.max(1,Math.ceil(total/adminPageSize));
+      if(adminCurrentPage>totalPages) adminCurrentPage=totalPages;
+      const start=(adminCurrentPage-1)*adminPageSize;
+      const pageRows=rows.slice(start,start+adminPageSize);
+      if(!total) {
+        $("#adminTableWrap").innerHTML = `<div class="empty admin-empty"><h3>${state.lang==="ja"?"参加者履歴はまだありません。":"Belum ada riwayat peserta."}</h3><p>${state.lang==="ja"?"フィルターを変更するか、最初の練習を完了してください。":"Ubah filter atau selesaikan latihan pertama untuk menampilkan data."}</p></div>`;
+        return;
+      }
+      const rowsHtml = pageRows.map((r,i)=>{
+        const score=Number(r.scorePercent||0);
+        const group=esc(r.group||"-");
+        return `<tr>
+          <td>${start+i+1}</td>
+          <td><div class="admin-name-cell"><span class="avatar">${adminInitial(r.username)}</span><strong>${esc(r.username||"-")}</strong></div></td>
+          <td><span class="group-badge">${group}</span></td>
+          <td>${new Date(r.finishedAt).toLocaleString(state.lang==="ja"?"ja-JP":"id-ID")}</td>
+          <td>${r.totalQuestions||0}</td>
+          <td>${r.correctCount||0}</td>
+          <td>${r.wrongCount||0}</td>
+          <td><span class="score-badge ${adminScoreClass(score)}">${score}%</span></td>
+          <td><div class="admin-action-cell"><button class="admin-mini-btn detail" data-detail="${i}"><i class="fa-regular fa-eye"></i>Detail</button><button class="admin-mini-btn pdf" data-pdf="${i}"><i class="fa-regular fa-file-pdf"></i>PDF</button></div></td>
+        </tr>`;
+      }).join("");
+      const showingStart=total?start+1:0, showingEnd=Math.min(start+adminPageSize,total);
+      $("#adminTableWrap").innerHTML = `<div class="admin-table-card"><div class="table-wrap admin-table-wrap"><table class="admin-table"><thead><tr><th>No.</th><th>Nama</th><th>Grup</th><th>Tanggal Terakhir</th><th>Total</th><th>Benar</th><th>Salah</th><th>Skor Akhir</th><th>Aksi</th></tr></thead><tbody>${rowsHtml}</tbody></table></div><div class="admin-pagination"><p>Menampilkan ${showingStart}–${showingEnd} dari ${total} peserta</p><div class="admin-page-controls"><select id="adminPageSize"><option value="5" ${adminPageSize===5?"selected":""}>5 / halaman</option><option value="10" ${adminPageSize===10?"selected":""}>10 / halaman</option><option value="20" ${adminPageSize===20?"selected":""}>20 / halaman</option></select><button class="page-btn" id="adminPrevPage" ${adminCurrentPage<=1?"disabled":""}><i class="fa-solid fa-chevron-left"></i></button><span class="page-current">${adminCurrentPage}</span><button class="page-btn" id="adminNextPage" ${adminCurrentPage>=totalPages?"disabled":""}><i class="fa-solid fa-chevron-right"></i></button></div></div></div>`;
+      $$('[data-detail]').forEach(btn=>btn.onclick=()=>openDetail(pageRows[Number(btn.dataset.detail)]));
+      $$('[data-pdf]').forEach(btn=>btn.onclick=()=>openResultPdf(pageRows[Number(btn.dataset.pdf)],state.lang));
+      $("#adminPageSize").onchange=e=>{ adminPageSize=Number(e.target.value)||10; adminCurrentPage=1; renderAdmin(); };
+      $("#adminPrevPage").onclick=()=>{ if(adminCurrentPage>1){ adminCurrentPage--; renderAdmin(); } };
+      $("#adminNextPage").onclick=()=>{ if(adminCurrentPage<totalPages){ adminCurrentPage++; renderAdmin(); } };
     }
     function renderAdminGroupOptions(){
       const sel=$("#adminGroup"), val=sel.value;
@@ -3121,7 +3273,7 @@
       $("#saveSetup").onclick=()=>{ state.setup={...tempSetup}; saveState(); closeModal("#setupModal"); renderAll(); };
       $("#closeLogin").onclick=()=>closeModal("#loginModal"); $("#cancelLogin").onclick=()=>closeModal("#loginModal");
       $("#usernameInput").oninput=updateAdminLoginMode; $("#saveLogin").onclick=saveLogin;
-      $("#togglePassword").onclick=e=>{ e.preventDefault(); const i=$("#adminPasswordInput"); i.type=i.type==="password"?"text":"password"; };
+      $("#togglePassword").onclick=e=>{ e.preventDefault(); const i=$("#adminPasswordInput"); const icon=$("#togglePassword i"); i.type=i.type==="password"?"text":"password"; if(icon) icon.className=i.type==="password"?"fa-regular fa-eye":"fa-regular fa-eye-slash"; };
       $("#closeQuizSettings").onclick=()=>closeModal("#quizSettingsModal"); $("#cancelQuizSettings").onclick=()=>closeModal("#quizSettingsModal");
       $("#prevQuizSetting").onclick=()=>setQuizSettingStep(quizSettingStep-1);
       $("#nextQuizSetting").onclick=()=>{
@@ -3138,8 +3290,8 @@
       $("#correctBtn").onclick=()=>answerCard(true); $("#wrongBtn").onclick=()=>answerCard(false);
       $("#micSwitch").onclick=()=>{ if(!speechSupported) return setSpeechStatus("unsupported",t("browserSpeechNo")); if(!quiz || quiz.flipped) return; quiz.micOn=!quiz.micOn; $("#micSwitch").classList.toggle("on",quiz.micOn); updateMicBoxState(); if(quiz.micOn){ setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } else { stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"マイクはオフです。":"Mikrofon dimatikan."); } };
       $("#closeExample").onclick=()=>closeModal("#exampleModal"); $("#closeImage").onclick=()=>closeModal("#imageModal"); $("#closeDetail").onclick=()=>closeModal("#detailModal");
-      $("#adminSearch").oninput=renderAdmin; $("#adminGroup").onchange=renderAdmin; $("#adminPeriod").onchange=renderAdmin; $("#adminStatus").onchange=renderAdmin;
-      $("#resetAdminFilter").onclick=()=>{ $("#adminSearch").value=""; $("#adminGroup").value="all"; $("#adminPeriod").value="all"; $("#adminStatus").value="all"; renderAdmin(); };
+      $("#adminSearch").oninput=()=>{ adminCurrentPage=1; renderAdmin(); }; $("#adminGroup").onchange=()=>{ adminCurrentPage=1; renderAdmin(); }; $("#adminPeriod").onchange=()=>{ adminCurrentPage=1; renderAdmin(); }; $("#adminStatus").onchange=()=>{ adminCurrentPage=1; renderAdmin(); };
+      $("#resetAdminFilter").onclick=()=>{ $("#adminSearch").value=""; $("#adminGroup").value="all"; $("#adminPeriod").value="all"; $("#adminStatus").value="all"; adminCurrentPage=1; renderAdmin(); };
       $("#downloadAllBtn").onclick=()=>openAllPdf(state.lang); $("#deleteAllBtn").onclick=()=>$("#confirmDeleteModal").classList.add("show"); $("#cancelDelete").onclick=()=>closeModal("#confirmDeleteModal"); $("#confirmDelete").onclick=deleteAllHistory;
       $("#adminSavePdfWarn").onclick=async()=>{ await loadAdmin(); openAllPdf("id"); closeModal("#adminWarningModal"); showPage("home"); };
       $("#adminBackHomeWarn").onclick=()=>{ closeModal("#adminWarningModal"); showPage("home"); };
