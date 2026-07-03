@@ -974,6 +974,15 @@
     #materialPage .content-card>h2{font-size:clamp(30px,3vw,44px)!important;font-weight:820!important;letter-spacing:-.045em!important;margin-bottom:6px!important}
     #materialPage .content-card>p{max-width:720px;margin-top:0!important;font-weight:560!important;color:#68758e!important}
     .material-toolbar{display:grid!important;grid-template-columns:minmax(280px,1fr) minmax(170px,220px) minmax(190px,250px);gap:12px!important;align-items:center;margin:22px 0 24px!important}
+
+    /* Khusus kategori Minna I > Kata-kata Referensi dan Informasi > Bab 2: hilangkan search/filter dan semua akses kuis */
+    body.material-only-reference .material-toolbar,
+    body.material-only-reference [data-action="openQuizSettings"],
+    body.material-only-reference #homeStartBtn {
+      display:none!important;
+      visibility:hidden!important;
+      pointer-events:none!important;
+    }
     .material-search-box{min-width:0!important;flex:auto!important}
     .material-filter-select{min-height:52px!important;border-radius:18px!important;background:rgba(255,255,255,.92)!important;border:1px solid #dfe5f6!important;color:#24304a!important;font-weight:650!important}
     .vocab-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))!important;gap:18px!important}
@@ -1537,6 +1546,79 @@
       .bottom-nav button span { font-size:10px!important; }
     }
 
+    /* ===== Materi khusus: Kata-kata Referensi dan Informasi Bab 2 ===== */
+    .material-ref-grid { display:block!important; }
+    .material-ref-wrap { display:grid; gap:18px; }
+    .material-ref-hero {
+      padding:22px; border-radius:24px; background:linear-gradient(135deg,#f4eeff,#eef6ff);
+      border:1px solid rgba(124,77,255,.16); box-shadow:var(--shadow2);
+    }
+    .material-ref-hero h3 { margin:0 0 8px; font-size:24px; }
+    .material-ref-hero p { margin:0; }
+    .material-ref-section {
+      padding:20px; border-radius:24px; background:rgba(255,255,255,.92);
+      border:1px solid #e7e2ff; box-shadow:var(--shadow2);
+    }
+    .material-ref-section-title {
+      display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px;
+    }
+    .material-ref-section-title h3 { margin:0; font-size:21px; }
+    .material-ref-badge {
+      display:inline-flex; align-items:center; gap:7px; padding:7px 11px; border-radius:999px;
+      background:var(--soft); color:var(--primary2); font-size:12px; font-weight:800; white-space:nowrap;
+    }
+    .material-ref-vocab-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+    .material-ref-vocab-card {
+      display:grid; grid-template-columns:104px 1fr; gap:14px; align-items:center; padding:14px;
+      border-radius:20px; border:1px solid rgba(124,77,255,.14); background:linear-gradient(145deg,#fff,#fbf8ff);
+    }
+    .material-ref-vocab-card img {
+      width:104px; height:104px; object-fit:contain; border-radius:18px; padding:8px; background:#fff;
+      border:1px solid rgba(124,77,255,.14); cursor:zoom-in;
+    }
+    .material-ref-num {
+      width:28px; height:28px; display:inline-grid; place-items:center; border-radius:50%;
+      background:var(--soft); color:var(--primary2); font-size:12px; font-weight:900; margin-bottom:8px;
+    }
+    .material-ref-jp { font-family:var(--jp); font-size:25px; font-weight:800; color:#071b45; line-height:1.18; }
+    .material-ref-desc { margin:8px 0 0; color:#526078; line-height:1.55; font-weight:600; }
+    .material-ref-name-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; }
+    .material-ref-name-card {
+      position:relative; min-height:116px; display:grid; align-content:center; justify-items:center; text-align:center;
+      padding:15px 12px; border-radius:20px; background:linear-gradient(145deg,#fff,#fbf8ff);
+      border:1px solid rgba(124,77,255,.14); overflow:hidden;
+    }
+    .material-ref-name-card::before {
+      content:attr(data-number); position:absolute; left:12px; top:9px; color:rgba(124,77,255,.18);
+      font-size:25px; font-weight:900;
+    }
+    .material-ref-name-card .kanji { font-family:var(--jp); color:#071b45; font-size:32px; font-weight:900; line-height:1.1; }
+    .material-ref-name-card .kana { font-family:var(--jp); color:#66728a; font-size:14px; font-weight:700; margin-top:5px; }
+    .material-ref-name-card .romaji { color:var(--primary2); font-size:13px; font-weight:800; margin-top:3px; }
+    .material-ref-greeting-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; }
+    .material-ref-greeting-card {
+      min-height:170px; padding:16px; border-radius:22px; background:linear-gradient(145deg,#fff,#f8fbff);
+      border:1px solid rgba(124,77,255,.14); box-shadow:0 10px 22px rgba(80,67,130,.06);
+    }
+    .material-ref-greeting-card img {
+      width:100%; max-height:180px; object-fit:contain; border-radius:18px; padding:8px; background:#fff;
+      border:1px solid rgba(124,77,255,.14); margin-bottom:12px; cursor:zoom-in;
+    }
+    .material-ref-greeting-card .jp-line { font-family:var(--jp); color:#071b45; font-size:25px; font-weight:900; line-height:1.18; }
+    .material-ref-greeting-card .reading {
+      display:inline-flex; width:fit-content; max-width:100%; margin-top:8px; padding:5px 9px; border-radius:999px;
+      background:var(--soft); color:var(--primary2); font-size:12px; font-weight:800;
+    }
+    .material-ref-note {
+      display:flex; gap:12px; align-items:flex-start; padding:14px; border-radius:18px; background:#fff8e6;
+      border:1px solid rgba(255,211,109,.65); color:#5f4a13; font-weight:700; line-height:1.55;
+    }
+    @media (max-width:620px){
+      .material-ref-vocab-card { grid-template-columns:1fr; }
+      .material-ref-vocab-card img { width:100%; height:150px; }
+      .material-ref-section-title { align-items:flex-start; flex-direction:column; }
+    }
+
   </style>
 </head>
 <body>
@@ -1599,8 +1681,8 @@
           <h1 data-i18n="homeTitle">Kuis Kartu Kosakata Jepang</h1>
           <p data-i18n="homeDesc">Belajar kosakata Minna no Nihongo I & II dengan kartu belajar interaktif, suara pelafalan, latihan berbicara, dan laporan hasil yang tersimpan.</p>
           <div class="info-grid">
-            <div class="info-card"><i class="fa-solid fa-book-open"></i><strong id="homeVocabCount">0</strong><span data-i18n="totalVocab">Total Kosakata</span></div>
-            <div class="info-card"><i class="fa-regular fa-clock"></i><strong>30 dtk</strong><span data-i18n="timeLimit">Batas Waktu per Kartu</span></div>
+            <div class="info-card"><i class="fa-solid fa-book-open"></i><strong id="homeVocabCount">0</strong><span id="homeVocabLabel" data-i18n="totalVocab">Total Kosakata</span></div>
+            <div class="info-card"><i class="fa-regular fa-clock"></i><strong id="homeTimeValue">30 dtk</strong><span id="homeTimeLabel" data-i18n="timeLimit">Batas Waktu per Kartu</span></div>
             <div class="info-card"><i class="fa-solid fa-layer-group"></i><strong id="homeChapterCount">1</strong><span data-i18n="chapterScope">Lingkup Bab</span></div>
           </div>
           <div class="hero-actions">
@@ -1632,8 +1714,8 @@
           </div>
           <div class="stat-box glass">
             <h3 data-i18n="studyStats">Statistik Belajar</h3>
-            <div class="mini-stat"><div class="mini-icon"><i class="fa-solid fa-book-open"></i></div><div><strong id="matCount">0</strong><span data-i18n="totalVocab">Total Kosakata</span></div></div>
-            <div class="mini-stat"><div class="mini-icon" style="background:#dcfaef;color:#16a374"><i class="fa-regular fa-clock"></i></div><div><strong>30 dtk</strong><span data-i18n="timeLimit">Batas Waktu per Kartu</span></div></div>
+            <div class="mini-stat"><div class="mini-icon"><i class="fa-solid fa-book-open"></i></div><div><strong id="matCount">0</strong><span id="matCountLabel" data-i18n="totalVocab">Total Kosakata</span></div></div>
+            <div class="mini-stat"><div class="mini-icon" style="background:#dcfaef;color:#16a374"><i class="fa-regular fa-clock"></i></div><div><strong id="matTimeValue">30 dtk</strong><span id="matTimeLabel" data-i18n="timeLimit">Batas Waktu per Kartu</span></div></div>
           </div>
         </aside>
         <div class="content-card glass">
@@ -5130,6 +5212,178 @@
     }
 ];
 
+    const REFERENCE_INFO_BAB2_MATERIAL = {
+      "vocab": [
+            {
+                  "no": 1,
+                  "title": "初めまして",
+                  "desc": "Perkenalkan / digunakan ketika bertemu seseorang untuk pertama kali.",
+                  "image": "https://iili.io/C5gzoS1.png",
+                  "alt": "Ilustrasi 初めまして"
+            },
+            {
+                  "no": 2,
+                  "title": "どうぞよろしくお願いします",
+                  "desc": "Salam kenal / mohon bantuannya.",
+                  "image": "https://iili.io/C5gzCKB.png",
+                  "alt": "Ilustrasi どうぞよろしくお願いします"
+            }
+      ],
+      "familyNames": [
+            {
+                  "no": 1,
+                  "kanji": "佐藤",
+                  "kana": "さとう",
+                  "romaji": "Satou / Sato"
+            },
+            {
+                  "no": 2,
+                  "kanji": "鈴木",
+                  "kana": "すずき",
+                  "romaji": "Suzuki"
+            },
+            {
+                  "no": 3,
+                  "kanji": "高橋",
+                  "kana": "たかはし",
+                  "romaji": "Takahashi"
+            },
+            {
+                  "no": 4,
+                  "kanji": "田中",
+                  "kana": "たなか",
+                  "romaji": "Tanaka"
+            },
+            {
+                  "no": 5,
+                  "kanji": "渡辺",
+                  "kana": "わたなべ",
+                  "romaji": "Watanabe"
+            },
+            {
+                  "no": 6,
+                  "kanji": "伊藤",
+                  "kana": "いとう",
+                  "romaji": "Itou / Ito"
+            },
+            {
+                  "no": 7,
+                  "kanji": "山本",
+                  "kana": "やまもと",
+                  "romaji": "Yamamoto"
+            },
+            {
+                  "no": 8,
+                  "kanji": "中村",
+                  "kana": "なかむら",
+                  "romaji": "Nakamura"
+            },
+            {
+                  "no": 9,
+                  "kanji": "小林",
+                  "kana": "こばやし",
+                  "romaji": "Kobayashi"
+            },
+            {
+                  "no": 10,
+                  "kanji": "加藤",
+                  "kana": "かとう",
+                  "romaji": "Katou / Kato"
+            },
+            {
+                  "no": 11,
+                  "kanji": "吉田",
+                  "kana": "よしだ",
+                  "romaji": "Yoshida"
+            },
+            {
+                  "no": 12,
+                  "kanji": "山田",
+                  "kana": "やまだ",
+                  "romaji": "Yamada"
+            },
+            {
+                  "no": 13,
+                  "kanji": "佐々木",
+                  "kana": "ささき",
+                  "romaji": "Sasaki"
+            },
+            {
+                  "no": 14,
+                  "kanji": "斎藤",
+                  "kana": "さいとう",
+                  "romaji": "Saitou / Saito"
+            },
+            {
+                  "no": 15,
+                  "kanji": "山口",
+                  "kana": "やまぐち",
+                  "romaji": "Yamaguchi"
+            },
+            {
+                  "no": 16,
+                  "kanji": "松本",
+                  "kana": "まつもと",
+                  "romaji": "Matsumoto"
+            },
+            {
+                  "no": 17,
+                  "kanji": "井上",
+                  "kana": "いのうえ",
+                  "romaji": "Inoue"
+            },
+            {
+                  "no": 18,
+                  "kanji": "木村",
+                  "kana": "きむら",
+                  "romaji": "Kimura"
+            },
+            {
+                  "no": 19,
+                  "kanji": "林",
+                  "kana": "はやし",
+                  "romaji": "Hayashi"
+            },
+            {
+                  "no": 20,
+                  "kanji": "清水",
+                  "kana": "しみず",
+                  "romaji": "Shimizu"
+            }
+      ],
+      "greetings": [
+            {
+                  "title": "初めまして。",
+                  "reading": "はじめまして • Hajimemashite",
+                  "desc": "Digunakan saat bertemu seseorang untuk pertama kalinya, misalnya dalam perjalanan dinas atau ketika bertukar kartu nama.",
+                  "image": "https://iili.io/C5gzoS1.png",
+                  "alt": "Ilustrasi 初めまして"
+            },
+            {
+                  "title": "どうぞよろしくお願いします。",
+                  "reading": "どうぞよろしくおねがいします • Douzo yoroshiku onegaishimasu",
+                  "desc": "Ungkapan sopan setelah memperkenalkan diri. Maknanya kurang lebih “senang berkenalan dengan Anda / mohon bantuannya”.",
+                  "image": "https://iili.io/C5gzCKB.png",
+                  "alt": "Ilustrasi どうぞよろしくお願いします"
+            },
+            {
+                  "title": "引っ越しの挨拶",
+                  "reading": "ひっこしのあいさつ • Hikkoshi no aisatsu",
+                  "desc": "Saat pindah rumah, memperkenalkan diri kepada tetangga baru merupakan sopan santun yang baik.",
+                  "image": "",
+                  "alt": "引っ越しの挨拶"
+            },
+            {
+                  "title": "手土産",
+                  "reading": "てみやげ • Temiyage",
+                  "desc": "Hadiah sederhana untuk tetangga baru dapat berupa handuk, sabun, atau manisan.",
+                  "image": "",
+                  "alt": "手土産"
+            }
+      ]
+};
+
+
     const firebaseConfig = {
       apiKey: "AIzaSyBC3x1_9WEdGWFqMu6DYUnyvawAa7IFGag",
       authDomain: "minna-no-nihongo-i-ii.firebaseapp.com",
@@ -5144,7 +5398,7 @@
     const $ = s => document.querySelector(s);
     const $$ = s => [...document.querySelectorAll(s)];
     const storeKey = "minnaFlashcardV2";
-    const dataVersion = "bab1-bab2-ref-info-20260703-v4";
+    const dataVersion = "bab1-bab2-ref-info-20260703-v5";
     const setupCompletedKey = storeKey + "_setupCompleted";
     const hadCurrentDataVersionBeforeBoot = localStorage.getItem(storeKey+"_dataVersion") === dataVersion;
     const hadSetupCompletedFlagBeforeBoot = localStorage.getItem(setupCompletedKey);
@@ -5341,10 +5595,152 @@
     function chaptersForSetup(book, cat){
       const isTwo = book.includes("II");
       const start = isTwo ? 26 : 1, end = isTwo ? 50 : 25;
-      if(cat === "Kata-kata referensi dan Informasi") return Array.from({length:end-start+1},(_,i)=>`Bab ${start+i}`);
+      if(String(cat || "").trim().toLowerCase() === "kata-kata referensi dan informasi") return Array.from({length:end-start+1},(_,i)=>`Bab ${start+i}`);
       if(!isTwo) return ["Bab 1","Bab 2","Bab 3","Bab 4","Bab 5","Bab 1-5","Bab 6","Bab 7","Bab 8","Bab 9","Bab 10","Bab 6-10","Bab 1-10","Bab 11","Bab 12","Bab 13","Bab 14","Bab 15","Bab 11-15","Bab 1-15","Bab 16","Bab 17","Bab 18","Bab 19","Bab 20","Bab 16-20","Bab 1-20","Bab 21","Bab 22","Bab 23","Bab 24","Bab 25","Bab 21-25","Bab 1-25"];
       return ["Bab 26","Bab 27","Bab 28","Bab 29","Bab 30","Bab 26-30","Bab 31","Bab 32","Bab 33","Bab 34","Bab 35","Bab 31-35","Bab 26-35","Bab 36","Bab 37","Bab 38","Bab 39","Bab 40","Bab 36-40","Bab 26-40","Bab 41","Bab 42","Bab 43","Bab 44","Bab 45","Bab 41-45","Bab 26-45","Bab 46","Bab 47","Bab 48","Bab 49","Bab 50","Bab 46-50","Bab 26-50"];
     }
+
+    function isReferenceInfoBab2(){
+      const book = String(state.setup.book || "").trim();
+      const category = String(state.setup.materialCategory || "").trim().toLowerCase();
+      const chapter = String(state.setup.chapter || "").trim();
+      const isBookOne = /^Minna no Nihongo I(\s|$|\()/i.test(book) && !/^Minna no Nihongo II/i.test(book);
+      return isBookOne
+        && category === "kata-kata referensi dan informasi"
+        && chapter === "Bab 2";
+    }
+    function materialOnlyQuizMessage(){
+      return state.lang === "ja"
+        ? "このカテゴリーにはクイズモードがありません。教材を見るモードを使ってください。"
+        : "Kategori ini tidak memiliki mode kuis. Silakan gunakan mode Lihat Materi.";
+    }
+
+    function updateMaterialOnlyControls(){
+      const materialOnly = isReferenceInfoBab2();
+      document.body.classList.toggle("material-only-reference", materialOnly);
+      $$('[data-action="openQuizSettings"]').forEach(btn=>{
+        btn.classList.toggle("hidden", materialOnly);
+        btn.style.setProperty("display", materialOnly ? "none" : "", materialOnly ? "important" : "");
+        btn.style.setProperty("visibility", materialOnly ? "hidden" : "", materialOnly ? "important" : "");
+        btn.disabled = !!materialOnly;
+        btn.setAttribute("aria-disabled", String(!!materialOnly));
+      });
+      const homeStart = $("#homeStartBtn");
+      if(homeStart){
+        homeStart.classList.toggle("hidden", materialOnly);
+        homeStart.style.setProperty("display", materialOnly ? "none" : "", materialOnly ? "important" : "");
+        homeStart.style.setProperty("visibility", materialOnly ? "hidden" : "", materialOnly ? "important" : "");
+        homeStart.disabled = !!materialOnly;
+        homeStart.setAttribute("aria-disabled", String(!!materialOnly));
+      }
+      const toolbar = $(".material-toolbar");
+      updateMaterialOnlyLabels();
+      if(toolbar && materialOnly){
+        toolbar.classList.add("hidden");
+        toolbar.style.setProperty("display", "none", "important");
+        toolbar.style.setProperty("visibility", "hidden", "important");
+        toolbar.style.setProperty("pointer-events", "none", "important");
+      } else if(toolbar && state.page === "material"){
+        toolbar.classList.remove("hidden");
+        toolbar.style.removeProperty("display");
+        toolbar.style.removeProperty("visibility");
+        toolbar.style.removeProperty("pointer-events");
+      }
+    }
+    function materialOnlyItemCount(){
+      if(!isReferenceInfoBab2()) return activeVocab().length;
+      return (REFERENCE_INFO_BAB2_MATERIAL.vocab?.length || 0)
+        + (REFERENCE_INFO_BAB2_MATERIAL.familyNames?.length || 0)
+        + (REFERENCE_INFO_BAB2_MATERIAL.greetings?.length || 0);
+    }
+    function updateMaterialOnlyLabels(){
+      const materialOnly = isReferenceInfoBab2();
+      const homeTitle = $('[data-i18n="homeTitle"]');
+      const homeDesc = $('[data-i18n="homeDesc"]');
+      const homeVocabLabel = $('#homeVocabLabel');
+      const homeTimeValue = $('#homeTimeValue');
+      const homeTimeLabel = $('#homeTimeLabel');
+      const matCountLabel = $('#matCountLabel');
+      const matTimeValue = $('#matTimeValue');
+      const matTimeLabel = $('#matTimeLabel');
+      if(materialOnly){
+        if(homeTitle) homeTitle.textContent = state.lang === "ja" ? "参考資料・情報" : "Materi Referensi dan Informasi";
+        if(homeDesc) homeDesc.textContent = state.lang === "ja" ? "第2課の参考語彙、姓、あいさつ、マナーを教材として読みます。クイズモードはありません。" : "Buka materi Bab 2 sebagai bahan bacaan: kosakata salam, nama keluarga Jepang, dan informasi sopan santun. Kategori ini tidak memakai kuis.";
+        if(homeVocabLabel) homeVocabLabel.textContent = state.lang === "ja" ? "教材項目" : "Total Materi";
+        if(homeTimeValue) homeTimeValue.textContent = state.lang === "ja" ? "読む" : "Bacaan";
+        if(homeTimeLabel) homeTimeLabel.textContent = state.lang === "ja" ? "学習モード" : "Mode Belajar";
+        if(matCountLabel) matCountLabel.textContent = state.lang === "ja" ? "教材項目" : "Total Materi";
+        if(matTimeValue) matTimeValue.textContent = state.lang === "ja" ? "読む" : "Bacaan";
+        if(matTimeLabel) matTimeLabel.textContent = state.lang === "ja" ? "学習モード" : "Mode Belajar";
+      } else {
+        if(homeTitle) homeTitle.textContent = t("homeTitle");
+        if(homeDesc) homeDesc.textContent = t("homeDesc");
+        if(homeVocabLabel) homeVocabLabel.textContent = t("totalVocab");
+        if(homeTimeValue) homeTimeValue.textContent = state.lang === "ja" ? "30秒" : "30 dtk";
+        if(homeTimeLabel) homeTimeLabel.textContent = t("timeLimit");
+        if(matCountLabel) matCountLabel.textContent = t("totalVocab");
+        if(matTimeValue) matTimeValue.textContent = state.lang === "ja" ? "30秒" : "30 dtk";
+        if(matTimeLabel) matTimeLabel.textContent = t("timeLimit");
+      }
+    }
+    function renderReferenceInfoBab2(){
+      const grid = $("#materialGrid");
+      if(!grid) return;
+      const toolbar = $(".material-toolbar");
+      const notice = $("#materialPage .notice");
+      const title = $("#materialPage .content-card > h2");
+      const desc = $("#materialPage .content-card > p");
+      if(title) title.textContent = state.lang === "ja" ? "第2課 参考語彙・情報" : "Kata-kata Referensi dan Informasi - Bab 2";
+      if(desc) desc.textContent = state.lang === "ja" ? "第2課の参考語彙、姓、あいさつ、生活マナーをまとめた教材です。" : "Materi Bab 2 berisi kosakata salam, daftar nama keluarga Jepang, serta informasi sopan santun yang disusun sebagai bahan bacaan.";
+      document.body.classList.add("material-only-reference");
+      if(toolbar){ toolbar.classList.add("hidden"); toolbar.style.setProperty("display", "none", "important"); toolbar.style.setProperty("visibility", "hidden", "important"); }
+      if(notice){ notice.classList.add("hidden"); notice.style.setProperty("display", "none", "important"); }
+      updateMaterialOnlyControls();
+      $("#materialEmpty")?.classList.add("hidden");
+      grid.className = "material-ref-grid";
+
+      const vocabCards = REFERENCE_INFO_BAB2_MATERIAL.vocab.map(item => `
+        <article class="material-ref-vocab-card">
+          <img src="${esc(item.image)}" alt="${esc(item.alt || item.title)}" loading="lazy" data-zoom="${esc(item.image)}">
+          <div>
+            <span class="material-ref-num">${esc(item.no)}</span>
+            <div class="material-ref-jp">${esc(item.title)}</div>
+            <p class="material-ref-desc">${esc(item.desc)}</p>
+          </div>
+        </article>`).join("");
+
+      const familyCards = REFERENCE_INFO_BAB2_MATERIAL.familyNames.map(item => `
+        <article class="material-ref-name-card" data-number="${esc(item.no)}">
+          <div class="kanji">${esc(item.kanji)}</div>
+          <div class="kana">${esc(item.kana)}</div>
+          <div class="romaji">${esc(item.romaji)}</div>
+        </article>`).join("");
+
+      const greetingCards = REFERENCE_INFO_BAB2_MATERIAL.greetings.map(item => `
+        <article class="material-ref-greeting-card">
+          ${item.image ? `<img src="${esc(item.image)}" alt="${esc(item.alt || item.title)}" loading="lazy" data-zoom="${esc(item.image)}">` : ""}
+          <div class="jp-line">${esc(item.title)}</div>
+          <div class="reading">${esc(item.reading)}</div>
+          <p class="material-ref-desc">${esc(item.desc)}</p>
+        </article>`).join("");
+
+      grid.innerHTML = `
+        <div class="material-ref-wrap">
+          <section class="material-ref-section">
+            <div class="material-ref-section-title"><h3>${state.lang === "ja" ? "あいさつの語彙" : "Kosakata Salam"}</h3><span class="material-ref-badge"><i class="fa-solid fa-image"></i>${REFERENCE_INFO_BAB2_MATERIAL.vocab.length} item</span></div>
+            <div class="material-ref-vocab-grid">${vocabCards}</div>
+          </section>
+          <section class="material-ref-section">
+            <div class="material-ref-section-title"><h3>${state.lang === "ja" ? "日本の姓 20個" : "20 Nama Keluarga Jepang"}</h3><span class="material-ref-badge"><i class="fa-solid fa-list-ol"></i>${REFERENCE_INFO_BAB2_MATERIAL.familyNames.length} nama</span></div>
+            <div class="material-ref-name-grid">${familyCards}</div>
+          </section>
+          <section class="material-ref-section">
+            <div class="material-ref-section-title"><h3>${state.lang === "ja" ? "あいさつとマナー" : "Salam dan Sopan Santun"}</h3><span class="material-ref-badge"><i class="fa-solid fa-handshake"></i>${REFERENCE_INFO_BAB2_MATERIAL.greetings.length} materi</span></div>
+            <div class="material-ref-greeting-grid">${greetingCards}</div>
+          </section>
+        </div>`;
+    }
+
     function baseVocab(){
       const nums = chapterNumbers(state.setup.chapter);
       return VOCABULARY.filter(v => v.book===state.setup.book && v.materialCategory===state.setup.materialCategory && nums.includes(v.chapterNumber));
@@ -5483,13 +5879,14 @@
 
     function renderAll(){
       applyTranslations();
-      const count = activeVocab().length;
+      const count = materialOnlyItemCount();
       $("#homeVocabCount").textContent = count;
       $("#homeChapterCount").textContent = chapterNumbers(state.setup.chapter).length;
       $("#activeChoiceText").textContent = setupLabel();
       $("#matCount").textContent = count;
       $("#activeChoiceText").classList.toggle("jp",state.lang==="ja");
       updateFictionToggle();
+      updateMaterialOnlyLabels();
       renderUser();
       renderMaterial();
       renderResult();
@@ -5501,6 +5898,8 @@
       const logged = !!state.session?.username;
       $("#homeLoginBtn").classList.toggle("hidden",logged);
       $("#homeStartBtn").classList.toggle("hidden",!logged);
+      $("#homeStartBtn").disabled = !!(logged && isReferenceInfoBab2());
+      $("#homeStartBtn").title = isReferenceInfoBab2() ? materialOnlyQuizMessage() : "";
       $("#homeMaterialBtn").classList.toggle("hidden",!logged);
       $("#logoutBtn").classList.toggle("hidden",!logged);
       if($("#homeResultBtn")) $("#homeResultBtn").classList.toggle("hidden", !logged || isAdmin() || !currentResult);
@@ -5530,6 +5929,7 @@
         const isResultAlias = b.id === "bottomResultBtn" && (state.page === "result" || state.page === "admin");
         b.classList.toggle("active", isResultAlias || b.dataset.page===state.page || (state.page==="quiz" && b.dataset.action==="openQuizSettings"));
       });
+      updateMaterialOnlyControls();
     }
     function showPage(page){
       if(page==="result" && isAdmin()) page = "admin";
@@ -5539,10 +5939,13 @@
       const targetPage = $("#" + page + "Page");
       if(!targetPage){ toast(state.lang==="ja"?"ページが見つかりません。":"Halaman tidak ditemukan."); return; }
       state.page=page;
+      updateMaterialOnlyControls();
       $$(".page").forEach(p=>p.classList.remove("active"));
       targetPage.classList.add("active");
       document.body.classList.toggle("quiz-mode",page==="quiz");
+      updateMaterialOnlyControls();
       updateNavActive();
+      if(page==="material") renderMaterial();
       if(page==="admin") loadAdmin();
       if(page==="result") { renderResult(); loadUserLastResult(true); }
       window.scrollTo({top:0,behavior:"smooth"});
@@ -5596,6 +5999,26 @@
 
     function renderMaterial(){
       syncFictionToggleAvailability();
+      const toolbar = $(".material-toolbar");
+      const grid = $("#materialGrid");
+      const title = $("#materialPage .content-card > h2");
+      const desc = $("#materialPage .content-card > p");
+      const noticeTitle = $("#materialPage .notice h3");
+      const noticeDesc = $("#materialPage .notice p");
+      if(isReferenceInfoBab2()){
+        renderReferenceInfoBab2();
+        return;
+      }
+      const notice = $("#materialPage .notice");
+      document.body.classList.remove("material-only-reference");
+      if(toolbar){ toolbar.classList.remove("hidden"); toolbar.style.removeProperty("display"); toolbar.style.removeProperty("visibility"); toolbar.style.removeProperty("pointer-events"); }
+      if(notice){ notice.classList.remove("hidden"); notice.style.removeProperty("display"); }
+      updateMaterialOnlyControls();
+      if(grid) grid.className = "vocab-grid";
+      if(title) title.textContent = t("materialTitle");
+      if(desc) desc.textContent = t("materialDesc");
+      if(noticeTitle) noticeTitle.textContent = t("studyFirst");
+      if(noticeDesc) noticeDesc.textContent = t("studyFirstDesc");
       const search = ($("#materialSearch")?.value || "").toLowerCase();
       const sectionFilter = $("#materialSectionFilter")?.value || "all";
       const typeFilter = $("#materialTypeFilter")?.value || "all";
@@ -5796,6 +6219,7 @@
       startBtn.disabled = arr.length===0;
     }
     function openQuizSettings(){
+      if(isReferenceInfoBab2()) return toast(materialOnlyQuizMessage());
       if(!state.session?.username) return openLogin();
       quizSettingStep = 1;
       buildQuizFilters();
@@ -5803,6 +6227,7 @@
       updateQuizSettingSteps();
     }
     function startQuiz(){
+      if(isReferenceInfoBab2()) return toast(materialOnlyQuizMessage());
       saveState();
       let cards = filterQuizData();
       if(!cards.length) return toast(t("noVocabFilter"));
