@@ -1619,6 +1619,80 @@
       .material-ref-section-title { align-items:flex-start; flex-direction:column; }
     }
 
+    /* ===== Materi khusus: Kata-kata Referensi dan Informasi Bab 4 ===== */
+    .material-ref-bab4-wrap { gap:20px; }
+    .material-ref-bab4-hero {
+      display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+      background:
+        radial-gradient(circle at 92% 12%,rgba(125,181,255,.35),transparent 28%),
+        linear-gradient(135deg,#f4eeff,#eef7ff 58%,#fff7fb);
+    }
+    .material-ref-bab4-hero h3 { margin:12px 0 8px; font-size:clamp(24px,3vw,34px); letter-spacing:-.04em; }
+    .material-ref-bab4-hero .jp { font-family:var(--jp); letter-spacing:normal; }
+    .material-ref-image-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+    .material-ref-image-card {
+      padding:14px; border-radius:22px; background:linear-gradient(145deg,#fff,#fbf8ff);
+      border:1px solid rgba(124,77,255,.14); box-shadow:0 10px 22px rgba(80,67,130,.055);
+    }
+    .material-ref-image-head { display:flex; gap:10px; align-items:flex-start; margin-bottom:12px; }
+    .material-ref-image-head h4 { margin:0; font-family:var(--jp); font-size:19px; color:#071b45; line-height:1.2; }
+    .material-ref-image-head p { margin:4px 0 0; font-size:13px; line-height:1.45; color:#66728a; font-weight:600; }
+    .material-ref-image-card img {
+      width:100%; height:330px; object-fit:contain; padding:10px; border-radius:18px; background:#fff;
+      border:1px solid rgba(124,77,255,.14); cursor:zoom-in;
+    }
+    .material-ref-step-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+    .material-ref-step-card {
+      display:flex; gap:12px; align-items:flex-start; padding:15px; border-radius:20px;
+      background:linear-gradient(145deg,#fff,#fbf8ff); border:1px solid rgba(124,77,255,.14);
+    }
+    .material-ref-step-card > span {
+      width:32px; height:32px; min-width:32px; display:grid; place-items:center; border-radius:50%;
+      background:linear-gradient(135deg,var(--primary),var(--primary2)); color:#fff; font-weight:900; box-shadow:0 8px 16px rgba(124,77,255,.18);
+    }
+    .material-ref-step-card strong { display:block; color:#071b45; font-size:15px; line-height:1.35; }
+    .material-ref-step-card p { margin:5px 0 0; color:#66728a; line-height:1.5; font-size:13px; font-weight:600; }
+    .material-ref-note-bab4 { align-items:flex-start; background:linear-gradient(135deg,#fff8e6,#fffdf5); }
+    .material-ref-note-bab4 i { color:#b88700; margin-top:3px; }
+    .material-ref-note-bab4 ul { margin:0; padding-left:18px; display:grid; gap:6px; }
+    .material-ref-table-wrap { overflow-x:auto; border:1px solid #e5e1f7; border-radius:18px; background:#fff; }
+    .material-ref-emergency-table { min-width:620px; }
+    .material-ref-emergency-table th { background:#f4efff; color:var(--primary2); }
+    .material-ref-emergency-table td { font-weight:650; }
+    .material-ref-phone-number { display:inline-block; font-size:26px; letter-spacing:.12em; color:#071b45; font-weight:900; }
+    .material-ref-kanji { font-size:18px; font-weight:850; color:#071b45; }
+    .material-ref-kana { color:#66728a; font-weight:750; }
+    .material-ref-address-layout { display:grid; grid-template-columns:minmax(260px,.75fr) 1fr; gap:14px; align-items:stretch; }
+    .material-ref-address-example {
+      display:grid; align-content:center; gap:8px; padding:18px; border-radius:22px;
+      background:linear-gradient(145deg,#fff,#f8fbff); border:1px solid rgba(124,77,255,.14);
+    }
+    .material-ref-address-example span { color:var(--primary2); font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.04em; }
+    .material-ref-address-example strong { display:block; color:#071b45; font-size:clamp(17px,2vw,25px); line-height:1.45; font-weight:850; }
+    .material-ref-address-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
+    .material-ref-address-chip {
+      display:flex; gap:10px; align-items:center; padding:13px; border-radius:18px;
+      background:linear-gradient(145deg,#fff,#fbf8ff); border:1px solid rgba(124,77,255,.14);
+    }
+    .material-ref-address-chip i {
+      width:34px; height:34px; min-width:34px; display:grid; place-items:center; border-radius:13px;
+      background:var(--soft); color:var(--primary2);
+    }
+    .material-ref-address-chip span { display:block; color:#66728a; font-size:11px; font-weight:800; line-height:1.25; }
+    .material-ref-address-chip strong { display:block; margin-top:3px; color:#071b45; font-size:15px; line-height:1.3; }
+    @media (max-width:760px){
+      .material-ref-image-grid { grid-template-columns:1fr; }
+      .material-ref-image-card img { height:260px; }
+      .material-ref-step-grid { grid-template-columns:1fr; }
+      .material-ref-address-layout { grid-template-columns:1fr; }
+      .material-ref-phone-number { font-size:22px; }
+    }
+    @media (max-width:450px){
+      .material-ref-image-card img { height:220px; }
+      .material-ref-address-grid { grid-template-columns:1fr; }
+    }
+
+
   </style>
 </head>
 <body>
@@ -8323,6 +8397,68 @@
       ]
 };
 
+    const REFERENCE_INFO_BAB4_MATERIAL = {
+      "images": [
+        {
+          "no": 1,
+          "title": "電話・手紙",
+          "desc": "Telepon, surat, nomor darurat, dan cara menulis alamat di Jepang.",
+          "image": "https://iili.io/C54n1Ns.png",
+          "alt": "Materi 電話・手紙 tentang telepon, surat, nomor darurat, dan alamat"
+        },
+        {
+          "no": 2,
+          "title": "参考資料 2",
+          "desc": "Gambar materi pelengkap Bab 4.",
+          "image": "https://iili.io/C54nEDG.png",
+          "alt": "Materi pelengkap Kata-kata Referensi dan Informasi Bab 4 gambar 2"
+        },
+        {
+          "no": 3,
+          "title": "参考資料 3",
+          "desc": "Gambar materi pelengkap Bab 4.",
+          "image": "https://iili.io/C54nMxf.png",
+          "alt": "Materi pelengkap Kata-kata Referensi dan Informasi Bab 4 gambar 3"
+        }
+      ],
+      "phoneSteps": [
+        { "no": 1, "title": "Angkat gagang telepon.", "desc": "Ambil gagang telepon umum sebelum memasukkan koin atau kartu." },
+        { "no": 2, "title": "Masukkan koin atau kartu.", "desc": "Masukkan koin atau kartu telepon ke dalam lubang yang tersedia." },
+        { "no": 3, "title": "Tekan nomor.", "desc": "Masukkan nomor telepon tujuan. Untuk pesawat bertombol start, tekan start setelah langkah ini." },
+        { "no": 4, "title": "Kembalikan gagang telepon.", "desc": "Letakkan kembali gagang telepon setelah selesai berbicara." },
+        { "no": 5, "title": "Ambil kartu atau kembalian.", "desc": "Ambil kembali kartu telepon atau uang kembalian jika tersedia." }
+      ],
+      "notes": [
+        "Telepon umum hanya bisa menerima koin ¥10, koin ¥100, dan kartu telepon.",
+        "Jika memasukkan koin ¥100, pengguna tidak akan mendapat kembalian.",
+        "Untuk telepon yang memiliki tombol start, tekan tombol start setelah memasukkan nomor."
+      ],
+      "emergency": [
+        { "number": "110", "kanji": "警察署", "kana": "けいさつしょ", "meaning": "Kantor polisi" },
+        { "number": "119", "kanji": "消防署", "kana": "しょうぼうしょ", "meaning": "Pemadam kebakaran" },
+        { "number": "117", "kanji": "時報", "kana": "じほう", "meaning": "Pemberitahuan waktu" },
+        { "number": "177", "kanji": "天気予報", "kana": "てんきよほう", "meaning": "Ramalan cuaca" },
+        { "number": "104", "kanji": "電話番号案内", "kana": "でんわばんごうあんない", "meaning": "Petunjuk nomor telepon" }
+      ],
+      "address": {
+        "example": ["〒658-0063", "兵庫県 神戸市 中央区 三宮 1-23", "コウベハイツ 405号"],
+        "labels": [
+          { "label": "Kode pos", "value": "〒658-0063", "icon": "fa-envelopes-bulk" },
+          { "label": "Prefektur", "value": "兵庫県", "icon": "fa-map" },
+          { "label": "Kota", "value": "神戸市", "icon": "fa-city" },
+          { "label": "Daerah", "value": "中央区・三宮", "icon": "fa-location-dot" },
+          { "label": "Nomor bangunan rumah/apartemen", "value": "1-23", "icon": "fa-house" },
+          { "label": "Nama gedung", "value": "コウベハイツ", "icon": "fa-building" },
+          { "label": "Nomor kamar", "value": "405号", "icon": "fa-door-open" }
+        ]
+      },
+      "searchKeywords": [
+        "telepon", "surat", "nomor darurat", "kantor polisi", "pemadam kebakaran", "pemberitahuan waktu",
+        "ramalan cuaca", "petunjuk nomor telepon", "alamat", "kode pos", "110", "119", "117", "177", "104"
+      ]
+    };
+
+
 
     const firebaseConfig = {
       apiKey: "AIzaSyBC3x1_9WEdGWFqMu6DYUnyvawAa7IFGag",
@@ -8540,15 +8676,19 @@
       return ["Bab 26","Bab 27","Bab 28","Bab 29","Bab 30","Bab 26-30","Bab 31","Bab 32","Bab 33","Bab 34","Bab 35","Bab 31-35","Bab 26-35","Bab 36","Bab 37","Bab 38","Bab 39","Bab 40","Bab 36-40","Bab 26-40","Bab 41","Bab 42","Bab 43","Bab 44","Bab 45","Bab 41-45","Bab 26-45","Bab 46","Bab 47","Bab 48","Bab 49","Bab 50","Bab 46-50","Bab 26-50"];
     }
 
-    function isReferenceInfoBab2(){
+    function isReferenceInfoChapter(chapterName){
       const book = String(state.setup.book || "").trim();
       const category = String(state.setup.materialCategory || "").trim().toLowerCase();
       const chapter = String(state.setup.chapter || "").trim();
       const isBookOne = /^Minna no Nihongo I(\s|$|\()/i.test(book) && !/^Minna no Nihongo II/i.test(book);
       return isBookOne
         && category === "kata-kata referensi dan informasi"
-        && chapter === "Bab 2";
+        && chapter === chapterName;
     }
+    function isReferenceInfoBab2(){ return isReferenceInfoChapter("Bab 2"); }
+    function isReferenceInfoBab4(){ return isReferenceInfoChapter("Bab 4"); }
+    function isReferenceInfoMaterialOnly(){ return isReferenceInfoBab2() || isReferenceInfoBab4(); }
+
     function materialOnlyQuizMessage(){
       return state.lang === "ja"
         ? "このカテゴリーにはクイズモードがありません。教材を見るモードを使ってください。"
@@ -8556,7 +8696,7 @@
     }
 
     function updateMaterialOnlyControls(){
-      const materialOnly = isReferenceInfoBab2();
+      const materialOnly = isReferenceInfoMaterialOnly();
       document.body.classList.toggle("material-only-reference", materialOnly);
       $$('[data-action="openQuizSettings"]').forEach(btn=>{
         btn.classList.toggle("hidden", materialOnly);
@@ -8588,13 +8728,20 @@
       }
     }
     function materialOnlyItemCount(){
-      if(!isReferenceInfoBab2()) return activeVocab().length;
+      if(!isReferenceInfoMaterialOnly()) return activeVocab().length;
+      if(isReferenceInfoBab4()){
+        return (REFERENCE_INFO_BAB4_MATERIAL.images?.length || 0)
+          + (REFERENCE_INFO_BAB4_MATERIAL.phoneSteps?.length || 0)
+          + (REFERENCE_INFO_BAB4_MATERIAL.notes?.length || 0)
+          + (REFERENCE_INFO_BAB4_MATERIAL.emergency?.length || 0)
+          + (REFERENCE_INFO_BAB4_MATERIAL.address?.labels?.length || 0);
+      }
       return (REFERENCE_INFO_BAB2_MATERIAL.vocab?.length || 0)
         + (REFERENCE_INFO_BAB2_MATERIAL.familyNames?.length || 0)
         + (REFERENCE_INFO_BAB2_MATERIAL.greetings?.length || 0);
     }
     function updateMaterialOnlyLabels(){
-      const materialOnly = isReferenceInfoBab2();
+      const materialOnly = isReferenceInfoMaterialOnly();
       const homeTitle = $('[data-i18n="homeTitle"]');
       const homeDesc = $('[data-i18n="homeDesc"]');
       const homeVocabLabel = $('#homeVocabLabel');
@@ -8604,8 +8751,11 @@
       const matTimeValue = $('#matTimeValue');
       const matTimeLabel = $('#matTimeLabel');
       if(materialOnly){
+        const bab4 = isReferenceInfoBab4();
         if(homeTitle) homeTitle.textContent = state.lang === "ja" ? "参考資料・情報" : "Materi Referensi dan Informasi";
-        if(homeDesc) homeDesc.textContent = state.lang === "ja" ? "第2課の参考語彙、姓、あいさつ、マナーを教材として読みます。クイズモードはありません。" : "Buka materi Bab 2 sebagai bahan bacaan: kosakata salam, nama keluarga Jepang, dan informasi sopan santun. Kategori ini tidak memakai kuis.";
+        if(homeDesc) homeDesc.textContent = bab4
+          ? (state.lang === "ja" ? "第4課の電話、手紙、緊急番号、住所の書き方を教材として読みます。クイズモードはありません。" : "Buka materi Bab 4 sebagai bahan bacaan: telepon, surat, nomor darurat, dan cara menulis alamat di Jepang. Kategori ini tidak memakai kuis.")
+          : (state.lang === "ja" ? "第2課の参考語彙、姓、あいさつ、マナーを教材として読みます。クイズモードはありません。" : "Buka materi Bab 2 sebagai bahan bacaan: kosakata salam, nama keluarga Jepang, dan informasi sopan santun. Kategori ini tidak memakai kuis.");
         if(homeVocabLabel) homeVocabLabel.textContent = state.lang === "ja" ? "教材項目" : "Total Materi";
         if(homeTimeValue) homeTimeValue.textContent = state.lang === "ja" ? "読む" : "Bacaan";
         if(homeTimeLabel) homeTimeLabel.textContent = state.lang === "ja" ? "学習モード" : "Mode Belajar";
@@ -8677,6 +8827,109 @@
           <section class="material-ref-section">
             <div class="material-ref-section-title"><h3>${state.lang === "ja" ? "あいさつとマナー" : "Salam dan Sopan Santun"}</h3><span class="material-ref-badge"><i class="fa-solid fa-handshake"></i>${REFERENCE_INFO_BAB2_MATERIAL.greetings.length} materi</span></div>
             <div class="material-ref-greeting-grid">${greetingCards}</div>
+          </section>
+        </div>`;
+    }
+
+
+    function renderReferenceInfoBab4(){
+      const grid = $("#materialGrid");
+      if(!grid) return;
+      const toolbar = $(".material-toolbar");
+      const notice = $("#materialPage .notice");
+      const title = $("#materialPage .content-card > h2");
+      const desc = $("#materialPage .content-card > p");
+      if(title) title.textContent = state.lang === "ja" ? "第4課 参考語彙・情報" : "Kata-kata Referensi dan Informasi - Bab 4";
+      if(desc) desc.textContent = state.lang === "ja" ? "電話、手紙、緊急番号、住所の書き方をまとめた読み物です。" : "Telepon, surat, nomor darurat, dan cara menulis alamat di Jepang.";
+      document.body.classList.add("material-only-reference");
+      if(toolbar){ toolbar.classList.add("hidden"); toolbar.style.setProperty("display", "none", "important"); toolbar.style.setProperty("visibility", "hidden", "important"); }
+      if(notice){ notice.classList.add("hidden"); notice.style.setProperty("display", "none", "important"); }
+      updateMaterialOnlyControls();
+      $("#materialEmpty")?.classList.add("hidden");
+      grid.className = "material-ref-grid material-ref-bab4-grid";
+
+      const material = REFERENCE_INFO_BAB4_MATERIAL;
+      const imageCards = material.images.map(item => `
+        <article class="material-ref-image-card">
+          <div class="material-ref-image-head">
+            <span class="material-ref-num">${esc(item.no)}</span>
+            <div>
+              <h4 class="jp">${esc(item.title)}</h4>
+              <p>${esc(item.desc)}</p>
+            </div>
+          </div>
+          <img src="${esc(item.image)}" alt="${esc(item.alt || item.title)}" loading="lazy" data-zoom="${esc(item.image)}">
+        </article>`).join("");
+
+      const phoneSteps = material.phoneSteps.map(step => `
+        <article class="material-ref-step-card">
+          <span>${esc(step.no)}</span>
+          <div>
+            <strong>${esc(step.title)}</strong>
+            <p>${esc(step.desc)}</p>
+          </div>
+        </article>`).join("");
+
+      const noteItems = material.notes.map(note => `<li>${esc(note)}</li>`).join("");
+
+      const emergencyRows = material.emergency.map(item => `
+        <tr>
+          <td><strong class="material-ref-phone-number">${esc(item.number)}</strong></td>
+          <td><span class="jp material-ref-kanji">${esc(item.kanji)}</span></td>
+          <td><span class="jp material-ref-kana">${esc(item.kana)}</span></td>
+          <td>${esc(item.meaning)}</td>
+        </tr>`).join("");
+
+      const addressLabels = material.address.labels.map(item => `
+        <article class="material-ref-address-chip">
+          <i class="fa-solid ${esc(item.icon)}"></i>
+          <div><span>${esc(item.label)}</span><strong class="jp">${esc(item.value)}</strong></div>
+        </article>`).join("");
+
+      grid.innerHTML = `
+        <div class="material-ref-wrap material-ref-bab4-wrap">
+          <section class="material-ref-hero material-ref-bab4-hero">
+            <div>
+              <span class="material-ref-badge"><i class="fa-solid fa-book-open-reader"></i>${state.lang === "ja" ? "読むだけ" : "Mode baca saja / Tidak ada kuis"}</span>
+              <h3><span class="jp">電話・手紙</span> — Telepon, Surat</h3>
+              <p>${state.lang === "ja" ? "第4課の参考情報を、画像と ringkasan dalam bahasa Indonesia で読みやすくまとめました。" : "Materi Bab 4 disusun sebagai bahan bacaan ringkas tentang penggunaan telepon umum, nomor penting, dan format alamat di Jepang."}</p>
+            </div>
+          </section>
+
+          <section class="material-ref-section">
+            <div class="material-ref-section-title"><h3>${state.lang === "ja" ? "教材画像" : "Gambar Materi"}</h3><span class="material-ref-badge"><i class="fa-solid fa-image"></i>${material.images.length} gambar</span></div>
+            <div class="material-ref-image-grid">${imageCards}</div>
+          </section>
+
+          <section class="material-ref-section">
+            <div class="material-ref-section-title"><h3>${state.lang === "ja" ? "公衆電話の使い方" : "Cara Penggunaan Telepon Umum"}</h3><span class="material-ref-badge"><i class="fa-solid fa-phone"></i>${material.phoneSteps.length} langkah</span></div>
+            <div class="material-ref-step-grid">${phoneSteps}</div>
+          </section>
+
+          <section class="material-ref-section">
+            <div class="material-ref-section-title"><h3>${state.lang === "ja" ? "大切なメモ" : "Catatan Penting"}</h3><span class="material-ref-badge"><i class="fa-solid fa-circle-info"></i>memo</span></div>
+            <div class="material-ref-note material-ref-note-bab4"><i class="fa-solid fa-lightbulb"></i><ul>${noteItems}</ul></div>
+          </section>
+
+          <section class="material-ref-section">
+            <div class="material-ref-section-title"><h3>${state.lang === "ja" ? "緊急・案内番号" : "Nomor Darurat dan Informasi"}</h3><span class="material-ref-badge"><i class="fa-solid fa-triangle-exclamation"></i>${material.emergency.length} nomor</span></div>
+            <div class="material-ref-table-wrap">
+              <table class="material-ref-emergency-table">
+                <thead><tr><th>Nomor</th><th>Jepang</th><th>Cara baca</th><th>Arti Indonesia</th></tr></thead>
+                <tbody>${emergencyRows}</tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="material-ref-section">
+            <div class="material-ref-section-title"><h3>${state.lang === "ja" ? "住所の書き方" : "Cara Menulis Alamat"}</h3><span class="material-ref-badge"><i class="fa-solid fa-location-dot"></i>alamat</span></div>
+            <div class="material-ref-address-layout">
+              <div class="material-ref-address-example">
+                <span>Contoh alamat</span>
+                ${material.address.example.map(line => `<strong class="jp">${esc(line)}</strong>`).join("")}
+              </div>
+              <div class="material-ref-address-grid">${addressLabels}</div>
+            </div>
           </section>
         </div>`;
     }
@@ -8838,8 +9091,8 @@
       const logged = !!state.session?.username;
       $("#homeLoginBtn").classList.toggle("hidden",logged);
       $("#homeStartBtn").classList.toggle("hidden",!logged);
-      $("#homeStartBtn").disabled = !!(logged && isReferenceInfoBab2());
-      $("#homeStartBtn").title = isReferenceInfoBab2() ? materialOnlyQuizMessage() : "";
+      $("#homeStartBtn").disabled = !!(logged && isReferenceInfoMaterialOnly());
+      $("#homeStartBtn").title = isReferenceInfoMaterialOnly() ? materialOnlyQuizMessage() : "";
       $("#homeMaterialBtn").classList.toggle("hidden",!logged);
       $("#logoutBtn").classList.toggle("hidden",!logged);
       if($("#homeResultBtn")) $("#homeResultBtn").classList.toggle("hidden", !logged || isAdmin() || !currentResult);
@@ -8947,6 +9200,10 @@
       const noticeDesc = $("#materialPage .notice p");
       if(isReferenceInfoBab2()){
         renderReferenceInfoBab2();
+        return;
+      }
+      if(isReferenceInfoBab4()){
+        renderReferenceInfoBab4();
         return;
       }
       const notice = $("#materialPage .notice");
@@ -9159,7 +9416,7 @@
       startBtn.disabled = arr.length===0;
     }
     function openQuizSettings(){
-      if(isReferenceInfoBab2()) return toast(materialOnlyQuizMessage());
+      if(isReferenceInfoMaterialOnly()) return toast(materialOnlyQuizMessage());
       if(!state.session?.username) return openLogin();
       quizSettingStep = 1;
       buildQuizFilters();
@@ -9167,7 +9424,7 @@
       updateQuizSettingSteps();
     }
     function startQuiz(){
-      if(isReferenceInfoBab2()) return toast(materialOnlyQuizMessage());
+      if(isReferenceInfoMaterialOnly()) return toast(materialOnlyQuizMessage());
       saveState();
       let cards = filterQuizData();
       if(!cards.length) return toast(t("noVocabFilter"));
