@@ -1422,6 +1422,7 @@
           <div class="dropdown" id="userDropdown">
             <button class="drop-item" id="changeCategoryBtn"><i class="fa-solid fa-layer-group"></i><span data-i18n="changeCategory">Ganti kategori</span></button>
             <button class="drop-item" id="langToggleDrop"><i class="fa-solid fa-language"></i><span data-i18n="changeLanguage">Ganti bahasa</span></button>
+            <button class="drop-item hidden" id="myResultDrop"><i class="fa-solid fa-chart-simple"></i><span data-i18n="myResult">Lihat Hasil Saya</span></button>
             <button class="drop-item hidden" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i><span data-i18n="logout">Keluar</span></button>
           </div>
         </div>
@@ -1444,6 +1445,7 @@
           <div class="hero-actions">
             <button class="btn hidden" id="homeStartBtn"><i class="fa-solid fa-play"></i><span data-i18n="startQuiz">Mulai Kuis</span></button>
             <button class="btn secondary hidden" id="homeMaterialBtn"><i class="fa-solid fa-book"></i><span data-i18n="seeMaterial">Lihat Materi</span></button>
+            <button class="btn secondary hidden" id="homeResultBtn"><i class="fa-solid fa-chart-simple"></i><span data-i18n="myResult">Lihat Hasil Saya</span></button>
             <button class="btn soft" id="homeLoginBtn"><i class="fa-regular fa-user"></i><span data-i18n="fillUsername">Isi Nama Peserta</span></button>
             <button class="choice-chip" id="homeLangBtn"><i class="fa-solid fa-language"></i><span>日本語 / Indonesia</span></button>
           </div>
@@ -1483,7 +1485,7 @@
               <option value="all">Semua Bagian</option>
               <option value="Kosakata">Kosakata</option>
               <option value="Latihan C">Latihan C</option>
-              <option value="Percakapan">Percakapan</option>
+              <option value="Kosakata Tambahan">Kosakata Tambahan</option>
             </select>
             <select id="materialTypeFilter" class="material-filter-select" aria-label="Filter jenis kata">
               <option value="all">Semua Jenis Kata</option>
@@ -1743,12 +1745,12 @@
       <button class="close-x" id="closeExample"><i class="fa-solid fa-xmark"></i></button>
       <div class="example-modal-head">
         <span class="example-icon jp">例</span>
-        <div><h2 data-i18n="exampleSentence">Contoh Kalimat</h2><p id="exampleModalDesc">Contoh penggunaan kosakata dengan cara baca dan arti.</p></div>
+        <div><h2 data-i18n="exampleSentence">Contoh Kalimat</h2><p id="exampleModalDesc">Contoh penggunaan kosakata dalam kalimat bahasa Jepang.</p></div>
       </div>
       <div class="example-content" id="exampleContent">
         <div class="example-info-card"><span id="exampleJaLabel">Jepang</span><strong class="jp" id="exampleJa">-</strong></div>
-        <div class="example-info-card"><span id="exampleReadingLabel">Cara baca</span><strong id="exampleReading">-</strong></div>
-        <div class="example-info-card"><span id="exampleIdLabel">Arti Indonesia</span><strong id="exampleId">-</strong></div>
+        <div class="example-info-card" id="exampleReadingCard"><span id="exampleReadingLabel">Cara baca</span><strong id="exampleReading">-</strong></div>
+        <div class="example-info-card" id="exampleIdCard"><span id="exampleIdLabel">Arti Indonesia</span><strong id="exampleId">-</strong></div>
       </div>
     </div>
   </div>
@@ -1767,12 +1769,13 @@
   <script type="module">
     const VOCABULARY = [
   {
-    "id": "mni-b1-01",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-01",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
     "indonesia": "saya",
@@ -1780,19 +1783,19 @@
     "kana": "わたし",
     "romaji": "watashi",
     "image": "https://iili.io/C5S70LG.png",
-    "exampleJa": "わたしはインドネシア人です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya orang Indonesia.",
-    "exampleReading": "watashi wa Indoneshia-jin desu"
+    "exampleJa": "わたしは学生です。",
+    "exampleReading": "Watashi wa gakusei desu.",
+    "exampleId": "Saya mahasiswa."
   },
   {
-    "id": "mni-b1-02",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-02",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
     "indonesia": "Anda",
@@ -1800,155 +1803,164 @@
     "kana": "あなた",
     "romaji": "anata",
     "image": "https://iili.io/C5S7EBf.png",
-    "exampleJa": "あなたは学生ですか。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Apakah Anda mahasiswa?",
-    "exampleReading": "anata wa gakusei desu ka"
+    "exampleJa": "あなたは先生ですか。",
+    "exampleReading": "Anata wa sensei desu ka.",
+    "exampleId": "Apakah Anda guru/dosen?"
   },
   {
-    "id": "mni-b1-03",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-03",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "orang itu, beliau（あのかた adalah bentuk sopan dari あのひと）",
+    "indonesia": "orang itu",
     "kanji": "あの人",
     "kana": "あのひと",
     "romaji": "ano hito",
     "image": "https://iili.io/C5S7cIn.png",
-    "exampleJa": "あの人は先生です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Orang itu adalah guru.",
-    "exampleReading": "ano hito wa sensei desu"
+    "exampleJa": "あの人は誰ですか。",
+    "exampleReading": "Ano hito wa dare desu ka.",
+    "exampleId": "Siapa orang itu?"
   },
   {
-    "id": "mni-b1-04",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-04",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "beliau（bentuk sopan dari あのひと）",
+    "indonesia": "beliau (bentuk sopan dari あの人 / あのひと)",
     "kanji": "あの方",
     "kana": "あのかた",
     "romaji": "ano kata",
     "image": "https://iili.io/C5S7lXs.png",
-    "exampleJa": "あの方はどなたですか。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Siapakah beliau?",
-    "exampleReading": "ano kata wa donata desu ka"
+    "exampleJa": "あの方はどなたですか。",
+    "exampleReading": "Ano kata wa donata desu ka.",
+    "exampleId": "Siapa beliau?",
+    "catatan": "Bentuk sopan dari あの人 / あのひと."
   },
   {
-    "id": "mni-b1-05",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-05",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "Sdr. ～, Bapak ～, Ibu ～（akhiran untuk mengekspresikan kesopanan, yang diletakkan di belakang nama orang）",
+    "indonesia": "Sdr. ~, Bapak ~, Ibu ~ (akhiran untuk mengekspresikan kesopanan yang diletakkan di belakang nama orang)",
     "kanji": "",
     "kana": "〜さん",
     "romaji": "-san",
     "image": "https://iili.io/C5S7G14.png",
-    "exampleJa": "",
     "isFiction": false,
-    "favorite": false
+    "exampleJa": "田中さんです。",
+    "exampleReading": "Tanaka-san desu.",
+    "exampleId": "Ini Sdr./Bapak/Ibu Tanaka.",
+    "catatan": "Akhiran yang diletakkan di belakang nama orang untuk menunjukkan kesopanan."
   },
   {
-    "id": "mni-b1-06",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-06",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "akhiran yang dipakai untuk anak laki-laki dan anak perempuan sebagai pengganti ～さん yang diletakkan di belakang nama anak",
+    "indonesia": "panggilan untuk anak-anak (akhiran yang dipakai untuk anak laki-laki dan anak perempuan sebagai pengganti 〜さん)",
     "kanji": "",
     "kana": "〜ちゃん",
     "romaji": "-chan",
     "image": "https://iili.io/C5S7Mrl.png",
-    "exampleJa": "",
     "isFiction": false,
-    "favorite": false
+    "exampleJa": "さくらちゃんです。",
+    "exampleReading": "Sakura-chan desu.",
+    "exampleId": "Ini Sakura-chan.",
+    "catatan": "Akhiran panggilan untuk anak-anak."
   },
   {
-    "id": "mni-b1-07",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-07",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "orang ～（akhiran yang menyatakan warga negara. Contoh: アメリカじん = orang Amerika Serikat）",
+    "indonesia": "orang / warga negara (akhiran yang menyatakan warga negara. Contoh: アメリカ人 = orang Amerika Serikat)",
     "kanji": "〜人",
     "kana": "〜じん",
     "romaji": "-jin",
     "image": "https://iili.io/C5S7W22.png",
-    "exampleJa": "アメリカ人です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia orang Amerika.",
-    "exampleReading": "Amerika-jin desu"
+    "exampleJa": "アメリカ人",
+    "exampleReading": "Amerika-jin",
+    "exampleId": "orang Amerika Serikat",
+    "catatan": "Contoh: アメリカ人 = orang Amerika Serikat."
   },
   {
-    "id": "mni-b1-08",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-08",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "guru, dosen（tidak dipakai jika menyebutkan pekerjaan sendiri）",
+    "indonesia": "guru / dosen (tidak dipakai jika menyebutkan pekerjaan sendiri)",
     "kanji": "先生",
     "kana": "せんせい",
     "romaji": "sensei",
     "image": "https://iili.io/C5S7X7S.png",
-    "exampleJa": "田中さんは先生です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Tanaka adalah guru.",
-    "exampleReading": "Tanaka-san wa sensei desu"
+    "exampleJa": "山田さんは先生です。",
+    "exampleReading": "Yamada-san wa sensei desu.",
+    "exampleId": "Bapak/Ibu Yamada adalah guru/dosen.",
+    "catatan": "Tidak dipakai jika menyebutkan pekerjaan sendiri."
   },
   {
-    "id": "mni-b1-09",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-09",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "guru, dosen",
+    "indonesia": "guru / dosen",
     "kanji": "教師",
     "kana": "きょうし",
     "romaji": "kyoushi",
     "image": "https://iili.io/C5S7jp9.png",
-    "exampleJa": "わたしは教師です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya adalah guru.",
-    "exampleReading": "watashi wa kyoushi desu"
+    "exampleJa": "わたしは教師です。",
+    "exampleReading": "Watashi wa kyoushi desu.",
+    "exampleId": "Saya guru/dosen."
   },
   {
-    "id": "mni-b1-10",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-10",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
     "indonesia": "mahasiswa",
@@ -1956,19 +1968,19 @@
     "kana": "がくせい",
     "romaji": "gakusei",
     "image": "https://iili.io/C5S7Ohu.png",
-    "exampleJa": "ミラーさんは学生です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Miller adalah mahasiswa.",
-    "exampleReading": "Miraa-san wa gakusei desu"
+    "exampleJa": "わたしは学生です。",
+    "exampleReading": "Watashi wa gakusei desu.",
+    "exampleId": "Saya mahasiswa."
   },
   {
-    "id": "mni-b1-11",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-11",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
     "indonesia": "karyawan perusahaan",
@@ -1976,39 +1988,40 @@
     "kana": "かいしゃいん",
     "romaji": "kaishain",
     "image": "https://iili.io/C5S7eLb.png",
-    "exampleJa": "山田さんは会社員です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Yamada adalah karyawan perusahaan.",
-    "exampleReading": "Yamada-san wa kaishain desu"
+    "exampleJa": "わたしは会社員です。",
+    "exampleReading": "Watashi wa kaishain desu.",
+    "exampleId": "Saya karyawan perusahaan."
   },
   {
-    "id": "mni-b1-12",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-12",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "karyawan perusahaan（dipakai bersama dengan nama perusahaan. Contoh: IMCのしゃいん = karyawan perusahaan IMC）",
+    "indonesia": "karyawan perusahaan (dipakai bersama nama perusahaan. Contoh: IMC の社員)",
     "kanji": "社員",
     "kana": "しゃいん",
     "romaji": "shain",
     "image": "https://iili.io/C5S7vBj.png",
-    "exampleJa": "IMCの社員です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia adalah karyawan perusahaan IMC.",
-    "exampleReading": "IMC no shain desu"
+    "exampleJa": "IMC の社員",
+    "exampleReading": "IMC no shain",
+    "exampleId": "karyawan perusahaan IMC",
+    "catatan": "Dipakai bersama nama perusahaan. Contoh: IMC の社員."
   },
   {
-    "id": "mni-b1-13",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-13",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
     "indonesia": "pegawai bank",
@@ -2016,19 +2029,19 @@
     "kana": "ぎんこういん",
     "romaji": "ginkouin",
     "image": "https://iili.io/C5S7SrQ.png",
-    "exampleJa": "佐藤さんは銀行員です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Sato adalah pegawai bank.",
-    "exampleReading": "Satou-san wa ginkouin desu"
+    "exampleJa": "わたしは銀行員です。",
+    "exampleReading": "Watashi wa ginkouin desu.",
+    "exampleId": "Saya pegawai bank."
   },
   {
-    "id": "mni-b1-14",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-14",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
     "indonesia": "dokter",
@@ -2036,19 +2049,19 @@
     "kana": "いしゃ",
     "romaji": "isha",
     "image": "https://iili.io/C5S7g2V.png",
-    "exampleJa": "山田さんは医者です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Yamada adalah dokter.",
-    "exampleReading": "Yamada-san wa isha desu"
+    "exampleJa": "あの人は医者です。",
+    "exampleReading": "Ano hito wa isha desu.",
+    "exampleId": "Orang itu dokter."
   },
   {
-    "id": "mni-b1-15",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-15",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
     "indonesia": "peneliti",
@@ -2056,19 +2069,19 @@
     "kana": "けんきゅうしゃ",
     "romaji": "kenkyuusha",
     "image": "https://iili.io/C5S76p1.png",
-    "exampleJa": "鈴木さんは研究者です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Suzuki adalah peneliti.",
-    "exampleReading": "Suzuki-san wa kenkyuusha desu"
+    "exampleJa": "わたしは研究者です。",
+    "exampleReading": "Watashi wa kenkyuusha desu.",
+    "exampleId": "Saya peneliti."
   },
   {
-    "id": "mni-b1-16",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-16",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
     "indonesia": "universitas",
@@ -2076,19 +2089,19 @@
     "kana": "だいがく",
     "romaji": "daigaku",
     "image": "https://iili.io/C5S7shg.png",
-    "exampleJa": "ここは大学です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Di sini adalah universitas.",
-    "exampleReading": "koko wa daigaku desu"
+    "exampleJa": "さくら大学です。",
+    "exampleReading": "Sakura Daigaku desu.",
+    "exampleId": "Ini Universitas Sakura."
   },
   {
-    "id": "mni-b1-17",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-17",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
     "indonesia": "rumah sakit",
@@ -2096,119 +2109,121 @@
     "kana": "びょういん",
     "romaji": "byouin",
     "image": "https://iili.io/C5S7ZCJ.png",
-    "exampleJa": "あそこは病院です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Di sana adalah rumah sakit.",
-    "exampleReading": "asoko wa byouin desu"
+    "exampleJa": "神戸病院です。",
+    "exampleReading": "Koube Byouin desu.",
+    "exampleId": "Ini Rumah Sakit Kobe."
   },
   {
-    "id": "mni-b1-18",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-18",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "siapa（どなた adalah bentuk sopan dari だれ）",
+    "indonesia": "siapa",
     "kanji": "誰",
     "kana": "だれ",
     "romaji": "dare",
     "image": "https://iili.io/C5S7m2p.png",
-    "exampleJa": "あの人は誰ですか。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Siapa orang itu?",
-    "exampleReading": "ano hito wa dare desu ka"
+    "exampleJa": "あの人は誰ですか。",
+    "exampleReading": "Ano hito wa dare desu ka.",
+    "exampleId": "Siapa orang itu?"
   },
   {
-    "id": "mni-b1-19",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-19",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "siapa（bentuk sopan dari だれ）",
+    "indonesia": "siapa (bentuk sopan dari 誰 / だれ)",
     "kanji": "",
     "kana": "どなた",
     "romaji": "donata",
     "image": "https://iili.io/C5S7yvI.png",
-    "exampleJa": "あの方はどなたですか。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Siapakah beliau?",
-    "exampleReading": "ano kata wa donata desu ka"
+    "exampleJa": "あの方はどなたですか。",
+    "exampleReading": "Ano kata wa donata desu ka.",
+    "exampleId": "Siapa beliau?",
+    "catatan": "Bentuk sopan dari 誰 / だれ."
   },
   {
-    "id": "mni-b1-20",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-20",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "～ tahun",
+    "indonesia": "umur / tahun",
     "kanji": "〜歳",
     "kana": "〜さい",
     "romaji": "-sai",
     "image": "https://iili.io/C5SY9pt.png",
-    "exampleJa": "ミラーさんは二十八歳です。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Miller berusia dua puluh delapan tahun.",
-    "exampleReading": "Miraa-san wa nijuu-hassai desu"
+    "exampleJa": "18歳です。",
+    "exampleReading": "Juuhassai desu.",
+    "exampleId": "Umur 18 tahun."
   },
   {
-    "id": "mni-b1-21",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-21",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "umur berapa（おいくつ adalah bentuk sopan dari なんさい）",
+    "indonesia": "umur berapa",
     "kanji": "何歳",
     "kana": "なんさい",
-    "romaji": "nansai",
+    "romaji": "nan-sai",
     "image": "https://iili.io/C5SYFCG.png",
-    "exampleJa": "何歳ですか。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Berapa umur Anda?",
-    "exampleReading": "nansai desu ka"
+    "exampleJa": "何歳ですか。",
+    "exampleReading": "Nan-sai desu ka.",
+    "exampleId": "Umur berapa?"
   },
   {
-    "id": "mni-b1-22",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-22",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "umur berapa（bentuk sopan dari なんさい）",
+    "indonesia": "umur berapa (bentuk sopan dari 何歳 / なんさい)",
     "kanji": "",
     "kana": "おいくつ",
     "romaji": "oikutsu",
     "image": "https://iili.io/C5SYKGf.png",
-    "exampleJa": "おいくつですか。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Berapa usia Anda?",
-    "exampleReading": "oikutsu desu ka"
+    "exampleJa": "おいくつですか。",
+    "exampleReading": "Oikutsu desu ka.",
+    "exampleId": "Umur berapa?",
+    "catatan": "Bentuk sopan dari 何歳 / なんさい."
   },
   {
-    "id": "mni-b1-23",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-23",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
     "indonesia": "ya",
@@ -2216,491 +2231,500 @@
     "kana": "はい",
     "romaji": "hai",
     "image": "https://iili.io/C5SYf44.png",
-    "exampleJa": "はい、そうです。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Ya, benar.",
-    "exampleReading": "hai, sou desu"
+    "exampleJa": "はい、学生です。",
+    "exampleReading": "Hai, gakusei desu.",
+    "exampleId": "Ya, saya mahasiswa."
   },
   {
-    "id": "mni-b1-24",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-24",
     "typeCategory": "Kata Benda",
     "sectionCategory": "Kosakata",
-    "indonesia": "tidak, bukan",
+    "indonesia": "tidak / bukan",
     "kanji": "",
     "kana": "いいえ",
     "romaji": "iie",
     "image": "https://iili.io/C5SYCa2.png",
-    "exampleJa": "いいえ、違います。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Tidak, bukan. / Tidak, berbeda.",
-    "exampleReading": "iie, chigaimasu"
+    "exampleJa": "いいえ、学生じゃありません。",
+    "exampleReading": "Iie, gakusei ja arimasen.",
+    "exampleId": "Tidak, saya bukan mahasiswa."
   },
   {
-    "id": "mni-b1-25",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-25",
     "typeCategory": "Kosakata Tambahan",
     "sectionCategory": "Latihan C",
-    "indonesia": "Perkenalkan.（ucapan salam pada waktu pertama kali berkenalan）",
+    "indonesia": "Perkenalkan. (ucapan salam pada waktu pertama kali berkenalan)",
     "kanji": "初めまして",
     "kana": "はじめまして",
     "romaji": "hajimemashite",
     "image": "https://iili.io/C5SYnvS.png",
-    "exampleJa": "初めまして。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Perkenalkan.",
-    "exampleReading": "hajimemashite"
+    "exampleJa": "初めまして。サントスです。",
+    "exampleReading": "Hajimemashite. Santosu desu.",
+    "exampleId": "Perkenalkan. Saya Santos.",
+    "catatan": "Ucapan salam pada waktu pertama kali berkenalan."
   },
   {
-    "id": "mni-b1-26",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-26",
     "typeCategory": "Kosakata Tambahan",
     "sectionCategory": "Latihan C",
-    "indonesia": "datang dari ～, berasal dari ～",
+    "indonesia": "datang dari ~ / berasal dari ~",
     "kanji": "〜から来ました",
     "kana": "〜からきました",
     "romaji": "-kara kimashita",
     "image": "https://iili.io/C5SYoy7.png",
-    "exampleJa": "アメリカから来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari Amerika.",
-    "exampleReading": "Amerika kara kimashita"
+    "exampleJa": "ブラジルから来ました。",
+    "exampleReading": "Burajiru kara kimashita.",
+    "exampleId": "Saya datang dari Brasil."
   },
   {
-    "id": "mni-b1-27",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-27",
     "typeCategory": "Kosakata Tambahan",
     "sectionCategory": "Latihan C",
-    "indonesia": "Salam kenal.（ucapan terakhir untuk perkenalkan diri）",
+    "indonesia": "Salam kenal. (ucapan terakhir untuk perkenalan diri)",
     "kanji": "どうぞよろしくお願いします",
     "kana": "どうぞよろしくおねがいします",
     "romaji": "douzo yoroshiku onegaishimasu",
     "image": "https://iili.io/C5SYzu9.png",
-    "exampleJa": "どうぞよろしくお願いします。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Senang berkenalan dengan Anda.",
-    "exampleReading": "douzo yoroshiku onegaishimasu"
+    "exampleJa": "どうぞよろしくお願いします。",
+    "exampleReading": "Douzo yoroshiku onegaishimasu.",
+    "exampleId": "Salam kenal.",
+    "catatan": "Ucapan terakhir untuk perkenalan diri."
   },
   {
-    "id": "mni-b1-28",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-28",
     "typeCategory": "Kosakata Tambahan",
     "sectionCategory": "Latihan C",
-    "indonesia": "permisi, maaf（digunakan ketika bertanya tentang hal yang pribadi seperti nama, alamat, dan sebagainya）",
+    "indonesia": "permisi / maaf (digunakan ketika bertanya tentang hal yang pribadi seperti nama, alamat, dan sebagainya)",
     "kanji": "失礼ですが",
     "kana": "しつれいですが",
     "romaji": "shitsurei desu ga",
     "image": "https://iili.io/C5SYTZu.png",
-    "exampleJa": "失礼ですが、お名前は？",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Permisi, boleh tahu nama Anda?",
-    "exampleReading": "shitsurei desu ga, onamae wa?"
+    "exampleJa": "失礼ですが、お名前は？",
+    "exampleReading": "Shitsurei desu ga, onamae wa?",
+    "exampleId": "Permisi, siapa namanya?",
+    "catatan": "Digunakan ketika bertanya tentang hal yang pribadi seperti nama, alamat, dan sebagainya."
   },
   {
-    "id": "mni-b1-29",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-29",
     "typeCategory": "Kosakata Tambahan",
     "sectionCategory": "Latihan C",
     "indonesia": "Siapa namanya?",
     "kanji": "お名前は？",
     "kana": "おなまえは？",
-    "romaji": "onamae wa?",
+    "romaji": "o-namae wa?",
     "image": "https://iili.io/C5SYRGj.png",
-    "exampleJa": "お名前は？",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Siapa nama Anda?",
-    "exampleReading": "onamae wa?"
+    "exampleJa": "お名前は？",
+    "exampleReading": "O-namae wa?",
+    "exampleId": "Siapa namanya?"
   },
   {
-    "id": "mni-b1-30",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-30",
     "typeCategory": "Kosakata Tambahan",
     "sectionCategory": "Latihan C",
-    "indonesia": "Ini Bapak ～./Ini Ibu, Sdr. ～.",
+    "indonesia": "Ini Bapak ~/Ibu/Sdr. ~.",
     "kanji": "こちらは〜さんです",
     "kana": "こちらは〜さんです",
     "romaji": "kochira wa -san desu",
     "image": "https://iili.io/C5SY56x.png",
-    "exampleJa": "こちらは佐藤さんです。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Ini Bapak/Ibu/Saudara Sato.",
-    "exampleReading": "kochira wa Satou-san desu"
+    "exampleJa": "こちらは佐藤さんです。",
+    "exampleReading": "Kochira wa Satou-san desu.",
+    "exampleId": "Ini Bapak/Ibu/Sdr. Sato."
   },
   {
-    "id": "mni-b1-31",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
-    "typeCategory": "Kata Benda",
-    "sectionCategory": "Kosakata",
+    "favorite": false,
+    "id": "mni-b1-31",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "Amerika Serikat",
     "kanji": "",
     "kana": "アメリカ",
     "romaji": "Amerika",
     "image": "https://iili.io/C5SYaaV.png",
-    "exampleJa": "アメリカから来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari Amerika.",
-    "exampleReading": "Amerika kara kimashita"
+    "exampleJa": "アメリカから来ました。",
+    "exampleReading": "Amerika kara kimashita.",
+    "exampleId": "Saya berasal dari Amerika Serikat."
   },
   {
-    "id": "mni-b1-32",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
-    "typeCategory": "Kata Benda",
-    "sectionCategory": "Kosakata",
+    "favorite": false,
+    "id": "mni-b1-32",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "Inggris",
     "kanji": "",
     "kana": "イギリス",
     "romaji": "Igirisu",
     "image": "https://iili.io/C5SYc8B.png",
-    "exampleJa": "イギリスから来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari Inggris.",
-    "exampleReading": "Igirisu kara kimashita"
+    "exampleJa": "イギリスから来ました。",
+    "exampleReading": "Igirisu kara kimashita.",
+    "exampleId": "Saya berasal dari Inggris."
   },
   {
-    "id": "mni-b1-33",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
-    "typeCategory": "Kata Benda",
-    "sectionCategory": "Kosakata",
+    "favorite": false,
+    "id": "mni-b1-33",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "India",
     "kanji": "",
     "kana": "インド",
     "romaji": "Indo",
     "image": "https://iili.io/C5SYlyP.png",
-    "exampleJa": "インドから来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari India.",
-    "exampleReading": "Indo kara kimashita"
+    "exampleJa": "インドから来ました。",
+    "exampleReading": "Indo kara kimashita.",
+    "exampleId": "Saya berasal dari India."
   },
   {
-    "id": "mni-b1-34",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
-    "typeCategory": "Kata Benda",
-    "sectionCategory": "Kosakata",
+    "favorite": false,
+    "id": "mni-b1-34",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "Indonesia",
     "kanji": "",
     "kana": "インドネシア",
     "romaji": "Indoneshia",
     "image": "https://iili.io/C5SYEwF.png",
-    "exampleJa": "インドネシアから来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari Indonesia.",
-    "exampleReading": "Indoneshia kara kimashita"
+    "exampleJa": "インドネシアから来ました。",
+    "exampleReading": "Indoneshia kara kimashita.",
+    "exampleId": "Saya berasal dari Indonesia."
   },
   {
-    "id": "mni-b1-35",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
-    "typeCategory": "Kata Benda",
-    "sectionCategory": "Kosakata",
+    "favorite": false,
+    "id": "mni-b1-35",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "Korea Selatan",
     "kanji": "韓国",
     "kana": "かんこく",
     "romaji": "Kankoku",
     "image": "https://iili.io/C5SYGZg.png",
-    "exampleJa": "韓国から来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari Korea Selatan.",
-    "exampleReading": "Kankoku kara kimashita"
+    "exampleJa": "韓国から来ました。",
+    "exampleReading": "Kankoku kara kimashita.",
+    "exampleId": "Saya berasal dari Korea Selatan."
   },
   {
-    "id": "mni-b1-36",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
-    "typeCategory": "Kata Benda",
-    "sectionCategory": "Kosakata",
+    "favorite": false,
+    "id": "mni-b1-36",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "Thailand",
     "kanji": "",
     "kana": "タイ",
     "romaji": "Tai",
     "image": "https://iili.io/C5SYVna.png",
-    "exampleJa": "タイから来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari Thailand.",
-    "exampleReading": "Tai kara kimashita"
+    "exampleJa": "タイから来ました。",
+    "exampleReading": "Tai kara kimashita.",
+    "exampleId": "Saya berasal dari Thailand."
   },
   {
-    "id": "mni-b1-37",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
-    "typeCategory": "Kata Benda",
-    "sectionCategory": "Kosakata",
+    "favorite": false,
+    "id": "mni-b1-37",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "Cina",
     "kanji": "中国",
     "kana": "ちゅうごく",
     "romaji": "Chuugoku",
     "image": "https://iili.io/C5SYX6v.png",
-    "exampleJa": "中国から来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari Cina.",
-    "exampleReading": "Chuugoku kara kimashita"
+    "exampleJa": "中国から来ました。",
+    "exampleReading": "Chuugoku kara kimashita.",
+    "exampleId": "Saya berasal dari Cina."
   },
   {
-    "id": "mni-b1-38",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
-    "typeCategory": "Kata Benda",
-    "sectionCategory": "Kosakata",
+    "favorite": false,
+    "id": "mni-b1-38",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "Jerman",
     "kanji": "",
     "kana": "ドイツ",
     "romaji": "Doitsu",
     "image": "https://iili.io/C5SYjFR.png",
-    "exampleJa": "ドイツから来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari Jerman.",
-    "exampleReading": "Doitsu kara kimashita"
+    "exampleJa": "ドイツから来ました。",
+    "exampleReading": "Doitsu kara kimashita.",
+    "exampleId": "Saya berasal dari Jerman."
   },
   {
-    "id": "mni-b1-39",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
-    "typeCategory": "Kata Benda",
-    "sectionCategory": "Kosakata",
+    "favorite": false,
+    "id": "mni-b1-39",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "Jepang",
     "kanji": "日本",
     "kana": "にほん",
     "romaji": "Nihon",
     "image": "https://iili.io/C5SY8tn.png",
-    "exampleJa": "日本から来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari Jepang.",
-    "exampleReading": "Nihon kara kimashita"
+    "exampleJa": "日本から来ました。",
+    "exampleReading": "Nihon kara kimashita.",
+    "exampleId": "Saya berasal dari Jepang."
   },
   {
-    "id": "mni-b1-40",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
-    "typeCategory": "Kata Benda",
-    "sectionCategory": "Kosakata",
+    "favorite": false,
+    "id": "mni-b1-40",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "Brasil",
     "kanji": "",
     "kana": "ブラジル",
     "romaji": "Burajiru",
     "image": "https://iili.io/C5SYe9I.png",
-    "exampleJa": "ブラジルから来ました。",
     "isFiction": false,
-    "favorite": false,
-    "exampleId": "Saya/Dia datang dari Brasil.",
-    "exampleReading": "Burajiru kara kimashita"
+    "exampleJa": "ブラジルから来ました。",
+    "exampleReading": "Burajiru kara kimashita.",
+    "exampleId": "Saya berasal dari Brasil."
   },
   {
-    "id": "mni-b1-41",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-41",
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Kosakata",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "perusahaan fiksi (IMC)",
     "kanji": "",
     "kana": "IMC",
-    "romaji": "ai emu shii",
+    "romaji": "IMC",
     "image": "https://iili.io/C5SYUns.png",
-    "exampleJa": "IMCの社員です。",
     "isFiction": true,
-    "favorite": false,
-    "exampleId": "Saya/Dia adalah karyawan perusahaan IMC.",
-    "exampleReading": "IMC no shain desu"
+    "exampleJa": "IMC の社員です。",
+    "exampleReading": "IMC no shain desu.",
+    "exampleId": "Saya karyawan perusahaan IMC.",
+    "catatan": "Perusahaan fiksi."
   },
   {
-    "id": "mni-b1-42",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-42",
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Kosakata",
-    "indonesia": "perusahaan fiksi (Power Denki / Perusahaan Power Denki)",
+    "sectionCategory": "Kosakata Tambahan",
+    "indonesia": "perusahaan fiksi (Power Electric / Power Denki)",
     "kanji": "パワー電気",
     "kana": "パワーでんき",
     "romaji": "Pawaa Denki",
     "image": "https://iili.io/C5SYPcl.png",
-    "exampleJa": "パワー電気の社員です。",
     "isFiction": true,
-    "favorite": false,
-    "exampleId": "Saya/Dia adalah karyawan perusahaan Power Denki.",
-    "exampleReading": "Pawaa Denki no shain desu"
+    "exampleJa": "パワー電気の社員です。",
+    "exampleReading": "Pawaa Denki no shain desu.",
+    "exampleId": "Saya karyawan Power Electric / Power Denki.",
+    "catatan": "Perusahaan fiksi."
   },
   {
-    "id": "mni-b1-43",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-43",
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Kosakata",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "perusahaan fiksi (Brazil Air)",
     "kanji": "",
     "kana": "ブラジルエアー",
     "romaji": "Burajiru Eaa",
     "image": "https://iili.io/C5SYL9S.png",
-    "exampleJa": "ブラジルエアーの社員です。",
     "isFiction": true,
-    "favorite": false,
-    "exampleId": "Saya/Dia adalah karyawan Brazil Air.",
-    "exampleReading": "Burajiru Eaa no shain desu"
+    "exampleJa": "ブラジルエアーの社員です。",
+    "exampleReading": "Burajiru Eaa no shain desu.",
+    "exampleId": "Saya karyawan Brazil Air.",
+    "catatan": "Perusahaan fiksi."
   },
   {
-    "id": "mni-b1-44",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-44",
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Kosakata",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "organisasi fiksi (AKC)",
     "kanji": "",
     "kana": "AKC",
-    "romaji": "ee kee shii",
+    "romaji": "AKC",
     "image": "https://iili.io/C5SYQA7.png",
-    "exampleJa": "AKCの社員です。",
     "isFiction": true,
-    "favorite": false,
-    "exampleId": "Saya/Dia adalah karyawan AKC.",
-    "exampleReading": "AKC no shain desu"
+    "exampleJa": "AKC の研究者です。",
+    "exampleReading": "AKC no kenkyuusha desu.",
+    "exampleId": "Saya peneliti organisasi AKC.",
+    "catatan": "Organisasi fiksi."
   },
   {
-    "id": "mni-b1-45",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-45",
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Kosakata",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "rumah sakit fiksi (Rumah Sakit Kobe)",
     "kanji": "神戸病院",
     "kana": "こうべびょういん",
     "romaji": "Koube Byouin",
     "image": "https://iili.io/C5SYZN9.png",
-    "exampleJa": "神戸病院の医者です。",
     "isFiction": true,
-    "favorite": false,
-    "exampleId": "Saya/Dia adalah dokter di Rumah Sakit Kobe.",
-    "exampleReading": "Koube Byouin no isha desu"
+    "exampleJa": "神戸病院の医者です。",
+    "exampleReading": "Koube Byouin no isha desu.",
+    "exampleId": "Saya dokter di Rumah Sakit Kobe.",
+    "catatan": "Rumah sakit fiksi."
   },
   {
-    "id": "mni-b1-46",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-46",
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Kosakata",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "universitas fiksi (Universitas Sakura)",
     "kanji": "さくら大学",
     "kana": "さくらだいがく",
     "romaji": "Sakura Daigaku",
     "image": "https://iili.io/C5SaHcQ.png",
-    "exampleJa": "さくら大学の学生です。",
     "isFiction": true,
-    "favorite": false,
-    "exampleId": "Saya/Dia adalah mahasiswa Universitas Sakura.",
-    "exampleReading": "Sakura Daigaku no gakusei desu"
+    "exampleJa": "さくら大学の学生です。",
+    "exampleReading": "Sakura Daigaku no gakusei desu.",
+    "exampleId": "Saya mahasiswa Universitas Sakura.",
+    "catatan": "Universitas fiksi."
   },
   {
-    "id": "mni-b1-47",
     "book": "Minna no Nihongo I (2nd Edition)",
     "bookJa": "みんなの日本語 I（第2版）",
     "materialCategory": "Materi Umum",
     "chapter": "Bab 1",
     "chapterNumber": 1,
+    "favorite": false,
+    "id": "mni-b1-47",
     "typeCategory": "Kosakata Tambahan",
-    "sectionCategory": "Kosakata",
+    "sectionCategory": "Kosakata Tambahan",
     "indonesia": "universitas fiksi (Universitas Fuji)",
     "kanji": "富士大学",
     "kana": "ふじだいがく",
     "romaji": "Fuji Daigaku",
     "image": "https://iili.io/C5Sa2HB.png",
-    "exampleJa": "富士大学の先生です。",
     "isFiction": true,
-    "favorite": false,
-    "exampleId": "Saya/Dia adalah dosen/guru Universitas Fuji.",
-    "exampleReading": "Fuji Daigaku no sensei desu"
+    "exampleJa": "富士大学の教師です。",
+    "exampleReading": "Fuji Daigaku no kyoushi desu.",
+    "exampleId": "Saya guru/dosen Universitas Fuji.",
+    "catatan": "Universitas fiksi."
   }
 ];
 
@@ -2718,6 +2742,13 @@
     const $ = s => document.querySelector(s);
     const $$ = s => [...document.querySelectorAll(s)];
     const storeKey = "minnaFlashcardV2";
+    const dataVersion = "bab1-47-20260703-v5";
+    const defaultSetup = { book:"Minna no Nihongo I (2nd Edition)", materialCategory:"Materi Umum", chapter:"Bab 1" };
+    if(localStorage.getItem(storeKey+"_dataVersion") !== dataVersion){
+      localStorage.setItem(storeKey+"_setup", JSON.stringify(defaultSetup));
+      localStorage.setItem(storeKey+"_includeFiction", "true");
+      localStorage.setItem(storeKey+"_dataVersion", dataVersion);
+    }
     const resultCollection = "quizResultsMinna";
     const adminPass = "kuis" + "44" + "GAKKOU";
     const KKM_SCORE = 60;
@@ -2729,7 +2760,7 @@
     ];
     const labels = {
       id: {
-        navHome:"Beranda", navMaterial:"Materi", navQuiz:"Kuis", navResult:"Hasil", login:"Masuk", logout:"Keluar", changeCategory:"Ganti kategori", changeLanguage:"Ganti bahasa",
+        navHome:"Beranda", navMaterial:"Materi", navQuiz:"Kuis", navResult:"Hasil", login:"Masuk", logout:"Keluar", changeCategory:"Ganti kategori", changeLanguage:"Ganti bahasa", myResult:"Lihat Hasil Saya", historyLoaded:"Riwayat terakhir ditemukan.",
         homeTitle:"Kuis Kartu Kosakata Jepang", homeDesc:"Belajar kosakata Minna no Nihongo I & II dengan kartu belajar interaktif, suara pelafalan, latihan berbicara, dan laporan hasil yang tersimpan.",
         totalVocab:"Total Kosakata", timeLimit:"Batas Waktu per Kartu", chapterScope:"Lingkup Bab", startQuiz:"Mulai Kuis", seeMaterial:"Lihat Materi", fillUsername:"Isi Nama Peserta", fictionFilter:"Kosakata Fiksi",
         materialTitle:"Kumpulan Kosakata", materialDesc:"Pelajari kosakata berdasarkan buku, materi, dan kategori yang dipilih.", studyFirst:"Pelajari dulu sebelum mulai kuis", studyFirstDesc:"Di halaman ini kamu bisa melihat arti, romaji, contoh kalimat, dan mendengarkan pelafalan.", studyStats:"Statistik Belajar",
@@ -2742,7 +2773,7 @@
         searchPlaceholder:"Cari kosakata, romaji, atau arti...", noVocabFilter:"Tidak ada kosakata untuk filter ini.", focusWarn:"Tetap fokus mengerjakan kuis.", focusStop:"Kuis dihentikan karena kamu pindah tab dua kali.", browserSpeechNo:"Fitur bicara tidak didukung di browser ini.", accessDisabled:"Akses ini dinonaktifkan untuk menjaga pengalaman belajar.", localOnly:"Firebase belum tersedia. Data disimpan sementara di perangkat ini.", saved:"Hasil tersimpan.", needLogin:"Silakan isi username dulu.", noExample:"Contoh kalimat belum tersedia.", scoreGood:"Bagus! Kamu sudah memahami banyak kosakata.", scoreBad:"Ayo belajar lebih giat lagi. Ulangi kartu yang masih salah.", reviewVocab:"Tinjau Kosakata", savePdf:"Simpan PDF", retry:"Ulangi Latihan", emptyResult:"Belum ada hasil latihan.", allStatus:"Semua", fastest:"Tercepat", slowest:"Terlama", pdfFilterTitle:"Filter Sebelum Simpan PDF", pdfFilterDesc:"Pilih kategori hasil latihan yang ingin dimasukkan ke PDF.", book:"Buku", materialCategoryLabel:"Kategori Materi", chapter:"Bab", section:"Bagian", type:"Jenis Kata", answerStatus:"Status Jawaban", allBooks:"Semua Buku", allMaterials:"Semua Kategori Materi", allChapters:"Semua Bab", allSections:"Semua Bagian", allTypes:"Semua Jenis Kata", allAnswers:"Semua Jawaban", resetPdfFilter:"Reset Filter", savePdfBtn:"Simpan PDF", noPdfRows:"Tidak ada data yang sesuai dengan filter PDF.", participantName:"Nama Peserta", adminLabel:"Pengelola", passwordAdmin:"Kata Sandi Pengelola"
       },
       ja: {
-        navHome:"ホーム", navMaterial:"教材", navQuiz:"クイズ", navResult:"結果", login:"参加者名", logout:"ログアウト", changeCategory:"カテゴリー変更", changeLanguage:"言語変更",
+        navHome:"ホーム", navMaterial:"教材", navQuiz:"クイズ", navResult:"結果", login:"参加者名", logout:"ログアウト", changeCategory:"カテゴリー変更", changeLanguage:"言語変更", myResult:"自分の結果を見る", historyLoaded:"前回の結果を読み込みました。",
         homeTitle:"日本語語彙フラッシュカード", homeDesc:"みんなの日本語 I・II の語彙を、音声、発話練習、学習記録つきのカードで練習できます。",
         totalVocab:"語彙数", timeLimit:"1枚あたりの制限時間", chapterScope:"章の範囲", startQuiz:"クイズ開始", seeMaterial:"教材を見る", fillUsername:"参加者名入力", fictionFilter:"架空語",
         materialTitle:"語彙一覧", materialDesc:"選択した教科書・教材・カテゴリーに基づいて語彙を学習しましょう。", studyFirst:"まず学習しましょう", studyFirstDesc:"このページで意味、ローマ字、例文、発音を確認できます。", studyStats:"学習統計",
@@ -2757,7 +2788,7 @@
     };
     const state = {
       lang: localStorage.getItem(storeKey+"_lang") || "id",
-      setup: JSON.parse(localStorage.getItem(storeKey+"_setup") || "null") || { book:"Minna no Nihongo I (2nd Edition)", materialCategory:"Materi Umum", chapter:"Bab 1" },
+      setup: JSON.parse(localStorage.getItem(storeKey+"_setup") || "null") || {...defaultSetup},
       session: JSON.parse(localStorage.getItem(storeKey+"_session") || "null"),
       favorites: JSON.parse(localStorage.getItem(storeKey+"_fav") || "[]"),
       includeFiction: localStorage.getItem(storeKey+"_includeFiction") !== "false",
@@ -2838,18 +2869,20 @@
       return "contoh rekaan";
     }
     function formatIndonesianMeaning(v={}){
-      const raw = cleanIndo(v);
-      if(!isFictionVocab(v)) return raw;
-      if(/—\s*fiksi\s*\(/i.test(raw)) return raw;
-      const inside = String(v.indonesia||"").match(/\(([^()]+)\)/);
-      let base = inside ? inside[1].split("/")[0].trim() : raw.replace(/\bfiksi\b/ig,"").replace(/\s{2,}/g," ").trim();
-      base = base.replace(/^(universitas|perusahaan|organisasi|rumah sakit)\s*$/i, raw).trim();
-      if(!base) base = raw.replace(/\bfiksi\b/ig,"").trim() || raw;
-      return `${base} — fiksi (${fictionExplanation(v)})`;
+      return String(v.indonesia || "").replace(/（/g,"(").replace(/）/g,")").trim();
+    }
+    function formatQuizIndonesianMeaning(v={}){
+      let text = formatIndonesianMeaning(v);
+      // Khusus tampilan kuis: hilangkan bagian contoh agar jawaban tidak terlalu panjang/spoiler.
+      text = text.replace(/\s*Contoh\s*[:：][^)]*/gi, "");
+      text = text.replace(/\s*contoh\s*[:：][^)]*/g, "");
+      text = text.replace(/\s*\.\s*\)/g, ")");
+      text = text.replace(/\(\s*\)/g, "");
+      text = text.replace(/\s{2,}/g, " ").trim();
+      return text;
     }
     function formatDetailIndonesianMeaning(d={}){
-      if(!d.isFiction) return cleanDetailIndo(d.indonesia);
-      return formatIndonesianMeaning(d);
+      return String(d.indonesia || "").replace(/（/g,"(").replace(/）/g,")").trim();
     }
     function hasFictionVocabulary(list){ return (list || []).some(v=>isFictionVocab(v)); }
     function isFictionVocab(v={}){
@@ -3006,7 +3039,7 @@
       if($("#groupHelp")) $("#groupHelp").textContent = state.lang==="ja" ? "学習レポートを保存する参加者の地域を選択してください。" : "Pilih wilayah peserta untuk menyimpan laporan latihan.";
       if($("#adminPassLabel")) $("#adminPassLabel").innerHTML = `<i class="fa-solid fa-lock"></i>${state.lang==="ja"?"管理者パスワード":"Kata Sandi Pengelola"}`;
       if($("#adminPasswordInput")) $("#adminPasswordInput").placeholder = state.lang==="ja" ? "管理者パスワードを入力" : "Masukkan kata sandi pengelola";
-      if($("#exampleModalDesc")) $("#exampleModalDesc").textContent = state.lang==="ja" ? "語彙の使い方、読み方、意味を確認します。" : "Contoh penggunaan kosakata dengan cara baca dan arti.";
+      if($("#exampleModalDesc")) $("#exampleModalDesc").textContent = state.lang==="ja" ? "日本語の例文だけを確認します。" : "Contoh penggunaan kosakata dalam kalimat bahasa Jepang.";
       if($("#exampleJaLabel")) $("#exampleJaLabel").textContent = state.lang==="ja" ? "日本語" : "Jepang";
       if($("#exampleReadingLabel")) $("#exampleReadingLabel").textContent = state.lang==="ja" ? "読み方" : "Cara baca";
       if($("#exampleIdLabel")) $("#exampleIdLabel").textContent = state.lang==="ja" ? "インドネシア語の意味" : "Arti Indonesia";
@@ -3062,6 +3095,8 @@
       $("#homeStartBtn").classList.toggle("hidden",!logged);
       $("#homeMaterialBtn").classList.toggle("hidden",!logged);
       $("#logoutBtn").classList.toggle("hidden",!logged);
+      if($("#homeResultBtn")) $("#homeResultBtn").classList.toggle("hidden", !logged || isAdmin() || !currentResult);
+      if($("#myResultDrop")) $("#myResultDrop").classList.toggle("hidden", !logged || isAdmin() || !currentResult);
       if(logged){
         $("#userMenuText").textContent = state.session.role==="admin" ? "Admin404" : state.session.username;
         $("#userMenuBtn i").className = state.session.role==="admin" ? "fa-solid fa-user-shield" : "fa-regular fa-user";
@@ -3086,7 +3121,7 @@
       document.body.classList.toggle("quiz-mode",page==="quiz");
       updateNavActive();
       if(page==="admin") loadAdmin();
-      if(page==="result") renderResult();
+      if(page==="result") { renderResult(); loadUserLastResult(true); }
       window.scrollTo({top:0,behavior:"smooth"});
     }
 
@@ -3123,7 +3158,7 @@
       const sectionSel = $("#materialSectionFilter"), typeSel = $("#materialTypeFilter");
       if(!sectionSel || !typeSel) return;
       const secVal = sectionSel.value || "all", typeVal = typeSel.value || "all";
-      const sections=[["all", state.lang==="ja"?"すべてのセクション":"Semua Bagian"],["Kosakata", categoryLabel("Kosakata")],["Latihan C", categoryLabel("Latihan C")],["Percakapan", categoryLabel("Percakapan")]];
+      const sections=[["all", state.lang==="ja"?"すべてのセクション":"Semua Bagian"],["Kosakata", categoryLabel("Kosakata")],["Latihan C", categoryLabel("Latihan C")],["Kosakata Tambahan", categoryLabel("Kosakata Tambahan")]];
       const types=[["all", state.lang==="ja"?"すべての品詞":"Semua Jenis Kata"],["Kata Benda", categoryLabel("Kata Benda")],["Kata Sifat-i", categoryLabel("Kata Sifat-i")],["Kata Sifat-na", categoryLabel("Kata Sifat-na")],["Kata Kerja", categoryLabel("Kata Kerja")],["Kosakata Tambahan", categoryLabel("Kosakata Tambahan")]];
       sectionSel.innerHTML = sections.map(([v,l])=>`<option value="${esc(v)}">${esc(l)}</option>`).join("");
       typeSel.innerHTML = types.map(([v,l])=>`<option value="${esc(v)}">${esc(l)}</option>`).join("");
@@ -3138,7 +3173,7 @@
       const search = ($("#materialSearch")?.value || "").toLowerCase();
       const sectionFilter = $("#materialSectionFilter")?.value || "all";
       const typeFilter = $("#materialTypeFilter")?.value || "all";
-      let arr = activeVocab().filter(v => [formatIndonesianMeaning(v),v.indonesia,v.kana,v.kanji,v.romaji,v.typeCategory,v.sectionCategory,v.chapter].join(" ").toLowerCase().includes(search));
+      let arr = activeVocab().filter(v => [formatIndonesianMeaning(v),v.indonesia,v.kana,v.kanji,v.romaji,v.typeCategory,v.sectionCategory,v.chapter,v.catatan,v.exampleJa,v.exampleReading,v.exampleId].join(" ").toLowerCase().includes(search));
       if(sectionFilter !== "all") arr = arr.filter(v=>v.sectionCategory === sectionFilter);
       if(typeFilter !== "all") arr = arr.filter(v=>v.typeCategory === typeFilter);
       $("#materialGrid").innerHTML = arr.map(v=>{
@@ -3152,7 +3187,7 @@
           </div>
           <div class="vocab-id">${esc(meaning)}</div>
           <div class="tag-row"><span class="tag">${esc(v.chapter)}</span><span class="tag green">${esc(categoryLabel(v.typeCategory,"type"))}</span><span class="tag pink">${esc(categoryLabel(v.sectionCategory,"section"))}</span>${isFictionVocab(v)?`<span class="tag fiction-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> ${esc(categoryLabel("Fiksi"))}</span>`:""}</div>
-          <div class="card-actions"><button class="icon-btn" data-speak-id="${esc(v.id)}" title="${state.lang==="ja"?"聞く":"Dengar"}"><i class="fa-solid fa-volume-high"></i></button><button class="icon-btn ${fav?"active":""}" data-fav="${v.id}" title="${state.lang==="ja"?"お気に入り":"Favorit"}"><i class="${fav?"fa-solid":"fa-regular"} fa-star"></i></button><button class="icon-btn" data-example-material="${esc(v.id)}" title="${state.lang==="ja"?"例文":"Contoh kalimat"}"><i class="fa-regular fa-comment-dots"></i></button></div>
+          <div class="card-actions"><button class="icon-btn" data-speak-id="${esc(v.id)}" title="${state.lang==="ja"?"聞く":"Dengar"}"><i class="fa-solid fa-volume-high"></i></button><button class="icon-btn ${fav?"active":""}" data-fav="${v.id}" title="${state.lang==="ja"?"お気に入り":"Favorit"}"><i class="${fav?"fa-solid":"fa-regular"} fa-star"></i></button><button class="icon-btn" data-note-material="${esc(v.id)}" title="${state.lang==="ja"?"メモ":"Catatan"}"><i class="fa-regular fa-note-sticky"></i></button><button class="icon-btn" data-example-material="${esc(v.id)}" title="${state.lang==="ja"?"例文":"Contoh kalimat"}"><i class="fa-regular fa-comment-dots"></i></button></div>
         </article>`;
       }).join("");
       $("#materialEmpty").innerHTML = `<div style="font-size:34px;color:#7c4dff;margin-bottom:10px"><i class="fa-solid fa-magnifying-glass"></i></div><h3>${state.lang==="ja"?"語彙が見つかりません":"Kosakata tidak ditemukan"}</h3><p>${state.lang==="ja"?"フィルター、検索語、または架空語モードを変更してください。":"Coba ubah filter, kata kunci, atau matikan mode fiksi."}</p>`;
@@ -3281,14 +3316,15 @@
       closeModal("#loginModal");
       renderAll();
       showPage("home");
+      Promise.resolve(loadUserLastResult(false));
     }
 
     function buildQuizFilters(){
       const nums = chapterNumbers(state.setup.chapter);
       const chapterOpts = nums.map(n=>`Bab ${n}`);
       $("#quizChapterFilters").innerHTML = chapterOpts.map(ch=>`<label class="check-pill"><input type="checkbox" value="${ch}" checked><span><i class="fa-regular fa-bookmark"></i>${esc(state.lang==="ja"?categoryLabel(ch):ch)}</span></label>`).join("");
-      const sections=["Semua","Kosakata","Latihan C","Percakapan"];
-      $("#quizSectionFilters").innerHTML = sections.map(s=>`<label class="check-pill"><input type="checkbox" value="${s}" ${s==="Semua"?"checked":""}><span><i class="fa-solid ${s==="Latihan C"?"fa-pen-nib":s==="Percakapan"?"fa-comments":"fa-book-open"}"></i>${esc(s==="Semua"?(state.lang==="ja"?"すべて":"Semua"):categoryLabel(s))}</span></label>`).join("");
+      const sections=["Semua","Kosakata","Latihan C","Kosakata Tambahan"];
+      $("#quizSectionFilters").innerHTML = sections.map(s=>`<label class="check-pill"><input type="checkbox" value="${s}" ${s==="Semua"?"checked":""}><span><i class="fa-solid ${s==="Latihan C"?"fa-pen-nib":s==="Kosakata Tambahan"?"fa-circle-plus":"fa-book-open"}"></i>${esc(s==="Semua"?(state.lang==="ja"?"すべて":"Semua"):categoryLabel(s))}</span></label>`).join("");
       const types=["Semua","Kata Benda","Kata Sifat-i","Kata Sifat-na","Kata Kerja","Kosakata Tambahan"];
       $("#quizTypeFilters").innerHTML = types.map(s=>`<label class="check-pill"><input type="checkbox" value="${s}" ${s==="Semua"?"checked":""}><span><i class="fa-solid fa-tag"></i>${esc(s==="Semua"?(state.lang==="ja"?"すべて":"Semua"):categoryLabel(s))}</span></label>`).join("");
       handleExclusiveAllSelection("#quizSectionFilters");
@@ -3415,13 +3451,55 @@
       if(normalize(raw) === normalize("Arti contoh belum tersedia")) return "Arti contoh belum tersedia.";
       return raw;
     }
+    function setExampleModalDetails(show=true){
+      ["#exampleReadingCard", "#exampleIdCard"].forEach(sel=>{
+        const el = $(sel);
+        if(el) el.classList.toggle("hidden", !show);
+      });
+    }
+    function fillExampleModal(v={}, showDetails=true){
+      setExampleModalDetails(showDetails);
+      $("#exampleJa").textContent = tidyExampleText(v.exampleJa, t("noExample"));
+      if($("#exampleReading")) $("#exampleReading").textContent = tidyExampleText(exampleReadingFallback(v), state.lang==="ja"?"読み方はまだありません":"Cara baca belum tersedia");
+      if($("#exampleId")) $("#exampleId").textContent = tidyExampleText(exampleMeaningFallback(v), state.lang==="ja"?"例文の意味はまだありません。":"Arti contoh belum tersedia.");
+    }
     function openExampleModal(){
       if(!quiz || !quiz.flipped) return toast(state.lang==="ja"?"先にカードを裏返してください。":"Balik kartu dulu untuk menggunakan fitur ini.");
       const v = quiz.cards[quiz.index];
-      $("#exampleJa").textContent = tidyExampleText(v.exampleJa, t("noExample"));
-      $("#exampleReading").textContent = tidyExampleText(exampleReadingFallback(v), state.lang==="ja"?"読み方はまだありません":"Cara baca belum tersedia");
-      $("#exampleId").textContent = tidyExampleText(exampleMeaningFallback(v), state.lang==="ja"?"例文の意味はまだありません。":"Arti contoh belum tersedia.");
+      // Di halaman kuis, contoh hanya menampilkan kalimat bahasa Jepang agar tidak membocorkan jawaban.
+      fillExampleModal(v, false);
       $("#exampleModal").classList.add("show");
+    }
+    function extractParentheticalNotes(text=""){
+      const matches = [...String(text||"").matchAll(/\(([^)]*)\)/g)].map(m=>m[1].trim()).filter(Boolean);
+      return [...new Set(matches)];
+    }
+    function openMaterialNoteModal(v={}){
+      const meaning = formatIndonesianMeaning(v);
+      const notes = [v.catatan, ...extractParentheticalNotes(v.indonesia)].filter(Boolean);
+      const seenNotes = new Set();
+      const uniqueNotes = notes.map(x=>String(x).trim()).filter(Boolean).filter(note=>{
+        const key = note.toLowerCase().replace(/\s+/g," ").replace(/[。.]$/g,"").trim();
+        if(seenNotes.has(key)) return false;
+        seenNotes.add(key);
+        return true;
+      });
+      const noteHtml = uniqueNotes.length
+        ? `<ul style="margin:0;padding-left:20px;color:#46536b;line-height:1.7;font-weight:650">${uniqueNotes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`
+        : `<p style="margin:0;color:#66728a;font-weight:650">${state.lang==="ja"?"追加メモはありません。":"Tidak ada catatan tambahan."}</p>`;
+      const exampleHtml = v.exampleJa ? `<div class="example-info-card"><span>${state.lang==="ja"?"例文":"Contoh Kalimat"}</span><strong class="jp">${esc(v.exampleJa)}</strong><strong>${esc(tidyExampleText(exampleReadingFallback(v), state.lang==="ja"?"読み方はまだありません":"Cara baca belum tersedia"))}</strong><strong>${esc(tidyExampleText(exampleMeaningFallback(v), state.lang==="ja"?"例文の意味はまだありません。":"Arti contoh belum tersedia."))}</strong></div>` : "";
+      $("#detailContent").innerHTML = `
+        <div class="example-modal-head" style="margin-right:50px">
+          <span class="example-icon jp">メ</span>
+          <div><h2>${state.lang==="ja"?"語彙メモ":"Catatan Kosakata"}</h2><p>${esc(v.chapter)} • ${esc(categoryLabel(v.sectionCategory))}</p></div>
+        </div>
+        <div class="example-content">
+          <div class="example-info-card"><span>${state.lang==="ja"?"日本語":"Jepang"}</span><strong class="jp">${esc(jpText(v))}</strong><strong>${esc(v.kana || "-")} • ${esc(v.romaji || "-")}</strong></div>
+          <div class="example-info-card"><span>${state.lang==="ja"?"意味":"Arti Indonesia"}</span><strong>${esc(meaning)}</strong></div>
+          <div class="example-info-card"><span>${state.lang==="ja"?"メモ":"Catatan"}</span>${noteHtml}</div>
+          ${exampleHtml}
+        </div>`;
+      $("#detailModal").classList.add("show");
     }
     function openImagePreview(src, alt="Pratinjau gambar kosakata"){
       const img=$("#zoomImage"), modal=$("#imageModal");
@@ -3469,7 +3547,7 @@
       $("#quizLabel").textContent = `${categoryLabel(v.chapter)} • ${categoryLabel(v.sectionCategory)} • ${categoryLabel(v.typeCategory)}`;
       updateQuizFavButtons(v);
       const frontIsJp = quiz.direction==="jpToId";
-      const q = frontIsJp ? jpText(v) : formatIndonesianMeaning(v);
+      const q = frontIsJp ? jpText(v) : formatQuizIndonesianMeaning(v);
       $("#frontQuestion").textContent = q;
       $("#frontQuestion").className = "question-text" + (frontIsJp ? " jp" : "") + textSizeClass(q);
       $("#answerArea").innerHTML = renderAnswerHtml(v);
@@ -3487,7 +3565,7 @@
       if(quiz.micOn) startRecognition();
     }
     function renderAnswerHtml(v){
-      const meaning = formatIndonesianMeaning(v);
+      const meaning = formatQuizIndonesianMeaning(v);
       const img = v.image ? `<span class="answer-image-wrap"><img class="answer-img answer-img-preview" src="${esc(v.image)}" alt="${esc(meaning)}"><span class="answer-image-zoom-icon"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></span></span>` : "";
       if(quiz.direction==="idToJp") return `${img}<div><div class="answer-main jp${textSizeClass(jpText(v))}">${esc(jpText(v))}</div><div class="answer-sub jp">${esc(v.kana)} • ${esc(v.romaji)}</div></div>`;
       return `${img}<div><div class="answer-main${textSizeClass(meaning)}">${esc(meaning)}</div><div class="answer-sub jp">${esc(v.romaji)}</div></div>`;
@@ -3604,7 +3682,7 @@
       const local=[result,...localResults().filter(r=>r.localId!==result.localId)].slice(0,500); setLocalResults(local);
       if(firebaseReady){
         try {
-          const send={...result,createdAt:fb.serverTimestamp()};
+          const send={...result, usernameKey: usernameKey(result.username), createdAt:fb.serverTimestamp()};
           await fb.addDoc(fb.collection(db,resultCollection),send);
         } catch(e){ toast(t("localOnly")); }
       }
@@ -3719,7 +3797,7 @@
       ]);
       $("#reviewTable").innerHTML = tableHtml(headers,data,"review-table-wrap");
     }
-    function cleanDetailIndo(s){ return String(s||"").replace(/（.*?）/g,"").replace(/\(.*?\)/g,"").trim(); }
+    function cleanDetailIndo(s){ return String(s||"").replace(/（/g,"(").replace(/）/g,")").trim(); }
     function tableHtml(headers, rows, wrapClass="table-wrap"){
       if(!rows.length) return `<div class="empty">${state.lang==="ja"?"データがありません。":"Data tidak tersedia."}</div>`;
       return `<div class="${wrapClass}"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
@@ -3744,6 +3822,53 @@
         } catch(e){ toast(state.lang==="ja"?"Firebase の読み込みに失敗しました。":"Firebase gagal dibaca. Menampilkan data lokal sementara."); }
       }
       return arr.sort((a,b)=>new Date(b.finishedAt)-new Date(a.finishedAt));
+    }
+    function usernameKey(name){ return String(name||"").trim().toLowerCase(); }
+    function sameUsername(a,b){ return usernameKey(a) === usernameKey(b); }
+    async function fetchUserResults(username){
+      if(!username) return [];
+      let arr = localResults().filter(r=>sameUsername(r.username, username)).map(r=>({...r, source:r.source||"local"}));
+      if(firebaseReady){
+        try {
+          const col = fb.collection(db,resultCollection);
+          const queries = [
+            fb.query(col, fb.where("usernameKey", "==", usernameKey(username))),
+            fb.query(col, fb.where("username", "==", username))
+          ];
+          const snaps = await Promise.all(queries.map(q=>fb.getDocs(q).catch(()=>null)));
+          const remote = snaps.filter(Boolean).flatMap(snap=>snap.docs.map(d=>({...d.data(), firestoreId:d.id, source:"firebase"})));
+          const seen = new Set();
+          arr = [...remote, ...arr].filter(r=>{
+            if(!sameUsername(r.username, username)) return false;
+            const key = (r.finishedAt||"")+"-"+(r.username||"")+"-"+(r.scorePercent||"")+"-"+(r.totalQuestions||"");
+            if(seen.has(key)) return false;
+            seen.add(key);
+            return true;
+          });
+        } catch(e){
+          toast(state.lang==="ja"?"Firebase のユーザー履歴を読み込めません。":"Riwayat Firebase user belum bisa dibaca. Menampilkan data lokal sementara.");
+        }
+      }
+      return arr.sort((a,b)=>new Date(b.finishedAt||0)-new Date(a.finishedAt||0));
+    }
+    async function loadUserLastResult(silent=true){
+      if(!state.session?.username || isAdmin()) return null;
+      if(currentResult && !sameUsername(currentResult.username, state.session.username)){
+        currentResult = null;
+        localStorage.removeItem(storeKey + "_lastResult");
+      }
+      const rows = await fetchUserResults(state.session.username);
+      if(rows.length){
+        currentResult = rows[0];
+        localStorage.setItem(storeKey + "_lastResult", JSON.stringify(currentResult));
+        renderUser();
+        if(state.page === "result") renderResult();
+        if(!silent) toast(t("historyLoaded"));
+        return currentResult;
+      }
+      renderUser();
+      if(state.page === "result") renderResult();
+      return null;
     }
     function adminScoreClass(score){ score=Number(score||0); return score>=80?"high":score>=KKM_SCORE?"mid":"low"; }
     function adminInitial(name){ return esc(String(name||"?").trim().charAt(0).toUpperCase() || "?"); }
@@ -3856,7 +3981,7 @@
       const books = uniqueValues([r.selectedBook || state.setup.book]);
       const materials = uniqueValues([r.selectedMaterialCategory || state.setup.materialCategory]);
       const chapters = uniqueValues(details.map(d=>d.chapter).concat(r.selectedChapter ? [r.selectedChapter] : []));
-      const sections = ["Kosakata","Latihan C","Percakapan"].filter(v=>details.some(d=>d.sectionCategory===v));
+      const sections = ["Kosakata","Latihan C","Kosakata Tambahan"].filter(v=>details.some(d=>d.sectionCategory===v));
       const types = ["Kata Benda","Kata Kerja","Kata Sifat-i","Kata Sifat-na","Kosakata Tambahan"].filter(v=>details.some(d=>d.typeCategory===v));
       const bookSel = $("#pdfBookFilter"), matSel = $("#pdfMaterialFilter"), chSel = $("#pdfChapterFilter"), secSel = $("#pdfSectionFilter"), typeSel = $("#pdfTypeFilter"), statSel = $("#pdfStatusFilter");
       const keep = sel => sel?.value || "all";
@@ -4088,7 +4213,8 @@
         const speakBtn=e.target.closest("[data-speak]"); if(speakBtn) speakVocab({ kana:speakBtn.dataset.speak });
         const fav=e.target.closest("[data-fav]"); if(fav) toggleFav(fav.dataset.fav);
         const zoom=e.target.closest("[data-zoom]"); if(zoom){ e.preventDefault(); openImagePreview(zoom.dataset.zoom, zoom.getAttribute("alt") || (state.lang==="ja"?"語彙画像のプレビュー":"Pratinjau gambar kosakata")); }
-        const matExample=e.target.closest("[data-example-material]"); if(matExample){ const v=VOCABULARY.find(x=>x.id===matExample.dataset.exampleMaterial); if(v){ $("#exampleJa").textContent=tidyExampleText(v.exampleJa,t("noExample")); $("#exampleReading").textContent=tidyExampleText(exampleReadingFallback(v),state.lang==="ja"?"読み方はまだありません":"Cara baca belum tersedia"); $("#exampleId").textContent=tidyExampleText(exampleMeaningFallback(v),state.lang==="ja"?"例文の意味はまだありません。":"Arti contoh belum tersedia."); $("#exampleModal").classList.add("show"); } }
+        const matNote=e.target.closest("[data-note-material]"); if(matNote){ const v=VOCABULARY.find(x=>x.id===matNote.dataset.noteMaterial); if(v){ openMaterialNoteModal(v); } }
+        const matExample=e.target.closest("[data-example-material]"); if(matExample){ const v=VOCABULARY.find(x=>x.id===matExample.dataset.exampleMaterial); if(v){ fillExampleModal(v, true); $("#exampleModal").classList.add("show"); } }
         const sl=e.target.closest("[data-setup-lang]"); if(sl){ state.lang=sl.dataset.setupLang; saveState(); renderSetup(); applyTranslations(); setSetupStep(2); }
         const sb=e.target.closest("[data-setup-book]"); if(sb){ tempSetup.book=sb.dataset.setupBook; renderSetup(); setSetupStep(3); }
         const sm=e.target.closest("[data-setup-material]"); if(sm){ tempSetup.materialCategory=sm.dataset.setupMaterial; renderSetup(); setSetupStep(4); }
@@ -4101,6 +4227,8 @@
       document.addEventListener("openQuizSettings",openQuizSettings);
       $("#userMenuBtn").onclick=()=>{ if(!state.session?.username) openLogin(); else $("#userDropdown").classList.toggle("show"); };
       $("#homeLoginBtn").onclick=openLogin; $("#homeStartBtn").onclick=openQuizSettings; $("#homeMaterialBtn").onclick=()=>showPage("material");
+      if($("#homeResultBtn")) $("#homeResultBtn").onclick=()=>showPage("result");
+      if($("#myResultDrop")) $("#myResultDrop").onclick=()=>showPage("result");
       $("#changeCategoryBtn").onclick=openSetup;
       const toggleLanguage = ()=>{ state.lang=state.lang==="id"?"ja":"id"; saveState(); renderAll(); };
       $("#homeLangBtn").onclick=toggleLanguage;
@@ -4148,7 +4276,7 @@
       window.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeImagePreview(); $$(".modal.show").forEach(m=>m.classList.remove("show")); } });
       document.addEventListener("click",e=>{ if(!e.target.closest(".user-menu")) $("#userDropdown").classList.remove("show"); });
     }
-    function logout(){ state.session=null; saveState(); renderAll(); showPage("home"); }
+    function logout(){ state.session=null; currentResult=null; localStorage.removeItem(storeKey+"_lastResult"); saveState(); renderAll(); showPage("home"); }
 
     // Proteksi ringan ini hanya mempersulit user awam, bukan keamanan penuh.
     // Data penting tetap harus diamankan melalui Firebase Firestore Rules.
@@ -4171,6 +4299,7 @@
       wireEvents(); installBasicProtection();
       playTone("load");
       await initFirebase();
+      if(state.session?.username && !isAdmin()) await loadUserLastResult(true);
       applyTranslations(); renderAll();
       $("#adminGroup").innerHTML = `<option value="all">${state.lang==="ja"?"すべてのグループ":"Semua Grup"}</option>`;
       setTimeout(()=>{
