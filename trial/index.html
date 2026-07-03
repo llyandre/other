@@ -1270,14 +1270,16 @@
       .user-btn span { max-width:92px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
       .bottom-nav {
         position:fixed; left:12px; right:12px; bottom:12px; z-index:25; display:grid!important;
-        grid-template-columns:repeat(4,1fr); gap:8px; padding:8px; border-radius:24px;
-        background:rgba(255,255,255,.92); border:1px solid var(--line); box-shadow:var(--shadow); backdrop-filter:blur(18px);
+        grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; padding:8px; border-radius:24px;
+        background:rgba(255,255,255,.94); border:1px solid rgba(124,77,255,.16); box-shadow:0 16px 40px rgba(80,67,130,.18); backdrop-filter:blur(18px);
       }
       .bottom-nav button {
         border:0; background:transparent; border-radius:17px; min-height:52px; color:#5a647c;
-        font-weight:850; font-size:11px; display:grid; place-items:center; gap:3px;
+        font-weight:850; font-size:11px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; min-width:0;
       }
-      .bottom-nav button.active { background:var(--soft); color:var(--primary2); }
+      .bottom-nav button i { font-size:13px; line-height:1; }
+      .bottom-nav button span { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+      .bottom-nav button.active { background:linear-gradient(135deg,#f1eaff,#f7f3ff); color:var(--primary2); box-shadow:inset 0 0 0 1px rgba(124,77,255,.10); }
       .notice { display:none!important; }
       .layout > aside { display:none!important; }
       .search-row, .filters, .row-actions { gap:10px; }
@@ -1353,7 +1355,8 @@
       .user-btn span { display:none!important; }
       .user-btn, .nav-lang-btn, .nav-fiction-toggle { min-width:42px!important; justify-content:center; }
       .bottom-nav { left:8px; right:8px; bottom:8px; border-radius:20px; gap:5px; padding:6px; }
-      .bottom-nav button { min-height:48px; font-size:10px; border-radius:15px; }
+      .bottom-nav button { min-height:49px; font-size:10px; border-radius:15px; gap:3px; }
+      .bottom-nav button i { font-size:12px; }
       .search-row { margin:14px 0; }
       .input, select { min-height:48px; border-radius:15px; }
       .vocab-card { padding:14px; }
@@ -1373,7 +1376,128 @@
       .result-stat { padding:14px!important; }
     }
 
-</style>
+
+
+    /* ===== Revisi v9: navbar lebih ringkas dan kontrol jawaban mode suara ===== */
+    .nav-actions { gap:10px; }
+    .nav-lang-btn.nav-lang-compact {
+      min-height:46px;
+      padding:0 14px;
+      gap:8px;
+      border-color:rgba(124,77,255,.16);
+      background:rgba(255,255,255,.88);
+      box-shadow:0 8px 20px rgba(80,67,130,.06);
+    }
+    .nav-lang-btn.nav-lang-compact .nav-lang-globe,
+    .nav-lang-btn.nav-lang-compact .flag-circle {
+      display:none!important;
+    }
+    .nav-lang-btn.nav-lang-compact .lang-code {
+      min-width:32px;
+      min-height:26px;
+      padding:0 8px;
+      font-size:12px;
+      font-weight:700;
+      border-radius:999px;
+      color:#6a43d7;
+      background:#f3efff;
+      box-shadow:none;
+    }
+    .nav-lang-btn.nav-lang-compact .lang-name {
+      min-width:0;
+      font-size:14px;
+      font-weight:650;
+      color:#3f4860;
+    }
+    .nav-fiction-toggle.nav-fiction-compact {
+      min-height:46px;
+      padding:0 14px;
+      gap:8px;
+      border-color:rgba(124,77,255,.16);
+      background:rgba(255,255,255,.88);
+      color:#46506a;
+      box-shadow:0 8px 20px rgba(80,67,130,.06);
+      font-weight:650;
+    }
+    .nav-fiction-toggle.nav-fiction-compact .fiction-icon {
+      display:none!important;
+    }
+    .nav-fiction-toggle.nav-fiction-compact .fiction-label {
+      font-size:14px;
+      font-weight:650;
+    }
+    .nav-fiction-toggle.nav-fiction-compact .fiction-state {
+      min-width:36px;
+      min-height:26px;
+      padding:0 8px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:700;
+      background:#eef1f8;
+      color:#677187;
+    }
+    .nav-fiction-toggle.nav-fiction-compact.active .fiction-state {
+      background:#eef8f7;
+      color:#278a85;
+    }
+    .nav-fiction-toggle.nav-fiction-compact.active {
+      color:#3f4860;
+      background:rgba(255,255,255,.9);
+      border-color:rgba(96,216,192,.22);
+    }
+    .btn.disabled-before-flip {
+      opacity:.45!important;
+      cursor:not-allowed!important;
+      background:#f6f7fb!important;
+      color:#8c96aa!important;
+      border:1px solid #e7ebf4!important;
+      box-shadow:none!important;
+      transform:none!important;
+      filter:none!important;
+    }
+    .btn.disabled-before-flip i { opacity:.75; }
+
+    @media (max-width:900px){
+      .nav-lang-btn.nav-lang-compact .lang-name,
+      .nav-fiction-toggle.nav-fiction-compact .fiction-label {
+        display:none!important;
+      }
+      .nav-lang-btn.nav-lang-compact,
+      .nav-fiction-toggle.nav-fiction-compact {
+        min-height:44px;
+        padding:0 9px;
+      }
+      .nav-fiction-toggle.nav-fiction-compact .fiction-state {
+        min-width:32px;
+        min-height:25px;
+        font-size:10.5px;
+        padding:0 7px;
+      }
+    }
+    @media (max-width:450px){
+      .nav-lang-btn.nav-lang-compact,
+      .nav-fiction-toggle.nav-fiction-compact {
+        min-width:44px;
+        justify-content:center;
+      }
+    }
+
+
+
+    /* ===== V10: setup wajib diselesaikan - tombol close atas disembunyikan ===== */
+    #setupModal #closeSetup {
+      display: none !important;
+    }
+    #setupModal .modal-fixed-head {
+      padding-right: 0 !important;
+    }
+
+    /* ===== V11: tombol Batal pada setup hanya muncul setelah pilihan awal pernah disimpan ===== */
+    #setupModal #cancelSetup.hidden {
+      display: none !important;
+    }
+
+  </style>
 </head>
 <body>
   <div id="loadingScreen" class="loader">
@@ -1406,14 +1530,11 @@
         <button class="nav-link admin-only hidden" data-page="admin" data-i18n="navResult">Hasil</button>
       </nav>
       <div class="nav-actions">
-        <button class="nav-lang-btn" id="navLangBtn" aria-label="Ganti bahasa">
-          <span class="nav-lang-globe"><i class="fa-solid fa-globe"></i></span>
-          <span class="flag-circle">🇮🇩</span>
-          <span class="lang-name">Indonesia</span>
+        <button class="nav-lang-btn nav-lang-compact" id="navLangBtn" aria-label="Ganti bahasa">
           <span class="lang-code">ID</span>
+          <span class="lang-name">Indonesia</span>
         </button>
-        <button class="nav-fiction-toggle active" id="navFictionToggle" type="button" aria-pressed="true" title="Filter kosakata fiksi">
-          <span class="fiction-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+        <button class="nav-fiction-toggle nav-fiction-compact active" id="navFictionToggle" type="button" aria-pressed="true" title="Filter kosakata fiksi">
           <span class="fiction-label">Fiksi</span>
           <span class="fiction-state">Aktif</span>
         </button>
@@ -1578,10 +1699,11 @@
     </section>
   </main>
 
-  <nav class="bottom-nav">
+  <nav class="bottom-nav" aria-label="Navigasi bawah">
     <button class="active" data-page="home"><i class="fa-solid fa-house"></i><span data-i18n="navHome">Beranda</span></button>
     <button data-page="material"><i class="fa-solid fa-book-open"></i><span data-i18n="navMaterial">Materi</span></button>
     <button data-action="openQuizSettings"><i class="fa-solid fa-clipboard-list"></i><span data-i18n="navQuiz">Kuis</span></button>
+    <button class="participant-only hidden" data-page="result"><i class="fa-solid fa-chart-simple"></i><span data-i18n="navResult">Hasil</span></button>
     <button class="admin-only hidden" data-page="admin"><i class="fa-solid fa-chart-simple"></i><span data-i18n="navResult">Hasil</span></button>
   </nav>
 
@@ -2743,11 +2865,15 @@
     const $$ = s => [...document.querySelectorAll(s)];
     const storeKey = "minnaFlashcardV2";
     const dataVersion = "bab1-47-20260703-v5";
+    const setupCompletedKey = storeKey + "_setupCompleted";
+    const hadCurrentDataVersionBeforeBoot = localStorage.getItem(storeKey+"_dataVersion") === dataVersion;
+    const hadSetupCompletedFlagBeforeBoot = localStorage.getItem(setupCompletedKey);
     const defaultSetup = { book:"Minna no Nihongo I (2nd Edition)", materialCategory:"Materi Umum", chapter:"Bab 1" };
     if(localStorage.getItem(storeKey+"_dataVersion") !== dataVersion){
       localStorage.setItem(storeKey+"_setup", JSON.stringify(defaultSetup));
       localStorage.setItem(storeKey+"_includeFiction", "true");
       localStorage.setItem(storeKey+"_dataVersion", dataVersion);
+      if(hadSetupCompletedFlagBeforeBoot === null) localStorage.setItem(setupCompletedKey, "false");
     }
     const resultCollection = "quizResultsMinna";
     const adminPass = "kuis" + "44" + "GAKKOU";
@@ -2792,6 +2918,7 @@
       session: JSON.parse(localStorage.getItem(storeKey+"_session") || "null"),
       favorites: JSON.parse(localStorage.getItem(storeKey+"_fav") || "[]"),
       includeFiction: localStorage.getItem(storeKey+"_includeFiction") !== "false",
+      setupCompleted: localStorage.getItem(setupCompletedKey) === "true" || (hadSetupCompletedFlagBeforeBoot === null && hadCurrentDataVersionBeforeBoot && localStorage.getItem(storeKey+"_setup") !== null),
       quizFictionOnly: false,
       page:"home"
     };
@@ -2897,6 +3024,7 @@
       localStorage.setItem(storeKey+"_session",JSON.stringify(state.session));
       localStorage.setItem(storeKey+"_fav",JSON.stringify(state.favorites));
       localStorage.setItem(storeKey+"_includeFiction",String(state.includeFiction));
+      localStorage.setItem(setupCompletedKey,String(!!state.setupCompleted));
     }
     function localResults(){ return JSON.parse(localStorage.getItem(storeKey+"_results") || "[]"); }
     function setLocalResults(arr){ localStorage.setItem(storeKey+"_results",JSON.stringify(arr)); }
@@ -3106,13 +3234,16 @@
       }
     }
     function isAdmin(){ return state.session?.role === "admin"; }
-    function updateAdminVisibility(){ $$(".admin-only").forEach(el=>el.classList.toggle("hidden",!isAdmin())); }
+    function updateAdminVisibility(){
+      $$(".admin-only").forEach(el=>el.classList.toggle("hidden",!isAdmin()));
+      $$(".participant-only").forEach(el=>el.classList.toggle("hidden",!state.session?.username || isAdmin()));
+    }
     function updateNavActive(){
       $$(".nav-link,.bottom-nav button,.side-btn").forEach(b=>b.classList.toggle("active",b.dataset.page===state.page || (state.page==="quiz" && b.dataset.action==="openQuizSettings")));
     }
     function showPage(page){
       if(page==="admin" && !isAdmin()) { toast(t("needLogin")); return; }
-      if(page==="material" && !state.session?.username) { openLogin(); return; }
+      if((page==="material" || page==="result") && !state.session?.username) { openLogin(); return; }
       const targetPage = $("#" + page + "Page");
       if(!targetPage){ toast(state.lang==="ja"?"ページが見つかりません。":"Halaman tidak ditemukan."); return; }
       state.page=page;
@@ -3214,6 +3345,7 @@
       prevBtn?.classList.toggle("hidden", setupStep === 1);
       nextBtn?.classList.toggle("hidden", setupStep === setupMaxStep);
       $("#saveSetup")?.classList.toggle("hidden", setupStep !== setupMaxStep);
+      $("#cancelSetup")?.classList.toggle("hidden", !state.setupCompleted);
     }
     function setSetupStep(step){
       setupStep = Math.max(1, Math.min(setupMaxStep, step));
@@ -3398,20 +3530,46 @@
       if(len > 14) return " is-long";
       return "";
     }
+    function shouldLockManualAnswer(){
+      return !!(quiz && !quiz.flipped && quiz.micOn && speechSupported);
+    }
+    function updateAnswerButtonsAvailability(){
+      const lock = shouldLockManualAnswer();
+      const title = lock ? (state.lang==="ja" ? "先にカードを裏返してください。" : "Balik kartu dulu, lalu pilih Benar atau Salah.") : "";
+      [$("#correctBtn"),$("#wrongBtn")].forEach(btn=>{
+        if(!btn) return;
+        if(lock){
+          btn.disabled = true;
+          btn.title = title;
+          btn.setAttribute("aria-disabled","true");
+          btn.classList.add("disabled-before-flip");
+        } else if(!quiz || quiz.answered || quiz.finishing){
+          btn.disabled = !!(!quiz || quiz.finishing);
+        } else {
+          btn.disabled = false;
+          btn.title = "";
+          btn.removeAttribute("aria-disabled");
+          btn.classList.remove("disabled-before-flip");
+        }
+      });
+    }
     function resetAnswerButtons(){
       [$("#correctBtn"),$("#wrongBtn")].forEach(btn=>{
         if(!btn) return;
         btn.disabled = false;
-        btn.classList.remove("answer-selected","answer-lock");
+        btn.classList.remove("answer-selected","answer-lock","disabled-before-flip");
         btn.style.pointerEvents = "";
+        btn.title = "";
         btn.removeAttribute("aria-disabled");
       });
+      updateAnswerButtonsAvailability();
     }
     function selectAnswerButton(isCorrect){
       const good=$("#correctBtn"), bad=$("#wrongBtn");
       [good,bad].forEach(btn=>{
         if(!btn) return;
         btn.disabled = false;
+        btn.classList.remove("disabled-before-flip");
         btn.classList.add("answer-lock");
       });
       good?.classList.toggle("answer-selected", !!isCorrect);
@@ -3580,6 +3738,7 @@
       $("#flashcard").classList.toggle("flipped",quiz.flipped);
       if(quiz.flipped){ quiz.micOn=false; stopRecognition(); $("#micSwitch").classList.remove("on"); setSpeechStatus("idle",state.lang==="ja"?"カードを戻すと発話できます。":"Kartu dibalik. Kembalikan kartu untuk memakai fitur bicara."); }
       updateHearButtons();
+      updateAnswerButtonsAvailability();
       updateMicBoxState();
     }
     function canUseJapaneseTools(){
@@ -3608,6 +3767,11 @@
     }
     function answerCard(isCorrect,auto=false){
       if(!quiz || quiz.answered || quiz.finishing) return;
+      if(!auto && shouldLockManualAnswer()){
+        toast(state.lang==="ja" ? "先にカードを裏返してください。" : "Balik kartu dulu, lalu pilih Benar atau Salah.");
+        updateAnswerButtonsAvailability();
+        return;
+      }
       const v = quiz.cards?.[quiz.index];
       if(!v){ toast(t("noVocabFilter")); return; }
 
@@ -4244,7 +4408,7 @@
       $("#closeSetup").onclick=()=>closeModal("#setupModal"); $("#cancelSetup").onclick=()=>closeModal("#setupModal");
       $("#prevSetupStep").onclick=()=>setSetupStep(setupStep-1);
       $("#nextSetupStep").onclick=()=>setSetupStep(setupStep+1);
-      $("#saveSetup").onclick=()=>{ state.setup={...tempSetup}; saveState(); closeModal("#setupModal"); renderAll(); };
+      $("#saveSetup").onclick=()=>{ state.setup={...tempSetup}; state.setupCompleted=true; saveState(); closeModal("#setupModal"); renderAll(); };
       $("#closeLogin").onclick=()=>closeModal("#loginModal"); $("#cancelLogin").onclick=()=>closeModal("#loginModal");
       $("#usernameInput").oninput=updateAdminLoginMode; $("#saveLogin").onclick=saveLogin;
       $("#togglePassword").onclick=e=>{ e.preventDefault(); const i=$("#adminPasswordInput"); const icon=$("#togglePassword i"); i.type=i.type==="password"?"text":"password"; if(icon) icon.className=i.type==="password"?"fa-regular fa-eye":"fa-regular fa-eye-slash"; };
@@ -4262,7 +4426,7 @@
       $("#hearBtn").onclick=()=>{ if(!quiz || !quiz.flipped) return toast(state.lang==="ja"?"先にカードを裏返してください。":"Balik kartu dulu untuk menggunakan fitur ini."); if(!("speechSynthesis" in window)){ setSpeechStatus("unsupported",state.lang==="ja"?"このブラウザは音声再生に対応していません。":"Audio tidak didukung browser ini"); return; } speakVocab(quiz.cards[quiz.index]); };
       $("#exampleBtn").onclick=openExampleModal;
       $("#correctBtn").onclick=()=>answerCard(true); $("#wrongBtn").onclick=()=>answerCard(false);
-      $("#micSwitch").onclick=()=>{ if(!speechSupported) return setSpeechStatus("unsupported",t("browserSpeechNo")); if(!quiz || quiz.flipped) return; quiz.micOn=!quiz.micOn; $("#micSwitch").classList.toggle("on",quiz.micOn); updateMicBoxState(); if(quiz.micOn){ setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } else { stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"マイクはオフです。":"Mikrofon dimatikan."); } };
+      $("#micSwitch").onclick=()=>{ if(!speechSupported) return setSpeechStatus("unsupported",t("browserSpeechNo")); if(!quiz || quiz.flipped) return; quiz.micOn=!quiz.micOn; $("#micSwitch").classList.toggle("on",quiz.micOn); updateAnswerButtonsAvailability(); updateMicBoxState(); if(quiz.micOn){ setSpeechStatus("idle",state.lang==="ja"?"答えを発話できます。":"Siap mendengarkan jawabanmu"); startRecognition(); } else { stopRecognition(); setSpeechStatus("idle",state.lang==="ja"?"マイクはオフです。":"Mikrofon dimatikan."); } };
       $("#closePdfFilter").onclick=()=>closeModal("#pdfFilterModal"); $("#cancelPdfFilter").onclick=()=>closeModal("#pdfFilterModal"); $("#resetPdfFilterBtn").onclick=resetPdfFilterModal; $("#saveFilteredPdf").onclick=saveFilteredPdf;
       ["#pdfBookFilter","#pdfMaterialFilter","#pdfChapterFilter","#pdfSectionFilter","#pdfTypeFilter","#pdfStatusFilter"].forEach(sel=>{ const el=$(sel); if(el) el.onchange=updatePdfFilterCount; });
       $("#closeExample").onclick=()=>closeModal("#exampleModal"); $("#closeImage").onclick=closeImagePreview; $("#imageModal").onclick=e=>{ if(e.target.id==="imageModal") closeImagePreview(); }; $("#closeDetail").onclick=()=>closeModal("#detailModal");
