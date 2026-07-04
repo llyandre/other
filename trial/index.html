@@ -1692,6 +1692,84 @@
       .material-ref-address-grid { grid-template-columns:1fr; }
     }
 
+    /* ===== Materi khusus: Kata-kata Referensi dan Informasi Bab 5 - Hari Libur Nasional ===== */
+    .material-ref-bab5-wrap { gap:20px; }
+    .material-ref-bab5-hero {
+      display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:18px;
+      background:
+        radial-gradient(circle at 92% 18%,rgba(255,211,109,.42),transparent 30%),
+        radial-gradient(circle at 82% 82%,rgba(125,181,255,.34),transparent 26%),
+        linear-gradient(135deg,#f4eeff,#eef7ff 58%,#fff7fb);
+    }
+    .material-ref-bab5-hero h3 {
+      margin:12px 0 8px; font-size:clamp(25px,3vw,36px); letter-spacing:-.04em;
+    }
+    .material-ref-bab5-hero .jp { font-family:var(--jp); letter-spacing:normal; }
+    .material-ref-bab5-icon {
+      width:98px; height:98px; display:grid; place-items:center; border-radius:28px;
+      background:rgba(255,255,255,.78); border:1px solid rgba(124,77,255,.14);
+      color:var(--primary2); font-size:42px; box-shadow:var(--shadow2);
+    }
+    .holiday-reading-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(285px,1fr)); gap:13px; }
+    .holiday-item {
+      display:grid; grid-template-columns:76px minmax(0,1fr); gap:13px; align-items:center;
+      min-height:118px; padding:13px; border-radius:22px;
+      background:linear-gradient(145deg,#fff,#fbf8ff); border:1px solid rgba(124,77,255,.14);
+      box-shadow:0 10px 22px rgba(80,67,130,.055);
+    }
+    .holiday-img {
+      width:76px; height:76px; object-fit:contain; padding:7px; border-radius:19px;
+      background:#fff; border:1px solid rgba(124,77,255,.14); cursor:zoom-in;
+    }
+    .holiday-date {
+      display:inline-flex; align-items:center; gap:6px; width:fit-content; max-width:100%;
+      padding:5px 9px; border-radius:999px; background:var(--soft);
+      color:var(--primary2); font-size:12px; font-weight:850; line-height:1.1;
+    }
+    .holiday-date-detail {
+      display:grid; gap:5px; margin-top:8px; padding:8px 10px; border-radius:15px;
+      background:linear-gradient(135deg,#f8f5ff,#f0f7ff); border:1px solid rgba(124,77,255,.1);
+    }
+    .holiday-date-line {
+      display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center; color:#536078;
+      font-size:12.5px; line-height:1.35; font-weight:650;
+    }
+    .holiday-date-line i { color:var(--primary2); width:14px; text-align:center; }
+    .holiday-date-line strong { color:#071b45; font-weight:800; }
+    .holiday-date-line .jp { font-family:var(--jp); }
+    .holiday-date-mark { color:#9b6a00; font-weight:900; margin-left:2px; }
+    .holiday-jp {
+      margin-top:7px; color:#071b45; font-family:var(--jp); font-size:20px;
+      font-weight:850; line-height:1.25; overflow-wrap:anywhere;
+    }
+    .holiday-reading { color:#6d7890; font-family:var(--jp); font-size:13px; font-weight:750; margin-top:2px; }
+    .holiday-id { margin:5px 0 0; color:#46536b; font-size:14px; line-height:1.4; font-weight:650; }
+    .holiday-note-box {
+      display:grid; gap:14px; padding:18px; border-radius:22px;
+      background:linear-gradient(135deg,#fff8e6,#fffdf5); border:1px solid rgba(255,211,109,.7);
+      color:#5f4a13; box-shadow:var(--shadow2);
+    }
+    .holiday-note-box h4 { margin:0; color:#7a5600; font-size:17px; display:flex; gap:9px; align-items:center; }
+    .holiday-note-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:10px; }
+    .holiday-note-chip {
+      padding:11px 12px; border-radius:16px; background:rgba(255,255,255,.7);
+      border:1px solid rgba(255,211,109,.55); font-weight:750; line-height:1.45;
+    }
+    .holiday-extra-note {
+      display:flex; gap:12px; align-items:flex-start; padding:14px; border-radius:18px;
+      background:#fff; border:1px solid rgba(124,77,255,.14); color:#526078; line-height:1.55; font-weight:650;
+    }
+    .holiday-extra-note i { color:var(--primary2); margin-top:4px; }
+    @media (max-width:760px){
+      .material-ref-bab5-hero { grid-template-columns:1fr; }
+      .material-ref-bab5-icon { width:78px; height:78px; border-radius:24px; font-size:32px; }
+      .holiday-reading-list { grid-template-columns:1fr; }
+    }
+    @media (max-width:420px){
+      .holiday-item { grid-template-columns:1fr; align-items:start; }
+      .holiday-img { width:100%; height:122px; }
+    }
+
 
   </style>
 </head>
@@ -8224,6 +8302,1230 @@
         "exampleReading": "A: Sochira wa ima nan-ji desu ka. B: Gozen ku-ji desu.",
         "exampleId": "A: Di sana sekarang pukul berapa? B: Pukul 9 pagi."
     }
+,
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-001",
+    "typeCategory": "Kata Kerja",
+    "sectionCategory": "Kosakata",
+    "indonesia": "pergi",
+    "kanji": "行きます",
+    "kana": "いきます",
+    "romaji": "ikimasu",
+    "image": "https://iili.io/C56mTMu.png",
+    "isFiction": false,
+    "exampleJa": "明日、学校へ行きます。",
+    "exampleReading": "Ashita, gakkou e ikimasu.",
+    "exampleId": "Besok saya pergi ke sekolah."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-002",
+    "typeCategory": "Kata Kerja",
+    "sectionCategory": "Kosakata",
+    "indonesia": "datang",
+    "kanji": "来ます",
+    "kana": "きます",
+    "romaji": "kimasu",
+    "image": "https://iili.io/C56mu6b.png",
+    "isFiction": false,
+    "exampleJa": "来週、友達がうちへ来ます。",
+    "exampleReading": "Raishuu, tomodachi ga uchi e kimasu.",
+    "exampleId": "Minggu depan teman datang ke rumah saya."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-003",
+    "typeCategory": "Kata Kerja",
+    "sectionCategory": "Kosakata",
+    "indonesia": "pulang",
+    "kanji": "帰ります",
+    "kana": "かえります",
+    "romaji": "kaerimasu",
+    "image": "https://iili.io/C56mRFj.png",
+    "isFiction": false,
+    "exampleJa": "今晩、8時に帰ります。",
+    "exampleReading": "Konban, hachi-ji ni kaerimasu.",
+    "exampleId": "Malam ini saya pulang pukul 8."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-004",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "sekolah",
+    "kanji": "学校",
+    "kana": "がっこう",
+    "romaji": "gakkou",
+    "image": "https://iili.io/C56m5cx.png",
+    "isFiction": false,
+    "exampleJa": "学校は駅の近くです。",
+    "exampleReading": "Gakkou wa eki no chikaku desu.",
+    "exampleId": "Sekolah berada di dekat stasiun."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-005",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "pasar swalayan",
+    "kanji": "",
+    "kana": "スーパー",
+    "romaji": "suupaa",
+    "image": "https://iili.io/C56mXcv.png",
+    "isFiction": false,
+    "exampleJa": "スーパーでパンを買いました。",
+    "exampleReading": "Suupaa de pan o kaimashita.",
+    "exampleId": "Saya membeli roti di pasar swalayan."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-006",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "stasiun",
+    "kanji": "駅",
+    "kana": "えき",
+    "romaji": "eki",
+    "image": "https://iili.io/C56mw9p.png",
+    "isFiction": false,
+    "exampleJa": "駅で友達に会いました。",
+    "exampleReading": "Eki de tomodachi ni aimashita.",
+    "exampleId": "Saya bertemu teman di stasiun."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-007",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "pesawat terbang",
+    "kanji": "飛行機",
+    "kana": "ひこうき",
+    "romaji": "hikouki",
+    "image": "https://iili.io/C56mSPs.png",
+    "isFiction": false,
+    "exampleJa": "飛行機で東京へ行きます。",
+    "exampleReading": "Hikouki de Toukyou e ikimasu.",
+    "exampleId": "Saya pergi ke Tokyo dengan pesawat terbang."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-008",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "kapal laut",
+    "kanji": "船",
+    "kana": "ふね",
+    "romaji": "fune",
+    "image": "https://iili.io/C56miR2.png",
+    "isFiction": false,
+    "exampleJa": "船で島へ行きました。",
+    "exampleReading": "Fune de shima e ikimashita.",
+    "exampleId": "Saya pergi ke pulau dengan kapal laut."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-009",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "kereta rel listrik",
+    "kanji": "電車",
+    "kana": "でんしゃ",
+    "romaji": "densha",
+    "image": "https://iili.io/C56mmKb.png",
+    "isFiction": false,
+    "exampleJa": "電車で会社へ行きます。",
+    "exampleReading": "Densha de kaisha e ikimasu.",
+    "exampleId": "Saya pergi ke kantor dengan kereta rel listrik."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-010",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "kereta bawah tanah",
+    "kanji": "地下鉄",
+    "kana": "ちかてつ",
+    "romaji": "chikatetsu",
+    "image": "https://iili.io/C56myUx.png",
+    "isFiction": false,
+    "exampleJa": "地下鉄で学校へ行きます。",
+    "exampleReading": "Chikatetsu de gakkou e ikimasu.",
+    "exampleId": "Saya pergi ke sekolah dengan kereta bawah tanah."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-011",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "Shinkansen",
+    "kanji": "新幹線",
+    "kana": "しんかんせん",
+    "romaji": "shinkansen",
+    "image": "https://iili.io/C56pdOB.png",
+    "isFiction": false,
+    "exampleJa": "新幹線で京都へ行きました。",
+    "exampleReading": "Shinkansen de Kyouto e ikimashita.",
+    "exampleId": "Saya pergi ke Kyoto dengan Shinkansen."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-012",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "bus",
+    "kanji": "",
+    "kana": "バス",
+    "romaji": "basu",
+    "image": "https://iili.io/C56pBfa.png",
+    "isFiction": false,
+    "exampleJa": "バスで駅へ行きます。",
+    "exampleReading": "Basu de eki e ikimasu.",
+    "exampleId": "Saya pergi ke stasiun dengan bus."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-013",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "taksi",
+    "kanji": "",
+    "kana": "タクシー",
+    "romaji": "takushii",
+    "image": "https://iili.io/C56pzRp.png",
+    "isFiction": false,
+    "exampleJa": "タクシーでホテルへ帰ります。",
+    "exampleReading": "Takushii de hoteru e kaerimasu.",
+    "exampleId": "Saya pulang ke hotel dengan taksi."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-014",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "sepeda",
+    "kanji": "自転車",
+    "kana": "じてんしゃ",
+    "romaji": "jitensha",
+    "image": "https://iili.io/C56pRWX.png",
+    "isFiction": false,
+    "exampleJa": "自転車で公園へ行きました。",
+    "exampleReading": "Jitensha de kouen e ikimashita.",
+    "exampleId": "Saya pergi ke taman dengan sepeda."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-015",
+    "typeCategory": "Bahasa",
+    "sectionCategory": "Kosakata",
+    "indonesia": "dengan berjalan kaki",
+    "kanji": "歩いて",
+    "kana": "あるいて",
+    "romaji": "aruite",
+    "image": "https://iili.io/C56pYfs.png",
+    "isFiction": false,
+    "exampleJa": "駅から歩いて帰ります。",
+    "exampleReading": "Eki kara aruite kaerimasu.",
+    "exampleId": "Saya pulang dari stasiun dengan berjalan kaki."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-016",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "orang",
+    "kanji": "人",
+    "kana": "ひと",
+    "romaji": "hito",
+    "image": "https://iili.io/C56p15l.png",
+    "isFiction": false,
+    "exampleJa": "あの人は日本語の先生です。",
+    "exampleReading": "Ano hito wa Nihongo no sensei desu.",
+    "exampleId": "Orang itu adalah guru bahasa Jepang."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-017",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "teman",
+    "kanji": "友達",
+    "kana": "ともだち",
+    "romaji": "tomodachi",
+    "image": "https://iili.io/C56pXse.png",
+    "isFiction": false,
+    "exampleJa": "友達と大阪へ行きます。",
+    "exampleReading": "Tomodachi to Oosaka e ikimasu.",
+    "exampleId": "Saya pergi ke Osaka bersama teman."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-018",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "dia, ia (laki-laki)",
+    "kanji": "彼",
+    "kana": "かれ",
+    "romaji": "kare",
+    "image": "https://iili.io/C56p8mB.png",
+    "isFiction": false,
+    "exampleJa": "彼は一人で来ました。",
+    "exampleReading": "Kare wa hitori de kimashita.",
+    "exampleId": "Dia laki-laki datang sendirian."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-019",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "dia, ia (perempuan)",
+    "kanji": "彼女",
+    "kana": "かのじょ",
+    "romaji": "kanojo",
+    "image": "https://iili.io/C56pgX1.png",
+    "isFiction": false,
+    "exampleJa": "彼女は来月、日本へ行きます。",
+    "exampleReading": "Kanojo wa raigetsu, Nihon e ikimasu.",
+    "exampleId": "Dia perempuan bulan depan pergi ke Jepang."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-020",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "keluarga",
+    "kanji": "家族",
+    "kana": "かぞく",
+    "romaji": "kazoku",
+    "image": "https://iili.io/C56pP1a.png",
+    "isFiction": false,
+    "exampleJa": "家族と旅行します。",
+    "exampleReading": "Kazoku to ryokou shimasu.",
+    "exampleId": "Saya bepergian bersama keluarga."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-021",
+    "typeCategory": "Bahasa",
+    "sectionCategory": "Kosakata",
+    "indonesia": "sendirian, dengan sendiri",
+    "kanji": "一人で",
+    "kana": "ひとりで",
+    "romaji": "hitori de",
+    "image": "https://iili.io/C56pZep.png",
+    "isFiction": false,
+    "exampleJa": "日曜日、一人で映画を見ます。",
+    "exampleReading": "Nichiyoubi, hitori de eiga o mimasu.",
+    "exampleId": "Hari Minggu saya menonton film sendirian."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-022",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "minggu lalu",
+    "kanji": "先週",
+    "kana": "せんしゅう",
+    "romaji": "senshuu",
+    "image": "https://iili.io/C56pmXt.png",
+    "isFiction": false,
+    "exampleJa": "先週、京都へ行きました。",
+    "exampleReading": "Senshuu, Kyouto e ikimashita.",
+    "exampleId": "Minggu lalu saya pergi ke Kyoto."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-023",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "minggu ini",
+    "kanji": "今週",
+    "kana": "こんしゅう",
+    "romaji": "konshuu",
+    "image": "https://iili.io/C56y374.png",
+    "isFiction": false,
+    "exampleJa": "今週の土曜日は休みです。",
+    "exampleReading": "Konshuu no doyoubi wa yasumi desu.",
+    "exampleId": "Hari Sabtu minggu ini libur."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-024",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "minggu depan",
+    "kanji": "来週",
+    "kana": "らいしゅう",
+    "romaji": "raishuu",
+    "image": "https://iili.io/C56yoBe.png",
+    "isFiction": false,
+    "exampleJa": "来週、友達が来ます。",
+    "exampleReading": "Raishuu, tomodachi ga kimasu.",
+    "exampleId": "Minggu depan teman saya datang."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-025",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "bulan lalu",
+    "kanji": "先月",
+    "kana": "せんげつ",
+    "romaji": "sengetsu",
+    "image": "https://iili.io/C56yAkQ.png",
+    "isFiction": false,
+    "exampleJa": "先月、家族と旅行しました。",
+    "exampleReading": "Sengetsu, kazoku to ryokou shimashita.",
+    "exampleId": "Bulan lalu saya bepergian bersama keluarga."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-026",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "bulan ini",
+    "kanji": "今月",
+    "kana": "こんげつ",
+    "romaji": "kongetsu",
+    "image": "https://iili.io/C56y0Eg.png",
+    "isFiction": false,
+    "exampleJa": "今月は忙しいです。",
+    "exampleReading": "Kongetsu wa isogashii desu.",
+    "exampleId": "Bulan ini sibuk."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-027",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "bulan depan",
+    "kanji": "来月",
+    "kana": "らいげつ",
+    "romaji": "raigetsu",
+    "image": "https://iili.io/C56y14a.png",
+    "isFiction": false,
+    "exampleJa": "来月、日本へ行きます。",
+    "exampleReading": "Raigetsu, Nihon e ikimasu.",
+    "exampleId": "Bulan depan saya pergi ke Jepang."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-028",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tahun lalu",
+    "kanji": "去年",
+    "kana": "きょねん",
+    "romaji": "kyonen",
+    "image": "https://iili.io/C56ywQt.png",
+    "isFiction": false,
+    "exampleJa": "去年、東京へ行きました。",
+    "exampleReading": "Kyonen, Toukyou e ikimashita.",
+    "exampleId": "Tahun lalu saya pergi ke Tokyo."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-029",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tahun ini",
+    "kanji": "今年",
+    "kana": "ことし",
+    "romaji": "kotoshi",
+    "image": "https://iili.io/C56yk4s.png",
+    "isFiction": false,
+    "exampleJa": "今年、日本語を勉強します。",
+    "exampleReading": "Kotoshi, Nihongo o benkyou shimasu.",
+    "exampleId": "Tahun ini saya belajar bahasa Jepang."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-030",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tahun depan",
+    "kanji": "来年",
+    "kana": "らいねん",
+    "romaji": "rainen",
+    "image": "https://iili.io/C56yUv4.png",
+    "isFiction": false,
+    "exampleJa": "来年、北海道へ行きます。",
+    "exampleReading": "Rainen, Hokkaidou e ikimasu.",
+    "exampleId": "Tahun depan saya pergi ke Hokkaido."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-031",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "satu tahun / tahun -",
+    "kanji": "一年",
+    "kana": "いちねん",
+    "romaji": "ichinen",
+    "image": "https://iili.io/C56yLGe.png",
+    "isFiction": false,
+    "exampleJa": "一年は12か月です。",
+    "exampleReading": "Ichinen wa juu-ni-kagetsu desu.",
+    "exampleId": "Satu tahun adalah 12 bulan."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-032",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tahun berapa",
+    "kanji": "何年",
+    "kana": "なんねん",
+    "romaji": "nannen",
+    "image": "https://iili.io/C56yDaj.png",
+    "isFiction": false,
+    "exampleJa": "何年に日本へ来ましたか。",
+    "exampleReading": "Nannen ni Nihon e kimashita ka.",
+    "exampleId": "Tahun berapa Anda datang ke Jepang?"
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-033",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "bulan Januari / bulan -",
+    "kanji": "一月",
+    "kana": "いちがつ",
+    "romaji": "ichigatsu",
+    "image": "https://iili.io/C5P92MF.png",
+    "isFiction": false,
+    "exampleJa": "一月に大阪へ行きます。",
+    "exampleReading": "Ichigatsu ni Oosaka e ikimasu.",
+    "exampleId": "Pada bulan Januari saya pergi ke Osaka."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-034",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "bulan apa",
+    "kanji": "何月",
+    "kana": "なんがつ",
+    "romaji": "nangatsu",
+    "image": "https://iili.io/C5P99wB.png",
+    "isFiction": false,
+    "exampleJa": "誕生日は何月ですか。",
+    "exampleReading": "Tanjoubi wa nangatsu desu ka.",
+    "exampleId": "Ulang tahun Anda bulan apa?"
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-035",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal satu",
+    "kanji": "1日",
+    "kana": "ついたち",
+    "romaji": "tsuitachi",
+    "image": "https://iili.io/C5P9fcJ.png",
+    "isFiction": false,
+    "exampleJa": "1日に国へ帰ります。",
+    "exampleReading": "Tsuitachi ni kuni e kaerimasu.",
+    "exampleId": "Pada tanggal satu saya pulang ke negara saya."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-036",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal dua, dua hari",
+    "kanji": "2日",
+    "kana": "ふつか",
+    "romaji": "futsuka",
+    "image": "https://iili.io/C5P9Int.png",
+    "isFiction": false,
+    "exampleJa": "2日に友達が来ます。",
+    "exampleReading": "Futsuka ni tomodachi ga kimasu.",
+    "exampleId": "Pada tanggal dua teman saya datang."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-037",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal tiga, tiga hari",
+    "kanji": "3日",
+    "kana": "みっか",
+    "romaji": "mikka",
+    "image": "https://iili.io/C5P9RFs.png",
+    "isFiction": false,
+    "exampleJa": "3日に学校へ行きます。",
+    "exampleReading": "Mikka ni gakkou e ikimasu.",
+    "exampleId": "Pada tanggal tiga saya pergi ke sekolah."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-038",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal empat, empat hari",
+    "kanji": "4日",
+    "kana": "よっか",
+    "romaji": "yokka",
+    "image": "https://iili.io/C5P9cAl.png",
+    "isFiction": false,
+    "exampleJa": "4日は休みです。",
+    "exampleReading": "Yokka wa yasumi desu.",
+    "exampleId": "Tanggal empat adalah hari libur."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-039",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal lima, lima hari",
+    "kanji": "5日",
+    "kana": "いつか",
+    "romaji": "itsuka",
+    "image": "https://iili.io/C5P9Eo7.png",
+    "isFiction": false,
+    "exampleJa": "5日にスーパーへ行きました。",
+    "exampleReading": "Itsuka ni suupaa e ikimashita.",
+    "exampleId": "Pada tanggal lima saya pergi ke pasar swalayan."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-040",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal enam, enam hari",
+    "kanji": "6日",
+    "kana": "むいか",
+    "romaji": "muika",
+    "image": "https://iili.io/C5P9WKu.png",
+    "isFiction": false,
+    "exampleJa": "6日に駅で会います。",
+    "exampleReading": "Muika ni eki de aimasu.",
+    "exampleId": "Pada tanggal enam saya bertemu di stasiun."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-041",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal tujuh, tujuh hari",
+    "kanji": "7日",
+    "kana": "なのか",
+    "romaji": "nanoka",
+    "image": "https://iili.io/C5P9NAQ.png",
+    "isFiction": false,
+    "exampleJa": "7日にバスで行きます。",
+    "exampleReading": "Nanoka ni basu de ikimasu.",
+    "exampleId": "Pada tanggal tujuh saya pergi dengan bus."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-042",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal delapan, delapan hari",
+    "kanji": "8日",
+    "kana": "ようか",
+    "romaji": "youka",
+    "image": "https://iili.io/C5P9ONV.png",
+    "isFiction": false,
+    "exampleJa": "8日は母の誕生日です。",
+    "exampleReading": "Youka wa haha no tanjoubi desu.",
+    "exampleId": "Tanggal delapan adalah ulang tahun ibu saya."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-043",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal sembilan, sembilan hari",
+    "kanji": "9日",
+    "kana": "ここのか",
+    "romaji": "kokonoka",
+    "image": "https://iili.io/C5P98V1.png",
+    "isFiction": false,
+    "exampleJa": "9日に大阪城へ行きます。",
+    "exampleReading": "Kokonoka ni Oosaka-jou e ikimasu.",
+    "exampleId": "Pada tanggal sembilan saya pergi ke Kastil Osaka."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-044",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal sepuluh, sepuluh hari",
+    "kanji": "10日",
+    "kana": "とおか",
+    "romaji": "tooka",
+    "image": "https://iili.io/C5P9SiF.png",
+    "isFiction": false,
+    "exampleJa": "10日に帰ります。",
+    "exampleReading": "Tooka ni kaerimasu.",
+    "exampleId": "Saya pulang pada tanggal sepuluh."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-045",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal empat belas, empat belas hari",
+    "kanji": "14日",
+    "kana": "じゅうよっか",
+    "romaji": "juu-yokka",
+    "image": "https://iili.io/C5P9PHv.png",
+    "isFiction": false,
+    "exampleJa": "14日に友達と会います。",
+    "exampleReading": "Juu-yokka ni tomodachi to aimasu.",
+    "exampleId": "Pada tanggal empat belas saya bertemu dengan teman."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-046",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal dua puluh, dua puluh hari",
+    "kanji": "20日",
+    "kana": "はつか",
+    "romaji": "hatsuka",
+    "image": "https://iili.io/C5PHfs9.png",
+    "isFiction": false,
+    "exampleJa": "20日は日曜日です。",
+    "exampleReading": "Hatsuka wa nichiyoubi desu.",
+    "exampleId": "Tanggal dua puluh adalah hari Minggu."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-047",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal dua puluh empat, dua puluh empat hari",
+    "kanji": "24日",
+    "kana": "にじゅうよっか",
+    "romaji": "nijuu-yokka",
+    "image": "https://iili.io/C5PHTbV.png",
+    "isFiction": false,
+    "exampleJa": "24日に家族が来ます。",
+    "exampleReading": "Nijuu-yokka ni kazoku ga kimasu.",
+    "exampleId": "Pada tanggal dua puluh empat keluarga saya datang."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-048",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "satu hari / tanggal -, - hari",
+    "kanji": "一日",
+    "kana": "いちにち",
+    "romaji": "ichinichi",
+    "image": "https://iili.io/C5PHa0g.png",
+    "isFiction": false,
+    "exampleJa": "一日だけ大阪にいます。",
+    "exampleReading": "Ichinichi dake Oosaka ni imasu.",
+    "exampleId": "Saya berada di Osaka hanya satu hari."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-049",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "tanggal berapa, berapa hari",
+    "kanji": "何日",
+    "kana": "なんにち",
+    "romaji": "nannichi",
+    "image": "https://iili.io/C5PH0dJ.png",
+    "isFiction": false,
+    "exampleJa": "何日に日本へ行きますか。",
+    "exampleReading": "Nannichi ni Nihon e ikimasu ka.",
+    "exampleId": "Tanggal berapa Anda pergi ke Jepang?"
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-050",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "kapan",
+    "kanji": "",
+    "kana": "いつ",
+    "romaji": "itsu",
+    "image": "https://iili.io/C5PH15v.png",
+    "isFiction": false,
+    "exampleJa": "いつ大阪へ行きますか。",
+    "exampleReading": "Itsu Oosaka e ikimasu ka.",
+    "exampleId": "Kapan Anda pergi ke Osaka?"
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-051",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Kosakata",
+    "indonesia": "hari ulang tahun",
+    "kanji": "誕生日",
+    "kana": "たんじょうび",
+    "romaji": "tanjoubi",
+    "image": "https://iili.io/C5PHWXI.png",
+    "isFiction": false,
+    "exampleJa": "誕生日は5月5日です。",
+    "exampleReading": "Tanjoubi wa go-gatsu itsuka desu.",
+    "exampleId": "Ulang tahun saya tanggal 5 Mei."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-lc-001",
+    "typeCategory": "Bahasa",
+    "sectionCategory": "Latihan C",
+    "indonesia": "Ya, betul. / Ya, begitulah.",
+    "kanji": "",
+    "kana": "そうですね。",
+    "romaji": "sou desu ne",
+    "image": "https://iili.io/C5PHk7f.png",
+    "isFiction": false,
+    "exampleJa": "A: 大阪城は有名ですね。 B: そうですね。",
+    "exampleReading": "A: Oosaka-jou wa yuumei desu ne. B: Sou desu ne.",
+    "exampleId": "A: Kastil Osaka terkenal, ya. B: Ya, betul."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-kaiwa-001",
+    "typeCategory": "Bahasa",
+    "sectionCategory": "Percakapan",
+    "indonesia": "Terima kasih banyak.",
+    "kanji": "",
+    "kana": "［どうも］ありがとうございました。",
+    "romaji": "[doumo] arigatou gozaimashita",
+    "image": "https://iili.io/C5PHgXS.png",
+    "isFiction": false,
+    "exampleJa": "A: 地図をどうぞ。 B: ［どうも］ありがとうございました。",
+    "exampleReading": "A: Chizu o douzo. B: [Doumo] arigatou gozaimashita.",
+    "exampleId": "A: Silakan petanya. B: Terima kasih banyak."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-kaiwa-002",
+    "typeCategory": "Bahasa",
+    "sectionCategory": "Percakapan",
+    "indonesia": "Sama-sama.",
+    "kanji": "",
+    "kana": "どういたしまして。",
+    "romaji": "dou itashimashite",
+    "image": "https://iili.io/C5PHP1e.png",
+    "isFiction": false,
+    "exampleJa": "A: ありがとうございました。 B: どういたしまして。",
+    "exampleReading": "A: Arigatou gozaimashita. B: Dou itashimashite.",
+    "exampleId": "A: Terima kasih banyak. B: Sama-sama."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-kaiwa-003",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Percakapan",
+    "indonesia": "peron nomor satu / jalur nomor satu",
+    "kanji": "一番線",
+    "kana": "いちばんせん",
+    "romaji": "ichiban-sen",
+    "image": "https://iili.io/C5PHtmQ.png",
+    "isFiction": false,
+    "exampleJa": "普通は一番線です。",
+    "exampleReading": "Futsuu wa ichiban-sen desu.",
+    "exampleId": "Kereta biasa/lokal ada di peron nomor satu."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-kaiwa-004",
+    "typeCategory": "Bahasa",
+    "sectionCategory": "Percakapan",
+    "indonesia": "yang berikutnya",
+    "kanji": "次の",
+    "kana": "つぎの",
+    "romaji": "tsugi no",
+    "image": "https://iili.io/C5PJ3YJ.png",
+    "isFiction": false,
+    "exampleJa": "次の電車は10時です。",
+    "exampleReading": "Tsugi no densha wa juu-ji desu.",
+    "exampleId": "Kereta berikutnya pukul 10."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-kaiwa-005",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Percakapan",
+    "indonesia": "biasa, kereta biasa/lokal",
+    "kanji": "普通",
+    "kana": "ふつう",
+    "romaji": "futsuu",
+    "image": "https://iili.io/C5PJKpR.png",
+    "isFiction": false,
+    "catatan": "Jenis kereta biasa/lokal. Kereta ini berhenti di hampir semua stasiun, jadi biasanya lebih lambat.",
+    "exampleJa": "普通電車で大阪へ行きます。",
+    "exampleReading": "Futsuu densha de Oosaka e ikimasu.",
+    "exampleId": "Saya pergi ke Osaka dengan kereta biasa/lokal."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-kaiwa-006",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Percakapan",
+    "indonesia": "ekspres",
+    "kanji": "急行",
+    "kana": "きゅうこう",
+    "romaji": "kyuukou",
+    "image": "https://iili.io/C5PJCQI.png",
+    "isFiction": false,
+    "catatan": "Jenis kereta ekspres. Kereta ini hanya berhenti di stasiun tertentu, jadi lebih cepat daripada 普通.",
+    "exampleJa": "急行は3番線です。",
+    "exampleReading": "Kyuukou wa sanban-sen desu.",
+    "exampleId": "Kereta ekspres ada di peron nomor tiga."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-kaiwa-007",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Percakapan",
+    "indonesia": "super ekspres / limited express",
+    "kanji": "特急",
+    "kana": "とっきゅう",
+    "romaji": "tokkyuu",
+    "image": "https://iili.io/C5PJYj2.png",
+    "isFiction": false,
+    "catatan": "Jenis kereta super ekspres/limited express. Kereta ini berhenti di lebih sedikit stasiun dan biasanya lebih cepat daripada 急行.",
+    "exampleJa": "特急で京都へ行きました。",
+    "exampleReading": "Tokkyuu de Kyouto e ikimashita.",
+    "exampleId": "Saya pergi ke Kyoto dengan kereta super ekspres/limited express."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-extra-001",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
+    "indonesia": "Koshien, nama kota/daerah yang terletak di dekat Osaka",
+    "kanji": "甲子園",
+    "kana": "こうしえん",
+    "romaji": "Koushien",
+    "image": "https://iili.io/C5PJ83g.png",
+    "isFiction": false,
+    "exampleJa": "来週、甲子園へ行きます。",
+    "exampleReading": "Raishuu, Koushien e ikimasu.",
+    "exampleId": "Minggu depan saya pergi ke Koshien."
+},
+{
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 5",
+    "chapterNumber": 5,
+    "favorite": false,
+    "id": "mni-b5-extra-002",
+    "typeCategory": "Kosakata Tambahan",
+    "sectionCategory": "Kosakata Tambahan",
+    "indonesia": "Kastil / Benteng Osaka, nama benteng kuno terkenal di Osaka",
+    "kanji": "大阪城",
+    "kana": "おおさかじょう",
+    "romaji": "Oosaka-jou",
+    "image": "https://iili.io/C5PJU8J.png",
+    "isFiction": false,
+    "exampleJa": "昨日、大阪城を見ました。",
+    "exampleReading": "Kinou, Oosaka-jou o mimashita.",
+    "exampleId": "Kemarin saya melihat Kastil/Benteng Osaka."
+}
 ];
 
     const REFERENCE_INFO_BAB2_MATERIAL = {
@@ -8458,6 +9760,39 @@
       ]
     };
 
+    const REFERENCE_INFO_BAB5_MATERIAL = {
+      "title": "祝祭日",
+      "subtitle": "Hari Libur Nasional",
+      "holidays": [
+        { "no": 1, "date": "1月1日", "dateReading": "いちがつ ついたち", "dateId": "1 Januari", "jp": "元日", "reading": "がんじつ", "id": "Tahun Baru", "image": "https://iili.io/C5i6qLx.png", "alt": "Ilustrasi 元日 Tahun Baru" },
+        { "no": 2, "date": "1月第2月曜日", "dateMark": "**", "dateReading": "いちがつ だいに げつようび", "dateId": "Hari Senin minggu kedua bulan Januari", "jp": "成人の日", "reading": "せいじんのひ", "id": "Hari Perayaan Menjadi Dewasa", "image": "https://iili.io/C5i6Kzb.png", "alt": "Ilustrasi 成人の日 Hari Perayaan Menjadi Dewasa" },
+        { "no": 3, "date": "2月11日", "dateReading": "にがつ じゅういちにち", "dateId": "11 Februari", "jp": "建国記念の日", "reading": "けんこくきねんのひ", "id": "Hari Pembangunan Nasional", "image": "https://iili.io/C5i63mu.png", "alt": "Ilustrasi 建国記念の日 Hari Pembangunan Nasional" },
+        { "no": 4, "date": "3月20日", "dateMark": "*", "dateReading": "さんがつ はつか", "dateId": "20 Maret", "jp": "春分の日", "reading": "しゅんぶんのひ", "id": "Hari Equinox pada Musim Semi", "image": "https://iili.io/C5i6Jd7.png", "alt": "Ilustrasi 春分の日 Hari Equinox Musim Semi" },
+        { "no": 5, "date": "4月29日", "dateReading": "しがつ にじゅうくにち", "dateId": "29 April", "jp": "昭和の日", "reading": "しょうわのひ", "id": "Hari Showa", "image": "https://iili.io/C5i6TkF.png", "alt": "Ilustrasi 昭和の日 Hari Showa" },
+        { "no": 6, "date": "5月3日", "dateReading": "ごがつ みっか", "dateId": "3 Mei", "jp": "憲法記念日", "reading": "けんぽうきねんび", "id": "Hari Peringatan Konstitusi", "image": "https://iili.io/C5i6umg.png", "alt": "Ilustrasi 憲法記念日 Hari Peringatan Konstitusi" },
+        { "no": 7, "date": "5月4日", "dateReading": "ごがつ よっか", "dateId": "4 Mei", "jp": "みどりの日", "reading": "みどりのひ", "id": "Hari Penghijauan", "image": "https://iili.io/C5i67Lv.png", "alt": "Ilustrasi みどりの日 Hari Penghijauan" },
+        { "no": 8, "date": "5月5日", "dateReading": "ごがつ いつか", "dateId": "5 Mei", "jp": "こどもの日", "reading": "こどものひ", "id": "Hari Anak", "image": "https://iili.io/C5i6aBR.png", "alt": "Ilustrasi こどもの日 Hari Anak" },
+        { "no": 9, "date": "7月第3月曜日", "dateMark": "***", "dateReading": "しちがつ だいさん げつようび", "dateId": "Hari Senin minggu ketiga bulan Juli", "jp": "海の日", "reading": "うみのひ", "id": "Hari Bahari", "image": "https://iili.io/C5i612I.png", "alt": "Ilustrasi 海の日 Hari Bahari" },
+        { "no": 10, "date": "9月第3月曜日", "dateMark": "***", "dateReading": "くがつ だいさん げつようび", "dateId": "Hari Senin minggu ketiga bulan September", "jp": "敬老の日", "reading": "けいろうのひ", "id": "Hari Hormat kepada Orang Tua", "image": "https://iili.io/C5i6GkX.png", "alt": "Ilustrasi 敬老の日 Hari Hormat kepada Orang Tua" },
+        { "no": 11, "date": "9月23日", "dateMark": "*", "dateReading": "くがつ にじゅうさんにち", "dateId": "23 September", "jp": "秋分の日", "reading": "しゅうぶんのひ", "id": "Hari Equinox pada Musim Gugur", "image": "https://iili.io/C5i6Mpn.png", "alt": "Ilustrasi 秋分の日 Hari Equinox Musim Gugur" },
+        { "no": 12, "date": "10月第2月曜日", "dateMark": "**", "dateReading": "じゅうがつ だいに げつようび", "dateId": "Hari Senin minggu kedua bulan Oktober", "jp": "体育の日", "reading": "たいいくのひ", "id": "Hari Kesehatan dan Olahraga", "image": "https://iili.io/C5i6WIs.png", "alt": "Ilustrasi 体育の日 Hari Kesehatan dan Olahraga" },
+        { "no": 13, "date": "11月3日", "dateReading": "じゅういちがつ みっか", "dateId": "3 November", "jp": "文化の日", "reading": "ぶんかのひ", "id": "Hari Kebudayaan", "image": "https://iili.io/C5i6wB4.png", "alt": "Ilustrasi 文化の日 Hari Kebudayaan" },
+        { "no": 14, "date": "11月23日", "dateReading": "じゅういちがつ にじゅうさんにち", "dateId": "23 November", "jp": "勤労感謝の日", "reading": "きんろうかんしゃのひ", "id": "Hari Bersyukur untuk Pekerjaan", "image": "https://iili.io/C5i6NEl.png", "alt": "Ilustrasi 勤労感謝の日 Hari Bersyukur untuk Pekerjaan" },
+        { "no": 15, "date": "12月23日", "dateReading": "じゅうにがつ にじゅうさんにち", "dateId": "23 Desember", "jp": "天皇誕生日", "reading": "てんのうたんじょうび", "id": "Hari Ulang Tahun Kaisar", "image": "https://iili.io/C5i68v9.png", "alt": "Ilustrasi 天皇誕生日 Hari Ulang Tahun Kaisar" }
+      ],
+      "notes": [
+        { "mark": "*", "text": "Perubahan setiap tahun" },
+        { "mark": "**", "text": "Hari Senin minggu kedua" },
+        { "mark": "***", "text": "Hari Senin minggu ketiga" }
+      ],
+      "extra": [
+        "Jika hari libur nasional jatuh pada hari Minggu, maka akan diganti dengan hari Senin.",
+        "Dari tanggal 29 April sampai 5 Mei merupakan hari libur yang disebut dengan ゴールデンウィーク（Golden Week / Minggu Emas）.",
+        "Perusahaan-perusahaan biasanya memberikan libur sekitar satu minggu penuh bagi para karyawan."
+      ],
+      "searchKeywords": ["祝祭日", "hari libur nasional", "golden week", "ゴールデンウィーク", "元日", "成人の日", "建国記念の日", "春分の日", "昭和の日", "憲法記念日", "みどりの日", "こどもの日", "海の日", "敬老の日", "秋分の日", "体育の日", "文化の日", "勤労感謝の日", "天皇誕生日"]
+    };
+
 
 
     const firebaseConfig = {
@@ -8687,7 +10022,8 @@
     }
     function isReferenceInfoBab2(){ return isReferenceInfoChapter("Bab 2"); }
     function isReferenceInfoBab4(){ return isReferenceInfoChapter("Bab 4"); }
-    function isReferenceInfoMaterialOnly(){ return isReferenceInfoBab2() || isReferenceInfoBab4(); }
+    function isReferenceInfoBab5(){ return isReferenceInfoChapter("Bab 5"); }
+    function isReferenceInfoMaterialOnly(){ return isReferenceInfoBab2() || isReferenceInfoBab4() || isReferenceInfoBab5(); }
 
     function materialOnlyQuizMessage(){
       return state.lang === "ja"
@@ -8736,6 +10072,11 @@
           + (REFERENCE_INFO_BAB4_MATERIAL.emergency?.length || 0)
           + (REFERENCE_INFO_BAB4_MATERIAL.address?.labels?.length || 0);
       }
+      if(isReferenceInfoBab5()){
+        return (REFERENCE_INFO_BAB5_MATERIAL.holidays?.length || 0)
+          + (REFERENCE_INFO_BAB5_MATERIAL.notes?.length || 0)
+          + (REFERENCE_INFO_BAB5_MATERIAL.extra?.length || 0);
+      }
       return (REFERENCE_INFO_BAB2_MATERIAL.vocab?.length || 0)
         + (REFERENCE_INFO_BAB2_MATERIAL.familyNames?.length || 0)
         + (REFERENCE_INFO_BAB2_MATERIAL.greetings?.length || 0);
@@ -8752,10 +10093,17 @@
       const matTimeLabel = $('#matTimeLabel');
       if(materialOnly){
         const bab4 = isReferenceInfoBab4();
+        const bab5 = isReferenceInfoBab5();
         if(homeTitle) homeTitle.textContent = state.lang === "ja" ? "参考資料・情報" : "Materi Referensi dan Informasi";
-        if(homeDesc) homeDesc.textContent = bab4
-          ? (state.lang === "ja" ? "第4課の電話、手紙、緊急番号、住所の書き方を教材として読みます。クイズモードはありません。" : "Buka materi Bab 4 sebagai bahan bacaan: telepon, surat, nomor darurat, dan cara menulis alamat di Jepang. Kategori ini tidak memakai kuis.")
-          : (state.lang === "ja" ? "第2課の参考語彙、姓、あいさつ、マナーを教材として読みます。クイズモードはありません。" : "Buka materi Bab 2 sebagai bahan bacaan: kosakata salam, nama keluarga Jepang, dan informasi sopan santun. Kategori ini tidak memakai kuis.");
+        if(homeDesc){
+          if(bab4){
+            homeDesc.textContent = state.lang === "ja" ? "第4課の電話、手紙、緊急番号、住所の書き方を教材として読みます。クイズモードはありません。" : "Buka materi Bab 4 sebagai bahan bacaan: telepon, surat, nomor darurat, dan cara menulis alamat di Jepang. Kategori ini tidak memakai kuis.";
+          } else if(bab5){
+            homeDesc.textContent = state.lang === "ja" ? "第5課の祝祭日を教材として読みます。クイズモードはありません。" : "Buka materi Bab 5 sebagai bahan bacaan: hari libur nasional Jepang. Kategori ini tidak memakai kuis.";
+          } else {
+            homeDesc.textContent = state.lang === "ja" ? "第2課の参考語彙、姓、あいさつ、マナーを教材として読みます。クイズモードはありません。" : "Buka materi Bab 2 sebagai bahan bacaan: kosakata salam, nama keluarga Jepang, dan informasi sopan santun. Kategori ini tidak memakai kuis.";
+          }
+        }
         if(homeVocabLabel) homeVocabLabel.textContent = state.lang === "ja" ? "教材項目" : "Total Materi";
         if(homeTimeValue) homeTimeValue.textContent = state.lang === "ja" ? "読む" : "Bacaan";
         if(homeTimeLabel) homeTimeLabel.textContent = state.lang === "ja" ? "学習モード" : "Mode Belajar";
@@ -8929,6 +10277,80 @@
                 ${material.address.example.map(line => `<strong class="jp">${esc(line)}</strong>`).join("")}
               </div>
               <div class="material-ref-address-grid">${addressLabels}</div>
+            </div>
+          </section>
+        </div>`;
+    }
+
+
+    function renderReferenceInfoBab5(){
+      const grid = $("#materialGrid");
+      if(!grid) return;
+      const toolbar = $(".material-toolbar");
+      const notice = $("#materialPage .notice");
+      const title = $("#materialPage .content-card > h2");
+      const desc = $("#materialPage .content-card > p");
+      if(title) title.textContent = state.lang === "ja" ? "第5課 祝祭日 / Hari Libur Nasional" : "祝祭日 / Hari Libur Nasional";
+      if(desc) desc.textContent = state.lang === "ja"
+        ? "第5課の参考情報として、日本の国民の祝日を読みやすくまとめた教材です。"
+        : "Daftar hari libur nasional di Jepang yang biasa muncul dalam materi Kata-Kata Referensi dan Informasi Minna no Nihongo I Bab 5.";
+      document.body.classList.add("material-only-reference");
+      if(toolbar){ toolbar.classList.add("hidden"); toolbar.style.setProperty("display", "none", "important"); toolbar.style.setProperty("visibility", "hidden", "important"); }
+      if(notice){ notice.classList.add("hidden"); notice.style.setProperty("display", "none", "important"); }
+      updateMaterialOnlyControls();
+      $("#materialEmpty")?.classList.add("hidden");
+      grid.className = "material-ref-grid material-ref-bab5-grid";
+
+      const material = REFERENCE_INFO_BAB5_MATERIAL;
+      const holidayCards = material.holidays.map(item => `
+        <article class="holiday-item reference-reading-card">
+          <img class="holiday-img" src="${esc(item.image)}" alt="${esc(item.alt || item.jp)}" loading="lazy" data-zoom="${esc(item.image)}">
+          <div>
+            <span class="holiday-date"><i class="fa-regular fa-calendar"></i>${esc(item.date)}${item.dateMark ? `<span class="holiday-date-mark">${esc(item.dateMark)}</span>` : ""}</span>
+            <div class="holiday-date-detail">
+              <div class="holiday-date-line"><i class="fa-solid fa-volume-low"></i><strong>Cara baca tanggal:</strong> <span class="jp">${esc(item.dateReading)}</span></div>
+              <div class="holiday-date-line"><i class="fa-solid fa-language"></i><strong>Arti tanggal:</strong> ${esc(item.dateId)}</div>
+            </div>
+            <div class="holiday-jp">${esc(item.jp)}</div>
+            <div class="holiday-reading">${esc(item.reading)}</div>
+            <p class="holiday-id">${esc(item.id)}</p>
+          </div>
+        </article>`).join("");
+
+      const noteChips = material.notes.map(note => `
+        <div class="holiday-note-chip"><strong>${esc(note.mark)}</strong> ${esc(note.text)}</div>`).join("");
+
+      const extraNotes = material.extra.map(note => `
+        <div class="holiday-extra-note"><i class="fa-solid fa-circle-info"></i><span>${esc(note)}</span></div>`).join("");
+
+      grid.innerHTML = `
+        <div class="material-ref-wrap material-ref-bab5-wrap">
+          <section class="material-ref-hero material-ref-bab5-hero">
+            <div>
+              <span class="material-ref-badge"><i class="fa-solid fa-book-open-reader"></i>${state.lang === "ja" ? "読むだけ" : "Mode baca saja / Tidak ada kuis"}</span>
+              <h3><span class="jp">${esc(material.title)}</span> / ${esc(material.subtitle)}</h3>
+              <p>${state.lang === "ja" ? "日本の祝祭日を、日付・日本語・読み方・インドネシア語訳・イラストで確認できます。" : "Materi ini menampilkan tanggal, cara baca tanggal, arti tanggal dalam bahasa Indonesia, nama hari libur dalam bahasa Jepang, bacaan hiragana, arti Indonesia, dan ilustrasi pendukung."}</p>
+            </div>
+            <div class="material-ref-bab5-icon"><i class="fa-regular fa-calendar-days"></i></div>
+          </section>
+
+          <section class="material-ref-section">
+            <div class="material-ref-section-title">
+              <h3>${state.lang === "ja" ? "祝祭日一覧" : "Daftar Hari Libur Nasional"}</h3>
+              <span class="material-ref-badge"><i class="fa-solid fa-list-check"></i>${material.holidays.length} item</span>
+            </div>
+            <div class="holiday-reading-list">${holidayCards}</div>
+          </section>
+
+          <section class="material-ref-section">
+            <div class="material-ref-section-title">
+              <h3>${state.lang === "ja" ? "注記" : "Catatan"}</h3>
+              <span class="material-ref-badge"><i class="fa-solid fa-asterisk"></i>memo</span>
+            </div>
+            <div class="holiday-note-box">
+              <h4><i class="fa-solid fa-lightbulb"></i>${state.lang === "ja" ? "Keterangan tanda pada tanggal" : "Keterangan tanda pada tanggal"}</h4>
+              <div class="holiday-note-grid">${noteChips}</div>
+              ${extraNotes}
             </div>
           </section>
         </div>`;
@@ -9204,6 +10626,10 @@
       }
       if(isReferenceInfoBab4()){
         renderReferenceInfoBab4();
+        return;
+      }
+      if(isReferenceInfoBab5()){
+        renderReferenceInfoBab5();
         return;
       }
       const notice = $("#materialPage .notice");
