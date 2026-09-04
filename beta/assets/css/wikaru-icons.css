@@ -1,0 +1,195 @@
+/* Wikaru Kotoba Marks v38 — exact 16-mark reference family. */
+.wk-kotoba-icon{
+  display:block;
+  width:1.45em;
+  height:1.45em;
+  flex:0 0 auto;
+  overflow:visible;
+  color:currentColor;
+  object-fit:contain;
+  object-position:center;
+  filter:drop-shadow(0 2px 2px rgba(20,47,102,.10));
+  user-select:none;
+  pointer-events:none;
+}
+.wk-kotoba-shell{
+  position:relative;
+  isolation:isolate;
+}
+.wk-kotoba-shell>.wk-kotoba-icon{
+  width:58%;
+  height:58%;
+  margin:auto;
+}
+.wk-kotoba-shell>i:not(.wk-kotoba-keep),
+.wk-kotoba-shell>.wk-inline-icon{display:none!important;}
+
+/* Consistent sizes for recurring app navigation and action controls. */
+.top-nav button>.wk-kotoba-icon,.bottom-nav button>.wk-kotoba-icon,.drop-item>.wk-kotoba-icon,.btn>.wk-kotoba-icon,.control-btn>.wk-kotoba-icon{width:22px!important;height:22px!important;margin:0!important}
+.bottom-nav button>.wk-kotoba-icon{width:25px!important;height:25px!important}
+.top-nav button.wk-kotoba-shell,.bottom-nav button.wk-kotoba-shell,.drop-item.wk-kotoba-shell,.btn.wk-kotoba-shell{display:flex;align-items:center;justify-content:center;gap:8px}
+.field-label.wk-kotoba-shell>.wk-kotoba-icon{display:inline-block;width:19px!important;height:19px!important;margin-right:6px!important;vertical-align:middle}
+
+/* Reference-matched region art without changing the login flow. */
+#groupGrid .region-icon-shell{
+  background:#fff!important;
+  border:1px solid rgba(36,59,115,.09);
+  border-radius:24px!important;
+  overflow:hidden!important;
+}
+html[data-theme="dark"] #groupGrid .region-icon-shell{background:#fff!important;}
+#groupGrid .wikaru-region-image{
+  width:100%!important;
+  height:100%!important;
+  padding:4px!important;
+  border-radius:20%!important;
+  object-fit:contain!important;
+}
+#groupGrid .login-group-card[data-group="Jembrana"]{--option-accent:#9F4D43;--option-soft:#F8E7C8;}
+#groupGrid .login-group-card[data-group="Singaraja"]{--option-accent:#287B83;--option-soft:#DDF4EF;}
+#groupGrid .login-group-card[data-group="Badung"]{--option-accent:#704B6E;--option-soft:#FCE7D5;}
+#groupGrid .login-group-card[data-group="Umum"]{--option-accent:#66805F;--option-soft:#EEF1DF;}
+#groupGrid .login-group-card.active{background:color-mix(in srgb,var(--option-soft) 72%,#fff)!important;border-color:color-mix(in srgb,var(--option-accent) 48%,#fff)!important;}
+#groupGrid .login-group-card.active .region-icon-shell{box-shadow:0 0 0 4px color-mix(in srgb,var(--option-accent) 14%,transparent),0 12px 24px rgba(36,59,115,.14)!important;}
+
+/* The approved marks are applied only to their matching semantic controls. */
+#loginModal .login-icon>.wk-kotoba-icon{width:35px;height:35px;color:#fff;}
+#quizSettingsModal .soft-step-icon>.wk-kotoba-icon,
+#setupModal .soft-step-icon>.wk-kotoba-icon{width:25px;height:25px;}
+#quizSettingsModal .option-soft-icon>.wk-kotoba-icon{width:27px;height:27px;}
+.wk8-voice-choice>.wk-kotoba-icon,
+.marker-voice-option>.wk-kotoba-icon{width:22px;height:22px;margin-inline:auto;}
+.wk8-voice-choice.active>.wk-kotoba-icon,
+.wk8-voice-choice[aria-pressed="true"]>.wk-kotoba-icon,
+.marker-voice-option.active>.wk-kotoba-icon{color:#fff;}
+.voice-profile-icon>.wk-kotoba-icon{width:25px;height:25px;}
+#micBox .mic-icon>.wk-kotoba-icon{width:23px;height:23px;}
+#exampleBtn>.wk-kotoba-icon{width:21px!important;height:21px!important;margin:0!important;}
+.example-icon.wk-kotoba-shell{font-size:0!important;}
+.example-icon.wk-kotoba-shell>.wk-kotoba-icon{width:27px;height:27px;}
+#materialPage .notice>.wk-kotoba-icon{width:27px;height:27px;align-self:flex-start;color:#294985;}
+#materialPage .notice>i:has(+.wk-kotoba-icon){display:none!important;}
+.wk-kotoba-heading-mark{display:inline-grid;place-items:center;width:42px;height:42px;margin-right:10px;border-radius:14px;background:#EAF0FF;color:#294985;vertical-align:middle;}
+.wk-kotoba-heading-mark>.wk-kotoba-icon{width:25px;height:25px;}
+#materialPage .content-card>h2,
+#learningPage .wk-learning-head h2,
+#resultPage .result-head h2,
+#adminPage .admin-title-row h2{display:flex;align-items:center;gap:0;min-width:0;}
+#pdfFilterModal .kana-icon>.wk-kotoba-icon{width:27px;height:27px;}
+.wk-quiz-help>.wk-kotoba-icon{width:18px;height:18px;}
+.wk-quiz-help>i:has(+.wk-kotoba-icon){display:none!important;}
+.wk-question-timer>.wk-kotoba-icon{width:19px!important;height:19px!important;margin:0!important;color:currentColor;}
+.wk-question-timer>i:has(+.wk-kotoba-icon),
+.wk-quiz-head-btn>.wk-kotoba-icon~i{display:none!important;}
+.wk-quiz-head-btn>.wk-kotoba-icon{width:20px!important;height:20px!important;margin:auto!important;}
+.wk-quiz-guide-kicker>.wk-kotoba-icon{width:17px;height:17px;}
+.wk-quiz-guide-kicker>i:has(+.wk-kotoba-icon){display:none!important;}
+
+/* Wikaru Time Pebble — quiet, compact and readable. */
+#quizPage .metric.timer-metric{
+  --wk-time-tone:#294985;
+  --wk-time-soft:#EEF3FF;
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:38px minmax(0,1fr)!important;
+  grid-template-rows:auto auto auto!important;
+  align-items:center!important;
+  column-gap:10px!important;
+  padding:13px 14px 12px!important;
+  border:1px solid color-mix(in srgb,var(--wk-time-tone) 18%,transparent)!important;
+  border-radius:18px 18px 18px 8px!important;
+  background:linear-gradient(135deg,var(--wk-time-soft),#fff 72%)!important;
+  overflow:hidden!important;
+}
+#quizPage .metric.timer-metric::before{
+  content:""!important;
+  position:absolute!important;
+  width:28px!important;
+  height:28px!important;
+  top:-10px!important;
+  right:-8px!important;
+  left:auto!important;
+  bottom:auto!important;
+  border-radius:50%!important;
+  background:#F2B84B!important;
+  opacity:.32!important;
+}
+#quizPage .metric.timer-metric::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:20px;
+  height:20px;
+  border-radius:0 16px 0 0;
+  background:color-mix(in srgb,var(--wk-time-tone) 12%,transparent);
+  pointer-events:none;
+}
+#quizPage .timer-pebble-mark{
+  grid-column:1;
+  grid-row:1/3;
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border-radius:14px 14px 14px 7px;
+  color:#fff;
+  background:var(--wk-time-tone);
+}
+#quizPage .timer-pebble-mark>.wk-kotoba-icon{width:24px;height:24px;}
+#quizPage .metric.timer-metric>span[data-i18n="time"]{grid-column:2;grid-row:1;font-size:10px!important;font-weight:800!important;letter-spacing:.08em!important;text-transform:uppercase;color:#68758C!important;}
+#quizPage #timerText{grid-column:2;grid-row:2;min-height:0!important;font-size:27px!important;font-weight:850!important;letter-spacing:.01em!important;line-height:1.05!important;color:var(--wk-time-tone)!important;font-variant-numeric:tabular-nums;}
+#quizPage .metric.timer-metric>#pauseBtn{grid-column:1/-1;grid-row:3;margin-top:10px!important;min-height:36px!important;border-radius:12px!important;}
+#quizPage .metric.timer-metric.timer-warning{--wk-time-tone:#9B6A17;--wk-time-soft:#FFF7DF;}
+#quizPage .metric.timer-metric.timer-danger{--wk-time-tone:#C8375C;--wk-time-soft:#FFF0F4;}
+#quizPage #timerText.timer-tick{animation:none!important;}
+
+.wk-question-limit-badge{
+  --wk-time-tone:#294985;
+  --wk-time-soft:#EEF3FF;
+  min-width:132px!important;
+  grid-template-columns:34px minmax(0,1fr)!important;
+  grid-template-rows:auto auto!important;
+  padding:9px 12px 9px 10px!important;
+  border-radius:17px 17px 17px 7px!important;
+  color:var(--wk-time-tone)!important;
+  background:linear-gradient(135deg,var(--wk-time-soft),#fff 75%)!important;
+  border-color:color-mix(in srgb,var(--wk-time-tone) 18%,transparent)!important;
+  box-shadow:0 9px 22px rgba(36,59,115,.10)!important;
+  backdrop-filter:none!important;
+}
+.wk-question-limit-badge::after{
+  content:"";
+  position:absolute;
+  right:7px;
+  top:7px;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#F2B84B;
+}
+.wk-question-limit-badge>.wk-kotoba-icon{grid-row:1/3;width:27px;height:27px;align-self:center;}
+.wk-question-limit-badge>i{display:none!important;}
+.wk-question-limit-badge span{font-size:9px!important;letter-spacing:.04em;text-transform:uppercase;color:#68758C!important;}
+.wk-question-limit-badge strong{font-size:18px!important;color:var(--wk-time-tone)!important;letter-spacing:.01em!important;}
+.wk-question-limit-badge.is-warning{--wk-time-tone:#936211;--wk-time-soft:#FFF7DF;}
+.wk-question-limit-badge.is-danger{--wk-time-tone:#C8375C;--wk-time-soft:#FFF0F4;animation:none!important;}
+
+html[data-theme="dark"] #quizPage .metric.timer-metric,
+html[data-theme="dark"] .wk-question-limit-badge{--wk-time-soft:#202A3A;background:linear-gradient(135deg,var(--wk-time-soft),#17202E 75%)!important;}
+html[data-theme="dark"] #quizPage .metric.timer-metric>span[data-i18n="time"],
+html[data-theme="dark"] .wk-question-limit-badge span{color:#B7C2D6!important;}
+
+@media(max-width:760px){
+  #quizPage .metric.timer-metric{padding:11px 12px 10px!important;grid-template-columns:34px minmax(0,1fr)!important;column-gap:8px!important;}
+  #quizPage .timer-pebble-mark{width:34px;height:34px;border-radius:12px 12px 12px 6px;}
+  #quizPage .timer-pebble-mark>.wk-kotoba-icon{width:22px;height:22px;}
+  #quizPage #timerText{font-size:24px!important;}
+  .wk-question-limit-badge{min-width:124px!important;}
+  .wk8-voice-choice>.wk-kotoba-icon{width:20px;height:20px;}
+  #micBox .mic-icon>.wk-kotoba-icon{width:21px;height:21px;}
+  #exampleBtn>.wk-kotoba-icon{width:19px!important;height:19px!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  .wk-kotoba-icon,.wk-question-limit-badge,#quizPage .metric.timer-metric{animation:none!important;transition:none!important;}
+}

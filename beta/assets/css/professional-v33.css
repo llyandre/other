@@ -1,0 +1,215 @@
+/* Wikaru v33: cloud-home lock, reference-accurate quiz seal, and production polish. */
+
+:root {
+  --wk33-line:#dbe4f1;
+  --wk33-ink:#172747;
+  --wk33-muted:#687791;
+  --wk33-blue:#284989;
+  --wk33-soft:#f4f7fc;
+  --wk33-green:#3f7d55;
+  --wk33-gold:#d89a27;
+}
+
+.wk-skip-link {
+  position:fixed;
+  z-index:2147483600;
+  top:10px;
+  left:12px;
+  translate:0 -150%;
+  padding:11px 15px;
+  border:2px solid #fff;
+  border-radius:12px;
+  background:#17366f;
+  color:#fff;
+  font-weight:800;
+  box-shadow:0 10px 30px rgba(17,37,74,.24);
+  transition:translate .16s ease;
+}
+.wk-skip-link:focus { translate:0 0; }
+#mainContent:focus { outline:0; }
+
+/* The first Wikaru home artwork is always the sun/cloud/kana scene. */
+#homePage .home-theme-scene { display:block!important; }
+#homePage .home-main-reference-image { display:none!important; }
+body.weather-reference-active #homePage .home-theme-scene,
+body.b45-hospital-home-active #homePage .home-theme-scene,
+body.postal50-home-active #homePage .home-theme-scene { display:block!important; }
+body.weather-reference-active #homePage .home-main-reference-image,
+body.b45-hospital-home-active #homePage .home-main-reference-image,
+body.postal50-home-active #homePage .home-main-reference-image { display:none!important; }
+
+/* The desktop-only lower mascot is enlarged then clipped by the page edge,
+   reproducing the peeking pose in the approved reference. */
+body:not(.number-quiz-active):not(.marker-quiz-active):not(.duration-quiz-active):not(.counter-quiz-active) #quizPage::after {
+  right:5px!important;
+  bottom:-57px!important;
+  width:112px!important;
+  height:112px!important;
+  background-size:112px 114px!important;
+  background-position:center top!important;
+  filter:drop-shadow(0 6px 8px rgba(28,51,91,.13))!important;
+}
+
+/* Pronunciation detail: score, waveform, and target-mora feedback. */
+.wk-pronunciation-feedback {
+  flex-wrap:wrap;
+}
+.wk-pronunciation-feedback > span:nth-child(2) { flex:1 1 170px; }
+.wk-pronunciation-analysis {
+  flex:1 0 100%;
+  display:grid;
+  grid-template-columns:86px minmax(0,1fr);
+  gap:10px;
+  align-items:center;
+  padding-top:9px;
+  border-top:1px solid var(--wk33-line);
+}
+.wk-pronunciation-wave {
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  padding:0 7px;
+  border-radius:10px;
+  background:#eaf0fb;
+  color:var(--wk33-blue);
+}
+.wk-pronunciation-wave i {
+  display:block;
+  width:3px;
+  height:calc(5px + (var(--bar, 3) * 2px));
+  max-height:22px;
+  border-radius:999px;
+  background:currentColor;
+  transform-origin:center;
+  animation:wk33Wave .72s ease-in-out both;
+  animation-delay:calc(var(--index, 0) * 35ms);
+}
+.wk-pronunciation-units { display:flex;flex-wrap:wrap;gap:5px; }
+.wk-pronunciation-unit {
+  display:inline-flex;
+  align-items:center;
+  min-height:27px;
+  padding:3px 8px;
+  border:1px solid #d8e1ef;
+  border-radius:999px;
+  background:#fff;
+  color:#5f6d83;
+  font-family:var(--jp,inherit);
+  font-size:11px;
+  font-weight:800;
+}
+.wk-pronunciation-unit.is-match { border-color:#badbc6;background:#eef8f1;color:#35764c; }
+.wk-pronunciation-unit.is-review { border-color:#f0d2b4;background:#fff6e9;color:#9b6427; }
+@keyframes wk33Wave { 0%{scale:1 .3;opacity:.45} 65%{scale:1 1.08;opacity:1} 100%{scale:1 1;opacity:.9} }
+
+/* Achievement board. */
+.wk-achievement-board {
+  margin-top:18px;
+  padding:22px;
+  border:1px solid var(--wk33-line);
+  border-radius:22px;
+  background:linear-gradient(145deg,#fff,#f7f9fd);
+}
+.wk-achievement-head { display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:16px; }
+.wk-achievement-head span { color:#6b7890;font-size:11px;font-weight:850;letter-spacing:.08em;text-transform:uppercase; }
+.wk-achievement-head h3 { margin:4px 0 5px;color:var(--wk33-ink);font-size:20px; }
+.wk-achievement-head p { margin:0;color:var(--wk33-muted);font-size:13px; }
+.wk-achievement-head > strong { min-width:58px;padding:8px 10px;border-radius:12px;background:#e9effb;color:var(--wk33-blue);text-align:center;font-size:14px; }
+.wk-achievement-grid { display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px; }
+.wk-achievement {
+  min-height:128px;
+  display:grid;
+  grid-template-rows:auto auto 1fr;
+  justify-items:start;
+  gap:7px;
+  padding:14px;
+  border:1px solid #e0e6f0;
+  border-radius:17px;
+  background:#f7f8fb;
+  color:#8490a3;
+  filter:grayscale(.72);
+  opacity:.72;
+}
+.wk-achievement.is-earned { background:linear-gradient(145deg,#fff9e9,#fff);border-color:#ead49e;color:#80581e;filter:none;opacity:1;box-shadow:0 10px 24px rgba(87,65,25,.08); }
+.wk-achievement-icon { width:38px;height:38px;display:grid;place-items:center;border-radius:13px;background:#e7ebf1;font-size:16px; }
+.wk-achievement.is-earned .wk-achievement-icon { background:#ffe8a9;color:#9b6915; }
+.wk-achievement strong { color:inherit;font-size:13px; }
+.wk-achievement small { color:inherit;font-size:10px;line-height:1.4; }
+
+/* Teacher-facing insight cards remain local to the browser. */
+.wk-admin-insights {
+  margin:0 0 18px;
+  padding:20px;
+  border:1px solid var(--wk33-line);
+  border-radius:22px;
+  background:#fff;
+  box-shadow:0 14px 34px rgba(28,51,91,.055);
+}
+.wk-admin-insights > header { display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:14px; }
+.wk-admin-insights > header span { color:#687791;font-size:10px;font-weight:900;letter-spacing:.09em; }
+.wk-admin-insights h3 { margin:5px 0 4px;color:var(--wk33-ink);font-size:19px; }
+.wk-admin-insights p { margin:0;color:var(--wk33-muted);font-size:12px; }
+.wk-admin-insight-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px; }
+.wk-admin-insight {
+  min-height:148px;
+  padding:16px;
+  border:1px solid #e0e7f1;
+  border-radius:17px;
+  background:linear-gradient(145deg,#f8faff,#fff);
+}
+.wk-admin-insight-head { display:flex;align-items:center;gap:10px;margin-bottom:12px; }
+.wk-admin-insight-icon { width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:#e8eefb;color:#294b8c; }
+.wk-admin-insight h4 { margin:0;color:var(--wk33-ink);font-size:13px; }
+.wk-admin-insight strong { display:block;margin-bottom:5px;color:#1f3f7b;font-size:20px;line-height:1.2; }
+.wk-admin-insight p { font-size:11px;line-height:1.5; }
+.wk-admin-insight-list { display:grid;gap:6px;margin-top:8px; }
+.wk-admin-insight-list span { display:flex;justify-content:space-between;gap:10px;color:#5f6d84;font-size:10px; }
+
+/* Install and private diagnostic UI. */
+.wk-menu-dot.is-ready { background:#4f9669!important;box-shadow:0 0 0 4px rgba(79,150,105,.12); }
+.wk-diagnostic-card { width:min(620px,100%); }
+.wk-diagnostic-summary { display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:18px 0; }
+.wk-diagnostic-summary article { padding:13px;border:1px solid var(--wk33-line);border-radius:14px;background:#f7f9fc; }
+.wk-diagnostic-summary strong { display:block;color:var(--wk33-ink);font-size:18px; }
+.wk-diagnostic-summary span { color:var(--wk33-muted);font-size:10px; }
+.wk-diagnostic-note { padding:12px 14px;border-radius:13px;background:#eef5ff;color:#41536e;font-size:12px;line-height:1.5; }
+.wk-diagnostic-actions { display:flex;justify-content:flex-end;gap:9px;margin-top:16px; }
+
+/* Dark theme. */
+html[data-theme="dark"] :is(.wk-achievement-board,.wk-admin-insights,.wk-admin-insight,.wk-diagnostic-card) { background:#17243a!important;border-color:#344765!important;color:#eaf0fb; }
+html[data-theme="dark"] :is(.wk-achievement-head h3,.wk-admin-insights h3,.wk-admin-insight h4,.wk-diagnostic-summary strong) { color:#f2f6ff; }
+html[data-theme="dark"] :is(.wk-achievement,.wk-diagnostic-summary article) { background:#1d2b43;border-color:#344765; }
+html[data-theme="dark"] .wk-achievement.is-earned { background:#2a2b3d;border-color:#6f633d;color:#f0d897; }
+html[data-theme="dark"] .wk-pronunciation-analysis { border-color:#344765; }
+html[data-theme="dark"] .wk-pronunciation-wave { background:#22324c;color:#9fbaff; }
+html[data-theme="dark"] .wk-pronunciation-unit { background:#1b2a43;border-color:#3a4d6e;color:#c7d1e3; }
+
+@media (max-width:1000px) {
+  .wk-achievement-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .wk-admin-insight-grid { grid-template-columns:1fr; }
+  .wk-admin-insight { min-height:0; }
+}
+
+@media (max-width:767px) {
+  .wk-achievement-board,.wk-admin-insights { padding:16px;border-radius:18px; }
+  .wk-achievement-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .wk-achievement { min-height:112px;padding:12px; }
+  .wk-achievement-head { align-items:flex-start; }
+  .wk-achievement-head p { display:none; }
+  .wk-admin-insights > header { flex-direction:column; }
+  .wk-admin-insights > header .btn { width:100%; }
+  .wk-pronunciation-analysis { grid-template-columns:1fr; }
+  .wk-pronunciation-wave { justify-content:flex-start; }
+  .wk-diagnostic-summary { grid-template-columns:1fr; }
+  .wk-diagnostic-actions { display:grid;grid-template-columns:1fr; }
+}
+
+@media (max-width:390px) {
+  .wk-achievement-grid { grid-template-columns:1fr; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .wk-skip-link,.wk-pronunciation-wave i { transition:none!important;animation:none!important; }
+}
