@@ -1,0 +1,29 @@
+Rejected v37 visual outputs removed or superseded in v38:
+
+assets/icons/kotoba-v37/
+assets/mascot/v37/
+assets/mascot/master-v37/
+assets/mascot/master-v38/seal-guide-master.png (rejected low-resolution source)
+assets/cursor/master-v37/
+assets/cursor/seal-cursor-normal-v37.png
+assets/cursor/seal-cursor-happy-v37.png
+assets/cursor/seal-cursor-hover-v37.png
+assets/cursor/seal-cursor-click-v37.png
+assets/cursor/seal-cursor-loading-v37.png
+assets/cursor/seal-cursor-typing-v37.png
+assets/cursor/seal-cursor-success-v37.png
+assets/cursor/seal-cursor-sleep-v37.png
+assets/css/visual-v37.css
+qa/build-cursor-v37.mjs
+qa/build-kotoba-v37.mjs
+qa/build-mascot-v37.mjs
+qa/V37_QA_REPORT.md
+qa/V37_DELETED_FILES.txt
+qa/visual-v37/
+qa/visual-v38/icon-glyph-check.png (intermediate inspection file)
+Wikaru_Final_v37_GitHub_Pages.zip
+
+Notes:
+- assets/css/visual-v37.css was replaced by assets/css/visual-v38.css.
+- v37 build scripts were replaced by their v38 equivalents.
+- One v37 localStorage key remains as a read-only migration fallback so an existing user's cursor opt-out preference is preserved. No v37 artwork is loaded.

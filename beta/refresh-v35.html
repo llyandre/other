@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Perbarui Wikaru v39</title>
+  <style>body{min-height:100vh;margin:0;display:grid;place-items:center;background:#f3f7fc;color:#142442;font-family:Arial,sans-serif}.card{width:min(520px,calc(100% - 32px));box-sizing:border-box;padding:32px;border:1px solid #dbe4f0;border-radius:26px;background:#fff;box-shadow:0 20px 60px rgba(25,49,91,.12);text-align:center}.mark{width:64px;height:64px;margin:auto;display:grid;place-items:center;border-radius:19px;background:#17366f;color:#fff;font-size:28px;font-weight:900}h1{margin:20px 0 10px;font-size:26px}p{margin:0;color:#65748d;line-height:1.6}.bar{height:8px;margin:24px 0 0;border-radius:999px;background:#e7edf6;overflow:hidden}.bar:after{content:"";display:block;width:55%;height:100%;border-radius:inherit;background:#315ca6;animation:move 1s ease-in-out infinite alternate}@keyframes move{to{transform:translateX(82%)}}</style>
+</head>
+<body>
+  <main class="card"><div class="mark">あ</div><h1>Memasang tampilan Wikaru v39</h1><p>Cache dan service worker lama sedang dibersihkan. Halaman utama akan terbuka otomatis.</p><div class="bar" aria-hidden="true"></div></main>
+  <script>
+    (async()=>{try{if("serviceWorker"in navigator){const rows=await navigator.serviceWorker.getRegistrations();await Promise.all(rows.map(row=>row.unregister()))}if("caches"in window){const keys=await caches.keys();await Promise.all(keys.map(key=>caches.delete(key)))}}catch(_){}const target=new URL("./index.html",location.href);target.searchParams.set("wikaru-release","v39");setTimeout(()=>location.replace(target),650)})();
+  </script>
+</body>
+</html>

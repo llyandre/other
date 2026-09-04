@@ -1,0 +1,13 @@
+Rejected icon files removed or superseded in v39:
+
+assets/icons/kotoba-v38/
+assets/icons/wikaru-kotoba-marks.svg
+qa/build-kotoba-v38.mjs
+qa/test-v38-visual-assets.mjs (renamed and updated to qa/test-v39-visual-assets.mjs)
+QA_REPORT_V38.md
+qa/visual-v38/icon-contact-sheet.png
+
+Notes:
+- Only the rejected v38 icon system was removed.
+- Approved mascot, cursor, region, quiz, login, database, audio, progress, PWA, and routing files remain active.
+- The historical visual-v38 stylesheet filename remains for compatibility; its approved visual rules were not replaced.

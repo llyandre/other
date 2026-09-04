@@ -1,0 +1,10 @@
+{
+  "name": "wikaru-preserved-github-pages",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node qa/dev-server.mjs",
+    "test": "node qa/validate.mjs && node qa/test-visible-assets-v27.mjs && node qa/test-approved-question-page.mjs && node qa/test-copywriting-ui.mjs && node qa/test-continuity-timer.mjs && node qa/test-supabase-integration.mjs && node qa/test-supabase-runtime.mjs && node qa/test-data-loader.mjs && node qa/test-profile-assets.mjs && node qa/test-region-assets.mjs && node qa/test-wikaru-icons.mjs && node qa/test-v39-visual-assets.mjs && node qa/test-v39-icon-rollout.mjs && node qa/test-regression-invariants.mjs && node qa/test-responsive-static.mjs && node qa/test-reference-viewports-v39u1.mjs && node qa/test-homepage-static.mjs && node qa/test-professional-v32.mjs && node qa/test-professional-v33.mjs && node qa/test-github-deploy-v35.mjs && node qa/test-motion-safety.mjs && node qa/test-mascot-system.mjs && node qa/test-mascot-runtime.mjs && node qa/test-cursor-quiz-guide.mjs && node qa/test-cursor-runtime.mjs && node qa/test-speech-personas.mjs && node qa/test-speech-runtime.mjs && node qa/test-app-management.mjs && node qa/test-pdf-reports.mjs && node qa/test-learning-hub.mjs && node qa/test-http.mjs",
+    "build": "npm test"
+  }
+}
