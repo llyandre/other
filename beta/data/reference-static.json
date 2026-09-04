@@ -1,0 +1,1980 @@
+{
+  "datasets": {
+    "BAB16_REFERENCE_INFO_ATM_VOCABULARY": [
+      "mni-ref-b16-atm-001",
+      "mni-ref-b16-atm-002",
+      "mni-ref-b16-atm-003",
+      "mni-ref-b16-atm-004",
+      "mni-ref-b16-atm-005",
+      "mni-ref-b16-atm-006",
+      "mni-ref-b16-atm-007",
+      "mni-ref-b16-atm-008",
+      "mni-ref-b16-atm-009"
+    ],
+    "BAB24_REFERENCE_GIFT_EXCHANGE": [
+      "mni-b24-ref-gift-001",
+      "mni-b24-ref-gift-002",
+      "mni-b24-ref-gift-003",
+      "mni-b24-ref-gift-004",
+      "mni-b24-ref-gift-005",
+      "mni-b24-ref-gift-006",
+      "mni-b24-ref-gift-007",
+      "mni-b24-ref-gift-008",
+      "mni-b24-ref-gift-009",
+      "mni-b24-ref-gift-010",
+      "mni-b24-ref-gift-011",
+      "mni-b24-ref-gift-012",
+      "mni-b24-ref-gift-013",
+      "mni-b24-ref-gift-014",
+      "mni-b24-ref-gift-015"
+    ],
+    "BAB26_REFERENCE_GARBAGE_ITEMS": [
+      "mnii-b26-ref-gomi-01",
+      "mnii-b26-ref-gomi-02",
+      "mnii-b26-ref-gomi-03",
+      "mnii-b26-ref-gomi-04",
+      "mnii-b26-ref-gomi-05",
+      "mnii-b26-ref-gomi-06",
+      "mnii-b26-ref-gomi-07",
+      "mnii-b26-ref-gomi-08"
+    ],
+    "BAB27_REFERENCE_INFO_VOCABULARY": [
+      "mnii-b27-ref-info-01",
+      "mnii-b27-ref-info-02",
+      "mnii-b27-ref-info-03",
+      "mnii-b27-ref-info-04",
+      "mnii-b27-ref-info-05",
+      "mnii-b27-ref-info-06",
+      "mnii-b27-ref-info-07",
+      "mnii-b27-ref-info-08",
+      "mnii-b27-ref-info-09",
+      "mnii-b27-ref-info-10",
+      "mnii-b27-ref-info-11",
+      "mnii-b27-ref-info-12",
+      "mnii-b27-ref-info-13",
+      "mnii-b27-ref-info-14",
+      "mnii-b27-ref-info-15",
+      "mnii-b27-ref-info-16",
+      "mnii-b27-ref-info-17",
+      "mnii-b27-ref-info-18",
+      "mnii-b27-ref-info-19",
+      "mnii-b27-ref-info-20",
+      "mnii-b27-ref-info-21",
+      "mnii-b27-ref-info-22",
+      "mnii-b27-ref-info-23",
+      "mnii-b27-ref-info-24"
+    ],
+    "BAB28_REFERENCE_HOUSING_VOCABULARY": [
+      "mnii-b28-ref-housing-01",
+      "mnii-b28-ref-housing-02",
+      "mnii-b28-ref-housing-03",
+      "mnii-b28-ref-housing-04",
+      "mnii-b28-ref-housing-05",
+      "mnii-b28-ref-housing-06",
+      "mnii-b28-ref-housing-07",
+      "mnii-b28-ref-housing-08",
+      "mnii-b28-ref-housing-09",
+      "mnii-b28-ref-housing-10",
+      "mnii-b28-ref-housing-11",
+      "mnii-b28-ref-housing-12",
+      "mnii-b28-ref-housing-13",
+      "mnii-b28-ref-housing-14",
+      "mnii-b28-ref-housing-15",
+      "mnii-b28-ref-housing-16",
+      "mnii-b28-ref-housing-17",
+      "mnii-b28-ref-housing-18",
+      "mnii-b28-ref-housing-19",
+      "mnii-b28-ref-housing-20",
+      "mnii-b28-ref-housing-21",
+      "mnii-b28-ref-housing-22",
+      "mnii-b28-ref-housing-23",
+      "mnii-b28-ref-housing-24",
+      "mnii-b28-ref-housing-25",
+      "mnii-b28-ref-housing-26",
+      "mnii-b28-ref-housing-27",
+      "mnii-b28-ref-housing-28",
+      "mnii-b28-ref-housing-29",
+      "mnii-b28-ref-housing-30",
+      "mnii-b28-ref-housing-31",
+      "mnii-b28-ref-housing-32",
+      "mnii-b28-ref-housing-33",
+      "mnii-b28-ref-housing-34",
+      "mnii-b28-ref-housing-35",
+      "mnii-b28-ref-housing-36",
+      "mnii-b28-ref-housing-37",
+      "mnii-b28-ref-housing-38",
+      "mnii-b28-ref-housing-39",
+      "mnii-b28-ref-housing-40",
+      "mnii-b28-ref-housing-41",
+      "mnii-b28-ref-housing-42"
+    ],
+    "BAB30_REFERENCE_EMERGENCY_ITEMS": [
+      "mnii-b30-ref-emergency-02",
+      "mnii-b30-ref-emergency-03",
+      "mnii-b30-ref-emergency-04",
+      "mnii-b30-ref-emergency-05",
+      "mnii-b30-ref-emergency-06",
+      "mnii-b30-ref-emergency-07",
+      "mnii-b30-ref-emergency-08",
+      "mnii-b30-ref-emergency-09",
+      "mnii-b30-ref-emergency-10",
+      "mnii-b30-ref-emergency-11",
+      "mnii-b30-ref-emergency-12",
+      "mnii-b30-ref-emergency-13",
+      "mnii-b30-ref-emergency-14",
+      "mnii-b30-ref-emergency-15",
+      "mnii-b30-ref-emergency-16",
+      "mnii-b30-ref-emergency-17",
+      "mnii-b30-ref-emergency-18",
+      "mnii-b30-ref-emergency-19",
+      "mnii-b30-ref-emergency-20",
+      "mnii-b30-ref-emergency-21",
+      "mnii-b30-ref-emergency-22"
+    ],
+    "BAB32_REFERENCE_WEATHER_ITEMS": [
+      "mnii-b32-ref-weather-001",
+      "mnii-b32-ref-weather-002",
+      "mnii-b32-ref-weather-003",
+      "mnii-b32-ref-weather-004",
+      "mnii-b32-ref-weather-005",
+      "mnii-b32-ref-weather-006",
+      "mnii-b32-ref-weather-007",
+      "mnii-b32-ref-weather-008",
+      "mnii-b32-ref-weather-009",
+      "mnii-b32-ref-weather-010",
+      "mnii-b32-ref-weather-011",
+      "mnii-b32-ref-weather-012",
+      "mnii-b32-ref-weather-013",
+      "mnii-b32-ref-weather-014",
+      "mnii-b32-ref-weather-015",
+      "mnii-b32-ref-weather-016",
+      "mnii-b32-ref-weather-017",
+      "mnii-b32-ref-weather-018",
+      "mnii-b32-ref-weather-019",
+      "mnii-b32-ref-weather-020",
+      "mnii-b32-ref-weather-021",
+      "mnii-b32-ref-weather-022",
+      "mnii-b32-ref-weather-023",
+      "mnii-b32-ref-weather-024",
+      "mnii-b32-ref-weather-025",
+      "mnii-b32-ref-weather-026",
+      "mnii-b32-ref-weather-027",
+      "mnii-b32-ref-weather-028",
+      "mnii-b32-ref-weather-029",
+      "mnii-b32-ref-weather-030",
+      "mnii-b32-ref-weather-031",
+      "mnii-b32-ref-weather-032",
+      "mnii-b32-ref-weather-033",
+      "mnii-b32-ref-weather-034",
+      "mnii-b32-ref-weather-035",
+      "mnii-b32-ref-weather-036",
+      "mnii-b32-ref-weather-037"
+    ],
+    "BAB33_REFERENCE_SIGN_ITEMS": [
+      "mnii-b33-ref-sign-001",
+      "mnii-b33-ref-sign-002",
+      "mnii-b33-ref-sign-003",
+      "mnii-b33-ref-sign-004",
+      "mnii-b33-ref-sign-005",
+      "mnii-b33-ref-sign-006",
+      "mnii-b33-ref-sign-007",
+      "mnii-b33-ref-sign-008",
+      "mnii-b33-ref-sign-009",
+      "mnii-b33-ref-sign-010",
+      "mnii-b33-ref-sign-011",
+      "mnii-b33-ref-sign-012",
+      "mnii-b33-ref-sign-013",
+      "mnii-b33-ref-sign-014",
+      "mnii-b33-ref-sign-015",
+      "mnii-b33-ref-sign-016"
+    ],
+    "BAB35_REFERENCE_KOTOWAZA_ITEMS": [
+      "mnii-b35-ref-kotowaza-001",
+      "mnii-b35-ref-kotowaza-002",
+      "mnii-b35-ref-kotowaza-003",
+      "mnii-b35-ref-kotowaza-004",
+      "mnii-b35-ref-kotowaza-005",
+      "mnii-b35-ref-kotowaza-006"
+    ],
+    "BAB36_REFERENCE_HEALTH_ITEMS": [
+      "mnii-b36-ref-health-001",
+      "mnii-b36-ref-health-002",
+      "mnii-b36-ref-health-003",
+      "mnii-b36-ref-health-004",
+      "mnii-b36-ref-health-005",
+      "mnii-b36-ref-health-006",
+      "mnii-b36-ref-health-007",
+      "mnii-b36-ref-health-008",
+      "mnii-b36-ref-health-009",
+      "mnii-b36-ref-health-010",
+      "mnii-b36-ref-health-011",
+      "mnii-b36-ref-health-012",
+      "mnii-b36-ref-health-013",
+      "mnii-b36-ref-health-014",
+      "mnii-b36-ref-health-015",
+      "mnii-b36-ref-health-016",
+      "mnii-b36-ref-health-017",
+      "mnii-b36-ref-health-018",
+      "mnii-b36-ref-health-019",
+      "mnii-b36-ref-health-020",
+      "mnii-b36-ref-health-021",
+      "mnii-b36-ref-health-022",
+      "mnii-b36-ref-health-023",
+      "mnii-b36-ref-health-024",
+      "mnii-b36-ref-health-025"
+    ],
+    "BAB38_REFERENCE_POSITION_ITEMS": [
+      "mnii-b38-ref-position-001",
+      "mnii-b38-ref-position-002",
+      "mnii-b38-ref-position-003",
+      "mnii-b38-ref-position-004",
+      "mnii-b38-ref-position-005",
+      "mnii-b38-ref-position-006",
+      "mnii-b38-ref-position-007",
+      "mnii-b38-ref-position-008",
+      "mnii-b38-ref-position-009",
+      "mnii-b38-ref-position-010",
+      "mnii-b38-ref-position-011",
+      "mnii-b38-ref-position-012",
+      "mnii-b38-ref-position-013",
+      "mnii-b38-ref-position-014",
+      "mnii-b38-ref-position-015",
+      "mnii-b38-ref-position-016",
+      "mnii-b38-ref-position-017",
+      "mnii-b38-ref-position-018",
+      "mnii-b38-ref-position-019",
+      "mnii-b38-ref-position-020",
+      "mnii-b38-ref-position-021",
+      "mnii-b38-ref-position-022",
+      "mnii-b38-ref-position-023",
+      "mnii-b38-ref-position-024",
+      "mnii-b38-ref-position-025",
+      "mnii-b38-ref-position-026",
+      "mnii-b38-ref-position-027",
+      "mnii-b38-ref-position-028",
+      "mnii-b38-ref-position-029",
+      "mnii-b38-ref-position-030",
+      "mnii-b38-ref-position-031",
+      "mnii-b38-ref-position-032",
+      "mnii-b38-ref-position-033",
+      "mnii-b38-ref-position-034",
+      "mnii-b38-ref-position-035",
+      "mnii-b38-ref-position-036",
+      "mnii-b38-ref-position-037",
+      "mnii-b38-ref-position-038",
+      "mnii-b38-ref-position-039",
+      "mnii-b38-ref-position-040",
+      "mnii-b38-ref-position-041",
+      "mnii-b38-ref-position-042",
+      "mnii-b38-ref-position-043",
+      "mnii-b38-ref-position-044",
+      "mnii-b38-ref-position-045",
+      "mnii-b38-ref-position-046",
+      "mnii-b38-ref-position-047",
+      "mnii-b38-ref-position-048",
+      "mnii-b38-ref-position-049",
+      "mnii-b38-ref-position-050",
+      "mnii-b38-ref-position-051",
+      "mnii-b38-ref-position-052",
+      "mnii-b38-ref-position-053",
+      "mnii-b38-ref-position-054",
+      "mnii-b38-ref-position-055",
+      "mnii-b38-ref-position-056",
+      "mnii-b38-ref-position-057",
+      "mnii-b38-ref-position-058",
+      "mnii-b38-ref-position-059",
+      "mnii-b38-ref-position-060",
+      "mnii-b38-ref-position-061",
+      "mnii-b38-ref-position-062",
+      "mnii-b38-ref-position-063",
+      "mnii-b38-ref-position-064",
+      "mnii-b38-ref-position-065",
+      "mnii-b38-ref-position-066"
+    ],
+    "BAB40_REFERENCE_MEASUREMENT_ITEMS": [
+      "mnii-b40-ref-measure-001",
+      "mnii-b40-ref-measure-002",
+      "mnii-b40-ref-measure-003",
+      "mnii-b40-ref-measure-004",
+      "mnii-b40-ref-measure-005",
+      "mnii-b40-ref-measure-006",
+      "mnii-b40-ref-measure-007",
+      "mnii-b40-ref-measure-008",
+      "mnii-b40-ref-measure-009",
+      "mnii-b40-ref-measure-010",
+      "mnii-b40-ref-measure-011",
+      "mnii-b40-ref-measure-012",
+      "mnii-b40-ref-measure-013",
+      "mnii-b40-ref-measure-014",
+      "mnii-b40-ref-measure-015",
+      "mnii-b40-ref-measure-016",
+      "mnii-b40-ref-measure-017",
+      "mnii-b40-ref-measure-018",
+      "mnii-b40-ref-measure-019",
+      "mnii-b40-ref-measure-020",
+      "mnii-b40-ref-measure-021",
+      "mnii-b40-ref-measure-022",
+      "mnii-b40-ref-measure-023",
+      "mnii-b40-ref-measure-024",
+      "mnii-b40-ref-measure-025",
+      "mnii-b40-ref-measure-026",
+      "mnii-b40-ref-measure-027",
+      "mnii-b40-ref-measure-028",
+      "mnii-b40-ref-measure-029",
+      "mnii-b40-ref-measure-030",
+      "mnii-b40-ref-measure-031",
+      "mnii-b40-ref-measure-032",
+      "mnii-b40-ref-measure-033",
+      "mnii-b40-ref-measure-034",
+      "mnii-b40-ref-measure-035",
+      "mnii-b40-ref-measure-036",
+      "mnii-b40-ref-measure-037",
+      "mnii-b40-ref-measure-038",
+      "mnii-b40-ref-measure-039",
+      "mnii-b40-ref-measure-040",
+      "mnii-b40-ref-measure-041",
+      "mnii-b40-ref-measure-042",
+      "mnii-b40-ref-measure-043",
+      "mnii-b40-ref-measure-044",
+      "mnii-b40-ref-measure-045",
+      "mnii-b40-ref-measure-046",
+      "mnii-b40-ref-measure-047",
+      "mnii-b40-ref-measure-048",
+      "mnii-b40-ref-measure-049",
+      "mnii-b40-ref-measure-050",
+      "mnii-b40-ref-measure-051",
+      "mnii-b40-ref-measure-052",
+      "mnii-b40-ref-measure-053",
+      "mnii-b40-ref-measure-054",
+      "mnii-b40-ref-measure-055"
+    ],
+    "BAB41_REFERENCE_USEFUL_ITEMS": [
+      "mnii-b41-ref-useful-001",
+      "mnii-b41-ref-useful-002",
+      "mnii-b41-ref-useful-003",
+      "mnii-b41-ref-useful-004",
+      "mnii-b41-ref-useful-005",
+      "mnii-b41-ref-useful-006",
+      "mnii-b41-ref-useful-007",
+      "mnii-b41-ref-useful-008",
+      "mnii-b41-ref-useful-009",
+      "mnii-b41-ref-useful-010",
+      "mnii-b41-ref-useful-011",
+      "mnii-b41-ref-useful-012",
+      "mnii-b41-ref-useful-013",
+      "mnii-b41-ref-useful-014",
+      "mnii-b41-ref-useful-015",
+      "mnii-b41-ref-useful-016",
+      "mnii-b41-ref-useful-017",
+      "mnii-b41-ref-useful-018",
+      "mnii-b41-ref-useful-019",
+      "mnii-b41-ref-useful-020",
+      "mnii-b41-ref-useful-021",
+      "mnii-b41-ref-useful-022",
+      "mnii-b41-ref-useful-023",
+      "mnii-b41-ref-useful-024",
+      "mnii-b41-ref-useful-025",
+      "mnii-b41-ref-useful-026",
+      "mnii-b41-ref-useful-027",
+      "mnii-b41-ref-useful-028",
+      "mnii-b41-ref-useful-029",
+      "mnii-b41-ref-useful-030",
+      "mnii-b41-ref-useful-031",
+      "mnii-b41-ref-useful-032",
+      "mnii-b41-ref-useful-033",
+      "mnii-b41-ref-useful-034",
+      "mnii-b41-ref-useful-035",
+      "mnii-b41-ref-useful-036",
+      "mnii-b41-ref-useful-037",
+      "mnii-b41-ref-useful-038",
+      "mnii-b41-ref-useful-039",
+      "mnii-b41-ref-useful-040",
+      "mnii-b41-ref-useful-041",
+      "mnii-b41-ref-useful-042",
+      "mnii-b41-ref-useful-043",
+      "mnii-b41-ref-useful-044"
+    ],
+    "BAB44_REFERENCE_SALON_ITEMS": [
+      "mnii-b44-ref-salon-001",
+      "mnii-b44-ref-salon-002",
+      "mnii-b44-ref-salon-003",
+      "mnii-b44-ref-salon-004",
+      "mnii-b44-ref-salon-005",
+      "mnii-b44-ref-salon-006",
+      "mnii-b44-ref-salon-007",
+      "mnii-b44-ref-salon-008",
+      "mnii-b44-ref-salon-009",
+      "mnii-b44-ref-salon-010",
+      "mnii-b44-ref-salon-011",
+      "mnii-b44-ref-salon-012",
+      "mnii-b44-ref-salon-013",
+      "mnii-b44-ref-salon-014",
+      "mnii-b44-ref-salon-015",
+      "mnii-b44-ref-salon-016",
+      "mnii-b44-ref-salon-017",
+      "mnii-b44-ref-salon-018",
+      "mnii-b44-ref-salon-019",
+      "mnii-b44-ref-salon-020",
+      "mnii-b44-ref-salon-021",
+      "mnii-b44-ref-salon-022",
+      "mnii-b44-ref-salon-023",
+      "mnii-b44-ref-salon-024",
+      "mnii-b44-ref-salon-025",
+      "mnii-b44-ref-salon-026",
+      "mnii-b44-ref-salon-027",
+      "mnii-b44-ref-salon-028",
+      "mnii-b44-ref-salon-029",
+      "mnii-b44-ref-salon-030",
+      "mnii-b44-ref-salon-031",
+      "mnii-b44-ref-salon-032",
+      "mnii-b44-ref-salon-033",
+      "mnii-b44-ref-salon-034",
+      "mnii-b44-ref-salon-035",
+      "mnii-b44-ref-salon-036",
+      "mnii-b44-ref-salon-037",
+      "mnii-b44-ref-salon-038",
+      "mnii-b44-ref-salon-039",
+      "mnii-b44-ref-salon-040",
+      "mnii-b44-ref-salon-041",
+      "mnii-b44-ref-salon-042",
+      "mnii-b44-ref-salon-043",
+      "mnii-b44-ref-salon-044",
+      "mnii-b44-ref-salon-045",
+      "mnii-b44-ref-salon-046",
+      "mnii-b44-ref-salon-047",
+      "mnii-b44-ref-salon-048",
+      "mnii-b44-ref-salon-049",
+      "mnii-b44-ref-salon-050",
+      "mnii-b44-ref-salon-051",
+      "mnii-b44-ref-salon-052",
+      "mnii-b44-ref-salon-053",
+      "mnii-b44-ref-salon-054",
+      "mnii-b44-ref-salon-055",
+      "mnii-b44-ref-salon-056",
+      "mnii-b44-ref-salon-057",
+      "mnii-b44-ref-salon-058",
+      "mnii-b44-ref-salon-059",
+      "mnii-b44-ref-salon-060",
+      "mnii-b44-ref-salon-061",
+      "mnii-b44-ref-salon-062",
+      "mnii-b44-ref-salon-063",
+      "mnii-b44-ref-salon-064",
+      "mnii-b44-ref-salon-065",
+      "mnii-b44-ref-salon-066",
+      "mnii-b44-ref-salon-067",
+      "mnii-b44-ref-salon-068",
+      "mnii-b44-ref-salon-069",
+      "mnii-b44-ref-salon-070",
+      "mnii-b44-ref-salon-071",
+      "mnii-b44-ref-salon-072",
+      "mnii-b44-ref-salon-073",
+      "mnii-b44-ref-salon-074",
+      "mnii-b44-ref-salon-075",
+      "mnii-b44-ref-salon-076",
+      "mnii-b44-ref-salon-077",
+      "mnii-b44-ref-salon-078",
+      "mnii-b44-ref-salon-079",
+      "mnii-b44-ref-salon-080",
+      "mnii-b44-ref-salon-081",
+      "mnii-b44-ref-salon-082"
+    ],
+    "BAB46_REFERENCE_KATAKANA_ITEMS": [
+      "mnii-b46-ref-katakana-001",
+      "mnii-b46-ref-katakana-002",
+      "mnii-b46-ref-katakana-003",
+      "mnii-b46-ref-katakana-004",
+      "mnii-b46-ref-katakana-005",
+      "mnii-b46-ref-katakana-006",
+      "mnii-b46-ref-katakana-007",
+      "mnii-b46-ref-katakana-008",
+      "mnii-b46-ref-katakana-009",
+      "mnii-b46-ref-katakana-010",
+      "mnii-b46-ref-katakana-011",
+      "mnii-b46-ref-katakana-012",
+      "mnii-b46-ref-katakana-013",
+      "mnii-b46-ref-katakana-014",
+      "mnii-b46-ref-katakana-015",
+      "mnii-b46-ref-katakana-016",
+      "mnii-b46-ref-katakana-017",
+      "mnii-b46-ref-katakana-018",
+      "mnii-b46-ref-katakana-019",
+      "mnii-b46-ref-katakana-020",
+      "mnii-b46-ref-katakana-021",
+      "mnii-b46-ref-katakana-022",
+      "mnii-b46-ref-katakana-023",
+      "mnii-b46-ref-katakana-024",
+      "mnii-b46-ref-katakana-025",
+      "mnii-b46-ref-katakana-026",
+      "mnii-b46-ref-katakana-027",
+      "mnii-b46-ref-katakana-028",
+      "mnii-b46-ref-katakana-029",
+      "mnii-b46-ref-katakana-030",
+      "mnii-b46-ref-katakana-031",
+      "mnii-b46-ref-katakana-032",
+      "mnii-b46-ref-katakana-033",
+      "mnii-b46-ref-katakana-034",
+      "mnii-b46-ref-katakana-035",
+      "mnii-b46-ref-katakana-036",
+      "mnii-b46-ref-katakana-037",
+      "mnii-b46-ref-katakana-038",
+      "mnii-b46-ref-katakana-039",
+      "mnii-b46-ref-katakana-040",
+      "mnii-b46-ref-katakana-041",
+      "mnii-b46-ref-katakana-042",
+      "mnii-b46-ref-katakana-043",
+      "mnii-b46-ref-katakana-044",
+      "mnii-b46-ref-katakana-045",
+      "mnii-b46-ref-katakana-046",
+      "mnii-b46-ref-katakana-047",
+      "mnii-b46-ref-katakana-048",
+      "mnii-b46-ref-katakana-049",
+      "mnii-b46-ref-katakana-050",
+      "mnii-b46-ref-katakana-051",
+      "mnii-b46-ref-katakana-052",
+      "mnii-b46-ref-katakana-053",
+      "mnii-b46-ref-katakana-054",
+      "mnii-b46-ref-katakana-055",
+      "mnii-b46-ref-katakana-056",
+      "mnii-b46-ref-katakana-057",
+      "mnii-b46-ref-katakana-058",
+      "mnii-b46-ref-katakana-059",
+      "mnii-b46-ref-katakana-060",
+      "mnii-b46-ref-katakana-061",
+      "mnii-b46-ref-katakana-062",
+      "mnii-b46-ref-katakana-063",
+      "mnii-b46-ref-katakana-064",
+      "mnii-b46-ref-katakana-065",
+      "mnii-b46-ref-katakana-066",
+      "mnii-b46-ref-katakana-067",
+      "mnii-b46-ref-katakana-068",
+      "mnii-b46-ref-katakana-069",
+      "mnii-b46-ref-katakana-070",
+      "mnii-b46-ref-katakana-071",
+      "mnii-b46-ref-katakana-072",
+      "mnii-b46-ref-katakana-073",
+      "mnii-b46-ref-katakana-074",
+      "mnii-b46-ref-katakana-075",
+      "mnii-b46-ref-katakana-076",
+      "mnii-b46-ref-katakana-077",
+      "mnii-b46-ref-katakana-078",
+      "mnii-b46-ref-katakana-079",
+      "mnii-b46-ref-katakana-080",
+      "mnii-b46-ref-katakana-081",
+      "mnii-b46-ref-katakana-082",
+      "mnii-b46-ref-katakana-083",
+      "mnii-b46-ref-katakana-084",
+      "mnii-b46-ref-katakana-085",
+      "mnii-b46-ref-katakana-086",
+      "mnii-b46-ref-katakana-087"
+    ],
+    "BAB47_REFERENCE_ONOMATOPE_ITEMS": [
+      "mnii-b47-ref-onomatope-001",
+      "mnii-b47-ref-onomatope-002",
+      "mnii-b47-ref-onomatope-003",
+      "mnii-b47-ref-onomatope-004",
+      "mnii-b47-ref-onomatope-005",
+      "mnii-b47-ref-onomatope-006",
+      "mnii-b47-ref-onomatope-007",
+      "mnii-b47-ref-onomatope-008",
+      "mnii-b47-ref-onomatope-009",
+      "mnii-b47-ref-onomatope-010",
+      "mnii-b47-ref-onomatope-011",
+      "mnii-b47-ref-onomatope-012",
+      "mnii-b47-ref-onomatope-013",
+      "mnii-b47-ref-onomatope-014",
+      "mnii-b47-ref-onomatope-015",
+      "mnii-b47-ref-onomatope-016",
+      "mnii-b47-ref-onomatope-017",
+      "mnii-b47-ref-onomatope-018",
+      "mnii-b47-ref-onomatope-019",
+      "mnii-b47-ref-onomatope-020",
+      "mnii-b47-ref-onomatope-021",
+      "mnii-b47-ref-onomatope-022",
+      "mnii-b47-ref-onomatope-023",
+      "mnii-b47-ref-onomatope-024",
+      "mnii-b47-ref-onomatope-025",
+      "mnii-b47-ref-onomatope-026",
+      "mnii-b47-ref-onomatope-027",
+      "mnii-b47-ref-onomatope-028",
+      "mnii-b47-ref-onomatope-029",
+      "mnii-b47-ref-onomatope-030",
+      "mnii-b47-ref-onomatope-031",
+      "mnii-b47-ref-onomatope-032",
+      "mnii-b47-ref-onomatope-033",
+      "mnii-b47-ref-onomatope-034",
+      "mnii-b47-ref-onomatope-035"
+    ],
+    "BAB48_REFERENCE_DISCIPLINE_ITEMS": [
+      "mnii-b48-ref-discipline-001",
+      "mnii-b48-ref-discipline-002",
+      "mnii-b48-ref-discipline-003",
+      "mnii-b48-ref-discipline-004",
+      "mnii-b48-ref-discipline-005",
+      "mnii-b48-ref-discipline-006",
+      "mnii-b48-ref-discipline-007",
+      "mnii-b48-ref-discipline-008",
+      "mnii-b48-ref-discipline-009",
+      "mnii-b48-ref-discipline-010",
+      "mnii-b48-ref-discipline-011",
+      "mnii-b48-ref-discipline-012",
+      "mnii-b48-ref-discipline-013",
+      "mnii-b48-ref-discipline-014",
+      "mnii-b48-ref-discipline-015",
+      "mnii-b48-ref-discipline-016",
+      "mnii-b48-ref-discipline-017",
+      "mnii-b48-ref-discipline-018"
+    ],
+    "BAB49_REFERENCE_SEASONAL_ITEMS": [
+      "mnii-b49-ref-season-01",
+      "mnii-b49-ref-season-02",
+      "mnii-b49-ref-season-03",
+      "mnii-b49-ref-season-04",
+      "mnii-b49-ref-season-05",
+      "mnii-b49-ref-season-06",
+      "mnii-b49-ref-season-07",
+      "mnii-b49-ref-season-08",
+      "mnii-b49-ref-season-09",
+      "mnii-b49-ref-season-10",
+      "mnii-b49-ref-season-11",
+      "mnii-b49-ref-season-12",
+      "mnii-b49-ref-season-13",
+      "mnii-b49-ref-season-14",
+      "mnii-b49-ref-season-15",
+      "mnii-b49-ref-season-16",
+      "mnii-b49-ref-season-17",
+      "mnii-b49-ref-season-18",
+      "mnii-b49-ref-season-19",
+      "mnii-b49-ref-season-20",
+      "mnii-b49-ref-season-21",
+      "mnii-b49-ref-season-22",
+      "mnii-b49-ref-season-23",
+      "mnii-b49-ref-season-24",
+      "mnii-b49-ref-season-25",
+      "mnii-b49-ref-season-26",
+      "mnii-b49-ref-season-27",
+      "mnii-b49-ref-season-28",
+      "mnii-b49-ref-season-29",
+      "mnii-b49-ref-season-30",
+      "mnii-b49-ref-season-31",
+      "mnii-b49-ref-season-32",
+      "mnii-b49-ref-season-33",
+      "mnii-b49-ref-season-34",
+      "mnii-b49-ref-season-35",
+      "mnii-b49-ref-season-36"
+    ]
+  },
+  "values": {
+    "BAB12_REFERENCE_INFO_HERO_IMAGE": "https://iili.io/C0EZz8J.png",
+    "BAB13_REFERENCE_INFO_FINAL_IMAGE": "https://iili.io/C0hLcgI.png",
+    "BAB14_REFERENCE_INFO_FINAL_IMAGE": "https://iili.io/C1H5J3b.png",
+    "BAB16_REFERENCE_INFO_ATM_IMAGE": "https://iili.io/C1NGvhQ.png",
+    "BAB17_REFERENCE_INFO_BODY_IMAGE": "https://iili.io/CEBMHT7.png",
+    "BAB24_REFERENCE_GIFT_ENVELOPES": [
+      {
+        "title": "御結婚御祝",
+        "reading": "ごけっこんおいわい",
+        "image": "https://iili.io/ChmtZUQ.png",
+        "caption": "Amplop untuk Upacara Pernikahan",
+        "detail": "Untuk upacara pernikahan. Gunakan pita merah dan putih atau emas dan perak."
+      },
+      {
+        "title": "御祝",
+        "reading": "おいわい",
+        "image": "https://iili.io/ChmtLfj.png",
+        "caption": "Amplop untuk Perayaan Selain Pernikahan",
+        "detail": "Untuk acara perayaan selain upacara pernikahan. Gunakan pita merah dan putih atau emas dan perak."
+      },
+      {
+        "title": "御霊前",
+        "reading": "ごれいぜん",
+        "image": "https://iili.io/ChmtQ0x.png",
+        "caption": "Amplop untuk Upacara Kematian",
+        "detail": "Untuk upacara kematian. Gunakan pita hitam dan putih."
+      }
+    ],
+    "BAB28_REFERENCE_HOUSING_IMAGE": "https://iili.io/CrF0Hpj.png",
+    "BAB30_REFERENCE_EMERGENCY_IMAGE": "https://iili.io/CrNiIt9.png",
+    "BAB32_REFERENCE_WEATHER_IMAGE": "https://iili.io/C4Ildiv.png",
+    "BAB33_REFERENCE_SIGN_POSTER_IMAGE": "https://iili.io/C4U1ARp.png",
+    "BAB35_REFERENCE_KOTOWAZA_IMAGE": "https://iili.io/C4phejf.png",
+    "BAB35_RELATED_KOTOWAZA": [
+      {
+        "id": "related-nanakorobi",
+        "ja": "七転び八起き",
+        "kana": "ななころびやおき",
+        "romaji": "nanakorobi yaoki",
+        "idn": "Jatuh tujuh kali, bangkit delapan kali.",
+        "meaning": "Tetap bangkit dan mencoba lagi meskipun berkali-kali gagal.",
+        "situation": "Saat gagal, kecewa, atau perlu bangkit lagi.",
+        "keywords": [
+          "gagal",
+          "bangkit",
+          "pantang menyerah",
+          "coba lagi",
+          "jatuh",
+          "kecewa",
+          "semangat",
+          "resiliensi"
+        ]
+      },
+      {
+        "id": "related-isogaba",
+        "ja": "急がば回れ",
+        "kana": "いそがばまわれ",
+        "romaji": "isogaba maware",
+        "idn": "Biar lambat asal selamat.",
+        "meaning": "Ketika terburu-buru, jalan yang aman dan pasti justru sering menjadi pilihan tercepat.",
+        "situation": "Saat tergesa-gesa, mengambil keputusan, atau memilih cara yang aman.",
+        "keywords": [
+          "terburu buru",
+          "buru buru",
+          "tergesa",
+          "cepat",
+          "aman",
+          "hati hati",
+          "jalan aman",
+          "keputusan"
+        ]
+      },
+      {
+        "id": "related-gou",
+        "ja": "郷に入っては郷に従え",
+        "kana": "ごうにいってはごうにしたがえ",
+        "romaji": "gou ni itte wa gou ni shitagae",
+        "idn": "Di mana bumi dipijak, di situ langit dijunjung.",
+        "meaning": "Saat berada di tempat atau lingkungan baru, hormati kebiasaan dan aturan setempat.",
+        "situation": "Saat tinggal di negara lain, masuk komunitas baru, atau belajar budaya setempat.",
+        "keywords": [
+          "budaya",
+          "jepang",
+          "negara baru",
+          "aturan setempat",
+          "adat",
+          "menyesuaikan",
+          "komunitas",
+          "lingkungan baru",
+          "sopan santun"
+        ]
+      },
+      {
+        "id": "related-saru",
+        "ja": "猿も木から落ちる",
+        "kana": "さるもきからおちる",
+        "romaji": "saru mo ki kara ochiru",
+        "idn": "Sepandai-pandai tupai melompat, sekali waktu jatuh juga.",
+        "meaning": "Orang yang sangat ahli pun kadang dapat membuat kesalahan.",
+        "situation": "Saat seorang ahli, senior, guru, atau orang berpengalaman melakukan kesalahan.",
+        "keywords": [
+          "ahli salah",
+          "kesalahan",
+          "salah",
+          "senior",
+          "profesional",
+          "guru",
+          "jago",
+          "lupa",
+          "keliru"
+        ]
+      },
+      {
+        "id": "related-kuchi",
+        "ja": "口は災いの元",
+        "kana": "くちはわざわいのもと",
+        "romaji": "kuchi wa wazawai no moto",
+        "idn": "Mulutmu harimaumu.",
+        "meaning": "Ucapan yang tidak dijaga dapat menjadi sumber masalah.",
+        "situation": "Saat perlu berhati-hati berbicara, bergosip, atau menulis komentar.",
+        "keywords": [
+          "bicara",
+          "mulut",
+          "ucapan",
+          "komentar",
+          "gosip",
+          "hati hati bicara",
+          "salah ngomong",
+          "perkataan",
+          "media sosial"
+        ]
+      },
+      {
+        "id": "related-ishi",
+        "ja": "石の上にも三年",
+        "kana": "いしのうえにもさんねん",
+        "romaji": "ishi no ue ni mo sannen",
+        "idn": "Kesabaran dan ketekunan akan membuahkan hasil.",
+        "meaning": "Bahkan sesuatu yang sulit dapat dikuasai jika dijalani dengan sabar dan tekun dalam waktu cukup lama.",
+        "situation": "Saat belajar keterampilan baru, bekerja, berlatih, atau menunggu hasil.",
+        "keywords": [
+          "sabar",
+          "tekun",
+          "lama",
+          "latihan",
+          "belajar",
+          "proses",
+          "bertahan",
+          "hasil",
+          "skill",
+          "keterampilan"
+        ]
+      },
+      {
+        "id": "related-hana",
+        "ja": "花より団子",
+        "kana": "はなよりだんご",
+        "romaji": "hana yori dango",
+        "idn": "Lebih baik manfaat nyata daripada sekadar penampilan.",
+        "meaning": "Mengutamakan hal yang praktis dan bermanfaat daripada sesuatu yang hanya indah dilihat.",
+        "situation": "Saat memilih fungsi, manfaat, makanan, atau kebutuhan nyata dibanding gengsi dan tampilan.",
+        "keywords": [
+          "praktis",
+          "manfaat",
+          "fungsi",
+          "penampilan",
+          "gengsi",
+          "makanan",
+          "kebutuhan",
+          "cantik tapi",
+          "berguna"
+        ]
+      },
+      {
+        "id": "related-warau",
+        "ja": "笑う門には福来る",
+        "kana": "わらうかどにはふくきたる",
+        "romaji": "warau kado ni wa fuku kitaru",
+        "idn": "Kebahagiaan datang kepada orang yang menjaga suasana ceria.",
+        "meaning": "Rumah atau lingkungan yang dipenuhi tawa dan sikap positif cenderung mendatangkan kebahagiaan.",
+        "situation": "Saat ingin menjaga semangat, suasana keluarga, pertemanan, atau tempat kerja tetap positif.",
+        "keywords": [
+          "bahagia",
+          "tertawa",
+          "ceria",
+          "senyum",
+          "positif",
+          "keluarga",
+          "suasana",
+          "semangat",
+          "senang"
+        ]
+      },
+      {
+        "id": "related-zen",
+        "ja": "善は急げ",
+        "kana": "ぜんはいそげ",
+        "romaji": "zen wa isoge",
+        "idn": "Kalau memang baik, jangan ditunda.",
+        "meaning": "Jika sesuatu jelas baik dan bermanfaat, sebaiknya segera dilakukan.",
+        "situation": "Saat ingin mulai tindakan baik, membantu orang, belajar, atau mengambil kesempatan positif.",
+        "keywords": [
+          "jangan ditunda",
+          "segera",
+          "mulai sekarang",
+          "kesempatan",
+          "baik",
+          "membantu",
+          "aksi",
+          "bertindak"
+        ]
+      },
+      {
+        "id": "related-nito",
+        "ja": "二兎を追う者は一兎をも得ず",
+        "kana": "にとをおうものはいっとをもえず",
+        "romaji": "nito o ou mono wa itto o mo ezu",
+        "idn": "Mengejar dua hal sekaligus bisa membuat keduanya lepas.",
+        "meaning": "Terlalu serakah atau membagi fokus ke dua tujuan besar sekaligus dapat membuat kita gagal mendapatkan keduanya.",
+        "situation": "Saat harus menentukan prioritas dan berhenti mengejar terlalu banyak tujuan sekaligus.",
+        "keywords": [
+          "fokus",
+          "dua tujuan",
+          "prioritas",
+          "terlalu banyak",
+          "serakah",
+          "pilih satu",
+          "multitasking",
+          "target"
+        ]
+      },
+      {
+        "id": "related-shippai",
+        "ja": "失敗は成功のもと",
+        "kana": "しっぱいはせいこうのもと",
+        "romaji": "shippai wa seikou no moto",
+        "idn": "Kegagalan adalah bekal menuju keberhasilan.",
+        "meaning": "Kesalahan dan kegagalan dapat menjadi bahan belajar untuk mencapai keberhasilan berikutnya.",
+        "situation": "Saat gagal ujian, proyek, pekerjaan, latihan, atau percobaan.",
+        "keywords": [
+          "gagal",
+          "kegagalan",
+          "sukses",
+          "berhasil",
+          "belajar dari kesalahan",
+          "ujian gagal",
+          "proyek gagal",
+          "coba lagi"
+        ]
+      },
+      {
+        "id": "related-ame",
+        "ja": "雨降って地固まる",
+        "kana": "あめふってじかたまる",
+        "romaji": "ame futte ji katamaru",
+        "idn": "Sesudah masalah berlalu, hubungan atau keadaan dapat menjadi lebih kuat.",
+        "meaning": "Seperti tanah yang memadat setelah hujan, konflik atau kesulitan dapat membuat hubungan dan keadaan menjadi lebih kokoh setelah diselesaikan.",
+        "situation": "Saat selesai bertengkar, melewati masalah bersama, atau pulih dari masa sulit.",
+        "keywords": [
+          "bertengkar",
+          "konflik",
+          "masalah selesai",
+          "hubungan membaik",
+          "setelah masalah",
+          "lebih kuat",
+          "damai",
+          "baikan"
+        ]
+      }
+    ],
+    "BAB35_SITUATION_EXPRESSION_BRIDGE": [
+      {
+        "id": "bridge-hitomebore",
+        "ja": "一目惚れ",
+        "kana": "ひとめぼれ",
+        "romaji": "hitomebore",
+        "idn": "jatuh cinta pada pandangan pertama",
+        "meaning": "Menyukai atau jatuh cinta kepada seseorang sejak pertama kali melihatnya.",
+        "situation": "Saat perasaan suka muncul seketika ketika pertama kali melihat seseorang.",
+        "keywords": [
+          "jatuh cinta pada pandangan pertama",
+          "cinta pandangan pertama",
+          "langsung jatuh cinta",
+          "baru lihat langsung suka",
+          "pertama kali melihat langsung suka",
+          "love at first sight"
+        ],
+        "expressionType": "Ungkapan umum"
+      },
+      {
+        "id": "bridge-koi-moumoku",
+        "ja": "恋は盲目",
+        "kana": "こいはもうもく",
+        "romaji": "koi wa moumoku",
+        "idn": "cinta itu buta",
+        "meaning": "Saat jatuh cinta, seseorang dapat sulit melihat kekurangan orang yang dicintainya secara objektif.",
+        "situation": "Saat perasaan cinta membuat penilaian menjadi kurang objektif.",
+        "keywords": [
+          "cinta itu buta",
+          "buta karena cinta",
+          "tidak melihat kekurangan pasangan",
+          "terlalu cinta",
+          "cinta membutakan"
+        ],
+        "expressionType": "Ungkapan / pepatah"
+      },
+      {
+        "id": "bridge-rui",
+        "ja": "類は友を呼ぶ",
+        "kana": "るいはともをよぶ",
+        "romaji": "rui wa tomo o yobu",
+        "idn": "orang yang mirip cenderung berkumpul",
+        "meaning": "Orang dengan sifat, minat, atau cara berpikir yang serupa cenderung saling mendekat.",
+        "situation": "Saat melihat orang-orang dengan karakter atau kesukaan yang mirip menjadi akrab.",
+        "keywords": [
+          "orang mirip berkumpul",
+          "teman satu frekuensi",
+          "punya minat sama",
+          "karakter sama",
+          "satu circle",
+          "satu hobi"
+        ],
+        "expressionType": "Kotowaza"
+      },
+      {
+        "id": "bridge-sode",
+        "ja": "袖振り合うも多生の縁",
+        "kana": "そでふりあうもたしょうのえん",
+        "romaji": "sode furiau mo tashou no en",
+        "idn": "pertemuan kecil pun dapat menjadi sebuah ikatan",
+        "meaning": "Bahkan pertemuan yang tampak kebetulan dapat dipandang sebagai hubungan yang memiliki makna.",
+        "situation": "Saat bertemu seseorang secara tidak sengaja lalu merasa pertemuan itu berkesan atau membawa hubungan baru.",
+        "keywords": [
+          "bertemu tidak sengaja",
+          "pertemuan kebetulan",
+          "takdir bertemu",
+          "jodoh pertemuan",
+          "dipertemukan",
+          "pertemuan berkesan"
+        ],
+        "expressionType": "Kotowaza"
+      },
+      {
+        "id": "bridge-tana",
+        "ja": "棚からぼたもち",
+        "kana": "たなからぼたもち",
+        "romaji": "tana kara botamochi",
+        "idn": "mendapat keberuntungan tanpa diduga",
+        "meaning": "Keuntungan atau keberuntungan datang tiba-tiba tanpa usaha yang berarti.",
+        "situation": "Saat memperoleh hadiah, peluang, atau keuntungan secara tidak terduga.",
+        "keywords": [
+          "beruntung tiba tiba",
+          "rezeki nomplok",
+          "dapat hadiah tidak terduga",
+          "keberuntungan mendadak",
+          "untung tanpa usaha"
+        ],
+        "expressionType": "Kotowaza"
+      },
+      {
+        "id": "bridge-isseki",
+        "ja": "一石二鳥",
+        "kana": "いっせきにちょう",
+        "romaji": "isseki nichou",
+        "idn": "sekali mendayung, dua tiga pulau terlampaui",
+        "meaning": "Satu tindakan menghasilkan dua manfaat sekaligus.",
+        "situation": "Saat satu pekerjaan atau keputusan menyelesaikan dua tujuan sekaligus.",
+        "keywords": [
+          "dua manfaat sekaligus",
+          "sekali kerja dua hasil",
+          "dua tujuan sekaligus",
+          "efisien",
+          "sekali jalan"
+        ],
+        "expressionType": "四字熟語 / Ungkapan"
+      },
+      {
+        "id": "bridge-hyakubun",
+        "ja": "百聞は一見にしかず",
+        "kana": "ひゃくぶんはいっけんにしかず",
+        "romaji": "hyakubun wa ikken ni shikazu",
+        "idn": "melihat langsung lebih meyakinkan daripada hanya mendengar",
+        "meaning": "Pengalaman atau pengamatan langsung lebih meyakinkan daripada berkali-kali mendengar penjelasan.",
+        "situation": "Saat perlu melihat, mencoba, atau membuktikan sesuatu sendiri.",
+        "keywords": [
+          "lihat langsung",
+          "buktikan sendiri",
+          "daripada cuma dengar",
+          "coba sendiri",
+          "pengalaman langsung"
+        ],
+        "expressionType": "Kotowaza"
+      },
+      {
+        "id": "bridge-narau",
+        "ja": "習うより慣れろ",
+        "kana": "ならうよりなれろ",
+        "romaji": "narau yori narero",
+        "idn": "belajar paling efektif dengan membiasakan diri melalui praktik",
+        "meaning": "Keterampilan sering lebih cepat dikuasai lewat praktik berulang daripada hanya mempelajari teori.",
+        "situation": "Saat belajar bahasa, keterampilan kerja, olahraga, alat, atau kebiasaan baru.",
+        "keywords": [
+          "belajar lewat praktik",
+          "langsung praktek",
+          "teori saja tidak cukup",
+          "latihan terus",
+          "belajar sambil melakukan"
+        ],
+        "expressionType": "Kotowaza"
+      },
+      {
+        "id": "bridge-ishibashi",
+        "ja": "石橋を叩いて渡る",
+        "kana": "いしばしをたたいてわたる",
+        "romaji": "ishibashi o tataite wataru",
+        "idn": "sangat berhati-hati sebelum bertindak",
+        "meaning": "Bahkan sesuatu yang tampak aman tetap diperiksa dengan teliti sebelum dilalui.",
+        "situation": "Saat harus mengecek risiko, data, dokumen, atau rencana sebelum mengambil langkah.",
+        "keywords": [
+          "sangat hati hati",
+          "cek berkali kali",
+          "periksa dulu",
+          "mitigasi risiko",
+          "jangan ceroboh",
+          "verifikasi dulu"
+        ],
+        "expressionType": "Kotowaza"
+      },
+      {
+        "id": "bridge-anzuru",
+        "ja": "案ずるより産むが易し",
+        "kana": "あんずるよりうむがやすし",
+        "romaji": "anzuru yori umu ga yasushi",
+        "idn": "sering kali menjalani lebih mudah daripada terlalu mengkhawatirkannya",
+        "meaning": "Sesuatu yang terus dikhawatirkan sering ternyata tidak sesulit bayangan setelah benar-benar dijalani.",
+        "situation": "Saat cemas memulai ujian, pekerjaan, presentasi, perjalanan, atau tantangan baru.",
+        "keywords": [
+          "takut memulai",
+          "cemas sebelum mulai",
+          "khawatir berlebihan",
+          "ternyata tidak sesulit",
+          "overthinking",
+          "deg degan sebelum"
+        ],
+        "expressionType": "Kotowaza"
+      },
+      {
+        "id": "bridge-toranu",
+        "ja": "捕らぬ狸の皮算用",
+        "kana": "とらぬたぬきのかわざんよう",
+        "romaji": "toranu tanuki no kawazanyou",
+        "idn": "jangan menghitung hasil sebelum benar-benar mendapatkannya",
+        "meaning": "Jangan membuat rencana berdasarkan keuntungan yang belum pasti diperoleh.",
+        "situation": "Saat terlalu cepat menghitung keuntungan, bonus, nilai, atau hasil yang belum didapat.",
+        "keywords": [
+          "belum dapat sudah dihitung",
+          "menghitung keuntungan sebelum dapat",
+          "terlalu yakin hasil",
+          "belum pasti",
+          "jangan senang dulu",
+          "counting chickens"
+        ],
+        "expressionType": "Kotowaza"
+      },
+      {
+        "id": "bridge-derukui",
+        "ja": "出る杭は打たれる",
+        "kana": "でるくいはうたれる",
+        "romaji": "deru kui wa utareru",
+        "idn": "orang yang terlalu menonjol sering mendapat tekanan",
+        "meaning": "Orang atau hal yang menonjol dari kelompok dapat menjadi sasaran kritik atau tekanan.",
+        "situation": "Saat seseorang berbeda, terlalu menonjol, atau mendapat tekanan karena terlihat lebih mencolok dari kelompok.",
+        "keywords": [
+          "terlalu menonjol",
+          "beda sendiri",
+          "dikritik karena menonjol",
+          "tekanan kelompok",
+          "jadi sasaran",
+          "stand out"
+        ],
+        "expressionType": "Kotowaza"
+      }
+    ],
+    "BAB36_REFERENCE_HEALTH_IMAGE": "https://iili.io/C6olCbV.png",
+    "BAB40_REFERENCE_MEASUREMENT_IMAGE": "https://iili.io/Ci58Gvp.png",
+    "BAB41_REFERENCE_USEFUL_IMAGE": "https://iili.io/CsAe7sI.png",
+    "BAB44_REFERENCE_SALON_IMAGE": "https://iili.io/CLGC4j4.png",
+    "BAB46_REFERENCE_KATAKANA_IMAGE": "https://iili.io/CQ3MTKu.png",
+    "BAB47_REFERENCE_ONOMATOPE_IMAGE": "https://iili.io/CQqwkgV.png",
+    "BAB48_REFERENCE_DISCIPLINE_IMAGE": "https://iili.io/CQD0AcQ.png",
+    "BAB49_REFERENCE_SEASONAL_IMAGE": "https://iili.io/Ct487i7.png",
+    "REFERENCE_INFO_BAB10_MATERIAL": {
+      "hero": {
+        "title": "うちの中",
+        "reading": "うちのなか",
+        "romaji": "uchi no naka",
+        "subtitle": "Di Dalam Rumah",
+        "image": "https://iili.io/Clg8bOx.png",
+        "note": "Gambar denah rumah hanya untuk penjelasan materi, bukan soal kuis."
+      },
+      "houseList": [
+        {
+          "no": 1,
+          "jp": "玄関",
+          "reading": "げんかん",
+          "romaji": "genkan",
+          "id": "pintu masuk"
+        },
+        {
+          "no": 2,
+          "jp": "トイレ",
+          "reading": "",
+          "romaji": "toire",
+          "id": "toilet"
+        },
+        {
+          "no": 3,
+          "jp": "ふろ場",
+          "reading": "ふろば",
+          "romaji": "furoba",
+          "id": "kamar mandi"
+        },
+        {
+          "no": 4,
+          "jp": "洗面所",
+          "reading": "せんめんじょ",
+          "romaji": "senmenjo",
+          "id": "tempat cuci tangan / wastafel"
+        },
+        {
+          "no": 5,
+          "jp": "台所",
+          "reading": "だいどころ",
+          "romaji": "daidokoro",
+          "id": "dapur"
+        },
+        {
+          "no": 6,
+          "jp": "食堂",
+          "reading": "しょくどう",
+          "romaji": "shokudou",
+          "id": "ruang makan"
+        },
+        {
+          "no": 7,
+          "jp": "居間",
+          "reading": "いま",
+          "romaji": "ima",
+          "id": "ruang tamu / ruang keluarga"
+        },
+        {
+          "no": 8,
+          "jp": "寝室",
+          "reading": "しんしつ",
+          "romaji": "shinshitsu",
+          "id": "kamar tidur"
+        },
+        {
+          "no": 9,
+          "jp": "廊下",
+          "reading": "ろうか",
+          "romaji": "rouka",
+          "id": "koridor"
+        },
+        {
+          "no": 10,
+          "jp": "ベランダ",
+          "reading": "",
+          "romaji": "beranda",
+          "id": "beranda / balkon / teras"
+        }
+      ],
+      "bath": {
+        "title": "おふろの入り方",
+        "subtitle": "Cara menggunakan kamar mandi Jepang (ofuro)",
+        "image": "https://iili.io/ClgSYb4.png",
+        "note": "Gambar cara mandi di ofuro hanya untuk penjelasan materi, bukan soal kuis.",
+        "steps": [
+          "Bersihkan badan terlebih dahulu sebelum masuk ke dalam bak mandi.",
+          "Jangan menggunakan sabun dan sampo di dalam bak mandi. Bak mandi digunakan untuk berendam dan relaksasi.",
+          "Setelah selesai mandi, jangan buang air bak mandi dan tutup bak mandi agar dapat digunakan oleh orang lain."
+        ]
+      }
+    },
+    "REFERENCE_INFO_BAB16_ATM_STEPS": [
+      {
+        "no": "1",
+        "icon": "fa-hand-pointer",
+        "ja": "お引き出しのボタンを押します。",
+        "romaji": "Ohikidashi no botan o oshimasu.",
+        "id": "Tekan tombol お引き出し."
+      },
+      {
+        "no": "2",
+        "icon": "fa-credit-card",
+        "ja": "ATMカードを入れます。",
+        "romaji": "ATM kaado o iremasu.",
+        "id": "Masukkan kartu ATM."
+      },
+      {
+        "no": "3",
+        "icon": "fa-key",
+        "ja": "暗証番号を入力します。",
+        "romaji": "Anshou bangou o nyuuryoku shimasu.",
+        "id": "Masukkan nomor PIN."
+      },
+      {
+        "no": "4",
+        "icon": "fa-yen-sign",
+        "ja": "金額を入力して、円のボタンを押します。",
+        "romaji": "Kingaku o nyuuryoku shite, en no botan o oshimasu.",
+        "id": "Masukkan jumlah uang yang akan diambil, lalu tekan tombol 円."
+      },
+      {
+        "no": "5",
+        "icon": "fa-circle-check",
+        "ja": "金額が正しければ、確認を押します。",
+        "romaji": "Kingaku ga tadashikereba, kakunin o oshimasu.",
+        "id": "Jika jumlahnya sudah benar, tekan tombol 確認."
+      },
+      {
+        "no": "6",
+        "icon": "fa-money-bill-transfer",
+        "ja": "お金とATMカードを取ります。",
+        "romaji": "Okane to ATM kaado o torimasu.",
+        "id": "Ambil uang dan kartu ATM."
+      }
+    ],
+    "REFERENCE_INFO_BAB20_CALLING_MATERIAL": {
+      "titleJa": "人の呼び方",
+      "titleId": "Cara Memanggil Orang",
+      "category": "Kata-Kata Referensi dan Informasi",
+      "chapter": "Bab 20",
+      "chapterNumber": 20,
+      "intro": "Di Jepang, cara memanggil seseorang sering menyesuaikan hubungan keluarga, posisi sosial, atau peran orang tersebut. Karena itu, seseorang tidak selalu dipanggil menggunakan nama pribadinya.",
+      "sections": [
+        {
+          "id": "family",
+          "title": "Panggilan dalam Keluarga",
+          "subtitle": "Cara anggota keluarga saling memanggil dari sudut pandang anak.",
+          "icon": "fa-people-roof",
+          "cards": [
+            {
+              "title": "Keluarga Memanggil Anak",
+              "icon": "fa-children",
+              "image": "https://iili.io/CEL9BhG.png",
+              "alt": "Ilustrasi keluarga Jepang memanggil anak laki-laki dan anak perempuan",
+              "dialogue": [
+                {
+                  "speaker": "Orang tua",
+                  "ja": "「お兄ちゃん、お姉ちゃん！」"
+                },
+                {
+                  "speaker": "Anak-anak",
+                  "ja": "「はーい！」"
+                }
+              ],
+              "translations": [
+                "Kakak laki-laki, kakak perempuan!",
+                "Ya!"
+              ],
+              "note": "Orang tua dapat memanggil anak tertua menggunakan sebutan yang dipakai oleh anak yang lebih kecil."
+            },
+            {
+              "title": "Ulang Tahun Tarō",
+              "icon": "fa-cake-candles",
+              "image": "https://iili.io/CEL9xEl.png",
+              "alt": "Ilustrasi keluarga Jepang merayakan ulang tahun Tarō yang ke-12",
+              "label": "12歳",
+              "dialogue": [
+                {
+                  "speaker": "Orang tua",
+                  "ja": "「今日は太郎の誕生日よ。」"
+                },
+                {
+                  "speaker": "Tarō",
+                  "ja": "「ああ！そうか。」"
+                }
+              ],
+              "translations": [
+                "Hari ini adalah ulang tahun Tarō.",
+                "Oh! Begitu."
+              ],
+              "note": "Percakapan keluarga ketika orang tua mengingatkan bahwa hari itu merupakan ulang tahun Tarō."
+            }
+          ],
+          "explanation": [
+            "Dalam keluarga, orang Jepang cenderung memanggil anggota keluarga dari sudut pandang anak yang paling kecil. Misalnya, orang tua dapat memanggil anak laki-laki tertua お兄ちゃん sebagai ‘kakak laki-laki’ dan anak perempuan tertua お姉ちゃん sebagai ‘kakak perempuan’, mengikuti panggilan yang digunakan oleh adiknya.",
+            "Ketika berbicara di depan anak-anak, seorang suami dapat menyebut istrinya お母さん atau ママ. Sebaliknya, seorang istri dapat menyebut suaminya お父さん atau パパ. Namun, kebiasaan tersebut sekarang semakin jarang dan banyak pasangan lebih sering saling memanggil menggunakan nama."
+          ],
+          "terms": [
+            "お兄ちゃん",
+            "お姉ちゃん",
+            "お母さん",
+            "ママ",
+            "お父さん",
+            "パパ"
+          ]
+        },
+        {
+          "id": "status",
+          "title": "Panggilan Berdasarkan Status dan Peran",
+          "subtitle": "Panggilan yang mengikuti jabatan, kedudukan, atau peran sosial seseorang.",
+          "icon": "fa-user-tie",
+          "cards": [
+            {
+              "title": "Meminta Tanda Tangan Kepala Bagian",
+              "icon": "fa-file-signature",
+              "image": "https://iili.io/CEL9CQf.png",
+              "alt": "Ilustrasi pegawai meminta tanda tangan kepala bagian",
+              "dialogue": [
+                {
+                  "speaker": "Pegawai",
+                  "ja": "「部長、サインお願いします。」"
+                }
+              ],
+              "translations": [
+                "Bapak/Ibu kepala bagian, mohon tanda tangannya."
+              ],
+              "note": "Di tempat kerja, bawahan dapat memanggil atasannya menggunakan jabatan, misalnya 部長."
+            },
+            {
+              "title": "Pelayan Toko Memuji Pelanggan",
+              "icon": "fa-store",
+              "image": "https://iili.io/CEL9Kpn.png",
+              "alt": "Ilustrasi pelayan toko memuji pakaian pelanggan",
+              "dialogue": [
+                {
+                  "speaker": "Pelayan toko",
+                  "ja": "「お客様、よくお似合いですよ。」"
+                }
+              ],
+              "translations": [
+                "Bapak/Ibu, ini sangat cocok untuk Anda."
+              ],
+              "note": "Pelayan toko menggunakan お客様 untuk memanggil pelanggan secara sopan dan hormat."
+            },
+            {
+              "title": "Pasien Berkonsultasi dengan Dokter",
+              "icon": "fa-user-doctor",
+              "image": "https://iili.io/CEL9z42.png",
+              "alt": "Ilustrasi pasien berkonsultasi dengan dokter",
+              "dialogue": [
+                {
+                  "speaker": "Pasien",
+                  "ja": "「先生、おなかが痛いんです。」"
+                }
+              ],
+              "translations": [
+                "Dokter, perut saya sakit."
+              ],
+              "note": "Pasien dapat memanggil dokter dengan sebutan 先生."
+            }
+          ],
+          "explanation": [
+            "Di masyarakat, orang Jepang sering memanggil seseorang berdasarkan status atau perannya di dalam suatu kelompok. Di tempat kerja, bawahan dapat memanggil atasannya menggunakan nama jabatan, misalnya 部長 untuk kepala bagian.",
+            "Di toko, pelayan memanggil pelanggan dengan sebutan お客様 sebagai bentuk penghormatan. Dalam konteks medis dan pendidikan, dokter maupun guru biasa dipanggil 先生 oleh pasien atau murid."
+          ],
+          "terms": [
+            "部長",
+            "お客様",
+            "先生"
+          ]
+        }
+      ],
+      "summary": {
+        "title": "Inti Materi",
+        "text": "Cara memanggil orang dalam bahasa Jepang bergantung pada hubungan, kedudukan, dan situasi. Dalam keluarga, panggilan dapat mengikuti sudut pandang anak yang paling kecil. Dalam kehidupan sosial, seseorang sering dipanggil berdasarkan jabatan atau perannya.",
+        "chips": [
+          "Hubungan keluarga",
+          "Jabatan",
+          "Peran sosial"
+        ]
+      }
+    },
+    "REFERENCE_INFO_BAB2_MATERIAL": {
+      "vocab": [
+        {
+          "no": 1,
+          "title": "初めまして",
+          "desc": "Perkenalkan / digunakan ketika bertemu seseorang untuk pertama kali.",
+          "image": "https://iili.io/C5gzoS1.png",
+          "alt": "Ilustrasi 初めまして"
+        },
+        {
+          "no": 2,
+          "title": "どうぞよろしくお願いします",
+          "desc": "Salam kenal / mohon bantuannya.",
+          "image": "https://iili.io/C5gzCKB.png",
+          "alt": "Ilustrasi どうぞよろしくお願いします"
+        }
+      ],
+      "familyNames": [
+        {
+          "no": 1,
+          "kanji": "佐藤",
+          "kana": "さとう",
+          "romaji": "Satou / Sato"
+        },
+        {
+          "no": 2,
+          "kanji": "鈴木",
+          "kana": "すずき",
+          "romaji": "Suzuki"
+        },
+        {
+          "no": 3,
+          "kanji": "高橋",
+          "kana": "たかはし",
+          "romaji": "Takahashi"
+        },
+        {
+          "no": 4,
+          "kanji": "田中",
+          "kana": "たなか",
+          "romaji": "Tanaka"
+        },
+        {
+          "no": 5,
+          "kanji": "渡辺",
+          "kana": "わたなべ",
+          "romaji": "Watanabe"
+        },
+        {
+          "no": 6,
+          "kanji": "伊藤",
+          "kana": "いとう",
+          "romaji": "Itou / Ito"
+        },
+        {
+          "no": 7,
+          "kanji": "山本",
+          "kana": "やまもと",
+          "romaji": "Yamamoto"
+        },
+        {
+          "no": 8,
+          "kanji": "中村",
+          "kana": "なかむら",
+          "romaji": "Nakamura"
+        },
+        {
+          "no": 9,
+          "kanji": "小林",
+          "kana": "こばやし",
+          "romaji": "Kobayashi"
+        },
+        {
+          "no": 10,
+          "kanji": "加藤",
+          "kana": "かとう",
+          "romaji": "Katou / Kato"
+        },
+        {
+          "no": 11,
+          "kanji": "吉田",
+          "kana": "よしだ",
+          "romaji": "Yoshida"
+        },
+        {
+          "no": 12,
+          "kanji": "山田",
+          "kana": "やまだ",
+          "romaji": "Yamada"
+        },
+        {
+          "no": 13,
+          "kanji": "佐々木",
+          "kana": "ささき",
+          "romaji": "Sasaki"
+        },
+        {
+          "no": 14,
+          "kanji": "斎藤",
+          "kana": "さいとう",
+          "romaji": "Saitou / Saito"
+        },
+        {
+          "no": 15,
+          "kanji": "山口",
+          "kana": "やまぐち",
+          "romaji": "Yamaguchi"
+        },
+        {
+          "no": 16,
+          "kanji": "松本",
+          "kana": "まつもと",
+          "romaji": "Matsumoto"
+        },
+        {
+          "no": 17,
+          "kanji": "井上",
+          "kana": "いのうえ",
+          "romaji": "Inoue"
+        },
+        {
+          "no": 18,
+          "kanji": "木村",
+          "kana": "きむら",
+          "romaji": "Kimura"
+        },
+        {
+          "no": 19,
+          "kanji": "林",
+          "kana": "はやし",
+          "romaji": "Hayashi"
+        },
+        {
+          "no": 20,
+          "kanji": "清水",
+          "kana": "しみず",
+          "romaji": "Shimizu"
+        }
+      ],
+      "greetings": [
+        {
+          "title": "初めまして。",
+          "reading": "はじめまして • Hajimemashite",
+          "desc": "Digunakan saat bertemu seseorang untuk pertama kalinya, misalnya dalam perjalanan dinas atau ketika bertukar kartu nama.",
+          "image": "https://iili.io/C5gzoS1.png",
+          "alt": "Ilustrasi 初めまして"
+        },
+        {
+          "title": "どうぞよろしくお願いします。",
+          "reading": "どうぞよろしくおねがいします • Douzo yoroshiku onegaishimasu",
+          "desc": "Ungkapan sopan setelah memperkenalkan diri. Maknanya kurang lebih “senang berkenalan dengan Anda / mohon bantuannya”.",
+          "image": "https://iili.io/C5gzCKB.png",
+          "alt": "Ilustrasi どうぞよろしくお願いします"
+        },
+        {
+          "title": "引っ越しの挨拶",
+          "reading": "ひっこしのあいさつ • Hikkoshi no aisatsu",
+          "desc": "Saat pindah rumah, memperkenalkan diri kepada tetangga baru merupakan sopan santun yang baik.",
+          "image": "",
+          "alt": "引っ越しの挨拶"
+        },
+        {
+          "title": "手土産",
+          "reading": "てみやげ • Temiyage",
+          "desc": "Hadiah sederhana untuk tetangga baru dapat berupa handuk, sabun, atau manisan.",
+          "image": "",
+          "alt": "手土産"
+        }
+      ]
+    },
+    "REFERENCE_INFO_BAB4_MATERIAL": {
+      "images": [
+        {
+          "no": 1,
+          "title": "電話・手紙",
+          "desc": "Telepon, surat, nomor darurat, dan cara menulis alamat di Jepang.",
+          "image": "https://iili.io/C54n1Ns.png",
+          "alt": "Materi 電話・手紙 tentang telepon, surat, nomor darurat, dan alamat"
+        },
+        {
+          "no": 2,
+          "title": "参考資料 2",
+          "desc": "Gambar materi pelengkap Bab 4.",
+          "image": "https://iili.io/C54nEDG.png",
+          "alt": "Materi pelengkap Kata-Kata Referensi dan Informasi Bab 4 gambar 2"
+        },
+        {
+          "no": 3,
+          "title": "参考資料 3",
+          "desc": "Gambar materi pelengkap Bab 4.",
+          "image": "https://iili.io/C54nMxf.png",
+          "alt": "Materi pelengkap Kata-Kata Referensi dan Informasi Bab 4 gambar 3"
+        }
+      ],
+      "phoneSteps": [
+        {
+          "no": 1,
+          "title": "Angkat gagang telepon.",
+          "desc": "Ambil gagang telepon umum sebelum memasukkan koin atau kartu."
+        },
+        {
+          "no": 2,
+          "title": "Masukkan koin atau kartu.",
+          "desc": "Masukkan koin atau kartu telepon ke dalam lubang yang tersedia."
+        },
+        {
+          "no": 3,
+          "title": "Tekan nomor.",
+          "desc": "Masukkan nomor telepon tujuan. Untuk pesawat bertombol start, tekan start setelah langkah ini."
+        },
+        {
+          "no": 4,
+          "title": "Kembalikan gagang telepon.",
+          "desc": "Letakkan kembali gagang telepon setelah selesai berbicara."
+        },
+        {
+          "no": 5,
+          "title": "Ambil kartu atau kembalian.",
+          "desc": "Ambil kembali kartu telepon atau uang kembalian jika tersedia."
+        }
+      ],
+      "notes": [
+        "Telepon umum hanya bisa menerima koin ¥10, koin ¥100, dan kartu telepon.",
+        "Jika memasukkan koin ¥100, pengguna tidak akan mendapat kembalian.",
+        "Untuk telepon yang memiliki tombol start, tekan tombol start setelah memasukkan nomor."
+      ],
+      "emergency": [
+        {
+          "number": "110",
+          "kanji": "警察署",
+          "kana": "けいさつしょ",
+          "meaning": "Kantor polisi"
+        },
+        {
+          "number": "119",
+          "kanji": "消防署",
+          "kana": "しょうぼうしょ",
+          "meaning": "Pemadam kebakaran"
+        },
+        {
+          "number": "117",
+          "kanji": "時報",
+          "kana": "じほう",
+          "meaning": "Pemberitahuan waktu"
+        },
+        {
+          "number": "177",
+          "kanji": "天気予報",
+          "kana": "てんきよほう",
+          "meaning": "Ramalan cuaca"
+        },
+        {
+          "number": "104",
+          "kanji": "電話番号案内",
+          "kana": "でんわばんごうあんない",
+          "meaning": "Petunjuk nomor telepon"
+        }
+      ],
+      "address": {
+        "example": [
+          "〒658-0063",
+          "兵庫県 神戸市 中央区 三宮 1-23",
+          "コウベハイツ 405号"
+        ],
+        "labels": [
+          {
+            "label": "Kode pos",
+            "value": "〒658-0063",
+            "icon": "fa-envelopes-bulk"
+          },
+          {
+            "label": "Prefektur",
+            "value": "兵庫県",
+            "icon": "fa-map"
+          },
+          {
+            "label": "Kota",
+            "value": "神戸市",
+            "icon": "fa-city"
+          },
+          {
+            "label": "Daerah",
+            "value": "中央区・三宮",
+            "icon": "fa-location-dot"
+          },
+          {
+            "label": "Nomor bangunan rumah/apartemen",
+            "value": "1-23",
+            "icon": "fa-house"
+          },
+          {
+            "label": "Nama gedung",
+            "value": "コウベハイツ",
+            "icon": "fa-building"
+          },
+          {
+            "label": "Nomor kamar",
+            "value": "405号",
+            "icon": "fa-door-open"
+          }
+        ]
+      },
+      "searchKeywords": [
+        "telepon",
+        "surat",
+        "nomor darurat",
+        "kantor polisi",
+        "pemadam kebakaran",
+        "pemberitahuan waktu",
+        "ramalan cuaca",
+        "petunjuk nomor telepon",
+        "alamat",
+        "kode pos",
+        "110",
+        "119",
+        "117",
+        "177",
+        "104"
+      ]
+    },
+    "REFERENCE_INFO_BAB5_MATERIAL": {
+      "title": "祝祭日",
+      "subtitle": "Hari Libur Nasional",
+      "holidays": [
+        {
+          "no": 1,
+          "date": "1月1日",
+          "dateReading": "いちがつ ついたち",
+          "dateId": "1 Januari",
+          "jp": "元日",
+          "reading": "がんじつ",
+          "id": "Tahun Baru",
+          "image": "https://iili.io/C5i6qLx.png",
+          "alt": "Ilustrasi 元日 Tahun Baru"
+        },
+        {
+          "no": 2,
+          "date": "1月第2月曜日",
+          "dateMark": "**",
+          "dateReading": "いちがつ だいに げつようび",
+          "dateId": "Hari Senin minggu kedua bulan Januari",
+          "jp": "成人の日",
+          "reading": "せいじんのひ",
+          "id": "Hari Perayaan Menjadi Dewasa",
+          "image": "https://iili.io/C5i6Kzb.png",
+          "alt": "Ilustrasi 成人の日 Hari Perayaan Menjadi Dewasa"
+        },
+        {
+          "no": 3,
+          "date": "2月11日",
+          "dateReading": "にがつ じゅういちにち",
+          "dateId": "11 Februari",
+          "jp": "建国記念の日",
+          "reading": "けんこくきねんのひ",
+          "id": "Hari Pembangunan Nasional",
+          "image": "https://iili.io/C5i63mu.png",
+          "alt": "Ilustrasi 建国記念の日 Hari Pembangunan Nasional"
+        },
+        {
+          "no": 4,
+          "date": "3月20日",
+          "dateMark": "*",
+          "dateReading": "さんがつ はつか",
+          "dateId": "20 Maret",
+          "jp": "春分の日",
+          "reading": "しゅんぶんのひ",
+          "id": "Hari Equinox pada Musim Semi",
+          "image": "https://iili.io/C5i6Jd7.png",
+          "alt": "Ilustrasi 春分の日 Hari Equinox Musim Semi"
+        },
+        {
+          "no": 5,
+          "date": "4月29日",
+          "dateReading": "しがつ にじゅうくにち",
+          "dateId": "29 April",
+          "jp": "昭和の日",
+          "reading": "しょうわのひ",
+          "id": "Hari Showa",
+          "image": "https://iili.io/C5i6TkF.png",
+          "alt": "Ilustrasi 昭和の日 Hari Showa"
+        },
+        {
+          "no": 6,
+          "date": "5月3日",
+          "dateReading": "ごがつ みっか",
+          "dateId": "3 Mei",
+          "jp": "憲法記念日",
+          "reading": "けんぽうきねんび",
+          "id": "Hari Peringatan Konstitusi",
+          "image": "https://iili.io/C5i6umg.png",
+          "alt": "Ilustrasi 憲法記念日 Hari Peringatan Konstitusi"
+        },
+        {
+          "no": 7,
+          "date": "5月4日",
+          "dateReading": "ごがつ よっか",
+          "dateId": "4 Mei",
+          "jp": "みどりの日",
+          "reading": "みどりのひ",
+          "id": "Hari Penghijauan",
+          "image": "https://iili.io/C5i67Lv.png",
+          "alt": "Ilustrasi みどりの日 Hari Penghijauan"
+        },
+        {
+          "no": 8,
+          "date": "5月5日",
+          "dateReading": "ごがつ いつか",
+          "dateId": "5 Mei",
+          "jp": "こどもの日",
+          "reading": "こどものひ",
+          "id": "Hari Anak",
+          "image": "https://iili.io/C5i6aBR.png",
+          "alt": "Ilustrasi こどもの日 Hari Anak"
+        },
+        {
+          "no": 9,
+          "date": "7月第3月曜日",
+          "dateMark": "***",
+          "dateReading": "しちがつ だいさん げつようび",
+          "dateId": "Hari Senin minggu ketiga bulan Juli",
+          "jp": "海の日",
+          "reading": "うみのひ",
+          "id": "Hari Bahari",
+          "image": "https://iili.io/C5i612I.png",
+          "alt": "Ilustrasi 海の日 Hari Bahari"
+        },
+        {
+          "no": 10,
+          "date": "9月第3月曜日",
+          "dateMark": "***",
+          "dateReading": "くがつ だいさん げつようび",
+          "dateId": "Hari Senin minggu ketiga bulan September",
+          "jp": "敬老の日",
+          "reading": "けいろうのひ",
+          "id": "Hari Hormat kepada Orang Tua",
+          "image": "https://iili.io/C5i6GkX.png",
+          "alt": "Ilustrasi 敬老の日 Hari Hormat kepada Orang Tua"
+        },
+        {
+          "no": 11,
+          "date": "9月23日",
+          "dateMark": "*",
+          "dateReading": "くがつ にじゅうさんにち",
+          "dateId": "23 September",
+          "jp": "秋分の日",
+          "reading": "しゅうぶんのひ",
+          "id": "Hari Equinox pada Musim Gugur",
+          "image": "https://iili.io/C5i6Mpn.png",
+          "alt": "Ilustrasi 秋分の日 Hari Equinox Musim Gugur"
+        },
+        {
+          "no": 12,
+          "date": "10月第2月曜日",
+          "dateMark": "**",
+          "dateReading": "じゅうがつ だいに げつようび",
+          "dateId": "Hari Senin minggu kedua bulan Oktober",
+          "jp": "体育の日",
+          "reading": "たいいくのひ",
+          "id": "Hari Kesehatan dan Olahraga",
+          "image": "https://iili.io/C5i6WIs.png",
+          "alt": "Ilustrasi 体育の日 Hari Kesehatan dan Olahraga"
+        },
+        {
+          "no": 13,
+          "date": "11月3日",
+          "dateReading": "じゅういちがつ みっか",
+          "dateId": "3 November",
+          "jp": "文化の日",
+          "reading": "ぶんかのひ",
+          "id": "Hari Kebudayaan",
+          "image": "https://iili.io/C5i6wB4.png",
+          "alt": "Ilustrasi 文化の日 Hari Kebudayaan"
+        },
+        {
+          "no": 14,
+          "date": "11月23日",
+          "dateReading": "じゅういちがつ にじゅうさんにち",
+          "dateId": "23 November",
+          "jp": "勤労感謝の日",
+          "reading": "きんろうかんしゃのひ",
+          "id": "Hari Bersyukur untuk Pekerjaan",
+          "image": "https://iili.io/C5i6NEl.png",
+          "alt": "Ilustrasi 勤労感謝の日 Hari Bersyukur untuk Pekerjaan"
+        },
+        {
+          "no": 15,
+          "date": "12月23日",
+          "dateReading": "じゅうにがつ にじゅうさんにち",
+          "dateId": "23 Desember",
+          "jp": "天皇誕生日",
+          "reading": "てんのうたんじょうび",
+          "id": "Hari Ulang Tahun Kaisar",
+          "image": "https://iili.io/C5i68v9.png",
+          "alt": "Ilustrasi 天皇誕生日 Hari Ulang Tahun Kaisar"
+        }
+      ],
+      "notes": [
+        {
+          "mark": "*",
+          "text": "Perubahan setiap tahun"
+        },
+        {
+          "mark": "**",
+          "text": "Hari Senin minggu kedua"
+        },
+        {
+          "mark": "***",
+          "text": "Hari Senin minggu ketiga"
+        }
+      ],
+      "extra": [
+        "Jika hari libur nasional jatuh pada hari Minggu, maka akan diganti dengan hari Senin.",
+        "Dari tanggal 29 April sampai 5 Mei merupakan hari libur yang disebut dengan ゴールデンウィーク（Golden Week / Minggu Emas）.",
+        "Perusahaan-perusahaan biasanya memberikan libur sekitar satu minggu penuh bagi para karyawan."
+      ],
+      "searchKeywords": [
+        "祝祭日",
+        "hari libur nasional",
+        "golden week",
+        "ゴールデンウィーク",
+        "元日",
+        "成人の日",
+        "建国記念の日",
+        "春分の日",
+        "昭和の日",
+        "憲法記念日",
+        "みどりの日",
+        "こどもの日",
+        "海の日",
+        "敬老の日",
+        "秋分の日",
+        "体育の日",
+        "文化の日",
+        "勤労感謝の日",
+        "天皇誕生日"
+      ]
+    }
+  }
+}

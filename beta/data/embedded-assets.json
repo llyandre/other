@@ -1,0 +1,47 @@
+{
+  "embedded-8cf9ef8d72e3aab7.webp": {
+    "sha256": "8cf9ef8d72e3aab709200a4e52656207448fe1bca00eb4a4b0f7f3cfdaa67563",
+    "bytes": 21828,
+    "originalDataUriBytes": 29127
+  },
+  "embedded-c4ad64e2afb06b62.webp": {
+    "sha256": "c4ad64e2afb06b62c242ec81e85ddd8dfc99b463c4e637a9db2eaa5d130f165c",
+    "bytes": 18512,
+    "originalDataUriBytes": 24707
+  },
+  "embedded-b1086a803d05c590.webp": {
+    "sha256": "b1086a803d05c590fc80b92908c9d09b540a45e725f5fb22925aef90d819087d",
+    "bytes": 18318,
+    "originalDataUriBytes": 24447
+  },
+  "embedded-587fdd9738430eb9.webp": {
+    "sha256": "587fdd9738430eb985742bbe885e1ee696647a8902384d68a9f970cff169437c",
+    "bytes": 8824,
+    "originalDataUriBytes": 11791
+  },
+  "embedded-ef347b16cb80cffd.webp": {
+    "sha256": "ef347b16cb80cffd2653476cf0824207b5a20ff97c6a4bb5d013919f8cc7e3d8",
+    "bytes": 10310,
+    "originalDataUriBytes": 13771
+  },
+  "embedded-15fe218bc8791123.webp": {
+    "sha256": "15fe218bc8791123a7c17b9891377cf8c79ae030a518c032c18ca7b9e0a7a6fa",
+    "bytes": 7856,
+    "originalDataUriBytes": 10499
+  },
+  "embedded-2091c420071ea472.webp": {
+    "sha256": "2091c420071ea472aa9c15501c508490dcf05499f56345f66b1adc310951922e",
+    "bytes": 10424,
+    "originalDataUriBytes": 13923
+  },
+  "embedded-ccc7d4b81ed65300.webp": {
+    "sha256": "ccc7d4b81ed65300c75617e2960f96528a67c7768ec7f950ba2da8282288211b",
+    "bytes": 22034,
+    "originalDataUriBytes": 29403
+  },
+  "embedded-fcf560315d4c412e.svg": {
+    "sha256": "fcf560315d4c412e97430aaa80b7e3d0d86f7f3fdc0225e7911c8ce15aebde11",
+    "bytes": 1314,
+    "originalDataUriBytes": 2071
+  }
+}

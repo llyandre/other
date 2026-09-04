@@ -1,0 +1,2860 @@
+[
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-001",
+    "typeCategory": "Kata Kerja Kelompok II",
+    "sectionCategory": "Perayaan",
+    "indonesia": "ada / mempunyai [anak]",
+    "kanji": "います［子どもが～］",
+    "kana": "います［こどもが～］",
+    "romaji": "imasu [kodomo ga ~]",
+    "image": "https://iili.io/ClDksON.png",
+    "exampleJa": "山田さんは子どもが二人います。",
+    "exampleReading": "Yamada-san wa kodomo ga futari imasu.",
+    "exampleId": "Pak/Bu Yamada mempunyai dua anak.",
+    "examples": [
+      {
+        "ja": "山田さんは子どもが二人います。",
+        "reading": "Yamada-san wa kodomo ga futari imasu.",
+        "id": "Pak/Bu Yamada mempunyai dua anak."
+      }
+    ],
+    "catatan": "Digunakan untuk menyatakan mempunyai anak. Polanya adalah 「子どもがいます」, bukan 「子どもをいます」.",
+    "note": "Digunakan untuk menyatakan mempunyai anak. Polanya adalah 「子どもがいます」, bukan 「子どもをいます」.",
+    "speech": "います"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-002",
+    "typeCategory": "Kata Kerja Kelompok II",
+    "sectionCategory": "Perayaan",
+    "indonesia": "berada di [Jepang]",
+    "kanji": "います［日本に～］",
+    "kana": "います［にほんに～］",
+    "romaji": "imasu [Nihon ni ~]",
+    "image": "https://iili.io/ClDk4Uv.png",
+    "exampleJa": "マリアさんは日本にいます。",
+    "exampleReading": "Maria-san wa Nihon ni imasu.",
+    "exampleId": "Maria ada di Jepang.",
+    "examples": [
+      {
+        "ja": "マリアさんは日本にいます。",
+        "reading": "Maria-san wa Nihon ni imasu.",
+        "id": "Maria ada di Jepang."
+      }
+    ],
+    "catatan": "Digunakan untuk menyatakan keberadaan orang atau makhluk hidup di suatu tempat.",
+    "note": "Digunakan untuk menyatakan keberadaan orang atau makhluk hidup di suatu tempat.",
+    "speech": "います"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-003",
+    "typeCategory": "Kata Kerja Kelompok I",
+    "sectionCategory": "Perayaan",
+    "indonesia": "memakan / perlu, digunakan untuk waktu dan uang",
+    "kanji": "",
+    "kana": "かかります",
+    "romaji": "kakarimasu",
+    "image": "https://iili.io/ClDkiRp.png",
+    "exampleJa": "駅まで三十分かかります。",
+    "exampleReading": "Eki made sanjuppun kakarimasu.",
+    "exampleId": "Sampai stasiun memerlukan waktu tiga puluh menit.",
+    "examples": [
+      {
+        "ja": "駅まで三十分かかります。",
+        "reading": "Eki made sanjuppun kakarimasu.",
+        "id": "Sampai stasiun memerlukan waktu tiga puluh menit."
+      }
+    ],
+    "catatan": "Digunakan untuk waktu dan biaya. Contoh: 時間がかかります berarti memerlukan waktu, お金がかかります berarti memerlukan uang/biaya.",
+    "note": "Digunakan untuk waktu dan biaya. Contoh: 時間がかかります berarti memerlukan waktu, お金がかかります berarti memerlukan uang/biaya.",
+    "speech": "かかります"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-004",
+    "typeCategory": "Kata Kerja Kelompok I",
+    "sectionCategory": "Perayaan",
+    "indonesia": "tidak masuk [kerja]",
+    "kanji": "休みます［会社を～］",
+    "kana": "やすみます［かいしゃを～］",
+    "romaji": "yasumimasu [kaisha o ~]",
+    "image": "https://iili.io/ClDkPJR.png",
+    "exampleJa": "あした会社を休みます。",
+    "exampleReading": "Ashita kaisha o yasumimasu.",
+    "exampleId": "Besok saya tidak masuk kerja.",
+    "examples": [
+      {
+        "ja": "あした会社を休みます。",
+        "reading": "Ashita kaisha o yasumimasu.",
+        "id": "Besok saya tidak masuk kerja."
+      }
+    ],
+    "catatan": "Jika artinya tidak masuk kerja atau izin dari kantor, gunakan partikel 「を」 seperti 「会社を休みます」.",
+    "note": "Jika artinya tidak masuk kerja atau izin dari kantor, gunakan partikel 「を」 seperti 「会社を休みます」.",
+    "speech": "やすみます"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-005",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "satu",
+    "kanji": "1つ",
+    "kana": "ひとつ",
+    "romaji": "hitotsu",
+    "image": "https://iili.io/ClDvHJ4.png",
+    "exampleJa": "りんごをひとつください。",
+    "exampleReading": "Ringo o hitotsu kudasai.",
+    "exampleId": "Tolong beri saya satu apel.",
+    "examples": [
+      {
+        "ja": "りんごをひとつください。",
+        "reading": "Ringo o hitotsu kudasai.",
+        "id": "Tolong beri saya satu apel."
+      }
+    ],
+    "catatan": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "note": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "speech": "ひとつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-006",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "dua",
+    "kanji": "2つ",
+    "kana": "ふたつ",
+    "romaji": "futatsu",
+    "image": "https://iili.io/ClDvC0b.png",
+    "exampleJa": "サンドイッチをふたつ買いました。",
+    "exampleReading": "Sandoicchi o futatsu kaimashita.",
+    "exampleId": "Saya membeli dua sandwich.",
+    "examples": [
+      {
+        "ja": "サンドイッチをふたつ買いました。",
+        "reading": "Sandoicchi o futatsu kaimashita.",
+        "id": "Saya membeli dua sandwich."
+      }
+    ],
+    "catatan": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "note": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "speech": "ふたつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-007",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "tiga",
+    "kanji": "3つ",
+    "kana": "みっつ",
+    "romaji": "mittsu",
+    "image": "https://iili.io/ClDvIeV.png",
+    "exampleJa": "机の上にみかんがみっつあります。",
+    "exampleReading": "Tsukue no ue ni mikan ga mittsu arimasu.",
+    "exampleId": "Di atas meja ada tiga jeruk.",
+    "examples": [
+      {
+        "ja": "机の上にみかんがみっつあります。",
+        "reading": "Tsukue no ue ni mikan ga mittsu arimasu.",
+        "id": "Di atas meja ada tiga jeruk."
+      }
+    ],
+    "catatan": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "note": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "speech": "みっつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-008",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "empat",
+    "kanji": "4つ",
+    "kana": "よっつ",
+    "romaji": "yottsu",
+    "image": "https://iili.io/ClDvRX1.png",
+    "exampleJa": "ケーキをよっつ作りました。",
+    "exampleReading": "Keeki o yottsu tsukurimashita.",
+    "exampleId": "Saya membuat empat kue.",
+    "examples": [
+      {
+        "ja": "ケーキをよっつ作りました。",
+        "reading": "Keeki o yottsu tsukurimashita.",
+        "id": "Saya membuat empat kue."
+      }
+    ],
+    "catatan": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "note": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "speech": "よっつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-009",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "lima",
+    "kanji": "5つ",
+    "kana": "いつつ",
+    "romaji": "itsutsu",
+    "image": "https://iili.io/ClDv0dv.png",
+    "exampleJa": "箱の中に卵がいつつあります。",
+    "exampleReading": "Hako no naka ni tamago ga itsutsu arimasu.",
+    "exampleId": "Di dalam kotak ada lima telur.",
+    "examples": [
+      {
+        "ja": "箱の中に卵がいつつあります。",
+        "reading": "Hako no naka ni tamago ga itsutsu arimasu.",
+        "id": "Di dalam kotak ada lima telur."
+      }
+    ],
+    "catatan": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "note": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "speech": "いつつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-010",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "enam",
+    "kanji": "6つ",
+    "kana": "むっつ",
+    "romaji": "muttsu",
+    "image": "https://iili.io/ClDvGmN.png",
+    "exampleJa": "いすをむっつ並べてください。",
+    "exampleReading": "Isu o muttsu narabete kudasai.",
+    "exampleId": "Tolong susun enam kursi.",
+    "examples": [
+      {
+        "ja": "いすをむっつ並べてください。",
+        "reading": "Isu o muttsu narabete kudasai.",
+        "id": "Tolong susun enam kursi."
+      }
+    ],
+    "catatan": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "note": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "speech": "むっつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-011",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "tujuh",
+    "kanji": "7つ",
+    "kana": "ななつ",
+    "romaji": "nanatsu",
+    "image": "https://iili.io/ClDv8p2.png",
+    "exampleJa": "かばんの中にお菓子がななつあります。",
+    "exampleReading": "Kaban no naka ni okashi ga nanatsu arimasu.",
+    "exampleId": "Di dalam tas ada tujuh makanan ringan.",
+    "examples": [
+      {
+        "ja": "かばんの中にお菓子がななつあります。",
+        "reading": "Kaban no naka ni okashi ga nanatsu arimasu.",
+        "id": "Di dalam tas ada tujuh makanan ringan."
+      }
+    ],
+    "catatan": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "note": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "speech": "ななつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-012",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "delapan",
+    "kanji": "8つ",
+    "kana": "やっつ",
+    "romaji": "yattsu",
+    "image": "https://iili.io/ClDvvkl.png",
+    "exampleJa": "コップをやっつ洗いました。",
+    "exampleReading": "Koppu o yattsu araimashita.",
+    "exampleId": "Saya mencuci delapan gelas.",
+    "examples": [
+      {
+        "ja": "コップをやっつ洗いました。",
+        "reading": "Koppu o yattsu araimashita.",
+        "id": "Saya mencuci delapan gelas."
+      }
+    ],
+    "catatan": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "note": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "speech": "やっつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-013",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "sembilan",
+    "kanji": "9つ",
+    "kana": "ここのつ",
+    "romaji": "kokonotsu",
+    "image": "https://iili.io/ClDvirb.png",
+    "exampleJa": "写真をここのつ選びました。",
+    "exampleReading": "Shashin o kokonotsu erabimashita.",
+    "exampleId": "Saya memilih sembilan foto.",
+    "examples": [
+      {
+        "ja": "写真をここのつ選びました。",
+        "reading": "Shashin o kokonotsu erabimashita.",
+        "id": "Saya memilih sembilan foto."
+      }
+    ],
+    "catatan": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "note": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "speech": "ここのつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-014",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "sepuluh",
+    "kanji": "10",
+    "kana": "とお",
+    "romaji": "too",
+    "image": "https://iili.io/ClDvQYx.png",
+    "exampleJa": "パンをとおください。",
+    "exampleReading": "Pan o too kudasai.",
+    "exampleId": "Tolong beri saya sepuluh roti.",
+    "examples": [
+      {
+        "ja": "パンをとおください。",
+        "reading": "Pan o too kudasai.",
+        "id": "Tolong beri saya sepuluh roti."
+      }
+    ],
+    "catatan": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "note": "Ini adalah kata bantu bilangan umum untuk menghitung benda. Biasanya digunakan untuk benda yang tidak punya counter khusus.",
+    "speech": "とお"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-015",
+    "typeCategory": "Kata Tanya",
+    "sectionCategory": "Perayaan",
+    "indonesia": "berapa",
+    "kanji": "",
+    "kana": "いくつ",
+    "romaji": "ikutsu",
+    "image": "https://iili.io/ClDvtpV.png",
+    "exampleJa": "りんごはいくつありますか。",
+    "exampleReading": "Ringo wa ikutsu arimasu ka.",
+    "exampleId": "Ada berapa apel?",
+    "examples": [
+      {
+        "ja": "りんごはいくつありますか。",
+        "reading": "Ringo wa ikutsu arimasu ka.",
+        "id": "Ada berapa apel?"
+      }
+    ],
+    "catatan": "Digunakan untuk menanyakan jumlah benda secara umum. Untuk menanyakan umur anak kecil juga bisa digunakan.",
+    "note": "Digunakan untuk menanyakan jumlah benda secara umum. Untuk menanyakan umur anak kecil juga bisa digunakan.",
+    "speech": "いくつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-016",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "seorang",
+    "kanji": "1人",
+    "kana": "ひとり",
+    "romaji": "hitori",
+    "image": "https://iili.io/ClD8HEg.png",
+    "exampleJa": "教室に学生がひとりいます。",
+    "exampleReading": "Kyoushitsu ni gakusei ga hitori imasu.",
+    "exampleId": "Di kelas ada seorang siswa.",
+    "examples": [
+      {
+        "ja": "教室に学生がひとりいます。",
+        "reading": "Kyoushitsu ni gakusei ga hitori imasu.",
+        "id": "Di kelas ada seorang siswa."
+      }
+    ],
+    "catatan": "Untuk menghitung orang, 1 orang adalah 「ひとり」, 2 orang adalah 「ふたり」, sedangkan 3 orang ke atas memakai 「〜にん」.",
+    "note": "Untuk menghitung orang, 1 orang adalah 「ひとり」, 2 orang adalah 「ふたり」, sedangkan 3 orang ke atas memakai 「〜にん」.",
+    "speech": "ひとり"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-017",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "dua orang",
+    "kanji": "2人",
+    "kana": "ふたり",
+    "romaji": "futari",
+    "image": "https://iili.io/ClD8uaf.png",
+    "exampleJa": "ロビーに先生がふたりいます。",
+    "exampleReading": "Robii ni sensei ga futari imasu.",
+    "exampleId": "Di lobi ada dua guru.",
+    "examples": [
+      {
+        "ja": "ロビーに先生がふたりいます。",
+        "reading": "Robii ni sensei ga futari imasu.",
+        "id": "Di lobi ada dua guru."
+      }
+    ],
+    "catatan": "Untuk menghitung orang, 1 orang adalah 「ひとり」, 2 orang adalah 「ふたり」, sedangkan 3 orang ke atas memakai 「〜にん」.",
+    "note": "Untuk menghitung orang, 1 orang adalah 「ひとり」, 2 orang adalah 「ふたり」, sedangkan 3 orang ke atas memakai 「〜にん」.",
+    "speech": "ふたり"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-018",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "orang",
+    "kanji": "～人",
+    "kana": "～にん",
+    "romaji": "~nin",
+    "image": "https://iili.io/ClD8oCX.png",
+    "exampleJa": "家族は五人です。",
+    "exampleReading": "Kazoku wa go-nin desu.",
+    "exampleId": "Keluarga saya ada lima orang.",
+    "examples": [
+      {
+        "ja": "家族は五人です。",
+        "reading": "Kazoku wa go-nin desu.",
+        "id": "Keluarga saya ada lima orang."
+      }
+    ],
+    "catatan": "Untuk menghitung orang, 1 orang adalah 「ひとり」, 2 orang adalah 「ふたり」, sedangkan 3 orang ke atas memakai 「〜にん」.",
+    "note": "Untuk menghitung orang, 1 orang adalah 「ひとり」, 2 orang adalah 「ふたり」, sedangkan 3 orang ke atas memakai 「〜にん」.",
+    "speech": "にん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-019",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "buah, kata bantu bilangan untuk mesin dan mobil",
+    "kanji": "～台",
+    "kana": "～だい",
+    "romaji": "~dai",
+    "image": "https://iili.io/ClD8CQt.png",
+    "exampleJa": "会社に車が三台あります。",
+    "exampleReading": "Kaisha ni kuruma ga san-dai arimasu.",
+    "exampleId": "Di perusahaan ada tiga mobil.",
+    "examples": [
+      {
+        "ja": "会社に車が三台あります。",
+        "reading": "Kaisha ni kuruma ga san-dai arimasu.",
+        "id": "Di perusahaan ada tiga mobil."
+      }
+    ],
+    "catatan": "Dipakai untuk menghitung mesin, kendaraan, komputer, mobil, sepeda, dan benda mekanis lainnya.",
+    "note": "Dipakai untuk menghitung mesin, kendaraan, komputer, mobil, sepeda, dan benda mekanis lainnya.",
+    "speech": "だい"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-020",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "lembar / helai",
+    "kanji": "～枚",
+    "kana": "～まい",
+    "romaji": "~mai",
+    "image": "https://iili.io/ClD8Av4.png",
+    "exampleJa": "切手を五枚買いました。",
+    "exampleReading": "Kitte o go-mai kaimashita.",
+    "exampleId": "Saya membeli lima lembar prangko.",
+    "examples": [
+      {
+        "ja": "切手を五枚買いました。",
+        "reading": "Kitte o go-mai kaimashita.",
+        "id": "Saya membeli lima lembar prangko."
+      }
+    ],
+    "catatan": "Dipakai untuk menghitung benda tipis dan datar seperti kertas, foto, baju, tiket, dan prangko.",
+    "note": "Dipakai untuk menghitung benda tipis dan datar seperti kertas, foto, baju, tiket, dan prangko.",
+    "speech": "まい"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-021",
+    "typeCategory": "Kata Bantu Bilangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "kali",
+    "kanji": "～回",
+    "kana": "～かい",
+    "romaji": "~kai",
+    "image": "https://iili.io/ClD8ln9.png",
+    "exampleJa": "一週間に二回テニスをします。",
+    "exampleReading": "Isshuukan ni ni-kai tenisu o shimasu.",
+    "exampleId": "Saya bermain tenis dua kali seminggu.",
+    "examples": [
+      {
+        "ja": "一週間に二回テニスをします。",
+        "reading": "Isshuukan ni ni-kai tenisu o shimasu.",
+        "id": "Saya bermain tenis dua kali seminggu."
+      }
+    ],
+    "catatan": "Dipakai untuk menyatakan berapa kali suatu kegiatan dilakukan.",
+    "note": "Dipakai untuk menyatakan berapa kali suatu kegiatan dilakukan.",
+    "speech": "かい"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-022",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "apel",
+    "kanji": "",
+    "kana": "りんご",
+    "romaji": "ringo",
+    "image": "https://iili.io/ClD8WyQ.png",
+    "exampleJa": "朝、りんごを食べました。",
+    "exampleReading": "Asa, ringo o tabemashita.",
+    "exampleId": "Pagi tadi saya makan apel.",
+    "examples": [
+      {
+        "ja": "朝、りんごを食べました。",
+        "reading": "Asa, ringo o tabemashita.",
+        "id": "Pagi tadi saya makan apel."
+      }
+    ],
+    "speech": "りんご"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-023",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "jeruk",
+    "kanji": "",
+    "kana": "みかん",
+    "romaji": "mikan",
+    "image": "https://iili.io/ClD8On1.png",
+    "exampleJa": "みかんは甘いです。",
+    "exampleReading": "Mikan wa amai desu.",
+    "exampleId": "Jeruk itu manis.",
+    "examples": [
+      {
+        "ja": "みかんは甘いです。",
+        "reading": "Mikan wa amai desu.",
+        "id": "Jeruk itu manis."
+      }
+    ],
+    "speech": "みかん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-024",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "sandwich",
+    "kanji": "",
+    "kana": "サンドイッチ",
+    "romaji": "sandoicchi",
+    "image": "https://iili.io/ClD88Fa.png",
+    "exampleJa": "昼ご飯にサンドイッチを食べます。",
+    "exampleReading": "Hirugohan ni sandoicchi o tabemasu.",
+    "exampleId": "Saya makan sandwich untuk makan siang.",
+    "examples": [
+      {
+        "ja": "昼ご飯にサンドイッチを食べます。",
+        "reading": "Hirugohan ni sandoicchi o tabemasu.",
+        "id": "Saya makan sandwich untuk makan siang."
+      }
+    ],
+    "speech": "サンドイッチ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-025",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "nasi kare",
+    "kanji": "",
+    "kana": "カレー［ライス］",
+    "romaji": "karee [raisu]",
+    "image": "https://iili.io/ClD8ScJ.png",
+    "exampleJa": "食堂でカレーライスを注文しました。",
+    "exampleReading": "Shokudou de karee raisu o chuumon shimashita.",
+    "exampleId": "Saya memesan nasi kare di kantin.",
+    "examples": [
+      {
+        "ja": "食堂でカレーライスを注文しました。",
+        "reading": "Shokudou de karee raisu o chuumon shimashita.",
+        "id": "Saya memesan nasi kare di kantin."
+      }
+    ],
+    "speech": "カレーライス"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-026",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "es krim",
+    "kanji": "",
+    "kana": "アイスクリーム",
+    "romaji": "aisukuriimu",
+    "image": "https://iili.io/ClD8U8v.png",
+    "exampleJa": "暑いですから、アイスクリームを食べたいです。",
+    "exampleReading": "Atsui desu kara, aisukuriimu o tabetai desu.",
+    "exampleId": "Karena panas, saya ingin makan es krim.",
+    "examples": [
+      {
+        "ja": "暑いですから、アイスクリームを食べたいです。",
+        "reading": "Atsui desu kara, aisukuriimu o tabetai desu.",
+        "id": "Karena panas, saya ingin makan es krim."
+      }
+    ],
+    "speech": "アイスクリーム"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-027",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "prangko",
+    "kanji": "切手",
+    "kana": "きって",
+    "romaji": "kitte",
+    "image": "https://iili.io/ClD84up.png",
+    "exampleJa": "郵便局で切手を買います。",
+    "exampleReading": "Yuubinkyoku de kitte o kaimasu.",
+    "exampleId": "Saya membeli prangko di kantor pos.",
+    "examples": [
+      {
+        "ja": "郵便局で切手を買います。",
+        "reading": "Yuubinkyoku de kitte o kaimasu.",
+        "id": "Saya membeli prangko di kantor pos."
+      }
+    ],
+    "speech": "きって"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-028",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "kartu pos",
+    "kanji": "",
+    "kana": "はがき",
+    "romaji": "hagaki",
+    "image": "https://iili.io/ClD8tFs.png",
+    "exampleJa": "友達にはがきを送りました。",
+    "exampleReading": "Tomodachi ni hagaki o okurimashita.",
+    "exampleId": "Saya mengirim kartu pos kepada teman.",
+    "examples": [
+      {
+        "ja": "友達にはがきを送りました。",
+        "reading": "Tomodachi ni hagaki o okurimashita.",
+        "id": "Saya mengirim kartu pos kepada teman."
+      }
+    ],
+    "speech": "はがき"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-029",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "amplop",
+    "kanji": "封筒",
+    "kana": "ふうとう",
+    "romaji": "fuutou",
+    "image": "https://iili.io/ClDS2V9.png",
+    "exampleJa": "この封筒に手紙を入れてください。",
+    "exampleReading": "Kono fuutou ni tegami o irete kudasai.",
+    "exampleId": "Tolong masukkan surat ke dalam amplop ini.",
+    "examples": [
+      {
+        "ja": "この封筒に手紙を入れてください。",
+        "reading": "Kono fuutou ni tegami o irete kudasai.",
+        "id": "Tolong masukkan surat ke dalam amplop ini."
+      }
+    ],
+    "speech": "ふうとう"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-030",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "orang tua",
+    "kanji": "両親",
+    "kana": "りょうしん",
+    "romaji": "ryoushin",
+    "image": "https://iili.io/ClDSfcb.png",
+    "exampleJa": "両親はインドネシアにいます。",
+    "exampleReading": "Ryoushin wa Indoneshia ni imasu.",
+    "exampleId": "Orang tua saya ada di Indonesia.",
+    "examples": [
+      {
+        "ja": "両親はインドネシアにいます。",
+        "reading": "Ryoushin wa Indoneshia ni imasu.",
+        "id": "Orang tua saya ada di Indonesia."
+      }
+    ],
+    "catatan": "Berarti kedua orang tua, yaitu ayah dan ibu.",
+    "note": "Berarti kedua orang tua, yaitu ayah dan ibu.",
+    "speech": "りょうしん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-031",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "saudara / saudari",
+    "kanji": "兄弟",
+    "kana": "きょうだい",
+    "romaji": "kyoudai",
+    "image": "https://iili.io/ClDSIoP.png",
+    "exampleJa": "兄弟が三人います。",
+    "exampleReading": "Kyoudai ga san-nin imasu.",
+    "exampleId": "Saya punya tiga saudara.",
+    "examples": [
+      {
+        "ja": "兄弟が三人います。",
+        "reading": "Kyoudai ga san-nin imasu.",
+        "id": "Saya punya tiga saudara."
+      }
+    ],
+    "catatan": "Dapat berarti saudara kandung secara umum, baik laki-laki maupun perempuan.",
+    "note": "Dapat berarti saudara kandung secara umum, baik laki-laki maupun perempuan.",
+    "speech": "きょうだい"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-032",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "kakak laki-laki sendiri",
+    "kanji": "兄",
+    "kana": "あに",
+    "romaji": "ani",
+    "image": "https://iili.io/ClDSRKg.png",
+    "exampleJa": "兄は大学生です。",
+    "exampleReading": "Ani wa daigakusei desu.",
+    "exampleId": "Kakak laki-laki saya adalah mahasiswa.",
+    "examples": [
+      {
+        "ja": "兄は大学生です。",
+        "reading": "Ani wa daigakusei desu.",
+        "id": "Kakak laki-laki saya adalah mahasiswa."
+      }
+    ],
+    "catatan": "Digunakan ketika membicarakan saudara sendiri kepada orang lain.",
+    "note": "Digunakan ketika membicarakan saudara sendiri kepada orang lain.",
+    "speech": "あに"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-033",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "kakak laki-laki orang lain",
+    "kanji": "お兄さん",
+    "kana": "おにいさん",
+    "romaji": "oniisan",
+    "image": "https://iili.io/ClDSaHv.png",
+    "exampleJa": "田中さんのお兄さんは医者です。",
+    "exampleReading": "Tanaka-san no oniisan wa isha desu.",
+    "exampleId": "Kakak laki-laki Tanaka adalah dokter.",
+    "examples": [
+      {
+        "ja": "田中さんのお兄さんは医者です。",
+        "reading": "Tanaka-san no oniisan wa isha desu.",
+        "id": "Kakak laki-laki Tanaka adalah dokter."
+      }
+    ],
+    "catatan": "Digunakan ketika membicarakan saudara orang lain, atau memanggil saudara orang lain dengan lebih sopan.",
+    "note": "Digunakan ketika membicarakan saudara orang lain, atau memanggil saudara orang lain dengan lebih sopan.",
+    "speech": "おにいさん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-034",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "kakak perempuan sendiri",
+    "kanji": "姉",
+    "kana": "あね",
+    "romaji": "ane",
+    "image": "https://iili.io/ClDSMiX.png",
+    "exampleJa": "姉は東京で働いています。",
+    "exampleReading": "Ane wa Toukyou de hataraite imasu.",
+    "exampleId": "Kakak perempuan saya bekerja di Tokyo.",
+    "examples": [
+      {
+        "ja": "姉は東京で働いています。",
+        "reading": "Ane wa Toukyou de hataraite imasu.",
+        "id": "Kakak perempuan saya bekerja di Tokyo."
+      }
+    ],
+    "catatan": "Digunakan ketika membicarakan saudara sendiri kepada orang lain.",
+    "note": "Digunakan ketika membicarakan saudara sendiri kepada orang lain.",
+    "speech": "あね"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-035",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "kakak perempuan orang lain",
+    "kanji": "お姉さん",
+    "kana": "おねえさん",
+    "romaji": "oneesan",
+    "image": "https://iili.io/ClDShUG.png",
+    "exampleJa": "あの人はミラーさんのお姉さんです。",
+    "exampleReading": "Ano hito wa Miraa-san no oneesan desu.",
+    "exampleId": "Orang itu adalah kakak perempuan Miller.",
+    "examples": [
+      {
+        "ja": "あの人はミラーさんのお姉さんです。",
+        "reading": "Ano hito wa Miraa-san no oneesan desu.",
+        "id": "Orang itu adalah kakak perempuan Miller."
+      }
+    ],
+    "catatan": "Digunakan ketika membicarakan saudara orang lain, atau memanggil saudara orang lain dengan lebih sopan.",
+    "note": "Digunakan ketika membicarakan saudara orang lain, atau memanggil saudara orang lain dengan lebih sopan.",
+    "speech": "おねえさん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-036",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "adik laki-laki sendiri",
+    "kanji": "弟",
+    "kana": "おとうと",
+    "romaji": "otouto",
+    "image": "https://iili.io/ClDSOOl.png",
+    "exampleJa": "弟は高校生です。",
+    "exampleReading": "Otouto wa koukousei desu.",
+    "exampleId": "Adik laki-laki saya adalah siswa SMA.",
+    "examples": [
+      {
+        "ja": "弟は高校生です。",
+        "reading": "Otouto wa koukousei desu.",
+        "id": "Adik laki-laki saya adalah siswa SMA."
+      }
+    ],
+    "catatan": "Digunakan ketika membicarakan saudara sendiri kepada orang lain.",
+    "note": "Digunakan ketika membicarakan saudara sendiri kepada orang lain.",
+    "speech": "おとうと"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-037",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "adik laki-laki orang lain",
+    "kanji": "弟さん",
+    "kana": "おとうとさん",
+    "romaji": "otoutosan",
+    "image": "https://iili.io/ClDSgfe.png",
+    "exampleJa": "弟さんは何歳ですか。",
+    "exampleReading": "Otoutosan wa nan-sai desu ka.",
+    "exampleId": "Adik laki-laki Anda berumur berapa?",
+    "examples": [
+      {
+        "ja": "弟さんは何歳ですか。",
+        "reading": "Otoutosan wa nan-sai desu ka.",
+        "id": "Adik laki-laki Anda berumur berapa?"
+      }
+    ],
+    "catatan": "Digunakan ketika membicarakan saudara orang lain, atau memanggil saudara orang lain dengan lebih sopan.",
+    "note": "Digunakan ketika membicarakan saudara orang lain, atau memanggil saudara orang lain dengan lebih sopan.",
+    "speech": "おとうとさん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-038",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "adik perempuan sendiri",
+    "kanji": "妹",
+    "kana": "いもうと",
+    "romaji": "imouto",
+    "image": "https://iili.io/ClDS4Ub.png",
+    "exampleJa": "妹はピアノが上手です。",
+    "exampleReading": "Imouto wa piano ga jouzu desu.",
+    "exampleId": "Adik perempuan saya pandai bermain piano.",
+    "examples": [
+      {
+        "ja": "妹はピアノが上手です。",
+        "reading": "Imouto wa piano ga jouzu desu.",
+        "id": "Adik perempuan saya pandai bermain piano."
+      }
+    ],
+    "catatan": "Digunakan ketika membicarakan saudara sendiri kepada orang lain.",
+    "note": "Digunakan ketika membicarakan saudara sendiri kepada orang lain.",
+    "speech": "いもうと"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-039",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "adik perempuan orang lain",
+    "kanji": "妹さん",
+    "kana": "いもうとさん",
+    "romaji": "imoutosan",
+    "image": "https://iili.io/ClDSZzB.png",
+    "exampleJa": "妹さんも学生ですか。",
+    "exampleReading": "Imoutosan mo gakusei desu ka.",
+    "exampleId": "Apakah adik perempuan Anda juga pelajar?",
+    "examples": [
+      {
+        "ja": "妹さんも学生ですか。",
+        "reading": "Imoutosan mo gakusei desu ka.",
+        "id": "Apakah adik perempuan Anda juga pelajar?"
+      }
+    ],
+    "catatan": "Digunakan ketika membicarakan saudara orang lain, atau memanggil saudara orang lain dengan lebih sopan.",
+    "note": "Digunakan ketika membicarakan saudara orang lain, atau memanggil saudara orang lain dengan lebih sopan.",
+    "speech": "いもうとさん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-040",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "luar negeri",
+    "kanji": "外国",
+    "kana": "がいこく",
+    "romaji": "gaikoku",
+    "image": "https://iili.io/ClDSp0g.png",
+    "exampleJa": "いつか外国へ行きたいです。",
+    "exampleReading": "Itsuka gaikoku e ikitai desu.",
+    "exampleId": "Suatu hari saya ingin pergi ke luar negeri.",
+    "examples": [
+      {
+        "ja": "いつか外国へ行きたいです。",
+        "reading": "Itsuka gaikoku e ikitai desu.",
+        "id": "Suatu hari saya ingin pergi ke luar negeri."
+      }
+    ],
+    "speech": "がいこく"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-041",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "pelajar asing",
+    "kanji": "留学生",
+    "kana": "りゅうがくせい",
+    "romaji": "ryuugakusei",
+    "image": "https://iili.io/ClDUBqX.png",
+    "exampleJa": "あの人は韓国から来た留学生です。",
+    "exampleReading": "Ano hito wa Kankoku kara kita ryuugakusei desu.",
+    "exampleId": "Orang itu adalah pelajar asing dari Korea.",
+    "examples": [
+      {
+        "ja": "あの人は韓国から来た留学生です。",
+        "reading": "Ano hito wa Kankoku kara kita ryuugakusei desu.",
+        "id": "Orang itu adalah pelajar asing dari Korea."
+      }
+    ],
+    "speech": "りゅうがくせい"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-042",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "kelas",
+    "kanji": "",
+    "kana": "クラス",
+    "romaji": "kurasu",
+    "image": "https://iili.io/ClDUxdG.png",
+    "exampleJa": "このクラスに学生が二十人います。",
+    "exampleReading": "Kono kurasu ni gakusei ga nijuu-nin imasu.",
+    "exampleId": "Di kelas ini ada dua puluh siswa.",
+    "examples": [
+      {
+        "ja": "このクラスに学生が二十人います。",
+        "reading": "Kono kurasu ni gakusei ga nijuu-nin imasu.",
+        "id": "Di kelas ini ada dua puluh siswa."
+      }
+    ],
+    "speech": "クラス"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-043",
+    "typeCategory": "Keterangan Waktu",
+    "sectionCategory": "Perayaan",
+    "indonesia": "～ jam",
+    "kanji": "～時間",
+    "kana": "～じかん",
+    "romaji": "~jikan",
+    "image": "https://iili.io/ClDUz7f.png",
+    "exampleJa": "毎日一時間日本語を勉強します。",
+    "exampleReading": "Mainichi ichi-jikan Nihongo o benkyou shimasu.",
+    "exampleId": "Setiap hari saya belajar bahasa Jepang selama satu jam.",
+    "examples": [
+      {
+        "ja": "毎日一時間日本語を勉強します。",
+        "reading": "Mainichi ichi-jikan Nihongo o benkyou shimasu.",
+        "id": "Setiap hari saya belajar bahasa Jepang selama satu jam."
+      }
+    ],
+    "catatan": "Dipakai untuk menyatakan durasi waktu, bukan jam tanggal tertentu.",
+    "note": "Dipakai untuk menyatakan durasi waktu, bukan jam tanggal tertentu.",
+    "speech": "いちじかん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-044",
+    "typeCategory": "Keterangan Waktu",
+    "sectionCategory": "Perayaan",
+    "indonesia": "～ minggu",
+    "kanji": "～週間",
+    "kana": "～しゅうかん",
+    "romaji": "~shuukan",
+    "image": "https://iili.io/ClDU5L7.png",
+    "exampleJa": "一週間会社を休みました。",
+    "exampleReading": "Isshuukan kaisha o yasumimashita.",
+    "exampleId": "Saya tidak masuk kerja selama satu minggu.",
+    "examples": [
+      {
+        "ja": "一週間会社を休みました。",
+        "reading": "Isshuukan kaisha o yasumimashita.",
+        "id": "Saya tidak masuk kerja selama satu minggu."
+      }
+    ],
+    "catatan": "Dipakai untuk menyatakan durasi waktu, bukan jam tanggal tertentu.",
+    "note": "Dipakai untuk menyatakan durasi waktu, bukan jam tanggal tertentu.",
+    "speech": "いっしゅうかん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-045",
+    "typeCategory": "Keterangan Waktu",
+    "sectionCategory": "Perayaan",
+    "indonesia": "～ bulan",
+    "kanji": "～か月",
+    "kana": "～かげつ",
+    "romaji": "~kagetsu",
+    "image": "https://iili.io/ClDU0db.png",
+    "exampleJa": "日本に一か月いました。",
+    "exampleReading": "Nihon ni ikkagetsu imashita.",
+    "exampleId": "Saya berada di Jepang selama satu bulan.",
+    "examples": [
+      {
+        "ja": "日本に一か月いました。",
+        "reading": "Nihon ni ikkagetsu imashita.",
+        "id": "Saya berada di Jepang selama satu bulan."
+      }
+    ],
+    "catatan": "Dipakai untuk menyatakan durasi waktu, bukan jam tanggal tertentu.",
+    "note": "Dipakai untuk menyatakan durasi waktu, bukan jam tanggal tertentu.",
+    "speech": "いっかげつ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-046",
+    "typeCategory": "Keterangan Waktu",
+    "sectionCategory": "Perayaan",
+    "indonesia": "～ tahun",
+    "kanji": "～年",
+    "kana": "～ねん",
+    "romaji": "~nen",
+    "image": "https://iili.io/ClDU8pR.png",
+    "exampleJa": "一年ぐらい日本語を勉強しました。",
+    "exampleReading": "Ichi-nen gurai Nihongo o benkyou shimashita.",
+    "exampleId": "Saya belajar bahasa Jepang sekitar satu tahun.",
+    "examples": [
+      {
+        "ja": "一年ぐらい日本語を勉強しました。",
+        "reading": "Ichi-nen gurai Nihongo o benkyou shimashita.",
+        "id": "Saya belajar bahasa Jepang sekitar satu tahun."
+      }
+    ],
+    "catatan": "Dipakai untuk menyatakan durasi waktu, bukan jam tanggal tertentu.",
+    "note": "Dipakai untuk menyatakan durasi waktu, bukan jam tanggal tertentu.",
+    "speech": "いちねん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-047",
+    "typeCategory": "Kata Keterangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "kira-kira",
+    "kanji": "～ぐらい",
+    "kana": "～ぐらい",
+    "romaji": "~gurai",
+    "image": "https://iili.io/ClDUwEF.png",
+    "exampleJa": "家から学校まで二十分ぐらいかかります。",
+    "exampleReading": "Ie kara gakkou made nijuppun gurai kakarimasu.",
+    "exampleId": "Dari rumah ke sekolah memerlukan waktu kira-kira dua puluh menit.",
+    "examples": [
+      {
+        "ja": "家から学校まで二十分ぐらいかかります。",
+        "reading": "Ie kara gakkou made nijuppun gurai kakarimasu.",
+        "id": "Dari rumah ke sekolah memerlukan waktu kira-kira dua puluh menit."
+      }
+    ],
+    "catatan": "Menunjukkan perkiraan jumlah, waktu, atau biaya. Artinya kira-kira atau sekitar.",
+    "note": "Menunjukkan perkiraan jumlah, waktu, atau biaya. Artinya kira-kira atau sekitar.",
+    "speech": "ぐらい"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-048",
+    "typeCategory": "Kata Tanya",
+    "sectionCategory": "Perayaan",
+    "indonesia": "berapa lama",
+    "kanji": "",
+    "kana": "どのくらい",
+    "romaji": "dono kurai",
+    "image": "https://iili.io/ClDUUIp.png",
+    "exampleJa": "大阪までどのくらいかかりますか。",
+    "exampleReading": "Osaka made dono kurai kakarimasu ka.",
+    "exampleId": "Sampai Osaka memerlukan waktu berapa lama?",
+    "examples": [
+      {
+        "ja": "大阪までどのくらいかかりますか。",
+        "reading": "Osaka made dono kurai kakarimasu ka.",
+        "id": "Sampai Osaka memerlukan waktu berapa lama?"
+      }
+    ],
+    "catatan": "Digunakan untuk menanyakan lama waktu, jarak, jumlah, atau biaya secara umum.",
+    "note": "Digunakan untuk menanyakan lama waktu, jarak, jumlah, atau biaya secara umum.",
+    "speech": "どのくらい"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-049",
+    "typeCategory": "Kata Keterangan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "semuanya / totalnya",
+    "kanji": "全部で",
+    "kana": "ぜんぶで",
+    "romaji": "zenbu de",
+    "image": "https://iili.io/ClDUPEX.png",
+    "exampleJa": "りんごとみかんは全部で八つあります。",
+    "exampleReading": "Ringo to mikan wa zenbu de yattsu arimasu.",
+    "exampleId": "Apel dan jeruk semuanya ada delapan.",
+    "examples": [
+      {
+        "ja": "りんごとみかんは全部で八つあります。",
+        "reading": "Ringo to mikan wa zenbu de yattsu arimasu.",
+        "id": "Apel dan jeruk semuanya ada delapan."
+      }
+    ],
+    "catatan": "Digunakan untuk menyatakan jumlah total dari beberapa benda atau biaya.",
+    "note": "Digunakan untuk menyatakan jumlah total dari beberapa benda atau biaya.",
+    "speech": "ぜんぶで"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-050",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "semua",
+    "kanji": "",
+    "kana": "みんな",
+    "romaji": "minna",
+    "image": "https://iili.io/ClDg9C7.png",
+    "exampleJa": "クラスのみんなで写真を撮りました。",
+    "exampleReading": "Kurasu no minna de shashin o torimashita.",
+    "exampleId": "Semua orang di kelas berfoto bersama.",
+    "examples": [
+      {
+        "ja": "クラスのみんなで写真を撮りました。",
+        "reading": "Kurasu no minna de shashin o torimashita.",
+        "id": "Semua orang di kelas berfoto bersama."
+      }
+    ],
+    "catatan": "Berarti semua orang atau semuanya, tergantung konteks kalimat.",
+    "note": "Berarti semua orang atau semuanya, tergantung konteks kalimat.",
+    "speech": "みんな"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-051",
+    "typeCategory": "Partikel",
+    "sectionCategory": "Perayaan",
+    "indonesia": "hanya / saja",
+    "kanji": "～だけ",
+    "kana": "～だけ",
+    "romaji": "~dake",
+    "image": "https://iili.io/ClDUpQS.png",
+    "exampleJa": "今日はコーヒーだけ飲みました。",
+    "exampleReading": "Kyou wa koohii dake nomimashita.",
+    "exampleId": "Hari ini saya hanya minum kopi.",
+    "examples": [
+      {
+        "ja": "今日はコーヒーだけ飲みました。",
+        "reading": "Kyou wa koohii dake nomimashita.",
+        "id": "Hari ini saya hanya minum kopi."
+      }
+    ],
+    "catatan": "Berarti hanya atau saja. Diletakkan setelah kata yang ingin dibatasi.",
+    "note": "Berarti hanya atau saja. Diletakkan setelah kata yang ingin dibatasi.",
+    "speech": "だけ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-052",
+    "typeCategory": "Ungkapan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "baik / saya mengerti",
+    "kanji": "",
+    "kana": "かしこまりました",
+    "romaji": "kashikomarimashita",
+    "image": "https://iili.io/ClDg23u.png",
+    "exampleJa": "はい、かしこまりました。少々お待ちください。",
+    "exampleReading": "Hai, kashikomarimashita. Shoushou omachi kudasai.",
+    "exampleId": "Baik, saya mengerti. Mohon tunggu sebentar.",
+    "examples": [
+      {
+        "ja": "はい、かしこまりました。少々お待ちください。",
+        "reading": "Hai, kashikomarimashita. Shoushou omachi kudasai.",
+        "id": "Baik, saya mengerti. Mohon tunggu sebentar."
+      }
+    ],
+    "catatan": "Ungkapan sangat sopan yang sering digunakan oleh pegawai toko, restoran, hotel, atau layanan pelanggan.",
+    "note": "Ungkapan sangat sopan yang sering digunakan oleh pegawai toko, restoran, hotel, atau layanan pelanggan.",
+    "speech": "かしこまりました"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-053",
+    "typeCategory": "Ungkapan Percakapan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "cuacanya bagus ya",
+    "kanji": "いい［お］天気ですね。",
+    "kana": "いい［お］てんきですね。",
+    "romaji": "ii [o]tenki desu ne",
+    "image": "https://iili.io/ClDgqTQ.png",
+    "exampleJa": "今日はいいお天気ですね。",
+    "exampleReading": "Kyou wa ii otenki desu ne.",
+    "exampleId": "Hari ini cuacanya bagus ya.",
+    "examples": [
+      {
+        "ja": "今日はいいお天気ですね。",
+        "reading": "Kyou wa ii otenki desu ne.",
+        "id": "Hari ini cuacanya bagus ya."
+      }
+    ],
+    "catatan": "Ungkapan pembuka percakapan ringan saat cuaca bagus. 「お天気」 terdengar lebih sopan/lembut.",
+    "note": "Ungkapan pembuka percakapan ringan saat cuaca bagus. 「お天気」 terdengar lebih sopan/lembut.",
+    "speech": "いいおてんきですね"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-054",
+    "typeCategory": "Ungkapan Percakapan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "mau keluar?",
+    "kanji": "お出かけですか",
+    "kana": "おでかけですか",
+    "romaji": "odekake desu ka",
+    "image": "https://iili.io/ClDgRyv.png",
+    "exampleJa": "これからお出かけですか。",
+    "exampleReading": "Kore kara odekake desu ka.",
+    "exampleId": "Apakah Anda mau keluar sekarang?",
+    "examples": [
+      {
+        "ja": "これからお出かけですか。",
+        "reading": "Kore kara odekake desu ka.",
+        "id": "Apakah Anda mau keluar sekarang?"
+      }
+    ],
+    "catatan": "Ungkapan sopan untuk menanyakan apakah seseorang akan pergi keluar.",
+    "note": "Ungkapan sopan untuk menanyakan apakah seseorang akan pergi keluar.",
+    "speech": "おでかけですか"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-055",
+    "typeCategory": "Ungkapan Percakapan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "ke ~ sebentar",
+    "kanji": "",
+    "kana": "ちょっと～まで。",
+    "romaji": "chotto ~ made",
+    "image": "https://iili.io/ClDguaa.png",
+    "exampleJa": "ちょっと郵便局まで行ってきます。",
+    "exampleReading": "Chotto yuubinkyoku made itte kimasu.",
+    "exampleId": "Saya pergi sebentar ke kantor pos.",
+    "examples": [
+      {
+        "ja": "ちょっと郵便局まで行ってきます。",
+        "reading": "Chotto yuubinkyoku made itte kimasu.",
+        "id": "Saya pergi sebentar ke kantor pos."
+      }
+    ],
+    "catatan": "Digunakan untuk menjawab tujuan pergi dengan cara tidak terlalu detail. Contoh: ちょっとそこまで berarti pergi sebentar ke sana/dekat sini.",
+    "note": "Digunakan untuk menjawab tujuan pergi dengan cara tidak terlalu detail. Contoh: ちょっとそこまで berarti pergi sebentar ke sana/dekat sini.",
+    "speech": "ちょっとゆうびんきょくまで"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-056",
+    "typeCategory": "Ungkapan Percakapan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "hati-hati / selamat jalan",
+    "kanji": "行ってらっしゃい",
+    "kana": "いってらっしゃい",
+    "romaji": "itterasshai",
+    "image": "https://iili.io/ClDgYjp.png",
+    "exampleJa": "行ってらっしゃい。気をつけて。",
+    "exampleReading": "Itterasshai. Ki o tsukete.",
+    "exampleId": "Hati-hati. Jaga diri.",
+    "examples": [
+      {
+        "ja": "行ってらっしゃい。気をつけて。",
+        "reading": "Itterasshai. Ki o tsukete.",
+        "id": "Hati-hati. Jaga diri."
+      }
+    ],
+    "catatan": "Diucapkan kepada orang yang akan pergi, dengan makna “hati-hati / selamat jalan”.",
+    "note": "Diucapkan kepada orang yang akan pergi, dengan makna “hati-hati / selamat jalan”.",
+    "speech": "いってらっしゃい"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-057",
+    "typeCategory": "Ungkapan Percakapan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "saya berangkat",
+    "kanji": "行ってきます",
+    "kana": "いってきます",
+    "romaji": "itte kimasu",
+    "image": "https://iili.io/ClDg0Gt.png",
+    "exampleJa": "では、行ってきます。",
+    "exampleReading": "Dewa, itte kimasu.",
+    "exampleId": "Kalau begitu, saya berangkat.",
+    "examples": [
+      {
+        "ja": "では、行ってきます。",
+        "reading": "Dewa, itte kimasu.",
+        "id": "Kalau begitu, saya berangkat."
+      }
+    ],
+    "catatan": "Diucapkan oleh orang yang akan pergi dari rumah atau tempat tertentu, dengan makna “saya pergi dulu”.",
+    "note": "Diucapkan oleh orang yang akan pergi dari rumah atau tempat tertentu, dengan makna “saya pergi dulu”.",
+    "speech": "いってきます"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-058",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "pos laut",
+    "kanji": "船便",
+    "kana": "ふなびん",
+    "romaji": "funabin",
+    "image": "https://iili.io/ClDgOnS.png",
+    "exampleJa": "この荷物を船便でお願いします。",
+    "exampleReading": "Kono nimotsu o funabin de onegai shimasu.",
+    "exampleId": "Tolong kirim barang ini melalui pos laut.",
+    "examples": [
+      {
+        "ja": "この荷物を船便でお願いします。",
+        "reading": "Kono nimotsu o funabin de onegai shimasu.",
+        "id": "Tolong kirim barang ini melalui pos laut."
+      }
+    ],
+    "catatan": "Digunakan untuk pengiriman melalui laut. Biasanya lebih lama tetapi bisa lebih murah.",
+    "note": "Digunakan untuk pengiriman melalui laut. Biasanya lebih lama tetapi bisa lebih murah.",
+    "speech": "ふなびん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-059",
+    "typeCategory": "Kata Benda",
+    "sectionCategory": "Perayaan",
+    "indonesia": "pos udara",
+    "kanji": "航空便（エアメール）",
+    "kana": "こうくうびん（エアメール）",
+    "romaji": "koukuubin / eemeeru",
+    "image": "https://iili.io/ClDgkP9.png",
+    "exampleJa": "手紙を航空便で送りたいです。",
+    "exampleReading": "Tegami o koukuubin de okuritai desu.",
+    "exampleId": "Saya ingin mengirim surat melalui pos udara.",
+    "examples": [
+      {
+        "ja": "手紙を航空便で送りたいです。",
+        "reading": "Tegami o koukuubin de okuritai desu.",
+        "id": "Saya ingin mengirim surat melalui pos udara."
+      }
+    ],
+    "catatan": "Digunakan untuk pengiriman lewat udara. Biasanya lebih cepat daripada 船便.",
+    "note": "Digunakan untuk pengiriman lewat udara. Biasanya lebih cepat daripada 船便.",
+    "speech": "航空便"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-060",
+    "typeCategory": "Ungkapan Percakapan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "tolong",
+    "kanji": "お願いします",
+    "kana": "おねがいします",
+    "romaji": "onegai shimasu",
+    "image": "https://iili.io/ClDgU8b.png",
+    "exampleJa": "これを航空便でお願いします。",
+    "exampleReading": "Kore o koukuubin de onegai shimasu.",
+    "exampleId": "Tolong kirim ini melalui pos udara.",
+    "examples": [
+      {
+        "ja": "これを航空便でお願いします。",
+        "reading": "Kore o koukuubin de onegai shimasu.",
+        "id": "Tolong kirim ini melalui pos udara."
+      }
+    ],
+    "catatan": "Ungkapan sopan untuk meminta bantuan, memesan sesuatu, atau mengakhiri permintaan.",
+    "note": "Ungkapan sopan untuk meminta bantuan, memesan sesuatu, atau mengakhiri permintaan.",
+    "speech": "おねがいします"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Materi Umum",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-b11-061",
+    "typeCategory": "Negara",
+    "sectionCategory": "Perayaan",
+    "indonesia": "Australia",
+    "kanji": "",
+    "kana": "オーストラリア",
+    "romaji": "Oosutoraria",
+    "image": "https://iili.io/ClDgr9j.png",
+    "exampleJa": "友達はオーストラリアにいます。",
+    "exampleReading": "Tomodachi wa Oosutoraria ni imasu.",
+    "exampleId": "Teman saya ada di Australia.",
+    "examples": [
+      {
+        "ja": "友達はオーストラリアにいます。",
+        "reading": "Tomodachi wa Oosutoraria ni imasu.",
+        "id": "Teman saya ada di Australia."
+      }
+    ],
+    "catatan": "Nama negara Australia dalam bahasa Jepang ditulis dengan katakana karena berasal dari bahasa asing.",
+    "note": "Nama negara Australia dalam bahasa Jepang ditulis dengan katakana karena berasal dari bahasa asing.",
+    "speech": "オーストラリア"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-001",
+    "typeCategory": "Informasi",
+    "sectionCategory": "Perayaan",
+    "indonesia": "menu",
+    "kanji": "",
+    "kana": "メニュー",
+    "romaji": "menyuu",
+    "image": "https://iili.io/C0a9aUJ.png",
+    "exampleJa": "レストランでメニューを見ます。",
+    "exampleReading": "Resutoran de menyuu o mimasu.",
+    "exampleId": "Saya melihat menu di restoran.",
+    "examples": [
+      {
+        "ja": "レストランでメニューを見ます。",
+        "reading": "Resutoran de menyuu o mimasu.",
+        "id": "Saya melihat menu di restoran."
+      }
+    ],
+    "catatan": "メニュー berarti daftar makanan atau minuman di restoran.",
+    "note": "メニュー berarti daftar makanan atau minuman di restoran.",
+    "speech": "メニュー"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-002",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "makanan paket",
+    "kanji": "定食",
+    "kana": "ていしょく",
+    "romaji": "teishoku",
+    "image": "https://iili.io/C0a91Np.png",
+    "exampleJa": "昼ごはんに定食を食べました。",
+    "exampleReading": "Hirugohan ni teishoku o tabemashita.",
+    "exampleId": "Saya makan makanan paket untuk makan siang.",
+    "examples": [
+      {
+        "ja": "昼ごはんに定食を食べました。",
+        "reading": "Hirugohan ni teishoku o tabemashita.",
+        "id": "Saya makan makanan paket untuk makan siang."
+      }
+    ],
+    "catatan": "定食 adalah paket makanan lengkap, biasanya berisi nasi, lauk, sup, dan pendamping.",
+    "note": "定食 adalah paket makanan lengkap, biasanya berisi nasi, lauk, sup, dan pendamping.",
+    "speech": "ていしょく"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-003",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "paket makan siang",
+    "kanji": "",
+    "kana": "ランチ",
+    "romaji": "ranchi",
+    "image": "https://iili.io/C0a90RR.png",
+    "exampleJa": "今日のランチは安いです。",
+    "exampleReading": "Kyou no ranchi wa yasui desu.",
+    "exampleId": "Paket makan siang hari ini murah.",
+    "examples": [
+      {
+        "ja": "今日のランチは安いです。",
+        "reading": "Kyou no ranchi wa yasui desu.",
+        "id": "Paket makan siang hari ini murah."
+      }
+    ],
+    "catatan": "ランチ adalah kata serapan yang berarti makan siang atau paket makan siang.",
+    "note": "ランチ adalah kata serapan yang berarti makan siang atau paket makan siang.",
+    "speech": "ランチ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-004",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "nasi dengan tempura di atasnya",
+    "kanji": "天どん",
+    "kana": "てんどん",
+    "romaji": "tendon",
+    "image": "https://iili.io/C0a9lHv.png",
+    "exampleJa": "この店の天どんはとてもおいしいです。",
+    "exampleReading": "Kono mise no tendon wa totemo oishii desu.",
+    "exampleId": "Tendon di toko ini sangat enak.",
+    "examples": [
+      {
+        "ja": "この店の天どんはとてもおいしいです。",
+        "reading": "Kono mise no tendon wa totemo oishii desu.",
+        "id": "Tendon di toko ini sangat enak."
+      }
+    ],
+    "catatan": "天どん adalah hidangan nasi mangkuk dengan tempura di atasnya.",
+    "note": "天どん adalah hidangan nasi mangkuk dengan tempura di atasnya.",
+    "speech": "てんどん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-005",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "nasi dengan daging ayam dan telur di atasnya",
+    "kanji": "親子どん",
+    "kana": "おやこどん",
+    "romaji": "oyakodon",
+    "image": "https://iili.io/C0a9MxI.png",
+    "exampleJa": "母は親子どんを作りました。",
+    "exampleReading": "Haha wa oyakodon o tsukurimashita.",
+    "exampleId": "Ibu membuat oyakodon.",
+    "examples": [
+      {
+        "ja": "母は親子どんを作りました。",
+        "reading": "Haha wa oyakodon o tsukurimashita.",
+        "id": "Ibu membuat oyakodon."
+      }
+    ],
+    "catatan": "親子どん adalah nasi mangkuk dengan ayam dan telur di atasnya.",
+    "note": "親子どん adalah nasi mangkuk dengan ayam dan telur di atasnya.",
+    "speech": "おやこどん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-006",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "nasi dengan daging sapi di atasnya",
+    "kanji": "牛どん",
+    "kana": "ぎゅうどん",
+    "romaji": "gyuudon",
+    "image": "https://iili.io/C0a9VVt.png",
+    "exampleJa": "駅の近くで牛どんを買いました。",
+    "exampleReading": "Eki no chikaku de gyuudon o kaimashita.",
+    "exampleId": "Saya membeli gyudon di dekat stasiun.",
+    "examples": [
+      {
+        "ja": "駅の近くで牛どんを買いました。",
+        "reading": "Eki no chikaku de gyuudon o kaimashita.",
+        "id": "Saya membeli gyudon di dekat stasiun."
+      }
+    ],
+    "catatan": "牛どん adalah nasi mangkuk dengan irisan daging sapi di atasnya.",
+    "note": "牛どん adalah nasi mangkuk dengan irisan daging sapi di atasnya.",
+    "speech": "ぎゅうどん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-007",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "daging panggang",
+    "kanji": "焼き肉",
+    "kana": "やきにく",
+    "romaji": "yakiniku",
+    "image": "https://iili.io/C0a9WiX.png",
+    "exampleJa": "友達と焼き肉を食べに行きます。",
+    "exampleReading": "Tomodachi to yakiniku o tabe ni ikimasu.",
+    "exampleId": "Saya akan pergi makan yakiniku bersama teman.",
+    "examples": [
+      {
+        "ja": "友達と焼き肉を食べに行きます。",
+        "reading": "Tomodachi to yakiniku o tabe ni ikimasu.",
+        "id": "Saya akan pergi makan yakiniku bersama teman."
+      }
+    ],
+    "catatan": "焼き肉 berarti daging panggang, sering dimakan bersama di restoran yakiniku.",
+    "note": "焼き肉 berarti daging panggang, sering dimakan bersama di restoran yakiniku.",
+    "speech": "やきにく"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-008",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "sayur goreng / tumis sayur",
+    "kanji": "野菜いため",
+    "kana": "やさいいため",
+    "romaji": "yasai itame",
+    "image": "https://iili.io/C0a9hfn.png",
+    "exampleJa": "晩ごはんに野菜いためを食べます。",
+    "exampleReading": "Bangohan ni yasai itame o tabemasu.",
+    "exampleId": "Saya makan tumis sayur untuk makan malam.",
+    "examples": [
+      {
+        "ja": "晩ごはんに野菜いためを食べます。",
+        "reading": "Bangohan ni yasai itame o tabemasu.",
+        "id": "Saya makan tumis sayur untuk makan malam."
+      }
+    ],
+    "catatan": "野菜いため adalah tumis sayur ala Jepang.",
+    "note": "野菜いため adalah tumis sayur ala Jepang.",
+    "speech": "やさいいため"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-009",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "asinan",
+    "kanji": "漬物",
+    "kana": "つけもの",
+    "romaji": "tsukemono",
+    "image": "https://iili.io/C0a9jls.png",
+    "exampleJa": "ごはんと漬物を少し食べました。",
+    "exampleReading": "Gohan to tsukemono o sukoshi tabemashita.",
+    "exampleId": "Saya makan sedikit nasi dan asinan.",
+    "examples": [
+      {
+        "ja": "ごはんと漬物を少し食べました。",
+        "reading": "Gohan to tsukemono o sukoshi tabemashita.",
+        "id": "Saya makan sedikit nasi dan asinan."
+      }
+    ],
+    "catatan": "漬物 adalah asinan atau acar Jepang yang sering menjadi lauk pendamping.",
+    "note": "漬物 adalah asinan atau acar Jepang yang sering menjadi lauk pendamping.",
+    "speech": "つけもの"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-010",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "sup miso",
+    "kanji": "みそ汁",
+    "kana": "みそしる",
+    "romaji": "misoshiru",
+    "image": "https://iili.io/C0a9wUG.png",
+    "exampleJa": "朝ごはんにみそ汁を飲みます。",
+    "exampleReading": "Asagohan ni misoshiru o nomimasu.",
+    "exampleId": "Saya minum sup miso saat sarapan.",
+    "examples": [
+      {
+        "ja": "朝ごはんにみそ汁を飲みます。",
+        "reading": "Asagohan ni misoshiru o nomimasu.",
+        "id": "Saya minum sup miso saat sarapan."
+      }
+    ],
+    "catatan": "みそ汁 adalah sup Jepang berbahan dasar pasta miso.",
+    "note": "みそ汁 adalah sup Jepang berbahan dasar pasta miso.",
+    "speech": "みそしる"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-011",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "nasi bola / nasi kepal",
+    "kanji": "",
+    "kana": "おにぎり",
+    "romaji": "onigiri",
+    "image": "https://iili.io/C0a9OJf.png",
+    "exampleJa": "コンビニでおにぎりを二つ買いました。",
+    "exampleReading": "Konbini de onigiri o futatsu kaimashita.",
+    "exampleId": "Saya membeli dua onigiri di minimarket.",
+    "examples": [
+      {
+        "ja": "コンビニでおにぎりを二つ買いました。",
+        "reading": "Konbini de onigiri o futatsu kaimashita.",
+        "id": "Saya membeli dua onigiri di minimarket."
+      }
+    ],
+    "catatan": "おにぎり adalah nasi kepal yang sering diisi lauk dan dibungkus nori.",
+    "note": "おにぎり adalah nasi kepal yang sering diisi lauk dan dibungkus nori.",
+    "speech": "おにぎり"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-012",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "tempura",
+    "kanji": "",
+    "kana": "てんぷら",
+    "romaji": "tenpura",
+    "image": "https://iili.io/C0a9eR4.png",
+    "exampleJa": "てんぷらをしょうゆで食べます。",
+    "exampleReading": "Tenpura o shouyu de tabemasu.",
+    "exampleId": "Saya makan tempura dengan kecap asin.",
+    "examples": [
+      {
+        "ja": "てんぷらをしょうゆで食べます。",
+        "reading": "Tenpura o shouyu de tabemasu.",
+        "id": "Saya makan tempura dengan kecap asin."
+      }
+    ],
+    "catatan": "てんぷら adalah makanan yang digoreng dengan adonan tepung ringan.",
+    "note": "てんぷら adalah makanan yang digoreng dengan adonan tepung ringan.",
+    "speech": "てんぷら"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-013",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "sushi",
+    "kanji": "",
+    "kana": "すし",
+    "romaji": "sushi",
+    "image": "https://iili.io/C0a9kOl.png",
+    "exampleJa": "日本でおいしいすしを食べたいです。",
+    "exampleReading": "Nihon de oishii sushi o tabetai desu.",
+    "exampleId": "Saya ingin makan sushi yang enak di Jepang.",
+    "examples": [
+      {
+        "ja": "日本でおいしいすしを食べたいです。",
+        "reading": "Nihon de oishii sushi o tabetai desu.",
+        "id": "Saya ingin makan sushi yang enak di Jepang."
+      }
+    ],
+    "catatan": "すし adalah hidangan nasi bercuka yang sering dipadukan dengan ikan atau lauk lain.",
+    "note": "すし adalah hidangan nasi bercuka yang sering dipadukan dengan ikan atau lauk lain.",
+    "speech": "すし"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-014",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "mie udon",
+    "kanji": "",
+    "kana": "うどん",
+    "romaji": "udon",
+    "image": "https://iili.io/C0a9vb2.png",
+    "exampleJa": "寒い日にうどんを食べるのが好きです。",
+    "exampleReading": "Samui hi ni udon o taberu no ga suki desu.",
+    "exampleId": "Saya suka makan udon pada hari yang dingin.",
+    "examples": [
+      {
+        "ja": "寒い日にうどんを食べるのが好きです。",
+        "reading": "Samui hi ni udon o taberu no ga suki desu.",
+        "id": "Saya suka makan udon pada hari yang dingin."
+      }
+    ],
+    "catatan": "うどん adalah mie Jepang yang tebal dan lembut.",
+    "note": "うどん adalah mie Jepang yang tebal dan lembut.",
+    "speech": "うどん"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-015",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "mie soba",
+    "kanji": "",
+    "kana": "そば",
+    "romaji": "soba",
+    "image": "https://iili.io/C0a9SxS.png",
+    "exampleJa": "そばは冷たくても温かくてもおいしいです。",
+    "exampleReading": "Soba wa tsumetakute mo atatakakute mo oishii desu.",
+    "exampleId": "Soba enak baik dingin maupun hangat.",
+    "examples": [
+      {
+        "ja": "そばは冷たくても温かくてもおいしいです。",
+        "reading": "Soba wa tsumetakute mo atatakakute mo oishii desu.",
+        "id": "Soba enak baik dingin maupun hangat."
+      }
+    ],
+    "catatan": "そば adalah mie Jepang dari gandum soba, berwarna agak keabu-abuan.",
+    "note": "そば adalah mie Jepang dari gandum soba, berwarna agak keabu-abuan.",
+    "speech": "そば"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-016",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "ramen",
+    "kanji": "",
+    "kana": "ラーメン",
+    "romaji": "raamen",
+    "image": "https://iili.io/C0a9UW7.png",
+    "exampleJa": "父はラーメンが大好きです。",
+    "exampleReading": "Chichi wa raamen ga daisuki desu.",
+    "exampleId": "Ayah saya sangat suka ramen.",
+    "examples": [
+      {
+        "ja": "父はラーメンが大好きです。",
+        "reading": "Chichi wa raamen ga daisuki desu.",
+        "id": "Ayah saya sangat suka ramen."
+      }
+    ],
+    "catatan": "ラーメン adalah mie kuah Jepang yang populer dengan berbagai jenis kuah.",
+    "note": "ラーメン adalah mie kuah Jepang yang populer dengan berbagai jenis kuah.",
+    "speech": "ラーメン"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-017",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "mie goreng Jepang",
+    "kanji": "焼きそば",
+    "kana": "やきそば",
+    "romaji": "yakisoba",
+    "image": "https://iili.io/C0a960u.png",
+    "exampleJa": "祭りで焼きそばを食べました。",
+    "exampleReading": "Matsuri de yakisoba o tabemashita.",
+    "exampleId": "Saya makan yakisoba di festival.",
+    "examples": [
+      {
+        "ja": "祭りで焼きそばを食べました。",
+        "reading": "Matsuri de yakisoba o tabemashita.",
+        "id": "Saya makan yakisoba di festival."
+      }
+    ],
+    "catatan": "焼きそば adalah mie goreng Jepang yang sering dijual di festival.",
+    "note": "焼きそば adalah mie goreng Jepang yang sering dijual di festival.",
+    "speech": "やきそば"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-018",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "makanan gorengan tepung dengan sayuran dan daging yang dimasak di atas loyang",
+    "kanji": "お好み焼き",
+    "kana": "おこのみやき",
+    "romaji": "okonomiyaki",
+    "image": "https://iili.io/C0a9PUb.png",
+    "exampleJa": "大阪でお好み焼きを食べました。",
+    "exampleReading": "Oosaka de okonomiyaki o tabemashita.",
+    "exampleId": "Saya makan okonomiyaki di Osaka.",
+    "examples": [
+      {
+        "ja": "大阪でお好み焼きを食べました。",
+        "reading": "Oosaka de okonomiyaki o tabemashita.",
+        "id": "Saya makan okonomiyaki di Osaka."
+      }
+    ],
+    "catatan": "お好み焼き adalah makanan Jepang dari adonan tepung, sayuran, dan lauk yang dimasak di atas loyang.",
+    "note": "お好み焼き adalah makanan Jepang dari adonan tepung, sayuran, dan lauk yang dimasak di atas loyang.",
+    "speech": "おこのみやき"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-019",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "nasi kare",
+    "kanji": "",
+    "kana": "カレーライス",
+    "romaji": "karee raisu",
+    "image": "https://iili.io/C0a9sJj.png",
+    "exampleJa": "子どもたちはカレーライスが好きです。",
+    "exampleReading": "Kodomotachi wa karee raisu ga suki desu.",
+    "exampleId": "Anak-anak suka nasi kari.",
+    "examples": [
+      {
+        "ja": "子どもたちはカレーライスが好きです。",
+        "reading": "Kodomotachi wa karee raisu ga suki desu.",
+        "id": "Anak-anak suka nasi kari."
+      }
+    ],
+    "catatan": "カレーライス adalah nasi kari Jepang.",
+    "note": "カレーライス adalah nasi kari Jepang.",
+    "speech": "カレーライス"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-020",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "hamburger steak",
+    "kanji": "",
+    "kana": "ハンバーグ",
+    "romaji": "hanbaagu",
+    "image": "https://iili.io/C0a9L5x.png",
+    "exampleJa": "ハンバーグにソースをかけます。",
+    "exampleReading": "Hanbaagu ni soosu o kakemasu.",
+    "exampleId": "Saya menuangkan saus ke hamburger steak.",
+    "examples": [
+      {
+        "ja": "ハンバーグにソースをかけます。",
+        "reading": "Hanbaagu ni soosu o kakemasu.",
+        "id": "Saya menuangkan saus ke hamburger steak."
+      }
+    ],
+    "catatan": "ハンバーグ berarti hamburger steak, bukan roti burger.",
+    "note": "ハンバーグ berarti hamburger steak, bukan roti burger.",
+    "speech": "ハンバーグ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-021",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "kroket",
+    "kanji": "",
+    "kana": "コロッケ",
+    "romaji": "korokke",
+    "image": "https://iili.io/C0a9QOQ.png",
+    "exampleJa": "肉屋でコロッケを一つ買いました。",
+    "exampleReading": "Nikuya de korokke o hitotsu kaimashita.",
+    "exampleId": "Saya membeli satu kroket di toko daging.",
+    "examples": [
+      {
+        "ja": "肉屋でコロッケを一つ買いました。",
+        "reading": "Nikuya de korokke o hitotsu kaimashita.",
+        "id": "Saya membeli satu kroket di toko daging."
+      }
+    ],
+    "catatan": "コロッケ adalah kroket Jepang, biasanya berisi kentang atau daging.",
+    "note": "コロッケ adalah kroket Jepang, biasanya berisi kentang atau daging.",
+    "speech": "コロッケ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-022",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "udang goreng tepung roti",
+    "kanji": "",
+    "kana": "えびフライ",
+    "romaji": "ebi furai",
+    "image": "https://iili.io/C0a9ZbV.png",
+    "exampleJa": "妹はえびフライを三本食べました。",
+    "exampleReading": "Imouto wa ebi furai o sanbon tabemashita.",
+    "exampleId": "Adik perempuan saya makan tiga udang goreng tepung.",
+    "examples": [
+      {
+        "ja": "妹はえびフライを三本食べました。",
+        "reading": "Imouto wa ebi furai o sanbon tabemashita.",
+        "id": "Adik perempuan saya makan tiga udang goreng tepung."
+      }
+    ],
+    "catatan": "えびフライ adalah udang yang dilapisi tepung roti lalu digoreng.",
+    "note": "えびフライ adalah udang yang dilapisi tepung roti lalu digoreng.",
+    "speech": "えびフライ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-023",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "ayam goreng",
+    "kanji": "",
+    "kana": "フライドチキン",
+    "romaji": "furaido chikin",
+    "image": "https://iili.io/C0a9bWP.png",
+    "exampleJa": "映画を見ながらフライドチキンを食べました。",
+    "exampleReading": "Eiga o minagara furaido chikin o tabemashita.",
+    "exampleId": "Saya makan ayam goreng sambil menonton film.",
+    "examples": [
+      {
+        "ja": "映画を見ながらフライドチキンを食べました。",
+        "reading": "Eiga o minagara furaido chikin o tabemashita.",
+        "id": "Saya makan ayam goreng sambil menonton film."
+      }
+    ],
+    "catatan": "フライドチキン adalah ayam goreng bergaya barat.",
+    "note": "フライドチキン adalah ayam goreng bergaya barat.",
+    "speech": "フライドチキン"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-024",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "salad",
+    "kanji": "",
+    "kana": "サラダ",
+    "romaji": "sarada",
+    "image": "https://iili.io/C0a9ms1.png",
+    "exampleJa": "毎朝サラダを食べます。",
+    "exampleReading": "Maiasa sarada o tabemasu.",
+    "exampleId": "Saya makan salad setiap pagi.",
+    "examples": [
+      {
+        "ja": "毎朝サラダを食べます。",
+        "reading": "Maiasa sarada o tabemasu.",
+        "id": "Saya makan salad setiap pagi."
+      }
+    ],
+    "catatan": "サラダ adalah salad, biasanya berisi sayuran segar.",
+    "note": "サラダ adalah salad, biasanya berisi sayuran segar.",
+    "speech": "サラダ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-025",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "sup",
+    "kanji": "",
+    "kana": "スープ",
+    "romaji": "suupu",
+    "image": "https://iili.io/C0a9yqF.png",
+    "exampleJa": "このスープは温かいです。",
+    "exampleReading": "Kono suupu wa atatakai desu.",
+    "exampleId": "Sup ini hangat.",
+    "examples": [
+      {
+        "ja": "このスープは温かいです。",
+        "reading": "Kono suupu wa atatakai desu.",
+        "id": "Sup ini hangat."
+      }
+    ],
+    "catatan": "スープ adalah kata serapan untuk sup.",
+    "note": "スープ adalah kata serapan untuk sup.",
+    "speech": "スープ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-026",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "spaghetti",
+    "kanji": "",
+    "kana": "スパゲッティ",
+    "romaji": "supagetti",
+    "image": "https://iili.io/C0aHHga.png",
+    "exampleJa": "昼にスパゲッティを注文しました。",
+    "exampleReading": "Hiru ni supagetti o chuumon shimashita.",
+    "exampleId": "Saya memesan spaghetti pada siang hari.",
+    "examples": [
+      {
+        "ja": "昼にスパゲッティを注文しました。",
+        "reading": "Hiru ni supagetti o chuumon shimashita.",
+        "id": "Saya memesan spaghetti pada siang hari."
+      }
+    ],
+    "catatan": "スパゲッティ adalah spaghetti, ditulis dengan katakana.",
+    "note": "スパゲッティ adalah spaghetti, ditulis dengan katakana.",
+    "speech": "スパゲッティ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-027",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "pizza",
+    "kanji": "",
+    "kana": "ピザ",
+    "romaji": "piza",
+    "image": "https://iili.io/C0aHddJ.png",
+    "exampleJa": "週末に家族とピザを食べます。",
+    "exampleReading": "Shuumatsu ni kazoku to piza o tabemasu.",
+    "exampleId": "Saya makan pizza bersama keluarga pada akhir pekan.",
+    "examples": [
+      {
+        "ja": "週末に家族とピザを食べます。",
+        "reading": "Shuumatsu ni kazoku to piza o tabemasu.",
+        "id": "Saya makan pizza bersama keluarga pada akhir pekan."
+      }
+    ],
+    "catatan": "ピザ adalah pizza, kosakata serapan dari bahasa asing.",
+    "note": "ピザ adalah pizza, kosakata serapan dari bahasa asing.",
+    "speech": "ピザ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-028",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "burger",
+    "kanji": "",
+    "kana": "ハンバーガー",
+    "romaji": "hanbaagaa",
+    "image": "https://iili.io/C0aH25v.png",
+    "exampleJa": "弟はハンバーガーを二つ食べました。",
+    "exampleReading": "Otouto wa hanbaagaa o futatsu tabemashita.",
+    "exampleId": "Adik laki-laki saya makan dua burger.",
+    "examples": [
+      {
+        "ja": "弟はハンバーガーを二つ食べました。",
+        "reading": "Otouto wa hanbaagaa o futatsu tabemashita.",
+        "id": "Adik laki-laki saya makan dua burger."
+      }
+    ],
+    "catatan": "ハンバーガー berarti burger dengan roti.",
+    "note": "ハンバーガー berarti burger dengan roti.",
+    "speech": "ハンバーガー"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-029",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "sandwich",
+    "kanji": "",
+    "kana": "サンドイッチ",
+    "romaji": "sandoicchi",
+    "image": "https://iili.io/C0aH3eR.png",
+    "exampleJa": "公園でサンドイッチを食べました。",
+    "exampleReading": "Kouen de sandoicchi o tabemashita.",
+    "exampleId": "Saya makan sandwich di taman.",
+    "examples": [
+      {
+        "ja": "公園でサンドイッチを食べました。",
+        "reading": "Kouen de sandoicchi o tabemashita.",
+        "id": "Saya makan sandwich di taman."
+      }
+    ],
+    "catatan": "サンドイッチ adalah sandwich, ditulis dengan katakana.",
+    "note": "サンドイッチ adalah sandwich, ditulis dengan katakana.",
+    "speech": "サンドイッチ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-030",
+    "typeCategory": "Makanan",
+    "sectionCategory": "Perayaan",
+    "indonesia": "roti panggang",
+    "kanji": "",
+    "kana": "トースト",
+    "romaji": "toosuto",
+    "image": "https://iili.io/C0aHFbp.png",
+    "exampleJa": "朝、トーストと卵を食べます。",
+    "exampleReading": "Asa, toosuto to tamago o tabemasu.",
+    "exampleId": "Pagi hari, saya makan roti panggang dan telur.",
+    "examples": [
+      {
+        "ja": "朝、トーストと卵を食べます。",
+        "reading": "Asa, toosuto to tamago o tabemasu.",
+        "id": "Pagi hari, saya makan roti panggang dan telur."
+      }
+    ],
+    "catatan": "トースト adalah roti panggang.",
+    "note": "トースト adalah roti panggang.",
+    "speech": "トースト"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-031",
+    "typeCategory": "Minuman",
+    "sectionCategory": "Perayaan",
+    "indonesia": "kopi",
+    "kanji": "",
+    "kana": "コーヒー",
+    "romaji": "koohii",
+    "image": "https://iili.io/C0aHfzN.png",
+    "exampleJa": "仕事の前にコーヒーを飲みます。",
+    "exampleReading": "Shigoto no mae ni koohii o nomimasu.",
+    "exampleId": "Saya minum kopi sebelum bekerja.",
+    "examples": [
+      {
+        "ja": "仕事の前にコーヒーを飲みます。",
+        "reading": "Shigoto no mae ni koohii o nomimasu.",
+        "id": "Saya minum kopi sebelum bekerja."
+      }
+    ],
+    "catatan": "コーヒー adalah kopi, biasanya diminum panas atau dingin.",
+    "note": "コーヒー adalah kopi, biasanya diminum panas atau dingin.",
+    "speech": "コーヒー"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-032",
+    "typeCategory": "Minuman",
+    "sectionCategory": "Perayaan",
+    "indonesia": "teh",
+    "kanji": "紅茶",
+    "kana": "こうちゃ",
+    "romaji": "koucha",
+    "image": "https://iili.io/C0aHqXI.png",
+    "exampleJa": "ケーキと紅茶をいただきます。",
+    "exampleReading": "Keeki to koucha o itadakimasu.",
+    "exampleId": "Saya menikmati kue dan teh.",
+    "examples": [
+      {
+        "ja": "ケーキと紅茶をいただきます。",
+        "reading": "Keeki to koucha o itadakimasu.",
+        "id": "Saya menikmati kue dan teh."
+      }
+    ],
+    "catatan": "紅茶 adalah teh hitam atau black tea.",
+    "note": "紅茶 adalah teh hitam atau black tea.",
+    "speech": "こうちゃ"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-033",
+    "typeCategory": "Minuman",
+    "sectionCategory": "Perayaan",
+    "indonesia": "minuman coklat",
+    "kanji": "",
+    "kana": "ココア",
+    "romaji": "kokoa",
+    "image": "https://iili.io/C0aHBst.png",
+    "exampleJa": "寒い夜にココアを飲みたいです。",
+    "exampleReading": "Samui yoru ni kokoa o nomitai desu.",
+    "exampleId": "Saya ingin minum coklat hangat pada malam yang dingin.",
+    "examples": [
+      {
+        "ja": "寒い夜にココアを飲みたいです。",
+        "reading": "Samui yoru ni kokoa o nomitai desu.",
+        "id": "Saya ingin minum coklat hangat pada malam yang dingin."
+      }
+    ],
+    "catatan": "ココア adalah minuman coklat atau cocoa.",
+    "note": "ココア adalah minuman coklat atau cocoa.",
+    "speech": "ココア"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-034",
+    "typeCategory": "Minuman",
+    "sectionCategory": "Perayaan",
+    "indonesia": "jus",
+    "kanji": "",
+    "kana": "ジュース",
+    "romaji": "juusu",
+    "image": "https://iili.io/C0aHnqX.png",
+    "exampleJa": "子どもにオレンジジュースをあげました。",
+    "exampleReading": "Kodomo ni orenji juusu o agemashita.",
+    "exampleId": "Saya memberi jus jeruk kepada anak.",
+    "examples": [
+      {
+        "ja": "子どもにオレンジジュースをあげました。",
+        "reading": "Kodomo ni orenji juusu o agemashita.",
+        "id": "Saya memberi jus jeruk kepada anak."
+      }
+    ],
+    "catatan": "ジュース berarti jus atau minuman sari buah.",
+    "note": "ジュース berarti jus atau minuman sari buah.",
+    "speech": "ジュース"
+  },
+  {
+    "book": "Minna no Nihongo I (2nd Edition)",
+    "bookJa": "みんなの日本語 I（第2版）",
+    "materialCategory": "Kata-Kata Referensi dan Informasi",
+    "chapter": "Bab 11",
+    "chapterNumber": 11,
+    "favorite": false,
+    "isFiction": false,
+    "id": "mni-ref-b11-menu-035",
+    "typeCategory": "Minuman",
+    "sectionCategory": "Perayaan",
+    "indonesia": "coca cola",
+    "kanji": "",
+    "kana": "コーラ",
+    "romaji": "koora",
+    "image": "https://iili.io/C0aHxgs.png",
+    "exampleJa": "暑い日に冷たいコーラを飲みました。",
+    "exampleReading": "Atsui hi ni tsumetai koora o nomimashita.",
+    "exampleId": "Saya minum cola dingin pada hari yang panas.",
+    "examples": [
+      {
+        "ja": "暑い日に冷たいコーラを飲みました。",
+        "reading": "Atsui hi ni tsumetai koora o nomimashita.",
+        "id": "Saya minum cola dingin pada hari yang panas."
+      }
+    ],
+    "catatan": "コーラ adalah cola atau minuman bersoda rasa kola.",
+    "note": "コーラ adalah cola atau minuman bersoda rasa kola.",
+    "speech": "コーラ"
+  }
+]
