@@ -1,0 +1,26 @@
+{
+  "family": "Wikaru Kotoba Marks",
+  "release": "v39",
+  "source": "qa/fixtures/kotoba-marks-reference.png",
+  "method": "reference-exact isolated render",
+  "size": 512,
+  "transparent": true,
+  "icons": [
+    "identity",
+    "notes",
+    "hana",
+    "momo",
+    "ren",
+    "kaito",
+    "statistics",
+    "understand",
+    "direction",
+    "shuffle",
+    "chapter",
+    "section",
+    "word-type",
+    "speech",
+    "timer",
+    "guide"
+  ]
+}
