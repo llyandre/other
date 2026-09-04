@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Wikaru — Belajar Bahasa Jepang Lebih Mudah</title>
+  <desc id="desc">Kartu berbagi Wikaru dengan identitas biru, kana Jepang, dan ringkasan fitur belajar.</desc>
+  <defs>
+    <linearGradient id="background" x1="80" y1="30" x2="1110" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFF"/>
+      <stop offset="1" stop-color="#E8EFFA"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="660" y1="92" x2="1075" y2="555" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#315895"/>
+      <stop offset="1" stop-color="#172F64"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="150%" height="180%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#203D72" flood-opacity=".16"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="108" cy="78" r="170" fill="#FFE9B2" opacity=".44"/>
+  <circle cx="1122" cy="584" r="210" fill="#CDEFE6" opacity=".52"/>
+  <rect x="64" y="56" width="1072" height="518" rx="46" fill="#fff" filter="url(#shadow)"/>
+  <g transform="translate(112 105)">
+    <rect width="92" height="92" rx="28" fill="#243B73"/>
+    <path d="M20 30 33 66 46 40l13 26 13-36" fill="none" stroke="#FFFDF7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="70" cy="22" r="8" fill="#F06A58"/>
+  </g>
+  <text x="232" y="144" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#243B73">WIKARU</text>
+  <text x="112" y="260" font-family="Arial, sans-serif" font-size="45" font-weight="800" fill="#142344">Belajar bahasa Jepang</text>
+  <text x="112" y="318" font-family="Arial, sans-serif" font-size="45" font-weight="800" fill="#142344">lebih mudah.</text>
+  <text x="112" y="384" font-family="Arial, sans-serif" font-size="24" font-weight="500" fill="#62718A">Minna no Nihongo Bab 1–50 · latihan adaptif</text>
+  <text x="112" y="420" font-family="Arial, sans-serif" font-size="24" font-weight="500" fill="#62718A">audio · progres belajar · paket offline</text>
+  <g transform="translate(112 468)">
+    <rect width="166" height="52" rx="26" fill="#EDF2FC"/>
+    <text x="83" y="34" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#284989" text-anchor="middle">3.653 materi</text>
+    <rect x="180" width="182" height="52" rx="26" fill="#ECF8F2"/>
+    <text x="271" y="34" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#347450" text-anchor="middle">50 bab lengkap</text>
+  </g>
+  <rect x="696" y="100" width="390" height="430" rx="44" fill="url(#panel)"/>
+  <circle cx="986" cy="200" r="62" fill="#FFD86F"/>
+  <rect x="780" y="226" width="180" height="44" rx="22" fill="#fff" opacity=".9"/>
+  <circle cx="822" cy="220" r="38" fill="#fff" opacity=".9"/>
+  <circle cx="880" cy="222" r="30" fill="#fff" opacity=".9"/>
+  <rect x="752" y="328" width="112" height="112" rx="32" fill="#fff" opacity=".15"/>
+  <text x="808" y="403" font-family="Arial, sans-serif" font-size="66" font-weight="800" fill="#fff" text-anchor="middle">A</text>
+  <rect x="902" y="364" width="100" height="100" rx="30" fill="#F5BC9A" opacity=".24"/>
+  <text x="952" y="433" font-family="Arial, sans-serif" font-size="40" font-weight="800" fill="#fff" text-anchor="middle">JP</text>
+  <text x="890" y="498" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#DDE7FA" text-anchor="middle">Sedikit belajar setiap hari.</text>
+</svg>
